@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3740333023">
+    <data-source source="LOCAL" name="Rails openpprn-backend: development" uuid="84dea14e-e1ee-4826-b463-a452124b3366">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/openpprn-backend_development</jdbc-url>
+      <user-name>openpprn</user-name>
+      <user-password>dfc5dfdadfcfdfc4dfdadfdadfd8dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails openpprn-backend: test" uuid="998029d5-6a26-42b9-873c-b25f023db526">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/openpprn-backend_test</jdbc-url>
+      <user-name>openpprn</user-name>
+      <user-password>dfc5dfdadfcfdfc4dfdadfdadfd8dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails openpprn-backend: production" uuid="7f9d90e3-1e38-4643-89da-20fe7a4158da">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:openpprn-backend_production</jdbc-url>
+      <user-name>openpprn-backend</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe5dffadfefdfe4dffadffadff8dfe4df87dfe8dfebdfe9dfe1dfefdfe4dfeedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
