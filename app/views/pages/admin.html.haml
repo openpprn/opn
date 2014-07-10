@@ -1,0 +1,28 @@
+/ ---
+/ title: Admin
+/ ---
+
+.row
+  .col-md-12
+
+    %ul.nav.nav-tabs
+      %li.active
+        %a{href: "#basic", "data-toggle" => "tab"} Basic
+      %li
+        %a{href: "#notifs", "data-toggle" => "tab"} Notifications
+      %li
+        %a{href: "#research", "data-toggle" => "tab"} Research Topics
+
+    %br/
+
+    .nav.tab-content
+      .tab-pane#basic.active
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Basic
+          .panel-body
+            test
+      .tab-pane#notifs
+        notifs
+      .tab-pane#research
+        research

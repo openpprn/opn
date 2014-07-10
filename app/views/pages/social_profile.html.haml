@@ -1,0 +1,88 @@
+/ ---
+/ title: My Social Profile
+/ ---
+
+.row
+  .col-md-9
+
+    %form.form-horizontal{role: "form"}
+      .alert.alert-info
+        .radio
+          %label
+            %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+            %strong
+              Be Social.
+            Share the below information with other patients on the site.
+
+        .radio
+          %label
+            %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+            %strong
+              Don't be Social.
+            Do not show to anyone that I'm on this site.
+
+
+  .col-md-3
+.row
+  .col-md-9
+    .panel.panel-default
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-2.control-label
+              %img.img-circle.center-block{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahrens@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
+            .col-sm-10
+              %p
+                %strong
+                  Upload New
+              %input{:type => "file"}
+
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-2.control-label Name
+            .col-sm-6
+              %input.form-control{:type=>"text", :value => "Sean Ahrens"}
+          .form-group
+            %label.col-sm-2.control-label Bio
+            .col-sm-6
+              %textarea.form-control{:placeholder=>"Type anything you want other people around you to see."}
+
+          / .form-group
+          /   %label.col-sm-2.control-label Share My...
+          /   .col-sm-10
+          /     .checkbox
+          /       %label
+          /         %input{type: "checkbox"}/
+          /         %u
+          /           Basic Health Information
+          /     .checkbox
+          /       %label
+          /         Age
+          /     .checkbox
+          /       %label
+          /         Years Since Diagnosis
+          /     .checkbox
+          /       %label
+          /         Condition
+
+
+          /     .checkbox
+          /       %label
+          /         %input{type: "checkbox"}/
+          /         %u
+          /           Overall Health
+
+          /     .checkbox
+          /       %label
+          /         %input{type: "checkbox"}/
+          /         %u
+          /           Treatment Timeline
+
+          /     .checkbox
+          /       %label
+          /         %input{type: "checkbox"}/
+          /         %u
+          /           Journal
+
+
+        %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Save

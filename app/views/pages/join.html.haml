@@ -1,0 +1,38 @@
+/ ---
+/ title: Join
+/ hide_page_header: true
+/ ---
+
+
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-heading
+        .panel-title Join
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-5.control-label{for: "inputEmail3"} Email
+            .col-sm-7
+              %input#inputEmail3.form-control{placeholder: "Email", type: "email"}/
+          .form-group
+            %label.col-sm-5.control-label{for: "inputPassword3"} Password
+            .col-sm-7
+              %input#inputPassword3.form-control{placeholder: "Password", type: "password"}/
+          .form-group
+            %label.col-sm-5.control-label{for: "inputPassword3"} Password Confirmation
+            .col-sm-7
+              %input#inputPassword3.form-control{placeholder: "Password", type: "password"}/
+          .form-group
+            %label.col-sm-5.control-label{for: "inputPassword3"} Condition
+            .col-sm-7
+              %select.form-control
+                %option Crohn's
+                %option Colitis
+                %option Indeterminant Colitis
+          .form-group
+            .col-sm-offset-5.col-sm-7
+              %a.btn.btn-primary{href: "/contributions"} Join
+    %p.text-center
+      Already a Member
+      %a{:href => "/login"} Sign in.

@@ -1,0 +1,251 @@
+/ ---
+/ title: My Karma
+/ ---
+
+
+.row
+  .col-md-9
+
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Surveys
+      %table.table.table-responsive.table-hover
+        %tbody
+          %tr
+            %td.col-md-1
+              %h4
+                %i.fa.fa-check-square
+            %td.col-md-9
+              %a{:href=>"/data/"}
+                %h4 You've completed 6 Surveys
+            %td.col-md-1.text-right
+              %h4 +600
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Health Streams
+      %table.table.table-responsive.table-hover
+        %tbody
+          %tr
+            %td.col-md-1
+              %h4
+                %i.fa.fa-check-square
+            %td.col-md-9
+              %a{:href=>"/data/"}
+                %h4 You've connected 5 Health Streams
+            %td.col-md-1.text-right
+              %h4 +500
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Research Voting
+      %table.table.table-responsive.table-hover
+        %tbody
+          %tr
+            %td.col-md-1
+              %h4
+                %i.fa.fa-check-square
+            %td.col-md-9
+              %a{:href=>"/research/"}
+                %h4 You've contributed to 3 research topics
+            %td.col-md-1.text-right
+              %h4 +75
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Basic Health Info
+      %table.table.table-responsive.table-hover
+        %tbody
+          %tr
+            %td.col-md-1
+              %h4
+                %i.fa.fa-check-square
+            %td.col-md-9
+              %a{:href=>"/health_profile/"}
+                %h4 You've completed your basic health info
+            %td.col-md-1.text-right
+              %h4 +100
+
+  .col-md-3
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Your Karma
+
+      .panel-body.text-center
+        %h1 800
+
+        %h5 75% Percentile
+      .panel-footer
+
+
+
+
+
+
+
+
+
+
+
+
+
+    / .panel.panel-default
+    /   .panel-heading
+    /     %h3.panel-title Your Initial Contributions to Research
+
+
+    /   %table.table.table-responsive.table-hover
+    /     %tbody
+    /       %tr
+    /         %td.col-md-1
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td.col-md-9
+    /           %a{:href=>"/consent/"}
+    /             %h4 Authorize Research Use of Data
+    /         %td.col-md-1.text-right
+    /           %h4 +100
+
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-square
+    /         %td
+    /           %a{:href => "/health_profile/"}
+    /             %h4 Basic Health Information
+
+    /         %td.text-right
+    /           %a.btn.btn-success.pull-left.btn-sm{:href => "/health_profile/"} Fill Out
+
+    /           %a{:name => "data_connections"}
+
+    /   .panel-footer
+    /     .pull-right
+    /       %h3 +100
+    /     .clearfix
+
+    / .panel.panel-default
+    /   .panel-heading
+    /     %h3.panel-title Your Health Data Sources
+    /     You've connected 6 health data sources
+
+    /   %table.table.table-hover.table-responsive
+    /     %thead
+    /       %tr
+    /         %th.col-md-1 Donated?
+    /         %th.col-md-10 Source
+    /         %th.col-md-1
+    /     %tbody
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-square
+    /         %td
+    /           %a Overall Health
+
+    /         %td.text-right
+    /           .btn.btn-success.pull-left.btn-sm Authorize Research Use
+
+
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td
+    /           %a Journal Entries
+    /         %td.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td
+    /           %a FitBit
+    /         %td.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td
+    /           %a MyFitnessPal
+
+    /         %td.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td
+    /           %a Withings
+    /         %td.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td
+    /           %a 23&Me
+    /         %td.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /         %td
+    /         %td.text-right
+    /           .btn.btn-default.btn-sm Add Data Source
+
+
+    /   .panel-footer.text-right
+    /     %h3 +500
+
+
+
+
+    / .panel.panel-default
+    /   .panel-heading
+    /     %h3.panel-title Your Survey Completion
+    /     You've Completed 1 Survey.
+
+    /   %table.table.table-hover.table-responsive
+    /     %tbody
+    /       %tr
+    /         %td.col-md-1
+    /           %h4
+    /             %i.fa.fa-check-square
+    /         %td.col-md-10
+    /           %h4 Have you ever done SCD?
+    /         %td.col-md-1.text-right
+    /           %h4 +100
+    /       %tr
+    /         %td
+    /           %h4
+    /             %i.fa.fa-square
+    /         %td
+    /           %h4 How does your Gender affect IBD?
+    /         %td.text-right
+    /           %a.btn.btn-success.btn-sm{:href => "/survey"} Complete Survey
+    /   .panel-footer.text-right
+    /     %h3 +100
+
+
+    / .panel.panel-default
+    /   .panel-heading
+    /     %h3.panel-title Propose Research Question
+    /     Propose curiousities and questions you're interested in having crowdsourced research done on.
+
+    /   %table.table.table-hover.table-responsive
+    /     %tbody
+    /       %tr
+    /         %td.text-right
+    /           %a.btn.btn-default.btn-sm{:href => "/new_question"} Propose Question
+
+    /   .panel-footer.text-right
+    /     %h3 +0
+
+
+
+
+
+
+
+
+

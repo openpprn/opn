@@ -1,0 +1,33 @@
+/ ---
+/ title: Survey
+/ ---
+
+.row
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Question 1
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-4.control-label City of Diagnosis
+            .col-sm-8
+              %p.form-control
+
+
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Question 2
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          %strong Have you ever done this?
+          .radio
+            %label
+              %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+              Yes
+          .radio
+            %label
+              %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+              No
+
+    %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Done

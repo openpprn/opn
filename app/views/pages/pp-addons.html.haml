@@ -1,0 +1,46 @@
+/ ---
+/ title: Patientroku
+/ layout: patientpowered.haml
+
+
+
+/ add_ons:
+/   -
+/     - "More Patients"
+/     - "Add 1000 Patients to Your Network"
+/   -
+/     - "CTR"
+/     - "Recruit for a Clinical Trial"
+/   -
+/     - "Donation Workflow"
+/   -
+/     - "Advanced Research Analytics"
+/   -
+/     - "Patient-Verification Service"
+/   -
+/     - "Universal Portable Informed Consent"
+/   -
+/     - "PatientsKnowBest Integration"
+/   -
+/     - "Support Group Listing"
+
+
+/ ---
+
+%h2 Add-Ons
+%br/
+
+.row
+  .col-md-2
+  .col-md-8
+
+    - current_page.data.add_ons.each do |name, description|
+      .pull-left
+        .lead
+          = name
+        = description
+      .pull-right
+        .add-on-btn.btn.btn-success.btn Add
+      .clearfix
+      %hr/
+  .col-md-2

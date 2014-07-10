@@ -1,0 +1,97 @@
+!!!
+/ saved from url=(0050)http://getbootstrap.com/examples/starter-template/
+%html{lang: "en"}
+  %head
+    / Shortcut Icon
+    %link{href: "", rel: "shortcut icon"}/
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'pages'
+
+    = javascript_include_tag 'bootstrap'
+
+    / %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
+    / Font Awesome
+    = stylesheet_link_tag "font-awesome.min.css"
+
+    = csrf_meta_tags
+
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    / Page Title
+    / Use @title, @html_title, or @page_title, in this order of preference.
+    / %title= current_page.data.title || current_page.data.html_title || current_page.data.page_title
+
+%body{screen_capture_injected: "true"}
+  .container{role: "main"}
+
+    .navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "/"}
+            OPN
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{href: "/research"} Research Topics
+            %li
+              %a{href: "/data"} My Health Data
+            %li
+              %a{href: "/social"} People
+
+          %ul.nav.navbar-nav.pull-right
+            %li
+              %a{href: "/contributions"}
+                800
+                %i.fa.fa-star
+
+            %li
+              %a{href: "/account"}
+                %i.fa.fa-gear
+
+    / Page Header
+    .row
+      .col-xs-12
+        / - if current_page.data.hide_page_header
+        /   .page-header-custom-blank
+        / - else
+        .page-header
+          %h1
+            = action_name.capitalize
+            / || current_page.data.page_title
+            /%small= current_page.data.page_subtitle
+
+    = yield
+    %br/
+    %br/
+    %br/
+
+    %hr/
+    .row
+      .col-md-4.col-md-offset-4
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            %label.control-label.col-md-6{for: "inputPassword3"}
+              %i.fa.fa-globe &nbsp; Language:
+            .col-md-6
+              %select.form-control
+                %option
+                  %i.fa.fa-globe
+                  English
+                %option Spanish
+
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    / jQuery (necessary for Bootstrap's JavaScript plugins)
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
