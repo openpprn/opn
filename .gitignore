@@ -47,3 +47,4 @@ config/initializers/secret_token.rb
 /config/initializers/00_site_name.rb
 /config/initializers/db.rb
 /config/environments/production.rb
+/config/secrets.yml

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'social_profile' => 'pages#social_profile'
   get 'survey' => 'pages#survey'
 
+  get 'pprn' => 'pages#pprn'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -10,6 +10,9 @@
     = stylesheet_link_tag 'pages'
 
     = javascript_include_tag 'bootstrap'
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+
+
 
     / %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
     / Font Awesome
@@ -38,7 +41,7 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{href: "/"}
-            OpenPPRN
+            = @pprn_title
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
@@ -57,6 +60,12 @@
             %li
               %a{href: "/account"}
                 %i.fa.fa-gear
+            %li
+              %a{href: "#"}
+                %i.fa.fa-flag#requirements-toggler
+            %li
+              %a{href: "/pprn"}
+                %i.fa.fa-random
 
     / Page Header
     .row
@@ -94,4 +103,3 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     / jQuery (necessary for Bootstrap's JavaScript plugins)
-    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
