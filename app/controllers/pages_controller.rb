@@ -11,17 +11,19 @@ class PagesController < ApplicationController
   def connections; end
   def contributions; end
   def data; end
+  def discussion; end
   def donate; end
+  def findings; end
   def health_profile; end
   def home; end
-  def index; end
+  def index; @hide_page_header = true; end
   def insights; end
-  def join; end
-  def login; end
+  def join; @hide_page_header = true; end
+  def login; @hide_page_header = true; end
   def new_question; end
   #def pp-addons; end
   def research; end
-  def research_question; end
+  def research_question; @hide_page_header = true; end
   def social; end
   def social_profile; end
   def survey; end
@@ -29,6 +31,8 @@ class PagesController < ApplicationController
 
   # Read the PPRN Cookie
   def determine_pprn
+    cookies[:pprn] = "sapcon" if !cookies[:pprn]
+
     @pprn = cookies[:pprn]
 
     if @pprn == "ccfa"

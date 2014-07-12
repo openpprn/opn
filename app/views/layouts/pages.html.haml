@@ -10,7 +10,6 @@
     = stylesheet_link_tag 'pages'
 
     = javascript_include_tag 'bootstrap'
-    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
 
 
 
@@ -45,61 +44,66 @@
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
-              %a{href: "/research"} Research Topics
+              %a{href: "/research"} Research Dashboard
             %li
               %a{href: "/data"} My Health Data
             %li
               %a{href: "/social"} People
+            - if sapcon_pprn?
+              %li
+                %a{href: "/discussion"} Discussion
+            %li
+              %a{href: "/blog"} Blog
+            %li
+              %a{href: "/findings"} Findings
+
 
           %ul.nav.navbar-nav.pull-right
             %li
-              %a{href: "/contributions"}
+              %a{href: "#"}
                 800
                 %i.fa.fa-star
 
             %li
               %a{href: "/account"}
                 %i.fa.fa-gear
-            %li
-              %a{href: "#"}
-                %i.fa.fa-flag#requirements-toggler
-            %li
-              %a{href: "/pprn"}
-                %i.fa.fa-random
+
 
     / Page Header
     .row
       .col-xs-12
-        / - if current_page.data.hide_page_header
-        /   .page-header-custom-blank
-        / - else
-        .page-header
-          %h1
-            = action_name.capitalize
-            / || current_page.data.page_title
-            /%small= current_page.data.page_subtitle
-
+        - if @hide_page_header
+          .page-header-blank
+        - else
+          .page-header
+            %h1
+              = action_name.capitalize
     = yield
-    %br/
-    %br/
-    %br/
 
-    %hr/
-    .row
-      .col-md-4.col-md-offset-4
-        %form.form-horizontal{:role => "form"}
-          .form-group
-            %label.control-label.col-md-6{for: "inputPassword3"}
-              %i.fa.fa-globe &nbsp; Language:
-            .col-md-6
-              %select.form-control
-                %option
-                  %i.fa.fa-globe
-                  English
-                %option Spanish
 
-    /
-      Bootstrap core JavaScript
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    / jQuery (necessary for Bootstrap's JavaScript plugins)
+
+  .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{href: "/"}
+          Developer Panel
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li
+            %a{href: "#", :title => "Toggle on/off on-page Requirements"}
+              %i.fa.fa-flag#requirements-toggler
+          %li
+            %a{href: "/admin", :title => "Admin Panel"}
+              %i.fa.fa-wrench
+          %li
+            %a{href: "/pprn", :title => "Toggle through PPRNs"}
+              %i.fa.fa-random
+
+
+
+  %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}

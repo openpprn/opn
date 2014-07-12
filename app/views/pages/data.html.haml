@@ -6,168 +6,130 @@
 
 .row
   .col-md-12
-    %ul.nav.nav-tabs
-      %li.active
-        %a{href: "#streams", "data-toggle" => "tab"} Data Streams
-      %li
-        %a{href: "#surveys", "data-toggle" => "tab"} Surveys
 
-    %br/
+    .col-md-9
 
-    .tab-content
-      .tab-pane#streams.active
-        .col-md-9
+      - if (defined? mode) && (mode == "fux")
+        .alert.alert-info It looks like it's your first time
 
-          - if (defined? mode) && (mode == "fux")
-            .alert.alert-info It looks like it's your first time
+      .panel.panel-default
+        = image_tag "time-graph.png", :width => "100%"
 
-          .panel.panel-default
-            = image_tag "time-graph.png", :width => "100%"
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title Stream
 
-          .panel.panel-default
-            .panel-heading
-              %h4.panel-title Stream
-
-            %table.table.table-striped.table-responsive
-              %tbody
-                %tr
-                  %td.col-md-1{:style => "background-color: #f5f5f5 !important;"}
-                    Today
-                  %td.col-md-11{:style => "background-color: #f5f5f5 !important;"}
-                    %div.col-md-4.col-xs-12.text-center
-                      How are you feeling?
-                      %br/
-                      %i.fa.fa-circle
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      %i.fa.fa-circle
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      %i.fa.fa-circle
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      %i.fa.fa-circle
-                      %br/
-                      %input{:type => "range"}
-                      %br/
-                    .col-md-6.col-xs-12
-                      %textarea.form-control{:placeholder => "Type a journal entry here.."}
-                      %br/
-                    %div.col-md-2.col-xs-12
-                      %a.btn.btn-primary.btn-block{:href=>"javascript:location.reload();"} Post
-                %tr
-                  %td March 2
-                  %td Fitbit: 10,000 Steps
-                %tr
-                  %td March 1
-                  %td MyFitness Pal: 100 reps
-                %tr
-                  %td Feb 28
-                  %td Withings: 195 pounds
-                %tr
-                  %td Feb 12
-                  %td Flare of BMs
+        %table.table.table-striped.table-responsive
+          %tbody
+            %tr
+              %td.col-md-1{:style => "background-color: #f5f5f5 !important;"}
+                Today
+              %td.col-md-11{:style => "background-color: #f5f5f5 !important;"}
+                %div.col-md-4.col-xs-12.text-center
+                  How are you feeling?
+                  %br/
+                  %i.fa.fa-circle
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  %i.fa.fa-circle
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  %i.fa.fa-circle
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  %i.fa.fa-circle
+                  %br/
+                  %input{:type => "range"}
+                  %br/
+                .col-md-6.col-xs-12
+                  %textarea.form-control{:placeholder => "Type a journal entry here.."}
+                  %br/
+                %div.col-md-2.col-xs-12
+                  %a.btn.btn-primary.btn-block{:href=>"javascript:location.reload();"} Post
+            %tr
+              %td March 2
+              %td Fitbit: 10,000 Steps
+            %tr
+              %td March 1
+              %td MyFitness Pal: 100 reps
+            %tr
+              %td Feb 28
+              %td Withings: 195 pounds
+            %tr
+              %td Feb 12
+              %td Flare of BMs
 
 
 
-            .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
-              .text-center
-                %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-                  %li
-                    %span &laquo;
-                  %li.disabled
-                    %span ...
-                  %li
-                    %span &raquo;
+        .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
+          .text-center
+            %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+              %li
+                %span &laquo;
+              %li.disabled
+                %span ...
+              %li
+                %span &raquo;
 
-        .col-md-3
-          .panel.panel-default
-            .panel-heading
-              %h4.panel-title.pull-left View
-              %button.btn.btn-default.btn-xs.pull-right Show All
-              .clearfix
-            %table.table.table-hover.table-responsive
+    .col-md-3
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title.pull-left View
+          %button.btn.btn-default.btn-xs.pull-right Show All
+          .clearfix
+        %table.table.table-hover.table-responsive
 
-              %tbody
-                %tr
-                  %td
-                  %td Overall Health
-                %tr
-                  %td
-                  %td Journal Entries
-                %tr
-                  %td
-                  %td FitBit
-                %tr
-                  %td
-                    %i.fa.fa-check
-                  %td MyFitnessPal
-                %tr
-                  %td
-                    %i.fa.fa-check
-                  %td Withings
-                %tr
-                  %td
-                    %i.fa.fa-check
-                  %td 23&Me
-            .panel-footer
-              %a.btn.btn-default.btn-block{:href => "/contributions#data_connections"} Manage Data Connections
+          %tbody
+            %tr
+              %td
+              %td Overall Health
+            %tr
+              %td
+              %td Journal Entries
+            %tr
+              %td
+              %td FitBit
+            %tr
+              %td
+                %i.fa.fa-check
+              %td MyFitnessPal
+            %tr
+              %td
+                %i.fa.fa-check
+              %td Withings
+            %tr
+              %td
+                %i.fa.fa-check
+              %td 23&Me
+        .panel-footer
+          %a.btn.btn-default.btn-block{:href => "/contributions#data_connections"} Manage Data Connections
 
-          %br/
+      %br/
 
-          .panel.panel-default
-            .panel-heading
-              %h4.panel-title
-                Your Health Summary
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            Your Health Summary
 
-            %table.table.table-responsive
-              %tbody
-                %tr
-                  %td Condition
-                  %td Crohn's
-                %tr
-                  %td Age of Diagnosis
-                  %td 13
-                %tr
-                  %td Current Age
-                  %td 28
-                %tr
-                  %td Years With
-                  %td 15
-                %tr
-                  %td Current Health
-                  %td Remission
-                %tr
-                  %td Current Treatments
-                  %td Remicade
-                %tr
-                  %td Past Treatments
-                  %td Prednisone, 6MP, SCD
-            .panel-footer
-              %a.btn.btn-default.center-block{:href => "/health_profile/"} Update Info
-
-
-
-      .tab-pane#surveys
-        .panel.panel-default
-          .panel-heading
-            %h3.panel-title Your Survey Completion
-            You've Completed 1 Survey.
-
-          %table.table.table-hover.table-responsive
-            %tbody
-              %tr
-                %td.col-md-1
-                  %h4
-                    %i.fa.fa-check-square
-                %td.col-md-10
-                  %h4 Have you ever done SCD?
-                %td.col-md-1.text-right
-                  %h4 +100
-              %tr
-                %td
-                  %h4
-                    %i.fa.fa-square
-                %td
-                  %h4 How does your Gender affect IBD?
-                %td.text-right
-                  %a.btn.btn-success.btn-sm{:href => "/survey"} Complete Survey
-          .panel-footer.text-right
-            %h3 +100
+        %table.table.table-responsive
+          %tbody
+            %tr
+              %td Condition
+              %td Crohn's
+            %tr
+              %td Age of Diagnosis
+              %td 13
+            %tr
+              %td Current Age
+              %td 28
+            %tr
+              %td Years With
+              %td 15
+            %tr
+              %td Current Health
+              %td Remission
+            %tr
+              %td Current Treatments
+              %td Remicade
+            %tr
+              %td Past Treatments
+              %td Prednisone, 6MP, SCD
+        .panel-footer
+          %a.btn.btn-default.center-block{:href => "/account/"} Update Info

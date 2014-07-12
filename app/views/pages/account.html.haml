@@ -6,28 +6,63 @@
       %li.active
         %a{href: "#user", "data-toggle" => "tab"} User Account
       %li
-        %a{href: "#basic", "data-toggle" => "tab"} Basic
-      %li
-        %a{href: "#notifs", "data-toggle" => "tab"} Notifications
-      %li
-        %a{href: "#research", "data-toggle" => "tab"} Research Topics
-
+        %a{href: "#basic", "data-toggle" => "tab"} Health Info
     %br/
 
 
 
     .nav.tab-content
       .tab-pane#basic
-        .panel.panel-default
-          .panel-heading
-            %h3.panel-title Basic
-          .panel-body
-            test
-      .tab-pane#notifs
-        notifs
-      .tab-pane#research
-        research
+        .col-md-9
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Health Info
+            .panel-body
+              .row
+                .col-md-6
+                  %form.form-horizontal{role: "form"}
+                    .form-group
+                      %label.col-sm-4.control-label Name
+                      .col-sm-8
+                        %input.form-control{:type => "text"}
+                    %hr/
+                    .form-group
+                      %label.col-sm-4.control-label Condition
+                      .col-sm-8
+                        %input.form-control{placeholder: "Crohn's, Colitis, Other", type: "text"}/
+                    .form-group
+                      %label.col-sm-4.control-label Current Disease Status
+                      .col-sm-8
+                        %input.form-control{:type => "text"}
+                    .form-group
+                      %label.col-sm-4.control-label Date of Diagnosis
+                      .col-sm-8
+                        %input.form-control{:type => "date"}
+                    .form-group
+                      %label.col-sm-4.control-label Date of First Symptoms
+                      .col-sm-8
+                        %input.form-control{:type => "date"}
+                    %hr/
+                    .form-group
+                      %label.col-sm-4.control-label Date of Birth
+                      .col-sm-8
+                        %input.form-control{:type => "date"}
+                    .form-group
+                      %label.col-sm-4.control-label Sex
+                      .col-sm-8
+                        %input.form-control{:type => "text"}
+                    %hr/
+                    .form-group
+                      %label.col-sm-4.control-label Current Treatments
+                      .col-sm-8
+                        %textarea.form-control
+                    .form-group
+                      %label.col-sm-4.control-label Treatments Taken in Past
+                      .col-sm-8
+                        %textarea.form-control
 
+
+                  %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Done
 
 
 
@@ -65,6 +100,24 @@
                   %label
                     %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
                     Don't Email Me
+
+
+
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title Language
+            .panel-body
+              %form.form-horizontal{:role => "form"}
+                .form-group
+                  / %label.control-label.col-md-6{for: "inputPassword3"}
+                  /   %i.fa.fa-globe &nbsp; Language:
+                  .col-md-6
+                    %select.form-control
+                      %option
+                        %i.fa.fa-globe
+                        English
+                      %option Spanish
+
 
           %button.btn.btn-primary.pull-right Save
 

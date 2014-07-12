@@ -11,9 +11,68 @@
       .panel-heading
         %h3.panel-title Map
 
-      %img{:src=>"https://maps.googleapis.com/maps/api/staticmap?center=University+of+North+Carolina&sensor=false&size=900x300&zoom=11", :width => "100%", :class => "map"}
+      = image_tag "map.png", :width => "100%"
 
-    = render :partial => "/#{@pprn}/discussion"
+    .graphs
+    //https://developers.google.com/chart/interactive/docs/gallery?hl=pl
+
+      .row
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Age
+            .panel-body
+              = image_tag "histogram.png"
+
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Gender
+            .panel-body
+              = image_tag "donut.png"
+
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Location
+            .panel-body
+              = image_tag "bar.png"
+
+      .row
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Surveys Completed
+            .panel-body
+              = image_tag "pie.png"
+
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Research Topics
+            .panel-body
+              = image_tag "histogram.png"
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Connected Data Sources
+            .panel-body
+              = image_tag "pie.png"
+
+
+    - if ccfa_pprn?
+      .row
+        .col-md-12
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title More Social Features?
+            .panel-body
+              Crohnology
+
 
   .col-md-3
     .panel.panel-default

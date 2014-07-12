@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   get 'connections' => 'pages#connections'
   get 'contributions' => 'pages#contributions'
   get 'data' => 'pages#data'
+  get 'discussion' => 'pages#discussion' # sapcon
   get 'donate' => 'pages#donate'
+  get 'findings' => 'pages#findings'
+
   get 'health_profile' => 'pages#health_profile'
   #get 'index' => 'pages#index'
   get 'insights' => 'pages#insights'
@@ -26,7 +29,6 @@ Rails.application.routes.draw do
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
   get 'survey' => 'pages#survey'
-
   get 'pprn' => 'pages#pprn'
 
 

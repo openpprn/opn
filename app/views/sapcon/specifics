@@ -1,0 +1,6 @@
+#SAPCON Specific Pages
+#Can be removed without repurcusions from other PPRNs
+
+sapcon/
+sapcon/*
+pages/sapcon

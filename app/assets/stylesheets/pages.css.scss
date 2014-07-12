@@ -5,9 +5,10 @@
 
 body {
   padding-top: 50px;
+  padding-bottom: 50px;
   counter-increment: myIndex;
 
-  .page-header-custom-blank {
+  .page-header-blank {
     height: 40px;
   }
 }
@@ -19,6 +20,18 @@ body {
   right: 0px;
   z-index: 10;
 }
+
+.graphs .panel-body {
+  height: 200px;
+  text-align: center;
+  img {
+    max-height: 180px;
+    max-width: 100%;
+
+  }
+}
+
+
 
 // #requirements-toggler {
 //   color: red;

@@ -4,101 +4,174 @@
 
 .row
   .col-md-9
+
+
     .panel.panel-default
       .panel-heading
-        %h3.panel-title Research Topics
+        %h3.panel-title Dashboard
 
       .panel-body
-        %ul.nav.nav-tabs
-          %li.active
-            %a{href: "#inprogress", "data-toggle" => "tab"} In Progress
-          %li
-            %a{href: "#new", "data-toggle" => "tab"} New Proposals
-          %li
-            %a{href: "#completed", "data-toggle" => "tab"} Completed
-
-        %br/
-
-        .tab-content
-          .tab-pane#new
-            %table.table.table-responsive
-              %tbody
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 How does pregancy affect condition activity?
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Which is a more effective dosing schedule of Drug A?
-
-                %tr
-                  %td.text-right{"colspan" => 3}
-                    %a.btn.btn-success.btn-sm{:href => "/new_question", :style=>"margin-top: 3px;"} Submit Question
+        .row
+          .col-md-4.text-center
+            = image_tag "pie.png", :style => "height: 150px;"
+            %h4 Surveys Completed
+          .col-md-4.text-center
+            = image_tag "donut.png", :style => "height: 150px;"
+            %h4 Karma
+          .col-md-4.text-center
+            = image_tag "gauge.png", :style => "height: 150px;"
+            %h4 Data Sources
 
 
 
-          .tab-pane#completed
-            %table.table.table-responsive
-              %tbody
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
-                  / %td 100
-                  / %td
+    .panel.panel-success
+      .panel-heading
+        %h3.panel-title New Surveys
+      %table.table.table-hover.table-responsive.table-success
+        %tbody
+          %tr
+            %td.col-md-1
+              %h4
+                %i.fa.fa-check-square
+            %td.col-md-10
+              %h4 Have you ever done SCD?
+            %td.col-md-1.text-right
+              %h4 +100
+          %tr
+            %td
+              %h4
+                %i.fa.fa-square
+            %td
+              %h4 How does your Gender affect IBD?
+            %td.text-right
+              %a.btn.btn-success.btn-sm{:href => "/survey"} Complete Survey
 
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Does sleeping on your side change the effects?
-                  / %td 50
-                  / %td
-                  /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
 
-          .tab-pane#inprogress.active
-            %table.table.table-responsive
-              %tbody
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
-                  / %td 100
-                  / %td
 
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Does sleeping on your side change the effects?
-                  / %td 50
-                  / %td
-                  /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Research Proposals
 
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 How does pregancy affect condition activity?
-                  / %td 40
-                  / %td
-                  /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
-                  / %td 100
-                  / %td
+      .panel-body
+        / %ul.nav.nav-tabs
+        /   %li.active
+        /     %a{href: "#inprogress", "data-toggle" => "tab"} In Progress
+        /   %li
+        /     %a{href: "#new", "data-toggle" => "tab"} New Proposals
+        / %br/
 
-                %tr
-                  %td
-                    %a{:href => "/research_question"}
-                      %h4 Which is a more effective dosing schedule of Drug A?
-                  / %td 50
-                  / %td
-                  /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+        / .tab-content
+        /   .tab-pane#new
+
+        / .tab-pane#inprogress.active
+        .col-md-6
+          %h4 Research Currently Investigating
+          %p.small These are research topics the team is currently researching. Please indicate if you are interested in participating.
+          %table.table.table-responsive
+            %tbody
+              %tr
+                %td.col-md-1
+                  %h2 1
+                %td.col-md-11
+                  %a{:href => "/research_question"}
+                    %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+                / %td 100
+                / %td
+
+              %tr
+                %td.col-md-1
+                  %h2 2
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Does sleeping on your side change the effects?
+                / %td 50
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+              %tr
+                %td.col-md-1
+                  %h2 3
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 How does pregancy affect condition activity?
+                / %td 40
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+              %tr
+                %td.col-md-1
+                  %h2 4
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+                / %td 100
+                / %td
+
+              %tr
+                %td.col-md-1
+                  %h2 5
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Which is a more effective dosing schedule of Drug A?
+                / %td 50
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+        .col-md-6
+          %h4 Research Newly Suggested
+          %p.small These are research topics proposed by patients that are currently open for comment and refinement.
+          %table.table.table-responsive
+            %tbody
+              %tr
+                %td.col-md-1
+                  %h2 1
+                %td.col-md-11
+                  %a{:href => "/research_question"}
+                    %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+                / %td 100
+                / %td
+
+              %tr
+                %td.col-md-1
+                  %h2 2
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Does sleeping on your side change the effects?
+                / %td 50
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+              %tr
+                %td.col-md-1
+                  %h2 3
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 How does pregancy affect condition activity?
+                / %td 40
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+              %tr
+                %td.col-md-1
+                  %h2 4
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+                / %td 100
+                / %td
+
+              %tr
+                %td.col-md-1
+                  %h2 5
+                %td
+                  %a{:href => "/research_question"}
+                    %h4 Which is a more effective dosing schedule of Drug A?
+                / %td 50
+                / %td
+                /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+              / %tr
+              /   %td.text-right{"colspan" => 3}
+              /     %a.btn.btn-success.btn-sm{:href => "/new_question", :style=>"margin-top: 3px;"} Submit Question
+
 
 
       .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
@@ -114,50 +187,23 @@
 
 
 
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Research Team Blog
-
-      .panel-body
-        .media
-          %a.pull-left
-            = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-          .media-body
-            %a{:href=>"/blog"}
-              %h4.media-heading Usu movet oporteat apeirian
-            Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro. Usu movet oporteat apeirian no, te pri quis quando. Mandamus pertinacia mel in, in vim laoreet lucilius. Mundi repudiandae consectetuer et eos, nam ex sumo recusabo.
-
-        .media
-          %a.pull-left
-            = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-          .media-body
-            %a{:href=>"/blog"}
-              %h4.media-heading Mea te impetus adipisci
-            Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro. Usu movet oporteat apeirian no, te pri quis quando. Mandamus pertinacia mel in, in vim laoreet lucilius. Mundi repudiandae consectetuer et eos, nam ex sumo recusabo.
-
-
-      .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
-        .text-center
-          %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-            %li
-              %span &laquo;
-            %li.disabled
-              %span ...
-            %li
-              %span &raquo;
-
-
-
-
-
 
 
   .col-md-3
+
     .panel.panel-default
       .panel-heading
         %h3.panel-title Notifications
 
+
       %ul.list-group
+
+        %li.list-group-item
+          .alert.alert-warning
+            %strong New Blog Post
+
+
+
         %li.list-group-item
           %small
             %strong 4/28/14

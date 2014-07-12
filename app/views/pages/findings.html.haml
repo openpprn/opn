@@ -1,0 +1,55 @@
+.row
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Research Topics
+
+      %table.table.table-responsive
+        %tbody
+          %tr
+            %td
+              %a{:href => "/research_question"}
+                %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+            / %td 100
+            / %td
+
+          %tr
+            %td
+              %a{:href => "/research_question"}
+                %h4 Does sleeping on your side change the effects?
+            / %td 50
+            / %td
+            /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+          %tr
+            %td
+              %a{:href => "/research_question"}
+                %h4 How does pregancy affect condition activity?
+            / %td 40
+            / %td
+            /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+          %tr
+            %td
+              %a{:href => "/research_question"}
+                %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+            / %td 100
+            / %td
+
+          %tr
+            %td
+              %a{:href => "/research_question"}
+                %h4 Which is a more effective dosing schedule of Drug A?
+            / %td 50
+            / %td
+            /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+
+      .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
+        .text-center
+          %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+            %li
+              %span &laquo;
+            %li.disabled
+              %span ...
+            %li
+              %span &raquo;
