@@ -43,30 +43,67 @@
             = @pprn_title
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li
-              %a{href: "/research"} Research Dashboard
-            %li
-              %a{href: "/data"} My Health Data
+
+            -# Private Pages
+            - if current_user
+              %li
+                %a{href: "/research"}
+                  %strong Research Dashboard
+              %li
+                %a{href: "/data"}
+                  %strong My Health Data
+
+              -# SAPCON only
+              - if sapcon_pprn?
+                %li
+                  %a{href: "/discussion"}
+                    %strong Discussion
+
+
+            -# Public Pages
             %li
               %a{href: "/social"} People
-            - if sapcon_pprn?
-              %li
-                %a{href: "/discussion"} Discussion
             %li
               %a{href: "/blog"} Blog
             %li
               %a{href: "/findings"} Findings
 
 
-          %ul.nav.navbar-nav.pull-right
-            %li
-              %a{href: "#"}
-                800
-                %i.fa.fa-star
 
-            %li
-              %a{href: "/account"}
-                %i.fa.fa-gear
+
+
+          %ul.nav.navbar-nav.pull-right
+
+
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  My Settings
+                  %b.caret
+                %ul.dropdown-menu
+
+
+                  %li
+                    %a{href: "/account"}
+                      %i.fa.fa-gear &nbsp; Account Settings
+                  %li
+                    %a{href: "/admin", :title => "Admin Panel"}
+                      %i.fa.fa-wrench &nbsp; Admin Panel
+                  %li
+                    = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, :method => :delete
+
+                  -# Developer / Admin Tools
+                  %li.divider
+                  %li
+                    %a{href: "/pprn", :title => "Toggle through PPRNs"}
+                      %i.fa.fa-random &nbsp; Change PPRN
+                  %li
+                    %a{href: "#", :title => "Toggle on/off on-page Requirements"}
+                      %i.fa.fa-flag#requirements-toggler &nbsp; Show Requirements
+
+            - else
+              %li
+                = link_to "<i class='fa fa-sign-in'></i> Sign in".html_safe, new_user_session_path
 
 
     / Page Header
@@ -82,27 +119,27 @@
 
 
 
-  .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
-    .container
-      .navbar-header
-        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{href: "/"}
-          Developer Panel
-      .collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          %li
-            %a{href: "#", :title => "Toggle on/off on-page Requirements"}
-              %i.fa.fa-flag#requirements-toggler
-          %li
-            %a{href: "/admin", :title => "Admin Panel"}
-              %i.fa.fa-wrench
-          %li
-            %a{href: "/pprn", :title => "Toggle through PPRNs"}
-              %i.fa.fa-random
+  / .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
+  /   .container
+  /     .navbar-header
+  /       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+  /         %span.sr-only Toggle navigation
+  /         %span.icon-bar
+  /         %span.icon-bar
+  /         %span.icon-bar
+  /       %a.navbar-brand{href: "/"}
+  /         Developer Panel
+  /     .collapse.navbar-collapse
+  /       %ul.nav.navbar-nav
+  /         %li
+  /           %a{href: "#", :title => "Toggle on/off on-page Requirements"}
+  /             %i.fa.fa-flag#requirements-toggler
+  /         %li
+  /           %a{href: "/admin", :title => "Admin Panel"}
+  /             %i.fa.fa-wrench
+  /         %li
+  /           %a{href: "/pprn", :title => "Toggle through PPRNs"}
+  /             %i.fa.fa-random
 
 
 

@@ -6,13 +6,68 @@
       %li.active
         %a{href: "#user", "data-toggle" => "tab"} User Account
       %li
-        %a{href: "#basic", "data-toggle" => "tab"} Health Info
+        %a{href: "#health_info", "data-toggle" => "tab"} Health Info
+      %li
+        %a{href: "#social_profile", "data-toggle" => "tab"} Social Profile
     %br/
 
 
-
     .nav.tab-content
-      .tab-pane#basic
+
+
+
+      .tab-pane#social_profile
+        .col-md-9
+          %form.form-horizontal{role: "form"}
+          .alert.alert-info
+            .radio
+              %label
+                %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+                %strong
+                  Be Social.
+                Share the below information with other patients on the site.
+
+            .radio
+              %label
+                %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+                %strong
+                  Don't be Social.
+                Do not show to anyone that I'm on this site.
+
+
+          .panel.panel-default
+            .panel-body
+              %form.form-horizontal{role: "form"}
+                .form-group
+                  %label.col-sm-2.control-label
+                    %img.img-circle.center-block{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahrens@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
+                  .col-sm-10
+                    %p
+                      %strong
+                        Upload New
+                    %input{:type => "file"}
+
+              %form.form-horizontal{role: "form"}
+                .form-group
+                  %label.col-sm-2.control-label Name
+                  .col-sm-6
+                    %input.form-control{:type=>"text", :value => "Sean Ahrens"}
+                .form-group
+                  %label.col-sm-2.control-label Location
+                  .col-sm-6
+                    %input.form-control{:type=>"text", :value => "San Francisco, CA, USA"}
+                .form-group
+                  %label.col-sm-2.control-label Age
+                  .col-sm-6
+                    %input.form-control{:type=>"text", :value => "28"}
+                .form-group
+                  %label.col-sm-2.control-label Gender
+                  .col-sm-6
+                    %input.form-control{:type=>"text", :value => "Male"}
+
+              %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Save
+
+      .tab-pane#health_info
         .col-md-9
           .panel.panel-default
             .panel-heading

@@ -1,32 +1,34 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :only => [:account, :admin, :connections, :data, :discussion, :new_question, :research, :research_question]
   before_action :determine_pprn
   layout 'pages'
 
 
-  # Prototype Pages
-  def account; end
-  def admin; end
-  def blog; end
-  def connections; end
-  def contributions; end
-  def data; end
-  def discussion; end
-  def donate; end
-  def findings; end
-  def health_profile; end
-  def home; end
   def index; @hide_page_header = true; end
-  def insights; end
   def join; @hide_page_header = true; end
   def login; @hide_page_header = true; end
-  def new_question; end
-  #def pp-addons; end
-  def research; end
   def research_question; @hide_page_header = true; end
-  def social; end
-  def social_profile; end
-  def survey; end
+
+  # Prototype Pages
+  # def account; end
+  # def admin; end
+  # # def blog; end
+  # def connections; end
+  # def data; end
+  # def discussion; end
+
+  # def findings; end
+
+  # def index; @hide_page_header = true; end
+  # # def insights; end
+  # def join; @hide_page_header = true; end
+  # def login; @hide_page_header = true; end
+  # # def new_question; end
+  # #def pp-addons; end
+  # # def research; end
+  # def research_question; @hide_page_header = true; end
+  # def social; end
+  # def survey; end
 
 
   # Read the PPRN Cookie

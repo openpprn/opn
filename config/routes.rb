@@ -11,23 +11,16 @@ Rails.application.routes.draw do
   get 'admin' => 'pages#admin'
   get 'blog' => 'pages#blog'
   get 'connections' => 'pages#connections'
-  get 'contributions' => 'pages#contributions'
   get 'data' => 'pages#data'
   get 'discussion' => 'pages#discussion' # sapcon
-  get 'donate' => 'pages#donate'
   get 'findings' => 'pages#findings'
-
-  get 'health_profile' => 'pages#health_profile'
-  #get 'index' => 'pages#index'
   get 'insights' => 'pages#insights'
   get 'join' => 'pages#join'
   get 'login' => 'pages#login'
   get 'new_question' => 'pages#new_question'
-  get 'pp-addons' => 'pages#pp-addons'
   get 'research' => 'pages#research'
   get 'research_question' => 'pages#research_question'
   get 'social' => 'pages#social'
-  get 'social_profile' => 'pages#social_profile'
   get 'survey' => 'pages#survey'
   get 'pprn' => 'pages#pprn'
 

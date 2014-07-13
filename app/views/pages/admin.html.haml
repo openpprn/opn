@@ -1,7 +1,3 @@
-/ ---
-/ title: Admin
-/ ---
-
 .row
   .col-md-12
 
@@ -9,13 +5,29 @@
       %li.active
         %a{href: "#notifs", "data-toggle" => "tab"} Notifications
       %li
+        %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
+      %li
         %a{href: "#research", "data-toggle" => "tab"} Research Topics
+
 
     %br/
 
     .nav.tab-content
 
       .tab-pane#notifs.active
-        notifs
+        .row
+          .col-md-3
+            = render :partial => "notifications", :locals => { :editable => true }
+
+      .tab-pane#blog
+        .row
+          .col-md-9
+            = render :partial => "blog_posts", :locals => { :editable => true }
+
+
+
       .tab-pane#research
-        research
+        .row
+          .col-md-9
+            = render :partial => "research_topics", :locals => { :editable => true }
+

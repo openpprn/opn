@@ -1,0 +1,137 @@
+
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Research Proposals
+
+  .panel-body
+
+    .col-md-6
+      %h4 Research Currently Investigating
+      %p.small These are research topics the team is currently researching. Please indicate if you are interested in participating.
+      %table.table.table-responsive
+        %tbody
+          %tr
+            %td.col-md-1
+              %h2 1
+            %td.col-md-11
+              %a{:href => "/research_question"}
+                %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+          %tr
+            %td.col-md-1
+              %h2 2
+            %td
+              %a{:href => "/research_question"}
+                %h4 Does sleeping on your side change the effects?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+          %tr
+            %td.col-md-1
+              %h2 3
+            %td
+              %a{:href => "/research_question"}
+                %h4 How does pregancy affect condition activity?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+          %tr
+            %td.col-md-1
+              %h2 4
+            %td
+              %a{:href => "/research_question"}
+                %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+          %tr
+            %td.col-md-1
+              %h2 5
+            %td
+              %a{:href => "/research_question"}
+                %h4 Which is a more effective dosing schedule of Drug A?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+
+    .col-md-6
+      %h4 Research Newly Suggested
+      %p.small These are research topics proposed by patients that are currently open for comment and refinement.
+      %table.table.table-responsive
+        %tbody
+          %tr
+            %td.col-md-1
+              %h2 1
+            %td.col-md-11
+              %a{:href => "/research_question"}
+                %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+          %tr
+            %td.col-md-1
+              %h2 2
+            %td
+              %a{:href => "/research_question"}
+                %h4 Does sleeping on your side change the effects?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+          %tr
+            %td.col-md-1
+              %h2 3
+            %td
+              %a{:href => "/research_question"}
+                %h4 How does pregancy affect condition activity?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+          %tr
+            %td.col-md-1
+              %h2 4
+            %td
+              %a{:href => "/research_question"}
+                %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+          %tr
+            %td.col-md-1
+              %h2 5
+            %td
+              %a{:href => "/research_question"}
+                %h4 Which is a more effective dosing schedule of Drug A?
+              - if editable
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
+
+
+
+
+
+  .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
+    .text-center
+      %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+        %li
+          %span &laquo;
+        %li.disabled
+          %span ...
+        %li
+          %span &raquo;
