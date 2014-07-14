@@ -6,7 +6,7 @@
       %h5 Add New Blog Post
       .media
         %a.pull-left
-          = image_tag "#", :class => " media-object img-circle", :width => "80px"
+          = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
         .media-body
           %form{role: "form"}
             %select.form-control
@@ -14,7 +14,7 @@
             %input.form-control{:type=>"date", :value => Date.today}
             %h4.media-heading
               %input.form-control{:type=>"text", :value => "Title of Blog Post"}
-            %textarea.form-control{:placeholder => "Your Blog Post Here"}
+            %textarea.form-control{:placeholder => "Your Blog Post Here", :style => "height:300px;"}
             %button.btn.btn-success.btn-sm.pull-right Post
             .clearfix
 
