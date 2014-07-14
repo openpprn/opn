@@ -6,8 +6,9 @@
   .panel-body
 
     .col-md-6
-      %h4 Research Currently Investigating
-      %p.small These are research topics the team is currently researching. Please indicate if you are interested in participating.
+      .research-list-heading
+        %h4 Research Currently Investigating
+        %p.small These are research topics the team is currently researching. Please indicate if you are interested in participating.
       %table.table.table-responsive
         %tbody
           %tr
@@ -15,7 +16,7 @@
               %h2 1
             %td.col-md-11
               %a{:href => "/research_question"}
-                %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+                %h4 Does acupuncture work for Ulcerative Colitis?
               - if editable
                 %button.btn.btn-danger.btn-xs.pull-right Delete
                 %button.btn.btn-warning.btn-xs.pull-right Edit
@@ -57,7 +58,7 @@
               %h2 5
             %td
               %a{:href => "/research_question"}
-                %h4 Which is a more effective dosing schedule of Drug A?
+                %h4 Which is a more effective dosing schedule of Humira?
               - if editable
                 %button.btn.btn-danger.btn-xs.pull-right Delete
                 %button.btn.btn-warning.btn-xs.pull-right Edit
@@ -65,8 +66,9 @@
 
 
     .col-md-6
-      %h4 Research Newly Suggested
-      %p.small These are research topics proposed by patients that are currently open for comment and refinement.
+      .research-list-heading
+        %h4 Research Newly Suggested
+        %p.small These are research topics proposed by patients that are currently open for comment and refinement.
       %table.table.table-responsive
         %tbody
           %tr
@@ -74,7 +76,7 @@
               %h2 1
             %td.col-md-11
               %a{:href => "/research_question"}
-                %h4 Does a Oxygen work for this subtype of Ulcerative Colitis?
+                %h4 Does acupuncture work for Ulcerative Colitis?
               - if editable
                 %button.btn.btn-danger.btn-xs.pull-right Delete
                 %button.btn.btn-warning.btn-xs.pull-right Edit
@@ -116,13 +118,11 @@
               %h2 5
             %td
               %a{:href => "/research_question"}
-                %h4 Which is a more effective dosing schedule of Drug A?
+                %h4 Which is a more effective dosing schedule of Humira?
               - if editable
                 %button.btn.btn-danger.btn-xs.pull-right Delete
                 %button.btn.btn-warning.btn-xs.pull-right Edit
                 .clearfix
-
-
 
 
 

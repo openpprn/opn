@@ -1,6 +1,3 @@
-/ ---
-/ title: Research Topics
-/ ---
 
 .row
   .col-md-9
@@ -15,28 +12,33 @@
           .col-md-4.text-center
             = image_tag "pie.png", :style => "height: 150px;"
             %h4 Surveys Completed
+            .req num_surveys_completed, num_surveys_available_since_date
           .col-md-4.text-center
             = image_tag "donut.png", :style => "height: 150px;"
             %h4 Karma
           .col-md-4.text-center
             = image_tag "gauge.png", :style => "height: 150px;"
             %h4 Data Sources
+            .req num_data_sources_connected
 
 
 
     .panel.panel-success
       .panel-heading
         %h3.panel-title New Surveys
+        .req surveys_ready_for_completion (title of survey, url to survey)
+
       %table.table.table-hover.table-responsive
         %tbody
           %tr.success
-            %td.col-md-1
+            %td
               %h4
-                %i.fa.fa-check-square
-            %td.col-md-10
+                %i.fa.fa-square
+            %td
               %h4 Have you ever done SCD?
-            %td.col-md-1.text-right
-              %h4 +100
+            %td.text-right
+              %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+
           %tr.success
             %td
               %h4
@@ -44,7 +46,7 @@
             %td
               %h4 How does your Gender affect IBD?
             %td.text-right
-              %a.btn.btn-success.btn-sm{:href => "/survey"} Complete Survey
+              %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
 
 
     = render :partial => "research_topics", :locals => { :editable => false }

@@ -73,58 +73,59 @@
               Crohnology
 
 
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title How You Look to Others
+  - if current_user
+    .col-md-3
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title How You Look to Others
 
-      %table.table.table-striped.table-responsive
-        %tbody
-          %tr
-            %td
-              %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahres@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
-              .pull-left
-                %h3
-                  Andy
-                Palo Alto, CA
+        %table.table.table-striped.table-responsive
+          %tbody
+            %tr
+              %td
+                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahres@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
+                .pull-left
+                  %h3
+                    Andy
+                  Palo Alto, CA
 
-      .panel-footer
-        %a.btn.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
-
-
+        .panel-footer
+          %a.btn.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
 
 
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Around You
 
-      %table.table.table-striped.table-responsive
-        %tbody
-          %tr
-            %td
-              %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
-              .pull-left
-                %h4
-                  Jessica
-                San Francisco, CA
-          %tr
-            %td
-              %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
-              .pull-left
-                %h4
-                  Brian
-                San Francisco, CA
-          %tr
-            %td
-              %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
-              .pull-left
-                %h4
-                  Jessica
-                San Francisco, CA
-          %tr
-            %td
-              %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
-              .pull-left
-                %h4
-                  Brian
-                San Francisco, CA
+
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Around You
+
+        %table.table.table-striped.table-responsive
+          %tbody
+            %tr
+              %td
+                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
+                .pull-left
+                  %h4
+                    Jessica
+                  San Francisco, CA
+            %tr
+              %td
+                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
+                .pull-left
+                  %h4
+                    Brian
+                  San Francisco, CA
+            %tr
+              %td
+                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
+                .pull-left
+                  %h4
+                    Jessica
+                  San Francisco, CA
+            %tr
+              %td
+                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
+                .pull-left
+                  %h4
+                    Brian
+                  San Francisco, CA

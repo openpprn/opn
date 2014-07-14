@@ -7,22 +7,27 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   # Front-end Prototype Pages
+  get 'about' => 'pages#about'
   get 'account' => 'pages#account'
   get 'admin' => 'pages#admin'
   get 'blog' => 'pages#blog'
   get 'connections' => 'pages#connections'
   get 'data' => 'pages#data'
   get 'discussion' => 'pages#discussion' # sapcon
+  get 'external_link_warning' => 'pages#external_link_warning'
   get 'findings' => 'pages#findings'
   get 'insights' => 'pages#insights'
   get 'join' => 'pages#join'
   get 'login' => 'pages#login'
   get 'new_question' => 'pages#new_question'
+  get 'pprn' => 'pages#pprn'
+  get 'privacy' => 'pages#privacy'
+  get 'req' => 'pages#req'
   get 'research' => 'pages#research'
   get 'research_question' => 'pages#research_question'
   get 'social' => 'pages#social'
   get 'survey' => 'pages#survey'
-  get 'pprn' => 'pages#pprn'
+  get 'terms' => 'pages#terms'
 
 
   # Example of regular route:

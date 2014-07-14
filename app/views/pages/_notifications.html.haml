@@ -83,20 +83,43 @@
         %button.btn.btn-danger.btn-xs.pull-right Delete
         .clearfix
 
+    %li.list-group-item
+      %small
+        %strong 4/23/14
+      %br/
+      New Insights have been added around patient gender.
+
+      - if editable
+        %button.btn.btn-danger.btn-xs.pull-right Delete
+        .clearfix
+
+    %li.list-group-item
+      %small
+        %strong 4/1/14
+      %br/
+      You can now import your EHR data.
+
+      - if editable
+        %button.btn.btn-danger.btn-xs.pull-right Delete
+        .clearfix
+
+
+    %li.list-group-item
+      %small
+        %strong 4/28/14
+      %br/
+      Survey Results for the SCD Survey have been posted.
+
+      - if editable
+        %button.btn.btn-danger.btn-xs.pull-right Delete
+        .clearfix
 
 
 
 
-.panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
-  .text-center
-    %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-      %li
-        %span &laquo;
-      %li.disabled
-        %span ...
-      %li
-        %span &raquo;
-
+  .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
+    .text-center.small
+      = link_to "Show More...", "#"
 
 
 

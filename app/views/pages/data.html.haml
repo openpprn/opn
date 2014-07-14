@@ -22,20 +22,20 @@
         %table.table.table-striped.table-responsive
           %tbody
             %tr
-              %td.col-md-1{:style => "background-color: #f5f5f5 !important;"}
+              %td.no-wrap{:style => "background-color: #f5f5f5 !important;"}
                 Today
-              %td.col-md-11{:style => "background-color: #f5f5f5 !important;"}
+              %td{:style => "background-color: #f5f5f5 !important;"}
                 %div.col-md-4.col-xs-12.text-center
                   How are you feeling?
-                  %br/
-                  %i.fa.fa-circle
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  %i.fa.fa-circle
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  %i.fa.fa-circle
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  %i.fa.fa-circle
-                  %br/
+                  / %br/
+                  / %i.fa.fa-circle
+                  / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  / %i.fa.fa-circle
+                  / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  / %i.fa.fa-circle
+                  / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  / %i.fa.fa-circle
+                  / %br/
                   %input{:type => "range"}
                   %br/
                 .col-md-6.col-xs-12
@@ -103,33 +103,35 @@
 
       %br/
 
-      .panel.panel-default
-        .panel-heading
-          %h4.panel-title
-            Your Health Summary
 
-        %table.table.table-responsive
-          %tbody
-            %tr
-              %td Condition
-              %td Crohn's
-            %tr
-              %td Age of Diagnosis
-              %td 13
-            %tr
-              %td Current Age
-              %td 28
-            %tr
-              %td Years With
-              %td 15
-            %tr
-              %td Current Health
-              %td Remission
-            %tr
-              %td Current Treatments
-              %td Remicade
-            %tr
-              %td Past Treatments
-              %td Prednisone, 6MP, SCD
-        .panel-footer
-          %a.btn.btn-default.center-block{:href => "/account/"} Update Info
+      - if sapcon_pprn?
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              Your Health Summary
+
+          %table.table.table-responsive
+            %tbody
+              %tr
+                %td Condition
+                %td Crohn's
+              %tr
+                %td Age of Diagnosis
+                %td 13
+              %tr
+                %td Current Age
+                %td 28
+              %tr
+                %td Years With
+                %td 15
+              %tr
+                %td Current Health
+                %td Remission
+              %tr
+                %td Current Treatments
+                %td Remicade
+              %tr
+                %td Past Treatments
+                %td Prednisone, 6MP, SCD
+          .panel-footer
+            %a.btn.btn-default.center-block{:href => "/account/"} Update Info

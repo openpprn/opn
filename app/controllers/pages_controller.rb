@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   # def connections; end
   # def data; end
   # def discussion; end
-
+  def external_link_warning; @hide_page_header = true; end
   # def findings; end
 
   # def index; @hide_page_header = true; end
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   # #def pp-addons; end
   # # def research; end
   # def research_question; @hide_page_header = true; end
-  # def social; end
+  def social; @page_title = "Patients"; end
   # def survey; end
 
 
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       @pprn_condition = "Crohn's & Colitis"
     else @pprn == "sapcon"
       # SAPCON
-      @pprn_title = "Sleep Apnea PPRN"
+      @pprn_title = "SAPCON"
       @pprn_condition = "Sleep Apnea"
     end
   end
@@ -58,5 +58,16 @@ class PagesController < ApplicationController
 
     redirect_to root_path
   end
+
+  #Toggle the PPRN from CCFA <-> SAPCON
+  def req
+    if cookies[:req] == "false"
+      cookies[:req] = "true"
+    else
+      cookies[:req] = "false"
+    end
+    redirect_to root_path
+  end
+
 
 end

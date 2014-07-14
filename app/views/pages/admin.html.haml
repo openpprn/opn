@@ -8,6 +8,8 @@
         %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
       %li
         %a{href: "#research", "data-toggle" => "tab"} Research Topics
+      %li
+        %a{href: "#users", "data-toggle" => "tab"} Team / Users
 
 
     %br/
@@ -24,10 +26,13 @@
           .col-md-9
             = render :partial => "blog_posts", :locals => { :editable => true }
 
-
-
       .tab-pane#research
         .row
           .col-md-9
             = render :partial => "research_topics", :locals => { :editable => true }
+
+      .tab-pane#users
+        .row
+          .col-md-3
+            = render :partial => "team", :locals => { :editable => false }
 

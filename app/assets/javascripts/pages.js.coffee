@@ -4,13 +4,18 @@
 
 jQuery ->
   # Add flags beside all required content
-  $(".req").before("<i class='fa fa-flag requirement-flag'></i>")
-  # Hide them initially
-  $(".requirement-list").toggle()
-  $(".requirement-flag").toggle()
-
-  $("#requirements-toggler").bind 'click', ->
-    $(".requirement-list").toggle()
-    $(".requirement-flag").toggle()
+  $(".req").prepend("<i class='fa fa-flag requirement-flag'></i>&nbsp;")
 
 
+  # $("#requirements-toggler").bind 'click', ->
+  #   $(".req").toggle()
+
+
+  # $(".req").toggle()
+
+  # alert user_name
+
+  #$(".requirement-list").toggle()
+  #$(".requirement-flag").toggle()
+  #$(".requirement-list").toggle()
+  #$(".requirement-flag").toggle()

@@ -8,5 +8,9 @@ module PagesHelper
     @pprn == "sapcon"
   end
 
+  def req?
+    cookies[:req]
+  end
+
 end
 

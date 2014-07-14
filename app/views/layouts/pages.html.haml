@@ -2,6 +2,7 @@
 / saved from url=(0050)http://getbootstrap.com/examples/starter-template/
 %html{lang: "en"}
   %head
+
     / Shortcut Icon
     %link{href: "", rel: "shortcut icon"}/
 
@@ -62,7 +63,7 @@
 
             -# Public Pages
             %li
-              %a{href: "/social"} People
+              %a{href: "/social"} Patients
             %li
               %a{href: "/blog"} Blog
             %li
@@ -73,6 +74,8 @@
 
 
           %ul.nav.navbar-nav.pull-right
+            %li
+              %a.req{href: "/req", style: "display:none !important; color: red;"}
 
 
             - if current_user
@@ -98,7 +101,7 @@
                     %a{href: "/pprn", :title => "Toggle through PPRNs"}
                       %i.fa.fa-random &nbsp; Change PPRN
                   %li
-                    %a{href: "#", :title => "Toggle on/off on-page Requirements"}
+                    %a{href: "/req", :title => "Toggle on/off on-page Requirements"}
                       %i.fa.fa-flag#requirements-toggler &nbsp; Show Requirements
 
             - else
@@ -114,33 +117,27 @@
         - else
           .page-header
             %h1
-              = action_name.capitalize
+              = @page_title || action_name.capitalize
     = yield
 
+  %hr/
 
-
-  / .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
-  /   .container
-  /     .navbar-header
-  /       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-  /         %span.sr-only Toggle navigation
-  /         %span.icon-bar
-  /         %span.icon-bar
-  /         %span.icon-bar
-  /       %a.navbar-brand{href: "/"}
-  /         Developer Panel
-  /     .collapse.navbar-collapse
-  /       %ul.nav.navbar-nav
-  /         %li
-  /           %a{href: "#", :title => "Toggle on/off on-page Requirements"}
-  /             %i.fa.fa-flag#requirements-toggler
-  /         %li
-  /           %a{href: "/admin", :title => "Admin Panel"}
-  /             %i.fa.fa-wrench
-  /         %li
-  /           %a{href: "/pprn", :title => "Toggle through PPRNs"}
-  /             %i.fa.fa-random
+  .row
+    .col-md-12
+      %center
+        %a{href: "/about"} About
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %a{href: "/terms"} Terms of Service
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %a{href: "/privacy"} Privacy Policy
 
 
 
   %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+
+  :javascript
+    $(document).ready( function() {
+      if (#{req?})
+        $(".req").show();
+    } );
+

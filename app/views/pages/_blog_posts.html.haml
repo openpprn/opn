@@ -11,7 +11,7 @@
           %form{role: "form"}
             %select.form-control
               %option Mike Kappelman
-
+            %input.form-control{:type=>"date", :value => Date.today}
             %h4.media-heading
               %input.form-control{:type=>"text", :value => "Title of Blog Post"}
             %textarea.form-control{:placeholder => "Your Blog Post Here"}
@@ -27,6 +27,8 @@
         .media-body
           %a{:href=>"/blog"}
             %h4.media-heading Usu movet oporteat apeirian
+          %small
+            %strong 4/28/14
           %p
             Tritani oporteat singulis eu vim. Ne pri odio ponderum vituperatoribus, ea reque regione urbanitas vim. Legere minimum vim an. Nemore graecis consectetuer ad qui, ut mei feugiat appareat. Fabulas molestie ullamcorper ut duo, id vis ipsum ridens utamur, et per laudem commune. Omittam reprimique consequuntur has et, movet civibus forensibus sed ex.
           %p

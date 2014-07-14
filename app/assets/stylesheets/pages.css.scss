@@ -13,13 +13,19 @@ body {
   }
 }
 
-.requirement-flag {
-  position: absolute;
+.req {
   color: red;
-  top: 0px;
-  right: 0px;
-  z-index: 10;
+  display: none;
+  font-size: 10px;
 }
+
+// .requirement-flag {
+//   position: absolute;
+//   color: red;
+//   top: 0px;
+//   right: 0px;
+//   z-index: 10;
+// }
 
 .graphs .panel-body {
   height: 200px;
@@ -31,6 +37,9 @@ body {
   }
 }
 
+.research-list-heading {
+  height: 90px;
+}
 
 
 // #requirements-toggler {
