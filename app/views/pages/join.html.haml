@@ -14,13 +14,21 @@
 %br/
 %br/
 
+
+
+
+
+
 .row
   .col-md-6.col-md-offset-3
     .panel.panel-default
       .panel-heading
         .panel-title Join
       .panel-body
-        %form.form-horizontal{role: "form"}
+        = form_tag new_user_session_path, :class => "form-horizontal", role: "form" do
+          .hidden
+            = text_field_tag 'user[email]'
+            = password_field_tag 'user[password]'
           .form-group
             %label.col-sm-5.control-label{for: "inputEmail3"} Email
             .col-sm-7
@@ -42,7 +50,7 @@
                 %option Indeterminant Colitis
           .form-group
             .col-sm-offset-5.col-sm-7
-              %a.btn.btn-primary{href: "/consent"} Join
+              = submit_tag 'Join', :class => "btn btn-primary"
     %p.text-center
       Already a Member
       %a{:href => "/login"} Sign in.

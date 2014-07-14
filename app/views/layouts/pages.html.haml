@@ -46,11 +46,12 @@
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
 
+            %li
+              %a{href: "/research"}
+                Research Dashboard
+
             -# Private Pages
             - if current_user
-              %li
-                %a{href: "/research"}
-                  %strong Research Dashboard
               %li
                 %a{href: "/data"}
                   %strong My Health Data

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, :only => [:account, :admin, :connections, :data, :discussion, :new_question, :research, :research_question]
+  before_action :authenticate_user!, :only => [:account, :admin, :connections, :data, :discussion, :new_question]
   before_action :determine_pprn
   layout 'pages'
 

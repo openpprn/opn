@@ -2,7 +2,6 @@
 
   .col-md-9
 
-    .req How to query all health data
 
     - if (defined? mode) && (mode == "fux")
       .alert.alert-info It looks like it's your first time
@@ -18,7 +17,7 @@
         %h4.panel-title Stream
 
       %table.table.table-striped.table-responsive
-        %thead
+        %thead.small
           %td Date
           %td Health Info
           %td Source
@@ -83,7 +82,11 @@
               %i.fa.fa-check
             %td PatientsKnowBest
       .panel-footer
-        %a.btn.btn-sm.btn-default.btn-block{:href => "/contributions#data_connections"} Manage Data Connections
+        %a.btn.btn-sm.btn-default.btn-block{:href => "#"} Manage Data Connections
+
+    .req API doc to perform "user provisioning" to link to OODT user account
+    .req API doc regarding the flow of authentication tokens from Validic to OODT
+    .req API doc for quering this health data through OODT
 
     %br/
 

@@ -8,7 +8,7 @@
       / %li
       /   %a{href: "#health_info", "data-toggle" => "tab"} Health Info
       %li
-        %a{href: "#social_profile", "data-toggle" => "tab"} Social Profile
+        %a{href: "#social_profile", "data-toggle" => "tab"} Social Map
     %br/
 
 
@@ -20,6 +20,7 @@
         .col-md-9
           .panel.panel-default
             .panel-heading
+              %h4 Do you want other patients in the #{@pprn_title} to see you?
               %form.form-horizontal{role: "form"}
               .radio
                 %label

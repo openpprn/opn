@@ -34,60 +34,57 @@
 .row
   .col-md-9
 
+    - if current_user
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Dashboard
 
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Dashboard
+        .panel-body
+          .row
+            .col-md-4.text-center
+              = image_tag "pie.png", :style => "height: 150px;"
+              %h4 Surveys Completed
+              .req num_surveys_completed, num_surveys_available_since_date
+            .col-md-4.text-center
+              = image_tag "donut.png", :style => "height: 150px;"
+              %h4 Karma
+            .col-md-4.text-center
+              = image_tag "gauge.png", :style => "height: 150px;"
+              %h4 Data Sources
+              .req num_data_sources_connected
 
-      .panel-body
-        .row
-          .col-md-4.text-center
-            = image_tag "pie.png", :style => "height: 150px;"
-            %h4 Surveys Completed
-            .req num_surveys_completed, num_surveys_available_since_date
-          .col-md-4.text-center
-            = image_tag "donut.png", :style => "height: 150px;"
-            %h4 Karma
-          .col-md-4.text-center
-            = image_tag "gauge.png", :style => "height: 150px;"
-            %h4 Data Sources
-            .req num_data_sources_connected
+      .panel.panel-success
+        .panel-heading
+          %h3.panel-title New Surveys
+          .req surveys_ready_for_completion (title of survey, url to survey)
 
+        %table.table.table-hover.table-responsive
+          %tbody
+            %tr.success
+              %td
+                %h4
+                  %i.fa.fa-square
+              %td
+                %h4 Have you ever done SCD?
+              %td.text-right
+                %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
 
+            %tr.success
+              %td
+                %h4
+                  %i.fa.fa-square
+              %td
+                %h4 How does your Gender affect IBD?
+              %td.text-right
+                %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
 
-    .panel.panel-success
-      .panel-heading
-        %h3.panel-title New Surveys
-        .req surveys_ready_for_completion (title of survey, url to survey)
-
-      %table.table.table-hover.table-responsive
-        %tbody
-          %tr.success
-            %td
-              %h4
-                %i.fa.fa-square
-            %td
-              %h4 Have you ever done SCD?
-            %td.text-right
-              %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
-
-          %tr.success
-            %td
-              %h4
-                %i.fa.fa-square
-            %td
-              %h4 How does your Gender affect IBD?
-            %td.text-right
-              %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
-
-
+    -# publicly viewable
     = render :partial => "research_topics", :locals => { :editable => false }
 
 
 
 
-
-  .col-md-3
-
-    = render :partial => "notifications", :locals => { :editable => false }
+  - if current_user
+    .col-md-3
+      = render :partial => "notifications", :locals => { :editable => false }
 
