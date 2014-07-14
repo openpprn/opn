@@ -9,8 +9,12 @@
       %li.list-group-item
         %h5 Add a New Notification
         %form{role: "form"}
-          %input.form-control{:type=>"date", :value => Date.today}
-          %textarea.form-control{:placeholder => "Your Notification Here (Character Limit: 300)"}
+          .form-group
+            %input.form-control{:type=>"date", :value => Date.today}
+          .form-group
+            %textarea.form-control{:placeholder => "Your Notification Here (Character Limit: 300)"}
+          .form-group
+            %input.form-control{:type=>"text", :placeholder => "URL to link to (optional)"}
           %button.btn.btn-success.btn-sm.pull-right Post
           .clearfix
 

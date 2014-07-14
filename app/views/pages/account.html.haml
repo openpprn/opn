@@ -5,8 +5,8 @@
     %ul.nav.nav-tabs
       %li.active
         %a{href: "#user", "data-toggle" => "tab"} User Account
-      %li
-        %a{href: "#health_info", "data-toggle" => "tab"} Health Info
+      / %li
+      /   %a{href: "#health_info", "data-toggle" => "tab"} Health Info
       %li
         %a{href: "#social_profile", "data-toggle" => "tab"} Social Profile
     %br/
@@ -18,106 +18,107 @@
 
       .tab-pane#social_profile
         .col-md-9
-          %form.form-horizontal{role: "form"}
-          .alert.alert-info
-            .radio
-              %label
-                %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
-                %strong
-                  Be Social.
-                Share the below information with other patients on the site.
-
-            .radio
-              %label
-                %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
-                %strong
-                  Don't be Social.
-                Do not show to anyone that I'm on this site.
-
-
           .panel.panel-default
+            .panel-heading
+              %form.form-horizontal{role: "form"}
+              .radio
+                %label
+                  %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+                  %strong
+                    Show me.
+                  %span.small Add a marker for me on the map that shows the following info.
+
+              .radio
+                %label
+                  %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+                  %strong
+                    Don't show me.
+                  %span.small Don't let other patients on this site see any map marker for me.
+
+
             .panel-body
               %form.form-horizontal{role: "form"}
                 .form-group
                   %label.col-sm-2.control-label
-                    %img.img-circle.center-block{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahrens@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
+                    .pull-left
+                      = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
                   .col-sm-10
                     %p
                       %strong
-                        Upload New
+                        Change Photo
                     %input{:type => "file"}
 
               %form.form-horizontal{role: "form"}
                 .form-group
                   %label.col-sm-2.control-label Name
                   .col-sm-6
-                    %input.form-control{:type=>"text", :value => "Sean Ahrens"}
+                    %input.form-control{:type=>"text", :value => random_name}
                 .form-group
                   %label.col-sm-2.control-label Location
                   .col-sm-6
-                    %input.form-control{:type=>"text", :value => "San Francisco, CA, USA"}
+                    %input.form-control{:type=>"text", :value => random_place}
                 .form-group
                   %label.col-sm-2.control-label Age
                   .col-sm-6
-                    %input.form-control{:type=>"text", :value => "28"}
+                    %input.form-control{:type=>"text", :value => random_age}
                 .form-group
                   %label.col-sm-2.control-label Gender
                   .col-sm-6
-                    %input.form-control{:type=>"text", :value => "Male"}
+                    %input.form-control{:type=>"text", :value => random_sex}
 
               %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Save
 
-      .tab-pane#health_info
-        .col-md-9
-          .panel.panel-default
-            .panel-heading
-              %h3.panel-title Health Info
-            .panel-body
-              .row
-                .col-md-6
-                  %form.form-horizontal{role: "form"}
-                    .form-group
-                      %label.col-sm-4.control-label Name
-                      .col-sm-8
-                        %input.form-control{:type => "text"}
-                    %hr/
-                    .form-group
-                      %label.col-sm-4.control-label Condition
-                      .col-sm-8
-                        %input.form-control{placeholder: "Crohn's, Colitis, Other", type: "text"}/
-                    .form-group
-                      %label.col-sm-4.control-label Current Disease Status
-                      .col-sm-8
-                        %input.form-control{:type => "text"}
-                    .form-group
-                      %label.col-sm-4.control-label Date of Diagnosis
-                      .col-sm-8
-                        %input.form-control{:type => "date"}
-                    .form-group
-                      %label.col-sm-4.control-label Date of First Symptoms
-                      .col-sm-8
-                        %input.form-control{:type => "date"}
-                    %hr/
-                    .form-group
-                      %label.col-sm-4.control-label Date of Birth
-                      .col-sm-8
-                        %input.form-control{:type => "date"}
-                    .form-group
-                      %label.col-sm-4.control-label Sex
-                      .col-sm-8
-                        %input.form-control{:type => "text"}
-                    %hr/
-                    .form-group
-                      %label.col-sm-4.control-label Current Treatments
-                      .col-sm-8
-                        %textarea.form-control
-                    .form-group
-                      %label.col-sm-4.control-label Treatments Taken in Past
-                      .col-sm-8
-                        %textarea.form-control
+      / .tab-pane#health_info
+      /   .col-md-9
+      /     .panel.panel-default
+      /       .panel-heading
+      /         %h3.panel-title Health Info
+      /       .panel-body
+      /         .row
+      /           .col-md-6
+      /             %form.form-horizontal{role: "form"}
+      /               .form-group
+      /                 %label.col-sm-4.control-label Name
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "text"}
+      /               %hr/
+      /               .form-group
+      /                 %label.col-sm-4.control-label Condition
+      /                 .col-sm-8
+      /                   %input.form-control{placeholder: "Crohn's, Colitis, Other", type: "text"}/
+      /               .form-group
+      /                 %label.col-sm-4.control-label Current Disease Status
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "text"}
+      /               .form-group
+      /                 %label.col-sm-4.control-label Date of Diagnosis
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "date"}
+      /               .form-group
+      /                 %label.col-sm-4.control-label Date of First Symptoms
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "date"}
+      /               %hr/
+      /               .form-group
+      /                 %label.col-sm-4.control-label Date of Birth
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "date"}
+      /               .form-group
+      /                 %label.col-sm-4.control-label Sex
+      /                 .col-sm-8
+      /                   %input.form-control{:type => "text"}
+      /               %hr/
+      /               .form-group
+      /                 %label.col-sm-4.control-label Current Treatments
+      /                 .col-sm-8
+      /                   %textarea.form-control
+      /               .form-group
+      /                 %label.col-sm-4.control-label Treatments Taken in Past
+      /                 .col-sm-8
+      /                   %textarea.form-control
 
 
-                  %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Done
+      /             %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Done
 
 
 

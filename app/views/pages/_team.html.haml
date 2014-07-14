@@ -5,8 +5,8 @@
   .panel-body
     .media
       %a.pull-left
-        = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-      .media-body
+        = image_tag "kappelman.jpg", :class => " media-object img-circle user-avatar"
+      .media-body.small
         %strong
           Mike Kappelman
         %p
@@ -17,12 +17,14 @@
   .panel-heading
     %h3.panel-title Patient Counsel
 
-  .panel-body
-    .media
-      %a.pull-left
-        = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-      .media-body
-        %strong
-          Jessica Burriss
-        %p
-          Crohn's Patient
+
+  %ul.list-group
+    %li.list-group-item
+      .media
+        %a.pull-left
+          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar"
+        .media-body.small
+          %strong
+            Jessica Burriss
+          %p
+            Crohn's Patient

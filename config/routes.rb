@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'admin' => 'pages#admin'
   get 'blog' => 'pages#blog'
   get 'connections' => 'pages#connections'
+  get 'consent' => 'pages#consent'
   get 'data' => 'pages#data'
   get 'discussion' => 'pages#discussion' # sapcon
   get 'external_link_warning' => 'pages#external_link_warning'

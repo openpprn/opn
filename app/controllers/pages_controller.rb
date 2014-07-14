@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   # def admin; end
   # # def blog; end
   # def connections; end
-  # def data; end
+  def data; @page_title = "My Health Data"; end
   # def discussion; end
   def external_link_warning; @hide_page_header = true; end
   # def findings; end
@@ -25,28 +25,33 @@ class PagesController < ApplicationController
   # def login; @hide_page_header = true; end
   # # def new_question; end
   # #def pp-addons; end
-  # # def research; end
+  def research; @hide_page_header = true; end
   # def research_question; @hide_page_header = true; end
   def social; @page_title = "Patients"; end
   # def survey; end
 
+  def determine_pprn
+    @pprn = "ccfa"
+    @pprn_title = "CCFA PPRN"
+    @pprn_condition = "Crohn's & Colitis"
+  end
 
   # Read the PPRN Cookie
-  def determine_pprn
-    cookies[:pprn] = "sapcon" if !cookies[:pprn]
+  # def determine_pprn
+  #   cookies[:pprn] = "sapcon" if !cookies[:pprn]
 
-    @pprn = cookies[:pprn]
+  #   @pprn = cookies[:pprn]
 
-    if @pprn == "ccfa"
-      # CCFA
-      @pprn_title = "CCFA PPRN"
-      @pprn_condition = "Crohn's & Colitis"
-    else @pprn == "sapcon"
-      # SAPCON
-      @pprn_title = "SAPCON"
-      @pprn_condition = "Sleep Apnea"
-    end
-  end
+  #   if @pprn == "ccfa"
+  #     # CCFA
+  #     @pprn_title = "CCFA PPRN"
+  #     @pprn_condition = "Crohn's & Colitis"
+  #   else @pprn == "sapcon"
+  #     # SAPCON
+  #     @pprn_title = "SAPCON"
+  #     @pprn_condition = "Sleep Apnea"
+  #   end
+  # end
 
   #Toggle the PPRN from CCFA <-> SAPCON
   def pprn

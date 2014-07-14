@@ -22,14 +22,16 @@
               %h3.panel-title Age
             .panel-body
               = image_tag "histogram.png"
+              .req age_distribution (hash of age -> count)
 
 
         .col-md-4
           .panel.panel-default
             .panel-heading
-              %h3.panel-title Gender
+              %h3.panel-title Sex
             .panel-body
               = image_tag "donut.png"
+              .req sex_distribution (sex -> count)
 
 
         .col-md-4
@@ -38,6 +40,7 @@
               %h3.panel-title Location
             .panel-body
               = image_tag "bar.png"
+              .req locations (location(lat/lon, city, state, country) -> count)
 
       .row
         .col-md-4
@@ -46,6 +49,7 @@
               %h3.panel-title Surveys Completed
             .panel-body
               = image_tag "pie.png"
+              .req surveys_completed [date,survey_id]
 
 
         .col-md-4
@@ -61,6 +65,7 @@
               %h3.panel-title Connected Data Sources
             .panel-body
               = image_tag "pie.png"
+              .req data_sources_connected [date,data_source_id]
 
 
     - if ccfa_pprn?
@@ -79,18 +84,19 @@
         .panel-heading
           %h3.panel-title How You Look to Others
 
-        %table.table.table-striped.table-responsive
-          %tbody
-            %tr
-              %td
-                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('seanahres@gmail.com')}?d=identicon", :style => "margin-right: 10px;"}
-                .pull-left
-                  %h3
-                    Andy
-                  Palo Alto, CA
+        %ul.list-group
+          %li.list-group-item
+            .media
+              .pull-left
+                = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+              .media-body.small
+                %strong
+                  = random_name
+                %p
+                  = random_place
 
         .panel-footer
-          %a.btn.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
+          %a.btn.btn-sm.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
 
 
 
@@ -99,33 +105,16 @@
         .panel-heading
           %h3.panel-title Around You
 
-        %table.table.table-striped.table-responsive
-          %tbody
-            %tr
-              %td
-                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
+        %ul.list-group
+          - 6.times do
+            %li.list-group-item
+              .media
                 .pull-left
-                  %h4
-                    Jessica
-                  San Francisco, CA
-            %tr
-              %td
-                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
-                .pull-left
-                  %h4
-                    Brian
-                  San Francisco, CA
-            %tr
-              %td
-                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('2')}?d=identicon", :style => "margin-right: 10px;"}
-                .pull-left
-                  %h4
-                    Jessica
-                  San Francisco, CA
-            %tr
-              %td
-                %img.img-circle.pull-left{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('1')}?d=identicon", :style => "margin-right: 10px;"}
-                .pull-left
-                  %h4
-                    Brian
-                  San Francisco, CA
+                  = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+                .media-body.small
+                  %strong
+                    = random_name
+                  %p
+                    = random_place
+
+
