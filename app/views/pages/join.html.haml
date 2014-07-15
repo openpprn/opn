@@ -26,9 +26,6 @@
         .panel-title Join
       .panel-body
         = form_tag new_user_session_path, :class => "form-horizontal", role: "form" do
-          / .hidden
-          /   = text_field_tag 'user[email]'
-          /   = password_field_tag 'user[password]'
           .form-group
             %label.col-sm-5.control-label{for: "inputEmail3"} Email
             .col-sm-7

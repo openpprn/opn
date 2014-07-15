@@ -7,14 +7,11 @@ jQuery ->
   $(".req").prepend("<i class='fa fa-flag requirement-flag'></i>&nbsp;")
 
 
+
   # $("#requirements-toggler").bind 'click', ->
   #   $(".req").toggle()
-
-
   # $(".req").toggle()
-
   # alert user_name
-
   #$(".requirement-list").toggle()
   #$(".requirement-flag").toggle()
   #$(".requirement-list").toggle()

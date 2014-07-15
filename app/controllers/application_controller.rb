@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     else
       # CCFA
       @pprn = "ccfa"
-      @pprn_title = "CCFA PPRN"
+      @pprn_title = "CCFA Partners"
       @pprn_condition = "Crohn's & Colitis"
     end
   end

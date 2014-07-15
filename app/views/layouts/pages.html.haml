@@ -1,23 +1,20 @@
 !!!
-/ saved from url=(0050)http://getbootstrap.com/examples/starter-template/
+-# saved from url=(0050)http://getbootstrap.com/examples/starter-template/
 %html{lang: "en"}
   %head
-
-    / Shortcut Icon
     %link{href: "", rel: "shortcut icon"}/
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    -# Stylesheets
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'pages'
-
-    = javascript_include_tag 'bootstrap'
-
-
-
-    / %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
-    / Font Awesome
     = stylesheet_link_tag "font-awesome.min.css"
+    -# %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
 
+    -# Javascript
+    = javascript_include_tag 'bootstrap'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    -# Cross-Site Forgery Request Protection
     = csrf_meta_tags
 
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -25,9 +22,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-    / Page Title
-    / Use @title, @html_title, or @page_title, in this order of preference.
-    / %title= current_page.data.title || current_page.data.html_title || current_page.data.page_title
+    -# Page Title
+    -# Use @title, @html_title, or @page_title, in this order of preference.
+    -# %title= current_page.data.title || current_page.data.html_title || current_page.data.page_title
 
 %body{screen_capture_injected: "true"}
   .container{role: "main"}
@@ -110,7 +107,6 @@
               %li
                 = link_to "<i class='fa fa-sign-in'></i> Sign in".html_safe, "/login"
 
-
     / Page Header
     .row
       .col-xs-12
@@ -134,9 +130,10 @@
         %a{href: "/privacy"} Privacy Policy
 
 
-
+  -# Should prob download Jquery for dev purposes
   %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
 
+  -# Developer Mode: Show Embedded Requirements for Team Identification
   :javascript
     $(document).ready( function() {
       if (#{req?})

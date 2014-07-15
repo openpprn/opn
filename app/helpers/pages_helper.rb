@@ -9,7 +9,7 @@ module PagesHelper
   end
 
   def req?
-    cookies[:req]
+    cookies[:req] || false
   end
 
   def random_name
@@ -22,7 +22,6 @@ module PagesHelper
 
   def random_age
     rand(13..90)
-
   end
 
   def random_sex
