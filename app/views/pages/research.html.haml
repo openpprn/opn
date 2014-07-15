@@ -78,6 +78,14 @@
               %td.text-right
                 %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
 
+      %a{:href=> data_path}
+        .panel.panel-warning
+          .panel-heading
+            %h3.panel-title Connect Your Other Health Data Accounts
+            .req surveys_ready_for_completion (title of survey, url to survey)
+            %br/
+            .small Connect other health accounts like FitBit, Crohnology, PatientsKnowBest, and others to pull your data together to help research.
+
     -# publicly viewable
     = render :partial => "research_topics", :locals => { :editable => false }
 

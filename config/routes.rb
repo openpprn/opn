@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'join' => 'pages#join'
   get 'login' => 'pages#login'
   get 'new_question' => 'pages#new_question'
-  get 'pprn' => 'pages#pprn'
+  get 'pprn' => 'pages#toggle_pprn_cookie'
   get 'privacy' => 'pages#privacy'
   get 'req' => 'pages#req'
   get 'research' => 'pages#research'
