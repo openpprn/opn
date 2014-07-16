@@ -188,4 +188,5 @@
             .panel-body.text-center
               %button.btn.btn-default.btn-block Download All My Data
               %br/
-              %a.small{:href => ""} Delete My Account
+              %a.small
+                = link_to "Delete my account", user_registration_path(@user), :method => :delete
