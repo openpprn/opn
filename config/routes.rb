@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -18,8 +17,6 @@ Rails.application.routes.draw do
   get 'external_link_warning' => 'pages#external_link_warning'
   get 'findings' => 'pages#findings'
   get 'insights' => 'pages#insights'
-  get 'join' => 'pages#join'
-  get 'login' => 'pages#login'
   get 'new_question' => 'pages#new_question'
   get 'pprn' => 'pages#toggle_pprn_cookie'
   get 'privacy' => 'pages#privacy'
@@ -30,6 +27,41 @@ Rails.application.routes.draw do
   get 'survey' => 'pages#survey'
   get 'terms' => 'pages#terms'
 
+
+
+# Authentication
+  devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]
+  as :user do
+    # session handling
+    get     '/login'  => 'devise/sessions#new',     as: 'new_user_session'
+    post    '/login'  => 'devise/sessions#create',  as: 'user_session'
+    delete  '/logout' => 'devise/sessions#destroy', as: 'destroy_user_session'
+
+    # joining
+    get   '/join' => 'devise/registrations#new',    as: 'new_user_registration'
+    post  '/join' => 'devise/registrations#create', as: 'user_registration'
+
+    scope '/account' do
+      # password reset
+      get   '/reset-password'        => 'devise/passwords#new',    as: 'new_user_password'
+      put   '/reset-password'        => 'devise/passwords#update', as: 'user_password'
+      post  '/reset-password'        => 'devise/passwords#create'
+      get   '/reset-password/change' => 'devise/passwords#edit',   as: 'edit_user_password'
+
+      # confirmation
+      get   '/confirm'        => 'devise/confirmations#show',   as: 'user_confirmation'
+      post  '/confirm'        => 'devise/confirmations#create'
+      get   '/confirm/resend' => 'devise/confirmations#new',    as: 'new_user_confirmation'
+
+      # settings & cancellation
+      get '/cancel'   => 'devise/registrations#cancel', as: 'cancel_user_registration'
+      get '/settings' => 'devise/registrations#edit',   as: 'edit_user_registration'
+      put '/settings' => 'devise/registrations#update'
+
+      # account deletion
+      delete '' => 'devise/registrations#destroy'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

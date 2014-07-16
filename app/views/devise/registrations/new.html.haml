@@ -14,32 +14,28 @@
 %br/
 %br/
 
-
-
-
-
-
 .row
   .col-md-6.col-md-offset-3
     .panel.panel-default
       .panel-heading
         .panel-title Join
       .panel-body
-        = form_tag new_user_session_path, :class => "form-horizontal", role: "form" do
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal") do |f|
+          = devise_error_messages!
           .form-group
-            %label.col-sm-5.control-label{for: "inputEmail3"} Email
+            = f.label :email, :class => "control-label col-sm-5"
             .col-sm-7
-              %input#user_email.form-control{placeholder: "Email", type: "email", :name => "user[email]"}/
+              = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
           .form-group
-            %label.col-sm-5.control-label{for: "inputPassword3"} Password
+            = f.label :password, :class => "control-label col-sm-5"
             .col-sm-7
-              %input#user_password.form-control{placeholder: "Password", type: "password", name: "user[password]"}/
+              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
           .form-group
-            %label.col-sm-5.control-label{for: "inputPassword3"} Password Confirmation
+            = f.label :password_confirmation, "Password Confirm", :class => "control-label col-sm-5"
             .col-sm-7
-              %input#user_password_confirmation.form-control{placeholder: "Password", type: "password", name: "user[password_confirmation]"}/
+              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
           .form-group
-            %label.col-sm-5.control-label{for: "inputPassword3"} Condition
+            = f.label :condition, :class => "control-label col-sm-5"
             .col-sm-7
               %select.form-control
                 %option Crohn's
@@ -47,7 +43,9 @@
                 %option Indeterminant Colitis
           .form-group
             .col-sm-offset-5.col-sm-7
-              = submit_tag 'Join', :class => "btn btn-primary"
+              = f.submit "Sign up", :class => "btn btn-primary"
     %p.text-center
       Already a Member
-      %a{:href => "/login"} Sign in.
+      %a{:href => new_user_session_path} Sign in.
+
+
