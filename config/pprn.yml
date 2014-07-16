@@ -1,0 +1,13 @@
+ccfa:
+  title: CCFA PPRN
+  condition: "Crohn's & Colitis"
+  conditions:
+    - Crohns
+    - Ulcerative Colitis
+    - Indeterminate Colitis
+
+sapcon:
+  title: SAPCON
+  condition: Sleep Apnea
+  conditions:
+    - Sleep Apnea

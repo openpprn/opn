@@ -11,45 +11,38 @@ class ApplicationController < ActionController::Base
 
 
 
+
+
+
   def determine_pprn
     if Rails.env.production?
       determine_pprn_from_subdomain
     else
       determine_pprn_from_cookie
     end
+
+    # Grab the PPRN Specifics from the YAML file
+    @pprn_title = @pprn["title"]
+    @pprn_condition = @pprn["condition"]
+    @pprn_conditions = @pprn["conditions"]
   end
 
   def determine_pprn_from_subdomain
     if request.subdomain == "sapcon" || request.subdomain == "sleepapnea"
-      # SAPCON
-      @pprn = "sapcon"
-      @pprn_title = "SAPCON"
-      @pprn_condition = "Sleep Apnea"
+      @pprn = PPRNS[:sapcon]
     else
-      # CCFA
-      @pprn = "ccfa"
-      @pprn_title = "CCFA Partners"
-      @pprn_condition = "Crohn's & Colitis"
+      @pprn = PPRNS[:ccfa]
     end
   end
 
   def determine_pprn_from_cookie
+    # if no cookie, has been set, let's assume it's SAPCON
     cookies[:pprn] = "sapcon" if !cookies[:pprn]
-
-    @pprn = cookies[:pprn]
-
-    if @pprn == "ccfa"
-      # CCFA
-      @pprn_title = "CCFA PPRN"
-      @pprn_condition = "Crohn's & Colitis"
-    else @pprn == "sapcon"
-      # SAPCON
-      @pprn_title = "SAPCON"
-      @pprn_condition = "Sleep Apnea"
-    end
+    # read the existing cookie
+    @pprn = PPRNS[cookies[:pprn]]
   end
 
-  #Toggle the PPRN from CCFA <-> SAPCON
+  # Toggle the PPRN from CCFA <-> SAPCON
   def toggle_pprn_cookie
     if cookies[:pprn] == "ccfa"
       cookies[:pprn] = "sapcon"
