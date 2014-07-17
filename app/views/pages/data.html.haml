@@ -1,13 +1,8 @@
-- title("My Healthy Data")
+- title("My Health Data")
 
 .row
 
   .col-md-9
-
-
-    - if (defined? mode) && (mode == "fux")
-      .alert.alert-info It looks like it's your first time
-
 
     = image_tag "time-series.png", :width => "100%"
 
@@ -97,7 +92,7 @@
     %br/
 
 
-    - if sapcon_pprn?
+    - if myapnea_pprn?
       .panel.panel-default
         .panel-heading
           %h4.panel-title

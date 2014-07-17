@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'connections' => 'pages#connections'
   get 'consent' => 'pages#consent'
   get 'data' => 'pages#data'
-  get 'discussion' => 'pages#discussion' # sapcon
+  get 'discussion' => 'pages#discussion' # myapnea
   get 'external_link_warning' => 'pages#external_link_warning'
   get 'findings' => 'pages#findings'
   get 'insights' => 'pages#insights'

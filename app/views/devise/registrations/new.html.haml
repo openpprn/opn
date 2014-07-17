@@ -36,9 +36,9 @@
             = f.label :condition, :class => "control-label col-sm-5"
             .col-sm-7
               %select.form-control
-                %option Crohn's
-                %option Ulcerative Colitis
-                %option Indeterminant Colitis
+                - @pprn_conditions.each do |condition|
+                  %option
+                    = condition
           .form-group
             .col-sm-offset-5.col-sm-7
               = f.submit "Sign up", :class => "btn btn-primary"

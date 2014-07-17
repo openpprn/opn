@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
 
 
-  #Toggle the PPRN from CCFA <-> SAPCON
+  #Toggle the PPRN from ccfa <-> myapnea
   def req
     if cookies[:req] == "false"
       cookies[:req] = "true"

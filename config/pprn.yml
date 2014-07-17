@@ -1,6 +1,6 @@
 ccfa:
   code: ccfa
-  title: CCFA PPRN
+  title: CCFA Partners
   condition: "Crohn's & Colitis"
   conditions:
     - Crohns
@@ -26,9 +26,9 @@ ccfa:
     - Have you ever done SCD?
 
 
-sapcon:
-  code: sapcon
-  title: SAPCON
+myapnea:
+  code: myapnea
+  title: My Apnea
   condition: Sleep Apnea
   conditions:
     - Sleep Apnea

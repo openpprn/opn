@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
 
 
 
-
-
-
   def determine_pprn
     if Rails.env.production?
       determine_pprn_from_subdomain
@@ -34,25 +31,25 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_pprn_from_subdomain
-    if request.subdomain == "sapcon" || request.subdomain == "sleepapnea"
-      @pprn = PPRNS["sapcon"]
+    if request.subdomain == "myapnea"
+      @pprn = PPRNS["myapnea"]
     else
       @pprn = PPRNS["ccfa"]
     end
   end
 
   def determine_pprn_from_cookie
-    # if no cookie, has been set, let's assume it's SAPCON
-    cookies[:pprn] = "sapcon" if !cookies[:pprn]
+    # if no cookie, has been set, let's assume it's myapnea
+    cookies[:pprn] = "myapnea" if !cookies[:pprn]
     # read the existing cookie
     @pprn = PPRNS[cookies[:pprn]]
   end
 
-  # Toggle the PPRN from CCFA <-> SAPCON
+  # Toggle the PPRN from CCFA <-> myapnea
   def toggle_pprn_cookie
     if cookies[:pprn] == "ccfa"
-      cookies[:pprn] = "sapcon"
-    elsif cookies[:pprn] == "sapcon"
+      cookies[:pprn] = "myapnea"
+    elsif cookies[:pprn] == "myapnea"
       cookies[:pprn] = "ccfa"
     end
 
