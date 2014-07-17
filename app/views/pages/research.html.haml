@@ -58,29 +58,18 @@
 
         %table.table.table-hover.table-responsive
           %tbody
-            %tr.success
-              %td
-                %h4
-                  %i.fa.fa-square
-              %td
-                %h4 Have you ever done SCD?
-              %td.text-right
-                - if ccfa_pprn?
-                  %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
-                - else
-                  .btn.btn-success.btn-sm Complete Survey
-
-            %tr.success
-              %td
-                %h4
-                  %i.fa.fa-square
-              %td
-                %h4 How does your Gender affect IBD?
-              %td.text-right
-                - if ccfa_pprn?
-                  %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
-                - else
-                  .btn.btn-success.btn-sm Complete Survey
+            - @pprn_surveys.each do |title|
+              %tr.success
+                %td
+                  %h4
+                    %i.fa.fa-square
+                %td
+                  %h4= title
+                %td.text-right
+                  - if ccfa_pprn?
+                    %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                  - else
+                    .btn.btn-success.btn-sm Complete Survey
 
       %a{:href=> data_path}
         .panel.panel-warning

@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     @pprn_research_questions = @pprn["research_questions"]
     @pprn_research_team = @pprn["research_team"]
     @pprn_patient_team = @pprn["patient_team"]
-
+    @pprn_surveys = @pprn["surveys"]
   end
 
   def determine_pprn_from_subdomain

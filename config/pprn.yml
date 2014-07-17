@@ -21,6 +21,9 @@ ccfa:
     -
       - Jessica Burris
       - "Crohn's Patient"
+  surveys:
+    - Basic Health Survey
+    - Have you ever done SCD?
 
 
 sapcon:
@@ -49,3 +52,6 @@ sapcon:
       - Adam Admur
       - Sleep Apnea Patient
       -
+  surveys:
+    - Basic Health Survey
+    - What treatments have you tried for your Apnea?
