@@ -65,7 +65,10 @@
               %td
                 %h4 Have you ever done SCD?
               %td.text-right
-                %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                - if ccfa_pprn?
+                  %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                - else
+                  .btn.btn-success.btn-sm Complete Survey
 
             %tr.success
               %td
@@ -74,7 +77,10 @@
               %td
                 %h4 How does your Gender affect IBD?
               %td.text-right
-                %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                - if ccfa_pprn?
+                  %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                - else
+                  .btn.btn-success.btn-sm Complete Survey
 
       %a{:href=> data_path}
         .panel.panel-warning

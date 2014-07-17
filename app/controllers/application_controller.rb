@@ -22,9 +22,15 @@ class ApplicationController < ActionController::Base
     end
 
     # Grab the PPRN Specifics from the YAML file
+
+    @pprn_code = @pprn["code"]
     @pprn_title = @pprn["title"]
     @pprn_condition = @pprn["condition"]
     @pprn_conditions = @pprn["conditions"]
+    @pprn_research_questions = @pprn["research_questions"]
+    @pprn_research_team = @pprn["research_team"]
+    @pprn_patient_team = @pprn["patient_team"]
+
   end
 
   def determine_pprn_from_subdomain

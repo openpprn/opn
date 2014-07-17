@@ -2,29 +2,31 @@
   .panel-heading
     %h3.panel-title Research Team
 
-  .panel-body
-    .media
-      %a.pull-left
-        = image_tag "kappelman.jpg", :class => " media-object img-circle user-avatar"
-      .media-body.small
-        %strong
-          Mike Kappelman
-        %p
-          Researcher, GI
+  - @pprn_research_team.each do |name, title, img_src|
+    .panel-body
+      .media
+        %a.pull-left
+          = image_tag img_src, :class => " media-object img-circle user-avatar" if img_src
+          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar" if !img_src
+        .media-body.small
+          %strong
+            = name
+          %p
+            = title
 
 
 .panel.panel-default
   .panel-heading
-    %h3.panel-title Patient Counsel
+    %h3.panel-title Research Team
 
-
-  %ul.list-group
-    %li.list-group-item
+  - @pprn_patient_team.each do |name, title, img_src|
+    .panel-body
       .media
         %a.pull-left
-          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar"
+          = image_tag img_src, :class => " media-object img-circle user-avatar" if img_src
+          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar" if !img_src
         .media-body.small
           %strong
-            Jessica Burriss
+            = name
           %p
-            Crohn's Patient
+            = title
