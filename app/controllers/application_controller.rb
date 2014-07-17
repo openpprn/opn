@@ -29,9 +29,9 @@ class ApplicationController < ActionController::Base
 
   def determine_pprn_from_subdomain
     if request.subdomain == "sapcon" || request.subdomain == "sleepapnea"
-      @pprn = PPRNS[:sapcon]
+      @pprn = PPRNS["sapcon"]
     else
-      @pprn = PPRNS[:ccfa]
+      @pprn = PPRNS["ccfa"]
     end
   end
 
