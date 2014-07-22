@@ -1,6 +1,13 @@
 
 .list-group
-  %a.list-group-item.active{href: blog_path} Blog
-  %a.list-group-item{href: findings_path} Findings
+  %a.list-group-item{href: blog_path, class: "#{"active" if action_name == "blog"}"} Blog
+  %a.list-group-item{href: findings_path, class: "#{"active" if action_name == "findings"}"} Findings
+
 
 = render :partial => "team", :locals => { :editable => false }
+
+-# Description of this section
+%p.small The research team will keep you updated with the latest updates and research findings from the network. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna.
+
+
+= render partial: "promotion_to_join" if !current_user

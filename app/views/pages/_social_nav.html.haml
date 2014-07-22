@@ -1,39 +1,12 @@
 
-
-.list-group
-  %a.list-group-item.active{href: social_path} Dashboard
-
-
-  - if current_user
-    - if myapnea_pprn?
-      %a.list-group-item{href: discussion_path} Discussion
-    %a.list-group-item{href: social_profile_path} My Social Profile
-
-  - else
-    / %a.list-group-item.disabled Discussion
-    / %a.list-group-item.disabled My Social Profile
-
-
--# .panel.panel-default.disabled
--#   .panel-heading.disabled
--#     %h3.panel-title How You Look to Others
--#
--#   %ul.list-group.disabled
--#     %li.list-group-item.disabled
--#       .media.disabled
--#         .pull-left
--#           = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img--# circle user-avatar"
--#         .media-body.small
--#           %strong
--#             = random_name
--#           %p
--#             = random_place
--#
--#   .panel-footer
--#     %a.btn.btn-sm.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
--#
-
 - if current_user
+
+  .list-group
+    %a.list-group-item{href: social_path, class: "#{"active" if action_name == "social"}"} Dashboard
+    - if myapnea_pprn?
+      %a.list-group-item{href: discussion_path, class: "#{"active" if action_name == "discussion"}"} Discussion
+    %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "social_profile"}"} My Social Profile
+
 
   .panel.panel-default
     .panel-heading
@@ -42,11 +15,19 @@
     %ul.list-group
       - 6.times do
         %li.list-group-item
-          .mediareser
+          .media
             .pull-left
-              = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+              = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-item-object img-circle user-avatar"
             .media-body.small
               %strong
                 = random_name
               %p
                 = random_place
+
+
+
+
+-# Description of this section
+.small
+  %p Patients are on #{@pprn_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+= render partial: "promotion_to_join" if !current_user

@@ -1,0 +1,27 @@
+- title("Research")
+
+.row
+  .col-md-3
+    = render partial: "research_nav"
+
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Surveys
+        .req surveys_ready_for_completion (title of survey, url to survey)
+
+      %table.table.table-hover.table-responsive
+        %tbody
+          - @pprn_surveys.each do |title|
+            %tr
+              %td
+                %h4
+                  %i.fa.fa-square
+              %td
+                %h4= title
+              %td.text-right
+                - if ccfa_pprn?
+                  %a.btn.btn-success.btn-sm{:href => external_link_warning_path} Complete Survey
+                - else
+                  .btn.btn-success.btn-sm Complete Survey
+

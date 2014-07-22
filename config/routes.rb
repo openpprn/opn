@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
   get 'survey' => 'pages#survey'
+  get 'surveys' => 'pages#surveys'
   get 'terms' => 'pages#terms'
 
 

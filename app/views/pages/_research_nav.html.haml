@@ -1,18 +1,17 @@
+- if current_user
+  .list-group
+    %a.list-group-item{href: research_path, class: "#{"active" if action_name == "research"}"} Dashboard
 
-.list-group
-  %a.list-group-item.active{href: research_path} Dashboard
 
 
-  - if current_user
-    %a.list-group-item.disabled{href: "#"}
+    %a.list-group-item{href: surveys_path, class: "#{"active" if action_name == "surveys"}"}
       My Surveys
-      %span.badge 2
-    %a.list-group-item{href: data_path} My Health Data
-    %a.list-group-item{href: connections_path} My Data Connections
-    %a.list-group-item.disabled{href: "#"} My Karma
+      %span.badge.alert-success 2
+    %a.list-group-item{href: data_path, class: "#{"active" if action_name == "data"}"} My Health Data
+    %a.list-group-item{href: connections_path, class: "#{"active" if action_name == "connections"}"} My Data Connections
+    -# %a.list-group-item{href: "#", class: "#{"active" if action_name == "karma"}"} My Karma
 
 
-  - else
     / %a.list-group-item.disabled{href: "#"} My Surveys
     / %a.list-group-item.disabled{href: "#"} My Health Data
     / %a.list-group-item.disabled{href: "#"} My Data Connections
@@ -21,3 +20,10 @@
 
 - if current_user
   = render :partial => "notifications", :locals => { :editable => false }
+
+
+-# Description of this section
+.small
+  %p Patients participate in a research democracy, ask and help solve research questions through contributing data and answers to questions. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna.
+
+= render partial: "promotion_to_join" if !current_user
