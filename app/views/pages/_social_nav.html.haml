@@ -1,0 +1,51 @@
+
+
+.list-group
+  %a.list-group-item.active{href: social_path} Dashboard
+  - if myapnea_pprn?
+    - if current_user
+      %a.list-group-item{href: discussion_path} Discussion
+    - else
+      %a.list-group-item.disabled Discussion
+  - if current_user
+    %a.list-group-item{href: social_profile_path} My Social Profile
+  - else
+    %a.list-group-item.disabled My Social Profile
+
+
+-# .panel.panel-default.disabled
+-#   .panel-heading.disabled
+-#     %h3.panel-title How You Look to Others
+-#
+-#   %ul.list-group.disabled
+-#     %li.list-group-item.disabled
+-#       .media.disabled
+-#         .pull-left
+-#           = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img--# circle user-avatar"
+-#         .media-body.small
+-#           %strong
+-#             = random_name
+-#           %p
+-#             = random_place
+-#
+-#   .panel-footer
+-#     %a.btn.btn-sm.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
+-#
+
+- if current_user
+
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title Around You
+
+    %ul.list-group
+      - 6.times do
+        %li.list-group-item
+          .mediareser
+            .pull-left
+              = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+            .media-body.small
+              %strong
+                = random_name
+              %p
+                = random_place

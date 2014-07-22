@@ -1,0 +1,58 @@
+- title("Patients")
+
+.row
+  .col-md-3
+    = render partial: "social_nav"
+
+  .col-md-9
+
+    .panel.panel-default
+      .panel-heading
+        %h4 Do you want other patients in the #{@pprn_title} to see you?
+        %form.form-horizontal{role: "form"}
+        .radio
+          %label
+            %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+            %strong
+              Show me.
+            %span.small Add a marker for me on the map that shows the following info.
+
+        .radio
+          %label
+            %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+            %strong
+              Don't show me.
+            %span.small Don't let other patients on this site see any map marker for me.
+
+
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-2.control-label
+              .pull-left
+                = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+            .col-sm-10
+              %p
+                %strong
+                  Change Photo
+              %input{:type => "file"}
+
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-2.control-label Name
+            .col-sm-6
+              %input.form-control{:type=>"text", :value => random_name}
+          .form-group
+            %label.col-sm-2.control-label Location
+            .col-sm-6
+              %input.form-control{:type=>"text", :value => random_place}
+          .form-group
+            %label.col-sm-2.control-label Age
+            .col-sm-6
+              %input.form-control{:type=>"text", :value => random_age}
+          .form-group
+            %label.col-sm-2.control-label Gender
+            .col-sm-6
+              %input.form-control{:type=>"text", :value => random_sex}
+
+        %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Save

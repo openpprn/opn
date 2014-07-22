@@ -1,0 +1,6 @@
+
+.list-group
+  %a.list-group-item.active{href: blog_path} Blog
+  %a.list-group-item{href: findings_path} Findings
+
+= render :partial => "team", :locals => { :editable => false }

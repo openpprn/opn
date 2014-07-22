@@ -1,6 +1,12 @@
-- title("My Health Data")
+- title("Research")
 
 .row
+
+  .col-md-3
+
+    = render :partial => "research_nav"
+
+
 
   .col-md-9
 
@@ -49,80 +55,6 @@
             %li
               %span &raquo;
 
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title.pull-left View
-        %button.btn.btn-default.btn-xs.pull-right Show All
-        .clearfix
-      %table.table.table-hover.table-responsive
-
-        %tbody
-          %tr
-            %td
-              %i.fa.fa-check
-            %td FitBit
-          %tr
-            %td
-              %i.fa.fa-check
-            %td MyFitnessPal
-          %tr
-            %td
-              %i.fa.fa-check
-            %td Crohnology
-          %tr
-            %td
-
-            %td Withings
-      .panel-footer
-        %a.btn.btn-sm.btn-default.btn-block{:href => "#"} Manage Data Connections
-
-
-    %a.btn.btn-primary.btn-block{:href => "http://www.patientsknowbest.com", :target => "_blank"} My Medical Records
-
-
-    .req API doc to perform "user provisioning" to link to OODT user account
-    .req API doc regarding the flow of authentication tokens from Validic to OODT
-    .req API doc for quering this health data through OODT
-
-    %br/
-    .req API doc to perform "user provisioning" to link to Crohnology user account
-
-
-    %br/
-
-
-    - if myapnea_pprn?
-      .panel.panel-default
-        .panel-heading
-          %h4.panel-title
-            Your Health Summary
-
-        %table.table.table-responsive
-          %tbody
-            %tr
-              %td Condition
-              %td Crohn's
-            %tr
-              %td Age of Diagnosis
-              %td 13
-            %tr
-              %td Current Age
-              %td 28
-            %tr
-              %td Years With
-              %td 15
-            %tr
-              %td Current Health
-              %td Remission
-            %tr
-              %td Current Treatments
-              %td Remicade
-            %tr
-              %td Past Treatments
-              %td Prednisone, 6MP, SCD
-        .panel-footer
-          %a.btn.btn-default.center-block{:href => "/account/"} Update Info
 
 
 / %td.no-wrap{:style => "background-color: #f5f5f5 !important;"}

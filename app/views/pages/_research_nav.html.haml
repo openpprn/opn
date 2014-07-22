@@ -1,0 +1,30 @@
+
+.list-group
+  %a.list-group-item.active{href: research_path} Dashboard
+
+  - if current_user
+    %a.list-group-item{href: "#"}
+      My Surveys
+      %span.badge 2
+  - else
+    %a.list-group-item.disabled{href: "#"}
+      My Surveys
+
+  - if current_user
+    %a.list-group-item{href: data_path} My Health Data
+  - else
+    %a.list-group-item.disabled{href: "#"} My Health Data
+
+  - if current_user
+    %a.list-group-item{href: connections_path} My Data Connections
+  - else
+    %a.list-group-item.disabled{href: "#"} My Data Connections
+
+  - if current_user
+    %a.list-group-item.disabled{href: "#"} My Karma
+  - else
+    %a.list-group-item.disabled{href: "#"} My Karma
+
+
+- if current_user
+  = render :partial => "notifications", :locals => { :editable => false }

@@ -2,6 +2,11 @@
 
 
 .row
+  .col-md-3
+    = render partial: "social_nav"
+
+
+
   .col-md-9
     .panel.panel-default
       .panel-heading
@@ -72,45 +77,4 @@
               %h3.panel-title More Social Features?
             .panel-body
               Crohnology
-
-
-  - if current_user
-    .col-md-3
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title How You Look to Others
-
-        %ul.list-group
-          %li.list-group-item
-            .media
-              .pull-left
-                = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
-              .media-body.small
-                %strong
-                  = random_name
-                %p
-                  = random_place
-
-        .panel-footer
-          %a.btn.btn-sm.btn-default.center-block{:href=>"/account?tab=social_profile"} Edit how you look to others
-
-
-
-
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Around You
-
-        %ul.list-group
-          - 6.times do
-            %li.list-group-item
-              .media
-                .pull-left
-                  = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
-                .media-body.small
-                  %strong
-                    = random_name
-                  %p
-                    = random_place
-
 

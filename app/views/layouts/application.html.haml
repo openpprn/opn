@@ -43,32 +43,11 @@
           %ul.nav.navbar-nav
 
             %li
-              %a{href: "/research"}
-                Research Dashboard
-
-            -# Private Pages
-            - if current_user
-              %li
-                %a{href: "/data"}
-                  %strong My Health Data
-
-              -# myapnea only
-              - if myapnea_pprn?
-                %li
-                  %a{href: "/discussion"}
-                    %strong Discussion
-
-
-            -# Public Pages
+              %a{href: "/research"} Research
             %li
               %a{href: "/social"} Patients
             %li
               %a{href: "/blog"} Blog
-            %li
-              %a{href: "/findings"} Findings
-
-
-
 
 
           %ul.nav.navbar-nav.pull-right
@@ -110,13 +89,23 @@
                   %i.fa.fa-sign-in
                     Sign In
 
-    / Page Header
+
     .row
       .col-xs-12
         - if content_for?(:title)
           .page-header
+
+            / %ol.breadcrumb
+            /   %li
+            /     %a{href: "#"}= @page_is_for_research ? "Research" : "Community"
             %h1
               = yield(:title)
+
+            / - if @page_is_for_research
+            /   .btn-group
+            /     %button.btn.btn-default{type: "button"} Dashboard
+            /     %button.btn.btn-default{type: "button"} Data Connections
+
         - else
           .page-header-blank
 

@@ -1,8 +1,13 @@
-- title("Discussion")
+- title("Patients")
 
 
 .row
-  .col-md-12
+
+  - if current_user
+    .col-md-3
+      = render partial: "social_nav"
+
+  .col-md-9
 
     .panel.panel-default
       .panel-heading

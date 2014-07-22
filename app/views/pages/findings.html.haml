@@ -1,6 +1,11 @@
-- title("Findings")
+- title("Blog")
 
 .row
+
+  .col-md-3
+    = render partial: "blog_nav"
+
+
   .col-md-9
     - 3.times do
       .panel.panel-default
@@ -22,8 +27,6 @@
           %span &raquo;
 
 
-  .col-md-3
-    = render :partial => "team", :locals => { :editable => false }
 
     / %tr
     /   %td
