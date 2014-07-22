@@ -28,7 +28,8 @@
 %body{screen_capture_injected: "true"}
   .container{role: "main"}
 
-    .navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+    .navbar.navbar-default{role: "navigation"}
+      -#.navbar-fixed-top
       .container
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}

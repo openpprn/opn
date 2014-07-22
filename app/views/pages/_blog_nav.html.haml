@@ -1,7 +1,7 @@
 
 .list-group
-  %a.list-group-item{href: blog_path, class: "#{"active" if action_name == "blog"}"} Blog
-  %a.list-group-item{href: findings_path, class: "#{"active" if action_name == "findings"}"} Findings
+  %a.list-group-item{href: blog_path, class: "#{"active" if action_name == "blog"}"} Team Blog
+  %a.list-group-item{href: findings_path, class: "#{"active" if action_name == "findings"}"} Research Findings
 
 
 = render :partial => "team", :locals => { :editable => false }

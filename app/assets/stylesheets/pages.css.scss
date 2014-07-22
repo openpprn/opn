@@ -4,12 +4,17 @@
 // Make room for top nav bar
 
 body {
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 50px;
-  counter-increment: myIndex;
 
+  .navbar {
+    margin-bottom: 10px;
+  }
   .page-header-blank {
     height: 40px;
+  }
+  .page-header {
+    margin-top: 0px;
   }
 }
 
