@@ -2,15 +2,16 @@
 
 .list-group
   %a.list-group-item.active{href: social_path} Dashboard
-  - if myapnea_pprn?
-    - if current_user
-      %a.list-group-item{href: discussion_path} Discussion
-    - else
-      %a.list-group-item.disabled Discussion
+
+
   - if current_user
+    - if myapnea_pprn?
+      %a.list-group-item{href: discussion_path} Discussion
     %a.list-group-item{href: social_profile_path} My Social Profile
+
   - else
-    %a.list-group-item.disabled My Social Profile
+    / %a.list-group-item.disabled Discussion
+    / %a.list-group-item.disabled My Social Profile
 
 
 -# .panel.panel-default.disabled
