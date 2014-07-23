@@ -1,13 +1,20 @@
 
-- if current_user
-
+-# THE NAVBAR
+- if myapnea_pprn?
   .list-group
     %a.list-group-item{href: social_path, class: "#{"active" if action_name == "social"}"} Patient Overview
-    - if myapnea_pprn?
-      %a.list-group-item{href: discussion_path, class: "#{"active" if action_name == "discussion"}"} Discussion
-    %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "social_profile"}"} My Social Profile
+    %a.list-group-item{href: discussion_path, class: "#{"active" if action_name == "discussion"}"} Discussion
+    - if current_user
+      %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "social_profile"}"} My Social Profile
+- else # CCFA PPRN
+
+  - if current_user
+    .list-group
+      %a.list-group-item{href: social_path, class: "#{"active" if action_name == "social"}"} Patient Overview
+      %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "social_profile"}"} My Social Profile
 
 
+- if current_user
   .panel.panel-default
     .panel-heading
       %h3.panel-title Around You
