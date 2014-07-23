@@ -27,7 +27,20 @@
               %h4
                 %a{:href => "/research_question"}= title
 
-
+  - if star_pattern != :mine
+    .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
+      .text-center
+        %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+          %li
+            %span &laquo;
+          %li
+            %span 1
+          %li.disabled
+            %span ..
+          %li
+            %span 5
+          %li
+            %span &raquo;
 
 
 
@@ -81,12 +94,4 @@
 
 
 
-/   .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
-/     .text-center
-/       %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-/         %li
-/           %span &laquo;
-/         %li.disabled
-/           %span ...
-/         %li
-/           %span &raquo;
+
