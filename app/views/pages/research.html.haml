@@ -1,31 +1,20 @@
 - title("Research")
-/ .row
-/   .col-md-12
-/     / Button trigger modal
-/     %button.btn.btn-primary.btn-sm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :style => "margin-top: 20px;"}
-/       Launch Demo Video
-
-/     .pull-left{:style => "font-size: 36px; font-weight: 500;"}
-/       Research
 
 
-/     .clearfix
+/ Demo Video Modal
+#myModal.modal{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Demo Video
+      .modal-body
+        = image_tag "demo-video.png", :style => "width: 100%;"
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
-/     %hr/
-
-/     / Modal
-/     #myModal.modal{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-/       .modal-dialog
-/         .modal-content
-/           .modal-header
-/             %button.close{"data-dismiss" => "modal", type: "button"}
-/               %span{"aria-hidden" => "true"} ×
-/               %span.sr-only Close
-/             %h4#myModalLabel.modal-title Demo Video
-/           .modal-body
-/             = image_tag "demo-video.png", :style => "width: 100%;"
-/           .modal-footer
-/             %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
 
 
@@ -47,27 +36,36 @@
         .panel-body
           .row
             .col-md-4.text-center
-              = image_tag "pie.png", :style => "height: 150px;"
+              = image_tag "pie.png", :style => "height: 130px;"
               %h4 Surveys Completed
               .req num_surveys_completed, num_surveys_available_since_date
             .col-md-4.text-center
-              = image_tag "donut.png", :style => "height: 150px;"
-              %h4 Karma
-            .col-md-4.text-center
-              = image_tag "gauge.png", :style => "height: 150px;"
-              %h4 Data Sources
+              = image_tag "gauge.png", :style => "height: 130px;"
+              %h4 Data Sources Connected
               .req num_data_sources_connected
+            .col-md-4.text-center
+              %i.fa.fa-star{:style => "font-size: 130px; color: gold;"}
+              -#= image_tag "donut.png", :style => "height: 150px;"
+              %h4 Stars Applied
 
 
-    -# publicly viewable
-    = render :partial => "research_topics", :locals => { :editable => false }
 
 
 
-/ %a{:href=> data_path}
-/   .panel.panel-warning
-/     .panel-heading
-/       %h3.panel-title Connect Your Other Health Data Accounts
-/       .req surveys_ready_for_completion (title of survey, url to survey)
-/       %br/
-/       .small Connect other health accounts like FitBit, Crohnology, PatientsKnowBest, and others to pull your data together to help research.
+
+    / Nav tabs
+    %ul.nav.nav-tabs.nav-justified{role: "tablist"}
+      %li.active
+        %a{"data-toggle" => "tab", href: "#popular", role: "tab"} Most Starred
+      %li
+        %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Starred
+      %li
+        %a{"data-toggle" => "tab", href: "#newest", role: "tab"} Newest
+
+    / Tab panes
+    .tab-content
+      #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine}
+      #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular}
+      #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest}
+
+

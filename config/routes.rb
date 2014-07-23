@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'req' => 'pages#req'
   get 'research' => 'pages#research'
   get 'research_question' => 'pages#research_question'
+  get 'research_topics' => 'pages#research_topics'
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
   get 'survey' => 'pages#survey'

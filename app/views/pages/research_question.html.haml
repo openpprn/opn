@@ -1,33 +1,40 @@
-- title("Research Question")
+- title("Research")
 
 
 .row
+  .col-md-3
+    = render :partial => "research_nav", locals: {action_name: "research"}
+
+
+
   .col-md-9
 
 
     .row
       .col-md-1
         %div{:style => "font-size: 36px; line-height: 36px; text-align:center; padding-top: 20px;"}
-          %i.fa.fa-arrow-circle-up
-          54
-          %i.fa.fa-arrow-circle-down
-        .req Is simple upvoting appropriate? Or should it be a scale of importance?
+          %i.fa.fa-star-o
+          = rand(0..99)
 
 
       .col-md-11
-        %h2 Does this diet work for Crohn's?
+        %h2= @pprn_research_questions.shuffle.first
 
         %p This is why and how I think we should research it. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
+
+      %br/
+
+    .row
+      .col-md-12
+
         .alert.alert-info
           .req What stages should be available?
-
           .label.label-primary Under Consideration
           %span.small
             This research proposal is currently <strong>under consideration</strong> by the research team.
             Add your vote and voice to help increase the chances this research topic gets studied.
 
 
-        %br/
 
 
         .panel.panel-default
@@ -81,20 +88,18 @@
                 .pull-right.btn.btn-sm.btn-primary Reply
 
 
-  .col-md-3
+    / .panel.panel-default
+    /   .panel-heading
+    /     %h3.panel-title Proposed By...
 
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Proposed By...
-
-      .panel-body
-        .media
-          %a.pull-left
-            = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
-          .media-body.small
-            %strong
-              = random_name
-            %p
-              = random_place
-          .clearfix
+    /   .panel-body
+    /     .media
+    /       %a.pull-left
+    /         = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-object img-circle user-avatar"
+    /       .media-body.small
+    /         %strong
+    /           = random_name
+    /         %p
+    /           = random_place
+    /       .clearfix
 

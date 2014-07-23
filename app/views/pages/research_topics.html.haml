@@ -1,0 +1,45 @@
+- title("Research")
+
+.row
+  .col-md-3
+    = render partial: "research_nav"
+
+  .col-md-9
+
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Your Stars
+
+      .panel-body
+        .row
+          .col-md-4
+            %i.fa.fa-star.research-star
+            %ul
+              %li You have 5 stars to give
+              %li Choose the Research you'd most like to fund
+          .col-md-4
+            %i.fa.fa-bitbucket
+            %ul
+              %li You have 5 stars to give
+              %li Choose the Research you'd most like to fund
+          .col-md-4
+
+
+
+    / Nav tabs
+    %ul.nav.nav-tabs.nav-justified{role: "tablist"}
+      %li.active
+        %a{"data-toggle" => "tab", href: "#popular", role: "tab"} Most Starred
+      %li
+        %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Starred
+      %li
+        %a{"data-toggle" => "tab", href: "#newest", role: "tab"} Newest
+
+    / Tab panes
+    .tab-content
+      #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine}
+      #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular}
+      #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest}
+
+

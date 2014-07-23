@@ -7,7 +7,7 @@
     -# Stylesheets
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'pages'
-    = stylesheet_link_tag "font-awesome.min.css"
+    = stylesheet_link_tag "font-awesome-4.1.0/css/font-awesome.min.css"
     -# %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
 
     -# Javascript
@@ -102,13 +102,14 @@
             / %ol.breadcrumb
             /   %li
             /     %a{href: "#"}= @page_is_for_research ? "Research" : "Community"
-            %h1
-              = yield(:title)
 
-            / - if @page_is_for_research
-            /   .btn-group
-            /     %button.btn.btn-default{type: "button"} Dashboard
-            /     %button.btn.btn-default{type: "button"} Data Connections
+            - if @page_is_for_research
+              / Button trigger modal
+              %h1.pull-left= yield(:title)
+              %button.btn.btn-primary.btn-sm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :style => "margin-top: 30px;"} Launch Demo Video
+              .clearfix
+            - else
+              %h1= yield(:title)
 
         - else
           .page-header-blank

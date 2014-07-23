@@ -16,6 +16,17 @@ body {
   .page-header {
     margin-top: 0px;
   }
+
+
+  .research-star {
+    font-size: 36px;
+  }
+  .research-star.fa-star {
+    color: gold;
+  }
+  .research-star.fa-star-o {
+    color: #555;
+  }
 }
 
 .req {
