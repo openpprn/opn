@@ -2,6 +2,7 @@
   - num_stars = rand(30..70)
 - else
   - num_stars = rand(70..99)
+- stars_given = 0
 
 .panel.panel-default
 
@@ -14,8 +15,9 @@
               %h4
                 - if star_pattern == :mine
                   %i.fa.fa-star.research-star
-                - elsif star_pattern == :popular && [true,false].shuffle.first
+                - elsif star_pattern == :popular && stars_given < 5 && [true,false,false,false].shuffle.first
                   %i.fa.fa-star.research-star
+                  - stars_given += 1
                 - else
                   %i.fa.fa-star-o.research-star
             %td
