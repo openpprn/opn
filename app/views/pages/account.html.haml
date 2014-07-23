@@ -2,79 +2,6 @@
 
 .row
 
-    / %ul.nav.nav-tabs
-    /   %li.active
-    /     %a{href: "#user", "data-toggle" => "tab"} User Account
-    /   / %li
-    /   /   %a{href: "#health_info", "data-toggle" => "tab"} Health Info
-    /   %li
-    /     %a{href: "#social_profile", "data-toggle" => "tab"} Social Visibility
-    / %br/
-
-
-    / .nav.tab-content
-
-
-
-      / .tab-pane#social_profile
-       / .col-md-9
-
-      / .tab-pane#health_info
-      /   .col-md-9
-      /     .panel.panel-default
-      /       .panel-heading
-      /         %h3.panel-title Health Info
-      /       .panel-body
-      /         .row
-      /           .col-md-6
-      /             %form.form-horizontal{role: "form"}
-      /               .form-group
-      /                 %label.col-sm-4.control-label Name
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "text"}
-      /               %hr/
-      /               .form-group
-      /                 %label.col-sm-4.control-label Condition
-      /                 .col-sm-8
-      /                   %input.form-control{placeholder: "Crohn's, Colitis, Other", type: "text"}/
-      /               .form-group
-      /                 %label.col-sm-4.control-label Current Disease Status
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "text"}
-      /               .form-group
-      /                 %label.col-sm-4.control-label Date of Diagnosis
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "date"}
-      /               .form-group
-      /                 %label.col-sm-4.control-label Date of First Symptoms
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "date"}
-      /               %hr/
-      /               .form-group
-      /                 %label.col-sm-4.control-label Date of Birth
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "date"}
-      /               .form-group
-      /                 %label.col-sm-4.control-label Sex
-      /                 .col-sm-8
-      /                   %input.form-control{:type => "text"}
-      /               %hr/
-      /               .form-group
-      /                 %label.col-sm-4.control-label Current Treatments
-      /                 .col-sm-8
-      /                   %textarea.form-control
-      /               .form-group
-      /                 %label.col-sm-4.control-label Treatments Taken in Past
-      /                 .col-sm-8
-      /                   %textarea.form-control
-
-
-      /             %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Done
-
-
-
-      /.tab-pane#user.active
-
   .col-md-9
 
     .panel.panel-default
@@ -138,4 +65,4 @@
         %button.btn.btn-default.btn-block Download All My Data
         %br/
         %a.small
-          = link_to "Delete my account", user_registration_path(@user), :method => :delete
+          = link_to "Delete my account", user_registration_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete your account and all data? There is no undo." }

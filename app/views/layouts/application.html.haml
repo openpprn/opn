@@ -93,6 +93,9 @@
 
     .row
       .col-xs-12
+
+        = render partial: "shared/flash_messages", flash: flash
+
         - if content_for?(:title)
           .page-header
 
@@ -110,7 +113,6 @@
         - else
           .page-header-blank
 
-        = render partial: "shared/flash_messages", flash: flash
 
     = yield
 
