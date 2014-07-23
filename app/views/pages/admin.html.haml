@@ -31,7 +31,7 @@
       .tab-pane#research
         .row
           .col-md-9
-            = render :partial => "research_topics", :locals => { :editable => true }
+            = render :partial => "research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
 
       .tab-pane#users
         .row
