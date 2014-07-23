@@ -43,11 +43,11 @@
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
 
-            %li
+            %li{:class => "#{"active" if @active_nav_link == :research}"}
               %a{href: "/research"} Research
-            %li
+            %li{:class => "#{"active" if @active_nav_link == :patients}"}
               %a{href: "/social"} Patients
-            %li
+            %li{:class => "#{"active" if @active_nav_link == :blog}"}
               %a{href: "/blog"} Blog
 
 
