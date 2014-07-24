@@ -6,8 +6,6 @@ gem 'thin'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
 # User HAML for views
 gem 'haml'
 
@@ -32,7 +30,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Bootstrap
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
