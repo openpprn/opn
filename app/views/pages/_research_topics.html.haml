@@ -24,8 +24,17 @@
               - else
                 %h2= num_stars = (num_stars * (rand(0.7..1)) ).ceil
             %td
+              %br/
               %h4
                 %a{:href => "/research_question"}= title
+
+            - if editable
+              %td
+                %br/
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %span.pull-right &nbsp;
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
 
   - if star_pattern != :mine
     .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}

@@ -60,12 +60,14 @@
       %li
         %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Starred
       %li
-        %a{"data-toggle" => "tab", href: "#newest", role: "tab"} Newest
+        %a{"data-toggle" => "tab", href: "#newest", role: "tab"}
+          Newest
+          %span.badge 12
 
     / Tab panes
     .tab-content
-      #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine}
-      #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular}
-      #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest}
+      #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
+      #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular, editable: false}
+      #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest, editable: false}
 
 
