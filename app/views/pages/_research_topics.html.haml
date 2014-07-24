@@ -26,8 +26,17 @@
               - else
                 %h2= num_stars = (num_stars * (rand(0.7..1)) ).ceil
             %td
+              %br/
               %h4
                 %a{:href => "/research_question"}= title
+
+            - if editable
+              %td
+                %br/
+                %button.btn.btn-danger.btn-xs.pull-right Delete
+                %span.pull-right &nbsp;
+                %button.btn.btn-warning.btn-xs.pull-right Edit
+                .clearfix
 
   - if star_pattern != :mine
     .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
@@ -43,57 +52,4 @@
             %span 5
           %li
             %span &raquo;
-
-
-
-
-/ .panel.panel-default
-/   .panel-heading
-/     %h3.panel-title Research Proposals
-
-/   .panel-body
-
-/     .col-md-6
-/       .research-list-heading
-/         %h4 Research Currently Investigating
-/         %p.small These are research topics the team is currently researching. Please indicate if you are interested in participating.
-/       %table.table.table-responsive
-/         %tbody
-/           - i = 0
-/           - @pprn_research_questions.each do |title|
-/             %tr
-/               %td.col-md-1
-/                 %h2= i+=1
-/               %td.col-md-11
-/                 %a{:href => "/research_question"}
-/                   %h4
-/                     = title
-/                 - if editable
-/                   %button.btn.btn-danger.btn-xs.pull-right Delete
-/                   %button.btn.btn-warning.btn-xs.pull-right Edit
-/                   .clearfix
-
-
-/     .col-md-6
-/       .research-list-heading
-/         %h4 Research Newly Suggested
-/         %p.small These are research topics proposed by patients that are currently open for comment and refinement.
-/       %table.table.table-responsive
-/         %tbody
-/           - i = 0
-/           - @pprn_research_questions.shuffle.each do |title|
-/             %tr
-/               %td.col-md-1
-/                 %h2= i+=1
-/               %td.col-md-11
-/                 %a{:href => "/research_question"}
-/                   %h4
-/                     = title
-/                 - if editable
-/                   %button.btn.btn-danger.btn-xs.pull-right Delete
-/                   %button.btn.btn-warning.btn-xs.pull-right Edit
-/                   .clearfix
-
-
-
 
