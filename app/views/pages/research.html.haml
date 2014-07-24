@@ -48,8 +48,8 @@
               -#= image_tag "donut.png", :style => "height: 150px;"
               %h4 Stars Applied
 
-    %small
-      %br/
+      %small
+        %br/
 
 
     %h4 &nbsp;&nbsp;Research Topics
@@ -57,8 +57,9 @@
     %ul.nav.nav-tabs.nav-justified{role: "tablist"}
       %li.active
         %a{"data-toggle" => "tab", href: "#popular", role: "tab"} Most Starred
-      %li
-        %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Starred
+      - if current_user
+        %li
+          %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Starred
       %li
         %a{"data-toggle" => "tab", href: "#newest", role: "tab"}
           Newest
@@ -66,8 +67,9 @@
 
     / Tab panes
     .tab-content
-      #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
       #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular, editable: false}
+      - if current_user
+        #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
       #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest, editable: false}
 
 
