@@ -32,9 +32,39 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Bootstrap
+gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 # Authentication
 gem 'devise'
 
+# Scaffold Generation
+gem 'bootstrap-generators', '~> 3.1.1.3'
+
+# Markdown Support
+gem 'redcarpet'
+
+# Directed Acyclic Graph
+gem 'acts-as-dag'
+
+
+# Development
+group :development do
+  gem "better_errors"
+  gem "meta_request"
+  gem "binding_of_caller"
+  gem 'schema_to_scaffold'
+end
+
+
+# Testing
+group :development, :test do
+  gem 'rspec-rails', '3.0.2'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+end
+
+gem 'simplecov', :require => false, :group => :test
