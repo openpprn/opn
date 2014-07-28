@@ -48,3 +48,6 @@ config/initializers/secret_token.rb
 /config/initializers/db.rb
 /config/environments/production.rb
 /config/secrets.yml
+
+# Ignore OS generated files
+.DS_Store
