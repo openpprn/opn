@@ -1,14 +1,39 @@
 class QuestionFlow < ActiveRecord::Base
+  # Concerns
   include Localizable
   include TSort
 
   localize :name
   localize :description
 
+  # Associations
   belongs_to :first_question, class_name: "Question"
+  has_many :answer_sessions
 
 
+  # Class Methods
+  def self.complete(user)
+    joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
+      as = qf.answer_sessions.order(updated_at: :desc).first
 
+      as.present? and as.completed?
+    end
+  end
+
+  def self.unstarted(user)
+    includes(:answer_sessions).where(status: "show").select{ |qf| qf.answer_sessions.where(user_id: user.id).empty? }
+  end
+
+  def self.incomplete(user)
+    joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
+      as = qf.answer_sessions.order(updated_at: :desc).first
+
+      as.present? and !as.completed?
+    end
+  end
+
+
+  # Instance Methods
   def tsort_each_node(&block)
     all_questions.each(&block)
   end
@@ -39,6 +64,14 @@ class QuestionFlow < ActiveRecord::Base
     end
 
     self[:longest_path]
+  end
+
+  def most_recent_answer_session(user)
+    answer_sessions.where(user_id: user.id).order(updated_at: :desc).first
+  end
+
+  def completion_stats(user)
+    most_recent_answer_session(user).calculate_status_stats
   end
 
 

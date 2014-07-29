@@ -25,12 +25,22 @@ Rails.application.routes.draw do
   get 'research_question' => 'pages#research_question'
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
-  get 'survey' => 'pages#survey'
-  get 'surveys' => 'pages#surveys'
   get 'terms' => 'pages#terms'
 
+  # Surveys
+  get 'surveys' => 'surveys#index'
+  get 'surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
+  get 'surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
+  match 'surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
+  get 'surveys/report/:answer_session_id', to: 'surveys#show_report', as: :show_report
 
-devise_for :user
+  # Voting on Questions
+  resources :questions
+  match 'vote', to: 'votes#vote', via: :post, as: :vote
+
+
+
+  devise_for :user
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]
 #   as :user do

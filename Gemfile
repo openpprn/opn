@@ -46,6 +46,8 @@ gem 'redcarpet'
 # Directed Acyclic Graph
 gem 'acts-as-dag'
 
+# Authorization
+gem 'rolify'
 
 # Development
 group :development do

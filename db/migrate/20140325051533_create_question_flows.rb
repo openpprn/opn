@@ -3,6 +3,7 @@ class CreateQuestionFlows < ActiveRecord::Migration
     create_table :question_flows do |t|
       t.string :name_en
       t.string :name_es
+      t.string :report_name
       t.text :description_en
       t.text :description_es
       t.integer :first_question_id
