@@ -3,7 +3,6 @@ module Scaffoldable
 
   included do
     MODEL_CLASS = self.model_class
-    before_filter :authenticate_user!
     before_action :set_object, only: [:show, :edit, :update, :destroy]
   end
 

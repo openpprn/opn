@@ -2,23 +2,22 @@
 
 .row
   .col-md-12
-
     %ul.nav.nav-tabs
-      %li.active
+      %li
         %a{href: "#notifs", "data-toggle" => "tab"} Notifications
       %li
         %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
       %li
         %a{href: "#research", "data-toggle" => "tab"} Research Topics
-      %li
-        %a{href: "#users", "data-toggle" => "tab"} Team / Users
+      %li.active
+        %a{href: "#users", "data-toggle" => "tab"} Users
 
 
     %br/
 
     .nav.tab-content
 
-      .tab-pane#notifs.active
+      .tab-pane#notifs
         .row
           .col-md-3
             = render :partial => "shared/notifications", :locals => { :editable => true }
@@ -26,15 +25,17 @@
       .tab-pane#blog
         .row
           .col-md-9
-            = render :partial => "blog_posts", :locals => { :editable => true }
+            = render :partial => "admin/partials/blog_posts", :locals => { :editable => true }
 
       .tab-pane#research
         .row
           .col-md-9
-            = render :partial => "research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
+            = render :partial => "admin/partials/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
 
-      .tab-pane#users
+      .tab-pane#users.active
+        = render partial: "users/admin_panel", locals: { users: @users }
+
+      .tab-pane#surveys
         .row
           .col-md-3
-            = render :partial => "team", :locals => { :editable => false }
-
+            = render partial: "surveys/partials/admin_panel"

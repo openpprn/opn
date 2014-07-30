@@ -31,6 +31,9 @@ GEM
       activemodel
       activerecord (~> 4.0, >= 4.0.0)
     arel (5.0.1.20140414130214)
+    authority (3.0.0)
+      activesupport (>= 3.0.0)
+      rake (>= 0.8.7)
     autoprefixer-rails (2.2.0.20140727)
       execjs
     bcrypt (3.1.7)
@@ -95,7 +98,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_request (0.3.3)
+    meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
@@ -209,6 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag
+  authority
   autoprefixer-rails
   better_errors
   binding_of_caller

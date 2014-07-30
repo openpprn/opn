@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # Front-end Prototype Pages
   get 'about' => 'pages#about'
   get 'account' => 'pages#account'
-  get 'admin' => 'pages#admin'
   get 'blog' => 'pages#blog'
   get 'connections' => 'pages#connections'
   get 'consent' => 'pages#consent'
@@ -37,6 +36,9 @@ Rails.application.routes.draw do
   # Voting on Questions
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
+
+  # Admin
+  get 'admin' => 'admin#dashboard'
 
 
 

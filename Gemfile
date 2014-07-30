@@ -48,6 +48,7 @@ gem 'acts-as-dag'
 
 # Authorization
 gem 'rolify'
+gem 'authority'
 
 # Development
 group :development do
