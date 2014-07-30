@@ -16,19 +16,19 @@
             .col-md-6
               Roles
             .col-md-4.col-md-offset-2
-              %select.form-control.pull-right.input-sm
+              %select#role-id.form-control.pull-right.input-sm{data: {add_target: add_role_path, remove_target: remove_role_path, authenticity_token: form_authenticity_token}}
                 - Role.all.each do |role|
                   %option.input-sm{value: role.id}= role.name
     %tbody
       - users.each do |user|
-        %tr
+        %tr.user{data: {user_id: user.id}}
           %td= user.email
           %td
             - user.roles.each do |role|
               %span.label.label-success
                 = role.name
-                %a
+                %a.remove-role{data: {role_id: role.id}}
                   %span.glyphicon.glyphicon-remove
-            %button.btn.btn-primary.btn-xs.pull-right{type: "button"}
+            %button.add-role.btn.btn-primary.btn-xs.pull-right{type: "button"}
               %span.glyphicon.glyphicon-plus
               Add

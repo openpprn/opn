@@ -78,5 +78,7 @@ unless Rails.env == "test"
     nil
   else
     user = User.create(email: "piotr.mankowski@gmail.com", password: "12345678")
+    user.add_role :admin
+    user.add_role :owner
   end
 end

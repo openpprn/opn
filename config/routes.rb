@@ -39,8 +39,8 @@ Rails.application.routes.draw do
 
   # Admin
   get 'admin' => 'admin#dashboard'
-
-
+  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
+  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
 
   devise_for :user
 # # Authentication

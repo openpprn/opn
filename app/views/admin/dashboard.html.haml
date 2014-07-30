@@ -1,41 +1,42 @@
 - title("Admin")
 
-.row
-  .col-md-12
-    %ul.nav.nav-tabs
-      %li
-        %a{href: "#notifs", "data-toggle" => "tab"} Notifications
-      %li
-        %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
-      %li
-        %a{href: "#research", "data-toggle" => "tab"} Research Topics
-      %li.active
-        %a{href: "#users", "data-toggle" => "tab"} Users
+#admin-dashboard
+  .row
+    .col-md-12
+      %ul.nav.nav-tabs
+        %li
+          %a{href: "#notifs", "data-toggle" => "tab"} Notifications
+        %li
+          %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
+        %li
+          %a{href: "#research", "data-toggle" => "tab"} Research Topics
+        %li.active
+          %a{href: "#users", "data-toggle" => "tab"} Users
 
 
-    %br/
+      %br/
 
-    .nav.tab-content
+      .nav.tab-content
 
-      .tab-pane#notifs
-        .row
-          .col-md-3
-            = render :partial => "shared/notifications", :locals => { :editable => true }
+        .tab-pane#notifs
+          .row
+            .col-md-3
+              = render :partial => "shared/notifications", :locals => { :editable => true }
 
-      .tab-pane#blog
-        .row
-          .col-md-9
-            = render :partial => "admin/partials/blog_posts", :locals => { :editable => true }
+        .tab-pane#blog
+          .row
+            .col-md-9
+              = render :partial => "admin/partials/blog_posts", :locals => { :editable => true }
 
-      .tab-pane#research
-        .row
-          .col-md-9
-            = render :partial => "admin/partials/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
+        .tab-pane#research
+          .row
+            .col-md-9
+              = render :partial => "shared/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
 
-      .tab-pane#users.active
-        = render partial: "users/admin_panel", locals: { users: @users }
+        .tab-pane#users.active
+          = render partial: "admin/partials/users", locals: { users: @users }
 
-      .tab-pane#surveys
-        .row
-          .col-md-3
-            = render partial: "surveys/partials/admin_panel"
+        .tab-pane#surveys
+          .row
+            .col-md-3
+              = render partial: "admin/partials/surveys"

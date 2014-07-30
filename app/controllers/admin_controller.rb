@@ -3,10 +3,30 @@ class AdminController < ApplicationController
 
 
   def dashboard
-    @users = User.all
+    set_users
   end
 
   def add_role_to_user
+    User.find(params[:user_id]).add_role Role.find(params[:role_id]).name
 
+    set_users
+
+    render "user_role"
   end
+
+  def remove_role_from_user
+    User.find(params[:user_id]).remove_role Role.find(params[:role_id]).name
+
+    set_users
+
+    render "user_role"
+  end
+
+
+  def set_users
+    @users = User.all
+  end
+
+
+
 end
