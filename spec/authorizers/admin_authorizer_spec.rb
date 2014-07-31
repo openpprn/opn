@@ -2,19 +2,40 @@
 describe AdminAuthorizer do
 
   before :each do
-    @user  = FactoryGirl.build(:user)
-    @admin = FactoryGirl.build(:admin)
+    @user  = build(:user)
+    @admin = build(:admin)
+    @owner = build(:owner)
   end
 
-  describe "class" do
+  describe "User" do
+    it "lets owners update roles" do
+      expect(AdminAuthorizer).to be_rolifiable_by(@owner)
+    end
+
+    it "doesn't let admins update roles" do
+      expect(AdminAuthorizer).not_to be_rolifiable_by(@admin)
+    end
+
+    it "doesn't let users update roles" do
+      expect(AdminAuthorizer).not_to be_rolifiable_by(@user)
+    end
+  end
+
+  describe "Question, QuestionFlow, QuestionEdge" do
+    it "lets admins create" do
+
+    end
+
     it "lets admins update" do
-      expect(AdminAuthorizer).to be_updatable_by(@admin)
+
     end
 
-    it "doesn't let users update" do
-      expect(AdminAuthorizer).not_to be_updatable_by(@user)
+    it "lets admins destroy" do
+
     end
+
   end
+  
 
   describe "instances" do
 
