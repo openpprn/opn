@@ -1,4 +1,4 @@
-describe 'POST #create' do
+describe 'POST #update_role' do
   context 'when password is invalid' do
     it 'renders the page with error' do
       user = create(:user)

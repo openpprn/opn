@@ -12,6 +12,8 @@ class Question < ActiveRecord::Base
   include Localizable
   localize :text
 
+  include Authority::Abilities
+
   # DAG
   has_dag_links :link_class_name => 'QuestionEdge'
 
