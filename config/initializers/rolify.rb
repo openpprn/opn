@@ -6,3 +6,4 @@ Rolify.configure do |config|
   # Enable this feature _after_ running rake db:migrate as it relies on the roles table
   # config.use_dynamic_shortcuts
 end
+

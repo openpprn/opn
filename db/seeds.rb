@@ -75,7 +75,8 @@ unless Rails.env == "test"
   QuestionFlow.all.each {|qf| qf.reset_paths }
 
   if (user = User.find_by_email("piotr.mankowski@gmail.com"))
-    nil
+    user.add_role :admin
+    user.add_role :owner
   else
     user = User.create(email: "piotr.mankowski@gmail.com", password: "12345678")
     user.add_role :admin

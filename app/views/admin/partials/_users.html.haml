@@ -1,8 +1,3 @@
-%form.form-inline{role: 'form'}
-  .form-group.has-feedback
-    %label.control-label.sr-only Limit by user email
-    %input.form-control{type: 'search', placeholder: 'User Email'}/
-    %i.glyphicon.glyphicon-search.form-control-feedback
 
 .table-responsive
   %table.table.table-condensed
@@ -10,15 +5,25 @@
       %tr
         %th
           .row
-            .col-md-12 User
+            .col-md-6
+              Users
+            .col-md-6
+              %form.form-inline{ role: 'form', action: admin_path, remote: true }
+                %label.control-label.sr-only Limit by user email
+                .input-group
+                  %input.form-control.input-sm{type: 'search', placeholder: 'User Email', name: 'search'}/
+                  .input-group-btn
+                    .btn.btn-default.btn-sm{type: "button"}
+                      %i.glyphicon.glyphicon-search
+
         %th
           .row
             .col-md-6
               Roles
             .col-md-4.col-md-offset-2
-              %select#role-id.form-control.pull-right.input-sm{data: {add_target: add_role_path, remove_target: remove_role_path, authenticity_token: form_authenticity_token}}
-                - Role.all.each do |role|
-                  %option.input-sm{value: role.id}= role.name
+              %select#role.form-control.pull-right.input-sm{data: {add_target: add_role_path, remove_target: remove_role_path, authenticity_token: form_authenticity_token}}
+                %option.input-sm{value: "admin"} admin
+                %option.input-sm{value: "owner"} owner
     %tbody
       - users.each do |user|
         %tr.user{data: {user_id: user.id}}
@@ -27,7 +32,7 @@
             - user.roles.each do |role|
               %span.label.label-success
                 = role.name
-                %a.remove-role{data: {role_id: role.id}}
+                %a.remove-role{data: {role: role.name}}
                   %span.glyphicon.glyphicon-remove
             %button.add-role.btn.btn-primary.btn-xs.pull-right{type: "button"}
               %span.glyphicon.glyphicon-plus

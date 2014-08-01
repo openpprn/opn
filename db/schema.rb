@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140729174525) do
   create_table "question_flows", force: true do |t|
     t.string   "name_en"
     t.string   "name_es"
+    t.string   "report_name"
     t.text     "description_en"
     t.text     "description_es"
     t.integer  "first_question_id"

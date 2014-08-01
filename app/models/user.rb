@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
 
+
+  scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
 end
