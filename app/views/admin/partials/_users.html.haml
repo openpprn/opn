@@ -12,9 +12,9 @@
                 %input{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
                 %label.control-label.sr-only Limit by user email
                 .input-group
-                  %input.form-control.input-sm{type: 'search', placeholder: 'User Email', name: 'search'}/
+                  %input.form-control.input-sm{type: 'search', placeholder: 'User Email', name: 'search', value: params[:search]}/
                   .input-group-btn
-                    .btn.btn-default.btn-sm{type: "button"}
+                    %button.btn.btn-default.btn-sm{type: "submit", value: ""}
                       %i.glyphicon.glyphicon-search
 
         %th

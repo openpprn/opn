@@ -27,6 +27,5 @@ $(document).on "click", "#admin-dashboard .remove-role", (event) ->
 
 
 $(document).on "submit", "#admin-dashboard #user-search", (event) ->
-  alert("HIII")
   event.preventDefault()
   $.post($(this).attr("action")+'.js', $(this).serialize())
