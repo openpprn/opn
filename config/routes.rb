@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # Front-end Prototype Pages
   get 'about' => 'pages#about'
   get 'account' => 'pages#account'
-  get 'admin' => 'pages#admin'
   get 'blog' => 'pages#blog'
   get 'connections' => 'pages#connections'
   get 'consent' => 'pages#consent'
@@ -25,12 +24,26 @@ Rails.application.routes.draw do
   get 'research_question' => 'pages#research_question'
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
-  get 'survey' => 'pages#survey'
-  get 'surveys' => 'pages#surveys'
   get 'terms' => 'pages#terms'
 
+  # Surveys
+  get 'surveys' => 'surveys#index'
+  get 'surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
+  get 'surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
+  match 'surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
+  get 'surveys/report/:answer_session_id', to: 'surveys#show_report', as: :show_report
 
-devise_for :user
+  # Voting on Questions
+  resources :questions
+  match 'vote', to: 'votes#vote', via: :post, as: :vote
+
+  # Admin
+  match 'admin(/:tab)' => 'admin#dashboard', as: :admin, via: [:get, :post]
+
+  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
+  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
+
+  devise_for :user
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]
 #   as :user do

@@ -1,0 +1,11 @@
+
+
+<p><%= stats[:completed_questions] %> / <%= stats[:total_questions] %> possible questions done</p>
+<div class="progress">
+
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%= stats[:percent_completed] %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= stats[:percent_completed] %>%">
+    <span class="sr-only"><%= stats[:percent_completed] %>% Complete</span>
+  </div>
+
+</div>
+
