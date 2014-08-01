@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   include Authority::UserAbilities
   include Authority::Abilities
 
+  self.authorizer_name = "UserAuthorizer"
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

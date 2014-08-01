@@ -13,6 +13,7 @@ class Question < ActiveRecord::Base
   localize :text
 
   include Authority::Abilities
+  self.authorizer_name = "AdminAuthorizer"
 
   # DAG
   has_dag_links :link_class_name => 'QuestionEdge'

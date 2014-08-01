@@ -8,7 +8,8 @@
             .col-md-6
               Users
             .col-md-6
-              %form.form-inline{ role: 'form', action: admin_path, remote: true }
+              %form#user-search.form-inline{ role: 'form', action: admin_path }
+                %input{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
                 %label.control-label.sr-only Limit by user email
                 .input-group
                   %input.form-control.input-sm{type: 'search', placeholder: 'User Email', name: 'search'}/

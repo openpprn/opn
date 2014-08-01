@@ -1,10 +1,22 @@
 class AdminAuthorizer < ApplicationAuthorizer
-  def self.updatable_by?(user)
-    user.has_role? :owner
+  def self.readable_by?
+    user_signed_in?
   end
 
-  def updatable_by?(user)
-    resource == user
+  def self.createable_by?
+    user.has_role? :admin
+
   end
+
+  def self.updateable_by?
+    user.has_role? :admin
+
+  end
+
+  def self.deletable_by?
+    user.has_role? :admin
+
+  end
+
 
 end

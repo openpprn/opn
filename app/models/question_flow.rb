@@ -6,6 +6,10 @@ class QuestionFlow < ActiveRecord::Base
   localize :name
   localize :description
 
+  include Authority::Abilities
+  self.authorizer_name = "AdminAuthorizer"
+
+
   # Associations
   belongs_to :first_question, class_name: "Question"
   has_many :answer_sessions

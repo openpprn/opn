@@ -61,14 +61,13 @@
                   My Settings
                   %b.caret
                 %ul.dropdown-menu
-
-
                   %li
                     %a{href: "/account"}
                       %i.fa.fa-user &nbsp; Account Settings
-                  %li
-                    %a{href: "/admin", :title => "Admin Panel"}
-                      %i.fa.fa-wrench &nbsp; Admin Panel
+                  - if current_user.can?(:view_admin_dashboard)
+                    %li
+                      %a{href: "/admin", :title => "Admin Panel"}
+                        %i.fa.fa-wrench &nbsp; Admin Panel
                   %li
                     = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, :method => :delete
 
