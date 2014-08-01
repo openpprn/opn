@@ -1,26 +1,30 @@
 describe "AdminController" do
 
-  describe 'POST #update_role' do
-    context 'when password is invalid' do
-      it 'renders the page with error' do
-        user = create(:user)
+  describe 'POST #add_role_to_user' do
+    context 'when current_user is an owner' do
+      it 'adds role' do
+        user = create(:owner)
+        sign_in_user(user)
 
-        post :create, session: { email: user.email, password: 'invalid' }
+        post add_role_path
 
-        expect(response).to render_template(:new)
-        expect(flash[:notice]).to match(/^Email and password do not match/)
+        expect(response).to render_template(:users)
       end
     end
 
-    context 'when password is valid' do
-      it 'sets the user in the session and redirects them to their dashboard' do
-        user = create(:user)
+    context 'when user is not an owner' do
+      it 'raises a SecurityViolation' do
+        user = create(:admin)
+        sign_in_user(user)
 
-        post :create, session: { email: user.email, password: user.password }
+        post add_role_path
 
-        expect(response).to redirect_to '/dashboard'
-        expect(controller.current_user).to eq user
+        expect(response).to "be 403 forbidden"
       end
     end
+  end
+
+  describe 'POST #remove_role_from_user' do
+    
   end
 end
