@@ -1,11 +1,15 @@
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title Questions
-  .panel-body
-    = render partial: "questions/form"
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Questions
+      .panel-body
+        = render partial: "questions/list"
+        = link_to "+ Add New Question"
 
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title Surveys
-  .panel-body
-    = render partial: "surveys/partials/form"
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Surveys
+      .panel-body
+        = render partial: "surveys/partials/list"
+        = link_to "+ Create New Survey"
