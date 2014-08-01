@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
   # Admin
-  get 'admin' => 'admin#dashboard'
+  get 'admin(/:tab)' => 'admin#dashboard'
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
 

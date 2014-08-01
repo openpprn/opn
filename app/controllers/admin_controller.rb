@@ -4,6 +4,8 @@ class AdminController < ApplicationController
 
   def dashboard
     set_users
+    @tab = params[:tab] || 'users'
+
   end
 
   def add_role_to_user
