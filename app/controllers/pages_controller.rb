@@ -18,6 +18,21 @@ class PagesController < ApplicationController
     @active_nav_link = :blog
   end
 
+  def research
+    @page_is_for_research = true;
+  end
+
+  def surveys
+    @page_is_for_research = true;
+  end
+
+  def data
+    @page_is_for_research = true;
+  end
+
+  def connections
+    @page_is_for_research = true;
+  end
 
 
   #Show Requirement Flags?

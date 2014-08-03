@@ -1,5 +1,6 @@
 - title("Research")
-
+- connection_sources = ["Fitbit", "Moves", "Nike Fuelband", "MapMyFitness", "Jawbone Up", "BodyMedia", "RunKeeper", "Strava Running", "Fitbit Aria", "Withings"]
+- last_synced_dates = ["Today", "1 Week Ago", "Last Month"]
 
 .row
   .col-md-3
@@ -16,22 +17,12 @@
           %td Source
           %td Last Data Received
         %tbody
-          %tr
-            %td.col-md-1
-              %i.fa.fa-slack{:style=>"font-size: 36px;"}
-            %td FitBit
-            %td.small Today
-          %tr
-            %td
-              %i.fa.fa-slack{:style=>"font-size: 36px;"}
-            %td MyFitnessPal
-            %td.small 1 Week Ago
-          %tr
-            %td
-              %i.fa.fa-slack{:style=>"font-size: 36px;"}
-
-            %td Withings
-            %td.small Last Month
+          - connection_sources.each do |connection_source|
+            %tr
+              %td.col-md-1
+                %i.fa.fa-slack{:style=>"font-size: 36px;"}
+              %td= connection_source
+              %td.small= last_synced_dates.shuffle.first
       .panel-footer.text-center
         %a.btn.btn-sm.btn-primary{:href => "#"} Connect More Data Sources
 

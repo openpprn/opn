@@ -1,4 +1,5 @@
 - title("Research")
+- connection_sources = ["Fitbit", "Moves", "Nike Fuelband", "MapMyFitness", "Jawbone Up", "BodyMedia", "RunKeeper", "Strava Running", "Fitbit Aria", "Withings"]
 
 .row
 
@@ -29,19 +30,19 @@
             %tr
               %td March 2
               %td 10,000 Steps
-              %td Fitbit
+              %td= connection_sources.shuffle.first
             %tr
               %td March 1
               %td 5 miles run
-              %td MyFitnessPal
+              %td= connection_sources.shuffle.first
             %tr
               %td Feb 28
               %td Weight: 195 pounds
-              %td Withings
+              %td= connection_sources.shuffle.first
             %tr
               %td Feb 12
               %td Overall Health: 100
-              %td Crohnology
+              %td= connection_sources.shuffle.first
 
 
 
