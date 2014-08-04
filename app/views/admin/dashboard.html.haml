@@ -1,0 +1,42 @@
+- title("Admin")
+
+#admin-dashboard
+  .row
+    .col-md-12
+      %ul.nav.nav-tabs
+        %li{class: ('active' if @tab == 'notifications') }
+          %a{href: "#notifs", "data-toggle" => "tab"} Notifications
+        %li{class: ('active' if @tab == 'blog-posts') }
+          %a{href: "#blog", "data-toggle" => "tab"} Blog Posts
+        %li{class: ('active' if @tab == 'research-topics') }
+          %a{href: "#research", "data-toggle" => "tab"} Research Topics
+        %li{class: ('active' if @tab == 'surveys') }
+          %a{href: "#surveys", "data-toggle" => "tab"} Surveys
+        %li{class: ('active' if @tab == 'users') }
+          %a{href: "#users", "data-toggle" => "tab"} Manage Users
+
+
+      %br/
+
+      .nav.tab-content
+
+        .tab-pane#notifs{class: ('active' if @tab == 'notifications') }
+          .row
+            .col-md-3
+              = render :partial => "shared/notifications", :locals => { :editable => true }
+
+        .tab-pane#blog{class: ('active' if @tab == 'blog-posts') }
+          .row
+            .col-md-9
+              = render :partial => "admin/partials/blog_posts", :locals => { :editable => true }
+
+        .tab-pane#research{class: ('active' if @tab == 'research-topics') }
+          .row
+            .col-md-9
+              = render :partial => "shared/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
+
+        .tab-pane#users{class: ('active' if @tab == 'users') }
+          = render partial: "admin/partials/users", locals: { users: @users }
+
+        .tab-pane#surveys{class: ('active' if @tab == 'surveys') }
+          = render partial: "admin/partials/surveys"

@@ -1,0 +1,26 @@
+- id: 1
+  name_en: inches
+- id: 2
+  name_en: pounds
+- id: 3
+  name_en: years old
+- id: 4
+  name_en: ovaries
+- id: 5
+  name_en: periods
+- id: 6
+  name_en: cigarettes per day
+- id: 7
+  name_en: hour(s)
+- id: 8
+  name_en: day(s)
+- id: 9
+  name_en: cm H20
+- id: 10
+  name_en: year
+- id: 11
+  name_en: months
+- id: 12
+  name_en: minutes
+- id: 13
+  name_en: naps

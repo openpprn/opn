@@ -1,0 +1,625 @@
+- id: 1
+  text_value_en: High chance of dozing
+- id: 2
+  text_value_en: Moderate chance of dozing
+- id: 3
+  text_value_en: Slight chance of dozing
+- id: 4
+  text_value_en: Would never doze
+- id: 5
+  text_value_en: Male
+- id: 6
+  text_value_en: Female
+- id: 7
+  text_value_en: U.S.A
+- id: 8
+  text_value_en: Mexico
+- id: 9
+  text_value_en: China
+- id: 10
+  text_value_en: India
+- id: 11
+  text_value_en: Philippines
+- id: 12
+  text_value_en: Other country
+- id: 13
+  text_value_en: Black or African American
+- id: 14
+  text_value_en: White
+- id: 15
+  text_value_en: Asian (including South Asian and Asian Indian)
+- id: 16
+  text_value_en: Native Hawaiian or Pacific Islander
+- id: 17
+  text_value_en: American Indian or Alaska Native
+- id: 18
+  text_value_en: Some other race
+- id: 19
+  text_value_en: Don't know
+- id: 20
+  text_value_en: |
+    No
+- id: 21
+  text_value_en: Yes, Mexican, Mexican American or Chicano
+- id: 22
+  text_value_en: Yes, Puerto Rico
+- id: 23
+  text_value_en: Yes, Cuban
+- id: 24
+  text_value_en: Yes, other or Mixed Hispanic, Latino or Spanish orgin
+- id: 25
+  text_value_en: No formal schooling
+- id: 26
+  text_value_en: Some school, but did not graduate high school
+- id: 27
+  text_value_en: High school diploma or equivalency (e.g., GED)
+- id: 28
+  text_value_en: Associate degree (e.g., junior college)
+- id: 29
+  text_value_en: Some college, but did not graduate college
+- id: 30
+  text_value_en: Bachelor's degree
+- id: 31
+  text_value_en: Master's degree
+- id: 32
+  text_value_en: Doctorate (PhD)
+- id: 33
+  text_value_en: Professional doctorate (MD, JD, DDS, etc.)
+- id: 34
+  text_value_en: Other
+- id: 35
+  text_value_en: Prefer not to state
+- id: 36
+  text_value_en: |
+    Yes
+- id: 37
+  text_value_en: Working full time
+- id: 38
+  text_value_en: Working part time
+- id: 39
+  text_value_en: Unemployed, laid off, or looking for work
+- id: 40
+  text_value_en: In school (full- or part-time student)
+- id: 41
+  text_value_en: Stay-at-home parent or keeping household
+- id: 42
+  text_value_en: Retired
+- id: 43
+  text_value_en: Disabled
+- id: 44
+  text_value_en: Very hard
+- id: 45
+  text_value_en: Hard
+- id: 46
+  text_value_en: Somewhat hard
+- id: 47
+  text_value_en: Not very hard
+- id: 48
+  text_value_en: Frequently
+- id: 49
+  text_value_en: Occasionally
+- id: 50
+  text_value_en: Hardly ever
+- id: 51
+  text_value_en: Never
+- id: 52
+  text_value_en: Less than $10,000
+- id: 53
+  text_value_en: $10,000 to under $20,000
+- id: 54
+  text_value_en: $20,000 to under $30,000
+- id: 55
+  text_value_en: $30,000 to under 40,000
+- id: 56
+  text_value_en: $40,000 to under $50,000
+- id: 57
+  text_value_en: $50,000 to under $75,000
+- id: 58
+  text_value_en: $75,000 to under $100,000
+- id: 59
+  text_value_en: $100,000 to under $150,000
+- id: 60
+  text_value_en: More than $150,000
+- id: 61
+  text_value_en: Married
+- id: 62
+  text_value_en: Living with domestic partner (or other marriage-like relationship)
+- id: 63
+  text_value_en: Widowed
+- id: 64
+  text_value_en: Divorced
+- id: 65
+  text_value_en: Separated
+- id: 66
+  text_value_en: Never married
+- id: 67
+  text_value_en: Spouse or partner
+- id: 68
+  text_value_en: Mother
+- id: 69
+  text_value_en: Father
+- id: 70
+  text_value_en: Son
+- id: 71
+  text_value_en: Daughter
+- id: 72
+  text_value_en: Other relative
+- id: 73
+  text_value_en: Not related
+- id: 74
+  text_value_en: |
+    1
+- id: 75
+  text_value_en: |
+    2
+- id: 76
+  text_value_en: |
+    3
+- id: 77
+  text_value_en: |
+    4
+- id: 78
+  text_value_en: A.W.A.K.E group
+- id: 79
+  text_value_en: CPAP company
+- id: 80
+  text_value_en: My doctor
+- id: 81
+  text_value_en: Clinic or hospital
+- id: 82
+  text_value_en: CPAP provider
+- id: 83
+  text_value_en: Poster or other advertisement
+- id: 84
+  text_value_en: Facebook
+- id: 85
+  text_value_en: LinkedIn
+- id: 86
+  text_value_en: Google+
+- id: 87
+  text_value_en: Family member
+- id: 88
+  text_value_en: Friend
+- id: 89
+  text_value_en: Internet search
+- id: 90
+  text_value_en: Other patient-centered network
+- id: 91
+  text_value_en: Partners Healthcare
+- id: 92
+  text_value_en: Group Health
+- id: 93
+  text_value_en: UPMC
+- id: 94
+  text_value_en: Wake Forest
+- id: 95
+  text_value_en: Columbus
+- id: 96
+  text_value_en: Morehouse
+- id: 97
+  text_value_en: Twitter
+- id: 98
+  text_value_en: None of the above
+- id: 99
+  text_value_en: N/A
+- id: 100
+  text_value_en: Excellent
+- id: 101
+  text_value_en: Very good
+- id: 102
+  text_value_en: Good
+- id: 103
+  text_value_en: Fair
+- id: 104
+  text_value_en: Poor
+- id: 105
+  text_value_en: Much better now than one year ago
+- id: 106
+  text_value_en: Somewhat better now than one year ago
+- id: 107
+  text_value_en: About the same as one year ago
+- id: 108
+  text_value_en: Somewhat worse now than one year ago
+- id: 109
+  text_value_en: Much worse than one year ago
+- id: 110
+  text_value_en: Yes, limited a lot
+- id: 111
+  text_value_en: Yes, limited a little
+- id: 112
+  text_value_en: No, not limited at all
+- id: 113
+  text_value_en: Extremely
+- id: 114
+  text_value_en: Quite a bit
+- id: 115
+  text_value_en: Moderately
+- id: 116
+  text_value_en: A little bit
+- id: 117
+  text_value_en: Not at all
+- id: 118
+  text_value_en: Very severe
+- id: 119
+  text_value_en: Severe
+- id: 120
+  text_value_en: Moderate
+- id: 121
+  text_value_en: Mild
+- id: 122
+  text_value_en: Very mild
+- id: 123
+  text_value_en: None
+- id: 124
+  text_value_en: All of the time
+- id: 125
+  text_value_en: Most of the time
+- id: 126
+  text_value_en: A good bit of the time
+- id: 127
+  text_value_en: Some of the time
+- id: 128
+  text_value_en: A little of the time
+- id: 129
+  text_value_en: None of the time
+- id: 130
+  text_value_en: Nearly every day
+- id: 131
+  text_value_en: More than half the days
+- id: 132
+  text_value_en: Several days
+- id: 133
+  text_value_en: Extremely difficult
+- id: 134
+  text_value_en: Very difficult
+- id: 135
+  text_value_en: Somewhat difficult
+- id: 136
+  text_value_en: Not difficult at all
+- id: 137
+  text_value_en: Sleeping pills
+- id: 138
+  text_value_en: Anti-depressants ot anti-anxiety medication
+- id: 139
+  text_value_en: Behavioral therapy
+- id: 140
+  text_value_en: Estrogen alone (like Premarin or Estratab)
+- id: 141
+  text_value_en: Estrogen with progestin (like Provera)
+- id: 142
+  text_value_en: Other types of hormone replacement therapy
+- id: 143
+  text_value_en: More than three cups a day
+- id: 144
+  text_value_en: More than one cup, less than three cups a day
+- id: 145
+  text_value_en: Approximately one cup (8oz.) a day
+- id: 146
+  text_value_en: Less than one cup a day
+- id: 147
+  text_value_en: 0 days
+- id: 148
+  text_value_en: 1 day
+- id: 149
+  text_value_en: 2 days
+- id: 150
+  text_value_en: 3 days
+- id: 151
+  text_value_en: 4 days
+- id: 152
+  text_value_en: 5 days
+- id: 153
+  text_value_en: 6 days
+- id: 154
+  text_value_en: 7 days
+- id: 155
+  text_value_en: 0
+- id: 156
+  text_value_en: 1-2
+- id: 157
+  text_value_en: 3-5
+- id: 158
+  text_value_en: 6-9
+- id: 159
+  text_value_en: 10-14
+- id: 160
+  text_value_en: 15 or more
+- id: 161
+  text_value_en: Always
+- id: 162
+  text_value_en: Mostly
+- id: 163
+  text_value_en: Sometimes
+- id: 164
+  text_value_en: Rarely
+- id: 165
+  text_value_en: Very well
+- id: 166
+  text_value_en: Fairly well
+- id: 167
+  text_value_en: Not at all well
+- id: 168
+  text_value_en: Very satisified
+- id: 169
+  text_value_en: Moderately satisified
+- id: 170
+  text_value_en: Neutral
+- id: 171
+  text_value_en: Moderately dissatisifed
+- id: 172
+  text_value_en: Very dissatisfied
+- id: 173
+  text_value_en: Very important
+- id: 174
+  text_value_en: Somewhat important
+- id: 175
+  text_value_en: Not at all important
+- id: 176
+  text_value_en: Specialist
+- id: 177
+  text_value_en: Nurse
+- id: 178
+  text_value_en: Home and community care
+- id: 179
+  text_value_en: Social worker
+- id: 180
+  text_value_en: No caregiver
+- id: 181
+  text_value_en: Parent
+- id: 182
+  text_value_en: Neighbor
+- id: 183
+  text_value_en: No vigorous physical activities
+- id: 184
+  text_value_en: No moderate physical activities
+- id: 185
+  text_value_en: No walking
+- id: 186
+  text_value_en: Very high risk
+- id: 187
+  text_value_en: High risk
+- id: 188
+  text_value_en: Low risk
+- id: 189
+  text_value_en: Very low risk
+- id: 190
+  text_value_en: Primary care doctor
+- id: 191
+  text_value_en: Cardiologist
+- id: 192
+  text_value_en: Pulmonologist
+- id: 193
+  text_value_en: Diabetes specialist
+- id: 194
+  text_value_en: Sleep specialist
+- id: 195
+  text_value_en: 1 (very dissatisfied)
+- id: 196
+  text_value_en: 5 (very satisified)
+- id: 197
+  text_value_en: Several times a year
+- id: 198
+  text_value_en: Once a year
+- id: 199
+  text_value_en: Once every few years
+- id: 200
+  text_value_en: Less than three months ago
+- id: 201
+  text_value_en: Three months to one year ago
+- id: 202
+  text_value_en: One to three years ago
+- id: 203
+  text_value_en: More than three years ago
+- id: 204
+  text_value_en: HMO
+- id: 205
+  text_value_en: PPO
+- id: 206
+  text_value_en: POS
+- id: 207
+  text_value_en: Medicare
+- id: 208
+  text_value_en: VA
+- id: 209
+  text_value_en: No insurance
+- id: 210
+  text_value_en: 1 (Much better)
+- id: 211
+  text_value_en: 3 (No change)
+- id: 212
+  text_value_en: 5 (Much worse)
+- id: 213
+  text_value_en: 0 (No impact)
+- id: 214
+  text_value_en: 5
+- id: 215
+  text_value_en: 6
+- id: 216
+  text_value_en: 7
+- id: 217
+  text_value_en: 8
+- id: 218
+  text_value_en: 9
+- id: 219
+  text_value_en: 10 (Extremely large impact)
+- id: 220
+  text_value_en: A sleep study at my home (portable sleep study)
+- id: 221
+  text_value_en: A sleep study in a sleep lab/center
+- id: 222
+  text_value_en: 0 (very dissatisfied)
+- id: 223
+  text_value_en: 7 (very satisified)
+- id: 224
+  text_value_en: AM
+- id: 225
+  text_value_en: PM
+- id: 226
+  text_value_en: 5:00-6:30 am
+- id: 227
+  text_value_en: 6:30-7:45 am
+- id: 228
+  text_value_en: 7:45-9:45 am
+- id: 229
+  text_value_en: 9:45-11:00 am
+- id: 230
+  text_value_en: After 11:00 am
+- id: 231
+  text_value_en: Very tired
+- id: 232
+  text_value_en: Fairly tired
+- id: 233
+  text_value_en: Fairly refreshed
+- id: 234
+  text_value_en: Very refreshed
+- id: 235
+  text_value_en: 5:00-8:00 am
+- id: 236
+  text_value_en: 8:00-10:00 am
+- id: 237
+  text_value_en: 10:00-4:45 pm
+- id: 238
+  text_value_en: 4:45-9:45 pm
+- id: 239
+  text_value_en: After 9:45 pm
+- id: 240
+  text_value_en: Definitely a "morning" type
+- id: 241
+  text_value_en: Rather more a "morning" than an "evening" type
+- id: 242
+  text_value_en: Rather more an "evening" than a "morning" type
+- id: 243
+  text_value_en: Definitely an "evening" type
+- id: 244
+  text_value_en: Neither a "morning" or an "evening" type
+- id: 245
+  text_value_en: Day shift
+- id: 246
+  text_value_en: Afternoon shift
+- id: 247
+  text_value_en: Night shift
+- id: 248
+  text_value_en: Split shift
+- id: 249
+  text_value_en: Irregular shift/on-call
+- id: 250
+  text_value_en: Rotating shifts
+- id: 251
+  text_value_en: Don't work
+- id: 252
+  text_value_en: Yes, 5 or more times a week
+- id: 253
+  text_value_en: Yes, 3 or 4 times a week
+- id: 254
+  text_value_en: Yes, 1 or 2 times a week
+- id: 255
+  text_value_en: Yes, less than once a week
+- id: 256
+  text_value_en: No, not in the past 4 weeks
+- id: 257
+  text_value_en: Very sound or restful
+- id: 258
+  text_value_en: Sound or restful
+- id: 259
+  text_value_en: Average quality
+- id: 260
+  text_value_en: Restless
+- id: 261
+  text_value_en: Very restless
+- id: 262
+  text_value_en: Almost always (16-30 times a month)
+- id: 263
+  text_value_en: Often (5-15 times a month)
+- id: 264
+  text_value_en: Sometimes (2-4 times a month)
+- id: 265
+  text_value_en: Rarely (once a month or less)
+- id: 266
+  text_value_en: Never (0)
+- id: 267
+  text_value_en: Very much
+- id: 268
+  text_value_en: Somewhat
+- id: 269
+  text_value_en: Often
+- id: 270
+  text_value_en: Very poor
+- id: 271
+  text_value_en: Snoring
+- id: 272
+  text_value_en: Sleepiness
+- id: 273
+  text_value_en: Driving or work accident
+- id: 274
+  text_value_en: Shortness of breath during sleep
+- id: 275
+  text_value_en: Stopped breathing during sleep
+- id: 276
+  text_value_en: Heart disease
+- id: 277
+  text_value_en: High blood pressure
+- id: 278
+  text_value_en: Concerned friend or spouse
+- id: 279
+  text_value_en: Healthcare provider suggestion
+- id: 280
+  text_value_en: Never been treated
+- id: 281
+  text_value_en: CPAP (Continuous Positive Airway Pressure Machine)
+- id: 282
+  text_value_en: APAP (Auto Positive Airway Pressure Machine)
+- id: 283
+  text_value_en: BiPAP (Bi-level Airway Pressure Machine)
+- id: 284
+  text_value_en: Adaptive servo-ventilation (ASV)
+- id: 285
+  text_value_en: Oral appliance
+- id: 286
+  text_value_en: Tongue Stimulation
+- id: 287
+  text_value_en: Tonsillectomy (removal of tonsils)
+- id: 288
+  text_value_en: UPPP (removal of palate and other tissue from the mouth)
+- id: 289
+  text_value_en: Nasal deviation surgery
+- id: 290
+  text_value_en: Tongue Surgery
+- id: 291
+  text_value_en: Jaw surgery
+- id: 292
+  text_value_en: Bariatric surgery
+- id: 293
+  text_value_en: Graduate School
+- id: 294
+  text_value_en: Prefer not to answer
+- id: 295
+  text_value_en: High school diploma
+- id: 200001
+  numeric_value: 1
+
+- id: 200002
+  numeric_value: 2
+
+- id: 200003
+  numeric_value: 3
+
+- id: 200004
+  numeric_value: 4
+
+- id: 200005
+  numeric_value: 5
+
+- id: 200006
+  numeric_value: 6
+
+- id: 200007
+  numeric_value: 7
+
+- id: 200008
+  numeric_value: 8
+
+- id: 200009
+  numeric_value: 9
+
+- id: 200010
+  numeric_value: 10
