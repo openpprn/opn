@@ -28,7 +28,7 @@
         .tab-pane#blog{class: ('active' if @tab == 'blog-posts') }
           .row
             .col-md-9
-              = render :partial => "admin/partials/blog_posts", :locals => { :editable => true }
+              = render :partial => "shared/blog_posts", :locals => { :editable => true }
 
         .tab-pane#research{class: ('active' if @tab == 'research-topics') }
           .row
