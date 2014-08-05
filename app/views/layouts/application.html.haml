@@ -45,7 +45,7 @@
             %li{:class => "#{"active" if @active_nav_link == :research}"}
               %a{href: "/research"} Research
             %li{:class => "#{"active" if @active_nav_link == :data}"}
-              %a{href: "/data"} My Health Data
+              %a{href: "/data_learn"} My Health Data
             %li{:class => "#{"active" if @active_nav_link == :patients}"}
               %a{href: "/social"} Patients
             %li{:class => "#{"active" if @active_nav_link == :blog}"}
@@ -80,9 +80,6 @@
                     %li
                       %a{href: "/pprn", :title => "Toggle through PPRNs"}
                         %i.fa.fa-random &nbsp; Change PPRN
-                  %li
-                    %a.small{href: "/req", :title => "Toggle on/off on-page Requirements", :style => "color: red;"}
-                      %i.fa.fa-flag#requirements-toggler &nbsp; Show Requirements
 
             - else
               %li

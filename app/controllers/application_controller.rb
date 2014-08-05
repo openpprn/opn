@@ -63,6 +63,10 @@ class ApplicationController < ActionController::Base
     @active_nav_link = :research
   end
 
+  def set_active_nav_link_to_data
+    @active_nav_link = :data
+  end
+
   def set_active_nav_link_to_patients
     @active_nav_link = :patients
   end

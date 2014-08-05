@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'connections' => 'pages#connections'
   get 'consent' => 'pages#consent'
   get 'data' => 'pages#data'
+  get 'data_learn' => 'pages#data_learn'
+  get 'data_reports' => 'pages#data_reports'
+
   get 'discussion' => 'pages#discussion' # myapnea
   get 'external_link_warning' => 'pages#external_link_warning'
   get 'findings' => 'pages#findings'

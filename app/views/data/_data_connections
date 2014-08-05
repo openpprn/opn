@@ -1,0 +1,7 @@
+%table.table
+  %thead
+    %td
+      Selected Apps & Devices
+    %td
+    %td
+    %td
