@@ -12,7 +12,7 @@ describe "AdminController" do
       end
     end
 
-    context 'when user is not an owner' do
+    context 'when current_user is not an owner' do
       it 'raises a SecurityViolation' do
         user = create(:admin)
         sign_in_user(user)
@@ -25,6 +25,34 @@ describe "AdminController" do
   end
 
   describe 'POST #remove_role_from_user' do
-    
+    context 'when current_user is an owner' do
+      it 'removes role' do
+        pending
+      end
+
+
+
+    end
+
+    context 'when current_user is not an owner' do
+      it 'raises a Security Violation' do
+
+      end
+    end
+  end
+
+  describe 'GET #dashboard' do
+    context 'when current_user is an owner or admin' do
+      it "renders dashboard dashboard" do
+        pending
+      end
+
+    end
+
+    context 'when current_user is not an owner or admin' do
+      it 'raises Security Violation' do
+
+      end
+    end
   end
 end
