@@ -8,6 +8,7 @@ class UserAuthorizer < ApplicationAuthorizer
   end
 
   def self.deletable_by?(user)
+
     user.has_role? :owner
   end
 

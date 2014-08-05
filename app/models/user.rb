@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  rolify
+  rolify role_join_table_name: 'roles_users'
+
 
   include Authority::UserAbilities
   include Authority::Abilities

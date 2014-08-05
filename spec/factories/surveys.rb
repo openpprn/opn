@@ -1,1 +1,0 @@
-# We need to create a simple survey, with all associated models
