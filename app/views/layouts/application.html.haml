@@ -44,6 +44,8 @@
 
             %li{:class => "#{"active" if @active_nav_link == :research}"}
               %a{href: "/research"} Research
+            %li{:class => "#{"active" if @active_nav_link == :data}"}
+              %a{href: "/data"} My Health Data
             %li{:class => "#{"active" if @active_nav_link == :patients}"}
               %a{href: "/social"} Patients
             %li{:class => "#{"active" if @active_nav_link == :blog}"}

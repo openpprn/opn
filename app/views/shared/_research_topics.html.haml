@@ -14,12 +14,12 @@
             %td
               %h4
                 - if star_pattern == :mine
-                  %i.fa.fa-star.research-star
+                  %i.fa.fa-check-square-o.research-star
                 - elsif star_pattern == :popular && stars_given < 5 && [true,false,false,false].shuffle.first
-                  %i.fa.fa-star.research-star
+                  %i.fa.fa-check-square-o.research-star
                   - stars_given += 1
                 - else
-                  %i.fa.fa-star-o.research-star
+                  %i.fa.fa-square-o.research-star
             %td
               - if star_pattern == :newest
                 %h2= rand(0..3)
