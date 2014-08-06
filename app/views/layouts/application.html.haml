@@ -116,9 +116,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %a{href: "/privacy"} Privacy Policy
 
-        / - if Rails.env.development?
-        /   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        /   %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
+        - if Rails.env.development?
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
 
 
   -# Should prob download Jquery for dev purposes

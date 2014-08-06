@@ -1,7 +1,4 @@
 - title("Research")
-- connection_sources = ["GI Buddy", "Fitbit", "Moves", "Nike Fuelband", "MapMyFitness", "Crohnology","Jawbone Up", "BodyMedia", "RunKeeper", "Strava Running", "Fitbit Aria", "Withings"]
-
-
 
 .row
   .col-md-3
@@ -19,7 +16,7 @@
 
     - source_num = 0
 
-    - connection_sources.each do |source|
+    - @pprn["data_sources"].each do |source,junk|
       - if (source_num % 3 == 0)
         .row
 
