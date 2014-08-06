@@ -28,48 +28,6 @@
 
   .col-md-9
 
-    - if current_user
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Your Contributions
-
-        .panel-body
-
-
-          .row
-
-            .col-md-9
-              .row
-                .col-md-12
-                  %h4 You've contributed to this patient research democracy in many ways:
-              .row
-
-                .col-md-4.text-center
-                  = image_tag "pie.png", :style => "height: 90px; margin-top: 20px;"
-                  %h4
-                    .label.label-default
-                      3/3 Surveys Completed
-                .col-md-4.text-center
-                  %i.fa.fa-check-square-o{:style => "font-size: 90px; margin-top: 20px;"}
-                  -#= image_tag "donut.png", :style => "height: 150px;"
-                  %h4
-                    .label.label-default
-                      5/5 Research Votes Cast
-                .col-md-4.text-center
-                  = image_tag "gauge.png", :style => "height: 90px; margin-top: 20px;"
-                  %h4
-                    .label.label-default
-                      2 Data Sources Connected
-            .col-md-3.text-center
-              .well
-
-                = image_tag "karma2.png", :style => "height: 110px;"
-
-                %h2
-                  .label.label-success
-                    650 Karma
-      %small
-        %br/
 
 
     %h4 &nbsp;&nbsp;Research Topics

@@ -34,4 +34,6 @@
     .panel.panel-default
       .panel-heading
         %h4.panel-title Available Apps
-      = render partial: "data/data_connections"
+      = render partial: "data_source_table"
+
+    %a.btn.btn-primary{:href => data_connections_path} Connect These Apps

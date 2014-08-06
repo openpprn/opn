@@ -43,7 +43,7 @@
           %ul.nav.navbar-nav
 
             %li{:class => "#{"active" if @active_nav_link == :research}"}
-              %a{href: "/research"} Research
+              %a{href: "/research_karma"} Research
             %li{:class => "#{"active" if @active_nav_link == :data}"}
               %a{href: "/data_learn"} My Health Data
             %li{:class => "#{"active" if @active_nav_link == :patients}"}
@@ -72,15 +72,6 @@
                         %i.fa.fa-wrench &nbsp; Admin Panel
                   %li
                     = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, :method => :delete
-
-                  -# Developer / Admin Tools
-                  %li.divider
-
-                  - if Rails.env.development?
-                    %li
-                      %a{href: "/pprn", :title => "Toggle through PPRNs"}
-                        %i.fa.fa-random &nbsp; Change PPRN
-
             - else
               %li
                 %a{:href => new_user_session_path}
@@ -124,6 +115,10 @@
         %a{href: "/terms"} Terms of Service
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %a{href: "/privacy"} Privacy Policy
+
+        - if Rails.env.development?
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
 
 
   -# Should prob download Jquery for dev purposes

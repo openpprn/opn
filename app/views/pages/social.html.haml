@@ -10,10 +10,29 @@
   .col-md-9
     .panel.panel-default
       .panel-heading
-        %h3.panel-title Map
+        .row
+          .col-md-6
+            %h3.panel-title Map
+
+          .col-md-6
+            .btn-group.btn-group-sm.pull-right
+              %button.btn.btn-default{type: "button"} City
+              %button.btn.btn-default{type: "button"} State
+              %button.btn.btn-default{type: "button"} Country
+              %button.btn.btn-default.active{type: "button"} World
+
 
       = image_tag "map.png", :width => "100%"
 
+      .panel-footer.small
+        - if [true,false].shuffle.first
+          Where do you live?
+          = link_to "Add yourself to this map.", social_profile_path
+        - else
+          .pull-right
+            You are currently living in New York City, NY, USA.
+            = link_to "Update this.", social_profile_path
+          .clearfix
     .graphs
 
       .row
@@ -29,7 +48,7 @@
         .col-md-4
           .panel.panel-default
             .panel-heading
-              %h3.panel-title Sex
+              %h3.panel-title Gender
             .panel-body
               = image_tag "donut.png"
               .req sex_distribution (sex -> count)
@@ -56,7 +75,7 @@
         .col-md-4
           .panel.panel-default
             .panel-heading
-              %h3.panel-title Research Topics
+              %h3.panel-title Research Topic Input
             .panel-body
               = image_tag "histogram.png"
 
@@ -76,5 +95,11 @@
             .panel-heading
               %h3.panel-title More Social Features?
             .panel-body
-              Crohnology
+              .row
+                .col-md-4
+                  CCFA Kids & Teens
+                .col-md-4
+                  CCFA Forums
+                .col-md-4
+                  Crohnology
 
