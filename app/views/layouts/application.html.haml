@@ -69,7 +69,7 @@
                       %a{href: "/admin", :title => "Admin Panel"}
                         %i.fa.fa-wrench &nbsp; Admin Panel
                   %li
-                    = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, :method => :delete
+                    = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
 
                   -# Developer / Admin Tools
                   %li.divider
@@ -84,7 +84,7 @@
 
             - else
               %li
-                %a{:href => new_user_session_path}
+                %a{:href => main_app.new_user_session_path}
                   %i.fa.fa-sign-in
                     Sign In
 

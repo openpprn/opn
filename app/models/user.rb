@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
 
 
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
+
+  def forem_name
+    email
+  end
+
+  def forem_admin?
+    self.has_role? :admin
+  end
 end
