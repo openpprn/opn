@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, :only => [:account, :admin, :data, :connections, :new_question]
-  before_action :set_active_nav_link_to_research, :only => [:research, :data, :surveys, :research_question, :connections]
+  before_action :authenticate_user!, :only => [:account, :admin, :data_explore, :data_connections, :data_reports, :new_question, :research_karma, :surveys]
+  before_action :set_active_nav_link_to_research, :only => [:research_topics, :surveys, :research_question, :research_karma, :data_connections]
+  before_action :set_active_nav_link_to_data, :only => [:data_explore, :data_learn, :data_reports]
   before_action :set_active_nav_link_to_patients, :only => [:social, :social_profile, :discussion]
   before_action :set_active_nav_link_to_blog, :only => [:blog, :findings]
-
 
 
 
@@ -13,14 +13,6 @@ class PagesController < ApplicationController
   end
 
   def surveys
-    @page_is_for_research = true;
-  end
-
-  def data
-    @page_is_for_research = true;
-  end
-
-  def connections
     @page_is_for_research = true;
   end
 

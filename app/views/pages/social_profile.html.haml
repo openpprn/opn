@@ -55,4 +55,11 @@
             .col-sm-6
               %input.form-control{:type=>"text", :value => random_sex}
 
+          .form-group
+            .col-sm-2.control-label
+              %input#checkbox{name: "optionsRadios", type: "checkbox", checked: true}/
+
+            .col-sm-6
+              Show me in the top karma earners list if I qualify.
+
         %a.btn.btn-primary.pull-right{:href => "javascript:history.back()"} Save

@@ -1,0 +1,29 @@
+- @data_types = [:GI_symptoms,:steps,:walking,:running,:cycling,:sleep,:heart_rate,:weight,:body_fat]
+- @data_sources = {"GI Buddy" =>[:GI_symptoms],
+  "Fitbit" =>[:steps,:walking,:running,:sleep,:weight],
+  "Moves" =>[:steps,:walking,:running,:cycling],
+  "Nike+ Fuelband" =>[:steps,:running],
+  "MapMyFitness" => [:walking,:running,:cycling],
+  "Crohnology" =>[:GI_symptoms],
+  "JawBone Up" => [:steps],
+  "Body Media" => [:steps,:running,:sleep,:heart_rate,:weight],
+  "RunKeeper" => [:walking,:running],
+  "FitBit Aria" => [:weight,:body_fat],
+  "Withings" => [:steps,:walking,:running,:heart_rate,:weight,:body_fat]}
+
+
+
+%table.table.table-striped
+  %thead
+    %td
+    - @data_types.each do |data_type|
+      %td= data_type.to_s.titleize
+  - @data_sources.each do |data_source,supported_data_types|
+    %tr
+      %td= data_source
+      - @data_types.each do |data_type|
+        %td
+          - if supported_data_types.include?(data_type)
+            %i.fa.fa-times
+
+

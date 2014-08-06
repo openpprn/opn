@@ -1,0 +1,12 @@
+
+-if current_user
+  .list-group
+    %a.list-group-item{href: data_learn_path, class: "#{"active" if action_name == "data_learn"}"} Introduction
+    %a.list-group-item{href: data_explore_path, class: "#{"active" if action_name == "data_explore"}"} My Health Data
+    %a.list-group-item{href: data_reports_path, class: "#{"active" if action_name == "data_reports"}"} My Reports
+
+
+-# Description of this section
+.small
+  %p By connecting different health data sources, you help researchers from around the world help understand how this condition impacts you. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+= render partial: "shared/promotion_to_join" if !current_user

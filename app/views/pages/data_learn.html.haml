@@ -1,0 +1,39 @@
+- title("My Health Data")
+
+.row
+
+  .col-md-3
+    = render :partial => "shared/data_nav"
+
+  .col-md-9
+    %h3 Welcome to the CCFA Partners PPRN My Health Data Environment
+
+    %p In this area you will be able to:
+
+    %ul
+      %li Record, Track and Analyze your IBD Symptoms
+      %li Link and Share Information from Selected Apps and Devices
+
+
+
+    %h3 How to participate
+
+    %p We have identified 2 ways to share data.  Sources of data include:
+
+    %ul
+      %li Direct participation in CCFA Partners surveys (participant entered data (surveys & portal)
+      %li Authorization of data to be shared from external sources
+
+    %p Apps and devices offer a growing range of ways to get the important health information you're tracking into you’re My Health Data record. Many apps let you analyze and manage that information to help you achieve your health goals.
+
+    %p Connected apps and devices are websites, software programs, and mobile apps that can help you get more out of—and put more into My Health Data.
+
+    %p My Health Data lets you integrate data from apps and devices with your survey data, to track your health, manage your goals, and simultaneously contribute to research.
+
+    %br/
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Available Apps
+      = render partial: "data_source_table"
+
+    %a.btn.btn-primary{:href => data_connections_path} Connect These Apps

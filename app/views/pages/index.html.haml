@@ -7,9 +7,9 @@
   .col-md-8.col-md-offset-2
     .text-center
       %h3 Join a Movement to Solve #{@pprn_condition} Together
+    %br/
 
-
-    = image_tag "demo-video.png", :style => "width: 100%; border: 2px solid gray;"
+    = image_tag "video.png", :style => "width: 100%; border: 2px solid gray;"
 
     %br/
     %br/
@@ -36,19 +36,15 @@
 %hr/
 
 .row
-  .col-md-4
-    %h4 Describe a Feature of the Network
+  - 3.times do
+    .col-md-4
+      .text-center
+        %i.fa.fa-square-o{:style => "font-size: 200px;"}
 
-    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
-  .col-md-4
-    %h4 Describe a Feature of the Network
+      %h4 Describe a Feature of the Network
 
-    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
-  .col-md-4
-    %h4 Describe a Feature of the Network
+      %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
 
-
-    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
 
 
 %br/
