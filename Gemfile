@@ -6,8 +6,6 @@ gem 'thin'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
 # User HAML for views
 gem 'haml'
 
@@ -32,9 +30,41 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Bootstrap
+gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 # Authentication
 gem 'devise'
 
+# Scaffold Generation
+gem 'bootstrap-generators', '~> 3.1.1.3'
+
+# Markdown Support
+gem 'redcarpet'
+
+# Directed Acyclic Graph
+gem 'acts-as-dag'
+
+# Authorization
+gem 'rolify'
+gem 'authority'
+
+# Development
+group :development do
+  gem "better_errors"
+  gem "meta_request"
+  gem "binding_of_caller"
+  gem 'schema_to_scaffold'
+end
+
+
+# Testing
+group :development, :test do
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
+  gem 'minitest-rails-capybara'
+  gem 'selenium-webdriver'
+end
+
+gem 'simplecov', :require => false, :group => :test

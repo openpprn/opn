@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>BMI and Sleep Apnea</h3>
+
+    <% if @height and @weight %>
+      <p>
+        From the height and weight you've provided, we've determined your <%= link_to 'Body Mass Index', 'http://en.wikipedia.org/wiki/Body_mass_index' %> to be <%= bmi(@height.show_value, @weight.show_value) %>. People with this BMI are considered to be <%= bmi_category(bmi(@height.show_value, @weight.show_value)) %>.
+      </p>
+    <% else %>
+      <p>You did not provide information about your height and weight, so we could not determine your <%= link_to 'Body Mass Index', 'http://en.wikipedia.org/wiki/Body_mass_index' %>.</p>
+    <% end %>
+    <p>
+      Although obesity is by no means a trait of all Sleep Apnea patients... realtionships exist... Changes in weight have been linked to changes in Apnea Hypoxia Index. <%= link_to "Get more information.", "" %>
+    </p>
+
+  </div>
+  <div id="bmi-graph" class="col-md-5 col-md-offset-1">
+    <h4>Your Body Mass Index</h4>
+    <svg class="chart"></svg>
+
+    <div class="row">
+      <dl class="">
+        <div class="col-md-4">
+          <dt><strong>Your height:</strong></dt>
+          <dd id="height" data-height="<%= @height.show_value %>"><%= @height.show_value %> inches</dd>
+        </div>
+        <div class="col-md-4">
+          <dt><strong>Your weight:</strong></dt>
+          <dd><%= @weight.show_value %> pounds</dd>
+        </div>
+        <div class="col-md-4">
+          <dt>Your BMI</dt>
+          <dd id="bmi" data-bmi="<%= bmi(@height.show_value, @weight.show_value) %>"><%= bmi(@height.show_value, @weight.show_value) %></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="row"  id="ahi">
+
+  <div id="ahi-graph" class="col-md-8">
+    <h4>Effects of Weight Change on AHI</h4>
+    <svg class="chart"></svg>
+    <cite class="notice text-muted"><a href="">Peppard et al. Longitudinal Study of Moderate Weight Change and Sleep-Disordered Breathing. JAMA. 2000;284(23):3015-3021.</a></cite>
+  </div>
+  <div id="prediction" class="col-md-4">
+    <h4>How might your AHI change?</h4>
+    <div class="list-group">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-7"><h5>Your Current Weight:</h5></div>
+          <div class="col-md-5"><h5 id="current-weight" data-weight="<%= @answer_session.get_answer(3).value %>"><%= @answer_session.get_answer(3).value%>&nbsp;<%= @answer_session.get_answer(3).question.unit.name %></h5></div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-7"><h5>Your Desired Weight:</h5></div>
+          <div class="col-md-5"><div class="input-group input-group-sm"><input id="desired-weight" class="form-control"><span class="input-group-addon">pounds</span></div></div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-7"><h5>Your Resulting BMI:</h5></div>
+          <div class="col-md-5"><h5 id="predicted-bmi"></h5></div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-7"><h5>Possible AHI Change:</h5></div>
+          <div class="col-md-5"><h5 id="predicted-change"></h5></div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<%= javascript_include_tag "reports/report_#{@question_flow.id}" %>

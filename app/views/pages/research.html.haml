@@ -22,7 +22,7 @@
 
 .row
   .col-md-3
-    = render :partial => "research_nav"
+    = render :partial => "shared/research_nav"
 
 
 
@@ -67,9 +67,9 @@
 
     / Tab panes
     .tab-content
-      #popular.tab-pane.active= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :popular, editable: false}
+      #popular.tab-pane.active= render partial: "shared/research_topics", locals: {num_loops: 5, star_pattern: :popular, editable: false}
       - if current_user
-        #mine.tab-pane= render partial: "research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
-      #newest.tab-pane= render partial: "research_topics", locals: {num_loops: 5, star_pattern: :newest, editable: false}
+        #mine.tab-pane= render partial: "shared/research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
+      #newest.tab-pane= render partial: "shared/research_topics", locals: {num_loops: 5, star_pattern: :newest, editable: false}
 
 

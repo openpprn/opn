@@ -57,4 +57,17 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+
+
+  def set_active_nav_link_to_research
+    @active_nav_link = :research
+  end
+
+  def set_active_nav_link_to_patients
+    @active_nav_link = :patients
+  end
+
+  def set_active_nav_link_to_blog
+    @active_nav_link = :blog
+  end
 end
