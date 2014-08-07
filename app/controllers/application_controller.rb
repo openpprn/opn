@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || research_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || research_karma_path
   end
 
 
@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
 
   def set_active_nav_link_to_research
     @active_nav_link = :research
+  end
+
+  def set_active_nav_link_to_data
+    @active_nav_link = :data
   end
 
   def set_active_nav_link_to_patients

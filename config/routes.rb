@@ -17,21 +17,28 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'account' => 'pages#account'
   get 'blog' => 'pages#blog'
-  get 'connections' => 'pages#connections'
   get 'consent' => 'pages#consent'
-  get 'data' => 'pages#data'
+
+  get 'data_connections' => 'pages#data_connections'
+  get 'data_explore' => 'pages#data_explore'
+  get 'data_learn' => 'pages#data_learn'
+  get 'data_reports' => 'pages#data_reports'
+
   get 'discussion' => 'pages#discussion' # myapnea
   get 'external_link_warning' => 'pages#external_link_warning'
   get 'findings' => 'pages#findings'
-  get 'insights' => 'pages#insights'
+
   get 'new_question' => 'pages#new_question'
   get 'pprn' => 'pages#toggle_pprn_cookie'
   get 'privacy' => 'pages#privacy'
-  get 'req' => 'pages#req'
-  get 'research' => 'pages#research'
+
+  get 'research_topics' => 'pages#research_topics'
   get 'research_question' => 'pages#research_question'
+  get 'research_karma' => 'pages#research_karma'
+
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
+
   get 'terms' => 'pages#terms'
 
   # Surveys
