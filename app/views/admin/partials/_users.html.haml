@@ -13,7 +13,7 @@
 
           .btn-group
             %form#user-search.form-inline{ role: 'form', action: admin_path, :style => "display: inline;" }
-              %input{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
+              %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
               %label.control-label.sr-only Limit by user email
               .input-group
                 %input.form-control{type: 'search', placeholder: 'Search by Email', name: 'search', value: params[:search]}
