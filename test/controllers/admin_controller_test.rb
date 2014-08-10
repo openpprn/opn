@@ -5,7 +5,7 @@ class AdminControllerTest < ActionController::TestCase
   test "should GET dashboard for owners" do
     login(users(:owner))
 
-    get :dashboard
+    get :admin
     assert_response :success
 
   end
@@ -13,7 +13,7 @@ class AdminControllerTest < ActionController::TestCase
   test "should GET dashboard for admins" do
     login(users(:admin))
 
-    get :dashboard
+    get :admin
     assert_response :success
 
   end
@@ -21,7 +21,7 @@ class AdminControllerTest < ActionController::TestCase
   test "should raise SecurityViolation for unauthorized users" do
     login(users(:user_1))
 
-    get :dashboard
+    get :admin
     assert_response 403
   end
 

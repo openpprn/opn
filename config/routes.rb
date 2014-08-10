@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'terms' => 'static#terms'
 
 
-  # Research
+  # Research Section
   get 'research_topics' => 'research#research_topics'
   get 'research_question' => 'research#research_question'
   get 'research_karma' => 'research#research_karma'
@@ -18,29 +18,29 @@ Rails.application.routes.draw do
   get 'new_question' => 'research#new_question'
 
 
-  # Health Data
+  # Health Data Section
   get 'data_explore' => 'health_data#explore'
   get 'data_learn' => 'health_data#learn'
   get 'data_reports' => 'health_data#reports'
 
 
-  # Social
+  # Social Section
   get 'social' => 'social#overview'
   get 'social_profile' => 'social#profile'
   get 'social_discussion' => 'social#discussion' # myapnea
 
 
-  # Blog
+  # Blog Section
   get 'blog' => 'blog#blog'
   get 'blog_findings' => 'blog#blog_findings'
 
 
-  # Account
+  # Account Section
   get 'account' => 'account#account'
   get 'consent' => 'account#consent'
 
 
-  # Admin
+  # Admin Section
   get 'admin' => 'admin#admin_users'
   get 'admin_users' => 'admin#admin_users'
   get 'admin_surveys' => 'admin#admin_surveys'
