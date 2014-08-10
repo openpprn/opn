@@ -1,0 +1,96 @@
+
+.panel.panel-default
+  .panel-heading
+    .row
+      .col-md-6
+        %h3.panel-title Map
+
+      .col-md-6
+        .btn-group.btn-group-sm.pull-right
+          %button.btn.btn-default{type: "button"} City
+          %button.btn.btn-default{type: "button"} State
+          %button.btn.btn-default{type: "button"} Country
+          %button.btn.btn-default.active{type: "button"} World
+
+
+  = image_tag "map.png", :width => "100%"
+
+  .panel-footer.small
+    - if [true,false].shuffle.first
+      Where do you live?
+      = link_to "Add yourself to this map.", social_profile_path
+    - else
+      .pull-right
+        You are currently living in New York City, NY, USA.
+        = link_to "Update this.", social_profile_path
+      .clearfix
+.graphs
+
+  .row
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Age
+        .panel-body
+          = image_tag "histogram.png"
+          .req age_distribution (hash of age -> count)
+
+
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Gender
+        .panel-body
+          = image_tag "donut.png"
+          .req sex_distribution (sex -> count)
+
+
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Location
+        .panel-body
+          = image_tag "bar.png"
+          .req locations (location(lat/lon, city, state, country) -> count)
+
+  .row
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Surveys Completed
+        .panel-body
+          = image_tag "pie.png"
+          .req surveys_completed [date,survey_id]
+
+
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Research Topic Input
+        .panel-body
+          = image_tag "histogram.png"
+
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Connected Data Sources
+        .panel-body
+          = image_tag "pie.png"
+          .req data_sources_connected [date,data_source_id]
+
+
+- if ccfa_pprn?
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title More Social Features?
+        .panel-body
+          .row
+            .col-md-4
+              CCFA Kids & Teens
+            .col-md-4
+              CCFA Forums
+            .col-md-4
+              Crohnology
+

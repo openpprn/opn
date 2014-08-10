@@ -1,43 +1,42 @@
-= render layout: "/layouts/research" do
 
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title New Surveys
-      .req surveys_ready_for_completion (title of survey, url to survey)
-    .list-group
-      - @incomplete_surveys.each do |survey|
-        = link_to start_or_resume_survey(survey), class: 'list-group-item' do
-          %h3= survey.name
-          = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey}
-      - @unstarted_surveys.each do |survey|
-        = link_to start_or_resume_survey(survey), class: 'list-group-item' do
-          %h3= survey.name
-          %p Survey not yet started.
-          %p
-            %strong
-              Estimated time commitment:
-              = survey.total_time.ceil
-              minutes for
-              = survey.all_questions.length
-              questions.
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title New Surveys
+    .req surveys_ready_for_completion (title of survey, url to survey)
+  .list-group
+    - @incomplete_surveys.each do |survey|
+      = link_to start_or_resume_survey(survey), class: 'list-group-item' do
+        %h3= survey.name
+        = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey}
+    - @unstarted_surveys.each do |survey|
+      = link_to start_or_resume_survey(survey), class: 'list-group-item' do
+        %h3= survey.name
+        %p Survey not yet started.
+        %p
+          %strong
+            Estimated time commitment:
+            = survey.total_time.ceil
+            minutes for
+            = survey.all_questions.length
+            questions.
 
-            //= link_to "Complete Survey", start_or_resume_survey(survey), class: "btn btn-success btn-sm"
+          //= link_to "Complete Survey", start_or_resume_survey(survey), class: "btn btn-success btn-sm"
 
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title Surveys You've Completed
-      .req surveys_ready_for_completion (title of survey, url to survey)
-    .list-group
-      - if @complete_surveys.empty?
-        .list-group-item
-          %span.text-info None so far!
-      - @complete_surveys.each do |survey|
-        .list-group-item
-          %h3= survey.name
-          %p
-            %strong Survey finished!
-          %div
-            = link_to 'Review Answers', finished_answer_session_path(answer_session_id: as.id), class: 'btn btn-default btn-sm'
-            = link_to 'Retake Questionnaire', start_answer_session_path(question_flow_id: qf.id), class: 'btn btn-default btn-sm', data: {confirm: "Are you sure you want to retake the questionnaire?", description: "All your progress will be lost, and you'll have complete the questionnaire again."}
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Surveys You've Completed
+    .req surveys_ready_for_completion (title of survey, url to survey)
+  .list-group
+    - if @complete_surveys.empty?
+      .list-group-item
+        %span.text-info None so far!
+    - @complete_surveys.each do |survey|
+      .list-group-item
+        %h3= survey.name
+        %p
+          %strong Survey finished!
+        %div
+          = link_to 'Review Answers', finished_answer_session_path(answer_session_id: as.id), class: 'btn btn-default btn-sm'
+          = link_to 'Retake Questionnaire', start_answer_session_path(question_flow_id: qf.id), class: 'btn btn-default btn-sm', data: {confirm: "Are you sure you want to retake the questionnaire?", description: "All your progress will be lost, and you'll have complete the questionnaire again."}
 
 

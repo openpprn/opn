@@ -59,19 +59,19 @@ class ApplicationController < ActionController::Base
 
 
 
-  def set_active_nav_link_to_research
-    @active_nav_link = :research
+  def set_active_top_nav_link_to_research
+    @active_top_nav_link = :research
   end
 
-  def set_active_nav_link_to_data
-    @active_nav_link = :data
+  def set_active_top_nav_link_to_health_data
+    @active_top_nav_link = :health_data
   end
 
-  def set_active_nav_link_to_patients
-    @active_nav_link = :patients
+  def set_active_top_nav_link_to_social
+    @active_top_nav_link = :social
   end
 
-  def set_active_nav_link_to_blog
-    @active_nav_link = :blog
+  def set_active_top_nav_link_to_blog
+    @active_top_nav_link = :blog
   end
 end

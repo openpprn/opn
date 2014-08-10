@@ -1,0 +1,10 @@
+- @title = "Admin Panel"
+
+- content_for :sublayout do
+  .row
+    .col-md-2
+      = render :partial => "layouts/navigation/admin_nav"
+    .col-md-10
+      = yield
+
+= render template: "layouts/application"

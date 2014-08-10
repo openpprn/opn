@@ -1,0 +1,16 @@
+%hr/
+
+.row
+  .col-md-12
+    %center
+      %a{href: "/about"} About
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %a{href: "/terms"} Terms of Service
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %a{href: "/privacy"} Privacy Policy
+
+      - if Rails.env.development?
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
+
+

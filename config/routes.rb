@@ -2,40 +2,62 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'pages#index'
-
-  # Front-end Prototype Pages
-  get 'about' => 'pages#about'
-  get 'account' => 'pages#account'
-
-
-  get 'blog' => 'pages#blog'
-  get 'blog_findings' => 'pages#blog_findings'
-
-  get 'consent' => 'pages#consent'
-
-  get 'data_connections' => 'pages#data_connections'
-  get 'data_explore' => 'pages#data_explore'
-  get 'data_learn' => 'pages#data_learn'
-  get 'data_reports' => 'pages#data_reports'
-
-  get 'external_link_warning' => 'pages#external_link_warning'
-
-  get 'new_question' => 'pages#new_question'
-  get 'pprn' => 'pages#toggle_pprn_cookie'
-  get 'privacy' => 'pages#privacy'
-
-  get 'research_topics' => 'pages#research_topics'
-  get 'research_question' => 'pages#research_question'
-  get 'research_karma' => 'pages#research_karma'
-
-  get 'social' => 'pages#social'
-  get 'social_profile' => 'pages#social_profile'
-  get 'social_discussion' => 'pages#social_discussion' # myapnea
+  # Static Pages
+  root 'static#home'
+  get 'about' => 'static#about'
+  get 'external_link_warning' => 'static#external_link_warning'
+  get 'privacy' => 'static#privacy'
+  get 'terms' => 'static#terms'
 
 
-  get 'terms' => 'pages#terms'
+  # Research
+  get 'research_topics' => 'research#research_topics'
+  get 'research_question' => 'research#research_question'
+  get 'research_karma' => 'research#research_karma'
+  get 'data_connections' => 'research#data_connections'
+  get 'new_question' => 'research#new_question'
+
+
+  # Health Data
+  get 'data_explore' => 'health_data#explore'
+  get 'data_learn' => 'health_data#learn'
+  get 'data_reports' => 'health_data#reports'
+
+
+  # Social
+  get 'social' => 'social#overview'
+  get 'social_profile' => 'social#profile'
+  get 'social_discussion' => 'social#discussion' # myapnea
+
+
+  # Blog
+  get 'blog' => 'blog#blog'
+  get 'blog_findings' => 'blog#blog_findings'
+
+
+  # Account
+  get 'account' => 'account#account'
+  get 'consent' => 'account#consent'
+
+
+  # Admin
+  get 'admin' => 'admin#admin_users'
+  get 'admin_users' => 'admin#admin_users'
+  get 'admin_surveys' => 'admin#admin_surveys'
+  get 'admin_blog' => 'admin#admin_blog'
+  get 'admin_notifications' => 'admin#admin_notifications'
+  get 'admin_research_topics' => 'admin#admin_research_topics'
+
+  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
+  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
+
+
+  # Development/System
+  get 'pprn' => 'application#toggle_pprn_cookie'
+
+
+
+
 
   # Surveys
   get 'surveys' => 'surveys#index'
@@ -48,20 +70,8 @@ Rails.application.routes.draw do
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
-  # Admin
-  #match 'admin(/:tab)' => 'admin#dashboard', as: :admin, via: [:get, :post]
-
-  get 'admin' => 'admin#admin_users'
-  get 'admin_users' => 'admin#admin_users'
-  get 'admin_surveys' => 'admin#admin_surveys'
-  get 'admin_blog' => 'admin#admin_blog'
-  get 'admin_notifications' => 'admin#admin_notifications'
-  get 'admin_research_topics' => 'admin#admin_research_topics'
 
 
-
-  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
-  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
 
   devise_for :user
 # # Authentication
