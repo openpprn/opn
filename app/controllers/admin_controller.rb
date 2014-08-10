@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :setup
 
   # ensure_authorization_performed
   #
@@ -10,7 +11,7 @@ class AdminController < ApplicationController
 
   authorize_actions_for User, only: [:add_role_to_user, :remove_role_from_user], actions: {add_role_to_user: :update, remove_role_from_user: :update}
 
-  def dashboard
+  def setup
     if current_user.can?(:view_admin_dashboard)
       set_users
 

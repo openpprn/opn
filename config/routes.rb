@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'account' => 'pages#account'
 
+
   get 'blog' => 'pages#blog'
   get 'blog_findings' => 'pages#blog_findings'
 
@@ -48,7 +49,16 @@ Rails.application.routes.draw do
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
   # Admin
-  match 'admin(/:tab)' => 'admin#dashboard', as: :admin, via: [:get, :post]
+  #match 'admin(/:tab)' => 'admin#dashboard', as: :admin, via: [:get, :post]
+
+  get 'admin' => 'admin#admin_users'
+  get 'admin_users' => 'admin#admin_users'
+  get 'admin_surveys' => 'admin#admin_surveys'
+  get 'admin_blog' => 'admin#admin_blog'
+  get 'admin_notifications' => 'admin#admin_notifications'
+  get 'admin_research_topics' => 'admin#admin_research_topics'
+
+
 
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role

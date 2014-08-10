@@ -1,0 +1,3 @@
+= render :layout => "/layouts/admin" do
+  %h3 Research Topics
+  = render :partial => "shared/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
