@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   # Account Section
   get 'account' => 'account#account'
+  get 'account_export' => 'account#account_export'
   get 'consent' => 'account#consent'
 
 

@@ -1,21 +1,22 @@
-- title("Account")
+- @title = "Account"
+
+%h3 My Settings
+%br/
 
 .row
-
-  .col-md-9
-
+  .col-md-6
     .panel.panel-default
       .panel-heading
-        %h4.panel-title Login
+        %h4.panel-title Email Address & Password
       .panel-body
         %form.form-horizontal{role: "form"}
           .form-group
-            %label.col-sm-2.control-label Email
-            .col-sm-10
+            %label.col-sm-4.control-label Email
+            .col-sm-8
               %p.form-control email@example.com
           .form-group
-            %label.col-sm-2.control-label{for: "inputPassword"} Password
-            .col-sm-10
+            %label.col-sm-4.control-label{for: "inputPassword"} Password
+            .col-sm-8
               %p.form-control-static
                 %a Reset Password
 
@@ -54,15 +55,3 @@
 
 
     %button.btn.btn-primary.pull-right Save
-
-
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Your Data
-
-      .panel-body.text-center
-        %button.btn.btn-default.btn-block Download All My Data
-        %br/
-        %a.small
-          = link_to "Delete my account", user_registration_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete your account and all data? There is no undo." }
