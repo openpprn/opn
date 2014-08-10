@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # Front-end Prototype Pages
   get 'about' => 'pages#about'
   get 'account' => 'pages#account'
+
   get 'blog' => 'pages#blog'
+  get 'blog_findings' => 'pages#blog_findings'
+
   get 'consent' => 'pages#consent'
 
   get 'data_connections' => 'pages#data_connections'
@@ -16,9 +19,7 @@ Rails.application.routes.draw do
   get 'data_learn' => 'pages#data_learn'
   get 'data_reports' => 'pages#data_reports'
 
-  get 'discussion' => 'pages#discussion' # myapnea
   get 'external_link_warning' => 'pages#external_link_warning'
-  get 'findings' => 'pages#findings'
 
   get 'new_question' => 'pages#new_question'
   get 'pprn' => 'pages#toggle_pprn_cookie'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
 
   get 'social' => 'pages#social'
   get 'social_profile' => 'pages#social_profile'
+  get 'social_discussion' => 'pages#social_discussion' # myapnea
+
 
   get 'terms' => 'pages#terms'
 

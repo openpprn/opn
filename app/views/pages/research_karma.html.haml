@@ -1,66 +1,61 @@
-- title("Research")
+= render layout: "/layouts/research" do
 
-.row
-  .col-md-3
-    = render :partial => "shared/research_nav"
-  .col-md-9
+  .row
+    .col-md-3.text-center
+      .well
+        = image_tag "karma2.png", :style => "height: 110px;"
 
-    .row
-      .col-md-3.text-center
-        .well
-          = image_tag "karma2.png", :style => "height: 110px;"
+        %h2
+          .label.label-success
+            650 Karma
 
-          %h2
-            .label.label-success
-              650 Karma
+    .col-md-9
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title My Karma
+        .panel-body
+          You are in the top 30% Karma of Participants
+          .progress
+            .progress-bar.progress-bar-success{style: "width: 70%"}
+              %span.sr-only 70% Complete (success)
 
-      .col-md-9
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title My Karma
-          .panel-body
-            You are in the top 30% Karma of Participants
-            .progress
-              .progress-bar.progress-bar-success{style: "width: 70%"}
-                %span.sr-only 70% Complete (success)
-
-        %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis.
+      %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis.
 
 
 
 
 
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title Your Contributions
-      .panel-body
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title Your Contributions
+    .panel-body
 
 
-        .row
-          .col-md-1
-            %i.fa.fa-check-square-o{:style => "font-size: 60px;"}
-          .col-md-11
-            You're an Engaged Member of your Research Democracy. You've contributed to 9 Research Topics.
-            .progress
-              .progress-bar.progress-bar-success{style: "width: 40%"}
-                %span.sr-only 70% Complete (success)
-        %hr/
-        .row
-          .col-md-1
-            %i.fa.fa-list-ul{:style => "font-size: 60px;"}
-          .col-md-11
-            You're a Helpful Contributor to Survey Knowledge. You've Completed 2/3 Available Surveys.
-            .progress
-              .progress-bar.progress-bar-success{style: "width: 70%"}
-                %span.sr-only 70% Complete (success)
-        %hr/
+      .row
+        .col-md-1
+          %i.fa.fa-check-square-o{:style => "font-size: 60px;"}
+        .col-md-11
+          You're an Engaged Member of your Research Democracy. You've contributed to 9 Research Topics.
+          .progress
+            .progress-bar.progress-bar-success{style: "width: 40%"}
+              %span.sr-only 70% Complete (success)
+      %hr/
+      .row
+        .col-md-1
+          %i.fa.fa-list-ul{:style => "font-size: 60px;"}
+        .col-md-11
+          You're a Helpful Contributor to Survey Knowledge. You've Completed 2/3 Available Surveys.
+          .progress
+            .progress-bar.progress-bar-success{style: "width: 70%"}
+              %span.sr-only 70% Complete (success)
+      %hr/
 
-        .row
-          .col-md-1
-            %i.fa.fa-bar-chart-o{:style => "font-size: 60px;"}
-          .col-md-11
-            You're a Contributing Citizen Scientist. You've donated Health Data from 3 apps.
-            .progress
-              .progress-bar.progress-bar-success{style: "width: 50%"}
-                %span.sr-only 70% Complete (success)
+      .row
+        .col-md-1
+          %i.fa.fa-bar-chart-o{:style => "font-size: 60px;"}
+        .col-md-11
+          You're a Contributing Citizen Scientist. You've donated Health Data from 3 apps.
+          .progress
+            .progress-bar.progress-bar-success{style: "width: 50%"}
+              %span.sr-only 70% Complete (success)
 

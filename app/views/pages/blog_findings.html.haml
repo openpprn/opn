@@ -1,0 +1,53 @@
+= render layout: "/layouts/blog" do
+
+  - 3.times do
+    .panel.panel-default
+      .panel-body
+        %a{:href => "/research_question"}
+          %h4 Does X diet work for Crohn's?
+        %small
+          %strong 4/28/14
+        %p We studied this topic with a cohort of 100 patients and discovered the following. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
+
+
+  .text-center
+    %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+      %li
+        %span &laquo;
+      %li.disabled
+        %span ...
+      %li
+        %span &raquo;
+
+
+
+  / %tr
+  /   %td
+  /     %a{:href => "/research_question"}
+  /       %h4 Does sleeping on your side change the effects?
+  /   / %td 50
+  /   / %td
+  /   /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+
+  / %tr
+  /   %td
+  /     %a{:href => "/research_question"}
+  /       %h4 How does pregancy affect condition activity?
+  /   / %td 40
+  /   / %td
+  /   /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+  / %tr
+  /   %td
+  /     %a{:href => "/research_question"}
+  /       %h4 Can a six week schedule of 10,000 steps improve Crohn's symptoms?
+  /   / %td 100
+  /   / %td
+
+  / %tr
+  /   %td
+  /     %a{:href => "/research_question"}
+  /       %h4 Which is a more effective dosing schedule of Drug A?
+  /   / %td 50
+  /   / %td
+  /   /   %a.btn.btn-success.btn-sm.pull-right{:href => "/survey"} Complete Survey
+

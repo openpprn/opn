@@ -1,17 +1,11 @@
-- @report_names = ["My Disease Activity", "My Quality of Life", "My Anxiety", "My Depression", "My Fatigue","My Pain","My Sleep Disturbance","My Social Relations"]
-- title("My Health Data")
+= render layout: "/layouts/data" do
 
-.row
+  %h3 My Reports
+  %hr/
 
-  .col-md-3
-    = render :partial => "shared/data_nav"
+  - @report_names = ["My Disease Activity", "My Quality of Life", "My Anxiety", "My Depression", "My Fatigue","My Pain","My Sleep Disturbance","My Social Relations"]
+  - @report_names.each do |report_name|
 
-  .col-md-9
-    %h3 My Reports
+    %h4= report_name
+    = render :partial => "progress"
     %hr/
-
-    - @report_names.each do |report_name|
-
-      %h4= report_name
-      = render :partial => "progress"
-      %hr/

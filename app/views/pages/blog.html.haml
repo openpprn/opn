@@ -1,12 +1,6 @@
-- title("Blog")
+= render layout: "/layouts/blog" do
 
-.row
-
-  .col-md-3
-    = render partial: "blog_nav"
-
-  .col-md-9
-    = render :partial => "/shared/blog_posts", :locals => { :editable => false }
+  = render :partial => "/shared/blog_posts", :locals => { :editable => false }
 
 
 
