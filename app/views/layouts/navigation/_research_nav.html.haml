@@ -1,27 +1,11 @@
 - if current_user
   .list-group
-
     %a.list-group-item{href: research_karma_path, class: "#{"active" if action_name == "research_karma"}"} My Karma
-
     %a.list-group-item{href: research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research Democracy
-
     %a.list-group-item{href: surveys_path, class: "#{"active" if controller_name == "surveys"}"}
       My Surveys
       %span.badge 2
-
     %a.list-group-item{href: data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
-
-
-
-
-    -# %a.list-group-item{href: "#", class: "#{"active" if action_name == "karma"}"} My Karma
-
-
-    / %a.list-group-item.disabled{href: "#"} My Surveys
-    / %a.list-group-item.disabled{href: "#"} My Health Data
-    / %a.list-group-item.disabled{href: "#"} My Data Connections
-    / %a.list-group-item.disabled{href: "#"} My Karma
-
 
 - if current_user
   = render :partial => "shared/notifications", :locals => { :editable => false }
