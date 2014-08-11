@@ -4,14 +4,16 @@
 .panel.panel-default
   .panel-heading
     .btn-toolbar{role: "toolbar"}
-      .btn-group
-        %button.btn.btn-default{type: "button"} All Users
-        %button.btn.btn-default{type: "button"} Admins
-        %button.btn.btn-default{type: "button"} Owners
-
-      .btn-group.col-md-4
-        %form#user-search.form-inline{ role: 'form', action: admin_path, :style => "display: inline;" }
-          %input{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
+      %form#user-search.form-inline{ role: 'form', action: admin_path, :style => "display: inline;" }
+        .btn-group{data: {toggle: 'buttons'}}
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: ''} All Users
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
+        .btn-group
+          %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
           %label.control-label.sr-only Limit by user email
           .input-group
             %input.form-control{type: 'search', placeholder: 'Search by Email', name: 'search', value: params[:search]}
@@ -21,7 +23,7 @@
 
 
   .table-responsive
-    %table.table
+    %table.table#role{data: {add_target: add_role_path, remove_target: remove_role_path, destroy_target: destroy_user_path}}
       %thead
         %tr
           %th
@@ -47,20 +49,13 @@
                   %span.caret
                 %ul.dropdown-menu{role: "menu"}
                   %li
-                    %a{href: "#"} Make Admin
+                    %a.add-role{href: "#", data: {role: 'admin'}} Make Admin
                   %li
-                    %a{href: "#"} Make Owner
+                    %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
                   %li.divider
                   %li
-                    %a{href: "#"} Delete User
+                    %a.delete-user{href: "#"} Delete User
 
-                  -# Roles
-                  -# %select#role.form-control.pull-right.input-sm{data: {add_target: add_role_path, remove_target: remove_role_path, authenticity_token: form_authenticity_token}}
-                  -#   %option.input-sm{value: "admin"} admin
-                  -#   %option.input-sm{value: "owner"} owner
-                  -#   %button.add-role.btn.btn-primary.btn-xs.pull-right{type: "button"}
-                  -#     %i.fa.fa-plus
-                  -#     Add
 
 
 
