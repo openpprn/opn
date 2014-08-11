@@ -14,23 +14,24 @@
         %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
 .row
-  .col-md-8
-    %h3 Research Democracy
-
+  .col-md-8.small
     %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis. Morbi quis pellentesque dolor. Nam suscipit in nisl at mollis.
 
     %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis. Morbi quis pellentesque dolor. Nam suscipit in nisl at mollis.
-  .col-md-4
-    .well
-      %h3 You have 5 Votes.
-      %p You have cast 4 of them.
 
 
-      .progress
-        .progress-bar.progress-bar-success{style: "width: 70%"}
-          %span.sr-only 70% Complete (success)
-      %i.fa.fa-check-square-o.pull-left{:style => "font-size: 60px;"}
-      %p Use them all. You can change your votes at any time.
+  - if current_user
+    .col-md-4
+      .well
+        %h3 You have 5 Votes.
+        %p You have cast 4 of them.
+
+
+        .progress
+          .progress-bar.progress-bar-success{style: "width: 70%"}
+            %span.sr-only 70% Complete (success)
+        %i.fa.fa-check-square-o.pull-left{:style => "font-size: 60px;"}
+        %p Use them all. You can change your votes at any time.
 
 %br/
 
