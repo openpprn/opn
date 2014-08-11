@@ -13,17 +13,18 @@
           %button.btn.btn-default.active{type: "button"} World
 
 
-  = image_tag "map.png", :width => "100%"
+  #user_map{data: {path: locations_path}}
 
   .panel-footer.small
-    - if [true,false].shuffle.first
-      Where do you live?
-      = link_to "Add yourself to this map.", social_profile_path
-    - else
+    - if current_user and current_user.social_profile and current_user.social_profile.location
       .pull-right
-        You are currently living in New York City, NY, USA.
+        You are currently living in
+        = current_user.social_profile.location
         = link_to "Update this.", social_profile_path
       .clearfix
+    - else
+      Where do you live?
+      = link_to "Add yourself to this map.", social_profile_path
 .graphs
 
   .row
@@ -78,19 +79,5 @@
           = image_tag "pie.png"
           .req data_sources_connected [date,data_source_id]
 
-
-- if ccfa_pprn?
-  .row
-    .col-md-12
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title More Social Features?
-        .panel-body
-          .row
-            .col-md-4
-              CCFA Kids & Teens
-            .col-md-4
-              CCFA Forums
-            .col-md-4
-              Crohnology
-
+= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
+= javascript_include_tag 'social/maps'

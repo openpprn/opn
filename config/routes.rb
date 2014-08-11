@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/social/discussion'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,9 +36,10 @@ Rails.application.routes.draw do
 
 
   # Social Section
-  get 'social' => 'social#overview'
-  get 'social_profile' => 'social#profile'
-  get 'social_discussion' => 'social#discussion' # myapnea
+  match 'social', to: 'social#overview', via: :get, as: 'social' # show
+  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
+  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'social_profiles#locations'
 
 
   # Blog Section
@@ -45,23 +54,19 @@ Rails.application.routes.draw do
 
 
   # Admin Section
-  get 'admin' => 'admin#admin_users'
-  get 'admin_users' => 'admin#admin_users'
-  get 'admin_surveys' => 'admin#admin_surveys'
-  get 'admin_blog' => 'admin#admin_blog'
-  get 'admin_notifications' => 'admin#admin_notifications'
-  get 'admin_research_topics' => 'admin#admin_research_topics'
+  get 'admin' => 'admin#users'
+  get 'admin/users' => 'admin#users', as: 'admin_users'
+  get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
+  get 'admin/blog' => 'admin#blog', as: 'admin_blog'
+  get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
+  get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
 
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
-
+  match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user
 
   # Development/System
   get 'pprn' => 'application#toggle_pprn_cookie'
-
-
-
-
 
   # Surveys
   get 'surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
@@ -74,9 +79,10 @@ Rails.application.routes.draw do
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
 
-
-
   devise_for :user
+
+
+
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]
 #   as :user do

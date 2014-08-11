@@ -2,18 +2,18 @@ require 'test_helper.rb'
 
 class AdminControllerTest < ActionController::TestCase
 
-  test "should GET dashboard for owners" do
+  test "Owners should GET user administration" do
     login(users(:owner))
 
-    get :admin
+    get :users
     assert_response :success
 
   end
 
-  test "should GET dashboard for admins" do
+  test "Admins should GET user administration" do
     login(users(:admin))
 
-    get :admin
+    get :users
     assert_response :success
 
   end
@@ -21,7 +21,8 @@ class AdminControllerTest < ActionController::TestCase
   test "should raise SecurityViolation for unauthorized users" do
     login(users(:user_1))
 
-    get :admin
+    get :users
+
     assert_response 403
   end
 
@@ -58,6 +59,48 @@ class AdminControllerTest < ActionController::TestCase
     assert_response 403
     assert users(:admin).has_role? :admin
 
+
+  end
+
+  test "should allow owner to delete users" do
+    login(users(:owner))
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response :success
+    refute User.find_by_id(users(:user_1).id)
+
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response :success
+    refute User.find_by_id(users(:admin).id)
+
+  end
+
+  test "should not allow owner to delete himself" do
+    login(users(:owner))
+    post :destroy_user, user_id: users(:owner).id, format: :js
+
+
+    assert_response :success
+    assert User.find_by_id(users(:owner).id)
+
+  end
+
+  test "should not allow non-owner to delete users" do
+    login(users(:admin))
+
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:owner).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response 403
+
+    login(users(:user_5))
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:owner).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response 403
 
   end
 
