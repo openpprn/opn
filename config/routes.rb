@@ -20,8 +20,10 @@ Rails.application.routes.draw do
 
   # Health Data Section
   get 'data_explore' => 'health_data#explore'
-  get 'data_learn' => 'health_data#learn'
+  get 'data_intro' => 'health_data#intro'
   get 'data_reports' => 'health_data#reports'
+  get 'data_medications' => 'health_data#medications'
+
 
 
   # Social Section
