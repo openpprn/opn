@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'research_topics' => 'research#research_topics'
   get 'research_question' => 'research#research_question'
   get 'research_karma' => 'research#research_karma'
+  get 'research_surveys' => 'research#research_surveys'
   get 'data_connections' => 'research#data_connections'
   get 'new_question' => 'research#new_question'
 
@@ -63,7 +64,6 @@ Rails.application.routes.draw do
 
 
   # Surveys
-  get 'surveys' => 'surveys#index'
   get 'surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
   get 'surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
   match 'surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
