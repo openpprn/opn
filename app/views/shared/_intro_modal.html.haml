@@ -1,0 +1,27 @@
+-# This Partial Loads the Button, the Modal, and the JS to Make the Introductory Modal Function
+
+-# If this is the user's first day on the site, make the intro button pop at them # ToDo make this more sophisticated
+- if current_user && (Time.now - current_user.created_at) < 1.day
+  - content_for :js do
+    $("#intro_btn").tooltip('show');
+
+-# Button that opens the Introduction/Explanatory Modal
+#intro_btn.btn.btn-warning.btn-sm{"data-target" => "#intro_modal", "data-toggle" => "modal", "data-placement" => "left", title: "Watch this brief video to see how this section works!", :style => "margin-top: 30px;"}
+  %i.fa.fa-play-circle
+  Watch Intro
+
+-# The Intro/Explanatory Modal Itself (a partial named _intro.html.haml is the content of this modal)
+#intro_modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Intro
+      .modal-body
+        = render "intro"
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+
+

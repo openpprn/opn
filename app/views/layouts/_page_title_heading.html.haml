@@ -1,19 +1,14 @@
 .row
   .col-md-12
-    - if @title
-      .page-header
 
-        / %ol.breadcrumb
-        /   %li
-        /     %a{href: "#"}= @page_is_for_research ? "Research" : "Community"
-
-        - if @page_is_for_research
-          / Button trigger modal
-          %h1.pull-left= yield(:title)
-          %button.btn.btn-primary.btn-sm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :style => "margin-top: 30px;"} Launch Demo Video
-          .clearfix
-        - else
-          %h1= @title
+    - if !@title
+      .page-header-blank
 
     - else
-      .page-header-blank
+      .page-header
+        %h1.pull-left= @title
+
+        - if @intro
+          .pull-right
+            = render "shared/intro_modal"
+        .clearfix
