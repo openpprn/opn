@@ -56,6 +56,11 @@ gem 'forem-bootstrap', github: "radar/forem-bootstrap"
 gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 gem 'kaminari', '~> 0.16.1'
 
+# User Profile
+gem 'geocoder'
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Development
 group :development do
   gem "better_errors"

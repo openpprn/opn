@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require forem
-//= require_tree .
+//= require main
+//= require pages
+//= require admin
+
+

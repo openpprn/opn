@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get 'research_karma' => 'pages#research_karma'
 
   get 'social' => 'pages#social'
-  get 'social_profile' => 'pages#social_profile'
 
   get 'terms' => 'pages#terms'
 
@@ -57,6 +56,12 @@ Rails.application.routes.draw do
 
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
+  match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user
+
+  # Social
+  resource :social_profile, only: [:update, :edit, :show]
+  match 'locations', via: :get, as: :locations, format: :json, to: 'social_profiles#locations'
+
 
   devise_for :user
 # # Authentication

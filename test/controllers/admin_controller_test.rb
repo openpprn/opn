@@ -61,5 +61,47 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+  test "should allow owner to delete users" do
+    login(users(:owner))
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response :success
+    refute User.find_by_id(users(:user_1).id)
+
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response :success
+    refute User.find_by_id(users(:admin).id)
+
+  end
+
+  test "should not allow owner to delete himself" do
+    login(users(:owner))
+    post :destroy_user, user_id: users(:owner).id, format: :js
+
+
+    assert_response :success
+    assert User.find_by_id(users(:owner).id)
+
+  end
+
+  test "should not allow non-owner to delete users" do
+    login(users(:admin))
+
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:owner).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response 403
+
+    login(users(:user_5))
+    post :destroy_user, user_id: users(:user_1).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:owner).id, format: :js
+    assert_response 403
+    post :destroy_user, user_id: users(:admin).id, format: :js
+    assert_response 403
+
+  end
+
 
 end

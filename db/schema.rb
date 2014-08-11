@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806162852) do
+ActiveRecord::Schema.define(version: 20140807213353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -246,6 +246,22 @@ ActiveRecord::Schema.define(version: 20140806162852) do
   end
 
   add_index "roles_users", ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id", using: :btree
+
+  create_table "social_profiles", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.string   "sex"
+    t.string   "photo"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location_id"
+    t.string   "location"
+    t.boolean  "show_location", default: false, null: false
+    t.boolean  "show_karma",    default: false, null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: true do |t|
     t.string   "name_en"
