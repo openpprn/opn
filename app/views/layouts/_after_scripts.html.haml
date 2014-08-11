@@ -1,10 +1,13 @@
 -# Take any Javascript included via content_for block, and inject it here
-:javascript
-  function main() {
-    #{yield :js}
-  }
-  $(document).ready(main);
+- if content_for :js
+  :javascript
+    function main() {
+      #{yield :js}
+    }
+    $(document).ready(main);
 
 -# Add Google Analytics Script Here
+= render "shared/google_analytics_script"
 
 -# Add User Voice Script Here
+= render "shared/uservoice_script"
