@@ -1,0 +1,61 @@
+
+%h3 User Management
+
+.panel.panel-default
+  .panel-heading
+    .btn-toolbar{role: "toolbar"}
+      %form#user-search.form-inline{ role: 'form', action: admin_path, :style => "display: inline;" }
+        .btn-group{data: {toggle: 'buttons'}}
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: ''} All Users
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
+          %label.btn.btn-default
+            %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
+        .btn-group
+          %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
+          %label.control-label.sr-only Limit by user email
+          .input-group
+            %input.form-control{type: 'search', placeholder: 'Search by Email', name: 'search', value: params[:search]}
+            %span.input-group-btn
+              %button.btn.btn-default{type: "submit", value: ""} Search
+
+
+
+  .table-responsive
+    %table.table#role{data: {add_target: add_role_path, remove_target: remove_role_path, destroy_target: destroy_user_path}}
+      %thead
+        %tr
+          %th
+            User
+          %th
+            Role
+
+      %tbody
+        - @users.each do |user|
+          %tr.user{data: {user_id: user.id}}
+            %td= user.email
+            %td
+              - user.roles.each do |role|
+                %span.label.label-default{:style => "margin-right: 5px;"}
+                  = role.name.capitalize
+                  %a.remove-role{data: {role: role.name}, :style => "color: inherit;"}
+                    %i.fa.fa-times
+
+              / Single button
+              .btn-group.pull-right
+                %button.btn.btn-primary.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+                  Action
+                  %span.caret
+                %ul.dropdown-menu{role: "menu"}
+                  %li
+                    %a.add-role{href: "#", data: {role: 'admin'}} Make Admin
+                  %li
+                    %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
+                  %li.divider
+                  %li
+                    %a.delete-user{href: "#"} Delete User
+
+
+
+

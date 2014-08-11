@@ -5,40 +5,65 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  mount Forem::Engine, :at => '/forums'
+  mount Forem::Engine, :at => '/social/discussion'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'pages#index'
+  # Static Pages
+  root 'static#home'
+  get 'about' => 'static#about'
+  get 'external_link_warning' => 'static#external_link_warning'
+  get 'privacy' => 'static#privacy'
+  get 'terms' => 'static#terms'
 
-  # Front-end Prototype Pages
-  get 'about' => 'pages#about'
-  get 'account' => 'pages#account'
-  get 'blog' => 'pages#blog'
-  get 'consent' => 'pages#consent'
 
-  get 'data_connections' => 'pages#data_connections'
-  get 'data_explore' => 'pages#data_explore'
-  get 'data_learn' => 'pages#data_learn'
-  get 'data_reports' => 'pages#data_reports'
+  # Research Section
+  get 'research_topics' => 'research#research_topics'
+  get 'research_question' => 'research#research_question'
+  get 'research_karma' => 'research#research_karma'
+  get 'data_connections' => 'research#data_connections'
+  get 'new_question' => 'research#new_question'
 
-  get 'discussion' => 'pages#discussion' # myapnea
-  get 'external_link_warning' => 'pages#external_link_warning'
-  get 'findings' => 'pages#findings'
 
-  get 'new_question' => 'pages#new_question'
-  get 'pprn' => 'pages#toggle_pprn_cookie'
-  get 'privacy' => 'pages#privacy'
+  # Health Data Section
+  get 'data_explore' => 'health_data#explore'
+  get 'data_learn' => 'health_data#learn'
+  get 'data_reports' => 'health_data#reports'
 
-  get 'research_topics' => 'pages#research_topics'
-  get 'research_question' => 'pages#research_question'
-  get 'research_karma' => 'pages#research_karma'
 
-  get 'social' => 'pages#social'
+  # Social Section
+  match 'social', to: 'social#overview', via: :get, as: 'social' # show
+  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
+  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'social_profiles#locations'
 
-  get 'terms' => 'pages#terms'
+
+  # Blog Section
+  get 'blog' => 'blog#blog'
+  get 'blog_findings' => 'blog#blog_findings'
+
+
+  # Account Section
+  get 'account' => 'account#account'
+  get 'account_export' => 'account#account_export'
+  get 'consent' => 'account#consent'
+
+
+  # Admin Section
+  get 'admin' => 'admin#users'
+  get 'admin/users' => 'admin#users', as: 'admin_users'
+  get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
+  get 'admin/blog' => 'admin#blog', as: 'admin_blog'
+  get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
+  get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
+
+  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
+  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
+  match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user
+
+  # Development/System
+  get 'pprn' => 'application#toggle_pprn_cookie'
 
   # Surveys
   get 'surveys' => 'surveys#index'
@@ -50,17 +75,6 @@ Rails.application.routes.draw do
   # Voting on Questions
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
-
-  # Admin
-  match 'admin(/:tab)' => 'admin#dashboard', as: :admin, via: [:get, :post]
-
-  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
-  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
-  match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user
-
-  # Social
-  resource :social_profile, only: [:update, :edit, :show]
-  match 'locations', via: :get, as: :locations, format: :json, to: 'social_profiles#locations'
 
 
   devise_for :user

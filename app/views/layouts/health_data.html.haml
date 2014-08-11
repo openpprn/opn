@@ -1,0 +1,10 @@
+- @title = "My Health Data"
+
+- content_for :sublayout do
+  .row
+    .col-md-3
+      = render :partial => "layouts/navigation/health_data_nav"
+    .col-md-9
+      = yield
+
+= render template: "layouts/application"

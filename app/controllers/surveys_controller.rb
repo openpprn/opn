@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_active_nav_link_to_research
+  before_action :set_active_top_nav_link_to_research
 
   def start_survey
     @question_flow = QuestionFlow.find(params[:question_flow_id])
@@ -35,5 +35,7 @@ class SurveysController < ApplicationController
     @incomplete_surveys = QuestionFlow.incomplete(current_user)
     @unstarted_surveys = QuestionFlow.unstarted(current_user)
     @complete_surveys = QuestionFlow.complete(current_user)
+
+    render layout: "research"
   end
 end

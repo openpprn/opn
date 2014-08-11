@@ -1,0 +1,10 @@
+- @title = "Blog"
+
+- content_for :sublayout do
+  .row
+    .col-md-3
+      = render :partial => "layouts/navigation/blog_nav"
+    .col-md-9
+      = yield
+
+= render template: "layouts/application"

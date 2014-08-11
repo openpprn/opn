@@ -1,123 +1,23 @@
 !!!
--# saved from url=(0050)http://getbootstrap.com/examples/starter-template/
+
 %html{lang: "en"}
   %head
-    %link{href: "", rel: "shortcut icon"}/
 
-    -# Stylesheets
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag "font-awesome-4.1.0/css/font-awesome.min.css"
-    -# %link{href: "/stylesheets/#{current_page.path.split('.').first}.css", rel: "stylesheet"}/
-
-    -# Javascript
-
-
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-
-    -# Cross-Site Forgery Request Protection
-    = csrf_meta_tags
-
-    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
-    /[if lt IE 9]
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-    -# Page Title
     %title= yield(:title) + " " + @pprn_title
+    = render "layouts/before_scripts"
+
 
 %body{screen_capture_injected: "true"}
   .container{role: "main"}
 
-    .navbar.navbar-default{role: "navigation"}
-      -#.navbar-fixed-top
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{href: "/"}
-            = @pprn_title
-            %span.req
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
+    = render "layouts/navigation/top_navigation_bar"
+    = render "layouts/flash_messages"
+    = render "layouts/page_title_heading"
 
-            %li{:class => "#{"active" if @active_nav_link == :research}"}
-              %a{href: "/research_karma"} Research
-            %li{:class => "#{"active" if @active_nav_link == :data}"}
-              %a{href: "/data_learn"} My Health Data
-            %li{:class => "#{"active" if @active_nav_link == :patients}"}
-              %a{href: "/social"} Patients
-            %li{:class => "#{"active" if @active_nav_link == :blog}"}
-              %a{href: "/blog"} Blog
+    - if content_for(:sublayout)
+      = yield :sublayout # the sublayouts must make their own call to yield
+    - else
+      = yield
 
-
-          %ul.nav.navbar-nav.pull-right
-            %li
-              %a.req{href: "/req", style: "display:none !important; color: red;"}
-
-
-            - if current_user
-              %li.dropdown
-                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  My Settings
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{href: "/account"}
-                      %i.fa.fa-user &nbsp; Account Settings
-                  - if current_user.can?(:view_admin_dashboard)
-                    %li
-                      %a{href: "/admin", :title => "Admin Panel"}
-                        %i.fa.fa-wrench &nbsp; Admin Panel
-                  %li
-                    = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, :method => :delete
-            - else
-              %li
-                %a{:href => main_app.new_user_session_path}
-                  %i.fa.fa-sign-in
-                    Sign In
-
-
-    .row
-      .col-xs-12
-
-        = render partial: "shared/flash_messages", flash: flash
-
-        - if content_for?(:title)
-          .page-header
-
-            / %ol.breadcrumb
-            /   %li
-            /     %a{href: "#"}= @page_is_for_research ? "Research" : "Community"
-
-            - if @page_is_for_research
-              / Button trigger modal
-              %h1.pull-left= yield(:title)
-              %button.btn.btn-primary.btn-sm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :style => "margin-top: 30px;"} Launch Demo Video
-              .clearfix
-            - else
-              %h1= yield(:title)
-
-        - else
-          .page-header-blank
-
-
-    = yield
-
-  %hr/
-
-  .row
-    .col-md-12
-      %center
-        %a{href: "/about"} About
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %a{href: "/terms"} Terms of Service
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %a{href: "/privacy"} Privacy Policy
-
-        - if Rails.env.development?
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
+    = render "layouts/footer"
 

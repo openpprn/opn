@@ -3,7 +3,7 @@ module Scaffoldable
 
   included do
     MODEL_CLASS = self.model_class
-    before_action :set_object, only: [:show, :edit, :update, :destroy]
+    before_action :set_object, only: [:show, :profile, :update, :destroy]
   end
 
   def index

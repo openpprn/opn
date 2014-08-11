@@ -2,18 +2,18 @@ require 'test_helper.rb'
 
 class AdminControllerTest < ActionController::TestCase
 
-  test "should GET dashboard for owners" do
+  test "Owners should GET user administration" do
     login(users(:owner))
 
-    get :dashboard
+    get :users
     assert_response :success
 
   end
 
-  test "should GET dashboard for admins" do
+  test "Admins should GET user administration" do
     login(users(:admin))
 
-    get :dashboard
+    get :users
     assert_response :success
 
   end
@@ -21,7 +21,8 @@ class AdminControllerTest < ActionController::TestCase
   test "should raise SecurityViolation for unauthorized users" do
     login(users(:user_1))
 
-    get :dashboard
+    get :users
+
     assert_response 403
   end
 

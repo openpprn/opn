@@ -1,0 +1,11 @@
+
+.list-group
+  %a.list-group-item{href: account_path, class: "#{"active" if action_name == "account"}"} My Settings
+  %a.list-group-item{href: account_export_path, class: "#{"active" if action_name == "account_export"}"} Export Account
+
+-# Description of this section
+%p.small Your account settings page enables you to control general settings on how you are involved in the site.
+
+%p.small
+  = link_to "To update your social profile, click here.", social_profile_path
+

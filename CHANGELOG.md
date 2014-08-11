@@ -1,10 +1,13 @@
 # Changelog for OpenPPRN
 
-## R0 - Social Functionality
+## R1 - Social Functionality
 ### Enhancements
-- Social Profile created
-- Geocoding support added
-- User map created
+- Discussion forum added
+- Users can set up their social profile
+- Users can upload profile photos
+- Geocoding support implemented
+- Users can see other participants on a map
+- Admin dashboard refactored
 
 ## R0.1 - Admin Profile Fixes and Testing
 

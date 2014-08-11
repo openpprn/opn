@@ -1,0 +1,57 @@
+- @title = "Account"
+
+%h3 My Settings
+%br/
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Email Address & Password
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .form-group
+            %label.col-sm-4.control-label Email
+            .col-sm-8
+              %p.form-control email@example.com
+          .form-group
+            %label.col-sm-4.control-label{for: "inputPassword"} Password
+            .col-sm-8
+              %p.form-control-static
+                %a Reset Password
+
+
+
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Notification Preferences
+      .panel-body
+        %form.form-horizontal{role: "form"}
+          .radio
+            %label
+              %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+              Email Me
+          .radio
+            %label
+              %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+              Don't Email Me
+
+
+
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Language
+      .panel-body
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            / %label.control-label.col-md-6{for: "inputPassword3"}
+            /   %i.fa.fa-globe &nbsp; Language:
+            .col-md-6
+              %select.form-control
+                %option
+                  %i.fa.fa-globe
+                  English
+                %option Spanish
+
+
+    %button.btn.btn-primary.pull-right Save

@@ -1,6 +1,6 @@
 require 'test_helper.rb'
 
-class PagesControllerTest < ActionController::TestCase
+class StaticControllerTest < ActionController::TestCase
 
   test "should get about" do
     get :about
