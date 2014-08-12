@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
   get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
 
+
+
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role
   match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user
