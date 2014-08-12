@@ -2,19 +2,19 @@
 -# THE NAVBAR
 - if myapnea_pprn?
   .list-group
-    %a.list-group-item{href: social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
+    %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
     %a.list-group-item{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
-      Discussion
+      Discussion Forum
       - if current_user
-        %span.badge 54
+        %span.badge 11
     - if current_user
-      %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
 - else # CCFA PPRN
 
   - if current_user
     .list-group
-      %a.list-group-item{href: social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
-      %a.list-group-item{href: social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+      %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
+      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
 
 
 - if current_user

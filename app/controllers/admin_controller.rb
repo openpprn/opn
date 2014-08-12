@@ -11,7 +11,7 @@ class AdminController < ApplicationController
 
     set_users
 
-    render "users"
+    render "update_users"
   end
 
   def remove_role_from_user
@@ -19,7 +19,7 @@ class AdminController < ApplicationController
 
     set_users
 
-    render "users"
+    render "update_users"
   end
 
   def destroy_user
@@ -29,7 +29,7 @@ class AdminController < ApplicationController
 
     set_users
 
-    render "users"
+    render "update_users"
   end
 
 
@@ -37,6 +37,11 @@ class AdminController < ApplicationController
 
   def users
     set_users
+
+    respond_to do |format|
+      format.html
+      format.js  { render "update_users" }
+    end
   end
 
   def blog

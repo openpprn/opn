@@ -1,7 +1,7 @@
 Forem.user_class = "User"
 Forem.email_from_address = "please-change-me@example.com"
 # If you do not want to use gravatar for avatars then specify the method to use here:
-# Forem.avatar_user_method = :custom_avatar_url
+Forem.avatar_user_method = :photo_url
 Forem.per_page = 20
 
 
@@ -16,5 +16,5 @@ Forem.per_page = 20
 # By default, these lines will use the layout located at app/views/layouts/forem.html.erb in your application.
 
 Rails.application.config.to_prepare do
-  Forem.layout = "application"
+  Forem.layout = "social"
 end

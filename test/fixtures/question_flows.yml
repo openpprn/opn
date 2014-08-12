@@ -1,3 +1,4 @@
-1:
+survey_1:
   name_en: Some Survey
   first_question: q1
+  status: "show"
