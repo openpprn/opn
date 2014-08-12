@@ -1,7 +1,7 @@
 -# This Partial Loads the Button, the Modal, and the JS to Make the Introductory Modal Function
 
 -# If this is the user's first day on the site, make the intro button pop at them # ToDo make this more sophisticated
-- if current_user && (Time.now - current_user.created_at) < 1.day
+- if false #current_user && (Time.now - current_user.created_at) < 1.day
   - content_for :js do
     $("#intro_btn").tooltip('show');
 
