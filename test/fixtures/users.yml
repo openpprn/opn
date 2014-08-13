@@ -3,6 +3,9 @@ user_<%= i %>:
   email: user_<%= i %>@mail.com
 <% end %>
 
+social:
+  email: tommyboy@gmail.com
+
 admin:
   email: admin@mail.com
   roles: admin

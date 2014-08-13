@@ -121,12 +121,18 @@ class QuestionFlow < ActiveRecord::Base
   end
 
   def leaf
-    leaves = first_question.descendants.select {|q| q.leaf?}
+    if first_question.descendants.length > 0
+      leaves = first_question.descendants.select {|q| q.leaf?}
 
-    raise StandardError, "Multiple leaves found!" if leaves.length > 1
-    raise StandardError, "No leaf found!" if leaves.length == 0
+      raise StandardError, "Multiple leaves found!" if leaves.length > 1
+      raise StandardError, "No leaf found!" if leaves.length == 0
 
-    leaves.first
+      leaves.first
+    else
+      # Only one question!
+      first_question
+    end
+
   end
 
 

@@ -2,9 +2,9 @@
   .list-group
     %a.list-group-item{href: research_karma_path, class: "#{"active" if action_name == "research_karma"}"} My Karma
     %a.list-group-item{href: research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research Democracy
-    %a.list-group-item{href: research_surveys_path, class: "#{"active" if action_name == "research_surveys"}"}
+    %a.list-group-item{href: surveys_path, class: "#{"active" if action_name == "research_surveys"}"}
       My Surveys
-      %span.badge 2
+      %span.badge= QuestionFlow.unstarted(current_user).count
     %a.list-group-item{href: data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
 
 - if current_user

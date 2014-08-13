@@ -6,12 +6,21 @@
         %h3.panel-title Map
 
       .col-md-6
-        .btn-group.btn-group-sm.pull-right
-          %button.btn.btn-default{type: "button"} City
-          %button.btn.btn-default{type: "button"} State
-          %button.btn.btn-default{type: "button"} Country
-          %button.btn.btn-default.active{type: "button"} World
 
+
+        .btn-group.btn-group-sm.pull-right{data: {toggle: "buttons"}}
+          %label.btn.btn-default#city-view
+            %input{type: "radio", name: "zoomLevel"}
+            City
+          %label.btn.btn-default#state-view
+            %input{type: "radio", name: "zoomLevel"}
+            State
+          %label.btn.btn-default#country-view.active
+            %input{type: "radio", name: "zoomLevel", checked: 'checked'}
+            Country
+          %label.btn.btn-default#world-view
+            %input{type: "radio", name: "zoomLevel"}
+            World
 
   #user_map{data: {path: locations_path}}
 

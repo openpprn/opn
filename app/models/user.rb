@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
     users
   end
 
+  def photo_url
+    if social_profile
+      social_profile.photo.url
+    else
+      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
+    end
+  end
+
   def forem_name
     email
   end

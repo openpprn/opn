@@ -7,7 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+## To re-create and re-seed database (including test fixtures)
+# bundle exec rake db:drop; bundle exec rake db:create; bundle exec rake db:migrate; bundle exec rake db:fixtures:load RAILS_ENV=development; bundle exec rake db:seed;
+
 unless Rails.env == "test"
+
+
+
   to_keep = [ "users", "schema_migrations"]
   tables = [
       "answer_types",
