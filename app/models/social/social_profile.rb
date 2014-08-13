@@ -15,6 +15,10 @@ class SocialProfile < ActiveRecord::Base
 
 
   def location_for_map
-    { latitude: latitude, longitude: longitude, title: name }
+    if latitude and longitude
+      { latitude: latitude, longitude: longitude, title: name }
+    else
+      nil
+    end
   end
 end
