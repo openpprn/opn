@@ -1,0 +1,13 @@
+
+.list-group
+  %a.list-group-item{href: admin_users_path, class: "#{"active" if action_name == "admin_users"}"} Users
+  %a.list-group-item{href: admin_surveys_path, class: "#{"active" if action_name == "admin_surveys"}"} Surveys
+  %a.list-group-item{href: admin_blog_path, class: "#{"active" if action_name == "admin_blog"}"} Blog Posts
+  %a.list-group-item{href: admin_notifications_path, class: "#{"active" if action_name == "admin_notifications"}"} Notifications
+  %a.list-group-item{href: admin_research_topics_path, class: "#{"active" if action_name == "admin_research_topics"}"} Research Topics
+
+
+-# Description of this section
+%p.small This admin panel gives admins control over content and publishings on the site.
+
+

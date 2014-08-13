@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    %h3 My Data Connections
+
+%br/
+
+
+- source_num = 0
+
+- @pprn["data_sources"].each do |source,junk|
+  - if (source_num % 3 == 0)
+    .row
+
+  .col-md-4
+    .panel.panel-default
+      .panel-body
+        %h4= source
+        - if ![true,false,false,false].shuffle.first
+          %button.btn.btn-success.btn-sm Connect
+        - else
+          %button.btn.btn-default.disabled.btn-sm Connected
+
+
+
+  - source_num += 1

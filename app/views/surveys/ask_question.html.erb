@@ -1,0 +1,21 @@
+<div id="answer-session">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= render partial: 'surveys/partials/header', locals: {question_flow: @answer_session.question_flow} %>
+      <%= render partial: 'surveys/partials/session_progress', locals: {stats: @answer_session.calculate_status_stats }%>
+    </div>
+
+    <%= form_tag(process_answer_path, {role: "form"}) do %>
+      <div class="panel-body">
+        <div class="pull-right"><span class="text-muted">Rate this question:&nbsp;</span><%= render partial: 'surveys/partials/rate_question', locals: { question: @question, show_badge: false } %></div>
+        <%= render partial: 'surveys/partials/help_message' if @question.question_help_message.present?%>
+        <%= render partial: 'surveys/partials/question_form' %>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Previous Question', previous_question_path(@answer), class: 'btn btn-lg btn-default', tabindex: -1 %>
+        <button type="submit" name="direction" value="next" class="btn btn-primary btn-lg pull-right">Next Question</button>
+      </div>
+    <% end %>
+    </div>
+</div>
+

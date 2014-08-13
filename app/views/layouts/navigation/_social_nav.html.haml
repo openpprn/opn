@@ -1,0 +1,43 @@
+
+-# THE NAVBAR
+- if myapnea_pprn?
+  .list-group
+    %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
+    %a.list-group-item{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
+      Discussion Forum
+      - if current_user
+        %span.badge 11
+    - if current_user
+      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+- else # CCFA PPRN
+
+  - if current_user
+    .list-group
+      %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
+      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+
+
+- if current_user
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title Around You
+
+    %ul.list-group
+      - 6.times do
+        %li.list-group-item
+          .media
+            .pull-left
+              = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(rand.to_s)}?d=identicon", :class => " media-item-object img-circle user-avatar"
+            .media-body.small
+              %strong
+                = random_name
+              %p
+                = random_place
+
+
+
+
+-# Description of this section
+.small
+  %p Patients are on #{@pprn_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+= render partial: "shared/promotion_to_join" if !current_user

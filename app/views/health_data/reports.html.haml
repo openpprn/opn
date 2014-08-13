@@ -1,0 +1,10 @@
+
+%h3 My Reports
+%hr/
+
+- @report_names = ["My Disease Activity", "My Quality of Life", "My Anxiety", "My Depression", "My Fatigue","My Pain","My Sleep Disturbance","My Social Relations"]
+- @report_names.each do |report_name|
+
+  %h4= report_name
+  = render :partial => "shared/progress"
+  %hr/

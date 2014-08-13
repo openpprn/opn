@@ -1,0 +1,82 @@
+complete:
+  name: Tom Haverford
+  age: 30
+  sex: Male
+  location: Indianapolis, IA
+  latitude: 39.7910
+  longitude: -86.1480
+  show_location: true
+  show_karma: true
+  user: social
+
+show_1:
+  name: Jacqueline Perry
+  age: 55
+  sex: Female
+  location: Phoenix, AZ
+  latitude: 33.43
+  longitude: -112.02
+  show_location: true
+  user: user_1
+
+show_2:
+  name: Juan Taylor
+  age: 19
+  sex: Other
+  location: Long Beach, CA
+  latitude: 33.82
+  longitude: -118.15
+  show_location: true
+  user: user_2
+
+show_3:
+  name: Harry Young
+  age: 42
+  sex: Male
+  location: Baltimore, MD
+  latitude: 39.18
+  longitude: -76.67
+  show_location: true
+  user: user_3
+
+show_4:
+  name: Annie Peterson
+  age: 26
+  sex: Female
+  location: Albany, NY
+  latitude: 42.72
+  longitude: -73.80
+  show_location: true
+  user: user_4
+
+show_5:
+  name: Julie Scott
+  age: 70
+  sex: Female
+  location: Portland, OR
+  latitude: 45.60
+  longitude: -122.60
+  show_location: true
+  user: user_5
+
+no_show_1:
+  name: Catherine Ward
+  age: 66
+  sex: Female
+  location: Nantucket, MA
+  latitude: 41.25
+  longitude: -70.07
+  show_location: false
+  user: user_6
+
+no_show_2:
+  name: Joshua Green
+  age: 37
+  sex: Male
+  location: Saint Paul, MN
+  latitude: 44.93
+  longitude: -93.05
+  show_location: false
+  user: user_7
+
+
