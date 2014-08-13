@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
-  layout "research"
+  layout "health_data"
 
   def start_survey
     @question_flow = QuestionFlow.find(params[:question_flow_id])
