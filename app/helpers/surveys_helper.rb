@@ -30,6 +30,11 @@ module SurveysHelper
     end
   end
 
+  def next_survey?(current_qf)
+    QuestionFlow.where(status: "show").select{|qf| qf.id != current_qf.id }.first.present?
+
+  end
+
   def go_to_next_survey(user, current_qf)
     next_qf = QuestionFlow.where(status: "show").select{|qf| qf.id != current_qf.id }.first
     as = user.answer_sessions.where(question_flow_id: next_qf.id)

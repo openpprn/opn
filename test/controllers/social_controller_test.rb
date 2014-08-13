@@ -33,4 +33,21 @@ class SocialControllerTest < ActionController::TestCase
     assert users(:user_1).social_profile
     assert_equal profile_params[:social_profile][:name], users(:user_1).social_profile.name
   end
+
+  test "List of locations of opted in users is available" do
+
+
+    get :locations, format: :json
+
+    assert assigns(:locations)
+    assert_equal 6, assigns(:locations).length
+    assert_includes assigns(:locations), {latitude: social_profiles(:show_1).latitude, longitude: social_profiles(:show_1).longitude}
+
+    login(users(:social))
+
+    get :locations, format: :json
+
+    assert_equal 5, assigns(:locations).length
+    assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))
+  end
 end

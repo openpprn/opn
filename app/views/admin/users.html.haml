@@ -1,24 +1,27 @@
 
 %h3 User Management
 
-.panel.panel-default
+.panel.panel-default#admin-dashboard
   .panel-heading
     .btn-toolbar{role: "toolbar"}
-      %form#user-search.form-inline{ role: 'form', action: admin_path, :style => "display: inline;" }
-        .btn-group{data: {toggle: 'buttons'}}
-          %label.btn.btn-default
-            %input{type: 'radio', name: 'search_role', value: ''} All Users
-          %label.btn.btn-default
-            %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
-          %label.btn.btn-default
-            %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
-        .btn-group
-          %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
-          %label.control-label.sr-only Limit by user email
-          .input-group
-            %input.form-control{type: 'search', placeholder: 'Search by Email', name: 'search', value: params[:search]}
-            %span.input-group-btn
-              %button.btn.btn-default{type: "submit", value: ""} Search
+      %form#user-search.form-inline{ role: 'form', action: admin_users_path, :style => "display: inline;" }
+
+        .col-sm-4
+          .btn-group{data: {toggle: 'buttons'}}
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: ''} All Users
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
+        .col-sm-8
+          .btn-group
+            %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
+            %label.control-label.sr-only Limit by user email
+            .input-group
+              %input.form-control{type: 'search', placeholder: 'Search by Email', name: 'search', value: params[:search]}
+              %span.input-group-btn
+                %button.btn.btn-default{type: "submit", value: ""} Search
 
 
 

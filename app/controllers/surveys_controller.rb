@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
+  layout "research"
 
   def start_survey
     @question_flow = QuestionFlow.find(params[:question_flow_id])
@@ -14,6 +15,9 @@ class SurveysController < ApplicationController
   end
 
   def show_report
+    @answer_session = AnswerSession.find(params[:answer_session_id])
+    @question_flow = @answer_session.question_flow
+
 
   end
 
@@ -28,6 +32,11 @@ class SurveysController < ApplicationController
     else
       redirect_to ask_question_path(question_id: answer.next_question.id, answer_session_id: @answer_session.id)
     end
+  end
+
+  def question_frequencies
+    @question = Question.find(params[:question_id])
+    @answer_session = AnswerSession.find(params[:answer_session_id])
   end
 
 
