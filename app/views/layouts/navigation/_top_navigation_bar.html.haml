@@ -24,7 +24,10 @@
 
       %a.btn.btn-success.navbar-btn{href: main_app.social_path, :class => "#{"active" if @active_top_nav_link == :research}"} Patient Community
 
-      %a.btn.btn-primary.navbar-btn{href: main_app.explore_path, :class => "#{"active" if @active_top_nav_link == :health_data}"} My Health Data
+      - if current_user
+        %a.btn.btn-primary.navbar-btn{href: main_app.explore_path, :class => "#{"active" if @active_top_nav_link == :health_data}"} My Health
+      - else
+        %a.btn.btn-primary.navbar-btn{href: main_app.connections_path, :class => "#{"active" if @active_top_nav_link == :health_data}"} My Health
 
 
       %ul.nav.navbar-nav.pull-right

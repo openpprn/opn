@@ -3,10 +3,12 @@
 
 .list-group
   %a.list-group-item.list-group-item-success{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Map & Stats
-  %a.list-group-item.list-group-item-success{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
-    Discussion Forum
+  - if myapnea_pprn? && current_user
+    %a.list-group-item.list-group-item-success{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"} Discussion Forum
   %a.list-group-item.list-group-item-success{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research for Vote
-  %a.list-group-item.list-group-item-success{href: main_app.karma_path, class: "#{"active" if action_name == "karma"}"} My Karma
+  - if current_user
+    %a.list-group-item.list-group-item-success{href: main_app.karma_path, class: "#{"active" if action_name == "karma"}"} My Karma
+  %a.list-group-item.list-group-item-success{href: main_app.blog_path, class: "#{"active" if action_name == "blog"}"} Blog
 
 
 

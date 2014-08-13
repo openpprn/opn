@@ -1,17 +1,28 @@
 
-.req All Page Content and Imagery
 
+.text-center
+  %h2 Let's Solve #{@pprn_condition} Together
+%br/
+.row
+  -#{:style => "position: absolute; z-index: 0;"}
+  .col-md-12
+    - i = -1
+    - 8.times do
+      = image_tag ("avatars/profile-#{i+=1}.jpg"), :style => "width: 234px;", :class => "pull-left"
 
+%br/
+%br/
 
 .row
   .col-md-8.col-md-offset-2
-    .text-center
-      %h3 Join a Movement to Solve #{@pprn_condition} Together
+
     %br/
     %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
     %br/
 
     = image_tag "video.png", :style => "width: 100%; border: 2px solid gray;"
+
+
 
 
 
