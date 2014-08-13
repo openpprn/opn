@@ -1,20 +1,24 @@
 
 -# THE NAVBAR
-- if myapnea_pprn?
-  .list-group
-    %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
-    %a.list-group-item{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
-      Discussion Forum
-      - if current_user
-        %span.badge 11
-    - if current_user
-      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
-- else # CCFA PPRN
 
-  - if current_user
-    .list-group
-      %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
-      %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+.list-group
+  %a.list-group-item.list-group-item-success{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Map & Stats
+  %a.list-group-item.list-group-item-success{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
+    Discussion Forum
+  %a.list-group-item.list-group-item-success{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research for Vote
+  %a.list-group-item.list-group-item-success{href: main_app.karma_path, class: "#{"active" if action_name == "karma"}"} My Karma
+
+
+
+-# Description of this section
+.small
+  %p Patients are on #{@pprn_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+
+- if current_user
+  %a.btn.btn-success.btn-block{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} Update Social Profile
+  %br/
+
+= render partial: "shared/promotion_to_join" if !current_user
 
 
 - if current_user
@@ -37,7 +41,3 @@
 
 
 
--# Description of this section
-.small
-  %p Patients are on #{@pprn_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
-= render partial: "shared/promotion_to_join" if !current_user

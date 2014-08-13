@@ -39,4 +39,6 @@ class SocialController < ApplicationController
         :photo
     )
   end
+
+
 end

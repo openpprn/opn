@@ -16,16 +16,48 @@ Rails.application.routes.draw do
   get 'external_link_warning' => 'static#external_link_warning'
   get 'privacy' => 'static#privacy'
   get 'terms' => 'static#terms'
+  get 'signed_in_home' => 'social#overview'
+
+
+
+  # Social Section
+  get 'research_topics' => 'social#research_topics'
+  get 'karma' => 'social#karma'
+  #get 'social_discussion' => 'social#discussion'
+  match 'social', to: 'social#overview', via: :get, as: 'social' # show
+  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
+  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
+
+  get 'new_question' => 'social#new_question'
+  get 'blog' => 'social#blog'
+  get 'research_underway' => 'social#research_underway'
+
+
+
+  # Health Data Section
+  get 'explore' => 'health_data#explore'
+  get 'reports' => 'health_data#reports'
+  get 'medications' => 'health_data#medications'
+  get 'data_intro' => 'health_data#intro'
+  get 'surveys' => 'health_data#surveys'
+  get 'connections' => 'health_data#connections'
+  #get 'data_question' => 'health_data#question'
+
+
+
+
+
 
 
   # Research Section
-  get 'research_topics' => 'research#research_topics'
-  get 'research_question' => 'research#research_question'
-  get 'research_karma' => 'research#research_karma'
-  get 'research_today' => 'research#research_today'
-  get 'research_surveys' => 'research#research_surveys', as: :surveys
-  get 'data_connections' => 'research#data_connections'
-  get 'new_question' => 'research#new_question'
+  # get 'research_topics' => 'research#research_topics'
+  # get 'research_question' => 'research#research_question'
+  # get 'research_karma' => 'research#research_karma'
+  # get 'research_today' => 'research#research_today'
+  # get 'research_surveys' => 'research#research_surveys', as: :surveys
+  # get 'data_connections' => 'research#data_connections'
+  # get 'new_question' => 'research#new_question'
 
   # Surveys
   get 'research_surveys/report/:answer_session_id', to: 'surveys#show_report', as: :survey_report
@@ -36,18 +68,14 @@ Rails.application.routes.draw do
 
 
   # Health Data Section
-  get 'data_explore' => 'health_data#explore'
-  get 'data_reports' => 'health_data#reports'
-  get 'data_medications' => 'health_data#medications'
-  get 'data_intro' => 'health_data#intro'
+  # get 'data_explore' => 'health_data#explore'
+  # get 'data_reports' => 'health_data#reports'
+  # get 'data_medications' => 'health_data#medications'
+  # get 'data_intro' => 'health_data#intro'
 
 
 
   # Social Section
-  match 'social', to: 'social#overview', via: :get, as: 'social' # show
-  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
-  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
-  match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
 
 
   # Blog Section
