@@ -2,7 +2,7 @@ require 'test_helper.rb'
 
 class ResearchControllerTest < ActionController::TestCase
   test "User needs to be logged in to see surveys" do
-    get :research_surveys
+    get :surveys
 
     assert_response 302
   end
@@ -10,7 +10,7 @@ class ResearchControllerTest < ActionController::TestCase
   test "User can see a list of unstarted surveys" do
     login(users(:social))
 
-    get :research_surveys
+    get :surveys
 
     assert_response :success
   end
