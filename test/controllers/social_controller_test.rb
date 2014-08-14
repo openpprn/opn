@@ -50,4 +50,21 @@ class SocialControllerTest < ActionController::TestCase
     assert_equal 5, assigns(:locations).length
     assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))
   end
+
+
+
+  test "User needs to be logged in to see surveys" do
+    get :surveys
+
+    assert_response 302
+  end
+
+  test "User can see a list of unstarted surveys" do
+    login(users(:social))
+
+    get :surveys
+
+    assert_response :success
+  end
+
 end
