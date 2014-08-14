@@ -1,0 +1,55 @@
+
+/ Demo Video Modal
+#myModal.modal{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Demo Video
+      .modal-body
+        = image_tag "demo-video.png", :style => "width: 100%;"
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+
+.row
+  .col-md-8
+    %h3 Research Democracy
+
+    %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis. Morbi quis pellentesque dolor. Nam suscipit in nisl at mollis.
+
+    %p Pellentesque posuere quis metus nec molestie. Vestibulum ut iaculis leo, feugiat condimentum nibh. Ut urna augue, dapibus at vestibulum sed, suscipit at tortor. Nunc eget dignissim metus. Proin lobortis magna ut nibh blandit, non sodales augue mollis. Morbi quis pellentesque dolor. Nam suscipit in nisl at mollis.
+  .col-md-4
+    .well
+      %h3 You have 5 Votes.
+      %p You have cast 4 of them.
+
+
+      .progress
+        .progress-bar.progress-bar-success{style: "width: 70%"}
+          %span.sr-only 70% Complete (success)
+      %i.fa.fa-check-square-o.pull-left{:style => "font-size: 60px;"}
+      %p Use them all. You can change your votes at any time.
+
+%br/
+
+%ul.nav.nav-tabs.nav-justified{role: "tablist"}
+  %li.active
+    %a{"data-toggle" => "tab", href: "#popular", role: "tab"} Most Votes
+  - if current_user
+    %li
+      %a{"data-toggle" => "tab", href: "#mine", role: "tab"} My Votes
+  %li
+    %a{"data-toggle" => "tab", href: "#newest", role: "tab"}
+      Newest
+      %span.badge 12
+
+/ Tab panes
+.tab-content
+  #popular.tab-pane.active= render partial: "shared/research_topics", locals: {num_loops: 2, star_pattern: :popular, editable: false}
+  - if current_user
+    #mine.tab-pane= render partial: "shared/research_topics", locals: {num_loops: 1, star_pattern: :mine, editable: false}
+  #newest.tab-pane= render partial: "shared/research_topics", locals: {num_loops: 2, star_pattern: :newest, editable: false}
+
+

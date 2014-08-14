@@ -1,0 +1,16 @@
+<% 1.upto(10) do |i| %>
+user_<%= i %>:
+  email: user_<%= i %>@mail.com
+<% end %>
+
+social:
+  email: tommyboy@gmail.com
+
+admin:
+  email: admin@mail.com
+  roles: admin
+
+owner:
+  email: owner@mail.com
+  roles: owner
+

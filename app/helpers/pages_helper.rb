@@ -1,11 +1,11 @@
 module PagesHelper
 
   def ccfa_pprn?
-    @pprn == "ccfa"
+    @pprn_code == "ccfa"
   end
 
-  def sapcon_pprn?
-    @pprn == "sapcon"
+  def myapnea_pprn?
+    @pprn_code == "myapnea"
   end
 
   def req?

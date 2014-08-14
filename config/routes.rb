@@ -1,34 +1,89 @@
 Rails.application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/social/discussion'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'pages#index'
-
-  # Front-end Prototype Pages
-  get 'about' => 'pages#about'
-  get 'account' => 'pages#account'
-  get 'admin' => 'pages#admin'
-  get 'blog' => 'pages#blog'
-  get 'connections' => 'pages#connections'
-  get 'consent' => 'pages#consent'
-  get 'data' => 'pages#data'
-  get 'discussion' => 'pages#discussion' # sapcon
-  get 'external_link_warning' => 'pages#external_link_warning'
-  get 'findings' => 'pages#findings'
-  get 'insights' => 'pages#insights'
-  get 'new_question' => 'pages#new_question'
-  get 'pprn' => 'pages#toggle_pprn_cookie'
-  get 'privacy' => 'pages#privacy'
-  get 'req' => 'pages#req'
-  get 'research' => 'pages#research'
-  get 'research_question' => 'pages#research_question'
-  get 'social' => 'pages#social'
-  get 'survey' => 'pages#survey'
-  get 'terms' => 'pages#terms'
+  # Static Pages
+  root 'static#home'
+  get 'about' => 'static#about'
+  get 'external_link_warning' => 'static#external_link_warning'
+  get 'privacy' => 'static#privacy'
+  get 'terms' => 'static#terms'
 
 
-devise_for :user
+  # Research Section
+  get 'research_topics' => 'research#research_topics'
+  get 'research_question' => 'research#research_question'
+  get 'research_karma' => 'research#research_karma'
+  get 'research_surveys' => 'research#research_surveys', as: :surveys
+  get 'data_connections' => 'research#data_connections'
+  get 'new_question' => 'research#new_question'
+
+  # Surveys
+  get 'research_surveys/report/:answer_session_id', to: 'surveys#show_report', as: :survey_report
+  get 'research_surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
+  get 'research_surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
+  match 'research_surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
+  get 'questions/frequencies(/:question_id/:answer_session_id)', to: "surveys#question_frequencies", as: :question_frequencies, format: :json
+
+
+  # Health Data Section
+  get 'data_explore' => 'health_data#explore'
+  get 'data_intro' => 'health_data#intro'
+  get 'data_reports' => 'health_data#reports'
+  get 'data_medications' => 'health_data#medications'
+
+
+
+  # Social Section
+  match 'social', to: 'social#overview', via: :get, as: 'social' # show
+  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
+  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
+
+
+  # Blog Section
+  get 'blog' => 'blog#blog'
+  get 'blog_findings' => 'blog#blog_findings'
+
+
+  # Account Section
+  get 'account' => 'account#account'
+  get 'account_export' => 'account#account_export'
+  get 'consent' => 'account#consent'
+
+
+  # Admin Section
+  get 'admin' => 'admin#users'
+  match 'admin/users', to: 'admin#users', as: 'admin_users', via: [:get, :post]
+  get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
+  get 'admin/blog' => 'admin#blog', as: 'admin_blog'
+  get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
+  get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
+
+  match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role, format: :js
+  match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role, format: :js
+  match 'destroy_user', to: "admin#destroy_user", via: :post, as: :destroy_user, format: :js
+
+  # Development/System
+  get 'pprn' => 'application#toggle_pprn_cookie'
+
+  # Voting on Questions
+  resources :questions
+  match 'vote', to: 'votes#vote', via: :post, as: :vote
+
+
+  devise_for :user
+
+
+
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]
 #   as :user do

@@ -58,5 +58,5 @@ git rebase upstream/master
 
 Update your fork:
 ```
-git push origin master
+git push -f origin master
 ```

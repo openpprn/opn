@@ -1,0 +1,18 @@
+- if current_user
+  .list-group
+    %a.list-group-item{href: research_karma_path, class: "#{"active" if action_name == "research_karma"}"} My Karma
+    %a.list-group-item{href: research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research Democracy
+    %a.list-group-item{href: surveys_path, class: "#{"active" if action_name == "research_surveys"}"}
+      My Surveys
+      %span.badge= QuestionFlow.unstarted(current_user).count
+    %a.list-group-item{href: data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
+
+- if current_user
+  = render :partial => "shared/notifications", :locals => { :editable => false }
+
+
+-# Description of this section
+.small
+  %p Patients participate in a research democracy, ask and help solve research questions through contributing data and answers to questions. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna.
+
+= render partial: "shared/promotion_to_join" if !current_user

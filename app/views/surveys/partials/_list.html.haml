@@ -1,0 +1,16 @@
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Number of Questions
+      %th Length
+      %th Number Started
+      %th Number Completed
+  %tbody
+    - QuestionFlow.viewable.each do |qf|
+      %tr
+        %td= qf.name
+        %td= qf.total_questions
+        %td= qf.total_time
+        %td= qf.answer_sessions.count
+        %td= qf.answer_sessions.select{|as| as.completed?}.length

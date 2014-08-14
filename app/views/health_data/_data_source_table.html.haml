@@ -1,0 +1,16 @@
+
+%table.table.table-striped
+  %thead
+    %td
+    - @pprn["data_source_types"].each do |data_source_type|
+      %td= data_source_type.to_s.titleize
+  - @pprn["data_sources"].each do |data_source_name,supported_data_source_types|
+    %tr
+      %td= data_source_name
+      - @pprn["data_source_types"].each do |data_source_type|
+        %td
+          - if supported_data_source_types.include?(data_source_type)
+            %i.fa.fa-times
+
+
+

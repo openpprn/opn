@@ -29,6 +29,7 @@ capybara-*.html
 /public/system/*
 /public/assets
 /public/public
+/public/uploads
 /coverage/
 /spec/tmp/*
 **.orig
@@ -48,3 +49,6 @@ config/initializers/secret_token.rb
 /config/initializers/db.rb
 /config/environments/production.rb
 /config/secrets.yml
+
+# Ignore OS generated files
+.DS_Store

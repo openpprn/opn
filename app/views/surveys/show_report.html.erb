@@ -1,0 +1,37 @@
+<%=
+# Load data using json
+# Generate Chart
+
+
+
+%>
+
+<div id="review">
+  <div class="page-header">
+    <h1>Thank you for completing the <strong><%= @question_flow.name %></strong> Survey!</h1>
+    <br/>
+    <%= render partial: "surveys/partials/report_nav" %>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <h2>Here's some feedback on the answers you provided</h2>
+  <br/>
+
+  <%= render partial: "surveys/reports/report_#{@question_flow.id}" rescue nil%>
+
+
+  <br/>
+
+  <br/>
+  <br/>
+
+
+  <%= render partial: "surveys/reports/default" %>
+
+  <br/>
+  <br/>
+
+  <%= render partial: "surveys/partials/report_nav" %>
+
+</div>

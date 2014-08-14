@@ -1,0 +1,10 @@
+-# Take any Javascript included via content_for block, and inject it here
+:javascript
+  function main() {
+    #{yield :js}
+  }
+  $(document).ready(main);
+
+-# Add Google Analytics Script Here
+
+-# Add User Voice Script Here
