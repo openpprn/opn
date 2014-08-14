@@ -1,5 +1,5 @@
 class SocialController < ApplicationController
-  before_action :authenticate_user!, except: [:overview, :locations]
+  before_action :authenticate_user!, except: [:overview, :locations, :research_topics]
   before_action :set_active_top_nav_link_to_social
 
   def profile
@@ -39,4 +39,6 @@ class SocialController < ApplicationController
         :photo
     )
   end
+
+
 end

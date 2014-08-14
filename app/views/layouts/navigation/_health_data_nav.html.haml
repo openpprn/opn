@@ -1,12 +1,21 @@
 
 -if current_user
   .list-group
-    %a.list-group-item{href: data_explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
-    %a.list-group-item{href: data_reports_path, class: "#{"active" if action_name == "reports"}"} My Reports
-    %a.list-group-item{href: data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications
+    %a.list-group-item.list-group-item-info{href: explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
+    %a.list-group-item.list-group-item-info{href: surveys_path, class: "#{"active" if action_name == "surveys"}"} My Surveys
+    %a.list-group-item.list-group-item-info{href: reports_path, class: "#{"active" if action_name == "reports"}"} My Reports
+    / %a.list-group-item{href: data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications
+
+
+
 
 -# Description of this section
 .small
   %p By connecting different health data sources, you help researchers from around the world help understand how this condition impacts you. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+
+
+-if current_user
+  %a.btn.btn-primary.btn-block{href: connections_path, class: "#{"active" if action_name == "connections"}"} Update My Data Sources
+
 
 = render partial: "shared/promotion_to_join" if !current_user

@@ -1,30 +1,33 @@
-.navbar.navbar-default{role: "navigation"}
+.navbar.navbar-default{role: "navigation", :style => "background-color: white; border-color: white; margin-top: 20px;"}
   -#.navbar-fixed-top
-  .container
+  .container{:style => "padding-left: 0px;"}
     .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{href: "/"}
+      %a.navbar-brand{href: "/", :style => "color: black; font-size: 200%; margin-right: 10px;"}
         = @pprn_title
         %span.req
     .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        - if current_user
-          %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-            %a{href: "/research_karma"} Research
-        - else
-          %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
-            %a{href: "/research_topics"} Research
+      / %ul.nav.navbar-nav
 
-        %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-          %a{href: "/data_explore"} My Health Data
-        %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-          %a{href: "/social"} Patients
-        %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
-          %a{href: "/blog"} Blog
+      /   %li{:class => "#{"active" if @active_top_nav_link == :research}"}
+      /     %a{href: main_app.social_path} Community
+
+      /   %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
+      /     %a{href: main_app.explore_path} My Health Data
+
+
+
+
+      %a.btn.btn-success.navbar-btn{href: main_app.social_path, :class => "#{"active" if @active_top_nav_link == :research}"} Patient Community
+
+      - if current_user
+        %a.btn.btn-primary.navbar-btn{href: main_app.explore_path, :class => "#{"active" if @active_top_nav_link == :health_data}"} My Health
+      - else
+        %a.btn.btn-primary.navbar-btn{href: main_app.connections_path, :class => "#{"active" if @active_top_nav_link == :health_data}"} My Health
 
 
       %ul.nav.navbar-nav.pull-right
@@ -33,11 +36,15 @@
 
 
         - if current_user
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              My Settings
-              %b.caret
-            %ul.dropdown-menu
+
+
+
+          / Single button
+          .btn-group
+            %button.btn.btn-default.navbar-btn.dropdown-toggle{"data-toggle" => "dropdown", type: "button", :class => "#{"active" if action_name == "account" || controller_name == "admin"}"}
+              Settings
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
               %li
                 %a{href: "/account"}
                   %i.fa.fa-user &nbsp; Account Settings
@@ -47,8 +54,12 @@
                     %i.fa.fa-wrench &nbsp; Admin Panel
               %li
                 = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
+
+
         - else
-          %li
-            %a{:href => new_user_session_path}
-              %i.fa.fa-sign-in
-                Sign In
+          .btn-group
+            %a.btn.btn-default.navbar-btn{type: "button", :href => new_user_session_path}
+              Sign in
+
+
+%hr/

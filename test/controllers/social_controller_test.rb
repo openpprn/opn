@@ -50,4 +50,6 @@ class SocialControllerTest < ActionController::TestCase
     assert_equal 5, assigns(:locations).length
     assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))
   end
+
+
 end
