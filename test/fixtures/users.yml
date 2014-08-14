@@ -6,6 +6,7 @@ user_<%= i %>:
 social:
   email: tommyboy@gmail.com
 
+
 admin:
   email: admin@mail.com
   roles: admin

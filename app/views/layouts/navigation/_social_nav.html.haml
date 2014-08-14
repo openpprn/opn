@@ -3,7 +3,7 @@
 - if myapnea_pprn?
   .list-group
     %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
-    %a.list-group-item{href: forem.root_path, class: "#{"active" if action_name == "discussion"}"}
+    %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
       Discussion Forum
       - if current_user
         %span.badge 11

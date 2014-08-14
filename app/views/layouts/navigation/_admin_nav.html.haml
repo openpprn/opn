@@ -1,10 +1,10 @@
-
 .list-group
-  %a.list-group-item{href: admin_users_path, class: "#{"active" if action_name == "admin_users"}"} Users
-  %a.list-group-item{href: admin_surveys_path, class: "#{"active" if action_name == "admin_surveys"}"} Surveys
-  %a.list-group-item{href: admin_blog_path, class: "#{"active" if action_name == "admin_blog"}"} Blog Posts
-  %a.list-group-item{href: admin_notifications_path, class: "#{"active" if action_name == "admin_notifications"}"} Notifications
-  %a.list-group-item{href: admin_research_topics_path, class: "#{"active" if action_name == "admin_research_topics"}"} Research Topics
+  %a.list-group-item{href: main_app.admin_users_path, class: "#{"active" if action_name == "users"}"} Users
+  %a.list-group-item{href: main_app.admin_surveys_path, class: "#{"active" if action_name == "surveys"}"} Surveys
+  %a.list-group-item{href: forem.admin_root_path, class: "#{ 'active' if controller_path =~ /forem/ }"} Forums
+  %a.list-group-item{href: main_app.admin_blog_path, class: "#{"active" if action_name == "blog"}"} Blog Posts
+  %a.list-group-item{href: main_app.admin_notifications_path, class: "#{"active" if action_name == "notifications"}"} Notifications
+  %a.list-group-item{href: main_app.admin_research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research Topics
 
 
 .list-group

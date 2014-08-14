@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def photo_url
-    if social_profile
+    if social_profile and social_profile.photo.present?
       social_profile.photo.url
     else
       "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
     email
   end
 
+  def to_s
+    email
+  end
   def forem_admin?
     self.has_role? :admin
   end

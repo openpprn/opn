@@ -1,7 +1,10 @@
-<%= simple_form_for [forem, @forum, @topic] do |f| %>
-  <%= f.input :subject %>
+<%= form_for [forem, @forum, @topic] do |f| %>
+  <div class="form-group">
+    <%= f.label :subject, class: 'sr-only' %>
+    <%= f.text_field :subject, class: 'form-control input-lg', placeholder: User.human_attribute_name(:title), autocomplete: :off%>
+  </div>
 
-  <%= f.simple_fields_for :posts do |post| %>
+  <%= f.fields_for :posts do |post| %>
     <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
   <% end %>
   

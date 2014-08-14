@@ -15,6 +15,23 @@ Forem.per_page = 20
 #
 # By default, these lines will use the layout located at app/views/layouts/forem.html.erb in your application.
 
-Rails.application.config.to_prepare do
-  Forem.layout = "social"
+# Rails.application.config.to_prepare do
+#   Forem.layout = "social"
+# end
+
+module Forem
+  module Admin
+    class BaseController < ApplicationController
+      layout 'admin'
+
+      def index
+        redirect_to forem.admin_forums_path
+      end
+    end
+
+  end
+end
+
+class Forem::ApplicationController < ApplicationController
+  layout 'social'
 end
