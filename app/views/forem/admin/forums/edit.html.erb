@@ -1,4 +1,7 @@
+<%=  render partial: 'forem/admin/base/nav' %>
 
-  <h2><%= t("forem.forum.edit", :title => forem_emojify(@forum.title)).html_safe %></h2>
+<h4><%= t("forem.forum.edit", :title => forem_emojify(@forum.title)).html_safe %></h4>
 
-  <%= render "form" %>
+<%= render "form" %>
+
+<%=  render partial: 'forem/admin/base/footer' %>

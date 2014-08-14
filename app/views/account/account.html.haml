@@ -55,3 +55,22 @@
 
 
     %button.btn.btn-primary.pull-right Save
+
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Member Stats
+      %table.table
+        %tr
+          %td Member Since
+          %td= current_user.created_at.strftime("%b %e, %Y")
+        %tr
+          %td Member Number
+          %td= "##{current_user.id}"
+        %tr
+          %td Karma
+          %td
+            800
+            = render "/shared/progress"
+
+
