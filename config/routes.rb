@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'research_topics' => 'research#research_topics'
   get 'research_question' => 'research#research_question'
   get 'research_karma' => 'research#research_karma'
+  get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
   get 'data_connections' => 'research#data_connections'
   get 'new_question' => 'research#new_question'
@@ -36,9 +37,9 @@ Rails.application.routes.draw do
 
   # Health Data Section
   get 'data_explore' => 'health_data#explore'
-  get 'data_intro' => 'health_data#intro'
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
+  get 'data_intro' => 'health_data#intro'
 
 
 

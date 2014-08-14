@@ -28,6 +28,6 @@ module OpenpprnBackend
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**/}')]
-
   end
+
 end

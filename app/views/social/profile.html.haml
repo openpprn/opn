@@ -53,6 +53,27 @@
           %h4 Show me in the top karma earners list if I qualify.
       =f.submit("Save", class: 'btn btn-primary pull-right')
 
+
+- if !ccfa_pprn?
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title Do you want people in the outside world to see you?
+      .radio
+        %label
+          = radio_button "show_location_public", true, id: 'optionsRadios2'
+          %strong
+            Show me.
+          %span.small Add a marker for me on the map that shows the following info.
+
+    .panel-body
+      This is what you'll look like to the outside world:
+      .text-center [map]
+      .text-center [photo]
+
+
+
+
+
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
 = javascript_include_tag 'typeahead'
 = javascript_include_tag 'typeahead-addresspicker'
