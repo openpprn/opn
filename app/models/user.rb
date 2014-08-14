@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
     email
   end
 
+  def to_s
+    email
+  end
   def forem_admin?
     self.has_role? :admin
   end

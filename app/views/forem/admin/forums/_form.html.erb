@@ -1,9 +1,24 @@
-<%= simple_form_for [forem, :admin, @forum] do |f| %>
-  <%= f.association :category, :include_blank => false %>
-  <%= f.input :title %>
-  <%= f.input :description, :as => :text %>
+<%= form_for [forem, :admin, @forum] do |f| %>
+  <div class='form-group'>
+    <%= f.collection_select :category_id, Forem::Category.all, :id, :name, {include_blank: "Please select forum category..."}, {class: 'form-control'}  %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.text_field :title, class: 'sr-only' %>
+    <%= f.text_field :title, class: 'form-control input-lg', placeholder: User.human_attribute_name(:title), autocomplete: :off %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
 
   <h3><%= t('forem.admin.forum.moderator_groups') %></h3>
-  <%= f.association :moderators, :as => :check_boxes %>
+  <div class="form-group">
+    <%= f.collection_check_boxes(:moderators, Forem::Group.all, :id, :name) do |b| %>
+      <%= b.label(class: 'checkbox-inline') { b.check_box + b.text } %>
+    <% end %>
+  </div>
+
   <%= f.submit :class => "btn btn-primary" %>
 <% end %>

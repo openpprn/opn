@@ -1,4 +1,8 @@
-<%= simple_form_for [forem, :admin, @category] do |f| %>
-  <%= f.input :name %>
+<%= form_for [forem, :admin, @category] do |f| %>
+  <div class='form-group'>
+    <%= f.label :name, class: 'sr-only' %>
+    <%= f.text_field :name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:name), autocomplete: :off %>
+  </div>
+
   <%= f.submit :class => "btn btn-primary" %>
 <% end %>
