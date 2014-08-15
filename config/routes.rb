@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   get 'terms' => 'static#terms'
   get 'theme' => 'static#theme'
 
+  # MyApnea Specific
+  get 'learn' => 'static#learn'
+  get 'share' => 'static#share'
+  get 'research' => 'static#research'
+  get 'faqs' => 'static#faqs'
+  get 'team' => 'static#team'
+
   # Research Section
   get 'research_topics' => 'research#research_topics'
   get 'research_question' => 'research#research_question'

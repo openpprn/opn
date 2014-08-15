@@ -7,10 +7,12 @@
     = render "layouts/before_scripts"
 
 
-%body{screen_capture_injected: "true"}
+%body#MyApnea{screen_capture_injected: "true"}
+  = render "layouts/myapnea/navigation/top_navigation_bar"
+
+
   .container{role: "main"}
 
-    = render "layouts/navigation/top_navigation_bar"
     = render "layouts/flash_messages"
     = render "layouts/page_title_heading"
 
@@ -19,6 +21,6 @@
     - else
       = yield
 
-    = render "layouts/footer"
+    = render "layouts/myapnea/footer"
     = render "layouts/after_scripts"
 

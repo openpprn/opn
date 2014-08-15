@@ -1,22 +1,16 @@
 %hr/
 
-.row
+.row#footer
   .col-md-2.small
-    %a{href: "/about"} About
+    = link_to 'FAQs', faqs_path
     %br/
-    %a{href: "/terms"} Terms of Service
+    = link_to "About", about_path
     %br/
-    %a{href: "/privacy"} Privacy Policy
+    = link_to 'Privacy Policy', privacy_path
     %br/
 
-    - if Rails.env.development?
-      %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
-
-  .col-md-6.small
-    Attribution and Organization behind this site. Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro.
-  .col-md-4.small
-    Except where otherwise noted, content on this site is licensed under a
-    %a{href: "http://creativecommons.org/licenses/by/4.0/", rel: "license"} Creative Commons Attribution 4.0 International license.
-    %br/
-    / %a{href: "http://creativecommons.org/licenses/by/4.0/", rel: "license"}
-    /   %img{alt: "Creative Commons License", src: "https://i.creativecommons.org/l/by/4.0/88x31.png", style: "border-width:0"}/
+  .col-md-10.small
+    .row
+      .col-md-6= link_to image_tag('myapnea/icons/ASAA.png'), 'http://www.sleepapnea.org/'
+      .col-md-6= link_to image_tag('myapnea/icons/pcornet.png'), 'http://www.pcornet.org/'
+      //.col-md-4= link_to image_tag('myapnea/icons/brigham.png'), 'http://www.brighamandwomens.org/'

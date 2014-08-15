@@ -1,0 +1,20 @@
+pledge.en.ymlheading: Our Promise
+subheading: When you sign up for the study, here’s what we expect of you — and what you should expect of us.
+you_promise: You promise to
+your_promises:
+  - title: Tell us about your health
+    description: Answer our health-related questions as completely and accurately as you can.
+  - title: Check in regularly
+    description: Update your information regularly (we’ll remind you) so we have all your latest data.
+  - title: Stick around
+    description: We’d like you to be in the study for 2+ years so we know how your health changes over time.
+we_promise: We promise to
+our_promises:
+  - title: Make things easy for you
+    description: Surveys can be done in 5-minute blocks on your computer, tablet or smartphone.
+  - title: Respect your time and privacy
+    description: We will keep communication to a minimum and assure that your data is extremely secure.
+  - title: Provide a community and tools you can use
+    description: We will build useful tools to help you manage your apnea and daily alertness and provide a community where you can be supported.
+accept: Awesome - I'm in!
+decline: I'm not sure - is there another way to help?

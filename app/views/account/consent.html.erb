@@ -1,0 +1,29 @@
+<div class="row" id="consent">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-primary" id="pledge">
+      <div class="panel-heading">
+        <%= markdown @pc['before'] %>
+      </div>
+      <div id="consent" class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="scroll">
+              <div id="print-area">
+                <%= markdown @pc['consent'] %>
+              </div>
+            </div>
+          </div>
+          <%= link_to @pc['print'], "#", id: "print-link", class: 'print-link' %>
+
+
+        </div>
+      </div>
+      <div class="text-center panel-footer">
+        <%= form_tag consent_path do  %>
+          <input name="consent_signed" type="submit" value="<%= @pc['agree'] %>" class="btn btn-primary btn-lg" />
+          <%= link_to @pc['decline'], faqs_path, class: 'btn btn-default btn-lg' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

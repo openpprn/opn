@@ -1,54 +1,49 @@
-.navbar.navbar-default{role: "navigation"}
-  -#.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{href: "/"}
-        = @pprn_title
-        %span.req
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        - if current_user
-          %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-            %a{href: "/research_karma"} Research
-        - else
-          %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
-            %a{href: "/research_topics"} Research
+#top-navigation
+  %nav.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .container#top-nav-container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to 'MyApnea.Org', main_app.root_path, class: 'navbar-brand', id: 'myApneaLogo'
 
-        %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-          %a{href: "/data_explore"} My Health Data
-        %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-          %a{href: "/social"} Patients
-        %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
-          %a{href: "/blog"} Blog
-
-
-      %ul.nav.navbar-nav.pull-right
-        %li
-          %a.req{href: "/req", style: "display:none !important; color: red;"}
-
-
-        - if current_user
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              My Settings
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{href: "/account"}
-                  %i.fa.fa-user &nbsp; Account Settings
-              - if current_user.can?(:view_admin_dashboard)
+      .collapse.navbar-collapse
+        #user-functions
+          .navbar
+            %ul.nav.navbar-nav
+              - if current_user
                 %li
-                  %a{href: "/admin", :title => "Admin Panel"}
-                    %i.fa.fa-wrench &nbsp; Admin Panel
+                  = link_to main_app.account_path do
+                    %i.fa.fa-user
+                    &nbsp;My Account Settings
+
+                - if current_user.can? :view_admin_dashboard
+                  %li
+                    = link_to main_app.admin_path do
+                      %i.fa.fa-wrench
+                      &nbsp;Admin Panel
+                %li
+                  = link_to main_app.destroy_user_session_path, method: :delete do
+                    %i.fa.fa-sign-out
+                    &nbsp;Sign Out
+
+              - else
+                %li
+                  = link_to new_user_session_path do
+                    %i.fa.fa-sign-in
+                    &nbsp;Sign In
+        #nav-functions
+          .navbar
+            %ul.nav.navbar-nav
+              %li= link_to 'Home', root_path, class: (current_page?(root_path) ? "currentPage" : "")
+              %li= link_to 'Learn', learn_path, class: (current_page?(learn_path) ? "currentPage" : "")
+              %li= link_to 'Share', share_path, class: (current_page?(share_path) ? "currentPage" : "")
+              %li= link_to 'Research', research_path, class: (current_page?(research_path) ? "currentPage" : "")
+              %li= link_to 'FAQs', faqs_path, class: (current_page?(faqs_path) ? "currentPage" : "")
+              %li= link_to 'Team', team_path, class: (current_page?(team_path) ? "currentPage" : "")
+            %ul.nav.navbar-nav.pull-right
               %li
-                = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
-        - else
-          %li
-            %a{:href => new_user_session_path}
-              %i.fa.fa-sign-in
-                Sign In
+                %a.req{href: "/req", style: "display:none !important; color: red;"}
+        .clearfix
