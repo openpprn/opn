@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'external_link_warning' => 'static#external_link_warning'
   get 'privacy' => 'static#privacy'
   get 'terms' => 'static#terms'
-
+  get 'theme' => 'static#theme'
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
