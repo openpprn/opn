@@ -1,0 +1,62 @@
+// LAYOUT STYLES
+body#MyApnea {
+  font-size:$baseFontSize;
+  font-family:$contentFontFamily;
+  line-height:2;
+  overflow-x:hidden;
+
+  a {
+    // text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    // font-weight:bolder;
+  }
+
+  > .container {
+    margin-top: $normal-nav-height - 10px;
+  }
+
+  .page-header-blank {
+    height: 0px;
+  }
+
+}
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color:$headings-Color;
+  font-family:$sansFontFamily;
+}
+
+h1, .h1 {
+  text-transform:uppercase;
+  font-size:$font-size-h1;
+}
+ul li {
+  padding-left:25px;
+}
+
+p{
+  margin:20px 0;
+}
+
+// Footer
+
+#footer {
+  background:$white;
+
+
+  img {
+    padding-top: 15px;
+    max-width: 100%;
+  }
+
+}
+
+.highlightPanel {
+  background:$highlightPanel;
+  border-top:1px solid $white;
+  box-shadow: $subtleShadow;
+}

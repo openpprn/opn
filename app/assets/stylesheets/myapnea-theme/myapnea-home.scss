@@ -1,0 +1,146 @@
+#MyApnea {
+  #home-page {
+    .sub-header {
+      font-style: italic;
+      font-size: $fontSizeLarge;
+    }
+
+    #memberCount {
+      border-width: 1px;
+      border-color: rgb(255, 255, 255);
+      border-style: solid;
+      border-radius: 31px;
+      background-image: -moz-linear-gradient(90deg, rgb(232, 133, 2) 0%, rgb(255, 198, 111) 99.512%);
+      background-image: -webkit-linear-gradient(90deg, rgb(232, 133, 2) 0%, rgb(255, 198, 111) 99.512%);
+      box-shadow: 2.5px 4.33px 5px 0px rgba(0, 0, 0, .4);
+      height: auto;
+      width: 140px;
+      padding: 20px 0;
+      margin-top: 90px;
+      float: right;
+      font-family: 'futuraextendedregular';
+      text-align: center;
+      text-transform: uppercase;
+
+      .countHeader {
+        font-family: 'futura_bdcn_btbold';
+        font-size: 2.9rem;
+        line-height: 1;
+      }
+
+      .countGoal {
+        font-family: 'futura_bdcn_btbold';
+        font-size: 8rem;
+        line-height: 1;
+      }
+
+      .goalSuffix {
+        font-family: 'futura_bdcn_btbold';
+        font-size: 3.25rem;
+        line-height: 1;
+        width: 100%
+      }
+
+      .total {
+        font-family: 'futura_bdcn_btbold';
+        font-size: 3rem;
+        line-height: 1;
+        float: right;
+      }
+
+      .total:before {
+        content: '+';
+        font-family: 'futura_bdcn_btbold';
+        font-size: 3.8rem;
+        line-height: 1;
+
+      }
+
+      .goalMessage {
+        font-family: 'futura_bdcn_btbold';
+        font-size: 1.3rem;
+        line-height: 1;
+        float: right;
+        margin-right: 15px;
+      }
+
+    }
+
+    #home-map {
+      height: 300px;
+      width: 100%;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    #innerSignup {
+      background-image: url('#{$assets-path}/sign-up.png');
+      display: inline-block;
+      float: right;
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+      /* left: -4%; */
+      text-indent: -9999px;
+      top: 250px;
+      width: 280px;
+      background-size: 280px 100px;
+      background-repeat: no-repeat;
+      z-index: 1000;
+      padding-right: 33%;
+    }
+
+    .highlightPanelTop {
+      background: $highlightBox;
+      box-shadow: $subtleShadow;
+      margin-top: -40px;
+      border-top: 1px solid rgba(255, 255, 255, .05);
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      position: relative;
+      z-index: 999;
+    }
+
+    #reason-carousel {
+      position: relative;
+
+      .carousel-control {
+        background-image: none;
+      }
+
+      .carousel-indicators {
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+
+      }
+      
+      .vertical-center {
+        blockquote {
+          height: 297px;
+          margin-bottom: 0;
+          border: none;
+          overflow: hidden;
+        }
+      }
+
+      .testimonialImg {
+        top: 30px;
+        border-radius: 0 237px 237px 0;
+        height: 237px;
+        position: absolute;
+        border: 0px solid rgba(0,0,0,0.1);
+        box-shadow:$subtleShadow inset;
+        width: 100%;
+
+        overflow: hidden;
+
+      }
+
+    }
+
+
+  }
+
+}

@@ -1,14 +1,10 @@
-.row
-  .col-md-12
-
-    - if !@title
-      .page-header-blank
-
-    - else
+- if @title.present?
+  .row
+    .col-md-12
       .page-header
         %h1.pull-left= @title
 
-        - if @intro
+        - if @intro.present?
           .pull-right
             = render "shared/intro_modal"
         .clearfix
