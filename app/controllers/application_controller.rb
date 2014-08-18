@@ -41,18 +41,11 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_pprn_from_subdomain
-    if request.subdomain == "myapnea"
-      @pprn = PPRNS["myapnea"]
-    else
-      @pprn = PPRNS["ccfa"]
-    end
+    @pprn = PPRNS["myapnea"]
   end
 
   def determine_pprn_from_cookie
-    # if no cookie, has been set, let's assume it's myapnea
-    cookies[:pprn] = "myapnea" if !cookies[:pprn]
-    # read the existing cookie
-    @pprn = PPRNS[cookies[:pprn]]
+    @pprn = PPRNS["myapnea"]
   end
 
   # Toggle the PPRN from CCFA <-> myapnea
