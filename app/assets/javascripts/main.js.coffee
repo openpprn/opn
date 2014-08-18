@@ -54,30 +54,11 @@ $.rails.allowAction = (element) ->
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '100%'
-  $("#consent-link").popover(
-    content: "Click here to sign a consent form and unlock all the research features."
-    trigger: 'hover, focus'
-  )
-  $("#social-profile-link").popover(
-    content: "Click here to create a social profile and contribute to the community."
-    trigger: 'hover, focus'
-  )
 
-
-@consentReady = () ->
-  $("#consent .scroll").slimscroll(
-    height: '385px'
-    alwaysVisible: true
-    railVisible: true
-  )
-
-  $("a#print-link").click ->
-    $("div#print-area").printArea()
-    false
 
 @loaders = () ->
   mainLoader()
-  consentReady()
+  #socialProfileReady()
 
 
 $(document).ready(loaders)

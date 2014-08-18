@@ -43,15 +43,6 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
-
-  def created_social_profile?
-    self.social_profile.present? and self.social_profile.name.present?
-  end
-
-  def signed_consent?
-    self.accepted_consent_at.present?
-  end
-
   def forem_admin?
     self.has_role? :admin
   end
