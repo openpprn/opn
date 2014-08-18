@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
+  #layout 'myapnea/myapnea'
+  layout :myapnea_layout
 
   def forem_user
     current_user
   end
+
   helper_method :forem_user
 
   # Prevent CSRF attacks by raising an exception.
@@ -79,5 +82,17 @@ class ApplicationController < ActionController::Base
 
   def set_active_top_nav_link_to_blog
     @active_top_nav_link = :blog
+  end
+
+  def myapnea_layout
+    if ['research', 'surveys', 'health_data', 'social'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent'
+      'dashboard'
+    elsif template_exists? params[:controller].split('/').last, 'layouts'
+      params[:controller].split('/').last
+    else
+      Rails.application.config.layout
+    end
+
+
   end
 end

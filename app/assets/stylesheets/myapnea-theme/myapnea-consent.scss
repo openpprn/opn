@@ -1,0 +1,22 @@
+#MyApnea {
+  #consent{
+    .panel-body {
+      padding: 20px 20px;
+
+      h1, h2 {
+        font-size: $font-size-h3;
+        text-align: center;
+      }
+    }
+    p#consent-text {
+      height: 385px;
+      overflow: hidden;
+      //background: #b4bcc2;
+      color: #000000;
+    }
+
+    #print-area {
+      padding-right: 10px;
+    }
+  }
+}

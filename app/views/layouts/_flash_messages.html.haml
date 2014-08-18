@@ -1,8 +1,9 @@
-.row
-  .col-md-12
+- if flash.present?
+  .row
+    .col-md-12
 
-    -# Inspired by https://gist.github.com/roberto/3344628
-    - flash.each do |type, message|
-      %div{class: "alert #{{'notice' => 'alert-info', 'alert' => 'alert-warning', 'error' => 'alert-danger'}[type]} fade in"}
-        %button.close{"data-dismiss" => "alert"} ×
-        = message
+      -# Inspired by https://gist.github.com/roberto/3344628
+      - flash.each do |type, message|
+        %div{class: "alert #{{'notice' => 'alert-info', 'alert' => 'alert-warning', 'error' => 'alert-danger'}[type]} fade in"}
+          %button.close{"data-dismiss" => "alert"} ×
+          = message

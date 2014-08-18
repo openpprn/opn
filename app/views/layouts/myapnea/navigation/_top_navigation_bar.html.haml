@@ -1,0 +1,51 @@
+%header#top-navigation.navbar-inverse.navbar-fixed-top{role: "navigation"}
+  .container#top-nav-container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'MyApnea.Org', main_app.root_path, class: 'navbar-brand', id: 'myApneaLogo'
+    .collapse.navbar-collapse
+      #user-functions
+        .navbar
+          %ul.nav.navbar-nav
+            - if current_user
+              %li
+                = link_to main_app.user_dashboard_path do
+                  %i.fa.fa-dashboard
+                    &nbsp;My Dashboard
+              %li
+                = link_to main_app.account_path do
+                  %i.fa.fa-user
+                  &nbsp;My Account Settings
+
+              - if current_user.can? :view_admin_dashboard
+                %li
+                  = link_to main_app.admin_path do
+                    %i.fa.fa-wrench
+                    &nbsp;Admin Panel
+              %li
+                = link_to main_app.destroy_user_session_path, method: :delete do
+                  %i.fa.fa-sign-out
+                  &nbsp;Sign Out
+            - else
+              %li
+                = link_to new_user_session_path do
+                  %i.fa.fa-sign-in
+                  &nbsp;Sign In
+      #nav-functions
+        .navbar
+          %ul.nav.navbar-nav
+            %li= link_to 'Home', main_app.root_path, class: (current_page?(main_app.root_path) ? "currentPage" : "")
+            %li= link_to 'Learn', main_app.learn_path, class: (current_page?(main_app.learn_path) ? "currentPage" : "")
+            %li= link_to 'Share', main_app.share_path, class: (current_page?(main_app.share_path) ? "currentPage" : "")
+            %li= link_to 'Research', main_app.research_path, class: (current_page?(main_app.research_path) ? "currentPage" : "")
+            %li= link_to 'Blog', main_app.blog_path, class: (current_page?(main_app.blog_path) ? "currentPage" : "")
+            %li= link_to 'FAQs', main_app.faqs_path, class: (current_page?(main_app.faqs_path) ? "currentPage" : "")
+            %li= link_to 'Team', main_app.team_path, class: (current_page?(main_app.team_path) ? "currentPage" : "")
+          %ul.nav.navbar-nav.pull-right
+            %li
+              %a.req{href: "/req", style: "display:none !important; color: red;"}
+    .clearfix

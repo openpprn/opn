@@ -1,0 +1,26 @@
+!!!
+
+%html{lang: "en"}
+  %head
+
+    %title= yield(:title) + " " + @pprn_title
+    = render "layouts/before_scripts"
+
+
+%body#MyApnea{screen_capture_injected: "true"}
+  = render "layouts/myapnea/navigation/top_navigation_bar"
+
+
+  .container{role: "main"}
+
+    = render "layouts/flash_messages"
+    = render "layouts/page_title_heading"
+
+    - if content_for(:sublayout)
+      = yield :sublayout # the sublayouts must make their own call to yield
+    - else
+      = yield
+
+    = render "layouts/myapnea/footer"
+    = render "layouts/after_scripts"
+

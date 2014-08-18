@@ -1,10 +1,18 @@
 require 'test_helper.rb'
 
 class SocialControllerTest < ActionController::TestCase
-  test "Anyone can access the social overview page" do
+  test "Logged-in User can access the social overview page" do
+    get :overview
+
+    assert_response 302
+
+    login(users(:user_2))
+
     get :overview
 
     assert_response :success
+
+
   end
 
   test "User can view own social profile" do
