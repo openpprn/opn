@@ -1,0 +1,55 @@
+%h2 Community
+.list-group
+  - if current_user.created_social_profile?
+    %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+  - else
+    %a.list-group-item#social-profile-link{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} Create Social Profile
+  %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Overview
+  %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/} #{'disabled' unless current_user.created_social_profile?}"}
+    - unless current_user.created_social_profile?
+      %i.fa.fa-lock
+    Discussion Forum
+    %span.badge 11
+.small
+  %p Description of Community Section
+
+%h2 Research
+.list-group
+  - if current_user.signed_consent?
+    .list-group-item You have signed the consent!
+  - else
+    %a.list-group-item#consent-link{href: main_app.consent_path, class: "#{"active" if action_name == "consent"}"} Sign consent
+  %a.list-group-item{href: main_app.research_karma_path, class: "#{"active" if action_name == "research_karma"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    My Karma
+  %a.list-group-item{href: main_app.surveys_path, class: "#{"active" if action_name == "research_surveys"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    My Surveys
+    %span.badge= QuestionFlow.unstarted(current_user).count
+  %a.list-group-item.list-group-item-warning{href: main_app.research_today_path, class: "#{"active" if action_name == "research_today"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    Daily Trends
+.list-group
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    Research Topics
+  %a.list-group-item{href: main_app.blog_findings_path, class: "#{"active" if action_name == "blog_findings"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    Research Findings
+    %span.badge 1
+
+.small
+  %p Description of Research Section
+
+.list-group
+  %a.list-group-item{href: main_app.data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
+  %a.list-group-item{href: main_app.data_explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
+  %a.list-group-item{href: main_app.data_reports_path, class: "#{"active" if action_name == "reports"}"} My Reports
+  %a.list-group-item{href: main_app.data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications
+.small
+  %p Description of Data Section

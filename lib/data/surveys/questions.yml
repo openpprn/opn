@@ -858,3 +858,21 @@
   - 58
   - 59
   - 60
+
+
+- id: 1000004
+  text_en: |
+    Does treatment of sleep apnea influence body weight?
+  group_id: 1
+- id: 1000005
+  text_en: |
+    Does support by a coach help improve CPAP adherence?
+  group_id: 1
+- id: 1000008
+  text_en: |
+    Does treatment of sleep apnea in teenagers improve behavior and academic performance?
+  group_id: 1
+- id: 1000009
+  text_en: |
+    Does treatment of sleep apnea in young children improve alertness and behavior?
+  group_id: 1

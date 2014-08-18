@@ -1,0 +1,16 @@
+%br/
+
+.row#footer
+  .col-md-2.small
+    = link_to 'FAQs', main_app.faqs_path
+    %br/
+    = link_to "About", main_app.about_path
+    %br/
+    = link_to 'Privacy Policy', main_app.privacy_path
+    %br/
+
+  .col-md-10.small
+    .row
+      .col-md-6= link_to image_tag('myapnea/icons/ASAA.png'), 'http://www.sleepapnea.org/'
+      .col-md-6= link_to image_tag('myapnea/icons/pcornet.png'), 'http://www.pcornet.org/'
+      //.col-md-4= link_to image_tag('myapnea/icons/brigham.png'), 'http://www.brighamandwomens.org/'
