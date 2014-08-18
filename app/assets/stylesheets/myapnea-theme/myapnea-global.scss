@@ -2,7 +2,6 @@
 body#MyApnea {
   font-size:$baseFontSize;
   font-family:$contentFontFamily;
-  line-height:2;
   overflow-x:hidden;
 
   a {
@@ -19,11 +18,22 @@ body#MyApnea {
   }
 
   .page-header-blank {
-    height: 0px;
+    height: 50px;
   }
 
-}
+  a.disabled {
+    pointer-events: none;
 
+  }
+  a.disabled:after {
+    pointer-events: none;
+
+  }
+
+  a[disabled] {
+    pointer-events: none;
+  }
+}
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color:$headings-Color;
@@ -40,6 +50,7 @@ ul li {
 
 p{
   margin:20px 0;
+  line-height:2;
 }
 
 // Footer

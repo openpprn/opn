@@ -16,14 +16,14 @@ header#top-navigation.navbar-inverse {
     background-color:$blueDark;
     #myApneaLogo {
       background-image: url('#{$assets-path}/myapnea/icons/myApneaLogo.png');
-      height: 90px;
+      height: 100px;
       overflow: hidden;
       text-indent: -9999px;
       width: 400px;
       padding: 0;
       float: left;
       position: absolute;
-      background-size: 70%;
+      background-size: 80%;
       background-repeat: no-repeat;
       background-position: 0 -2px;
       //        -webkit-transition: all 0.5s ease-in-out;

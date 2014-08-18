@@ -1,4 +1,8 @@
-- if @title.present?
+- if @title.nil?
+  .row
+    .col-md-12
+      .page-header-blank
+- elsif @title.present?
   .row
     .col-md-12
       .page-header

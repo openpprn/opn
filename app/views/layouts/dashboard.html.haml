@@ -1,9 +1,9 @@
-- @title = "My Account"
+- @intro = true
 
 - content_for :sublayout do
   .row
     .col-md-3
-      = render :partial => "layouts/navigation/account_nav"
+      = render partial: 'layouts/navigation/dashboard_nav'
     .col-md-9
       = yield
 

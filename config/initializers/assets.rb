@@ -8,5 +8,5 @@ Rails.application.config.assets.precompile += %w( forem.css forem.js )
 Rails.application.config.assets.precompile += %w( social/maps.js social/places.js typeahead.js typeahead-addresspicker.js )
 Rails.application.config.assets.precompile += %w( .svg .eot .woff .ttf)
 Rails.application.config.assets.precompile += %w( bootswatch.js )
-Rails.application.config.assets.precompile += %w( home.js )
+Rails.application.config.assets.precompile += %w( home.js dashboard.js)
 

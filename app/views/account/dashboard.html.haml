@@ -1,0 +1,19 @@
+%h1 Welcome to MyApnea.org!
+
+%p We're very excited to have you as a member of this community.
+
+%h3 Here's a video introducing you to your site.
+%img{src: 'assets/video.png', style: 'width: 100%; border: 2px solid gray;'}
+
+%h3 So, what's next?
+%ul
+  %li Create a social profile to access the social features.
+  %li Get involved in sleep apnea research by signing a consent form.
+
+%h3 Lost? Have a question, comment, or suggestion?
+%p
+  Contact us at
+  = mail_to "support@myapnea.org"
+
+
+= javascript_include_tag 'dashboard'

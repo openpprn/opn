@@ -1,0 +1,19 @@
+#consent.row
+  .col-md-12
+    .panel.panel-primary
+      .panel-heading
+        = markdown @pc['before']
+      #consent.panel-body
+        .row
+          .col-md-12
+            .scroll
+              #print-area
+                = markdown @pc['consent']
+            %br/
+            = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
+              %i.fa.fa-print
+              Print Consent
+      .text-center.panel-footer
+        = form_tag consent_path do
+          %input.btn.btn-primary.btn-lg{:name => "consent_signed", :type => "submit", :value => 'I agree to participate.'}/
+          = link_to "I decline.", user_dashboard_path, class: 'btn btn-default btn-lg'

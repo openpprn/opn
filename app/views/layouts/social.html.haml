@@ -8,4 +8,4 @@
     .col-md-9
       = yield
 
-= render template: "layouts/application"
+= render template: "layouts/#{Rails.application.config.layout}"
