@@ -73,32 +73,6 @@
       overflow: hidden;
     }
 
-    #innerSignup {
-      background-image: url('#{$assets-path}/sign-up.png');
-      display: inline-block;
-      float: right;
-      height: 100px;
-      overflow: hidden;
-      position: relative;
-      /* left: -4%; */
-      text-indent: -9999px;
-      top: 250px;
-      width: 280px;
-      background-size: 280px 100px;
-      background-repeat: no-repeat;
-      z-index: 1000;
-      padding-right: 33%;
-    }
-
-    .highlightPanelTop {
-      background: $highlightBox;
-      box-shadow: $subtleShadow;
-      margin-top: -40px;
-      border-top: 1px solid rgba(255, 255, 255, .05);
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-      position: relative;
-      z-index: 999;
-    }
 
     #reason-carousel {
       position: relative;

@@ -1,0 +1,24 @@
+en:
+  learn:
+    main_header: Learn
+    content: |
+      Sleep apnea is a common and potentially life threatening sleep and breathing disorder that affects millions of people.  Left untreated, sleep apnea increases the risk for high blood pressure, heart attack, stroke and other serious medical conditions.  Although there are several treatments for sleep apnea, there is a lot that is not known about what treatments work best for which people.
+    questions:
+    - question: What is MyApnea.Org?
+      answer: |
+        MyApnea.Org is what’s called patient-powered research.  It is an online community of people with sleep apnea dedicated to helping one another by sharing their experiences and promoting research.  It is a space for people with sleep apnea to be able to share health information, discuss experiences regarding treatment, and help direct future research projects.  In return, you will get easy to use tools to track your health and learn from others about treatments, symptoms and coping with sleep apnea in order to take better control of your life.
+    - question: What is Sleep Apnea?
+      answer: |
+       Sleep apnea is a common and potentially life threatening sleep and breathing disorder.  With sleep apnea, breathing is repeatedly interrupted during sleep, sometimes hundreds of times during the night and often for a minute or longer.  Left untreated, sleep apnea increases the risk for high blood pressure, heart attack, stroke and other medical conditions.  It has been estimated that at least 18 million Americans have sleep apnea, but it often goes unrecognized and untreated.  Once diagnosed, sleep apnea can be successfully treated and should not interfere with your job or quality of life.
+    - question: Where can I find more information about sleep apnea?
+      answer: |
+        Here are some wonderful resources available to learn more about sleep apnea and help get the support you need. Please visit our partners to:
+    resources:
+      - description: Learn more about signs, symptoms, diagnosis and treatment of sleep apnea at
+        link: http://www.sleepeducation.com/sleep-disorders/sleep-apnea/overview-facts
+      - description: Find a sleep center near you at
+        link: http://www.sleepeducation.com/find-a-center
+      - description: Find a support group near you at
+        link: http://www.sleepapnea.org/support/a.w.a.k.e.-network-map.html
+      - description: Find additional reading about sleep apnea at
+        link: http://www.sleepapnea.org/resources/books.html

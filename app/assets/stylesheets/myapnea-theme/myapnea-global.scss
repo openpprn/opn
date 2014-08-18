@@ -55,8 +55,39 @@ p{
 
 }
 
-.highlightPanel {
-  background:$highlightPanel;
-  border-top:1px solid $white;
-  box-shadow: $subtleShadow;
+body#MyApnea {
+  .highlightPanel {
+    background: $highlightPanel;
+    border-top: 1px solid $white;
+    box-shadow: $subtleShadow;
+  }
+
+  .highlightPanelTop {
+    background: $highlightBox;
+    box-shadow: $subtleShadow;
+    margin-top: -40px;
+    border-top: 1px solid rgba(255, 255, 255, .05);
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+    position: relative;
+    z-index: 999;
+  }
+
+  #innerSignup {
+    background-image: url('#{$assets-path}/myapnea/icons/sign-up.png');
+    display: inline-block;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    /* left: -4%; */
+    text-indent: -9999px;
+    top: 250px;
+    right: 50px;
+    width: 280px;
+    background-size: 280px 100px;
+    background-repeat: no-repeat;
+    z-index: 1000;
+
+
+  }
+
 }

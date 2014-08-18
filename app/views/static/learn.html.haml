@@ -1,19 +1,25 @@
-.row.pageTop
-= link_to 'Sign Up Today', new_user_registration_path, class: 'sign', id: 'innerSignup'
-#innerCarousel
-= image_tag 'myapnea/hdr-team.jpg', class: 'headerImg', alt: ''
-.row.highlightPanelTop
-.container
-#Learn.col-md-12
-%h1 READY TO LEARN
-%p Sleep apnea is a common and potentially life threatening sleep and breathing disorder that affects millions of people.  Left untreated, sleep apnea increases the risk for high blood pressure, heart attack, stroke and other serious medical conditions.  Although there are several treatments for sleep apnea, there is a lot that is not known about what treatments work best for which people.
-%h2 What is MyApnea.org?
-%p MyApnea.org is what’s called patient-powered research.  It is an online community of people with sleep apnea dedicated to helping one another by sharing their experiences and promoting research.  It is a space for people with sleep apnea to be able to share health information, discuss experiences regarding treatment, and help direct future research projects.  In return, you will get easy to use tools to track your health and learn from others about treatments, symptoms and coping with sleep apnea in order to take better control of your life.
-%h2 What is Sleep Apnea?
-%p Sleep apnea is a common and potentially life threatening sleep and breathing disorder.  With sleep apnea, breathing is repeatedly interrupted during sleep, sometimes hundreds of times during the night and often for a minute or longer.  Left untreated, sleep apnea increases the risk for high blood pressure, heart attack, stroke and other medical conditions.  It has been estimated that at least 18 million Americans have sleep apnea, but it often goes unrecognized and untreated.  Once diagnosed, sleep apnea can be successfully treated and should not interfere with your job or quality of life.
-%h2 Where can I find more information about sleep apnea?
-%p Other sites you might want to check for more information are:
-%ul
-%li www.sleepapnea.org
-%li http://healthysleep.med.harvard.edu
-%li www.nhlbi.nih.gov/health/health-topics/topics/sleepapnea
+= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/learn.jpg', signup_id: "innerSignup" }
+#learn-page
+  .row.highlightPanelTop
+    #Learn.col-sm-8
+      %h1= @pc['main_header']
+      %p= @pc['content']
+      %h2= @pc['questions'][0]['question']
+      %p= @pc['questions'][0]['answer']
+      %h2= @pc['questions'][1]['question']
+      %p= @pc['questions'][1]['answer']
+      %h2= @pc['questions'][2]['question']
+      %p= @pc['questions'][2]['answer']
+      %ul
+        - @pc['resources'].each do |resource|
+          %li
+            = resource['description']
+            = link_to resource['link'], resource['link']
+      %br/
+    .col-sm-4
+      #twitter-feed
+        %a.twitter-timeline{"data-widget-id" => "501156780731142144", :href => "https://twitter.com/sleepapnea_ed"} Tweets by @sleepapnea_ed
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+
