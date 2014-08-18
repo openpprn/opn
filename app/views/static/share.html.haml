@@ -1,27 +1,52 @@
-.row.pageTop
-  = link_to 'Sign Up Today', new_user_registration_path, class: 'sign', id: 'innerSignup'
-  #innerCarousel
-    = image_tag 'myapnea/hdr-team.jpg', class: 'headerImg', alt: ''
-.row.highlightPanel.community
-  .communityImg.imgMobileFullWidth
-  .container.tall
-    .col-md-7.makeRoom
-      = image_tag 'myapnea/communityIcon.png'
-      %h1 READY TO SHARE
-      %p We all know that the management and treatment of sleep apnea isn’t always what’s best for each person.  Which tests we get sometimes depends on our insurance coverage.  Which treatment we get also may depend on our insurance and which doctor we see.  Success is defined by how often we use our treatment, rather than how we feel or how it improves our life.  Figuring out what types of treatments are best for each one of us with sleep apnea is hard.
-      %p If you have been diagnosed with sleep apnea, or if you love someone diagnosed with apnea, join us- become part of a national community of people who know just what you go through every night and every day.  We get it.  Together, we can fight sleep apnea and improve OUR lives.
-      %h2{:style => "text-align:center"} Join Us on Social Media
-      .row
-        .col-xs-4
-          %h1{:style => "text-align:center"}
-            %i.fa.fa-facebook
-        .col-xs-4
-          %h1{:style => "text-align:center"}
-            %i.fa.fa-instagram
-        .col-xs-4
-          %h1{:style => "text-align:center"}
-            %i.fa.fa-twitter
-    .col-md-3
-    / /.col-md-8
-/ /.container
-/ /.row
+- @title = ""
+
+= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/share.jpg', signup_id: "innerSignup" }
+
+.row.highlightPanelTop
+
+  .col-md-9
+    %h1
+      SHARE
+      = image_tag 'myapnea/icons/communityIcon.png', class: 'community-img'
+    %p
+      If you have been diagnosed with sleep apnea, or if you love someone diagnosed with apnea, join us- become part of a national community of people who know just what you go through every night and every day.  We get it.  Together, we can fight sleep apnea and improve OUR lives.
+
+    %h2 Ways to Share
+
+    %h3 MyApnea.Org Offers
+    %ul
+      %li A dynamic discussion forum in which members and researchers have space to share their sleep apnea stories and learn from one another
+      %li Engaging social media communities on Twitter, Facebook and Instagram
+      %li An opportunity for members to weigh in and vote on research issues that are important to them
+
+    %h2 How do I get started?
+    %h3 Step 1: Create a Social Profile.
+    %p
+      If you want to join the social community of MyApnea.Org you will be asked to provide some information about yourself in order to create a social profile. This information will be shared with other members who have also joined the social community of MyApnea.Org.
+    %h3 Step 2: Join the Discussion.
+    %p
+      Once you have created your social profile you will be able to access and post within the Discussion Forum. You will also be able to rate what research questions are most important to you. Last but not least, you can follow MyApnea.Org and interact with the rest of the community on social media by following the MyApnea.Org Twitter page, Facebook page and Instagram page.
+    %h3 Step 3: Join MyApnea.org on social media.
+  .col-md-3
+    %h2 Our Blog
+    = render partial: 'shared/blog_posts', locals: {editable: false, short: true}
+
+  .row
+    .col-xs-4
+      %a{href: ''}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-facebook
+    .col-xs-4
+      %a{href: ''}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-instagram
+    .col-xs-4
+      %a{href: ''}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-twitter
+  .text-center
+    = link_to new_user_registration_path do
+      = image_tag 'myapnea/icons/joinNow.png'
+
+  %br/
+  %br/

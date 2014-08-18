@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'privacy' => 'static#privacy'
+  get 'privacy_policy' => 'static#privacy_policy', as: 'privacy'
   get 'terms' => 'static#terms'
   get 'theme' => 'static#theme'
 
