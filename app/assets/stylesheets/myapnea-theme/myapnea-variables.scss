@@ -173,8 +173,8 @@ $zindexModal:             1050;
 
 // Sprite icons path
 // -------------------------
-$iconSpritePath:          image-path("/images/fonts/bootstrap/glyphicons-halflings.png");
-$iconWhiteSpritePath:     image-path("/images/fonts/bootstrap/glyphicons-halflings-white.png");
+$iconSpritePath:          image-path("#{$assets-path}/fonts/bootstrap/glyphicons-halflings.png");
+$iconWhiteSpritePath:     image-path("#{$assets-path}/fonts/bootstrap/glyphicons-halflings-white.png");
 
 
 // Input placeholder text color
