@@ -5,7 +5,8 @@
     Check all that apply.
   time_estimate: 0.1
   question_type_id: 4
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -28,7 +29,8 @@
       Please specify how you heard about MyApnea.Org.
   time_estimate: 1.0
   question_type_id: 1
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids: []
@@ -36,7 +38,8 @@
   text_en: Has a doctor or health care professional diagnosed you with sleep apnea?
   time_estimate: 0.15
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -46,7 +49,8 @@
   text_en: How old were you when you were first diagnosed with sleep apnea?
   time_estimate: 0.5
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id:
   unit_id: 3
   answer_option_ids: []
@@ -54,42 +58,38 @@
   text_en: How long do you think you had sleep apnea before you were diagnosed?
   time_estimate: 0.5
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id:
   unit_id: 11
   answer_option_ids: []
-- id: 494
-  text_en: Which of the following symptoms triggered you to be evaluated for sleep apnea. Mark all that apply.
-  time_estimate: 1.0
-  question_type_id: 4
-  answer_type_id: 1
-  question_help_message_id:
-  unit_id:
+- id: 10494
+  text_en: Snoring
+  time_estimate: .3
+  question_type_id: 3
+  answer_template_ids:     
+  - 1
+  question_help_message_id: 1001
   answer_option_ids:
-  - 271
-  - 272
-  - 273
-  - 274
-  - 275
-  - 276
-  - 277
-  - 278
-  - 279
-  - 34
-# for each symptom checked use both id: 495 and 496
-- id: 495
+  - 36
+  - 20
+  group_id: 3
+- id: 20494
   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
   time_estimate: 0.5
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  -
   question_help_message_id:
   unit_id: 10
   answer_option_ids: []
-- id: 496
+  group_id: 3
+- id: 30494
   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
   time_estimate: 0.5
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id:
   unit_id: 11
   answer_option_ids: []
@@ -97,7 +97,8 @@
   text_en: What doctor first talked to you about Sleep Apnea?
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -110,7 +111,8 @@
   text_en: Please specify other type of doctor first talked to you about Sleep Apnea.
   time_estimate: 1.0
   question_type_id: 1
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids: []
@@ -118,7 +120,8 @@
   text_en: What type of sleep study did you have when first diagnosed with sleep apnea?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -128,7 +131,8 @@
   text_en: How satisified were you with the experience of getting a sleep study?
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -144,7 +148,8 @@
   text_en: If you've had sleep apnea treatment, what treatment(s) have you had? Check all that apply.
   time_estimate: 1.0
   question_type_id: 4
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -166,7 +171,8 @@
   text_en: Do you still use this treatment?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -176,7 +182,8 @@
   text_en: How satisfied were you with this treatment?
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -190,7 +197,8 @@
   text_en: Sleepiness
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 27
   unit_id:
   answer_option_ids:
@@ -203,7 +211,8 @@
   text_en: Sleep quality
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 27
   unit_id:
   answer_option_ids:
@@ -216,7 +225,8 @@
   text_en: Energy level
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 27
   unit_id:
   answer_option_ids:
@@ -229,7 +239,8 @@
   text_en: Alertness
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 27
   unit_id:
   answer_option_ids:
@@ -242,7 +253,8 @@
   text_en: Attention
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 27
   unit_id:
   answer_option_ids:
@@ -255,7 +267,8 @@
   text_en: How many hours of sleep do you usually get per night on weekdays or workdays?
   time_estimate: 0.3
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id: 36
   unit_id: 7
   answer_option_ids: []
@@ -263,7 +276,8 @@
   text_en: How many hours of sleep do you usually get per night on weekends or days off?
   time_estimate: 0.3
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id:
   unit_id: 7
   answer_option_ids: []
@@ -271,7 +285,8 @@
   text_en: Considering only your own **"feeling best"** rhythm, at what time would you get up if you were entirely free to plan your day?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -284,7 +299,8 @@
   text_en: Sitting and reading
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -296,7 +312,8 @@
   text_en: Watching TV
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -308,7 +325,8 @@
   text_en: Sitting, inactive, in a public place (e.g., a movie theater or classroom)
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -320,7 +338,8 @@
   text_en: Riding as a passenger in a car for an hour without a break
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -332,7 +351,8 @@
   text_en: Lying down to rest in the afternoon when time permits
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -344,7 +364,8 @@
   text_en: Sitting and talking to someone
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -356,7 +377,8 @@
   text_en: Sitting quietly after lunch without alcohol
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -368,7 +390,8 @@
   text_en: In a car, while stopped for a few minutes in traffic
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -380,7 +403,8 @@
   text_en: While driving
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 37
   unit_id:
   answer_option_ids:
@@ -392,7 +416,8 @@
   text_en: My sleep quality was
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -405,7 +430,8 @@
   text_en: My sleep was refreshing
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -418,7 +444,8 @@
   text_en: I had a problem with my sleep
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -431,7 +458,8 @@
   text_en: I had difficulty falling asleep
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -444,7 +472,8 @@
   text_en: My sleep was restless
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -457,7 +486,8 @@
   text_en: I tried hard to get to sleep
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -470,7 +500,8 @@
   text_en: I worried about not being able to fall asleep
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -483,7 +514,8 @@
   text_en: I was satisfied with my sleep
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 38
   unit_id:
   answer_option_ids:
@@ -497,7 +529,8 @@
     In general, would you say your health is:
   time_estimate: 0.15
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 40
   unit_id:
   answer_option_ids:
@@ -510,7 +543,8 @@
   text_en: Compared to one year ago, how would you rate your health in general now?
   time_estimate: 0.15
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 40
   unit_id:
   answer_option_ids:
@@ -523,7 +557,8 @@
   text_en: Allergies
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -534,7 +569,8 @@
   text_en: Asthma
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -545,7 +581,8 @@
   text_en: Attention Deficit Disorder
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -556,7 +593,8 @@
   text_en: Cancer
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -567,7 +605,8 @@
   text_en: Chronic Obstructive Lung Disease (COPD or Emphysema)
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -578,7 +617,8 @@
   text_en: Depression
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -589,7 +629,8 @@
   text_en: Diabetes
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -600,7 +641,8 @@
   text_en: High blood pressure
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -611,7 +653,8 @@
   text_en: Heart disease
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -622,7 +665,8 @@
   text_en: Insomnia
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -633,7 +677,8 @@
   text_en: Narcolepsy
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -644,7 +689,8 @@
   text_en: Restless leg syndrome
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -655,7 +701,8 @@
   text_en: Stroke
   time_estimate: 0.2
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 39
   unit_id:
   answer_option_ids:
@@ -668,7 +715,8 @@
     prepaid plans such as HMOs, or government plans such as Medicare?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:
@@ -678,7 +726,8 @@
   text_en: How old are you?
   time_estimate: 0.5
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   question_help_message_id: 41
   unit_id: 3
   answer_option_ids: []
@@ -686,7 +735,8 @@
   text_en: What is your sex?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -696,7 +746,7 @@
   text_en: What is your height?
   time_estimate: 0.2
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids: 2
   question_help_message_id: 41
   unit_id: 1
   answer_option_ids: []
@@ -704,7 +754,8 @@
   text_en: What is your last weight?
   time_estimate: 0.2
   question_type_id: 6
-  answer_type_id: 2
+  answer_template_ids:  
+  - 2
   question_help_message_id: 41
   unit_id: 2
   answer_option_ids: []
@@ -712,7 +763,8 @@
   text_en: In what country were you born?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -726,7 +778,8 @@
   text_en: Please specify in what country were you were born.
   time_estimate: 1.0
   question_type_id: 1
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids: []
@@ -734,7 +787,8 @@
   text_en: What is your race? Check all that apply.
   time_estimate: 0.1
   question_type_id: 4
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -749,7 +803,8 @@
   text_en: Are you Hispanic or Latino?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -763,7 +818,8 @@
   text_en: What is the **highest** level of education you completed?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -778,7 +834,8 @@
   text_en: What is your current marital status?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -794,7 +851,8 @@
   text_en: Please describe your current marital status.
   time_estimate: 1.0
   question_type_id: 1
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids: []
@@ -803,14 +861,16 @@
   question_type_id: 6
   question_help_message_id:
   time_estimate: 0.2
-  answer_type_id: 2
+  answer_template_ids:     
+  - 2
   unit_id:
   answer_option_ids: []
 - id: 557
   text_en: What best describes your current main daily activities?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -828,7 +888,8 @@
     food, rent, or mortgage, heating, etc?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id: 41
   unit_id:
   answer_option_ids:
@@ -843,7 +904,8 @@
     taxes?
   time_estimate: 0.1
   question_type_id: 3
-  answer_type_id: 1
+  answer_template_ids:     
+  - 1
   question_help_message_id:
   unit_id:
   answer_option_ids:

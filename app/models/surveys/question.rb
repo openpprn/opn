@@ -1,10 +1,10 @@
 class Question < ActiveRecord::Base
   belongs_to :question_type
-  belongs_to :answer_type
+  has_many :answer_templates, through: :answer_templates_questions
   belongs_to :group
   belongs_to :unit
   has_many :question_answer_options, -> { order "question_answer_options.created_at" }
-  has_many :answer_options, through: :question_answer_options
+  has_many :answer_options, through: :answer_options_questions
   has_many :answers
   has_many :votes
   belongs_to :question_help_message
@@ -38,6 +38,23 @@ class Question < ActiveRecord::Base
 
   def has_vote?(user, rating)
     votes.where(user_id: user.id, rating: rating).count > 0
+  end
+
+  def part_of_group?
+    group.present?
+  end
+
+  def group_member?(q)
+    group_members.include? q
+  end
+
+  def group_members
+    if part_of_group?
+      group.questions
+    else
+      nil
+    end
+
   end
 
   def answer_frequencies
