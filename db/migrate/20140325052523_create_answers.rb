@@ -1,9 +1,10 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
-      t.integer :question_id
-      t.integer :answer_session_id
-      t.integer :user_id
+      t.references :question
+      t.references :answer_template
+      t.references :answer_session
+      t.references :user
 
       t.timestamps
     end

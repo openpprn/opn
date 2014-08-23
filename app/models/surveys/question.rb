@@ -1,10 +1,6 @@
 class Question < ActiveRecord::Base
-  belongs_to :question_type
   has_many :answer_templates, through: :answer_templates_questions
   belongs_to :group
-  belongs_to :unit
-  has_many :question_answer_options, -> { order "question_answer_options.created_at" }
-  has_many :answer_options, through: :answer_options_questions
   has_many :answers
   has_many :votes
   belongs_to :question_help_message

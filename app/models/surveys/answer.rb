@@ -1,6 +1,7 @@
 class Answer < ActiveRecord::Base
   has_many :answer_values, dependent: :destroy
   belongs_to :question
+  belongs_to :answer_option
   belongs_to :answer_session
   has_one :in_edge, class_name: "AnswerEdge", foreign_key: "child_answer_id", dependent: :destroy
   has_one :out_edge, class_name: "AnswerEdge", foreign_key: "parent_answer_id", dependent: :destroy
@@ -19,13 +20,9 @@ class Answer < ActiveRecord::Base
   def value=(val)
     answer_values.clear
 
-    if question.question_type.store_raw_value
-      target_field = question.answer_type.data_type
-    else
-      target_field = 'answer_option_id'
-    end
+    target_field = answer_template.data_type
 
-    if question.question_type.allow_multiple and val.kind_of?(Array)
+    if answer_template.allow_multiple and val.kind_of?(Array)
       val.each {|v| answer_values.build(target_field => v) }
     else
       answer_values.build(target_field => val)
@@ -36,15 +33,11 @@ class Answer < ActiveRecord::Base
     end
   end
 
-  def value(raw = false)
-    if question.present? and question.answer_type.present?
-      if raw or question.question_type.store_raw_value
-        target_field = question.answer_type.data_type
-      else
-        target_field = 'answer_option_id'
-      end
+  def value
+    if question.present? and answer_template.present?
+      target_field = answer_template.data_type
 
-      if question.question_type.allow_multiple and answer_values.length > 1
+      if answer_template.allow_multiple and answer_values.length > 1
         answer_values.map{|av| av[target_field] }
       elsif answer_values.length == 1
         answer_values.first[target_field]
@@ -56,8 +49,8 @@ class Answer < ActiveRecord::Base
     end
   end
 
-  def string_value(raw = false)
-    v = value(raw)
+  def string_value
+    v = self.value
 
     if v.kind_of?(Array)
       v.map(&:to_s)
@@ -67,18 +60,16 @@ class Answer < ActiveRecord::Base
   end
 
   def show_value
-    v = self.value
-    if v
-      if question.question_type.store_raw_value
-
-        v
-      else
-        if v.kind_of?(Array)
-          AnswerOption.where(id: v).map{|ao| ao.value(question.answer_type.data_type)}.join(', ')
+    val = self.value
+    if val
+      if answer_template.data_type = 'answer_option_id'
+        if val.kind_of?(Array)
+          AnswerOption.where(id: val).map{|ao| ao.value}.join(', ')
         else
-
-          AnswerOption.find(v).value(question.answer_type.data_type)
+          AnswerOption.find(val).value
         end
+      else
+        val
       end
     end
   end
