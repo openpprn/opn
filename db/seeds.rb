@@ -16,21 +16,24 @@ unless Rails.env == "test"
 
   to_keep = [ "users", "schema_migrations"]
   tables = [
-      "answer_types",
-      "question_answer_options",
-      "answer_sessions",
-      "answers",
-      "answer_values",
-      "questions",
       "answer_edges",
-      "units",
-      "question_help_messages",
       "answer_options",
-      "question_types",
+      "answer_options_answer_templates",
+      "answer_sessions",
+      "answer_templates",
+      "answer_templates_questions",
+      "answer_values",
+      "answers",
+      "comments",
+      "display_types",
+      "groups",
+      "posts",
       "question_edges",
       "question_flows",
-      "votes",
-      "groups"
+      "question_help_messages",
+      "questions",
+      "units",
+      "votes"
   ]
 
   tables.each do |table|
@@ -41,13 +44,15 @@ unless Rails.env == "test"
   files = [
       ["units.yml", Unit],
       ["groups.yml", Group],
-      ["answer_types.yml", AnswerType],
-      ["question_types.yml", QuestionType],
+      ["display_types.yml", DisplayType],
       ["answer_options.yml", AnswerOption],
+      ["answer_templates.yml", AnswerTemplate],
       ["question_help_messages.yml", QuestionHelpMessage],
       ["questions.yml", Question],
-      ["question_flows.yml", QuestionFlow],
+      ["question_flows.yml", QuestionFlow]
   ]
+
+
 
   files.each do |file_name, model_class|
     file_path = Rails.root.join('lib', 'data', 'surveys', file_name)
@@ -57,7 +62,7 @@ unless Rails.env == "test"
     yaml_data = YAML.load_file(file_path)
 
     yaml_data.each do |object_attrs|
-      #MY_LOG.info object_attrs
+      puts object_attrs
       model_class.create(object_attrs)
     end
   end

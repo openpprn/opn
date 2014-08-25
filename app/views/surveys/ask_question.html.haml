@@ -9,7 +9,7 @@
           %span.text-muted Rate this question:&nbsp;
           = render partial: 'surveys/partials/rate_question', locals: { question: @question, show_badge: false }
         = render partial: 'surveys/partials/help_message' if @question.question_help_message.present?
-        - if @question.has_group?
+        - if @question.part_of_group?
           = render partial: 'surveys/partials/question_group'
         - else
           = render partial: 'surveys/partials/question_form'

@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  has_many :answer_templates, through: :answer_templates_questions
+  has_and_belongs_to_many :answer_templates
   belongs_to :group
   has_many :answers
   has_many :votes
@@ -51,6 +51,12 @@ class Question < ActiveRecord::Base
       nil
     end
 
+  end
+
+  def answer_templates=(attribute_list)
+    attribute_list.each do |attrs|
+      answer_templates.build(attrs)
+    end
   end
 
   def answer_frequencies

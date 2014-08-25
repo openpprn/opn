@@ -12,6 +12,15 @@ class Answer < ActiveRecord::Base
   end
 
   ## Different options:
+  # It gets complicated with many answer templates
+  #   at most basic, one answer template with not allowed multiple ==> target field gets value
+  #   then, one answer templates with allowed multiple ==> builds from array of values
+  #
+  #   we repeat this for all answer templates
+  #
+  #   the inputs can be single value, array of values, hash with answer templates as keys
+  #   if multiple answer templates are present, then hash is NECESSARY
+
   # single value, raw value!
   # single value, answer option id (multiple_choice)
   # Multiple Values, answer option id (check_box)
@@ -19,13 +28,19 @@ class Answer < ActiveRecord::Base
 
   def value=(val)
     answer_values.clear
+    question.answer_templates.each do |template|
+      target_field = template.data_type
+      if val.kind_of?(Hash)
+        val_for_template = val[template.id.to_s]
+      else
+        val_for_template = val
+      end
 
-    target_field = answer_template.data_type
-
-    if answer_template.allow_multiple and val.kind_of?(Array)
-      val.each {|v| answer_values.build(target_field => v) }
-    else
-      answer_values.build(target_field => val)
+      if template.allow_multiple and val_for_template.kind_of?(Array)
+        val_for_template.each {|v| answer_values.build(target_field => v, 'answer_template_id' => template.id) }
+      else
+        answer_values.build(target_field => val, 'answer_template_id' => template.id)
+      end
     end
 
     if self.persisted?
@@ -34,25 +49,38 @@ class Answer < ActiveRecord::Base
   end
 
   def value
-    if question.present? and answer_template.present?
-      target_field = answer_template.data_type
+    if question.present? and question.answer_templates.present?
+      val_container = {}
 
-      if answer_template.allow_multiple and answer_values.length > 1
-        answer_values.map{|av| av[target_field] }
-      elsif answer_values.length == 1
-        answer_values.first[target_field]
-      else
-        nil
+      question.answer_templates.each do |template|
+        target_field = template.data_type
+        template_answer_values = answer_values.where(answer_template_id: template.id)
+
+        if template.allow_multiple and template_answer_values.length > 1
+          val_container[template.id] = template_answer_values.map{|av| av[target_field] }
+        elsif answer_values.length == 1
+          val_container[template.id] =  template_answer_values.first[target_field]
+        else
+          nil
+        end
       end
+
+      if val_container.values.length == 1
+        val_container.values.first
+      else
+        val_container
+      end
+
     else
       nil
     end
   end
 
   def string_value
-    v = self.value
-
-    if v.kind_of?(Array)
+    val = self.value.clone
+    if val.kind_of?(Hash)
+      val.each_pair { |k,v| val[k] = v.to_s }
+    elsif v.kind_of?(Array)
       v.map(&:to_s)
     else
       v.to_s
@@ -60,17 +88,10 @@ class Answer < ActiveRecord::Base
   end
 
   def show_value
-    val = self.value
-    if val
-      if answer_template.data_type = 'answer_option_id'
-        if val.kind_of?(Array)
-          AnswerOption.where(id: val).map{|ao| ao.value}.join(', ')
-        else
-          AnswerOption.find(val).value
-        end
-      else
-        val
-      end
+    if answer_values.length == 1
+      answer_values.first.show_value
+    else
+      answer_values.map(&:show_value).join(", ")
     end
   end
 

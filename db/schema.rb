@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20140822185808) do
     t.datetime "updated_at"
   end
 
+  create_table "answer_options_answer_templates", force: true do |t|
+    t.integer  "answer_template_id"
+    t.integer  "answer_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "answer_sessions", force: true do |t|
     t.integer  "user_id"
     t.integer  "question_flow_id"
@@ -42,15 +49,26 @@ ActiveRecord::Schema.define(version: 20140822185808) do
     t.datetime "updated_at"
   end
 
-  create_table "answer_types", force: true do |t|
+  create_table "answer_templates", force: true do |t|
     t.string   "name"
     t.string   "data_type"
+    t.integer  "unit_id"
+    t.integer  "display_type_id"
+    t.boolean  "allow_multiple",  default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answer_templates_questions", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "answer_template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "answer_values", force: true do |t|
     t.integer  "answer_id"
+    t.integer  "answer_template_id"
     t.integer  "answer_option_id"
     t.decimal  "numeric_value"
     t.string   "text_value"
@@ -77,6 +95,15 @@ ActiveRecord::Schema.define(version: 20140822185808) do
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "display_types", force: true do |t|
+    t.string   "name"
+    t.string   "tag"
+    t.string   "input_type"
+    t.string   "tag_class"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "forem_categories", force: true do |t|
     t.string   "name",       null: false
@@ -187,13 +214,6 @@ ActiveRecord::Schema.define(version: 20140822185808) do
     t.datetime "updated_at"
   end
 
-  create_table "question_answer_options", force: true do |t|
-    t.integer  "question_id"
-    t.integer  "answer_option_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "question_edges", force: true do |t|
     t.integer  "question_flow_id"
     t.integer  "parent_question_id"
@@ -227,23 +247,10 @@ ActiveRecord::Schema.define(version: 20140822185808) do
     t.datetime "updated_at"
   end
 
-  create_table "question_types", force: true do |t|
-    t.string   "name"
-    t.string   "tag"
-    t.string   "input_type"
-    t.boolean  "store_raw_value"
-    t.boolean  "allow_multiple"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "questions", force: true do |t|
     t.text     "text_en"
     t.text     "text_es"
-    t.integer  "question_type_id"
     t.integer  "question_help_message_id"
-    t.integer  "answer_type_id"
-    t.integer  "unit_id"
     t.integer  "group_id"
     t.decimal  "time_estimate"
     t.datetime "created_at"
@@ -324,6 +331,7 @@ ActiveRecord::Schema.define(version: 20140822185808) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "accepted_consent_at"
     t.boolean  "forem_admin",            default: false
     t.string   "forem_state",            default: "pending_review"
     t.boolean  "forem_auto_subscribe",   default: false

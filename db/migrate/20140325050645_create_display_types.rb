@@ -4,7 +4,7 @@ class CreateDisplayTypes < ActiveRecord::Migration
       t.string :name
       t.string :tag
       t.string :input_type
-      t.string :class
+      t.string :tag_class
 
       t.timestamps
     end

@@ -57,4 +57,13 @@ module SurveysHelper
       "Obese"
     end
   end
+
+
+  def conditional_tag(condition, tag, attributes, &block)
+    if condition
+      haml_tag :div, attributes, &block
+    else
+      haml_concat capture_haml(&block)
+    end
+  end
 end

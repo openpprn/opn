@@ -7,6 +7,7 @@
   answer_templates:
   - display_type_id: 4
     data_type: answer_option_id
+    allow_multiple: true
     answer_option_ids:
     - 78
     - 79
@@ -291,7 +292,7 @@
   time_estimate: 0.1
   question_help_message_id: 38
   group_id: 6
-  answer_option_ids:
+  answer_template_ids:
   - 19
 - id: 522
   text_en: My sleep was refreshing
@@ -347,14 +348,13 @@
     In general, would you say your health is:
   time_estimate: 0.15
   question_help_message_id: 40
-  answer_option_ids:
+  answer_template_ids:
   - 21
 - id: 530
   text_en: Compared to one year ago, how would you rate your health in general now?
   time_estimate: 0.15
   question_help_message_id: 40
-  question_type_id: 3
-  answer_template_ids:     
+  answer_template_ids:
   - 22
 # Group 7
 - id: 531
