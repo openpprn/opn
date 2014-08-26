@@ -22,6 +22,7 @@ class SurveysController < ApplicationController
   end
 
   def process_answer
+    
     @question = Question.find(params[:question_id])
     @answer_session = AnswerSession.find(params[:answer_session_id]) # Validate user!
 

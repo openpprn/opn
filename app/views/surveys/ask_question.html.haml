@@ -4,6 +4,8 @@
       = render partial: 'surveys/partials/header', locals: {question_flow: @answer_session.question_flow}
       = render partial: 'surveys/partials/session_progress', locals: {stats: @answer_session.calculate_status_stats }
     = form_tag(process_answer_path, {role: "form"}) do
+      = hidden_field_tag :answer_session_id, @answer_session
+      = hidden_field_tag :question_id, @question.id
       .panel-body
         .pull-right
           %span.text-muted Rate this question:&nbsp;
@@ -12,7 +14,7 @@
         - if @question.part_of_group?
           = render partial: 'surveys/partials/question_group'
         - else
-          = render partial: 'surveys/partials/question_form'
+          = render partial: 'surveys/partials/question_form', locals: {question: @question, answer_session: @answer_session, answer: @answer, parent_q: nil, condition: nil}
       .panel-footer
         = link_to 'Previous Question', previous_question_path(@answer), class: 'btn btn-lg btn-default', tabindex: -1
         %button.btn.btn-primary.btn-lg.pull-right{:name => "direction", :type => "submit", :value => "next"} Next Question

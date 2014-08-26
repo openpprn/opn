@@ -7,6 +7,10 @@ class AnswerValue < ActiveRecord::Base
     self[answer_template.data_type]
   end
 
+  def string_value
+    value.to_s
+  end
+
   def show_value
     if answer_template.data_type == 'answer_option_id'
       answer_option.value

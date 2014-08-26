@@ -15,13 +15,24 @@ class Question < ActiveRecord::Base
   has_dag_links :link_class_name => 'QuestionEdge'
 
   def next_question(question_flow)
-    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
     candidate_edges.first
   end
 
   def previous_question(question_flow)
-    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id)
+    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
     candidate_edges.first
+  end
+
+  def default_next_question(question_flow)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
+  end
+
+  def conditional_children(question_flow)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.present? }.map(&:descendant)
+
   end
 
   def user_answer(answer_session)

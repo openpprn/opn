@@ -24,12 +24,12 @@
 # Specific types (sub-types)
 - id: 6
   name: number_of_years
-  unit_id: 11
+  unit_id: 10
   display_type_id: 6
   data_type: numeric_value
 - id: 7
   name: number_of_months
-  unit_id: 12
+  unit_id: 11
   display_type_id: 6
   data_type: numeric_value
 - id: 8
@@ -89,7 +89,7 @@
   - 20
 - id: 14
   name: satisfaction_scale
-  display_type_id: 8
+  display_type_id: 3
   data_type: answer_option_id
   answer_option_ids:
   - 222

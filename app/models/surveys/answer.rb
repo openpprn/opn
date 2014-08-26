@@ -28,8 +28,10 @@ class Answer < ActiveRecord::Base
 
   def value=(val)
     answer_values.clear
+
     question.answer_templates.each do |template|
       target_field = template.data_type
+
       if val.kind_of?(Hash)
         val_for_template = val[template.id.to_s]
       else
@@ -39,7 +41,7 @@ class Answer < ActiveRecord::Base
       if template.allow_multiple and val_for_template.kind_of?(Array)
         val_for_template.each {|v| answer_values.build(target_field => v, 'answer_template_id' => template.id) }
       else
-        answer_values.build(target_field => val, 'answer_template_id' => template.id)
+        answer_values.build(target_field => val_for_template, 'answer_template_id' => template.id)
       end
     end
 
@@ -49,42 +51,53 @@ class Answer < ActiveRecord::Base
   end
 
   def value
-    if question.present? and question.answer_templates.present?
-      val_container = {}
-
-      question.answer_templates.each do |template|
-        target_field = template.data_type
-        template_answer_values = answer_values.where(answer_template_id: template.id)
-
-        if template.allow_multiple and template_answer_values.length > 1
-          val_container[template.id] = template_answer_values.map{|av| av[target_field] }
-        elsif answer_values.length == 1
-          val_container[template.id] =  template_answer_values.first[target_field]
-        else
-          nil
-        end
-      end
-
-      if val_container.values.length == 1
-        val_container.values.first
-      else
-        val_container
-      end
-
-    else
-      nil
+    res = {}
+    answer_values.each do |av|
+      res[av.answer_template.id] ||= []
+      res[av.answer_template.id] << av.value
     end
+
+    res.each_pair { |k, v| res[k] = v.first if v.length == 1 }
+
+    res
+
+    # if question.present? and question.answer_templates.present?
+    #   val_container = {}
+    #
+    #   question.answer_templates.each do |template|
+    #     target_field = template.data_type
+    #     template_answer_values = answer_values.where(answer_template_id: template.id)
+    #
+    #     if template.allow_multiple and template_answer_values.length > 1
+    #       val_container[template.id] = template_answer_values.map{|av| av[target_field] }
+    #     elsif answer_values.length == 1
+    #       val_container[template.id] =  template_answer_values.first[target_field]
+    #     else
+    #       nil
+    #     end
+    #   end
+    #
+    #   if val_container.values.length == 1
+    #     val_container.values.first
+    #   else
+    #     val_container
+    #   end
+    #
+    # else
+    #   nil
+    # end
   end
 
   def string_value
-    val = self.value.clone
-    if val.kind_of?(Hash)
-      val.each_pair { |k,v| val[k] = v.to_s }
-    elsif v.kind_of?(Array)
-      v.map(&:to_s)
-    else
-      v.to_s
+    res = {}
+    answer_values.each do |av|
+      res[av.answer_template.id.to_s] ||= []
+      res[av.answer_template.id.to_s] << av.string_value
     end
+
+    res.each_pair { |k, v| res[k] = v.first if v.length == 1 }
+
+    res
   end
 
   def show_value
@@ -123,7 +136,9 @@ class Answer < ActiveRecord::Base
   end
 
   def next_question
-    candidate_edges = question.links_as_parent
+    candidate_edges = QuestionEdge.where(parent_question_id: question.id, direct: true, question_flow_id: answer_session.question_flow.id)
+
+    #raise StandardError
 
     if candidate_edges.empty?
       nil
@@ -131,11 +146,17 @@ class Answer < ActiveRecord::Base
       if candidate_edges.length == 1
         chosen_edge = candidate_edges.first
       else
-        chosen_edge = candidate_edges.select {|e| e.condition == self.value.to_s}.first || candidate_edges.select {|e| self.value.kind_of?(Array) ? self.value.map(&:to_s).include?(e.condition) : false }.first || candidate_edges.select { |e| e.condition == nil }.first || candidate_edges.first
+        chosen_edge = candidate_edges.select {|e| self.fits_condition?(e.condition)}.first || candidate_edges.select { |e| e.condition == nil }.first || candidate_edges.first
       end
       chosen_edge.descendant
     end
 
+  end
+
+  def fits_condition?(condition)
+    all_values = answer_values.map(&:string_value)
+
+    all_values.include? condition
   end
 
   def multiple_options?
