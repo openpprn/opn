@@ -44,29 +44,115 @@ class AnswerSession < ActiveRecord::Base
     # Create answer edge from tail to new answer
 
     #answer_values =
+
+
+    # Create new or find old answer object
     answer = Answer.where(question_id: question.id, answer_session_id: self.id).first || Answer.new(question_id: question.id, answer_session_id: self.id)
 
+    # Options:
+    # If new, create answer values and save
+    #   also, since we're always adding new answers at the tail, set edge from end to new answer, and set new end
 
-    if answer.new_record? or answer.string_value != params[question.id.to_s] or answer.in_edge.blank?
+    # If existing
+    ## If value is changing
+    ### set new value
+    #### if more than one possible route out
+    ##### destroy descendents and set last_answer to this one
+    #### else, do nothing
+    ## else do nothing
+
+    #
+
+=begin
+  new record that's also the first answer in answer session:
+    - set value
+    - save
+    - set to first answer
+    - set to last answer
+  new record in an existing answer session
+    - set value
+    - save
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and no in edge and is first answer
+    - set value
+    - save
+    - destroy downstream edges
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and no in edge
+    - set value
+    - save
+    - destroy downstream edges
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and an in edge
+    - set value
+    - save
+    - destroy downstream edges
+    - set to last answer
+
+  existing record with new value(s) and one downstream option and no in edge and is first answer
+    - set value
+    - save
+
+  existing record with new value(s) and one downstream option and no in edge
+    - set value
+    - save
+    - set edge from previous answer
+    - set to last answer
+
+
+  existing record with new value(s) one downstream option and an in edge
+    - set value
+    - save
+
+  existing record with no new values and is first and no in edge
+    - nothing!!
+
+  existing record with no new values and no in edge
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with no new values and an in edge
+    - nothing!!
+
+
+
+
+  new record: do everything
+
+
+  existing record with
+=end
+    # New Record: do everything
+    answer_modified = false
+
+    if answer.new_record? or answer.string_value != params[question.id.to_s]
+      # Set Value and Save
       answer.value = params[question.id.to_s]
       answer.save
-
-
-      if self.first_answer_id.blank?
-        self.first_answer_id = answer.id
-      else
-        if answer.in_edge.blank? and answer != first_answer
-          answer_edges.create(parent_answer_id: last_answer.id, child_answer_id: answer.id)
-        else
-          # Only destroy downstream if answer can change flow
-          answer.destroy_descendant_edges if answer.multiple_options?
-        end
-      end
-
-      self.last_answer_id = answer.id
-      self.save
+      answer_modified = true
     end
 
+    if first_answer_id.blank?
+      # if no first answer, set it!
+      self[:first_answer_id] = answer.id
+      self[:last_answer_id] = answer.id
+    elsif answer.in_edge.blank? and self[:first_answer_id] != answer.id
+      # No in edge (and not first answer)...you need to set it
+      answer_edges.create(parent_answer_id: last_answer.id, child_answer_id: answer.id)
+      self[:last_answer_id] = answer.id
+    end
+
+    if answer_modified and answer.multiple_options?
+      answer.destroy_descendant_edges
+      self[:last_answer_id] = answer.id
+    end
+
+    self.save
     answer
   end
 

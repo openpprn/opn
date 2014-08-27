@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818024723) do
+ActiveRecord::Schema.define(version: 20140822185808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.datetime "updated_at"
   end
 
+  create_table "answer_options_answer_templates", force: true do |t|
+    t.integer  "answer_template_id"
+    t.integer  "answer_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "answer_sessions", force: true do |t|
     t.integer  "user_id"
     t.integer  "question_flow_id"
@@ -42,15 +49,26 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.datetime "updated_at"
   end
 
-  create_table "answer_types", force: true do |t|
+  create_table "answer_templates", force: true do |t|
     t.string   "name"
     t.string   "data_type"
+    t.integer  "unit_id"
+    t.integer  "display_type_id"
+    t.boolean  "allow_multiple",  default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answer_templates_questions", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "answer_template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "answer_values", force: true do |t|
     t.integer  "answer_id"
+    t.integer  "answer_template_id"
     t.integer  "answer_option_id"
     t.decimal  "numeric_value"
     t.string   "text_value"
@@ -63,6 +81,26 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.integer  "question_id"
     t.integer  "answer_session_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "body",       null: false
+    t.string   "state"
+    t.integer  "user_id"
+    t.integer  "post_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "display_types", force: true do |t|
+    t.string   "name"
+    t.string   "tag"
+    t.string   "input_type"
+    t.string   "tag_class"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -166,9 +204,12 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.string "name"
   end
 
-  create_table "question_answer_options", force: true do |t|
-    t.integer  "question_id"
-    t.integer  "answer_option_id"
+  create_table "posts", force: true do |t|
+    t.string   "title",                            null: false
+    t.text     "body",                             null: false
+    t.string   "state",          default: "draft", null: false
+    t.integer  "comments_count", default: 0,       null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -206,23 +247,10 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.datetime "updated_at"
   end
 
-  create_table "question_types", force: true do |t|
-    t.string   "name"
-    t.string   "tag"
-    t.string   "input_type"
-    t.boolean  "store_raw_value"
-    t.boolean  "allow_multiple"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "questions", force: true do |t|
     t.text     "text_en"
     t.text     "text_es"
-    t.integer  "question_type_id"
     t.integer  "question_help_message_id"
-    t.integer  "answer_type_id"
-    t.integer  "unit_id"
     t.integer  "group_id"
     t.decimal  "time_estimate"
     t.datetime "created_at"
@@ -263,6 +291,26 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.datetime "updated_at"
   end
 
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
   create_table "units", force: true do |t|
     t.string   "name_en"
     t.string   "name_es"
@@ -283,12 +331,12 @@ ActiveRecord::Schema.define(version: 20140818024723) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "accepted_consent_at"
     t.boolean  "forem_admin",            default: false
     t.string   "forem_state",            default: "pending_review"
     t.boolean  "forem_auto_subscribe",   default: false
     t.integer  "year_of_birth"
     t.string   "zip_code"
-    t.datetime "accepted_consent_at"
     t.string   "first_name"
     t.string   "last_name"
   end
