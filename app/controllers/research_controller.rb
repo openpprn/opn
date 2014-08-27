@@ -7,4 +7,8 @@ class ResearchController < ApplicationController
     @unstarted_surveys = QuestionFlow.unstarted(current_user)
     @complete_surveys = QuestionFlow.complete(current_user)
   end
+
+  def research_today
+    @coming_soon = true
+  end
 end

@@ -6,8 +6,10 @@
     %title= yield(:title) + " " + "MyApnea.org"
     = render "layouts/before_scripts"
 
-
 %body#MyApnea{screen_capture_injected: "true"}
+  - if @coming_soon
+    = render partial: 'shared/coming_soon'
+
   = render "layouts/myapnea/navigation/top_navigation_bar"
 
 
