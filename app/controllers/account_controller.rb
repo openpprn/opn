@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!
 
-  authorize_actions_for User, only: :consent, actions: { consent: :update }
+  # authorize_actions_for User, only: :consent, actions: { consent: :update }
 
   def consent
     if params[:consent_signed] && current_user
