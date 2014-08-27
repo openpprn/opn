@@ -6,6 +6,7 @@
     %title= yield(:title) + " " + "MyApnea.Org"
     = render "layouts/before_scripts"
 
+    %link{ 'href' => 'http://fonts.googleapis.com/css?family=Lato:300,400,700', 'rel' => 'stylesheet', 'type' => 'text/css' }
 
 %body#MyApnea{screen_capture_injected: "true"}
   = render "layouts/myapnea/navigation/top_navigation_bar"

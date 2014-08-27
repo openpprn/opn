@@ -48,9 +48,12 @@ $linkColorHover:        #ff9400;
 
 // Typography
 // -------------------------
-$sansFontFamily:        "futuraextendedregular", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-$contentFontFamily:        "futuralightregular", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-$boldFontFamily:    "futura_bdcn_btbold", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+// $sansFontFamily:        "futuraextendedregular", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+// $contentFontFamily:        "futuralightregular", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+// $boldFontFamily:    "futura_bdcn_btbold", Lucida Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+$sansFontFamily: "Lato", sans-serif;
+$contentFontFamily: "Lato", sans-serif;
+$boldFontFamily: "Lato", sans-serif;
 
 $serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 $monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
