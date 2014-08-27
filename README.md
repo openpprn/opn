@@ -18,7 +18,7 @@ This readme assumes the following installation directory: /var/www/www_myapnea_o
 ```
 cd /var/www
 
-git clone https://github.com/remomueller/www_myapnea_org.git
+git clone https://github.com/myapnea/www_myapnea_org.git
 
 cd www_myapnea_org
 
