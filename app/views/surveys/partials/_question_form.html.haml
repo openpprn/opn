@@ -1,17 +1,19 @@
 .question-form{data: {parent_question: parent_q, condition: condition}}
   %p.text-primary= markdown question.text
   .row
+    = hidden_field_tag "question_id[]", question.id
+
     - question.answer_templates.each_with_index do |answer_template|
       %div{class: "col-md-#{12/(question.answer_templates.length)}"}
         - if answer_template.answer_options.present?
           - answer_template.answer_options.each_with_index do |answer_option, i|
             %div{:class => answer_template.display_type.input_type}
               %label
-                - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, name: "#{@question.id}[#{answer_template.id}]#{[] if answer_template.allow_multiple}", id: "question_#{@question.id}_#{answer_template.id}_#{i+1}", value: answer_option.id, checked: have_checked?(@answer, answer_template, answer_option.id)})
+                - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, name: "#{question.id}[#{answer_template.id}]#{[] if answer_template.allow_multiple}", id: "question_#{question.id}_#{answer_template.id}_#{i+1}", value: answer_option.id, checked: have_checked?(answer, answer_template, answer_option.id)})
                 = answer_option.value
         - else
           .form-group
             - conditional_tag answer_template.unit.present?, :div, {class: 'input-group'} do
-              - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, class: 'form-control', name: "#{@question.id}[#{answer_template.id}]", id: "question_#{question.id}_#{answer_template.id}", value: answer.value[answer_template.id]})
+              - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, class: 'form-control', name: "#{question.id}[#{answer_template.id}]", id: "question_#{question.id}_#{answer_template.id}", value: answer.value[answer_template.id]})
               - if answer_template.unit.present?
                 %span.input-group-addon= answer_template.unit.name

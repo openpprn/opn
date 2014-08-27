@@ -18,5 +18,6 @@
 //= require main
 //= require pages
 //= require admin
+//= require votes
 
 
