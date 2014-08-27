@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'privacy_policy' => 'static#privacy_policy', as: 'privacy'
   get 'terms' => 'static#terms'
   get 'theme' => 'static#theme'
+  get 'version' => 'static#version'
 
   # MyApnea Specific
   get 'learn' => 'static#learn'
