@@ -1,6 +1,9 @@
 text:
   name: text
+  display_type: text
   data_type: text_value
+
 numeric:
   name: numeric
+  display_type: number
   data_type: numeric_value

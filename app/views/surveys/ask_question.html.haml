@@ -2,10 +2,9 @@
   .panel.panel-default
     .panel-heading
       = render partial: 'surveys/partials/header', locals: {question_flow: @answer_session.question_flow}
-      = render partial: 'surveys/partials/session_progress', locals: {stats: @answer_session.calculate_status_stats }
+      = render partial: 'surveys/partials/session_progress', locals: {stats: @answer_session.calculate_status_stats(@answer), answer: @answer, answer_session: @answer_session }
     = form_tag(process_answer_path, {role: "form"}) do
-      = hidden_field_tag :answer_session_id, @answer_session
-      = hidden_field_tag :question_id, @question.id
+      = hidden_field_tag :answer_session_id, @answer_session.id
       .panel-body
         .pull-right
           %span.text-muted Rate this question:&nbsp;

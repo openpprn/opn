@@ -1,11 +1,11 @@
 q1:
   text_en: What is your favorite color?
   time_estimate: 1.0
-  question_type: text
-  answer_type: text
-
+  answer_templates:
+  - text
 q2:
   text_en: What is the air-speed velocity of an unladen swallow?
   time_estimate: 1.0
-  question_type: number
-  answer_type: numeric
+  answer_templates:
+  - number
+

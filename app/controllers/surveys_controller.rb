@@ -21,16 +21,19 @@ class SurveysController < ApplicationController
   end
 
   def process_answer
-    
-    @question = Question.find(params[:question_id])
+    #raise StandardError
+
+    @questions = Question.where(id: params[:question_id])
     @answer_session = AnswerSession.find(params[:answer_session_id]) # Validate user!
 
-    answer = @answer_session.process_answer(@question, params)
+    @questions.each do |question|
+      @answer = @answer_session.process_answer(question, params)
+    end
 
     if @answer_session.completed?
       redirect_to survey_report_path(@answer_session)
     else
-      redirect_to ask_question_path(question_id: answer.next_question.id, answer_session_id: @answer_session.id)
+      redirect_to ask_question_path(question_id: @answer.next_question.id, answer_session_id: @answer_session.id)
     end
   end
 

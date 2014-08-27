@@ -29,6 +29,11 @@ class Question < ActiveRecord::Base
     candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
   end
 
+  def default_previous_question(question_flow)
+    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor
+  end
+
   def conditional_children(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
     candidate_edges.select {|edge| edge.condition.present? }.map(&:descendant)

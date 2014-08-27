@@ -10,18 +10,26 @@ class AnswerSession < ActiveRecord::Base
     answer_sessions.empty? ? nil : answer_sessions.first
   end
 
-  def calculate_status_stats
+  def calculate_status_stats(answer=nil)
     completed = completed_path
     remaining = remaining_path
 
+    if answer.present?
+      current_path = path_until_answer(answer)
+      percent_completed =  (current_path.sum{|x| x.question.time_estimate}.to_f / (completed[:time] + remaining[:time])) * 100
+    else
+      percent_completed = (completed[:time] / (completed[:time] + remaining[:time])) * 100
+    end
+
     {
-        percent_completed: (completed[:time] / (completed[:time] + remaining[:time])) * 100,
+        percent_completed: percent_completed,
         completed_questions: completed[:distance],
         remaining_questions: remaining[:distance],
         total_questions: completed[:distance] + remaining[:distance],
         completed_time: completed[:time],
         remaining_time: remaining[:time],
         total_time: completed[:time] + remaining[:time]
+
     }
   end
 
@@ -161,7 +169,7 @@ class AnswerSession < ActiveRecord::Base
   end
 
   def all_reportable_answers
-    all_answers.select {|answer| [3].include?(answer.question.question_type.id) and answer.show_value.present? }
+    all_answers.select {|answer| answer.answer_values.map{|av| av.answer_template.data_type }.include? "answer_option_id" and answer.show_value.present? }
   end
 
   def get_answer(question_id)
@@ -183,6 +191,26 @@ class AnswerSession < ActiveRecord::Base
     end
   end
 
+  def path_until_answer(answer)
+    if last_answer.blank?
+      coll = []
+      current_answer = nil
+    elsif answer.new_record?
+      coll = [answer]
+      current_answer = last_answer
+    else
+      current_answer = answer.clone
+      coll = []
+    end
+
+    while current_answer
+      coll << current_answer
+      current_answer = current_answer.previous_answer
+    end
+
+    coll
+  end
+  
   private
 
   def completed_path
@@ -191,6 +219,7 @@ class AnswerSession < ActiveRecord::Base
 
     {time: time, distance: distance}
   end
+
 
   def remaining_path
 

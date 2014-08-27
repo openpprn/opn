@@ -24,4 +24,3 @@ $(document).on "click", ".voting button", () ->
         badge.children().first().html(q_data.rating)
       )
   )
-
