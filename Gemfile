@@ -56,6 +56,9 @@ gem 'forem-bootstrap', github: "radar/forem-bootstrap"
 gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 gem 'kaminari', '~> 0.16.1'
 
+# Blogs and Notifications
+gem 'acts-as-taggable-on'
+
 # User Profile
 gem 'geocoder'
 gem 'carrierwave'

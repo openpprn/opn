@@ -1,6 +1,9 @@
-- id: 1
+text:
   name: text
+  display_type: text
   data_type: text_value
-- id: 2
+
+numeric:
   name: numeric
+  display_type: number
   data_type: numeric_value

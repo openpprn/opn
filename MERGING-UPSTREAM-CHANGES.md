@@ -26,8 +26,8 @@ You should now get
 ```
 $ git remote -v
 
-origin  git@github.com:myapnea/www.myapnea.org.git (fetch)
-origin  git@github.com:myapnea/www.myapnea.org.git (push)
+origin  git@github.com:myapnea/www_myapnea_org.git (fetch)
+origin  git@github.com:myapnea/www_myapnea_org.git (push)
 upstream  https://github.com/openpprn/opn.git (fetch)
 upstream  https://github.com/openpprn/opn.git (push)
 ```

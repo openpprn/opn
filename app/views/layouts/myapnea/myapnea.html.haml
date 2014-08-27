@@ -3,13 +3,12 @@
 %html{lang: "en"}
   %head
 
-    %title= yield(:title) + " " + "MyApnea.org"
+    %title= yield(:title) + " " + "MyApnea.Org"
     = render "layouts/before_scripts"
 
-%body#MyApnea{screen_capture_injected: "true"}
-  - if @coming_soon
-    = render partial: 'shared/coming_soon'
+    %link{ 'href' => '//fonts.googleapis.com/css?family=Lato:300,400,700', 'rel' => 'stylesheet', 'type' => 'text/css' }
 
+%body#MyApnea{screen_capture_injected: "true"}
   = render "layouts/myapnea/navigation/top_navigation_bar"
 
 

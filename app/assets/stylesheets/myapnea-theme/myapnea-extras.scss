@@ -1,8 +1,5 @@
 // myapnea-extras.scss
 
-// VARIABLES TODO: Move to another file??
-$normal-nav-height: 65px;
-
 // Layout Parts
 @import 'myapnea-fonts';
 @import "myapnea-global";
@@ -295,19 +292,28 @@ div.videoPlayer{
   margin-bottom:-100px;
 }
 
-.makeRoom {
-  margin-top:60px;
-}
-
 //Team Page
 
 .team {
   position:relative;
+  font-size: 20px;
+  line-height: 30px;
+  margin: 50px 10px;
 }
 
 .teamPhoto {
-  position:absolute;
-  right:90%;
+  width: 100%
+}
+
+@media screen and (min-width:768px) {
+  .team p {
+    margin-left: 150px;
+    margin-right: 100px;
+  }
+  .teamPhoto {
+    position:absolute;
+     right: 190px;
+  }
 }
 
 // Bacon

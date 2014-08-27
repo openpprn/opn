@@ -52,3 +52,8 @@ config/initializers/secret_token.rb
 
 # Ignore OS generated files
 .DS_Store
+
+# Ignore Generated Files
+
+/Gemfile.lock
+/db/schema.rb

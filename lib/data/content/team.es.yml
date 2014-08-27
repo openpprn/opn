@@ -1,13 +1,13 @@
 myapnea:
-  title: What is MyApnea.org?
+  title: What is MyApnea.Org?
   content: |
-    MyApnea.org is a network created by people with sleep apnea to empower others like you and us get the answers WE want and need through what’s called patient-powered research.  We are funded by the Patient Centered Outcomes Research Institute (Link to PCORnet), which was created by the federal government.  You and others like us share health information, discuss experiences regarding treatment, and express views on future research projects directly with researchers and sleep experts that can make a difference.  In return, you will get easy to use tools to track your health and learn from others about treatments, symptoms, and coping with sleep apnea in order to take control of your life.
+    MyApnea.Org is a network created by people with sleep apnea to empower others like you and us get the answers WE want and need through what’s called patient-powered research.  We are funded by the Patient Centered Outcomes Research Institute (Link to PCORnet), which was created by the federal government.  You and others like us share health information, discuss experiences regarding treatment, and express views on future research projects directly with researchers and sleep experts that can make a difference.  In return, you will get easy to use tools to track your health and learn from others about treatments, symptoms, and coping with sleep apnea in order to take control of your life.
 
     Information collected from you will be combined with information from others in the network to describe the health outcomes being studied.  Other patients and researchers will be able to view graphs and summary information on groups of patients.  When combining this information, your name and other personal information WILL NEVER be used.  You always decide how you want to share your personal information.
 
-    Initially, MyApnea.org will collect information about you and your health via a series of quick and easy surveys.  As we collect this information, we will be building powerful tools and apps to share this information back with you.
+    Initially, MyApnea.Org will collect information about you and your health via a series of quick and easy surveys.  As we collect this information, we will be building powerful tools and apps to share this information back with you.
 
-    Ultimately MyApnea.org will:
+    Ultimately MyApnea.Org will:
 
     - Connect you to thousands of other members to share information and advice about living with sleep apnea.
     - Provide a secure and dynamic dashboard of sleep, health and risk measures based on the personal health data you submit by survey and by positive airway pressure (PAP) machines and other health monitoring devices.
@@ -17,7 +17,7 @@ myapnea:
 sapcon:
   title: What is the Sleep Apnea Patient Centered Outcome Network?
   content: |
-    The Sleep Apnea Patient Centered Outcomes Network (SAPCON) is the formal network name for MyApnea.org.  It is coordinated by the American Sleep Apnea Association and the Division of Sleep and Circadian Disorders at Brigham and Women’s Hospital, Harvard Medical School, under the guidance of principal investigator Susan Redline, M.D., M.P.H. The MyApnea.org network is part of a historic national research endeavor that will ultimately enlist one hundred million people to provide personal health data and to guide the course of comparative effectiveness research for multiple, serious and chronic diseases.  Funded by the Patient Centered Outcomes Research Institute (PCORI), MyApnea.org/SAPCON is one of 18 Patient Powered Research Networks (PPRN) that will comprise a national “network of networks” dedicated to conducting comparative effectiveness research.  It is an unprecedented effort that will redefine how health research is done in this country and it holds tremendous promise for people who suffer from these conditions each day.
+    The Sleep Apnea Patient Centered Outcomes Network (SAPCON) is the formal network name for MyApnea.Org.  It is coordinated by the American Sleep Apnea Association and the Division of Sleep and Circadian Disorders at Brigham and Women’s Hospital, Harvard Medical School, under the guidance of principal investigator Susan Redline, M.D., M.P.H. The MyApnea.Org network is part of a historic national research endeavor that will ultimately enlist one hundred million people to provide personal health data and to guide the course of comparative effectiveness research for multiple, serious and chronic diseases.  Funded by the Patient Centered Outcomes Research Institute (PCORI), MyApnea.Org/SAPCON is one of 18 Patient Powered Research Networks (PPRN) that will comprise a national “network of networks” dedicated to conducting comparative effectiveness research.  It is an unprecedented effort that will redefine how health research is done in this country and it holds tremendous promise for people who suffer from these conditions each day.
 steering_title: The Sleep Apnea Patient Centered Outcomes Network Steering Committee
 steering:
   - name: Susan Redline

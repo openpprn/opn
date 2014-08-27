@@ -9,12 +9,14 @@ module SurveysHelper
     end
   end
 
-  def have_checked?(answer, val)
-    if answer.value.present?
-      if answer.value.kind_of?(Array)
-        answer.value.include? val
+  def have_checked?(answer, answer_template, val)
+    if answer.value.present? and answer.value[answer_template.id].present?
+      saved_val = answer.value[answer_template.id]
+
+      if saved_val.kind_of?(Array)
+        saved_val.include? val
       else
-        answer.value == val
+        saved_val == val
       end
     else
       false
@@ -56,5 +58,22 @@ module SurveysHelper
     else
       "Obese"
     end
+  end
+
+
+  def conditional_tag(condition, tag, attributes, &block)
+    if condition
+      haml_tag :div, attributes, &block
+    else
+      haml_concat capture_haml(&block)
+    end
+  end
+
+  def show_questions
+    # show self
+
+    # show descendants
+
+
   end
 end

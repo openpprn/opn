@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= render partial: 'surveys/partials/header', locals: { question_flow: @question_flow } %>
-      <%= render partial: 'surveys/partials/session_progress', locals: { stats: @answer_session.calculate_status_stats } %>
+      <%= render partial: 'surveys/partials/session_progress', locals: { stats: @answer_session.calculate_status_stats, answer: nil } %>
 
     </div>
     <div class="panel-body">
