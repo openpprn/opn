@@ -2,69 +2,67 @@
 
 = render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/team.jpg', signup_id: "innerSignup" }
 
-
 .row.highlightPanelTop
-  .container.makeRoom
-    #TheTeam.col-md-12
-      %h1 Our Team
-      %p The Sleep Apnea Patient Centered Outcomes Network Steering Committee
-      .team
-        %h4 Susan Redline, M.D., M.P.H. – Principal Investigator and SAPCON Co-chair
-        .teamPhoto= image_tag 'myapnea/sRedline.png'
-        %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
-          Susan Redline is the Peter C. Farrell Professor of Sleep Medicine at Harvard Medical School and
-          Director of the Programs in Sleep and Cardiovascular Medicine and Sleep Medicine Epidemiology
-          at Brigham and Women’s Hospital and Beth Israel Deaconess Medical Center. She is an
-          internationally recognized researcher focusing on understanding the risk factors and treatment
-          outcomes of sleep disorders. She has published more than 200 scientific articles and participates in
-          many national organizations involved in setting policies for sleep medicine practice and research
-      .team
-        %h4 Adam Amdur, – SAPCON Co-chair
-        .teamPhoto= image_tag 'myapnea/aAmdur.png'
-        %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
-          Adam Amdur is the chief operating officer and immediate past-chair of the American Sleep Apnea
-          Association, the nation’s leading patient-led organization dedicated to reducing injury, disability,
-          from sleep apnea and to enhancing the well-being of those affected by this common disorder. Adam
-          diagnosed with severe obstructive sleep apnea (OSA) in 2008. As he struggled to manage his
-          it wasn't until he found his way to the sleep center at Stanford University that he received the support
-          to adequately control his overall medical condition. Since then, Adam has been passionate about assisting others
-          understanding this disease and getting the help they need. He is currently writing a memoir, Asleep at the Wheel:
-          with Sleep Apnea, in hope of educating the public about apnea and its effects on both adults and children.
-      .team
-        %h4 Judith Owens, M.D., M.P.H. – SAPCON Steering Committee Member
-        .teamPhoto= image_tag 'myapnea/jOwens.png'
-        %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
-          Dr. Judith Owens is president and chief medical officer of the American Sleep Apnea Association. She i
-          also Director of Sleep Medicine at Children’s National Medical Center (CNMC) and Professor of
-          at George Washington University School of Medicine and Health Sciences. She is an internationally
-          recognized authority on pediatric sleep and the author of over 100 original research and review
-          peer-review journals, chapters, and books. Before taking her present position in 2010, she was associate
-          professor of pediatrics at Brown University Medical School and director of pediatric sleep disorders at Hasbro
-          Hospital in Providence, RI.
-      .team
-        %h4 Will Headapohl, – SAPCON Steering Committee Member
-        .teamPhoto= image_tag 'myapnea/wHeadapohl.png'
-        %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
-          Will Headapohl is Chairman of the Board of Directors for the American Sleep Apnea Association. He
-          is a patient advocate, writer and consultant focused on the challenges of getting all undiagnosed
-          sufferers into treatment. He is the co-author of the book, Sleep or Die: Overcome Apnea Before It
-          Overcomes You. His work is aimed at mobilizing all those touched by the disease including partners,
-          members, loved ones, medical care providers, and victims. Will’s resume includes Executive Vice President,
-          Chief Information Officer, and Chief Operating Officer roles in the Internet, information technology and wireless.
-      .team
-        %h4 Vishesh Kapur, M.D., M.P.H. – SAPCON Steering Committee Member
-        .teamPhoto= image_tag 'myapnea/vKapur.png'
-        %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
-          Dr. Vishesh Kapur is the founder and director of the UW Medicine Sleep Disorders Center at Harborview
-          Medical Center and Assistant Professor of Medicine at the University of Washington. He received his
-          degree from Yale University and went on to complete his residency in internal medicine at the
-          Rochester in New York. Dr. Kapur is board certified in internal medicine, pulmonary medicine,
-          medicine, and sleep medicine.
-    / /.col-md-9
-.row.highlightPanel
+  #TheTeam.col-md-12
+    %h1 Our Team
+    %p The Sleep Apnea Patient Centered Outcomes Network Steering Committee
+    .team
+      %h3 Susan Redline, M.D., M.P.H. – Principal Investigator and SAPCON Co-chair
+      .teamPhoto= image_tag 'myapnea/sRedline.png'
+      %p
+        Susan Redline is the Peter C. Farrell Professor of Sleep Medicine at Harvard Medical School and
+        Director of the Programs in Sleep and Cardiovascular Medicine and Sleep Medicine Epidemiology
+        at Brigham and Women’s Hospital and Beth Israel Deaconess Medical Center. She is an
+        internationally recognized researcher focusing on understanding the risk factors and treatment
+        outcomes of sleep disorders. She has published more than 200 scientific articles and participates in
+        many national organizations involved in setting policies for sleep medicine practice and research
+    .team
+      %h3 Adam Amdur, – SAPCON Co-chair
+      .teamPhoto= image_tag 'myapnea/aAmdur.png'
+      %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
+        Adam Amdur is the chief operating officer and immediate past-chair of the American Sleep Apnea
+        Association, the nation’s leading patient-led organization dedicated to reducing injury, disability,
+        from sleep apnea and to enhancing the well-being of those affected by this common disorder. Adam
+        diagnosed with severe obstructive sleep apnea (OSA) in 2008. As he struggled to manage his
+        it wasn't until he found his way to the sleep center at Stanford University that he received the support
+        to adequately control his overall medical condition. Since then, Adam has been passionate about assisting others
+        understanding this disease and getting the help they need. He is currently writing a memoir, Asleep at the Wheel:
+        with Sleep Apnea, in hope of educating the public about apnea and its effects on both adults and children.
+    .team
+      %h3 Judith Owens, M.D., M.P.H. – SAPCON Steering Committee Member
+      .teamPhoto= image_tag 'myapnea/jOwens.png'
+      %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
+        Dr. Judith Owens is president and chief medical officer of the American Sleep Apnea Association. She i
+        also Director of Sleep Medicine at Children’s National Medical Center (CNMC) and Professor of
+        at George Washington University School of Medicine and Health Sciences. She is an internationally
+        recognized authority on pediatric sleep and the author of over 100 original research and review
+        peer-review journals, chapters, and books. Before taking her present position in 2010, she was associate
+        professor of pediatrics at Brown University Medical School and director of pediatric sleep disorders at Hasbro
+        Hospital in Providence, RI.
+    .team
+      %h3 Will Headapohl, – SAPCON Steering Committee Member
+      .teamPhoto= image_tag 'myapnea/wHeadapohl.png'
+      %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
+        Will Headapohl is Chairman of the Board of Directors for the American Sleep Apnea Association. He
+        is a patient advocate, writer and consultant focused on the challenges of getting all undiagnosed
+        sufferers into treatment. He is the co-author of the book, Sleep or Die: Overcome Apnea Before It
+        Overcomes You. His work is aimed at mobilizing all those touched by the disease including partners,
+        members, loved ones, medical care providers, and victims. Will’s resume includes Executive Vice President,
+        Chief Information Officer, and Chief Operating Officer roles in the Internet, information technology and wireless.
+    .team
+      %h3 Vishesh Kapur, M.D., M.P.H. – SAPCON Steering Committee Member
+      .teamPhoto= image_tag 'myapnea/vKapur.png'
+      %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
+        Dr. Vishesh Kapur is the founder and director of the UW Medicine Sleep Disorders Center at Harborview
+        Medical Center and Assistant Professor of Medicine at the University of Washington. He received his
+        degree from Yale University and went on to complete his residency in internal medicine at the
+        Rochester in New York. Dr. Kapur is board certified in internal medicine, pulmonary medicine,
+        medicine, and sleep medicine.
+  / /.col-md-9
+.row
   .container
     #PCO.col-md-12
-      %h1 What is the Sleep Apnea Patient Centered Outcome Network?
+      %h2 What is the Sleep Apnea Patient Centered Outcome Network?
       %p
         The Sleep Apnea Patient Centered Outcomes Network (SAPCON) is the formal network name for MyApnea.Org. It is
         Sleep Apnea Association and the Division of Sleep and Circadian Disorders at Brigham and Women’s Hospital,
@@ -80,7 +78,7 @@
 .row.highlightPanel
   .container
     #ASAA.col-md-12
-      %h1 American Sleep Apnea Association
+      %h2 American Sleep Apnea Association
       http://www.sleepapnea.org/
       %p
         The American Sleep Apnea Association, founded in 1990, is a 501(c)(3)
@@ -101,7 +99,7 @@
       .divider-light
     / col-md-9
     #SleepCircadian.col-md-9
-      %h1 Division of Sleep and Circadian Disorders, Brigham and Women's Hospital
+      %h2 Division of Sleep and Circadian Disorders, Brigham and Women's Hospital
       http://www.brighamandwomens.org/
       %p
         Departments_and_Services/medicine/services/sleepmedicine/default.aspx
@@ -116,7 +114,7 @@
       .divider-light
     / col-md-9
     #BWH-SMEP.col-md-12
-      %h1 Brigham &amp; Women’s Hospital Sleep Medicine Epidemiology Program (BWH-SMEP)
+      %h2 Brigham &amp; Women’s Hospital Sleep Medicine Epidemiology Program (BWH-SMEP)
       https://sleepepi.partners.org/about/
       %p
         The Brigham &amp; Women’s Hospital Sleep Medicine Epidemiology Program is an integrated research and clinical
@@ -128,7 +126,7 @@
       .divider-light
     / col-md-9
     #SRN.col-md-12
-      %h1 The Sleep Research Network (SRN)
+      %h2 The Sleep Research Network (SRN)
       http://www.sleepresearchnetwork.org/
       %p
         The Sleep Research Network (SRN) promotes sustainable multi-institutional collaborations in clinical and translational
@@ -138,7 +136,7 @@
       .divider-light
     / col-md-9
     #i2b2.col-md-12
-      %h1 Informatics for Integrating Biology and the Bedside (i2b2)
+      %h2 Informatics for Integrating Biology and the Bedside (i2b2)
       https://www.i2b2.org/
       %p
         Informatics for Integrating Biology and the Bedside (i2b2) is an NIH-funded
@@ -157,7 +155,7 @@
 .row.highlightPanel
   .container
     #SHRINE.col-md-12
-      %h1 Shared Health Research Information Network (SHRINE)
+      %h2 Shared Health Research Information Network (SHRINE)
       http://catalyst.harvard.edu/services/shrine/
       %p
         The Shared Health Research Information Network (SHRINE) helps researchers
@@ -169,7 +167,7 @@
       .divider-light
     / col-md-9
     #PCORI.col-md-12
-      %h1 Patient-Centered Outcomes Research Institute (PCORI)
+      %h2 Patient-Centered Outcomes Research Institute (PCORI)
       http://www.pcori.org/funding-opportunities/pcornet-national-patient-centered-clinical-research-network/
       %p
         The Patient-Centered Outcomes Research Institute (PCORI), an independent, non-profit organization authorized by research aimed at improving the health of entire populations.
