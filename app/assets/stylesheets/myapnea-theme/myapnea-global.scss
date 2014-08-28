@@ -26,9 +26,15 @@
     padding: 25px;
 
 
+
     h1 {
       font-size: 32px;
       font-weight: bold;
+
+      a {
+        cursor: pointer;
+        cursor: hand;
+      }
     }
 
     img {
