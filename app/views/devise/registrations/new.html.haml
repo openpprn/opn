@@ -1,4 +1,3 @@
-
 .row
   .col-md-8.col-md-offset-2
 
@@ -33,17 +32,17 @@
                 %li= msg.html_safe
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {}) do |f|
           .form-group
-            = f.label :first_name, class: 'sr-only'
-            = f.text_field :first_name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:first_name), autocomplete: :off
+            = label "#{resource_name}[first_name]", :first_name, class: 'sr-only'
+            = text_field_tag "#{resource_name}[first_name]", (params[resource_name] ? params[resource_name][:first_name] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:first_name), autocomplete: :off
           .form-group
-            = f.label :last_name, class: 'sr-only'
-            = f.text_field :last_name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:last_name), autocomplete: :off
+            = label "#{resource_name}[last_name]", :last_name, class: 'sr-only'
+            = text_field_tag "#{resource_name}[last_name]", (params[resource_name] ? params[resource_name][:last_name] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:last_name), autocomplete: :off
           .form-group
-            = f.label :year_of_birth, class: 'sr-only'
-            = f.text_field :year_of_birth, class: 'form-control input-lg', placeholder: User.human_attribute_name(:year_of_birth), autocomplete: :off
+            = label "#{resource_name}[year_of_birth]", :year_of_birth, class: 'sr-only'
+            = text_field_tag "#{resource_name}[year_of_birth]", (params[resource_name] ? params[resource_name][:year_of_birth] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:year_of_birth), autocomplete: :off
           .form-group
-            = f.label :zip_code, class: 'sr-only'
-            = f.text_field :zip_code, class: 'form-control input-lg', placeholder: User.human_attribute_name(:zip_code), autocomplete: :off
+            = label "#{resource_name}[zip_code]", :zip_code, class: 'sr-only'
+            = text_field_tag "#{resource_name}[zip_code]", (params[resource_name] ? params[resource_name][:zip_code] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:zip_code), autocomplete: :off
           .form-group
             = f.label :email, class: 'sr-only'
             = f.email_field :email, class: 'form-control input-lg', placeholder: User.human_attribute_name(:email), autocomplete: :off

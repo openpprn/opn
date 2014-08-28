@@ -15,7 +15,7 @@
               %li
                 = link_to main_app.user_dashboard_path do
                   %i.fa.fa-dashboard
-                    &nbsp;My Dashboard
+                  &nbsp;My Dashboard
               %li
                 = link_to main_app.account_path do
                   %i.fa.fa-user
@@ -42,6 +42,7 @@
             %li= link_to 'Learn', main_app.learn_path, class: (current_page?(main_app.learn_path) ? "currentPage" : "")
             %li= link_to 'Share', main_app.share_path, class: (current_page?(main_app.share_path) ? "currentPage" : "")
             %li= link_to 'Research', main_app.research_path, class: (current_page?(main_app.research_path) ? "currentPage" : "")
+            %li= link_to 'Team', main_app.team_path, class: (current_page?(main_app.team_path) ? "currentPage" : "")
             %li= link_to 'FAQs', main_app.faqs_path, class: (current_page?(main_app.faqs_path) ? "currentPage" : "")
           %ul.nav.navbar-nav.pull-right
             %li
