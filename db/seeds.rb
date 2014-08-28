@@ -54,36 +54,36 @@ unless Rails.env == "test"
 
 
 
-  # files.each do |file_name, model_class|
-  #   file_path = Rails.root.join('lib', 'data', 'surveys', file_name)
-  #
-  #   puts(file_path)
-  #
-  #   yaml_data = YAML.load_file(file_path)
-  #
-  #   yaml_data.each do |object_attrs|
-  #     puts object_attrs
-  #     model_class.create(object_attrs)
-  #   end
-  # end
-  #
-  # qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
-  # puts(qe_path)
-  #
-  # yaml_data = YAML.load_file(qe_path)
-  #
-  # yaml_data.each_with_index do |attrs, i|
-  #
-  #   q1 = Question.find(attrs['parent_question_id'])
-  #   q2 = Question.find(attrs['child_question_id'])
-  #
-  #   qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
-  #
-  #   puts("Creating edge #{i} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
-  #   raise StandardError, qe.errors.full_messages unless qe.save
-  # end
-  #
-  # QuestionFlow.all.each {|qf| qf.reset_paths }
+  files.each do |file_name, model_class|
+    file_path = Rails.root.join('lib', 'data', 'surveys', file_name)
+
+    puts(file_path)
+
+    yaml_data = YAML.load_file(file_path)
+
+    yaml_data.each do |object_attrs|
+      puts object_attrs
+      model_class.create(object_attrs)
+    end
+  end
+
+  qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
+  puts(qe_path)
+
+  yaml_data = YAML.load_file(qe_path)
+
+  yaml_data.each_with_index do |attrs, i|
+
+    q1 = Question.find(attrs['parent_question_id'])
+    q2 = Question.find(attrs['child_question_id'])
+
+    qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
+
+    puts("Creating edge #{i} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
+    raise StandardError, qe.errors.full_messages unless qe.save
+  end
+
+  QuestionFlow.all.each {|qf| qf.reset_paths }
 
   if (user = User.find_by_email("piotr.mankowski@gmail.com"))
     user.add_role :admin

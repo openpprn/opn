@@ -9,7 +9,6 @@
     - unless current_user.created_social_profile?
       %i.fa.fa-lock
     Discussion Forum
-    %span.badge 11
 .small
   %p Description of Community Section
 
@@ -24,25 +23,16 @@
       %i.fa.fa-lock &nbsp;
     My Surveys
     %span.badge= QuestionFlow.unstarted(current_user).count
-  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
-    - unless current_user.signed_consent?
-      %i.fa.fa-lock &nbsp;
-    Research Topics
 
 .small
   %p Description of Research Section
 
 %h2 Coming Soon!
 .list-group
-  %a.list-group-item{href: main_app.research_today_path, class: "#{"active" if action_name == "research_today"} #{'disabled' unless current_user.signed_consent?}"}
-    - unless current_user.signed_consent?
-      %i.fa.fa-lock &nbsp;
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"}
+    Research Topics
+  %a.list-group-item{href: main_app.research_today_path, class: "#{"active" if action_name == "research_today"}"}
     Daily Trends
-  %a.list-group-item{href: main_app.blog_findings_path, class: "#{"active" if action_name == "blog_findings"} #{'disabled' unless current_user.signed_consent?}"}
-    - unless current_user.signed_consent?
-      %i.fa.fa-lock &nbsp;
-    Research Findings
-    %span.badge 1
   %a.list-group-item{href: main_app.data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
   %a.list-group-item{href: main_app.data_explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
 
