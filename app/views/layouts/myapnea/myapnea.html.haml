@@ -8,7 +8,7 @@
 
     %link{ 'href' => '//fonts.googleapis.com/css?family=Lato:300,400,700', 'rel' => 'stylesheet', 'type' => 'text/css' }
 
-%body#MyApnea{screen_capture_injected: "true"}
+%body#MyApnea{screen_capture_injected: "true",  data: { email: "#{current_user.email if current_user}", fullname: "#{current_user.name if current_user}" } }
   #fb-root
   = render "layouts/myapnea/navigation/top_navigation_bar"
   .container{role: "main"}

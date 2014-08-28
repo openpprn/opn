@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def self.scoped_users(email=nil, role=nil)
     users = all
 

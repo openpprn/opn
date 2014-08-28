@@ -17,6 +17,9 @@
   // Identify the user and pass traits
   // To enable, replace sample data with actual user traits and uncomment the line
   UserVoice.push(['identify', {
+    email: $('body').data('email'),   // User's email address
+    name:  $('body').data('fullname') // User's real name
+
     //email:      'john.doe@example.com', // User’s email address
     //name:       'John Doe', // User’s real name
     //created_at: 1364406966, // Unix timestamp for the date the user signed up
