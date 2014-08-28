@@ -17,6 +17,7 @@ Forem.per_page = 20
 
 Rails.application.config.to_prepare do
   Forem.layout = "dashboard"
+  Forem::ForumsController.layout "dashboard"
 end
 
 module Forem
@@ -32,11 +33,19 @@ module Forem
   end
 end
 
-# class Forem::ApplicationController < ApplicationController
-#   layout 'dashboard'
-#   before_action :ahhhh
-#
-#   def ahhhh
-#     raise StandardError
-#   end
-# end
+class Forem::ApplicationController < ApplicationController
+  layout 'dashboard'
+
+  before_action :authenticate_user!
+  before_action :authenticate_social
+
+  def terms_and_conditions
+    render 'forem/terms_and_conditions'
+  end
+
+  private
+
+  def authenticate_social
+    raise Authority::SecurityViolation.new(current_user, 'forum', action_name) unless current_user.can?(:participate_in_social)
+  end
+end

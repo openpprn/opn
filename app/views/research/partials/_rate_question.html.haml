@@ -1,0 +1,13 @@
+
+
+.voting{"data-question-id" => question.id, "data-question-path" => question_path(question), "data-submit-path" => vote_path}
+
+  %button{:class => "btn btn-xs #{vote_class(question, -1)} vote vote-up", "data-value" => "1", :disabled => disabled ? "disabled" : "", :type => "button"}
+    %span.fa.fa-plus
+    1
+
+
+//  %button{:class => "btn #{vote_class(question, 1)} vote vote-down", "data-value" => "1", :disabled => disabled ? "disabled" : "", :type => "button"}
+//    %span.fa.fa-arrow-down
+//  %button{:class => "btn #{vote_class(question, -1)} vote vote-up", "data-value" => "-1", :disabled => disabled ? "disabled" : "", :type => "button"}
+

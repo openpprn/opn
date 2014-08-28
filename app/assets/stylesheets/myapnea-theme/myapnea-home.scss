@@ -5,6 +5,13 @@
       font-size: $fontSizeLarge;
     }
 
+    #home-research-qs {
+      .btn {
+        margin-top: 8px;
+        //font-size: $fontSizeLarge;
+      }
+    }
+
     #memberCount {
       border-width: 1px;
       border-color: rgb(255, 255, 255);
