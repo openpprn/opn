@@ -1,7 +1,0 @@
-<div class="btn-group btn-group-xs voting" data-question-id="<%= question.id %>" data-submit-path="<%= vote_path %>" data-question-path="<%= question_path(question) %>">
-  <button type="button" class="btn <%= vote_class(question, -1) %> vote vote-up" disabled="<%= disabled ? "disabled" : "" %>" data-value="-1"><span class="glyphicon glyphicon-thumbs-down"></span></button>
-  <% if show_badge %>
-    <button type="button" class="btn btn-default rating" disabled="disabled"><span class="badge"><%= question.rating %></span></button>
-  <% end %>
-  <button type="button" class="btn <%= vote_class(question, 1) %> vote vote-down" disabled="<%= disabled ? "disabled" : "" %>" data-value="1"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-</div>

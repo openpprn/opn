@@ -19,8 +19,9 @@
             = link_to resource['link'], resource['link']
       %br/
     .col-sm-4
-      #twitter-feed
-        %a.twitter-timeline{"data-widget-id" => "501156780731142144", :href => "https://twitter.com/sleepapnea_ed"} Tweets by @sleepapnea_ed
-:javascript
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      %h2 In The News
+      = render partial: 'shared/blog_posts', locals: {editable: false, short: true}
+
+-#:javascript
+-#  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 

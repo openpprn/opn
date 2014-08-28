@@ -4,7 +4,7 @@
 
 .row.highlightPanelTop
 
-  .col-md-9
+  .col-md-8
     %h1
       Share
       = image_tag 'myapnea/icons/communityIcon.png', class: 'community-img'
@@ -27,26 +27,24 @@
     %p
       Once you have created your social profile you will be able to access and post within the Discussion Forum. You will also be able to rate what research questions are most important to you. Last but not least, you can follow MyApnea.Org and interact with the rest of the community on social media by following the MyApnea.Org Twitter page, Facebook page and Instagram page.
     %h3 Step 3: Join MyApnea.Org on social media.
-  .col-md-3
-    %h2 Our Blog
-    = render partial: 'shared/blog_posts', locals: {editable: false, short: true}
-
-  .row
-    .col-xs-4
-      %a{href: ''}
-        %h1{:style => "text-align:center"}
-          %i.fa.fa-facebook
-    .col-xs-4
-      %a{href: ''}
-        %h1{:style => "text-align:center"}
-          %i.fa.fa-instagram
-    .col-xs-4
-      %a{href: ''}
-        %h1{:style => "text-align:center"}
-          %i.fa.fa-twitter
-  .text-center
-    = link_to new_user_registration_path do
-      = image_tag 'myapnea/icons/joinNow.png'
+  .col-md-4
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "false", "data-href" => "https://www.facebook.com/sleepapneaassn", "data-show-border" => "false", "data-show-faces" => "false", "data-stream" => "true", "data-height" => "750"}
+.row
+  .col-xs-4
+    %a{href: ''}
+      %h1{:style => "text-align:center"}
+        %i.fa.fa-facebook
+  .col-xs-4
+    %a{href: ''}
+      %h1{:style => "text-align:center"}
+        %i.fa.fa-instagram
+  .col-xs-4
+    %a{href: ''}
+      %h1{:style => "text-align:center"}
+        %i.fa.fa-twitter
+.text-center
+  = link_to new_user_registration_path do
+    = image_tag 'myapnea/icons/joinNow.png'
 
   %br/
   %br/

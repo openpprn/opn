@@ -20,6 +20,9 @@ class CreateSocialProfiles < ActiveRecord::Migration
       # User Foreign Key
       t.integer :user_id
 
+      # Forem
+      t.timestamp :accepted_forum_rules_at
+
       t.timestamps
     end
   end

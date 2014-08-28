@@ -75,4 +75,4 @@
       .panel-body
         %h3 Leave Research Study
         %p.small As stated in the informed consent, you may choose to leave the research study at any time. We will no longer collect any information from you and we will stop all communication. However, as stated in the informed consent, the information that you have already provided to MyApnea.Org will remain within the study results.
-        %a.button.btn.btn-warning.btn-block Leave Research Study
+        = link_to 'Leave Research Study', consent_path(consent_revoked: true), method: :post, class: 'btn btn-warning btn-block'

@@ -16,7 +16,7 @@
 %h2 Research
 .list-group
   - if current_user.signed_consent?
-    .list-group-item You have signed the consent!
+    .list-group-item.list-group-item-success You have signed the consent!
   - else
     %a.list-group-item#consent-link{href: main_app.consent_path, class: "#{"active" if action_name == "consent"}"} Sign consent
   %a.list-group-item{href: main_app.surveys_path, class: "#{"active" if action_name == "research_surveys"} #{'disabled' unless current_user.signed_consent?}"}
@@ -24,7 +24,6 @@
       %i.fa.fa-lock &nbsp;
     My Surveys
     %span.badge= QuestionFlow.unstarted(current_user).count
-.list-group
   %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
     - unless current_user.signed_consent?
       %i.fa.fa-lock &nbsp;

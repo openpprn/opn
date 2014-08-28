@@ -35,10 +35,10 @@
             - @research_qs.each_with_index do |q, i|
               .list-group-item
                 .row{ data: {id: q.id} }
-                  .col-md-3
-                    %h4.pull-left= i+1
+                  .col-md-2
+                    %h4.pull-left= q.rating
                     .pull-right= render partial: 'research/partials/rate_question', locals: {question: q, show_badge: true, disabled: true}
-                  .col-md-9
+                  .col-md-10
                     %h5.text-primary= q.text
   .row.highlightPanel
     #reason-carousel.carousel.slide

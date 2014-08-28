@@ -51,19 +51,5 @@
             = f.label :password, class: 'sr-only'
             = f.password_field :password, class: 'form-control input-lg', placeholder: User.human_attribute_name(:password)
 
-          .form-group
-            .col-sm-offset-1.col-sm-11
-              .checkbox
-                %label
-                  %input{:type => "checkbox"}
-                    I am interested in joining the
-                    %strong social community.
-                    = link_to "Learn more...", learn_path, target: "_blank"
-              .checkbox
-                %label
-                  %input{:type => "checkbox"}
-                    I am interested in joining the
-                    %strong research community.
-                    = link_to "Learn more...", research_path, target: "_blank"
 
           = f.submit "Sign Up", class: 'btn btn-primary btn-block btn-lg'

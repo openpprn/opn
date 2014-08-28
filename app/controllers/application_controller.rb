@@ -88,4 +88,10 @@ class ApplicationController < ActionController::Base
 
 
   end
+
+
+  def authenticate_research
+    raise Authority::SecurityViolation.new(current_user, 'research', action_name) unless current_user.can?(:participate_in_research)
+  end
+
 end
