@@ -1,39 +1,24 @@
-<%=
-# Load data using json
-# Generate Chart
+- # Load data using json |
+- # Generate Chart       |
 
+= render partial: 'surveys/partials/breadcrumb'
 
-
-%>
-
-
-
-<div id="review">
-  <div class="page-header">
-    <h1>Thank you for completing the <strong><%= @question_flow.name %></strong> Survey!</h1>
-    <br/>
-    <%= render partial: "surveys/partials/report_nav" %>
-  </div>
-
-  <div class="clearfix"></div>
-
-  <h2>Here's some feedback on the answers you provided</h2>
-  <br/>
-
-  <%= render partial: "surveys/reports/report_#{@question_flow.id}" rescue nil%>
-
-
-  <br/>
-
-  <br/>
-  <br/>
-
-
-  <%= render partial: "surveys/reports/default" %>
-
-  <br/>
-  <br/>
-
-  <%= render partial: "surveys/partials/report_nav" %>
-
-</div>
+#review
+  .page-header
+    %h1
+      Thank you for completing the
+      %strong= @question_flow.name
+      Survey!
+    %br/
+    = render partial: "surveys/partials/report_nav"
+  .clearfix
+  %h2 Here's some feedback on the answers you provided
+  %br/
+  = render partial: "surveys/reports/report_#{@question_flow.id}" rescue nil
+  %br/
+  %br/
+  %br/
+  = render partial: "surveys/reports/default"
+  %br/
+  %br/
+  = render partial: "surveys/partials/report_nav"
