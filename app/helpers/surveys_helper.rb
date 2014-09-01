@@ -10,7 +10,7 @@ module SurveysHelper
   end
 
   def have_checked?(answer, answer_template, val)
-    if answer.value.present? and answer.value[answer_template.id].present?
+    if answer.present? and answer.value.present? and answer.value[answer_template.id].present?
       saved_val = answer.value[answer_template.id]
 
       if saved_val.kind_of?(Array)

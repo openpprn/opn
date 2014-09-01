@@ -1,6 +1,5 @@
-- min_set = @question.group.minimum_set(@question, @answer_session.question_flow)
-
-- min_set.each do |main_q|
-  = render partial: 'surveys/partials/question_form', locals: { question: main_q, answer_session: @answer_session, answer: @answer_session.get_answer(main_q.id), parent_q: nil, condition: nil}
+- @questions.each do |main_q|
+  %br
+  = render partial: 'surveys/partials/question_form', locals: { question: main_q, answer_session: @answer_session, answer: @answer_session.get_answer(main_q.id) || Answer.new(question_id: main_q.id, answer_session_id: @answer_session.id), parent_q: nil, condition: nil}
   - main_q.conditional_children(@answer_session.question_flow).each do |sub_q|
-    = render partial: 'surveys/partials/question_form', locals: { question: sub_q, answer_session: @answer_session, answer: @answer_session.get_answer(sub_q.id), parent_q: main_q.id, condition: nil }
+    = render partial: 'surveys/partials/question_form', locals: { question: sub_q, answer_session: @answer_session, answer: @answer_session.get_answer(sub_q.id) || Answer.new(question_id: sub_q.id, answer_session_id: @answer_session.id), parent_q: main_q.id, condition: nil }

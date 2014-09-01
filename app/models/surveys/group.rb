@@ -1,14 +1,18 @@
 class Group < ActiveRecord::Base
   has_many :questions
 
-  def minimum_set(start_point, question_flow)
+  def minimum_set(question_flow, start_point = nil)
     current_q = start_point
 
     # go to start of group
-    while current_q.default_previous_question(question_flow).present? and current_q.default_previous_question(question_flow).group == self
-      current_q = current_q.default_previous_question(question_flow)
-    end
+    if start_point.present?
 
+      while current_q.default_previous_question(question_flow).present? and current_q.default_previous_question(question_flow).group == self
+        current_q = current_q.default_previous_question(question_flow)
+      end
+    else
+      current_q = questions.select {|q| !q.ancestors.map(&:group).include? self }.first
+    end
 
     min_set = [current_q]
 
