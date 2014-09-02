@@ -3,7 +3,7 @@
 = render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/home.jpg', signup_id: "innerSignup" }
 
 #home-page
-  .row.highlightPanelTop
+  .row
     .col-md-10
       %h1= @pc['main_header']
       %p.sub-header= @pc['sub_header']
@@ -19,7 +19,7 @@
           %h3= link_to @pc[topic]['title'], send(@pc[topic]['path'])
           %p
             %i= @pc[topic]['content']
-  .row.highlightPanel
+  .row
     .col-md-6
       %h2 Our Community
       .map#home-map{data: {path: locations_path}}
@@ -40,7 +40,7 @@
                     .pull-right= render partial: 'research/partials/rate_question', locals: {question: q, show_badge: true, disabled: true}
                   .col-md-10
                     %h5.text-primary= q.text
-  .row.highlightPanel
+  .row
     #reason-carousel.carousel.slide
       %ol.carousel-indicators
         - @pc['testimonials'].each_with_index do |testimonial, i|

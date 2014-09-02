@@ -10,12 +10,11 @@
 %br
 %br
 .panel.panel-default.panel-disabled
-  .panel-body
+  .panel-heading
     .row
-      - if !short
-        .col-md-2.hidden-xs.hidden-sm
-          = image_tag "myapnea/team/redline.jpg", :class => " media-object img-circle", :width => "80px"
-      %div{class: short ? 'col-md-12' : 'col-md-10'}
+      .col-md-1
+        = image_tag "myapnea/team/redline.jpg", :class => "img-responsive img-circle"
+      .col-md-11
         =link_to blog_path do
           %h4.media-heading Sleep Apnea Treatment: Can Nighttime Oxygen Use Replace CPAP machines?
         %small
@@ -24,22 +23,23 @@
         %small
           %strong 9/2/2014
 
-        %p Over the years, my colleagues and I have had requests to prescribe oxygen to treat sleep apnea in patients who did not do well with CPAP (continuous positive airway pressure therapy, a machine that helps patients breathe more easily while they sleep). These requests for oxygen prescriptions made sense, since some of the problems of sleep apnea results when a person with apnea stops breathing during sleep. However, there has been little research evaluating oxygen as a sleep apnea treatment. So we designed the Heart Biomarker Evaluation in Apnea Treatment (HeartBEAT) study.
-        - if short
-          %p= link_to "Read more...", blog_path
-        - else
+  .panel-body
+    %p Over the years, my colleagues and I have had requests to prescribe oxygen to treat sleep apnea in patients who did not do well with CPAP (continuous positive airway pressure therapy, a machine that helps patients breathe more easily while they sleep). These requests for oxygen prescriptions made sense, since some of the problems of sleep apnea results when a person with apnea stops breathing during sleep. However, there has been little research evaluating oxygen as a sleep apnea treatment. So we designed the Heart Biomarker Evaluation in Apnea Treatment (HeartBEAT) study.
+    - if short
+      %p= link_to "Read more...", blog_path
+    - else
 
-          %h4 The Study
-          %p With funding from the American Recovery and Reinvestment Act, we conducted a clinical trial at four U.S. medical centers. The trial compared health outcomes of patients who only received healthy lifestyle and sleep education with health outcomes of patients who received the education and either CPAP or nighttime oxygen (also called nocturnal supplemental oxygen).
-          %p We enrolled 318 patients with sleep apnea and risk factors for heart disease and followed them for 3 months. The main health outcome we looked at was 24-hour blood pressure level which is blood pressure that is measured every 20 to 30 minutes over a single 24 hour period, measured using a blood pressure cuff that records blood pressure during the day and night. Twenty-four-hour blood pressure is often higher in patients with sleep apnea and contributes to risk of stroke and heart attack.
-          %h4 Study Results
-          %p
-            The results of the trial were published in the
-            =link_to "New England Journal of Medicine in June 2014.", 'http://www.nejm.org/doi/full/10.1056/NEJMoa1306766'
-            We found that CPAP reduced blood pressure levels significantly better than either education alone or supplemental oxygen. The effect of CPAP on blood pressure was greatest at night, when sleep apnea often prevents the fall in blood pressure that most people have. Also, the decrease in blood pressure was seen even in patients who had generally well-controlled blood pressure (measured during routine clinic visits).
-          %h4 What does this research mean to you?
-          %p The study was designed to directly address the role of oxygen and CPAP in reducing heart disease risk factors, such as improving blood pressure control. It focused on patients who had risk factors for heart disease, had moderate or more severe sleep apnea, and were not very sleepy.
-          %p
-            The study shows that CPAP does have a positive effect on blood pressure control, but that supplemental oxygen does not have an effect on blood pressure control. The average improvement in blood pressure levels from CPAP was small (2 to 4 points), but the improvement occurred in addition to the effects of blood pressure medications.
-            %strong This improvement in blood pressure is estimated to reduce, on average, the risk of death from stroke by 10%.
-            Because sleep apnea often raises nighttime blood pressure levels, and many people don’t know it, the study findings suggest that CPAP may benefit many patients with sleep apnea.
+      %h4 The Study
+      %p With funding from the American Recovery and Reinvestment Act, we conducted a clinical trial at four U.S. medical centers. The trial compared health outcomes of patients who only received healthy lifestyle and sleep education with health outcomes of patients who received the education and either CPAP or nighttime oxygen (also called nocturnal supplemental oxygen).
+      %p We enrolled 318 patients with sleep apnea and risk factors for heart disease and followed them for 3 months. The main health outcome we looked at was 24-hour blood pressure level which is blood pressure that is measured every 20 to 30 minutes over a single 24 hour period, measured using a blood pressure cuff that records blood pressure during the day and night. Twenty-four-hour blood pressure is often higher in patients with sleep apnea and contributes to risk of stroke and heart attack.
+      %h4 Study Results
+      %p
+        The results of the trial were published in the
+        =link_to "New England Journal of Medicine in June 2014.", 'http://www.nejm.org/doi/full/10.1056/NEJMoa1306766'
+        We found that CPAP reduced blood pressure levels significantly better than either education alone or supplemental oxygen. The effect of CPAP on blood pressure was greatest at night, when sleep apnea often prevents the fall in blood pressure that most people have. Also, the decrease in blood pressure was seen even in patients who had generally well-controlled blood pressure (measured during routine clinic visits).
+      %h4 What does this research mean to you?
+      %p The study was designed to directly address the role of oxygen and CPAP in reducing heart disease risk factors, such as improving blood pressure control. It focused on patients who had risk factors for heart disease, had moderate or more severe sleep apnea, and were not very sleepy.
+      %p
+        The study shows that CPAP does have a positive effect on blood pressure control, but that supplemental oxygen does not have an effect on blood pressure control. The average improvement in blood pressure levels from CPAP was small (2 to 4 points), but the improvement occurred in addition to the effects of blood pressure medications.
+        %strong This improvement in blood pressure is estimated to reduce, on average, the risk of death from stroke by 10%.
+        Because sleep apnea often raises nighttime blood pressure levels, and many people don’t know it, the study findings suggest that CPAP may benefit many patients with sleep apnea.
