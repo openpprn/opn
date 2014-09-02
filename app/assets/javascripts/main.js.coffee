@@ -63,6 +63,9 @@ $.rails.allowAction = (element) ->
     trigger: 'hover, focus'
   )
 
+  $(document.links).filter(() ->
+    return this.hostname != window.location.hostname
+  ).attr('target', '_blank')
 
 @consentReady = () ->
   $("#consent .scroll").slimscroll(

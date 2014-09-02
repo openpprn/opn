@@ -14,9 +14,7 @@
       %p= @pc['questions'][2]['answer']
       %ul
         - @pc['resources'].each do |resource|
-          %li
-            = resource['description']
-            = link_to resource['link'], resource['link']
+          %li= markdown resource['description']
       %br/
     .col-sm-4
       %h2 In The News

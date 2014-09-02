@@ -41,12 +41,14 @@
   // Or, use your own custom trigger:
   //UserVoice.push(['addTrigger', '#u-voice', { mode: 'contact' }]);
 
-  $(document).on('click', '#u-voice', function() {
+  $(document).on('click', '.u-voice', function() {
     UserVoice=window.UserVoice||[];
 
     UserVoice.push(['show', {
       mode: 'smart-vote'
     }]);
+
+    return false;
   });
 
   // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
