@@ -1,5 +1,5 @@
 .question-form{data: {parent_question: parent_q, condition: condition}}
-  %p.text-primary= markdown question.text
+  %strong.text-primary= markdown question.text
   .row
     = hidden_field_tag "question_id[]", question.id
 
@@ -13,7 +13,4 @@
                 = answer_option.value
         - else
           .form-group
-            - conditional_tag answer_template.unit.present?, :div, {class: 'input-group'} do
-              - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, class: 'form-control', name: "#{question.id}[#{answer_template.id}]", id: "question_#{question.id}_#{answer_template.id}", value: answer.value[answer_template.id]})
-              - if answer_template.unit.present?
-                %span.input-group-addon= answer_template.unit.name
+            - haml_tag(answer_template.display_type.tag, {type: answer_template.display_type.input_type, class: 'form-control', name: "#{question.id}[#{answer_template.id}]", id: "question_#{question.id}_#{answer_template.id}", value: answer.value[answer_template.id], placeholder: answer_template.unit.present? ? answer_template.unit.name : nil  })

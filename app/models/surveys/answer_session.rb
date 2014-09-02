@@ -194,7 +194,7 @@ class AnswerSession < ActiveRecord::Base
   def path_until_answer(answer)
     if last_answer.blank?
       coll = []
-      current_answer = nil
+      current_answer = answer
     elsif answer.new_record?
       coll = [answer]
       current_answer = last_answer

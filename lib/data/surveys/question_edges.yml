@@ -275,6 +275,10 @@
   child_question_id: 543
   condition:
 - question_flow_id: 13
+  parent_question_id: 543
+  child_question_id: 544
+  condition:
+- question_flow_id: 13
   parent_question_id: 544
   child_question_id: 545
   condition:

@@ -11,7 +11,15 @@ class SurveysController < ApplicationController
   def ask_question
     @answer_session = AnswerSession.find(params[:answer_session_id])
     @question = Question.find(params[:question_id])
-    @answer = Answer.where(question_id: @question.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @question.id, answer_session_id: @answer_session.id)
+
+    if @question.part_of_group?
+      @group = @question.group
+      @questions = @group.minimum_set(@answer_session.question_flow)
+      @answer = Answer.where(question_id: @questions.first.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @questions.first.id, answer_session_id: @answer_session.id)
+    else
+      @answer = Answer.where(question_id: @question.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @question.id, answer_session_id: @answer_session.id)
+    end
+
   end
 
   def show_report

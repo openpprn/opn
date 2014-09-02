@@ -1,4 +1,8 @@
-@addressPicker = new AddressPicker();
+@addressPicker = new AddressPicker(
+  autocompleteService: {
+    types: ['(regions)'],
+  }
+);
 @writeResults = (result) ->
   $("#social_profile_latitude").val(result.lat())
   $("#social_profile_longitude").val(result.lng())
