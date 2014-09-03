@@ -1,11 +1,9 @@
-- @title = "Blog"
+- @title = "In the News"
 - @intro = true
 
 - content_for :sublayout do
   .row
-    .col-md-3
-      = render :partial => "layouts/navigation/blog_nav"
-    .col-md-9
+    .col-md-12
       = yield
 
 = render template: "layouts/#{Rails.application.config.layout}"

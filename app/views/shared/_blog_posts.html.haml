@@ -1,51 +1,45 @@
+%blockquote.intro
+  I am so pleased to share our first “Sleep in the News” story. Please
+  %a.u-voice{href: "#"} let us know
+  which topics you want to hear discussed and share your own important sleep news updates. Please check back for updates on the work we are all doing to improve awareness and treatment of sleep apnea.
+  %footer.pull-right
+    %cite
+      Susan Redline, MD, MPH, MyApnea.Org Principal Investigator
+      and Professor of Sleep Medicine, Harvard Medical School
 
-- if editable
-  .panel.panel-default
-    .panel-body
+%br
+%br
+.panel.panel-default.panel-disabled
+  .panel-heading
+    .row
+      .col-md-1
+        = image_tag "myapnea/team/redline.jpg", :class => "img-responsive img-circle"
+      .col-md-11
+        =link_to blog_path do
+          %h4.media-heading Sleep Apnea Treatment: Can Nighttime Oxygen Use Replace CPAP machines?
+        %small
+          Susan Redline, MD, MPH, MyApnea.Org Principal Investigator and Professor of Sleep Medicine, Harvard Medical School
+        %br
+        %small
+          %strong 9/2/2014
 
-      %h5 Add New Blog Post
-      .media
-        %a.pull-left
-          = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-        .media-body
-          %form{role: "form"}
-            %select.form-control
-              %option Mike Kappelman
-            %input.form-control{:type=>"date", :value => Date.today}
-            %h4.media-heading
-              %input.form-control{:type=>"text", :value => "Title of Blog Post"}
-            %textarea.form-control{:placeholder => "Your Blog Post Here", :style => "height:300px;"}
-            %button.btn.btn-success.btn-sm.pull-right Post
-            .clearfix
+  .panel-body
+    %p Over the years, my colleagues and I have had requests to prescribe oxygen to treat sleep apnea in patients who did not do well with CPAP (continuous positive airway pressure therapy, a machine that helps patients breathe more easily while they sleep). These requests for oxygen prescriptions made sense, since some of the problems of sleep apnea results when a person with apnea stops breathing during sleep. However, there has been little research evaluating oxygen as a sleep apnea treatment. So we designed the Heart Biomarker Evaluation in Apnea Treatment (HeartBEAT) study.
+    - if short
+      %p= link_to "Read more...", blog_path
+    - else
 
-- 3.times do
-  .panel.panel-default.panel-disabled
-    .panel-body
-      .media
-        %a.pull-left
-          = image_tag "default-user.jpg", :class => " media-object img-circle", :width => "80px"
-        .media-body
-          %a{:href=>"/blog"}
-            %h4.media-heading Coming soon!
-          %small
-            %strong 8/28/14
-          - if short
-            %p Coming Soon!
-          - else
-            %p
-              Tritani oporteat singulis eu vim. Ne pri odio ponderum vituperatoribus, ea reque regione urbanitas vim. Legere minimum vim an. Nemore graecis consectetuer ad qui, ut mei feugiat appareat. Fabulas molestie ullamcorper ut duo, id vis ipsum ridens utamur, et per laudem commune. Omittam reprimique consequuntur has et, movet civibus forensibus sed ex.
-            %p
-              Noluisse tacimates interesset eu cum, consulatu imperdiet intellegebat cum ei, id nec erat cotidieque. Offendit eloquentiam ei nec. Perfecto petentium ad duo, ad nec minim scripta, id nam choro democritum disputationi. Cu his saepe prompta, idque soluta appellantur mel ex, diceret detracto sed no. Sit aeterno tibique mediocritatem te, te mea dico assentior, et soluta vocent sit.
-            %p
-              Eos sint labores honestatis cu, nulla percipitur mei an. Ex sit quaestio ocurreret conceptam, soleat quidam eam eu. Mel no quodsi facilis, est et ferri primis ullamcorper, ius reque animal definitiones ne. Mei ei utinam graeci, facete placerat invenire pri ad.
-            %p
-              Ad malis everti mel, soleat comprehensam sit at. Per in eripuit voluptaria. Vix quem tibique eu. Ius nisl corpora iudicabit eu, at iudico phaedrum usu. Ea unum omnium habemus ius, no mea graeci gubergren quaerendum. Nobis congue mentitum ad mea, vis vide verear oporteat cu, tota deleniti voluptatum id vim. At nam corpora splendide, eam saepe lobortis gubergren ex, vix ea novum consectetuer interpretaris.
-            %p
-              An ius antiopam torquatos. Id eirmod debitis sed, has possim prompta luptatum et, mazim dicit civibus at est. Alii exerci posidonium ut duo, eos possit prompta no. Est ut erat natum, facilisi philosophia has in. Eu saepe dictas qui, ad platonem euripidis conceptam pri, pri id dictas recusabo. Pro probo noluisse signiferumque et.
-            %p
-              Eu essent dolores pertinacia mel, probo option qui no, suas primis vivendum ea eam. Eum etiam appetere platonem ex, per nihil denique ea. Accusam rationibus no eos, sed impetus expetenda omittantur te. Ne perfecto scripserit his, ei nusquam intellegam ius, antiopam recteque intellegebat ne nam.
-
-          - if editable
-            %button.btn.btn-danger.btn-xs.pull-right Delete
-            %button.btn.btn-warning.btn-xs.pull-right Edit
-            .clearfix
+      %h4 The Study
+      %p With funding from the American Recovery and Reinvestment Act, we conducted a clinical trial at four U.S. medical centers. The trial compared health outcomes of patients who only received healthy lifestyle and sleep education with health outcomes of patients who received the education and either CPAP or nighttime oxygen (also called nocturnal supplemental oxygen).
+      %p We enrolled 318 patients with sleep apnea and risk factors for heart disease and followed them for 3 months. The main health outcome we looked at was 24-hour blood pressure level which is blood pressure that is measured every 20 to 30 minutes over a single 24 hour period, measured using a blood pressure cuff that records blood pressure during the day and night. Twenty-four-hour blood pressure is often higher in patients with sleep apnea and contributes to risk of stroke and heart attack.
+      %h4 Study Results
+      %p
+        The results of the trial were published in the
+        =link_to "New England Journal of Medicine in June 2014.", 'http://www.nejm.org/doi/full/10.1056/NEJMoa1306766'
+        We found that CPAP reduced blood pressure levels significantly better than either education alone or supplemental oxygen. The effect of CPAP on blood pressure was greatest at night, when sleep apnea often prevents the fall in blood pressure that most people have. Also, the decrease in blood pressure was seen even in patients who had generally well-controlled blood pressure (measured during routine clinic visits).
+      %h4 What does this research mean to you?
+      %p The study was designed to directly address the role of oxygen and CPAP in reducing heart disease risk factors, such as improving blood pressure control. It focused on patients who had risk factors for heart disease, had moderate or more severe sleep apnea, and were not very sleepy.
+      %p
+        The study shows that CPAP does have a positive effect on blood pressure control, but that supplemental oxygen does not have an effect on blood pressure control. The average improvement in blood pressure levels from CPAP was small (2 to 4 points), but the improvement occurred in addition to the effects of blood pressure medications.
+        %strong This improvement in blood pressure is estimated to reduce, on average, the risk of death from stroke by 10%.
+        Because sleep apnea often raises nighttime blood pressure levels, and many people don’t know it, the study findings suggest that CPAP may benefit many patients with sleep apnea.

@@ -138,3 +138,23 @@ header#top-navigation.navbar-inverse.smaller {
     transition: all 0.5s ease-in-out;
   }
 }
+
+.film-strip {
+  text-align: center;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.film-strip-panel {
+  display: inline-block;
+}
+
+.film-strip-panel > img {
+  height: 75px;
+}
+
+@media screen and (min-width: 768px) {
+  .film-strip {
+    text-align: right;
+  }
+}

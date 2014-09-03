@@ -1,4 +1,8 @@
 @homeReady = () ->
+  $("[data-toggle~='tooltip']").tooltip(
+    container: 'body'
+    )
+
   loc_path = $("#home-map").data("path")
 
   $.getJSON(loc_path, null, (data) ->
