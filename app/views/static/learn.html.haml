@@ -1,24 +1,28 @@
 - @title = ""
 
-= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/learn.jpg', signup_id: "innerSignup" }
-#learn-page
-  .row.highlightPanelTop
-    #Learn.col-sm-8
-      %h1= @pc['main_header']
-      %p= @pc['content']
-      %h2= @pc['questions'][0]['question']
-      %p= @pc['questions'][0]['answer']
-      %h2= @pc['questions'][1]['question']
-      %p= @pc['questions'][1]['answer']
-      %h2= @pc['questions'][2]['question']
-      %p= @pc['questions'][2]['answer']
-      %ul
-        - @pc['resources'].each do |resource|
-          %li= markdown resource['description']
-      %br/
-    .col-sm-4
-      %h2 In The News
-      = render partial: 'shared/blog_posts', locals: {editable: false, short: true}
+.video-player
+  .video-player-inner
+    .embed-responsive.embed-responsive-16by9
+      %iframe.embed-responsive-item{ 'src' => '//www.youtube.com/embed/4JkiWvWn2aU?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
+  .video-image.learn-image
+
+.row
+  #Learn.col-sm-8
+    %h1= @pc['main_header']
+    %p= @pc['content']
+    %h2= @pc['questions'][0]['question']
+    %p= @pc['questions'][0]['answer']
+    %h2= @pc['questions'][1]['question']
+    %p= @pc['questions'][1]['answer']
+    %h2= @pc['questions'][2]['question']
+    %p= @pc['questions'][2]['answer']
+    %ul
+      - @pc['resources'].each do |resource|
+        %li= markdown resource['description']
+    %br/
+  .col-sm-4
+    %h2 In The News
+    = render partial: 'shared/blog_posts', locals: {editable: false, short: true}
 
 -#:javascript
 -#  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
