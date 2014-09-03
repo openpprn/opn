@@ -7,6 +7,7 @@
 @import "myapnea-page-header";
 @import "myapnea-md-screen";
 @import "myapnea-sm-screen";
+@import "myapnea-video";
 
 // Specific Pages
 @import "myapnea-home";
@@ -331,11 +332,3 @@ div.videoPlayer{
 
 // End Bacon
 
-
-
-.videoPLayer > iframe {
-  box-shadow: 2px -4px 17px 9px rgba(0, 0, 0, 0.08);
-  -webkit-box-reflect: below 4px linear-gradient(175deg, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.25) 100%);
-  box-reflect: below 4px linear-gradient(175deg, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.25) 100%);
-  -moz-box-reflect: below 4px linear-gradient(175deg, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.25) 100%);
-}

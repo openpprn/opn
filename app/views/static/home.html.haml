@@ -1,6 +1,18 @@
 - @title = ""
 
-= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/home.jpg', signup_id: "innerSignup" }
+.video-player
+  .video-player-inner
+    .embed-responsive.embed-responsive-16by9
+      %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
+  .video-image.home-image
+
+.film-strip
+  .film-strip-panel
+    = link_to new_user_registration_path do
+      = image_tag 'myapnea/icons/sign-up.png', size: '280x100', alt: 'Sign Up Today'
+  - ['susan', 'darrel'].each do |person|
+    .film-strip-panel.hidden-xs
+      = image_tag "myapnea/team/#{person}.png", class: 'img-thumbnail', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Video Coming Soon!', style: 'cursor:pointer'
 
 #home-page
   .row
