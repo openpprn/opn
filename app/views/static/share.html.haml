@@ -2,7 +2,7 @@
 
 = render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/share.jpg', signup_id: "innerSignup" }
 
-.row
+#share.row
 
   .col-md-8
     %h1
@@ -21,17 +21,25 @@
 
     %h2 How do I get started?
     .instructions
-    %h3 Step 1: Become a member
+    %h3
+      = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+      Step 1: Become a member
     %p
       To access the dynamic features of MyApnea.Org, including the social community, you first need to join the site as a member by entering your basic information and creating a username and password.
       = link_to 'Join now!', new_user_registration_path
-    %h3 Step 2: Create a social profile
+    %h3
+      = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+      Step 2: Create a social profile
     %p
       To join the social community of MyApnea.Org, you will be asked to provide some information about yourself to create a social profile. You can decide if you want this information shared with other members who have also joined the social community of MyApnea.Org.
-    %h3 Step 3: Join the discussion
+    %h3
+      = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+      Step 3: Join the discussion
     %p
       Once you have created your social profile, you will be able to access and post within the discussion forum. You will also be able to rate which research questions are most important to you.
-    %h3 Step 4: Join MyApnea.org on social media
+    %h3
+      = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+      Step 4: Join MyApnea.Org on social media
     %p
       Follow and interact with the MyApnea.Org community on social media by following the MyApnea.Org Twitter page, Facebook page, and YouTube page. Just click on the icons below.
   .col-md-4
