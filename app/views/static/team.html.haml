@@ -2,12 +2,14 @@
 
 = render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/team.jpg', signup_id: "innerSignup" }
 
-.row.highlightPanelTop
-  #TheTeam.col-md-12
+.row
+  .col-md-12
     %h1 Our Team
     %p The Sleep Apnea Patient Centered Outcomes Network Steering Committee
     .team
-      %h3 Susan Redline, M.D., M.P.H. – Principal Investigator and SAPCON Co-chair
+      %h3
+        = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+        Susan Redline, M.D., M.P.H. – Principal Investigator and SAPCON Co-chair
       .teamPhoto= image_tag 'myapnea/sRedline.png'
       %p
         Susan Redline is the Peter C. Farrell Professor of Sleep Medicine at Harvard Medical School and
@@ -17,7 +19,9 @@
         outcomes of sleep disorders. She has published more than 200 scientific articles and participates in
         many national organizations involved in setting policies for sleep medicine practice and research
     .team
-      %h3 Adam Amdur, – SAPCON Co-chair
+      %h3
+        = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+        Adam Amdur, – SAPCON Co-chair
       .teamPhoto= image_tag 'myapnea/aAmdur.png'
       %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
         Adam Amdur is the chief operating officer and immediate past-chair of the American Sleep Apnea
@@ -29,7 +33,9 @@
         understanding this disease and getting the help they need. He is currently writing a memoir, Asleep at the Wheel:
         with Sleep Apnea, in hope of educating the public about apnea and its effects on both adults and children.
     .team
-      %h3 Judith Owens, M.D., M.P.H. – SAPCON Steering Committee Member
+      %h3
+        = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+        Judith Owens, M.D., M.P.H. – SAPCON Steering Committee Member
       .teamPhoto= image_tag 'myapnea/jOwens.png'
       %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
         Dr. Judith Owens is president and chief medical officer of the American Sleep Apnea Association. She i
@@ -40,7 +46,9 @@
         professor of pediatrics at Brown University Medical School and director of pediatric sleep disorders at Hasbro
         Hospital in Providence, RI.
     .team
-      %h3 Will Headapohl, – SAPCON Steering Committee Member
+      %h3
+        = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+        Will Headapohl, – SAPCON Steering Committee Member
       .teamPhoto= image_tag 'myapnea/wHeadapohl.png'
       %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
         Will Headapohl is Chairman of the Board of Directors for the American Sleep Apnea Association. He
@@ -50,7 +58,9 @@
         members, loved ones, medical care providers, and victims. Will’s resume includes Executive Vice President,
         Chief Information Officer, and Chief Operating Officer roles in the Internet, information technology and wireless.
     .team
-      %h3 Vishesh Kapur, M.D., M.P.H. – SAPCON Steering Committee Member
+      %h3
+        = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+        Vishesh Kapur, M.D., M.P.H. – SAPCON Steering Committee Member
       .teamPhoto= image_tag 'myapnea/vKapur.png'
       %p{"data-line-height" => "32", "data-object" => "shape-wrapper", "data-xs" => "7.5,66,0|22.5,108,0|37.5,133,0|52.5,133,0|67.5,133,0|82.5,131,0|97.5,111,0|112.5,56,0|"}
         Dr. Vishesh Kapur is the founder and director of the UW Medicine Sleep Disorders Center at Harborview
@@ -59,7 +69,7 @@
         Rochester in New York. Dr. Kapur is board certified in internal medicine, pulmonary medicine,
         medicine, and sleep medicine.
   / /.col-md-9
-.row
+#team.row
   #PCO.col-md-12
     %h2 What is the Sleep Apnea Patient Centered Outcome Network?
     %p
@@ -71,13 +81,10 @@
       18 Patient Powered Research Networks (PPRN) that will comprise a national “network of networks” dedicated to
       effectiveness research. It is an unprecedented effort that will redefine how health research is done in this country
       for people who suffer from these conditions each day.
-  / col-md-9
-  / end container
-/ end row
-.row
   #ASAA.col-md-12
     %h2 American Sleep Apnea Association
-    http://www.sleepapnea.org/
+    %p
+      = link_to 'http://www.sleepapnea.org', 'http://www.sleepapnea.org'
     %p
       The American Sleep Apnea Association, founded in 1990, is a 501(c)(3)
       nonprofit organization that promotes awareness
@@ -98,9 +105,9 @@
   / col-md-9
   #SleepCircadian.col-md-9
     %h2 Division of Sleep and Circadian Disorders, Brigham and Women's Hospital
-    http://www.brighamandwomens.org/
     %p
-      Departments_and_Services/medicine/services/sleepmedicine/default.aspx
+      = link_to 'http://www.brighamandwomens.org/Departments_and_Services/medicine/services/sleepmedicine/default.aspx', 'http://www.brighamandwomens.org/Departments_and_Services/medicine/services/sleepmedicine/default.aspx'
+    %p
       Boston's Brigham and Women's Hospital (BWH) is an international leader in virtually every area of medicine and has
       breakthroughs that have improved lives around the world. A major teaching hospital of Harvard Medical School, BWH
       that continues to grow year after year.
@@ -113,19 +120,21 @@
   / col-md-9
   #BWH-SMEP.col-md-12
     %h2 Brigham &amp; Women’s Hospital Sleep Medicine Epidemiology Program (BWH-SMEP)
-    https://sleepepi.partners.org/about/
+    %p
+      = link_to 'https://sleepepi.partners.org/about', 'https://sleepepi.partners.org/about'
     %p
       The Brigham &amp; Women’s Hospital Sleep Medicine Epidemiology Program is an integrated research and clinical
       care of patients with sleep disorders through clinical trials and comparative effectiveness research. The SMEP
       for sleep disorders research. It also has served as the data coordinating center for comparative effectiveness studies
       sleep apnea interventions. It has pioneered novel informatics platform to support sleep research through initiatives
-      l Institutes of Health (NIH). Its Informatics Core (led by Dr. Remo Mueller) uses cutting-edge open-source software
+      National Institutes of Health (NIH). Its Informatics Core (led by Dr. Remo Mueller) uses cutting-edge open-source software
       and reusable software.
     .divider-light
   / col-md-9
   #SRN.col-md-12
     %h2 The Sleep Research Network (SRN)
-    http://www.sleepresearchnetwork.org/
+    %p
+      = link_to 'http://www.sleepresearchnetwork.org', 'http://www.sleepresearchnetwork.org'
     %p
       The Sleep Research Network (SRN) promotes sustainable multi-institutional collaborations in clinical and translational
       significant public health questions related to sleep medicine and circadian biology. The SRN also supports the training
@@ -135,7 +144,8 @@
   / col-md-9
   #i2b2.col-md-12
     %h2 Informatics for Integrating Biology and the Bedside (i2b2)
-    https://www.i2b2.org/
+    %p
+      = link_to 'https://www.i2b2.org', 'https://www.i2b2.org'
     %p
       Informatics for Integrating Biology and the Bedside (i2b2) is an NIH-funded
       National Center for Biomedical Computing (NCBC) based at Partners
@@ -147,12 +157,10 @@
       widely within the biomedical and computational research
       communities in order to improve public health.
     .divider-light
-  / col-md-9
-/ end row
-.row
   #SHRINE.col-md-12
     %h2 Shared Health Research Information Network (SHRINE)
-    http://catalyst.harvard.edu/services/shrine/
+    %p
+      = link_to 'http://catalyst.harvard.edu/services/shrine', 'http://catalyst.harvard.edu/services/shrine'
     %p
       The Shared Health Research Information Network (SHRINE) helps researchers
       overcome one of the greatest problems in population-based research: compiling l
@@ -161,10 +169,10 @@
       hospitals who meet a given set of inclusion and exclusion criteria (currently demographics,
       diagnoses, medications, and selected laboratory values).
     .divider-light
-  / col-md-9
   #PCORI.col-md-12
     %h2 Patient-Centered Outcomes Research Institute (PCORI)
-    http://www.pcori.org/funding-opportunities/pcornet-national-patient-centered-clinical-research-network/
+    %p
+      = link_to 'http://www.pcori.org/funding-opportunities/pcornet-national-patient-centered-clinical-research-network', 'http://www.pcori.org/funding-opportunities/pcornet-national-patient-centered-clinical-research-network'
     %p
       The Patient-Centered Outcomes Research Institute (PCORI), an independent, non-profit organization authorized by research aimed at improving the health of entire populations.
     %p
@@ -176,5 +184,3 @@
       (PPRNs) — networks operated and governed by groups of patients and their partners who are focused on a
       sharing health information and participating in research.
     .divider-light
-  / col-md-9
-/ end row
