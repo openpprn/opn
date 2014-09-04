@@ -6,9 +6,8 @@
       #consent.panel-body
         .row
           .col-md-12
-            .scroll
-              #print-area
-                = markdown @pc['consent']
+            #print-area
+              = render partial: 'account/consent_body'
             %br/
             = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
               %i.fa.fa-print

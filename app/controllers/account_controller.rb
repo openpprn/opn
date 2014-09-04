@@ -1,5 +1,10 @@
 class AccountController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :view_consent
+
+
+  def view_consent
+    @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
+  end
 
   def consent
     if params[:consent_signed]

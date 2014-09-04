@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   match 'user_dashboard', to: 'account#dashboard', as: :user_dashboard, via: :get
   match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
   match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
+  get 'view_consent' => 'account#view_consent', as: :view_consent
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
