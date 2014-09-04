@@ -1,28 +1,29 @@
+- @title = "Your Social Profile"
 
 = form_for @social_profile, html: {role: "form", class: 'form-horizontal'}, url: social_profile_path do |f|
   .panel.panel-default
     .panel-heading
-      %h4 Do you want other patients in the #{@pprn_title} to see you?
+      %h4 Do you want other people in the MyApnea.Org community to see you?
       .radio
         %label
           = f.radio_button :show_location, true, id: 'optionsRadios2'
           %strong
             Show me.
-          %span.small Add a marker for me on the map that shows the following info.
+          %span.small Add a marker for me on the map that shows the info below.
 
       .radio
         %label
           = f.radio_button :show_location, false, id: 'optionsRadios1'
           %strong
             Don't show me.
-          %span.small Don't let other patients on this site see any map marker for me.
+          %span.small Don't let other people on this site see my info or any map marker for me.
 
     .panel-body
       .form-group
         %label.col-sm-3.control-label
           = image_tag current_user.photo_url, :class => "img-responsive img-thumbnail"
         .col-sm-9
-          %h3 Change Photo
+          %h3 Change Photo (optional)
           =f.file_field :photo
       .form-group
         %label.col-sm-3.control-label Name

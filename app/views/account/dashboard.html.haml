@@ -1,20 +1,22 @@
 %h1 Welcome to MyApnea.Org!
 
-%p We're very excited to have you as a member of this community.
+%p We're very excited to have you as a member of this community. This page is your dashboard where you can access and participate in the MyApnea.Org community and research.
 
-%h3 Here's a video introducing you to your site.
+%h3 New here? Here's a short video introducing you to the site
 .embed-responsive.embed-responsive-16by9
   %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
 
-%h3 So, what's next?
+%h3
+  So, what to do next? Use the links to the left to:
 %ul
-  %li Create a social profile to access the social features.
-  %li Get involved in sleep apnea research by signing a consent form.
+  %li Create a social profile to join and contribute to the community
+  %li Get involved in sleep apnea research by signing a consent form
+
 
 %h3 Lost? Have a question, comment, or suggestion?
 %p
-  Contact us at
-  = mail_to "support@myapnea.org"
+  = link_to "Click here", '#', class: 'u-voice'
+  to contact us.
 
 
 = javascript_include_tag 'dashboard'
