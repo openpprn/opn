@@ -37,4 +37,4 @@ en:
 
       Data and the web portal will be housed on the Partners HealthCare Research Computing Cloud Infrastructure. The Discovery Information Platform for Research (DIPR) provides a set of virtual services within the Partners HealthCare secure data center and within the Partners HealthCare network. All systems are secured behind the Partners HealthCare firewall and follow Partners HealthCare Information Security policies for authenticated, minimum access. All systems are patched, monitored and scanned routinely for vulnerabilities and intrusions by the systems administrator and PHS Information Security. Data is encrypted, where applicable, in compliance with state and federal government standards, regulations, and in accordance with Partners Security and Privacy policies. The web server and database server are hosted within the Partners Firewall, and make use of standard 256-bit encryption connection ciphers.
 
-      If you have any questions about this information, please contact us by email at <SUPPORT@myapnea.org>
+      If you have any questions about this information, please contact us by email at <support@myapnea.org>
