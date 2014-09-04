@@ -15,24 +15,20 @@ ol.breadcrumb.research {
 // Instruction styles
 
 .instructions {
-  background-color: #eeecf8;
+  border: 1px solid #eeecf8;
   padding: 30px;
   border-radius: 15px;
 
-
   h2 {
     color: $orange;
-    font-family: 'Palatino', sans-serif;
   }
 
   h3 {
     color: $orange;
-    font-family: 'Palatino', sans-serif;
-    font-size: $baseFontSize * 1.15;
   }
 
   p {
-    font-family: 'Palatino', sans-serif;
+    // font-family: 'Palatino', sans-serif;
   }
 }
 

@@ -2,39 +2,28 @@
 
 = render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/share.jpg', signup_id: "innerSignup" }
 
-.row
+#share.row
 
   .col-md-8
     %h1
-      Share
-      = image_tag 'myapnea/icons/communityIcon.png', class: 'community-img'
-    %p If you have been diagnosed with sleep apnea, or if you love someone diagnosed with apnea, join us—become part of a national community of people who know just what you go through every night and every day. We get it. Together, we can fight sleep apnea and improve our lives.
+      %h1
+        = @pc['main_header']
+        = image_tag 'myapnea/icons/communityIcon.png', class: 'community-img'
+    %p= @pc['content']
 
-    %h2 Ways to Share
+    %h2= @pc['ways_to_share_title']
 
-    %p
-      MyApnea.Org offers several ways to connect and share with others through:
-      %ul
-        %li A dynamic discussion forum in which patients, caregivers and researchers can interact with one another and discuss, debate and dig into the research related issues that matter to them
-        %li Engaging social media communities on Twitter, Facebook, and Instagram
-        %li An opportunity for members to weigh in and vote on research issues that are important to them
+    %p= markdown @pc['ways_to_share_description']
 
+    %hr.divider-md
+
+    %h2= @pc['getting_started_title']
     .instructions
-      %h2
-        How do I get started?
-      %h3 Step 1: Become a member
-      %p
-        To access the dynamic features of MyApnea.Org, including the social community, you first need to join the site as a member by entering your basic information and creating a username and password.
-        = link_to 'Join now!', new_user_registration_path
-      %h3 Step 2: Create a social profile
-      %p
-        To join the social community of MyApnea.Org, you will be asked to provide some information about yourself to create a social profile. You can decide if you want this information shared with other members who have also joined the social community of MyApnea.Org.
-      %h3 Step 3: Join the discussion
-      %p
-        Once you have created your social profile, you will be able to access and post within the discussion forum. You will also be able to rate which research questions are most important to you.
-      %h3 Step 4: Join MyApnea.org on social media
-      %p
-        Follow and interact with the MyApnea.Org community on social media by following the MyApnea.Org Twitter page, Facebook page, and YouTube page. Just click on the icons below.
+      - @pc['getting_started_steps'].each do |step|
+        %h3
+          = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+          = step['step_title']
+        %p= markdown step['step_description']
   .col-md-4
     .fb-like-box{"data-colorscheme" => "light", "data-header" => "false", "data-href" => "https://www.facebook.com/sleepapneaassn", "data-show-border" => "false", "data-show-faces" => "false", "data-stream" => "true", "data-height" => "750"}
   .clearfix
