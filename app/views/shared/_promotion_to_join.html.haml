@@ -4,11 +4,11 @@
   .panel-heading
     %h4.panel-title Want to Join the Network?
   .panel-body
-    %p Do you have #{@pprn_condition}? Click here to become a part of this research demoncracy and begin taking a part in the network.
-    %a.btn.btn-block.btn-primary{:href => new_user_registration_path} Join
+    %p Do you have #{@pprn_condition}? Click here to become a part of this research democracy and begin taking a part in the network.
+    %a.btn.btn-block.btn-primary{:href => main_app.new_user_registration_path} Join
     .small.text-center
       %br/
       Already a Member?
-      = link_to "Sign in", new_user_session_path
+      = link_to "Sign in", main_app.new_user_session_path
 
 

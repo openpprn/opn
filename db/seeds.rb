@@ -103,17 +103,21 @@ unless Rails.env == "test"
   #user = Forem.user_class.first
 
   unless user.nil?
+    user.update_attribute(:forem_state, "approved")
+
     forum = Forem::Forum.find_or_create_by(:category_id => Forem::Category.first.id,
                                            :name => "Introductions",
                                            :description => "Are you new to the site? Stop in and say hi!")
 
     post = Forem::Post.find_or_initialize_by(text: "MyApnea.Org is all about you—the patients and caregivers and what is most important to you. We want to hear from you, we want you to share your thoughts about how you would like to interact with one another as well as with researchers and health care providers within this space. Thank you for helping to build a better MyApnea.Org!")
     post.user = user
+    post.state = 'approved'
 
     topic = Forem::Topic.find_or_initialize_by(subject: "We want to hear from you! What do you want this space to offer?")
     topic.forum = forum
     topic.user = user
     topic.posts = [ post ]
+    topic.state = 'approved'
 
     topic.save!
   end

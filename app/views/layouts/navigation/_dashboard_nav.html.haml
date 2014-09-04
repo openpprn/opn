@@ -26,7 +26,7 @@
     - unless current_user.signed_consent?
       %i.fa.fa-lock &nbsp;
     My Surveys
-    %span.badge= QuestionFlow.unstarted(current_user).count
+    %span.badge= QuestionFlow.unstarted(current_user).count + QuestionFlow.incomplete(current_user).count
 
 .small
   %p Sign the consent form in the link above to get involved in sleep apnea research
@@ -40,4 +40,4 @@
   %a.list-group-item{href: main_app.data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
   %a.list-group-item{href: main_app.data_explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
   / %a.list-group-item{href: main_app.data_reports_path, class: "#{"active" if action_name == "reports"}"} My Reports
-  %a.list-group-item{href: main_app.data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications
+  / %a.list-group-item{href: main_app.data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications
