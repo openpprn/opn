@@ -126,9 +126,13 @@ ul li {
   padding-left:25px;
 }
 
+ul {
+  list-style-image: url('#{$assets-path}/myapnea/icons/myapnea-logo-list-style-image.png');
+}
+
 p{
   margin:20px 0;
-  line-height:2;
+  line-height: 1.75;
 }
 
 // Footer
