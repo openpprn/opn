@@ -271,17 +271,18 @@ $heroUnitLeadColor:               inherit;
 //$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
 //$state-warning-text:             #8a6d3b;
-$state-warning-bg:               lighten($orange, 25%);
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
+//$state-warning-bg:               lighten($orange, 25%);
+//$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
 
 //$state-danger-text:              #a94442 !default;
 //$state-danger-bg:                #f2dede !default;
 //$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
 
-
-
-
+// Breadcrumbs
+$breadcrumb-research-bg:               lighten($orange, 33%);
+$breadcrumb-research-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
+$breadcrumb-research-divider:          $gray;
 
 // Tooltips and popovers
 // -------------------------

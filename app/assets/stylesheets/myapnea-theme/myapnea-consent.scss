@@ -1,5 +1,14 @@
 #MyApnea {
   #consent{
+    .panel-heading {
+      .before {
+        font-size: $baseFontSize * 1.25;
+        font-weight: bold;
+      }
+      p {
+        margin: 10px 0;
+      }
+    }
     .panel-body {
       padding: 20px 20px;
 

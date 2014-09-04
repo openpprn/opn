@@ -4,8 +4,12 @@
 ol.breadcrumb.research {
   padding: 13px 20px;
   font-size: $baseFontSize * 1.5;
-  background-color: $state-warning-bg;
-  border: 1px solid $state-warning-border;
+  background-color: $breadcrumb-research-bg;
+  border: 1px solid $breadcrumb-research-border;
+
+  > li + li:before {
+    color: $breadcrumb-research-divider;
+  }
 
   a {
     color: $blueDark;

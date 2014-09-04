@@ -9,7 +9,7 @@ class AccountController < ApplicationController
   def consent
     if params[:consent_signed]
       current_user.update_attribute(:accepted_consent_at, Time.zone.now)
-      redirect_to user_dashboard_path
+      redirect_to privacy_path
     elsif params[:consent_revoked]
       current_user.update_attribute(:accepted_consent_at, nil)
       redirect_to user_dashboard_path
