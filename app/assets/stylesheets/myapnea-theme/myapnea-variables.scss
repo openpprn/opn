@@ -202,7 +202,7 @@ $wellBackground:                  #f5f5f5;
 
 // Navbar
 // -------------------------
-$grid-float-breakpoint:           993px;
+$grid-float-breakpoint:           $screen-lg-desktop;
 
 $navbarCollapseWidth:             100%;
 $navbarCollapseDesktopWidth:      $navbarCollapseWidth + 1;
