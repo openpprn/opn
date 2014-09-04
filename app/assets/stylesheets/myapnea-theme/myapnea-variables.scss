@@ -258,23 +258,29 @@ $heroUnitHeadingColor:            inherit;
 $heroUnitLeadColor:               inherit;
 
 
-// Form states and alerts
-// -------------------------
-$warningText:             #c09853;
-$warningBackground:       #fcf8e3;
-$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+//
+//$state-success-text:             #3c763d !default;
+//$state-success-bg:               #dff0d8 !default;
+//$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+//
+//$state-info-text:                #31708f !default;
+//$state-info-bg:                  #d9edf7 !default;
+//$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
-$errorText:               #b94a48;
-$errorBackground:         #f2dede;
-$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+//$state-warning-text:             #8a6d3b;
+$state-warning-bg:               lighten($orange, 25%);
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
 
-$successText:             #468847;
-$successBackground:       #dff0d8;
-$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+//$state-danger-text:              #a94442 !default;
+//$state-danger-bg:                #f2dede !default;
+//$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
 
-$infoText:                #3a87ad;
-$infoBackground:          #d9edf7;
-$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%);
+
+
+
 
 
 // Tooltips and popovers

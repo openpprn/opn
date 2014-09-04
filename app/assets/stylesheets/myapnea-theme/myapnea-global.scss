@@ -1,3 +1,19 @@
+// TODO: The following couple sections could be moved into seperate files
+
+// Research Breadcrumb Styles
+ol.breadcrumb.research {
+  padding: 13px 20px;
+  font-size: $baseFontSize * 1.5;
+  background-color: $state-warning-bg;
+  border: 1px solid $state-warning-border;
+
+  a {
+    color: $blueDark;
+  }
+}
+
+// Instruction styles
+
 .instructions {
   background-color: #eeecf8;
   padding: 30px;
@@ -21,7 +37,7 @@
 }
 
 
-
+// Coming Soon Styles
 #coming-soon {
   position: absolute;
   width: 100%;
@@ -70,6 +86,13 @@
 
 
 }
+
+
+
+// **
+// Main Styles start here
+// **
+
 
 
 // LAYOUT STYLES

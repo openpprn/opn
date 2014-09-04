@@ -1,14 +1,21 @@
-before: |
-  **Before you continue...**
+before:
+  head: |
+    Before you continue...
+  content:
+    text_1:
+      The MyApnea.Org research portal is a part of a research study and includes only people who want to participate. Please carefully read the agreement and privacy policy 
+    privacy_link: privacy_path
+    text_2: |
+      before you decide whether you would like to sign up.
 
-  The MyApnea.Org research page is a part of a research study and includes only people who want to participate.  Please carefully read the agreement and privacy policy on the next page before you decide whether or not you would like to sign up.
 consent: |
   ## MyApnea.Org Research Portal Consent
 
   ## Overview:
-  The MyApnea.Org research portal is a part of a medical research study across the U.S. It is paid for by the Patient-Centered Outcomes Research Institute (PCORI). Any page within MyApnea.Org that reads “Research” at the top indicates that information shared on that page can be used for research purposes as we describe in detail below. Research pages are only accessible after you have read this consent form and agree to participate in the research portal. The study is led by groups of doctors, patients and other advocacy groups working together.  Dr. Susan Redline from Brigham and Women’s Hospital in Boston, MA is in charge of the study. She and her staff are available to answer any questions you may have. Please email SUPPORT@myapnea.org with any questions or call 617-732-5859.
 
-  Research studies include only people who want to take part. Please take your time to make your decision about participating, and discuss your decision with your family or friends if you wish. Here is a brief overview of what we promise to you as researchers and what we will ask of you as a research participant:
+  The MyApnea.Org research portal is a part of a medical research study across the U.S. It is paid for by the Patient-Centered Outcomes Research Institute (PCORI). Any page within MyApnea.Org that reads “Research” at the top indicates that information shared on that page can be used for research purposes as we describe in detail below. Research pages are only accessible after you have read this consent form and agree to participate in the research portal. The study is led by groups of doctors, patients, and other advocacy groups working together. Dr. Susan Redline from Brigham and Women’s Hospital in Boston, MA, is in charge of the study. She and her staff are available to answer any questions you may have. Please email <SUPPORT@myapnea.org> with any questions or call 617-732-5859.
+
+  Research studies include only people who want to take part. Please take your time to make your decision about participating, and discuss your decision with your family or friends if you wish. Here is a brief overview of what we will do as researchers and what we will ask of you as a research participant:
 
   ### We will ask you to...
 
@@ -17,14 +24,14 @@ consent: |
   - Stick around. We’d like you to be in the study for at least 2 years so we know how your health changes over time.
 
   ### We will...
-  - Make things easy for you. Surveys can be done in 5-minute blocks on your computer, tablet or smartphone.
-  - Respect your time and privacy. We will only contact you when necessary and assure that your data is extremely secure.
+  - Make things easy for you. Surveys can be done in 5-minute blocks on your computer, tablet, or smartphone.
+  - Respect your time and privacy. We will only contact you when necessary and will assure that your data is extremely secure.
   - Provide a community and tools you can use. We will build useful tools to help you manage your condition and provide a community where you can be supported.
 
   ## Below are some answers to questions you may have:
   1.    **Why is this study being done?**
 
-        The purpose of the MyApnea.Org research portal is to engage people with sleep apnea to share health information needed for research that will improve the health and well-being of adults and children with sleep apnea.
+        The purpose of the MyApnea.Org research portal is to engage people with sleep apnea to share health information needed for research that will improve the health and wellbeing of adults and children with sleep apnea.
 
   2.    **How many people will take part in this study?**
 
@@ -32,9 +39,12 @@ consent: |
 
   3.    **Am I eligible to participate in the study?**
 
-        To participate, you need to have the diagnosis of sleep apnea or have a concern that you may have sleep apnea.
+        To participate, you need to have the diagnosis of sleep apnea, have a concern that you may have sleep apnea, or be a caregiver of someone who has apnea or a concern they have apnea.
 
-  4.    **What will happen if I take part in this research study?**
+  4.    **How do I know what will be used for research purposes and what will not be used as part of the study?**
+
+
+  5.    **What will happen if I take part in this research study?**
 
         We will ask you to complete surveys about yourself and your sleep apnea. If you agree to participate in the MyApnea.Org research portal, you will be asked to complete at least one survey about your sleep, symptoms and health. The survey will ask about such things as when you were diagnosed with sleep apnea, treatments you have used, medical illnesses such as high blood pressure, and your energy level. The basic survey will take less than 30 minutes to complete for most people. There will be more surveys on the site that we would like you to complete. These longer surveys should take less than 1 hour to complete for most people.
 
