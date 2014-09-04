@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'privacy' => 'static#privacy'
   get 'terms' => 'static#terms'
 
 
@@ -59,6 +58,7 @@ Rails.application.routes.draw do
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
   get 'consent' => 'account#consent'
+  get 'privacy' => 'account#privacy_policy', as: 'privacy'
 
 
   # Admin Section

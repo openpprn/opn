@@ -23,7 +23,7 @@ class AdminControllerTest < ActionController::TestCase
 
     get :users
 
-    assert_response 403
+    assert_authorization_exception
   end
 
   test "should allow owner to add and remove user roles" do
@@ -42,21 +42,21 @@ class AdminControllerTest < ActionController::TestCase
     login(users(:admin))
 
     post :add_role_to_user, format: :js, user_id: users(:user_1).id, role: roles(:admin).name
-    assert_response 403
+    assert_authorization_exception
     refute users(:user_1).has_role? :admin
 
     post :remove_role_from_user, user_id: users(:admin).id, role: roles(:admin).name, format: :js
-    assert_response 403
+    assert_authorization_exception
     assert users(:admin).has_role? :admin
 
     login(users(:user_1))
 
     post :add_role_to_user, format: :js, user_id: users(:user_1).id, role: roles(:admin).name
-    assert_response 403
+    assert_authorization_exception
     refute users(:user_1).has_role? :admin
 
     post :remove_role_from_user, user_id: users(:admin).id, role: roles(:admin).name, format: :js
-    assert_response 403
+    assert_authorization_exception
     assert users(:admin).has_role? :admin
 
 
@@ -88,21 +88,26 @@ class AdminControllerTest < ActionController::TestCase
     login(users(:admin))
 
     post :destroy_user, user_id: users(:user_1).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:owner).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:admin).id, format: :js
-    assert_response 403
+    assert_authorization_exception
 
     login(users(:user_5))
     post :destroy_user, user_id: users(:user_1).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:owner).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:admin).id, format: :js
-    assert_response 403
+    assert_authorization_exception
 
   end
 
+
+  def assert_authorization_exception
+    assert_response 302
+    assert flash[:alert]
+  end
 
 end
