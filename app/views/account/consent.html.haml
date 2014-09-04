@@ -2,7 +2,8 @@
   .col-md-12
     .panel.panel-primary
       .panel-heading
-        .before= @pc['before']['head']
+        - if current_user
+          .before= @pc['before']['head']
         %p
           = @pc['before']['content']['text_1']
           = link_to "privacy policy", privacy_path, target: '_blank'
@@ -18,12 +19,13 @@
             = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
               %i.fa.fa-print
               Print Consent
-      .text-center.panel-footer
-        - if current_user.accepted_consent_at.present?
-          = link_to "Back To My Dashboard", user_dashboard_path, class: 'btn btn-lg btn-success'
-          = link_to "View Privacy Policy", privacy_path, class: 'btn btn-lg btn-info'
-          = link_to "Leave Research Study", account_path, class: 'btn btn-warning btn-lg'
-        - else
-          = form_tag consent_path do
-            %input.btn.btn-primary.btn-lg{:name => "consent_signed", :type => "submit", :value => 'I have read the consent.'}/
-            = # link_to "I decline.", user_dashboard_path, class: 'btn btn-default btn-lg'
+      - if current_user
+        .text-center.panel-footer
+          - if current_user.accepted_consent_at.present?
+            = link_to "Back To My Dashboard", user_dashboard_path, class: 'btn btn-lg btn-success'
+            = link_to "View Privacy Policy", privacy_path, class: 'btn btn-lg btn-info'
+            = link_to "Leave Research Study", account_path, class: 'btn btn-warning btn-lg'
+          - else
+            = form_tag consent_path do
+              %input.btn.btn-primary.btn-lg{:name => "consent_read", :type => "submit", :value => 'I have read the consent.'}
+              = # link_to "I decline.", user_dashboard_path, class: 'btn btn-default btn-lg'

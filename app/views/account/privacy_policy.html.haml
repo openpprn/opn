@@ -1,0 +1,22 @@
+%section#privacy-policy
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-body
+          #print-area
+            %h2= @pc['title']
+            = markdown @pc['privacy_policy']
+          %br/
+          = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
+            %i.fa.fa-print
+            Print Privacy Policy
+        - if current_user
+          .text-center.panel-footer
+            - if current_user.accepted_consent_at.present?
+              = link_to "Back To My Dashboard", user_dashboard_path, class: 'btn btn-lg btn-success'
+              = link_to "View Consent", consent_path, class: 'btn btn-lg btn-info'
+              = link_to "Leave Research Study", account_path, class: 'btn btn-warning btn-lg'
+            - else
+              = form_tag privacy_path do
+                %input.btn.btn-success.btn-lg{:name => "agreed_to_participate", :type => "submit", :value => 'I agree to participate.'}
+                %input.btn.btn-warning.btn-lg{:name => "declined_to_participate", :type => "submit", :value => 'I decline.'}

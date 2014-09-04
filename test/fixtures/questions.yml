@@ -8,4 +8,17 @@ q2:
   time_estimate: 1.0
   answer_templates:
   - number
+q3:
+  text_en: How much sleep do we realy need?
+  time_estimate: 1.0
+  group: g1
+  answer_templates:
+  - number
+q4:
+  text_en: Do we breathe while sleeping?
+  time_estimate: 1.0
+  group: g1
+  answer_templates:
+  - text
+
 

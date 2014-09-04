@@ -1,124 +1,126 @@
-before:
-  head: |
-    Before you continue...
-  content:
-    text_1: The MyApnea.Org research portal is a part of a research study and includes only people who want to participate. Please carefully read the agreement and
-    text_2: before you decide whether you would like to sign up.
+en:
+  consent:
+    before:
+      head: |
+        Before you continue...
+      content:
+        text_1: The MyApnea.Org research portal is a part of a research study and includes only people who want to participate. Please carefully read the agreement and
+        text_2: before you decide whether you would like to sign up.
 
-consent: |
-  ## MyApnea.Org Research Portal Consent
+    consent: |
+      ## MyApnea.Org Research Portal Consent
 
-  ## Overview:
+      ## Overview:
 
-  The MyApnea.Org research portal is a part of a medical research study across the U.S. It is paid for by the Patient-Centered Outcomes Research Institute (PCORI). Any page within MyApnea.Org that reads “Research” at the top indicates that information shared on that page can be used for research purposes as we describe in detail below. Research pages are only accessible after you have read this consent form and agree to participate in the research portal. The study is led by groups of doctors, patients, and other advocacy groups working together. Dr. Susan Redline from Brigham and Women’s Hospital in Boston, MA, is in charge of the study. She and her staff are available to answer any questions you may have. Please email <SUPPORT@myapnea.org> with any questions or call 617-732-5859.
+      The MyApnea.Org research portal is a part of a medical research study across the U.S. It is paid for by the Patient-Centered Outcomes Research Institute (PCORI). Any page within MyApnea.Org that reads “Research” at the top indicates that information shared on that page can be used for research purposes as we describe in detail below. Research pages are only accessible after you have read this consent form and agree to participate in the research portal. The study is led by groups of doctors, patients, and other advocacy groups working together. Dr. Susan Redline from Brigham and Women’s Hospital in Boston, MA, is in charge of the study. She and her staff are available to answer any questions you may have. Please email <SUPPORT@myapnea.org> with any questions or call 617-732-5859.
 
-  Research studies include only people who want to take part. Please take your time to make your decision about participating, and discuss your decision with your family or friends if you wish. Here is a brief overview of what we will do as researchers and what we will ask of you as a research participant:
+      Research studies include only people who want to take part. Please take your time to make your decision about participating, and discuss your decision with your family or friends if you wish. Here is a brief overview of what we will do as researchers and what we will ask of you as a research participant:
 
-  ### We will ask you to...
+      ### We will ask you to...
 
-  - Tell us about your health. Answer our health-related questions as best as you can.
-  - Update your information regularly (we’ll remind you) so we have all your latest data.
-  - Stick around. We’d like you to be in the study for at least 2 years so we know how your health changes over time.
+      - Tell us about your health. Answer our health-related questions as best as you can.
+      - Update your information regularly (we’ll remind you) so we have all your latest data.
+      - Stick around. We’d like you to be in the study for at least 2 years so we know how your health changes over time.
 
-  ### We will...
-  - Make things easy for you. Surveys can be done in 5-minute blocks on your computer, tablet, or smartphone.
-  - Respect your time and privacy. We will only contact you when necessary and will assure that your data is extremely secure.
-  - Provide a community and tools you can use. We will build useful tools to help you manage your condition and provide a community where you can be supported.
+      ### We will...
+      - Make things easy for you. Surveys can be done in 5-minute blocks on your computer, tablet, or smartphone.
+      - Respect your time and privacy. We will only contact you when necessary and will assure that your data is extremely secure.
+      - Provide a community and tools you can use. We will build useful tools to help you manage your condition and provide a community where you can be supported.
 
-  ## Below are some answers to questions you may have:
-  1.    **Why is this study being done?**
+      ## Below are some answers to questions you may have:
+      1.    **Why is this study being done?**
 
-        The purpose of the MyApnea.Org research portal is to engage people with sleep apnea to share health information needed for research that will improve the health and wellbeing of adults and children with sleep apnea.
+            The purpose of the MyApnea.Org research portal is to engage people with sleep apnea to share health information needed for research that will improve the health and wellbeing of adults and children with sleep apnea.
 
-  2.    **How many people will take part in this study?**
+      2.    **How many people will take part in this study?**
 
-        We hope to enroll at least 50,000 people into the MyApnea.Org research portal.
+            We hope to enroll at least 50,000 people into the MyApnea.Org research portal.
 
-  3.    **Am I eligible to participate in the study?**
+      3.    **Am I eligible to participate in the study?**
 
-        To participate, you need to have the diagnosis of sleep apnea, have a concern that you may have sleep apnea, or be a caregiver of someone who has apnea or a concern they have apnea.
+            To participate, you need to have the diagnosis of sleep apnea, have a concern that you may have sleep apnea, or be a caregiver of someone who has apnea or a concern they have apnea.
 
-  4.    **How do I know what will be used for research purposes and what will not be used as part of the study?**
+      4.    **How do I know what will be used for research purposes and what will not be used as part of the study?**
 
-        Only information you provide on pages marked “Research” at the top will be used for scientific purposes. You can only access these pages after you have read this consent and have agreed to participate in the research portal.
+            Only information you provide on pages marked “Research” at the top will be used for scientific purposes. You can only access these pages after you have read this consent and have agreed to participate in the research portal.
 
-  5.    **What will happen if I take part in this research study?**
+      5.    **What will happen if I take part in this research study?**
 
-        **We will ask you to complete surveys about yourself and your sleep apnea.** If you agree to participate in the MyApnea.Org research portal, you will be asked to complete at least one survey about your sleep, symptoms, and health. The survey will ask about such things as when you were diagnosed with sleep apnea, treatments you have used, medical illnesses such as high blood pressure, and your energy level. The basic survey will take less than 30 minutes to complete for most people. There will be more surveys on the site that we would like you to complete. These longer surveys should take less than 1 hour to complete for most people.
+            **We will ask you to complete surveys about yourself and your sleep apnea.** If you agree to participate in the MyApnea.Org research portal, you will be asked to complete at least one survey about your sleep, symptoms, and health. The survey will ask about such things as when you were diagnosed with sleep apnea, treatments you have used, medical illnesses such as high blood pressure, and your energy level. The basic survey will take less than 30 minutes to complete for most people. There will be more surveys on the site that we would like you to complete. These longer surveys should take less than 1 hour to complete for most people.
 
-        **You will be asked to update information on the surveys every 2 to 6 months or as your health changes.**
+            **You will be asked to update information on the surveys every 2 to 6 months or as your health changes.**
 
-        Information collected about you will be combined with information from other people who have joined the site. Other people with apnea and researchers will be able to view graphs and summary information on groups of people with apnea. When combining this information, your name and other personal information **will not** be used.
+            Information collected about you will be combined with information from other people who have joined the site. Other people with apnea and researchers will be able to view graphs and summary information on groups of people with apnea. When combining this information, your name and other personal information **will not** be used.
 
-        **You may be asked to join other studies.**
+            **You may be asked to join other studies.**
 
-        You may be invited to participate in other study activities related to sleep apnea or related health conditions. Each of these studies will have a separate consent form and will be explained in detail so you may decide if you would like to be a part of it. Participation in these other study modules is optional. That is, you can still be a part of the MyApnea.Org research portal without participating in the other studies.
+            You may be invited to participate in other study activities related to sleep apnea or related health conditions. Each of these studies will have a separate consent form and will be explained in detail so you may decide if you would like to be a part of it. Participation in these other study modules is optional. That is, you can still be a part of the MyApnea.Org research portal without participating in the other studies.
 
-        **We will send you reminder emails or phone calls.**
+            **We will send you reminder emails or phone calls.**
 
-        When there is a study activity that we want you to complete or consider, we will contact you. We plan to update your health status every 2 to 6 months. You will let us know how you want us to contact you, by phone or by email.
+            When there is a study activity that we want you to complete or consider, we will contact you. We plan to update your health status every 2 to 6 months. You will let us know how you want us to contact you, by phone or by email.
 
 
-  6.    **How long will I be in the study?**
+      6.    **How long will I be in the study?**
 
-        We would like to keep track of your health status for at least 2 years, and possibly longer so we know how your health changes over time. Keeping in touch with you and checking on your health over many years is very important to help us look at the long-term effects of sleep apnea and its treatments on health. We plan to do this by contacting you at least twice a year.
+            We would like to keep track of your health status for at least 2 years, and possibly longer so we know how your health changes over time. Keeping in touch with you and checking on your health over many years is very important to help us look at the long-term effects of sleep apnea and its treatments on health. We plan to do this by contacting you at least twice a year.
 
-  7.    **Can I stop being in the study?**
+      7.    **Can I stop being in the study?**
 
-        Yes. You can decide to stop at any time. We won’t delete the information about you that we’ve already collected, but we will stop collecting any new information about you and will stop contacting you.
+            Yes. You can decide to stop at any time. We won’t delete the information about you that we’ve already collected, but we will stop collecting any new information about you and will stop contacting you.
 
-        To stop participating in the study, please go to the **"My Account Settings"**, which you can find on the top navigation bar. On this page, find the section titled **Leave Research Study** and click the orange button.
+            To stop participating in the study, please go to the **"My Account Settings"**, which you can find on the top navigation bar. On this page, find the section titled **Leave Research Study** and click the orange button.
 
-  8.    **What side effects or risks can I expect from being in the study?**
+      8.    **What side effects or risks can I expect from being in the study?**
 
-        Although we will do our best to protect your study information, there is still a very small risk of loss of privacy. There is a risk that participating in the study will make you want to access the healthcare system more often, and that costs money. For example, the feedback information that we provide to you (see Question 9 below) might make you want to talk to your healthcare provider, or you may want to make extra visits to your provider to fill out a survey. While there may often be benefits to you from seeing your healthcare provider, there are also costs, and the MyApnea.Org research portal will not pay for any part of your medical care. You should not see your healthcare provider solely for the purpose of collecting data for the MyApnea.Org research portal.
+            Although we will do our best to protect your study information, there is still a very small risk of loss of privacy. There is a risk that participating in the study will make you want to access the healthcare system more often, and that costs money. For example, the feedback information that we provide to you (see Question 9 below) might make you want to talk to your healthcare provider, or you may want to make extra visits to your provider to fill out a survey. While there may often be benefits to you from seeing your healthcare provider, there are also costs, and the MyApnea.Org research portal will not pay for any part of your medical care. You should not see your healthcare provider solely for the purpose of collecting data for the MyApnea.Org research portal.
 
-  9.    **Are there benefits to taking part in the study?**
+      9.    **Are there benefits to taking part in the study?**
 
-        You will not obtain any direct health benefits from participating in the study, but you will receive information on healthy sleep and healthy lifestyle behaviors, along with sleep apnea news and updates available on the general MyApnea.Org site. You will also receive information on topics such as your sleepiness and sleep patterns based on the information you provide. We hope that by participating you will help us contribute to a better understanding of sleep apnea that will lead to improved health for the millions of patients with sleep apnea.
+            You will not obtain any direct health benefits from participating in the study, but you will receive information on healthy sleep and healthy lifestyle behaviors, along with sleep apnea news and updates available on the general MyApnea.Org site. You will also receive information on topics such as your sleepiness and sleep patterns based on the information you provide. We hope that by participating you will help us contribute to a better understanding of sleep apnea that will lead to improved health for the millions of patients with sleep apnea.
 
-  10.   **Will I get advice about my health from the study?**
+      10.   **Will I get advice about my health from the study?**
 
-        No. We will provide you with information about symptoms of untreated sleep apnea, sleep apnea treatments, and ways to reduce sleep apnea treatment, but we will not provide you with specific advice, even if the information you provide us is very abnormal. The information we provide to you, including that shared by other patients, does not in any way substitute for professional medical advice, diagnosis, or treatment that your doctor or nurse may give you. Always ask your doctor if you have any questions about your health. Do not ignore the advice of your doctor or nurse or delay seeing your doctor or nurse because of something you have read as part of this study. If you think you may have a medical emergency, call your doctor or dial 911 immediately.
+            No. We will provide you with information about symptoms of untreated sleep apnea, sleep apnea treatments, and ways to reduce sleep apnea treatment, but we will not provide you with specific advice, even if the information you provide us is very abnormal. The information we provide to you, including that shared by other patients, does not in any way substitute for professional medical advice, diagnosis, or treatment that your doctor or nurse may give you. Always ask your doctor if you have any questions about your health. Do not ignore the advice of your doctor or nurse or delay seeing your doctor or nurse because of something you have read as part of this study. If you think you may have a medical emergency, call your doctor or dial 911 immediately.
 
-  11.   **What other choices do I have if I do not take part in this study?**
+      11.   **What other choices do I have if I do not take part in this study?**
 
-        You are free to choose not to participate in the MyApnea.Org research portal. If you decide not to take part, there will be no penalty to you.
+            You are free to choose not to participate in the MyApnea.Org research portal. If you decide not to take part, there will be no penalty to you.
 
-  12.   **How is my information protected?**
+      12.   **How is my information protected?**
 
-        We will do our best to make sure that the personal information we collect about you is kept private and secure. **The MyApnea.Org research portal will never sell, rent, or lease your contact information.** If information from this study is published or presented at scientific meetings, your name and other personal information will not be used. However, we cannot guarantee total privacy—your personal information may be given out if required by law (e.g., to prevent possible injury to yourself or others).
+            We will do our best to make sure that the personal information we collect about you is kept private and secure. **The MyApnea.Org research portal will never sell, rent, or lease your contact information.** If information from this study is published or presented at scientific meetings, your name and other personal information will not be used. However, we cannot guarantee total privacy—your personal information may be given out if required by law (e.g., to prevent possible injury to yourself or others).
 
-        Your information will be sent and stored using very secure systems. The network servers where your data are stored sit behind firewalls that do not allow unauthorized access and are physically located in a secure server room that can only be accessed by critical staff members.
+            Your information will be sent and stored using very secure systems. The network servers where your data are stored sit behind firewalls that do not allow unauthorized access and are physically located in a secure server room that can only be accessed by critical staff members.
 
-        For more details, please read our [Privacy Policy and Data Security Measures](/privacy_policy), that will also appear after you agree to this consent form.
+            For more details, please read our [Privacy Policy and Data Security Measures](/privacy_policy), that will also appear after you agree to this consent form.
 
-  13.   **What are the costs of taking part in this study?**
+      13.   **What are the costs of taking part in this study?**
 
-        You will not be charged for any aspect of participating in the MyApnea.Org research portal.
+            You will not be charged for any aspect of participating in the MyApnea.Org research portal.
 
-  14.   **Will I be paid for taking part in this study?**
+      14.   **Will I be paid for taking part in this study?**
 
-        You will not be paid for taking part in the MyApnea.Org research portal.
+            You will not be paid for taking part in the MyApnea.Org research portal.
 
-  15.   **What are my rights if I take part in this study?**
+      15.   **What are my rights if I take part in this study?**
 
-        Taking part in this study is your choice. You may choose either to take part or not to take part in the study. If you decide to take part in this study, you may leave the study at any time. No matter what decision you make, there will be no penalty to you.
+            Taking part in this study is your choice. You may choose either to take part or not to take part in the study. If you decide to take part in this study, you may leave the study at any time. No matter what decision you make, there will be no penalty to you.
 
-        We will tell you about new information or changes in the study that may affect your willingness to continue in the study.
+            We will tell you about new information or changes in the study that may affect your willingness to continue in the study.
 
-  16.   **Who can answer my questions about the study?**
+      16.   **Who can answer my questions about the study?**
 
-        You can contact the study staff at <SUPPORT@myapnea.org>, or contact the Principal Investigator, S. Redline, at <sredline@partners.org> or **617-732-5859** about any questions, concerns, or complaints you have.
+            You can contact the study staff at <SUPPORT@myapnea.org>, or contact the Principal Investigator, S. Redline, at <sredline@partners.org> or **617-732-5859** about any questions, concerns, or complaints you have.
 
-        If you want to speak with someone not directly involved in this research study, please contact the Partners Human Research Committee office. You can call them at **617-424-4100**.
+            If you want to speak with someone not directly involved in this research study, please contact the Partners Human Research Committee office. You can call them at **617-424-4100**.
 
-        You can talk to them about:
-        **(1)** your rights as a research subject,
-        **(2)** your concerns about the research,
-        **(3)** a complaint about the research.
+            You can talk to them about:
+            **(1)** your rights as a research subject,
+            **(2)** your concerns about the research,
+            **(3)** a complaint about the research.
 
-        Also, if you feel pressured to take part in this research study, or to continue with it, they want to know and can help.
+            Also, if you feel pressured to take part in this research study, or to continue with it, they want to know and can help.
 
-  You can access and print copies of this consent form whenever you like via this website.
+      You can access and print copies of this consent form whenever you like via this website.
 

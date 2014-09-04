@@ -1,20 +1,31 @@
 class AccountController < ApplicationController
-  before_action :authenticate_user!, except: :view_consent
+  before_action :authenticate_user!, except: [:consent, :privacy_policy]
 
+  # def view_consent
+  #   @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
+  # end
 
-  def view_consent
-    @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
+  def privacy_policy
+    if params[:agreed_to_participate]
+      current_user.update_attribute(:accepted_consent_at, Time.zone.now)
+      redirect_to user_dashboard_path
+    elsif params[:declined_to_participate]
+      current_user.update_attribute(:accepted_consent_at, nil)
+      redirect_to user_dashboard_path
+    else
+      load_content
+    end
   end
 
+
   def consent
-    if params[:consent_signed]
-      current_user.update_attribute(:accepted_consent_at, Time.zone.now)
+    if params[:consent_read]
       redirect_to privacy_path
     elsif params[:consent_revoked]
       current_user.update_attribute(:accepted_consent_at, nil)
       redirect_to user_dashboard_path
     else
-      @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
+      load_content
     end
   end
 
@@ -24,6 +35,12 @@ class AccountController < ApplicationController
 
   def terms_and_conditions
     render layout: 'dashboard'
+  end
+
+  private
+
+  def load_content
+    @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "#{action_name}.#{I18n.locale}.yml"))[I18n.locale.to_s][action_name.to_s]
   end
 
 end

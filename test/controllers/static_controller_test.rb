@@ -9,7 +9,6 @@ class StaticControllerTest < ActionController::TestCase
 
   test "should get home" do
     # Research Questions need to be loaded into test fixtures first
-    skip
     get :home
     assert_not_nil assigns(:pc)
     assert_not_nil assigns(:research_qs)
@@ -42,12 +41,6 @@ class StaticControllerTest < ActionController::TestCase
 
   test "should get faqs" do
     get :faqs
-    assert_not_nil assigns(:pc)
-    assert_response :success
-  end
-
-  test "should get privacy_policy" do
-    get :privacy_policy
     assert_not_nil assigns(:pc)
     assert_response :success
   end

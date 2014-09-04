@@ -78,8 +78,10 @@ class ApplicationController < ActionController::Base
   end
 
   def myapnea_layout
-    if ['research', 'surveys', 'health_data', 'social'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent'
+    if (['research', 'surveys', 'health_data', 'social'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent' or params[:action] == 'privacy_policy') and current_user
       'dashboard'
+    elsif params[:action] == "privacy_policy" or params[:action] == "consent"
+      Rails.application.config.layout
     elsif template_exists? params[:controller].split('/').last, 'layouts'
       params[:controller].split('/').last
     else

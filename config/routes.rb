@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'privacy_policy' => 'static#privacy_policy', as: 'privacy'
   get 'terms' => 'static#terms'
   get 'theme' => 'static#theme'
   get 'version' => 'static#version'
@@ -22,7 +21,8 @@ Rails.application.routes.draw do
   match 'user_dashboard', to: 'account#dashboard', as: :user_dashboard, via: :get
   match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
   match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
-  get 'view_consent' => 'account#view_consent', as: :view_consent
+  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
+
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
