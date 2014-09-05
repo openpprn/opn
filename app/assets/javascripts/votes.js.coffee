@@ -52,8 +52,6 @@ $(document).on "click", ".research_topics a.voting", () ->
         badge.html(data.rating)
       )
 
-    console.log(vote_counter.data("target-path"))
-
     if vote_counter.length
       $.get(vote_counter.data("target-path"), (data) ->
         vote_counter.html(data)
