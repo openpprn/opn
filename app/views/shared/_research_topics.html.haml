@@ -1,55 +1,19 @@
-- if star_pattern == :mine
-  - num_stars = rand(30..70)
-- else
-  - num_stars = rand(70..99)
-- stars_given = 0
-
 .panel.panel-default
-
   %table.table.table-hover.table-responsive
     %tbody
-      - num_loops.times do
-        - @pprn_research_questions.shuffle.each do |title|
-          %tr
-            %td
-              %h4
-                - if star_pattern == :mine
-                  %i.fa.fa-check-square-o.research-star
-                - elsif star_pattern == :popular && stars_given < 5 && [true,false,false,false].shuffle.first
-                  %i.fa.fa-check-square-o.research-star
-                  - stars_given += 1
-                - else
-                  %i.fa.fa-square-o.research-star
-            %td
-              - if star_pattern == :newest
-                %h2= rand(0..3)
-              - else
-                %h2= num_stars = (num_stars * (rand(0.7..1)) ).ceil
+      - research_questions.map {|qs| qs[:question]}.each do |question|
+        %tr
+          %td
+            %h4
+              %i.fa.research-star{class: checkbox_class(question)}
+          %td
+            %h2= question.rating
+          %td
+            %br/
+            %h4
+              = link_to question.text, view_research_question_path(question)
+          - if editable
             %td
               %br/
-              %h4
-                %a{:href => "/research_question"}= title
-
-            - if editable
-              %td
-                %br/
-                %button.btn.btn-danger.btn-xs.pull-right Delete
-                %span.pull-right &nbsp;
-                %button.btn.btn-warning.btn-xs.pull-right Edit
-                .clearfix
-
-  - if star_pattern != :mine
-    .panel-footer{:style=> "padding-bottom: 0px; padding-right: 8px; padding-top: 5px;"}
-      .text-center
-        %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-          %li
-            %span &laquo;
-          %li
-            %span 1
-          %li.disabled
-            %span ..
-          %li
-            %span 5
-          %li
-            %span &raquo;
-
+              = link_to "Delete", destroy_research_question, class: "btn btn-danger btn-xs pull-right"
+              .clearfix

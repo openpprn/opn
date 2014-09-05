@@ -14,6 +14,7 @@ unless Rails.env == "test"
 
 
 
+
   to_keep = [ "users", "schema_migrations"]
   tables = [
       "answer_edges",
@@ -40,6 +41,7 @@ unless Rails.env == "test"
     ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
     ActiveRecord::Base.connection.execute("SELECT SETVAL('#{table}_id_seq', 100000000)")
   end
+
 
   files = [
       ["units.yml", Unit],

@@ -1,22 +1,11 @@
 - title("Research")
-
-
 .row
-  .col-md-3
-    = render :partial => "shared/research_nav", locals: {action_name: "research"}
-
-
-
-  .col-md-9
-
-
+  .col-md-12
     .row
       .col-md-1
         %div{:style => "font-size: 36px; line-height: 36px; text-align:center; padding-top: 20px;"}
           %i.fa.fa-star-o
           = rand(0..99)
-
-
       .col-md-11
         %h2= @pprn_research_questions.shuffle.first
 
@@ -33,10 +22,6 @@
           %span.small
             This research proposal is currently <strong>under consideration</strong> by the research team.
             Add your vote and voice to help increase the chances this research topic gets studied.
-
-
-
-
         .panel.panel-default
           .panel-heading
             %h4.panel-title.pull-left Discussion

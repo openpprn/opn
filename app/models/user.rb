@@ -55,4 +55,12 @@ class User < ActiveRecord::Base
   def forem_admin?
     self.has_role? :admin
   end
+
+  def todays_votes
+    votes.select{|vote| vote.created_at.today? }
+  end
+
+  def available_votes_percent
+    (todays_votes.length / vote_quota) * 100
+  end
 end
