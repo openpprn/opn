@@ -27,7 +27,7 @@
         .goalSuffix= @pc['goal']['members']
     - ['learn', 'share', 'research'].each do |topic|
       .col-md-4
-        .well.text-center
+        .well.text-center.topic
           %h3= link_to @pc[topic]['title'], send(@pc[topic]['path'])
           %p
             %i= @pc[topic]['content']
