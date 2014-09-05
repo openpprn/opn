@@ -44,18 +44,22 @@ $(document).on "click", ".research_topics a.voting", () ->
   question_id = $(this).data("question-id")
 
 
-  $.post(submit_path, {question_id: question_id, rating: rating, label: label}, () ->
-    icon.toggleClass('fa-square-o').toggleClass("fa-check-square-o")
+  $.post(submit_path, {question_id: question_id, rating: rating, label: label}, (data) ->
+    if data.saved
+      icon.toggleClass('fa-square-o').toggleClass("fa-check-square-o")
 
-    if badge.length
-      $.getJSON(question_path+".json", (data) ->
-        badge.html(data.rating)
-      )
 
-    if vote_counter.length
-      $.get(vote_counter.data("target-path"), (data) ->
-        vote_counter.html(data)
-      )
+      if badge.length
+        $.getJSON(question_path+".json", (data) ->
+          badge.html(data.rating)
+        )
+
+      if vote_counter.length
+        $.get(vote_counter.data("target-path"), (data) ->
+          vote_counter.html(data)
+        )
+    else
+      alert("Sorry! You have already used all of your votes for today.")
 
 
   )

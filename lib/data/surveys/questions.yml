@@ -628,6 +628,36 @@
     - 59
     - 60
 
+#- id: 1000004
+#  text_en: |
+#    Does treatment of sleep apnea influence body weight?
+#  group_id: 1
+#- id: 1000005
+#  text_en: |
+#    Does support by a coach help improve CPAP adherence?
+#  group_id: 1
+#- id: 1000008
+#  text_en: |
+#    Does treatment of sleep apnea in teenagers improve behavior and academic performance?
+#  group_id: 1
+#- id: 1000009
+#  text_en: |
+#    Does treatment of sleep apnea in young children improve alertness and behavior?
+#  group_id: 1
+
+
+- id: 1000001
+  text_en: |
+    Does treatment of sleep apnea reduce the number of medications prescribed for blood pressure, diabetes, asthma, heart disease, or mood disorders?
+  group_id: 1
+- id: 1000002
+  text_en: |
+    Do hospitalizations and emergency room visits decline after beginning sleep apnea treatment?
+  group_id: 1
+- id: 1000003
+  text_en: |
+    Does treatment of sleep apnea improve blood sugar and blood pressure?
+  group_id: 1
 - id: 1000004
   text_en: |
     Does treatment of sleep apnea influence body weight?
@@ -635,6 +665,14 @@
 - id: 1000005
   text_en: |
     Does support by a coach help improve CPAP adherence?
+  group_id: 1
+- id: 1000006
+  text_en: |
+    How does treatment of children with sleep apnea with nasal anti inflammatory sprays compare to tonsillectomy?
+  group_id: 1
+- id: 1000007
+  text_en: |
+    Does treatment of sleep apnea in children with sleep apnea and asthma improve asthma control?
   group_id: 1
 - id: 1000008
   text_en: |
@@ -644,3 +682,25 @@
   text_en: |
     Does treatment of sleep apnea in young children improve alertness and behavior?
   group_id: 1
+- id: 1000010
+  text_en: |
+    Among overweight individuals with sleep apnea, which bariatric surgery is most effective for improving sleep apnea?
+  group_id: 1
+- id: 1000011
+  text_en: |
+    Among women with sleep apnea, how do  oral appliances (mandibular advancement devices) compare to CPAP for improving fatigue?
+  group_id: 1
+- id: 1000012
+  text_en: |
+    Do people with sleep apnea and hypertension benefit from taking blood pressure medications at bedtime compared to earlier times?
+  group_id: 1
+- id: 1000013
+  text_en: |
+    Does type of medical care (sleep specialty; primary care) influence satisfaction with sleep apnea management?
+  group_id: 1
+- id: 1000014
+  text_en: |
+    Does satisfaction with sleep apnea treatment differ by geographic location? By race? By ethnicity?
+  group_id: 1
+
+

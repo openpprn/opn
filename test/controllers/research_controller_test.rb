@@ -15,17 +15,38 @@ class ResearchControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-
-  test "User can view research topics" do
+  test "User without signed consent cannot view research topics" do
     login(users(:user_1))
 
     get :research_topics
 
-    assert_response :success
+    assert_response 302
   end
 
-  test "User can view single research topic" do
+  test "Only user who signed consent can view research topics" do
+
+
+    login(users(:social))
+
+    get :research_topics
+
+    assert_response :success
+
+
+  end
+
+  test "User without signed consent cannot view single research topic" do
     login(users(:user_1))
+
+    get :research_question, id: questions(:q3).id
+
+    assert_response 302
+
+  end
+
+
+  test "Only user who signed consent can view single research topics" do
+    login(users(:social))
 
     get :research_question, id: questions(:q3).id
 

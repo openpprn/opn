@@ -37,21 +37,11 @@
       .map#home-map{data: {path: locations_path}}
     .col-md-6
       %h2 Rate the Research
+      %h4
+        = link_to "Join today", new_user_registration_path
+        to submit and vote on the research topics of tomorrow
       .questions#home-research-qs
-        .panel.panel-default
-          .panel-heading
-            %h4
-              = link_to "Join today", new_user_registration_path
-              to submit and vote on the research topics of tomorrow
-          .list-group.research-questions
-            - @research_qs.each_with_index do |q, i|
-              .list-group-item
-                .row{ data: {id: q.id} }
-                  .col-md-2
-                    %h4.pull-left= q.rating
-                    .pull-right= render partial: 'research/partials/rate_question', locals: {question: q, show_badge: true, disabled: true}
-                  .col-md-10
-                    %h5.text-primary= q.text
+        = render partial: "shared/research_topics", locals: {research_questions: Vote.popular_research_questions.take(5), editable: false, disabled: true}
   .row
     #reason-carousel.carousel.slide
       %ol.carousel-indicators

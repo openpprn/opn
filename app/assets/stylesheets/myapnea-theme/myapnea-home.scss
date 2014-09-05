@@ -6,10 +6,23 @@
     }
 
     #home-research-qs {
-      .btn {
-        margin-top: 8px;
-        //font-size: $fontSizeLarge;
+      .list-group-item {
+        padding: 5px 15px;
+
+        h2 {
+          margin-top: 10px;
+        }
+        h4 {
+          line-height: 1.1;
+        }
+
       }
+      a.disabled {
+        color: $gray
+
+
+      }
+
     }
 
     #memberCount {

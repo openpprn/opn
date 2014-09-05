@@ -1,8 +1,8 @@
 class ResearchController < ApplicationController
-  before_action :authenticate_user!, :only => [:research_karma, :research_surveys]
+  before_action :authenticate_user!, :only => [:research_karma, :research_surveys, :research_topics, :research_questions, :research_question]
   before_action :set_active_top_nav_link_to_research
   before_action :no_layout, :only => [:research_questions, :vote_counter]
-  before_action :authenticate_research, only: [:research_surveys]
+  before_action :authenticate_research, only: [:research_surveys, :research_topics, :research_questions, :research_question]
 
   def research_surveys
     @incomplete_surveys = QuestionFlow.incomplete(current_user)

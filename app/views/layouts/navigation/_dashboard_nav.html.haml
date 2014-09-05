@@ -27,14 +27,15 @@
       %i.fa.fa-lock &nbsp;
     My Surveys
     %span.badge= QuestionFlow.unstarted(current_user).count + QuestionFlow.incomplete(current_user).count
-
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    Research Topics
 .small
   %p Sign the consent form in the link above to get involved in sleep apnea research
 
 %h2 Coming Soon!
 .list-group
-  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"}
-    Research Topics
   %a.list-group-item{href: main_app.research_today_path, class: "#{"active" if action_name == "research_today"}"}
     Daily Trends
   %a.list-group-item{href: main_app.data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
