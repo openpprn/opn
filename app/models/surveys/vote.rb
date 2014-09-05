@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
   end
 
   def self.user_research_questions(user)
-    res = Vote.select("question_id as question_id, sum(rating) as rating").where(user_id: user.id).group("question_id")
+    res = Vote.select("question_id as question_id, sum(rating) as rating").where(user_id: user.id, rating: 1).group("question_id")
     process_rq_results(res)
   end
 

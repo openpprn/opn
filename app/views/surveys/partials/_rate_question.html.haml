@@ -1,4 +1,4 @@
-.btn-group.btn-group-xs.voting{"data-question-id" => question.id, "data-question-path" => question_path(question), "data-submit-path" => vote_path}
+.btn-group.btn-group-xs.voting{"data-question-id" => question.id, "data-question-path" => question_path(question), "data-submit-path" => vote_path, "data-type" => "survey"}
   %button{:class => "btn #{vote_class(question, -1)} vote vote-up", "data-value" => "-1", :type => "button"}
     %span.fa.fa-arrow-down
   - if show_badge

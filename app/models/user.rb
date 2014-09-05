@@ -57,10 +57,10 @@ class User < ActiveRecord::Base
   end
 
   def todays_votes
-    votes.select{|vote| vote.created_at.today? }
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0  }
   end
 
   def available_votes_percent
-    (todays_votes.length / vote_quota) * 100
+    (todays_votes.length.to_f / vote_quota) * 100.0
   end
 end

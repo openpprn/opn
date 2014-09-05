@@ -1,19 +1,18 @@
-.panel.panel-default
-  %table.table.table-hover.table-responsive
-    %tbody
-      - research_questions.map {|qs| qs[:question]}.each do |question|
-        %tr
-          %td
-            %h4
-              %i.fa.research-star{class: checkbox_class(question)}
-          %td
-            %h2= question.rating
-          %td
+.panel.panel-default.research_topics
+  .list-group
+    - research_questions.map {|qs| qs[:question]}.each do |question|
+      .list-group-item.research_question
+        .row
+          .col-md-1
+            %h2
+              = link_to vote_path, data: {question_id: question.id, question_path: question_path(question), submit_path: vote_path, type: 'research_question'}, class: 'voting' do
+                %i.fa.research-star{class: checkbox_class(question)}
+          .col-md-1
+            %h2.text-center.question-rating= question.rating
+          .col-md-10
             %br/
             %h4
               = link_to question.text, view_research_question_path(question)
           - if editable
-            %td
-              %br/
-              = link_to "Delete", destroy_research_question, class: "btn btn-danger btn-xs pull-right"
-              .clearfix
+            = link_to "Delete", destroy_research_question, class: "btn btn-danger btn-xs pull-right"
+            .clearfix

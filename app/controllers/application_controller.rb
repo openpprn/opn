@@ -84,4 +84,9 @@ class ApplicationController < ActionController::Base
   def set_active_top_nav_link_to_blog
     @active_top_nav_link = :blog
   end
+
+  def no_layout
+    render layout: false
+  end
+
 end

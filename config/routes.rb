@@ -19,12 +19,14 @@ Rails.application.routes.draw do
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
-  match 'research_question/:id', to: "research#view_research_question", as: :view_research_question, via: :get
+  match 'research_question/:id', to: "research#research_question", as: :view_research_question, via: :get
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
   get 'data_connections' => 'research#data_connections'
   get 'new_question' => 'research#new_question'
+  get 'research_questions' => 'research#research_questions'
+  get 'vote_counter' => 'research#vote_counter'
 
   # Surveys
   get 'research_surveys/report/:answer_session_id', to: 'surveys#show_report', as: :survey_report

@@ -2,35 +2,44 @@ v1:
   user: user_1
   question: q3
   rating: 1
+  type: research_question
 v2:
   user: user_1
   question: q4
   rating: 1
+  type: research_question
 v3:
   user: user_4
   question: q3
   rating: 1
+  type: research_question
 v4:
   user: user_5
   question: q3
   rating: 1
+  type: research_question
 v5:
   user: user_6
   question: q3
   rating: 1
+  type: research_question
 v6:
   user: user_7
   question: q4
   rating: 1
+  type: research_question
 v7:
   user: user_8
   question: q4
   rating: 1
+  type: research_question
 v8:
   user: user_9
   question: q4
   rating: 1
+  type: research_question
 v9:
   user: social
   rating: 1
   question: q3
+  type: research_question
