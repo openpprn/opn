@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
     request.env['omniauth.origin'] || stored_location_for(resource) || user_dashboard_path
   end
 
+  # Send 'em back where they came from with a slap on the wrist
+  def authority_forbidden(error)
+    Authority.logger.warn(error.message)
+    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <support@myapnea.org>."
+  end
 
 
   def determine_pprn
@@ -76,6 +81,11 @@ class ApplicationController < ActionController::Base
   def set_active_top_nav_link_to_blog
     @active_top_nav_link = :blog
   end
+
+  def no_layout
+    render layout: false
+  end
+
 
   def myapnea_layout
     if (['research', 'surveys', 'health_data', 'social'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent' or params[:action] == 'privacy_policy') and current_user

@@ -94,7 +94,6 @@ unless Rails.env == "test"
     user.add_role :owner
   end
 
-
   # Forum
   Forem.decorate_user_class!
 

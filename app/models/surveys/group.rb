@@ -1,6 +1,10 @@
 class Group < ActiveRecord::Base
   has_many :questions
 
+  def self.research_question_group
+    Group.find_by_name("Research Questions")
+  end
+
   def minimum_set(question_flow, start_point = nil)
     current_q = start_point
 
@@ -25,6 +29,8 @@ class Group < ActiveRecord::Base
 
     min_set
   end
+
+
 
 
 end

@@ -63,4 +63,12 @@ class User < ActiveRecord::Base
   def can_moderate_forem_forum?(forum)
     self.has_role? :forum_moderator or self.has_role? :admin
   end
+
+  def todays_votes
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.label == "research_question" }
+  end
+
+  def available_votes_percent
+    (todays_votes.length.to_f / vote_quota) * 100.0
+  end
 end

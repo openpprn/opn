@@ -140,6 +140,7 @@ class AnswerSession < ActiveRecord::Base
 
     if answer.new_record? or answer.string_value != params[question.id.to_s]
       # Set Value and Save
+
       answer.value = params[question.id.to_s]
       answer.save
       answer_modified = true

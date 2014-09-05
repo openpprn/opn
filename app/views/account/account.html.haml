@@ -1,5 +1,5 @@
 - @title = "Account"
-\
+
 %h3 My Settings
 %br/
 
@@ -67,6 +67,11 @@
         %tr
           %td Member Number
           %td= "##{current_user.id}"
+        %tr
+          %td Karma
+          %td
+            800
+            = render "/shared/progress"
 
   .col-md-6
     .panel.panel-default
