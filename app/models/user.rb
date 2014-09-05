@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
   def forem_admin?
     self.has_role? :admin
   end
+
+  def can_moderate_forem_forum?(forum)
+    self.has_role? :forum_moderator or self.has_role? :admin
+  end
 end

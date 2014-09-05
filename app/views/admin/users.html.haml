@@ -14,6 +14,10 @@
               %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: 'forum_user'} Forum Users
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: 'forum_moderator'} Forum Moderators
         .col-sm-8
           .btn-group
             %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
@@ -55,6 +59,10 @@
                     %a.add-role{href: "#", data: {role: 'admin'}} Make Admin
                   %li
                     %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
+                  %li
+                    %a.add-role{href: "#", data: {role: 'admin'}} Make Forum User
+                  %li
+                    %a.add-role{href: "#", data: {role: 'owner'}} Make Forum Moderator
                   %li.divider
                   %li
                     %a.delete-user{href: "#"} Delete User
