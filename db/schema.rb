@@ -347,7 +347,7 @@ ActiveRecord::Schema.define(version: 20140905183143) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "label"
   end
 
 end

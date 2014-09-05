@@ -1,5 +1,5 @@
 class AddTypeToVotes < ActiveRecord::Migration
   def change
-    add_column :votes, :type, :string
+    add_column :votes, :label, :string
   end
 end

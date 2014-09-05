@@ -42,11 +42,11 @@ $(document).on "click", ".research_topics a.voting", () ->
     rating = 1
   else
     rating = 0
-  type = $(this).parent().data("type")
+  label = $(this).data("type")
   question_id = $(this).data("question-id")
 
 
-  $.post(submit_path, {question_id: question_id, rating: rating, type: type}, () ->
+  $.post(submit_path, {question_id: question_id, rating: rating, label: label}, () ->
     icon.toggleClass('fa-square-o').toggleClass("fa-check-square-o")
 
     if badge.length

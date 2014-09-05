@@ -4,8 +4,8 @@ class VotesController < ApplicationController
   def vote
     if current_user.todays_votes.length < current_user.vote_quota or Question.find(params[:question_id]).group != Group.research_question_group
       v = Vote.find_or_initialize_by(user_id: current_user.id, question_id: params[:question_id])
-      v.rating = params[:rating]
-      v.type = params[:type]
+      v.rating = params["rating"]
+      v.label = params["label"]
       v.save
     end
 

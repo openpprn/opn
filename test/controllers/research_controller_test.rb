@@ -15,6 +15,23 @@ class ResearchControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+
+  test "User can view research topics" do
+    login(users(:user_1))
+
+    get :research_topics
+
+    assert_response :success
+  end
+
+  test "User can view single research topic" do
+    login(users(:user_1))
+
+    get :research_question, id: questions(:q3).id
+
+    assert_not_nil assigns(:question)
+    assert_response :success
+  end
   #test "User can see a list of completed surveys" do
   #  login(users(:completed_survey))
   #
