@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   # Account Section
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
+  match 'update_account', to: 'account#update', as: 'update_account', via: :patch
+  match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
 
   # Admin Section
