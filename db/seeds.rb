@@ -87,6 +87,8 @@ unless Rails.env == "test"
 
   QuestionFlow.all.each {|qf| qf.reset_paths }
 
+
+
   if (user = User.find_by_email("piotr.mankowski@gmail.com"))
     user.add_role :admin
     user.add_role :owner
@@ -95,6 +97,18 @@ unless Rails.env == "test"
     user.add_role :admin
     user.add_role :owner
   end
+
+  if (user = User.find_by_email("seanahrens@gmail.com"))
+    user.add_role :admin
+    user.add_role :owner
+  else
+    user = User.create(email: "seanahrens@gmail.com", password: "password")
+    user.add_role :admin
+    user.add_role :owner
+  end
+
+
+
 
   # Forum
   Forem.decorate_user_class!
