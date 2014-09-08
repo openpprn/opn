@@ -211,7 +211,27 @@ class AnswerSession < ActiveRecord::Base
 
     coll
   end
-  
+
+
+  ## Reports
+
+  def epworth_sleepiness_scale
+    questions = Group.find(5).questions
+
+    answer_option_map = {1 => 3, 2 => 2, 3 => 1, 4 => 0}
+
+    questions.each do |question|
+      answer = question.user_answer(self)
+      
+    end
+
+  end
+
+  def promis
+
+  end
+
+
   private
 
   def completed_path
@@ -241,5 +261,6 @@ class AnswerSession < ActiveRecord::Base
       end
     end
   end
+
 
 end
