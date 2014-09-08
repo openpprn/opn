@@ -60,6 +60,23 @@ class User < ActiveRecord::Base
     self.has_role? :admin
   end
 
+  def can_create_forem_topics?(forum)
+    self.can?(:participate_in_social)
+  end
+
+  def can_reply_to_forem_topic?(topic)
+    self.can?(:participate_in_social)
+  end
+
+  def can_edit_forem_posts?(forum)
+    self.can?(:participate_in_social)
+  end
+
+  def can_destroy_forem_posts?(forum)
+    self.can?(:participate_in_social)
+  end
+
+
   def can_moderate_forem_forum?(forum)
     self.has_role? :forum_moderator or self.has_role? :admin
   end
