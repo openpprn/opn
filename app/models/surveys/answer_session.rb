@@ -220,11 +220,16 @@ class AnswerSession < ActiveRecord::Base
 
     answer_option_map = {1 => 3, 2 => 2, 3 => 1, 4 => 0}
 
+    score = 0
+
     questions.each do |question|
       answer = question.user_answer(self)
-      
+      question_score =  answer_option_map[answer.value.values.first] || 0
+
+      score = score + question_score
     end
 
+    score
   end
 
   def promis
