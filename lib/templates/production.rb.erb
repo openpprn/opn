@@ -79,7 +79,8 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  # config.active_record.dump_schema_after_migration = false
 end
 
 ENV["DATABASE_URL"] = "<%= print "Enter Database URL: "; db_url = gets.chomp; db_url %>"
+ENV['PATH'] = "/usr/local/bin:#{ENV['PATH']}"
