@@ -76,18 +76,19 @@ class Question < ActiveRecord::Base
   end
 
   def answer_frequencies
-    if [3,4].include? question_type.id
-      all_options = answer_options.to_a.sort_by!{|ao| ao.value(answer_type.data_type)}
+    if answer_templates.length == 1 and [3,4].include? answer_templates.first.display_type.id
+      at = answer_templates.first
+      all_options = at.answer_options.to_a.sort_by!{|ao| ao.value }
 
       groups = []
 
       all_options.each do |o|
-        groups << {label: o.value(answer_type.data_type), answers: [], count: 0, frequency: 0.0}
+        groups << {label: o.value, answers: [], count: 0, frequency: 0.0}
       end
 
-      total_answers = answers.select{|answer| answer.show_value.present?}.length
+      total_answers = answers.map(&:answer_values).flatten.map(&:show_value).length
 
-      answers.group_by{|answer| answer.show_value}.each_pair do |key, array|
+      answers.map(&:answer_values).flatten.group_by{|av| av.show_value}.each_pair do |key, array|
         g = groups.find{|x| x[:label] == key }
         if g
           g[:answers] = array
@@ -97,7 +98,7 @@ class Question < ActiveRecord::Base
       end
 
       groups
-    elsif question_type.id == 6
+
     end
 
   end

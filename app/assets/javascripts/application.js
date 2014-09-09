@@ -17,6 +17,7 @@
 //= require forem
 //= require jquery.slimscroll
 //= require jquery.PrintArea
+//= require d3.min
 //= require facebook
 //= require main
 //= require pages

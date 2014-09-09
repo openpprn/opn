@@ -16,8 +16,8 @@ Forem.per_page = 20
 # By default, these lines will use the layout located at app/views/layouts/forem.html.erb in your application.
 
 Rails.application.config.to_prepare do
-  Forem.layout = "dashboard"
-  Forem::ForumsController.layout "dashboard"
+  #Forem.layout = "dashboard"
+  #Forem::ForumsController.layout "dashboard"
 end
 
 module Forem
@@ -34,10 +34,10 @@ module Forem
 end
 
 class Forem::ApplicationController < ApplicationController
-  layout 'dashboard'
+  layout :layout_for_forem
 
-  before_action :authenticate_user!
-  before_action :authenticate_social
+  #before_action :authenticate_user!
+  #before_action :authenticate_social
 
   def terms_and_conditions
     render 'forem/terms_and_conditions'
@@ -47,5 +47,14 @@ class Forem::ApplicationController < ApplicationController
 
   def authenticate_social
     raise Authority::SecurityViolation.new(current_user, 'forum', action_name) unless current_user.can?(:participate_in_social)
+  end
+
+  def layout_for_forem
+    if current_user
+      'dashboard'
+    else
+      'myapnea/myapnea'
+    end
+
   end
 end

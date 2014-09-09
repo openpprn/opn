@@ -61,6 +61,22 @@ class AccountControllerTest < ActionController::TestCase
 
   end
 
+  test "User should be able to change email and name" do
+    login(users(:social))
+    new_last = "Boylston"
+    new_first = "Jimmy"
+    new_email = "new_email@new.com"
 
+    refute_equal new_last, users(:social).last_name
+    refute_equal new_first, users(:social).first_name
+    refute_equal new_email, users(:social).email
+
+    patch :update, user: {first_name: new_first, last_name: new_last, email: new_email}
+
+    users(:social).reload
+    assert_equal new_last, users(:social).last_name
+    assert_equal new_first, users(:social).first_name
+    assert_equal new_email, users(:social).email
+  end
 
 end

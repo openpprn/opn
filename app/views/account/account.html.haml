@@ -7,54 +7,63 @@
   .col-md-6
     .panel.panel-default
       .panel-heading
-        %h4.panel-title Email Address & Password
+        %h4.panel-title Name and Email
       .panel-body
-        %form.form-horizontal{role: "form"}
+        = form_for current_user, url: update_account_path do |f|
           .form-group
-            %label.col-sm-4.control-label Email
-            .col-sm-8
-              %p.form-control email@example.com
+            = f.label :first_name, class: 'sr-only'
+            = f.text_field :first_name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:first_name), autocomplete: :off
           .form-group
-            %label.col-sm-4.control-label{for: "inputPassword"} Password
-            .col-sm-8
-              %p.form-control-static
-                %a Reset Password
-
-
-
+            = f.label :last_name, class: 'sr-only'
+            = f.text_field :last_name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:last_name), autocomplete: :off
+          .form-group
+            = f.label :email, class: 'sr-only'
+            = f.email_field :email, class: 'form-control input-lg', placeholder: User.human_attribute_name(:email), autocomplete: :off
+          = f.submit "Save Changes", class: 'btn btn-primary pull-right'
     .panel.panel-default
       .panel-heading
-        %h4.panel-title Notification Preferences
+        %h4.panel-title Password
       .panel-body
-        %form.form-horizontal{role: "form"}
-          .radio
-            %label
-              %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
-              Email Me
-          .radio
-            %label
-              %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
-              Don't Email Me
-
-
-
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title Language
-      .panel-body
-        %form.form-horizontal{:role => "form"}
+        = form_for current_user, url: change_password_path do |f|
           .form-group
-            / %label.control-label.col-md-6{for: "inputPassword3"}
-            /   %i.fa.fa-globe &nbsp; Language:
-            .col-md-6
-              %select.form-control
-                %option
-                  %i.fa.fa-globe
-                  English
-                %option Spanish
+            = f.label :current_password, class: "sr-only"
+            = f.password_field :current_password, class: 'form-control input-lg', placeholder: 'Current Password'
+          .form-group
+            = f.label :password, class: 'sr-only'
+            = f.password_field :password, class: 'form-control input-lg', placeholder: "New Password"
+          = f.submit "Change my password", class: 'btn btn-warning pull-right'
+    -#.panel.panel-default{style: 'position: relative'}
+    -#  .panel-heading
+    -#    %h4.panel-title Notification Preferences
+    -#  .panel-body
+    -#    %form.form-horizontal{role: "form"}
+    -#      .radio
+    -#        %label
+    -#          %input#optionsRadios1{checked: "checked", name: "optionsRadios", type: "radio", value: "option1"}/
+    -#          Email Me
+    -#      .radio
+    -#        %label
+    -#          %input#optionsRadios2{name: "optionsRadios", type: "radio", value: "option2"}/
+    -#          Don't Email Me
 
 
-    %button.btn.btn-primary.pull-right Save
+
+    -#.panel.panel-default{style: 'position: relative'}
+    -#  = render partial: 'shared/coming_soon'
+    -#  .panel-heading
+    -#    %h4.panel-title Language
+    -#  .panel-body
+    -#    %form.form-horizontal{:role => "form"}
+    -#      .form-group
+    -#        / %label.control-label.col-md-6{for: "inputPassword3"}
+    -#        /   %i.fa.fa-globe &nbsp; Language:
+    -#        .col-md-6
+    -#          %select.form-control
+    -#            %option
+    -#              %i.fa.fa-globe
+    -#              English
+    -#            %option Spanish
+
 
   .col-md-6
     .panel.panel-default
@@ -64,14 +73,6 @@
         %tr
           %td Member Since
           %td= current_user.created_at.strftime("%b %e, %Y")
-        %tr
-          %td Member Number
-          %td= "##{current_user.id}"
-        %tr
-          %td Karma
-          %td
-            800
-            = render "/shared/progress"
 
   .col-md-6
     .panel.panel-default

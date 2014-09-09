@@ -20,11 +20,15 @@
       %h1= @pc['main_header']
       %p.sub-header= @pc['sub_header']
       = markdown @pc['content']
-    .col-md-2
+    .col-md-2.text-center
+      %br.hidden-xs/
+      %br.hidden-xs/
       #memberCount
         .countHeader= @pc['goal']['header']
         .countGoal= @pc['goal']['number']
         .goalSuffix= @pc['goal']['members']
+    %br/
+  .row
     - ['learn', 'share', 'research'].each do |topic|
       .col-md-4
         .well.text-center.topic

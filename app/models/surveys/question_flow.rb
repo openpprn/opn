@@ -140,7 +140,11 @@ class QuestionFlow < ActiveRecord::Base
     update_attributes(tsorted_edges: nil, longest_time: nil, longest_path: nil)
   end
 
+
+
+
   private
+
 
 
 end
