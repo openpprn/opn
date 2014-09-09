@@ -46,9 +46,13 @@
               %h4 Who can join MyApnea.Org?
               %p Membership in MyApnea.Org is open to any person who has been told by a doctor that they have sleep apnea or who has a concern that they have sleep apnea, and who wants to share and learn from others to shape future research and treatments. Caregivers of family members with sleep apnea will also be able to join and help their loved ones participate.
               %p
-                To SHARE with others within MyApnea.Org, we will ask you to
+                To
+                = link_to "SHARE", share_path
+                with others within MyApnea.Org, we will ask you to
                 = link_to 'sign up', new_user_registration_path
-                by providing your name, email, password, and birth year. To contribute to the RESEARCH portal, you will need to read and agree to the
+                by providing your name, email, password, and birth year. To contribute to the
+                = link_to "RESEARCH", research_path
+                portal, you will need to read and agree to the
                 = link_to 'informed consent form', consent_path
                 in addition to signing up for the site.
 
@@ -58,7 +62,9 @@
                 = link_to 'sign up', new_user_registration_path
                 with your name, email, password, and birth year. You can then visit and explore the community pages to learn more about sleep apnea and to talk with other people like you. If you want to join the patient-led research community, you will need to
                 = link_to 'read and sign the informed consent', consent_path
-                before you can join the RESEARCH portal.
+                before you can join the
+                = link_to "RESEARCH", research_path
+                portal.
 
               %h4 Why do I have to sign a consent form to participate in the research portal?
               %p The goal of MyApnea.Org is to actively engage thousands of people with sleep apnea to share health information needed for research to improve the health and wellbeing of people with apnea. To collect your information, we need your permission, which you give by signing the consent form.
