@@ -41,7 +41,11 @@ class User < ActiveRecord::Base
   end
 
   def forem_name
-    email
+    if social_profile and social_profile.name.present?
+      social_profile.name
+    else
+      "Anonymous User"
+    end
   end
 
   def to_s
