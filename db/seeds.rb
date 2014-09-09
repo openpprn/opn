@@ -97,7 +97,8 @@ unless Rails.env == "test"
   # # Forum
   # Forem.decorate_user_class!
 
-  # Forem::Category.create(:name => 'General')
+  general = Forem::Category.where( name: 'General' ).first_or_create
+  forum = general.forums.where( name: 'Introductions' ).first_or_create( description: 'Are you new to the site? Stop in and say hi!' )
 
   # #user = Forem.user_class.first
 
