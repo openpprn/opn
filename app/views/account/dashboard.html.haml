@@ -10,6 +10,7 @@
     %li{ data: { slide_to: '1', target: "#reason-carousel" } }
     %li{ data: { slide_to: '2', target: "#reason-carousel" } }
     %li{ data: { slide_to: '3', target: "#reason-carousel" } }
+    %li{ data: { slide_to: '4', target: "#reason-carousel" } }
   .carousel-inner
     %div{ class: "item active" }
       = image_tag 'myapnea/dashboard/slide-01-social-profile.png'
@@ -24,9 +25,13 @@
       .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
         Step 3: Reply to other users' posts
     %div{ class: "item" }
-      = image_tag 'myapnea/dashboard/slide-04-filling-out-surveys.png'
+      = image_tag 'myapnea/dashboard/slide-04-consent-privacy.png'
       .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
-        Step 4: Fill out surveys to help researchers
+        Step 4: Read and sign research consent
+    %div{ class: "item" }
+      = image_tag 'myapnea/dashboard/slide-05-filling-out-surveys.png'
+      .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
+        Step 5: Fill out surveys to help researchers
   %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
     %span.icon-prev
   %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
