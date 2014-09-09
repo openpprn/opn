@@ -19,6 +19,14 @@
           %span.small Don't let other people on this site see my info or any map marker for me.
 
     .panel-body
+      - if @social_profile.errors.any?
+        .alert.alert-danger.alert-dismissable
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+          %strong Profile Errors
+          %ul
+            - @social_profile.errors.full_messages.each do |msg|
+              %li= msg.html_safe
+
       .form-group
         %label.col-sm-3.control-label
           = image_tag current_user.photo_url, :class => "img-responsive img-thumbnail"
