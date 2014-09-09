@@ -64,6 +64,9 @@ GEM
       activerecord (~> 4.0, >= 4.0.0)
     acts-as-taggable-on (3.4.1)
       activerecord (>= 3.2, < 5)
+    airbrake (4.1.0)
+      builder
+      multi_json
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
     authority (3.0.0)
@@ -277,6 +280,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-dag
   acts-as-taggable-on
+  airbrake
   authority
   autoprefixer-rails
   better_errors
