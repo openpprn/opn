@@ -41,7 +41,7 @@ module SurveysHelper
     next_qf = QuestionFlow.where(status: "show").select{|qf| qf.id != current_qf.id }.first
     as = user.answer_sessions.where(question_flow_id: next_qf.id)
 
-    start_or_resume(next_qf, as)
+    start_or_resume_survey(next_qf, as)
   end
 
   def bmi(height, weight)
