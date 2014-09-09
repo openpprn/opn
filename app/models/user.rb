@@ -43,7 +43,24 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+  def created_social_profile?
+    self.social_profile.present? and self.social_profile.name.present?
+  end
+
+  def signed_consent?
+    self.accepted_consent_at.present?
+  end
+
   def forem_admin?
     self.has_role? :admin
+  end
+
+  def todays_votes
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.label == "research_question" }
+  end
+
+  def available_votes_percent
+    (todays_votes.length.to_f / vote_quota) * 100.0
   end
 end

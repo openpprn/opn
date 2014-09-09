@@ -12,11 +12,18 @@
     In the past 7 days...
 - id: 39
   message_en: |
-    Has a doctor or health care professional ever told you that you had any of the following,
-    check all that apply:
+    Has a doctor or health care professional ever told you that you had any of the following?
+    Check all that apply.
 - id: 40
   message_en: |
     The following questions ask about your health and health problems you have been diagnosed with.
 - id: 41
   message_en: |
     The following questions are about you and can help you compare yourself to others with sleep apnea.
+- id: 1001
+  message_en: |
+    Did any of the following symptoms trigger you to be evaluated for sleep apnea?
+
+- id: 1002
+  message_en: |
+    Please indicate how you think your sleep apnea treatment has influenced the following symptoms.

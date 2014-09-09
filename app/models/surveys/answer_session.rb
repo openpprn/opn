@@ -10,18 +10,26 @@ class AnswerSession < ActiveRecord::Base
     answer_sessions.empty? ? nil : answer_sessions.first
   end
 
-  def calculate_status_stats
+  def calculate_status_stats(answer=nil)
     completed = completed_path
     remaining = remaining_path
 
+    if answer.present?
+      current_path = path_until_answer(answer)
+      percent_completed =  (current_path.sum{|x| x.question.time_estimate}.to_f / (completed[:time] + remaining[:time])) * 100
+    else
+      percent_completed = (completed[:time] / (completed[:time] + remaining[:time])) * 100
+    end
+
     {
-        percent_completed: (completed[:time] / (completed[:time] + remaining[:time])) * 100,
+        percent_completed: percent_completed,
         completed_questions: completed[:distance],
         remaining_questions: remaining[:distance],
         total_questions: completed[:distance] + remaining[:distance],
         completed_time: completed[:time],
         remaining_time: remaining[:time],
         total_time: completed[:time] + remaining[:time]
+
     }
   end
 
@@ -44,29 +52,116 @@ class AnswerSession < ActiveRecord::Base
     # Create answer edge from tail to new answer
 
     #answer_values =
+
+
+    # Create new or find old answer object
     answer = Answer.where(question_id: question.id, answer_session_id: self.id).first || Answer.new(question_id: question.id, answer_session_id: self.id)
 
+    # Options:
+    # If new, create answer values and save
+    #   also, since we're always adding new answers at the tail, set edge from end to new answer, and set new end
 
-    if answer.new_record? or answer.string_value != params[question.id.to_s] or answer.in_edge.blank?
+    # If existing
+    ## If value is changing
+    ### set new value
+    #### if more than one possible route out
+    ##### destroy descendents and set last_answer to this one
+    #### else, do nothing
+    ## else do nothing
+
+    #
+
+=begin
+  new record that's also the first answer in answer session:
+    - set value
+    - save
+    - set to first answer
+    - set to last answer
+  new record in an existing answer session
+    - set value
+    - save
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and no in edge and is first answer
+    - set value
+    - save
+    - destroy downstream edges
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and no in edge
+    - set value
+    - save
+    - destroy downstream edges
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with new value(s) and multiple downstream options and an in edge
+    - set value
+    - save
+    - destroy downstream edges
+    - set to last answer
+
+  existing record with new value(s) and one downstream option and no in edge and is first answer
+    - set value
+    - save
+
+  existing record with new value(s) and one downstream option and no in edge
+    - set value
+    - save
+    - set edge from previous answer
+    - set to last answer
+
+
+  existing record with new value(s) one downstream option and an in edge
+    - set value
+    - save
+
+  existing record with no new values and is first and no in edge
+    - nothing!!
+
+  existing record with no new values and no in edge
+    - set edge from previous answer
+    - set to last answer
+
+  existing record with no new values and an in edge
+    - nothing!!
+
+
+
+
+  new record: do everything
+
+
+  existing record with
+=end
+    # New Record: do everything
+    answer_modified = false
+
+    if answer.new_record? or answer.string_value != params[question.id.to_s]
+      # Set Value and Save
+
       answer.value = params[question.id.to_s]
       answer.save
-
-
-      if self.first_answer_id.blank?
-        self.first_answer_id = answer.id
-      else
-        if answer.in_edge.blank? and answer != first_answer
-          answer_edges.create(parent_answer_id: last_answer.id, child_answer_id: answer.id)
-        else
-          # Only destroy downstream if answer can change flow
-          answer.destroy_descendant_edges if answer.multiple_options?
-        end
-      end
-
-      self.last_answer_id = answer.id
-      self.save
+      answer_modified = true
     end
 
+    if first_answer_id.blank?
+      # if no first answer, set it!
+      self[:first_answer_id] = answer.id
+      self[:last_answer_id] = answer.id
+    elsif answer.in_edge.blank? and self[:first_answer_id] != answer.id
+      # No in edge (and not first answer)...you need to set it
+      answer_edges.create(parent_answer_id: last_answer.id, child_answer_id: answer.id)
+      self[:last_answer_id] = answer.id
+    end
+
+    if answer_modified and answer.multiple_options?
+      answer.destroy_descendant_edges
+      self[:last_answer_id] = answer.id
+    end
+
+    self.save
     answer
   end
 
@@ -75,7 +170,7 @@ class AnswerSession < ActiveRecord::Base
   end
 
   def all_reportable_answers
-    all_answers.select {|answer| [3].include?(answer.question.question_type.id) and answer.show_value.present? }
+    all_answers.select {|answer| answer.answer_values.map{|av| av.answer_template.data_type }.include? "answer_option_id" and answer.show_value.present? }
   end
 
   def get_answer(question_id)
@@ -97,6 +192,26 @@ class AnswerSession < ActiveRecord::Base
     end
   end
 
+  def path_until_answer(answer)
+    if last_answer.blank?
+      coll = []
+      current_answer = answer
+    elsif answer.new_record?
+      coll = [answer]
+      current_answer = last_answer
+    else
+      current_answer = answer.clone
+      coll = []
+    end
+
+    while current_answer
+      coll << current_answer
+      current_answer = current_answer.previous_answer
+    end
+
+    coll
+  end
+  
   private
 
   def completed_path
@@ -105,6 +220,7 @@ class AnswerSession < ActiveRecord::Base
 
     {time: time, distance: distance}
   end
+
 
   def remaining_path
 

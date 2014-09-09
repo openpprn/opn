@@ -2,3 +2,13 @@
   name: Research Questions
 - id: 2
   name: Daily Trends
+- id: 3
+  name: Symptoms Causing Evaluation for Sleep Apnea
+- id: 4
+  name: Symptoms Influenced by Sleep Apnea Treatment
+- id: 5
+  name: Chance of Dozing Off or Falling Asleep
+- id: 6
+  name: Sleep in Past 7 Days
+- id: 7
+  name: Doctor Diagnosis

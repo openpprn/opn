@@ -5,10 +5,11 @@ user_<%= i %>:
 
 social:
   email: tommyboy@gmail.com
+  accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
 
 
 admin:
-  email: admin@mail.com
+  email: support@myapnea.org
   roles: admin
 
 owner:

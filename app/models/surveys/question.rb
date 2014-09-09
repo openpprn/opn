@@ -1,10 +1,6 @@
 class Question < ActiveRecord::Base
-  belongs_to :question_type
-  belongs_to :answer_type
+  has_and_belongs_to_many :answer_templates
   belongs_to :group
-  belongs_to :unit
-  has_many :question_answer_options, -> { order "question_answer_options.created_at" }
-  has_many :answer_options, through: :question_answer_options
   has_many :answers
   has_many :votes
   belongs_to :question_help_message
@@ -19,13 +15,29 @@ class Question < ActiveRecord::Base
   has_dag_links :link_class_name => 'QuestionEdge'
 
   def next_question(question_flow)
-    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
     candidate_edges.first
   end
 
   def previous_question(question_flow)
-    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id)
+    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
     candidate_edges.first
+  end
+
+  def default_next_question(question_flow)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
+  end
+
+  def default_previous_question(question_flow)
+    candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor
+  end
+
+  def conditional_children(question_flow)
+    candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
+    candidate_edges.select {|edge| edge.condition.present? }.map(&:descendant)
+
   end
 
   def user_answer(answer_session)
@@ -38,6 +50,29 @@ class Question < ActiveRecord::Base
 
   def has_vote?(user, rating)
     votes.where(user_id: user.id, rating: rating).count > 0
+  end
+
+  def part_of_group?
+    group.present?
+  end
+
+  def group_member?(q)
+    group_members.include? q
+  end
+
+  def group_members
+    if part_of_group?
+      group.questions
+    else
+      nil
+    end
+
+  end
+
+  def answer_templates=(attribute_list)
+    attribute_list.each do |attrs|
+      answer_templates.build(attrs)
+    end
   end
 
   def answer_frequencies

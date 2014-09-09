@@ -1,0 +1,24 @@
+%p
+  - if answer.present?
+    - if answer.question.part_of_group?
+      - from = answer_session.path_until_answer(answer).length
+      - to = from + answer.question.group.questions.length - 1
+      You're currently working on questions
+      = "#{from} to #{to}"
+    - else
+      You're currently working on question
+      = answer_session.path_until_answer(answer).length
+    of
+    = stats[:total_questions]
+    \.
+  - else
+    You've completed
+    = stats[:completed_questions]
+    of
+    = stats[:total_questions]
+    questions.
+.progress
+  .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => stats[:percent_completed], :role => "progressbar", :style => "width: #{stats[:percent_completed]}%"}
+    %span.sr-only
+      = stats[:percent_completed]
+      \% Complete
