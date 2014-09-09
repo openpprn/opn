@@ -2,15 +2,46 @@
 
 %p We're very excited to have you as a member of this community. This page is your dashboard where you can access and participate in the MyApnea.Org community and research.
 
-%h3 New here? Here's a short video introducing you to the site
-.embed-responsive.embed-responsive-16by9
-  %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
+%h3 New here? Here are some slides to introduce you to the site
+
+#reason-carousel.carousel.slide
+  %ol.carousel-indicators
+    %li{ class: 'active', data: { slide_to: '0', target: "#reason-carousel" } }
+    %li{ data: { slide_to: '1', target: "#reason-carousel" } }
+    %li{ data: { slide_to: '2', target: "#reason-carousel" } }
+    %li{ data: { slide_to: '3', target: "#reason-carousel" } }
+  .carousel-inner
+    %div{ class: "item active" }
+      = image_tag 'myapnea/dashboard/slide-01-social-profile.png'
+      .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
+        Step 1: Create a social profile
+    %div{ class: "item" }
+      = image_tag 'myapnea/dashboard/slide-02-posting-to-forum.png'
+      .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
+        Step 2: Post your thoughts on the forums
+    %div{ class: "item" }
+      = image_tag 'myapnea/dashboard/slide-03-replying-to-posts.png'
+      .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
+        Step 3: Reply to other users' posts
+    %div{ class: "item" }
+      = image_tag 'myapnea/dashboard/slide-04-filling-out-surveys.png'
+      .carousel-caption{ style: 'border-radius: 4px; background-color:#f0ad4e' }
+        Step 4: Fill out surveys to help researchers
+  %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
+    %span.icon-prev
+  %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
+    %span.icon-next
+
 
 %h3
   So, what to do next? Use the links to the left to:
 %ul
-  %li Create a social profile to join and contribute to the community
-  %li Get involved in sleep apnea research by signing a consent form
+  %li
+    = link_to 'Create a social profile', social_profile_path
+    to join and contribute to the community
+  %li
+    Get involved in sleep apnea research by
+    = link_to 'signing a consent form', consent_path
 
 
 %h3 Lost? Have a question, comment, or suggestion?
