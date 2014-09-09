@@ -30,6 +30,7 @@ capybara-*.html
 /public/assets
 /public/public
 /public/uploads
+/test/support/uploads
 /coverage/
 /spec/tmp/*
 **.orig
