@@ -79,7 +79,7 @@ unless Rails.env == "test"
 
     qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
 
-    puts("Creating edge #{i} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
+    puts("Creating edge #{i+1} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
     raise StandardError, qe.errors.full_messages unless qe.save
   end
 
