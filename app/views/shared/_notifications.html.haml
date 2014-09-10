@@ -1,11 +1,10 @@
 .panel.panel-default
+  = render partial: "shared/coming_soon"
   .panel-heading
     %h3.panel-title Notifications
 
 
   %ul.list-group.small
-    - if editable
-      = render partial: 'shared/posts_form', locals: { type: :notification }
     - notifications.each do |notification|
       %li.list-group-item
         %small
@@ -17,9 +16,11 @@
         - if editable
           %button.btn.btn-danger.btn-xs.pull-right Delete
           .clearfix
-  .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
     .text-center.small
-      = link_to "Show More...", "#"
+      = link_to "Show More...", "#" if notifications.present?
+
+    - if editable
+      = render partial: 'shared/posts_form', locals: { type: :notification }
 
 
 

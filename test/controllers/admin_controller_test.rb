@@ -104,6 +104,23 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+  test "should show notification administration to admins" do
+    login(users(:admin))
+
+    get :notifications
+
+    assert_response :success
+
+  end
+
+  test "should not show notification administration to normal users" do
+    login(users(:user_1))
+
+    get :notifications
+
+    assert_authorization_exception
+  end
+
   def assert_authorization_exception
     assert_response 302
     assert flash[:alert]
