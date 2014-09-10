@@ -1,4 +1,6 @@
 #forums_container
+  = render @categories
+
   %ol.breadcrumb
     %li Forums
     - if forem_admin?
@@ -23,6 +25,4 @@
             %li What questions related to sleep apnea prevention, diagnosis and treatment need better answers?
             %li What sleep apnea questions do we have good answers for and what ones need more research?
             %li How would better research improve the lives of people with sleep apnea?
-        %p Let the dialogue begin here so that we can work together to improve sleep apnea for all.
-
-  = render @categories
+        %p Let the dialogue begin here so that we can work together to improve the lives of people with sleep apnea.
