@@ -56,14 +56,17 @@
           %div{class: "item #{'active' if i == 0}"}
             .row
               .col-md-4
-                .testimonialImg= image_tag testimonial['image']
-              .col-md-7.col-md-offset-1
+                .testimonial-img-container
+                  .visible-xs.visible-sm
+                    = image_tag testimonial['image'], class: 'img-thumbnail'
+                  .visible-md.visible-lg
+                    = image_tag testimonial['image']
+              .col-md-5.col-md-offset-1
                 .vertical-center
-                  .cell
-                    %blockquote
-                      %p= testimonial['quote']
-                      %footer.pull-right
-                        %cite= testimonial['name']
+                  %blockquote
+                    %p{ 'style' => 'line-height: 1.3;'}= testimonial['quote']
+                    %footer.pull-right
+                      %cite= testimonial['name']
       %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
         %span.icon-prev
       %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
