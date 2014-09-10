@@ -32,8 +32,6 @@ ruby lib/initial_setup.rb
 
 bundle exec rake db:migrate RAILS_ENV=production
 
-bundle exec rake db:fixtures:load RAILS_ENV=production
-
 bundle exec rake db:seed RAILS_ENV=production
 
 bundle exec rake assets:precompile RAILS_ENV=production
