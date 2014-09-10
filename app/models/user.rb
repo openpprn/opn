@@ -12,11 +12,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Model Validation
+  validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
+
+  # Model Relationships
   has_many :answer_sessions
   has_many :answers
   has_many :votes
   has_one :social_profile
 
+  # Named Scopes
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
 
   def name

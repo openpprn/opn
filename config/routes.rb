@@ -90,7 +90,7 @@ Rails.application.routes.draw do
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
 
-  devise_for :user
+  devise_for :user, controllers: { registrations: 'registrations' }
 
 
 
