@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  before_action :authenticate_user!, except: [:consent, :privacy_policy]
+  before_action :authenticate_user!, except: [:consent, :privacy_policy, :terms_and_conditions]
 
   # def view_consent
   #   @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
@@ -34,7 +34,7 @@ class AccountController < ApplicationController
   end
 
   def terms_and_conditions
-    render layout: 'dashboard'
+    render layout: current_user ? 'dashboard' : 'myapnea/myapnea'
   end
 
   def update

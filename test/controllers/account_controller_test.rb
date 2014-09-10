@@ -79,4 +79,20 @@ class AccountControllerTest < ActionController::TestCase
     assert_equal new_email, users(:social).email
   end
 
+  test "Terms and conditions should be visible to all without requiring login" do
+    get :terms_and_conditions
+
+    assert_response :success
+    assert_template layout: 'myapnea/myapnea'
+  end
+
+  test "Terms and conditions should render dashboard layout when logged in" do
+    login(users(:social))
+
+    get :terms_and_conditions
+
+    assert_response :success
+    assert_template layout: 'dashboard'
+  end
+
 end
