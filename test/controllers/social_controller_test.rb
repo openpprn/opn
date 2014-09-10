@@ -34,6 +34,20 @@ class SocialControllerTest < ActionController::TestCase
     assert_equal profile_params[:social_profile][:name], users(:user_1).social_profile.name
   end
 
+
+  test "should not allow user to save profile with non-unique name" do
+    login(users(:user_1))
+
+    post :update_profile, social_profile: { name: 'tom haverford' }
+
+    assert_not_nil assigns(:social_profile)
+    assert assigns(:social_profile).errors.size > 0
+    assert_equal ["has already been taken"], assigns(:social_profile).errors[:name]
+
+    assert_template 'profile'
+    assert_response :success
+  end
+
   test "List of locations of opted in users is available" do
 
 
