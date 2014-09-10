@@ -121,17 +121,19 @@
         }
       }
 
-      .testimonialImg {
-        top: 30px;
-        border-radius: 0 237px 237px 0;
-        height: 237px;
-        position: absolute;
-        border: 0px solid rgba(0,0,0,0.1);
-        box-shadow:$subtleShadow inset;
-        width: 100%;
+      .testimonial-img-container {
+        text-align: center;
+      }
 
-        overflow: hidden;
+      @media screen and (min-width:992px) {
+        .testimonial-img-container {
+          border-radius: 0 237px 237px 0;
+          height: 237px;
+          border: 0px solid rgba(0,0,0,0.1);
+          box-shadow:$subtleShadow inset;
 
+          overflow: hidden;
+        }
       }
 
     }
