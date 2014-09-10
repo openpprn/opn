@@ -104,6 +104,7 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+  # Notifications
   test "should show notification administration to admins" do
     login(users(:admin))
 
@@ -117,6 +118,24 @@ class AdminControllerTest < ActionController::TestCase
     login(users(:user_1))
 
     get :notifications
+
+    assert_authorization_exception
+  end
+
+  # Research Topics
+  test "should show research topic administration to admins" do
+    login(users(:admin))
+
+    get :research_topics
+
+    assert_response :success
+
+  end
+
+  test "should not show research topic administration to normal users" do
+    login(users(:user_1))
+
+    get :research_topics
 
     assert_authorization_exception
   end
