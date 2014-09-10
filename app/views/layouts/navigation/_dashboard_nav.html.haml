@@ -5,9 +5,7 @@
   - else
     %a.list-group-item#social-profile-link{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} Create Social Profile
   %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Overview
-  %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/} #{'disabled' unless current_user.created_social_profile?}"}
-    - unless current_user.created_social_profile?
-      %i.fa.fa-lock
+  %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
     Discussion Forum
 .small
   %p
