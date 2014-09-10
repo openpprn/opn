@@ -45,7 +45,7 @@
             %td
               - user.roles.each do |role|
                 %span.label.label-default{:style => "margin-right: 5px;"}
-                  = role.name.capitalize
+                  = role.name.titleize
                   %a.remove-role{data: {role: role.name}, :style => "color: inherit;"}
                     %i.fa.fa-times
 
@@ -60,9 +60,9 @@
                   %li
                     %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
                   %li
-                    %a.add-role{href: "#", data: {role: 'admin'}} Make Forum User
+                    %a.add-role{href: "#", data: {role: 'forum_user'}} Make Forum User
                   %li
-                    %a.add-role{href: "#", data: {role: 'owner'}} Make Forum Moderator
+                    %a.add-role{href: "#", data: {role: 'forum_moderator'}} Make Forum Moderator
                   %li.divider
                   %li
                     %a.delete-user{href: "#"} Delete User
