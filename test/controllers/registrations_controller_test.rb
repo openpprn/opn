@@ -31,8 +31,36 @@ class RegistrationsControllerTest < ActionController::TestCase
     assert assigns(:user).errors.size > 0
     assert_equal ["can't be blank"], assigns(:user).errors[:first_name]
     assert_equal ["can't be blank"], assigns(:user).errors[:last_name]
-    assert_equal ["can't be blank"], assigns(:user).errors[:year_of_birth]
+    assert_equal ["can't be blank", "is not a number"], assigns(:user).errors[:year_of_birth]
     assert_equal ["can't be blank"], assigns(:user).errors[:zip_code]
+
+    assert_template 'devise/registrations/new'
+    assert_response :success
+  end
+
+  test "a new user needs to meet the age requirements" do
+    assert_difference('User.count', 0) do
+      post :create, user: { first_name: 'First Name', last_name: 'Last Name', year_of_birth: "#{Date.today.year - 17}", zip_code: '12345', email: 'new_user@example.com', password: 'password', password_confirmation: 'password' }
+    end
+
+    assert_not_nil assigns(:user)
+
+    assert assigns(:user).errors.size > 0
+    assert_equal ["must be less than or equal to #{Date.today.year - 18}"], assigns(:user).errors[:year_of_birth]
+
+    assert_template 'devise/registrations/new'
+    assert_response :success
+  end
+
+  test "a new user needs to be born after 1900" do
+    assert_difference('User.count', 0) do
+      post :create, user: { first_name: 'First Name', last_name: 'Last Name', year_of_birth: "1899", zip_code: '12345', email: 'new_user@example.com', password: 'password', password_confirmation: 'password' }
+    end
+
+    assert_not_nil assigns(:user)
+
+    assert assigns(:user).errors.size > 0
+    assert_equal ["must be greater than or equal to 1900"], assigns(:user).errors[:year_of_birth]
 
     assert_template 'devise/registrations/new'
     assert_response :success
