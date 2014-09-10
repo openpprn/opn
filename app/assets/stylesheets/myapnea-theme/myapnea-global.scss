@@ -153,6 +153,10 @@ ul {
   list-style-image: url('#{$assets-path}/myapnea/icons/myapnea-logo-list-style-image.png');
 }
 
+ul.unstyled {
+  list-style-image: none;
+}
+
 p{
   margin:20px 0;
   line-height: 1.75;
@@ -206,4 +210,18 @@ body#MyApnea {
 
   }
 
+}
+
+// Forms
+
+.field_with_errors {
+  .form-control:focus {
+    border-color: darken($alert-danger-border, 10%);
+    $myshadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $alert-danger-border;
+    @include box-shadow($myshadow);
+  }
+
+  .form-control {
+    border: 1px solid $alert-danger-border;
+  }
 }

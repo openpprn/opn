@@ -33,6 +33,11 @@ class AccountController < ApplicationController
 
   end
 
+  def account
+    @user = current_user
+  end
+
+
   def terms_and_conditions
     render layout: current_user ? 'dashboard' : 'myapnea/myapnea'
   end
@@ -43,6 +48,7 @@ class AccountController < ApplicationController
     if @user.update(user_params)
       redirect_to account_path, notice: "Your account settings have been successfully changed."
     else
+      @update_for = :user_info
       render "account"
     end
   end
@@ -55,6 +61,7 @@ class AccountController < ApplicationController
       sign_in @user, :bypass => true
       redirect_to account_path, alert: "Your password has been changed."
     else
+      @update_for = :password
       render "account"
     end
   end
@@ -63,7 +70,7 @@ class AccountController < ApplicationController
 
   def user_params
     # NOTE: Using `strong_parameters` gem
-    params.required(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :current_password)
+    params.required(:user).permit(:email, :first_name, :last_name, :zip_code, :year_of_birth, :password, :password_confirmation, :current_password)
   end
 
   def load_content

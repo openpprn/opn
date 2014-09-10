@@ -7,9 +7,11 @@
   .col-md-6
     .panel.panel-default
       .panel-heading
-        %h4.panel-title Name and Email
+        %h4.panel-title User Information
       .panel-body
-        = form_for current_user, url: update_account_path do |f|
+        - if @user.errors.any? and @update_for == :user_info
+          = render partial: "shared/form_errors", locals: {resource: @user, message: "Your account settings could not be saved."}
+        = form_for @user, url: update_account_path do |f|
           .form-group
             = f.label :first_name, class: 'sr-only'
             = f.text_field :first_name, class: 'form-control input-lg', placeholder: User.human_attribute_name(:first_name), autocomplete: :off
@@ -19,12 +21,20 @@
           .form-group
             = f.label :email, class: 'sr-only'
             = f.email_field :email, class: 'form-control input-lg', placeholder: User.human_attribute_name(:email), autocomplete: :off
+          .form-group
+            = f.label :zip_code, class: 'sr-only'
+            = f.text_field :zip_code, class: 'form-control input-lg', placeholder: User.human_attribute_name(:zip_code), autocomplete: :off
+          .form-group
+            = f.label :year_of_birth, class: 'sr-only'
+            = f.text_field :year_of_birth, class: 'form-control input-lg', placeholder: User.human_attribute_name(:year_of_birth), autocomplete: :off
           = f.submit "Save Changes", class: 'btn btn-primary pull-right'
     .panel.panel-default
       .panel-heading
         %h4.panel-title Password
       .panel-body
-        = form_for current_user, url: change_password_path do |f|
+        - if @user.errors.any? and @update_for == :password
+          = render partial: "shared/form_errors", locals: {resource: @user, message: "Your new password could not be saved."}
+        = form_for @user, url: change_password_path do |f|
           .form-group
             = f.label :current_password, class: "sr-only"
             = f.password_field :current_password, class: 'form-control input-lg', placeholder: 'Current Password'
