@@ -6,6 +6,10 @@
 
 A collaboration to build an open-source solution for creating patient-powered research networks.
 
+## Before Starting Installation
+
+Make sure you have reviewed and installed any [prerequisites](https://github.com/openpprn/opn/blob/master/PREREQUISITES.md).
+
 ## Installation
 
 ```
