@@ -11,7 +11,6 @@ namespace :surveys do
         "questions",
         "question_flows",
         "question_help_messages",
-        "question_edges",
         "units"
     ]
 
@@ -79,7 +78,7 @@ namespace :surveys do
   task :update_question_edges => :environment do
     if warn_user                        #      ActiveRecord::Base.connection.execute("SELECT SETVAL('#{table}_id_seq', 100000000)")
 
-      clean_tables(["question_edges"])
+      clean_join_tables(["question_edges"])
 
       qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
 
