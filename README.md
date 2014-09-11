@@ -46,3 +46,32 @@ rails s -p80
 Open a browser and go to: [http://localhost](http://localhost)
 
 All done!
+
+
+### First time installation (create)
+
+```
+ruby lib/initial_setup.rb
+
+bundle exec rake db:migrate RAILS_ENV=production
+
+bundle exec rake db:seed RAILS_ENV=production
+
+bundle exec rake surveys:create RAILS_ENV=production
+
+bundle exec rake assets:precompile RAILS_ENV=production
+```
+
+
+
+### Updating an existing installation (update)
+
+```
+git pull
+
+bundle exec rake db:migrate RAILS_ENV=production
+
+bundle exec rake surveys:update RAILS_ENV=production
+
+bundle exec rake assets:precompile RAILS_ENV=production
+```
