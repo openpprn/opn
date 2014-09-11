@@ -1,3 +1,4 @@
+require 'emoji'
 Forem.user_class = "User"
 Forem.main_layout = "myapnea/myapnea"
 Forem.admin_layout = "admin"
