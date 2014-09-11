@@ -138,8 +138,6 @@ class Answer < ActiveRecord::Base
   def next_question
     candidate_edges = QuestionEdge.where(parent_question_id: question.id, direct: true, question_flow_id: answer_session.question_flow.id)
 
-    #raise StandardError
-
     if candidate_edges.empty?
       nil
     else

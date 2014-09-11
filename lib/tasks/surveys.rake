@@ -1,6 +1,28 @@
 namespace :surveys do
-  desc "Reload survey questions and answer options"
-  task :reload_questions => :environment do
+  SEQUENCE_VALUE = 10000000
+
+  desc "Truncate survey tables and create reserved id space for survey model tables by setting sequence startpoint"
+  task :setup_db => :environment do
+    survey_tables = [
+        "answer_options",
+        "answer_templates",
+        "display_types",
+        "groups",
+        "questions",
+        "question_flows",
+        "question_help_messages",
+        "question_edges",
+        "units"
+    ]
+
+    survey_tables.each do |table|
+      ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+      ActiveRecord::Base.connection.execute("SELECT SETVAL('#{table}_id_seq', #{SEQUENCE_VALUE})")
+    end
+  end
+
+  desc "Update all survey models except for question endges."
+  task :update_questions => :environment do
     if warn_user
       tables_to_update = [
           "answer_options",
@@ -15,7 +37,14 @@ namespace :surveys do
           "units"
       ]
 
-      truncate_tables(tables_to_update)
+      join_tables = [
+          "answer_options_answer_templates",
+          "answer_templates_questions"
+      ]
+
+
+      clean_tables(tables_to_update)
+      clean_join_tables(join_tables)
 
       files = [
           ["units.yml", Unit],
@@ -46,10 +75,11 @@ namespace :surveys do
   end
 
   # TODO: MAKE THIS OPERATION SAFER FOR EXISTING ANSWER DATA
-  desc "Reloads question edges."
-  task :reload_question_edges => :environment do
-    if warn_user
-      truncate_tables(["question_edges"])
+  desc "Update question edges."
+  task :update_question_edges => :environment do
+    if warn_user                        #      ActiveRecord::Base.connection.execute("SELECT SETVAL('#{table}_id_seq', 100000000)")
+
+      clean_tables(["question_edges"])
 
       qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
 
@@ -74,19 +104,32 @@ namespace :surveys do
 
   end
 
-  desc "Reloads questions and question edges."
-  task :reload_all => :environment do
-    Rake::Task["surveys:reload_questions"].invoke
-    Rake::Task["surveys:reload_question_edges"].invoke
+  desc "Updates questions and question edges."
+  task :update => :environment do
+    Rake::Task["surveys:update_questions"].invoke
+    Rake::Task["surveys:update_question_edges"].invoke
+  end
+
+  desc "Updates questions and question edges."
+  task :create => :environment do
+    Rake::Task["surveys:setup_db"].invoke
+    Rake::Task["surveys:update"].invoke
   end
 
 
-  def truncate_tables(tables)
+  def clean_tables(tables)
     tables.each do |table|
-      ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
-      ActiveRecord::Base.connection.execute("SELECT SETVAL('#{table}_id_seq', 100000000)")
+      ActiveRecord::Base.connection.execute("DELETE FROM #{table} where id < #{SEQUENCE_VALUE}")
     end
 
+
+
+  end
+
+  def clean_join_tables(tables)
+    tables.each do |table|
+      ActiveRecord::Base.connection.execute("truncate #{table}")
+    end
   end
 
   def warn_user

@@ -30,8 +30,6 @@ class SurveysController < ApplicationController
   end
 
   def process_answer
-    #raise StandardError
-
     @questions = Question.where(id: params[:question_id])
     @answer_session = AnswerSession.find(params[:answer_session_id]) # Validate user!
 
