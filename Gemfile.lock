@@ -59,7 +59,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    activesupport-inflector (0.1.0)
     acts-as-dag (4.0.0)
       activemodel
       activerecord (~> 4.0, >= 4.0.0)
@@ -125,7 +124,7 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gemoji (2.1.0)
-    geocoder (1.2.4)
+    geocoder (1.2.5)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -216,8 +215,8 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    schema_to_scaffold (0.5.3)
-      activesupport-inflector (~> 0.1.0)
+    schema_to_scaffold (0.5.4)
+      activesupport (>= 3.2.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)

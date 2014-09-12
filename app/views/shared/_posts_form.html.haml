@@ -1,46 +1,46 @@
-%li.list-group-item
+-#%li.list-group-item
+-#
+-#  %h5 Add a New Notification
+-#  %form{role: "form"}
+-#    .form-group
+-#      %input.form-control{:type=>"date", :value => Date.today}
+-#    .form-group
+-#      %textarea.form-control{:placeholder => "Your Notification Here (Character Limit: 300)"}
+-#    .form-group
+-#      %input.form-control{:type=>"text", :placeholder => "URL to link to (optional)"}
+-#    %button.btn.btn-success.btn-sm.pull-right Post
+-#    .clearfix
+-#
+-#
+-#.panel.panel-default
+-#  .panel-body
+-#
+-#    %h5 Add New Blog Post
+-#    .media
+-#      %a.pull-left
+-#        = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
+-#      .media-body
+-#        %form{role: "form"}
+-#          %select.form-control
+-#            %option Mike Kappelman
+-#          %input.form-control{:type=>"date", :value => Date.today}
+-#          %h4.media-heading
+-#            %input.form-control{:type=>"text", :value => "Title of Blog Post"}
+-#          %textarea.form-control{:placeholder => "Your Blog Post Here", :style => "height:300px;"}
+-#          %button.btn.btn-success.btn-sm.pull-right Post
+-#          .clearfix
 
-  %h5 Add a New Notification
-  %form{role: "form"}
+
+  = form_for post do |f|
     .form-group
-      %input.form-control{:type=>"date", :value => Date.today}
+      = f.label :title, class: 'sr-only'
+      = f.text_field :title, class: 'form-control input-lg', placeholder: "Title of Post", autocomplete: :off
     .form-group
-      %textarea.form-control{:placeholder => "Your Notification Here (Character Limit: 300)"}
+      = f.label :user, "Author"
+      = # Chosen Author
     .form-group
-      %input.form-control{:type=>"text", :placeholder => "URL to link to (optional)"}
-    %button.btn.btn-success.btn-sm.pull-right Post
-    .clearfix
-
-
-.panel.panel-default
-  .panel-body
-
-    %h5 Add New Blog Post
-    .media
-      %a.pull-left
-        = image_tag "kappelman.jpg", :class => " media-object img-circle", :width => "80px"
-      .media-body
-        %form{role: "form"}
-          %select.form-control
-            %option Mike Kappelman
-          %input.form-control{:type=>"date", :value => Date.today}
-          %h4.media-heading
-            %input.form-control{:type=>"text", :value => "Title of Blog Post"}
-          %textarea.form-control{:placeholder => "Your Blog Post Here", :style => "height:300px;"}
-          %button.btn.btn-success.btn-sm.pull-right Post
-          .clearfix
-
-
-= form_for post do |f|
-  .form-group
-    = f.label :title, class: 'sr-only'
-    = f.text_field :title, class: 'form-control input-lg', placeholder: "Title of Post", autocomplete: :off
-  .form-group
-    = f.label :user, "Author"
-    = # Chosen Author
-  .form-group
-    = # Chosen Tags
-  .form-group
-    = f.label :body, class: 'sr-only'
-    = f.text_area :body, placeholder: "Body of Post"
-  = f.submit :post, class: "btn btn-success pull-right"
+      = # Chosen Tags
+    .form-group
+      = f.label :body, class: 'sr-only'
+      = f.text_area :body, placeholder: "Body of Post"
+    = f.submit :post, class: "btn btn-success pull-right"

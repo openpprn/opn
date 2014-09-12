@@ -1,2 +1,13 @@
-%h3 Research Topics
-= render :partial => "shared/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
+.panel.panel-default.research_topics
+  .list-group
+    - @research_questions.map {|qs| qs[:question]}.each do |question|
+      .list-group-item.research_question
+        .row
+          .col-md-2
+            %h2.text-center.question-rating= question.rating
+          .col-md-8
+            %h4
+              = link_to question.text, view_research_question_path(question)
+          .col-md-2
+            = link_to "Accept", '', class: "btn btn-success btn-xs pull-right"
+            = link_to "Delete", '', class: "btn btn-danger btn-xs pull-right"

@@ -49,7 +49,7 @@ class AdminController < ApplicationController
   end
 
   def research_topics
-
+    @research_questions = Vote.new_research_questions
   end
 
   def surveys
