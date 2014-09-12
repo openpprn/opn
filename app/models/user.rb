@@ -32,12 +32,16 @@ class User < ActiveRecord::Base
     if social_profile and social_profile.photo.present?
       social_profile.photo.url
     else
-      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
+      "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
     end
   end
 
   def forem_name
-    email
+    if social_profile and social_profile.name.present?
+      social_profile.name
+    else
+      "Anonymous User"
+    end
   end
 
   def to_s

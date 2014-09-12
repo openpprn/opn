@@ -18,6 +18,14 @@
           %span.small Don't let other patients on this site see any map marker for me.
 
     .panel-body
+      - if @social_profile.errors.any?
+        .alert.alert-danger.alert-dismissable
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+          %strong Profile Errors
+          %ul
+            - @social_profile.errors.full_messages.each do |msg|
+              %li= msg.html_safe
+
       .form-group
         %label.col-sm-3.control-label
           = image_tag current_user.photo_url, :class => "img-responsive img-thumbnail"
@@ -74,7 +82,7 @@
 
 
 
-= javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
+= javascript_include_tag "//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
 = javascript_include_tag 'typeahead'
 = javascript_include_tag 'typeahead-addresspicker'
 = javascript_include_tag 'social/places'
