@@ -83,3 +83,5 @@ Rails.application.configure do
 end
 
 ENV["DATABASE_URL"] = "<%= print "Enter Database URL: "; db_url = gets.chomp; db_url %>"
+# Required for ImageMagick binaries
+ENV['PATH'] = "/usr/local/bin:#{ENV['PATH']}"
