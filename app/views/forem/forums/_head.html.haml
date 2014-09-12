@@ -1,17 +1,22 @@
-<div id='forum'>
-  <h2><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h2>
-  <span id='description'><%= forem_format(forum.description) %></span>
-  <div id='forum_topic_links' class='btn-group'>
-    <% unless @topic.try(:new_record?) %>
-      <% if can? :create_topic, @forum %>
-        <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "btn btn-primary", :id => "new-topic" %>
-      <% end %>
-    <% end %>
-    <% if @topic %>
-      <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "btn btn-default" %>
-    <% end %>
-    <% if can? :moderate, @forum %>
-      <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+#forum
+  %ol.breadcrumb
+    %li
+      = link_to t('forem.forum.forums'), forem.root_path
+    %li
+      = link_to forem_emojify(forum.category), [forem, forum.category]
+    %li.active
+      = link_to forem_emojify(forum.title), [forem, forum]
+    .pull-right
+      = link_to main_app.terms_and_conditions_path, class: 'btn btn-xs btn-link' do
+        %span.fa.fa-legal
+        Terms and Conditions
+
+  %span#description= forem_format(forum.description)
+  #forum_topic_links.btn-group
+    - unless @topic.try(:new_record?)
+      - if can? :create_topic, @forum
+        = link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "btn btn-primary", :id => "new-topic"
+    - if @topic
+      = link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "btn btn-default"
+    - if can? :moderate, @forum
+      = link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary"

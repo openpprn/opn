@@ -71,7 +71,13 @@
 
         </div>
 
-        <p><%= forem_format(post.text) %></p>
+        <p>
+          <% if post.user.is_a?(Forem::NilUser) %>
+            <span class="text-muted"><%= t(:deleted) %></span>
+          <% else %>
+            <%= forem_format(post.text) %>
+          <% end %>
+        </p>
 
       </div>
     </div>
