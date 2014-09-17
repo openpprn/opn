@@ -58,3 +58,4 @@ config/initializers/secret_token.rb
 
 /Gemfile.lock
 /db/schema.rb
+/app/assets/javascripts/google_analytics.js
