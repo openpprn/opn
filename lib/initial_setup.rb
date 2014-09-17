@@ -12,7 +12,8 @@ puts root_folder
 
 files = [['config/environments', 'production.rb'],
   ['config/initializers', '00_site_name.rb'],
-  ['config/initializers', 'action_mailer.rb']
+  ['config/initializers', 'action_mailer.rb'],
+  ['app/assets/javascripts', 'google_analytics.js']
   # ['config','database.yml'],
   # ['config/initializers', 'secret_token.rb'],
   # ['config/initializers', 'devise.rb']
