@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # User HAML for views
@@ -67,7 +67,6 @@ group :development do
   gem "better_errors"
   gem "meta_request"
   gem "binding_of_caller"
-  gem 'schema_to_scaffold'
 end
 
 
