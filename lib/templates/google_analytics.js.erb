@@ -6,4 +6,5 @@
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', '<%= print "Enter Google Analytics Tracking ID: "; ga = gets.chomp; ga %>', 'auto');
+ga('require', 'displayfeatures');
 ga('send', 'pageview');
