@@ -7,19 +7,22 @@
     - notifications.each do |notification|
       %li.list-group-item
         %small
-          %strong notification.post_date
+          %strong= notification.created_at
         %br/
         - if notification.title.present?
           %h4= notification.title
-        markdown notification.body
-        - if editable
+        = markdown notification.body
+        - if current_user.can_update?(notification)
           %button.btn.btn-danger.btn-xs.pull-right Delete
           .clearfix
-    .text-center.small
-      = link_to "Show More...", "#" if notifications.present?
+    -#.text-center.small
+    -#  = link_to "Show More...", "#" if notifications.present?
 
-    - if editable
-      = render partial: 'shared/posts_form', locals: { type: :notification }
+    - if current_user.can_create?(new_notification)
+      %li.list-group-item.list-group-item-warning
+        %h5 Add a New Notification
+        = render partial: 'shared/posts_form', locals: { post: new_notification }
+        .clearfix
 
 
 

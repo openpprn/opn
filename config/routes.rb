@@ -82,6 +82,9 @@ Rails.application.routes.draw do
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
+  # Blog and Notification Posts
+  resources :posts, except: [:show, :index]
+
 
   devise_for :user
 

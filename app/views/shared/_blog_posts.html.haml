@@ -37,4 +37,4 @@
               .clearfix
 
 - if editable
-  = render partial: 'shared/posts_form', locals: { type: :blog }
+  = render partial: 'shared/posts_form', locals: { post: Post.new(type: :blog) }
