@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # User HAML for views
@@ -38,10 +38,10 @@ gem 'autoprefixer-rails'
 gem 'devise'
 
 # Scaffold Generation
-gem 'bootstrap-generators', '~> 3.1.1.3'
+gem 'bootstrap-generators', '~> 3.2.0'
 
 # Markdown Support
-gem 'redcarpet'
+gem 'redcarpet', '~> 3.1.2'
 
 # Directed Acyclic Graph
 gem 'acts-as-dag'
@@ -52,8 +52,6 @@ gem 'authority'
 
 # Forum
 gem 'forem', :github => "openpprn/forem", :branch => "rails4"
-gem 'forem-bootstrap', github: "radar/forem-bootstrap"
-gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 gem 'kaminari', '~> 0.16.1'
 
 # Blogs and Notifications
