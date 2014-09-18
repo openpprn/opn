@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/radar/forem.git
-  revision: 03908c467ffa156e0186528d2e60f15013a8cb55
+  revision: dc2900d6dd7f94f2afac1c709d86f3d9d31546d3
   branch: rails4
   specs:
     forem (1.0.0.beta1)
@@ -69,7 +69,7 @@ GEM
     authority (3.0.0)
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
-    autoprefixer-rails (3.0.1.20140826)
+    autoprefixer-rails (3.1.0.20140911)
       execjs
     bcrypt (3.1.7)
     better_errors (2.0.0)

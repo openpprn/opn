@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require chosen.jquery
 //= require forem
+//= require jquery.PrintArea
 //= require main
 //= require pages
 //= require admin

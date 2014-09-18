@@ -4,5 +4,8 @@ class PostsController < ApplicationController
 
   end
 
+  def update
+
+  end
 
 end

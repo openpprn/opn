@@ -51,7 +51,7 @@ gem 'rolify'
 gem 'authority'
 
 # Forum
-gem 'forem', :github => "radar/forem", :branch => "rails4"
+gem 'forem', :github => "openpprn/forem", :branch => "rails4"
 gem 'forem-bootstrap', github: "radar/forem-bootstrap"
 gem 'forem-redcarpet', github: "radar/forem-redcarpet"
 gem 'kaminari', '~> 0.16.1'
