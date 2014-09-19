@@ -7,8 +7,8 @@
 - id: 4
   name: Symptoms Influenced by Sleep Apnea Treatment
 - id: 5
-  name: Chance of Dozing Off or Falling Asleep
+  name: Epworth Sleepiness Scale
 - id: 6
-  name: Sleep in Past 7 Days
+  name: PROMIS Sleep Disturbance
 - id: 7
   name: Doctor Diagnosis

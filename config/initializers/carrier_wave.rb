@@ -1,3 +1,7 @@
 CarrierWave.configure do |config|
-  config.root = lambda { File.join( Rails.root, 'test', 'support' ) } if Rails.env.test?
+  if Rails.env.test?
+    config.root = lambda { File.join( Rails.root, 'test', 'support' ) }
+    config.storage = :file
+    config.enable_processing = false
+  end
 end

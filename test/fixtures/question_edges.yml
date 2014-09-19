@@ -1,0 +1,18 @@
+qe1:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q2
+  direct: TRUE
+  count: 1
+qe2:
+  question_flow: survey_1
+  parent_question: q2
+  child_question: q2a
+  direct: TRUE
+  count: 1
+qe3:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q2a
+  direct: FALSE
+  count: 1

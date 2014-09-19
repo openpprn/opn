@@ -1,0 +1,12 @@
+ae1:
+  parent_answer: a1
+  child_answer: a2
+  answer_session: incomplete
+ae2:
+  parent_answer: a3
+  child_answer: a4
+  answer_session: complete
+ae3:
+  parent_answer: a4
+  child_answer: a5
+  answer_session: complete

@@ -1,0 +1,20 @@
+av1:
+  answer: a1
+  answer_template: text
+  text_value: red
+av2:
+  answer: a2
+  answer_template: numeric
+  numeric_value: 54
+av3:
+  answer: a3
+  answer_template: text
+  text_value: blue
+av4:
+  answer: a4
+  answer_template: numeric
+  numeric_value: 33
+av5:
+  answer: a5
+  answer_template: text
+  text_value: not sure...

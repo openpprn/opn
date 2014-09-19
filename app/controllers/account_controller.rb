@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  before_action :authenticate_user!, except: [:consent, :privacy_policy]
+  before_action :authenticate_user!, except: [:consent, :privacy_policy, :terms_and_conditions]
 
   # def view_consent
   #   @pc = YAML.load_file(Rails.root.join('lib', 'data', 'content', "consent.#{I18n.locale}.yml"))
@@ -13,7 +13,7 @@ class AccountController < ApplicationController
       current_user.update_attribute(:accepted_consent_at, nil)
       redirect_to social_profile_path
     else
-      load_content
+
     end
   end
 
@@ -25,7 +25,7 @@ class AccountController < ApplicationController
       current_user.update_attribute(:accepted_consent_at, nil)
       redirect_to social_profile_path
     else
-      load_content
+
     end
   end
 
@@ -35,6 +35,10 @@ class AccountController < ApplicationController
 
   def account
     @user = current_user
+  end
+
+
+  def terms_and_conditions
   end
 
   def update

@@ -105,16 +105,6 @@ class AccountControllerTest < ActionController::TestCase
     get :terms_and_conditions
 
     assert_response :success
-    assert_template layout: 'myapnea/myapnea'
-  end
-
-  test "Terms and conditions should render dashboard layout when logged in" do
-    login(users(:social))
-
-    get :terms_and_conditions
-
-    assert_response :success
-    assert_template layout: 'dashboard'
   end
 
 end

@@ -1,7 +1,9 @@
 require 'test_helper.rb'
 
 class SurveysControllerTest < ActionController::TestCase
-
+  setup do
+    add_edges
+  end
 
   test "User can start a survey" do
     login(users(:social))

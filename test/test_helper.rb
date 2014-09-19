@@ -31,6 +31,21 @@ class ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[resource]
     sign_in(resource.class.name.downcase.to_sym, resource)
   end
+
+  # def add_edges
+  #   edges_template = [[:q1, :q2], [:q2, :q2a]]
+  #   qf = question_flows(:survey_1)
+  #
+  #   edges_template.each do |q1_name, q2_name|
+  #     q1 = questions(q1_name)
+  #     q2 = questions(q2_name)
+  #
+  #     qe = QuestionEdge.build_edge(q1, q2, nil, qf.id)
+  #
+  #     raise StandardError, qe.errors.full_messages unless qe.save
+  #
+  #   end
+  # end
 end
 
 class ActionDispatch::IntegrationTest
