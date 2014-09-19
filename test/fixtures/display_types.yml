@@ -1,0 +1,8 @@
+text:
+  name: text
+  tag: input
+  input_type: text
+number:
+  name: number
+  tag: input
+  input_type: number

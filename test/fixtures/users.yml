@@ -1,17 +1,24 @@
 <% 1.upto(10) do |i| %>
 user_<%= i %>:
   email: user_<%= i %>@mail.com
+  zip_code: 12345
+  year_of_birth: 1980
 <% end %>
 
 social:
   email: tommyboy@gmail.com
-
+  accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  zip_code: 12345
+  year_of_birth: 1980
 
 admin:
-  email: admin@mail.com
+  email: support@myapnea.org
   roles: admin
+  zip_code: 12345
+  year_of_birth: 1980
 
 owner:
   email: owner@mail.com
   roles: owner
-
+  zip_code: 12345
+  year_of_birth: 1980

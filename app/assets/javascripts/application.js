@@ -15,8 +15,11 @@
 //= require bootstrap-sprockets
 //= require chosen.jquery
 //= require forem
+//= require jquery.PrintArea
+//= require d3.min
 //= require main
 //= require pages
 //= require admin
+//= require votes
 
 

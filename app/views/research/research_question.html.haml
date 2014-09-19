@@ -1,46 +1,34 @@
-- title("Research")
-
-
+- title("Research Questions")
 .row
-  .col-md-3
-    = render :partial => "shared/research_nav", locals: {action_name: "research"}
-
-
-
-  .col-md-9
-
-
+  .col-md-12
     .row
       .col-md-1
-        %div{:style => "font-size: 36px; line-height: 36px; text-align:center; padding-top: 20px;"}
-          %i.fa.fa-star-o
-          = rand(0..99)
-
-
+        %h2
+          %i.fa.fa-check-square-o
+          =@question.rating
       .col-md-11
-        %h2= @pprn_research_questions.shuffle.first
-
-        %p This is why and how I think we should research it. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
+        = link_to research_topics_path, class: "btn btn-primary btn-xs pull-right" do
+          .fa.fa-arrow-left
+          Back to Questions
+        %h2
+          = @question.text
+        %p.hidden This is why and how I think we should research it. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
 
       %br/
 
     .row
       .col-md-12
 
-        .alert.alert-info
+        .alert.alert-info.hidden
           .req What stages should be available?
           .label.label-primary Under Consideration
           %span.small
             This research proposal is currently <strong>under consideration</strong> by the research team.
             Add your vote and voice to help increase the chances this research topic gets studied.
-
-
-
-
         .panel.panel-default
           .panel-heading
             %h4.panel-title.pull-left Discussion
-            %small.pull-right 112 Comments
+            %small.pull-right 0 Comments
             .clearfix
           .panel-body
             %small
