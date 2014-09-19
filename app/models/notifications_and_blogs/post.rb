@@ -14,4 +14,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
+  def tags=(val)
+    tag_list.add(val)
+  end
+
 end

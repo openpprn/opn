@@ -6,15 +6,16 @@
   %ul.list-group.small
     - notifications.each do |notification|
       %li.list-group-item
+        - if current_user
+          .btn-group.pull-right
+            = link_to "Edit", edit_post_path(notification), class: "btn btn-warning btn-xs" if current_user.can_update?(notification)
+            = link_to "Delete", post_path(notification), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(notification)
         %small
           %strong= notification.created_at
         %br/
         - if notification.title.present?
           %h4= notification.title
         = markdown notification.body
-        - if current_user.can_update?(notification)
-          %button.btn.btn-danger.btn-xs.pull-right Delete
-          .clearfix
     -#.text-center.small
     -#  = link_to "Show More...", "#" if notifications.present?
 

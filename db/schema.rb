@@ -213,6 +213,8 @@ ActiveRecord::Schema.define(version: 20140918201612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "post_type"
+    t.string   "author"
+    t.text     "introduction"
   end
 
   create_table "question_edges", force: true do |t|

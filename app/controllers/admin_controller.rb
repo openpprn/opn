@@ -45,8 +45,8 @@ class AdminController < ApplicationController
   end
 
   def blog
-    @posts = Post.blog_post
-    @new_post = Post.new(type: :blog)
+    @posts = Post.blog_posts
+    @new_post = Post.new(post_type: :blog)
   end
 
   def research_topics
@@ -58,8 +58,8 @@ class AdminController < ApplicationController
   end
 
   def notifications
-    @posts = Post.notification
-    @new_post = Post.new(type: :notification)
+    @posts = Post.notifications
+    @new_post = Post.new(post_type: :notification)
   end
 
 

@@ -5,6 +5,6 @@ class BlogController < ApplicationController
 
   def blog
     @posts = Post.blog_posts.viewable
-    @new_post = Post.new(type: "blog")
+    @new_post = Post.new(post_type: "blog")
   end
 end
