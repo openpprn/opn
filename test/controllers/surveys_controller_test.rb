@@ -21,13 +21,24 @@ class SurveysControllerTest < ActionController::TestCase
 
     get :ask_question, question_id: question_flows(:survey_1).first_question.id, answer_session_id: assigns(:answer_session).id
     assert_response :success
+    assert_not_nil assigns(:answer)
 
+  end
+
+  test "User can view grouped question on survey" do
+    login(users(:has_incomplete_survey))
+
+    get :ask_question, question_id: questions(:q3b).id, answer_session_id: answer_sessions(:incomplete).id
+
+    assert_response :success
+    assert_not_nil assigns(:group)
+    assert_not_nil assigns(:questions)
   end
 
   test "User can answer question on survey" do
     login(users(:has_incomplete_survey))
 
-    post :process_answer, { 'question_id' => questions(:q2a).id, 'answer_session_id' => answer_sessions(:incomplete).id,  questions(:q2a).id.to_s => "blue", "direction" => "next"}
+    post :process_answer, { 'question_id' => questions(:q3c).id, 'answer_session_id' => answer_sessions(:incomplete).id,  questions(:q3c).id.to_s => 22, "direction" => "next"}
 
     assert_redirected_to survey_report_path(assigns(:answer_session))
   end

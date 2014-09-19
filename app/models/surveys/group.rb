@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
 
     min_set = [current_q]
 
-    while (current_q = current_q.default_next_question(question_flow)) and current_q.group == self
+    while (current_q = current_q.default_next_question(question_flow)) and current_q.present? and current_q.group == self
       min_set << current_q
 
     end

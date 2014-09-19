@@ -8,11 +8,27 @@ q2:
   time_estimate: 1.0
   answer_templates:
   - numeric
-q2a:
+q3a:
   text_en: Why can't I even?
   time_estimate: 1.0
+  group: g2
+  question_help_message: hm1
   answer_templates:
   - text
+q3b:
+  text_en: Seriously, what's up with that?
+  time_estimate: 1.0
+  group: g2
+  question_help_message: hm1
+  answer_templates:
+  - text
+q3c:
+  text_en: How many days has it been?
+  time_estimate: 1.0
+  group: g2
+  question_help_message: hm1
+  answer_templates:
+  - numeric
 q3:
   text_en: How much sleep do we really need?
   time_estimate: 1.0

@@ -78,4 +78,16 @@ class User < ActiveRecord::Base
   def available_votes_percent
     (todays_votes.length.to_f / vote_quota) * 100.0
   end
+
+  def is_owner?
+    self.has_role? :owner
+  end
+
+  def is_admin?
+    self.has_role? :admin or is_owner?
+  end
+
+  def is_moderator?
+    self.has_role? :moderator or is_admin?
+  end
 end

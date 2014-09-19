@@ -54,4 +54,5 @@ class ResearchControllerTest < ActionController::TestCase
     assert_not_empty assigns(:incomplete_surveys)
 
   end
+
 end

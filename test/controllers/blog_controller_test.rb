@@ -1,25 +1,12 @@
 require 'test_helper'
 
-class PostControllerTest < ActionController::TestCase
-  test "Moderator can create a new blog post" do
+class BlogControllerTest < ActionController::TestCase
+  test "User can see only accepted posts" do
+    login(users(:user_1))
 
+    get :blog
+
+    assert_equal [posts(:accepted_blog_post)], assigns(:posts)
   end
-
-  test "Moderator can create a new notification" do
-
-  end
-
-  test "Non-moderators cannot create a new blog post or notification" do
-
-  end
-
-  test "Moderator can delete post" do
-
-  end
-
-  test "Moderator can update post" do
-
-  end
-
 
 end

@@ -26,12 +26,12 @@ class Question < ActiveRecord::Base
 
   def default_next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.descendant : nil
   end
 
   def default_previous_question(question_flow)
     candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor : nil
   end
 
   def conditional_children(question_flow)

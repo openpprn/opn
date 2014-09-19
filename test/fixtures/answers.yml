@@ -5,11 +5,23 @@ a2:
   question: q2
   answer_session: incomplete
 a3:
+  question: q3a
+  answer_session: incomplete
+a4:
+  question: q3b
+  answer_session: incomplete
+a5:
   question: q1
   answer_session: complete
-a4:
+a6:
   question: q2
   answer_session: complete
-a5:
-  question: q2a
+a7:
+  question: q3a
+  answer_session: complete
+a8:
+  question: q3b
+  answer_session: complete
+a9:
+  question: q3c
   answer_session: complete

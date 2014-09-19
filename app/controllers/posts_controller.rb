@@ -7,17 +7,13 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to :back
+      redirect_post @post
     end
   end
 
   def update
     if @post.update(post_params)
-      if @post.post_type == "notification"
-        redirect_to admin_notifications_path
-      else
-        redirect_to admin_blog_path
-      end
+      redirect_post @post
     end
   end
 
@@ -31,7 +27,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to :back
+    redirect_post @post
+
   end
 
   private
@@ -42,5 +39,13 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by_id(params[:id])
+  end
+
+  def redirect_post(post)
+    if post.is_notification?
+      redirect_to admin_notifications_path
+    else
+      redirect_to admin_blog_path
+    end
   end
 end

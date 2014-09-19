@@ -18,4 +18,12 @@ class Post < ActiveRecord::Base
     tag_list.add(val)
   end
 
+  def is_notification?
+    post_type == "notification"
+  end
+
+  def is_blog_post?
+    post_type == "blog"
+  end
+
 end

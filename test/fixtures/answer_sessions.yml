@@ -2,12 +2,12 @@ incomplete:
   user: has_incomplete_survey
   question_flow: survey_1
   first_answer: a1
-  last_answer: a2
+  last_answer: a4
 complete:
   user: has_completed_survey
   question_flow: survey_1
-  first_answer: a3
-  last_answer: a5
+  first_answer: a5
+  last_answer: a9
 
 
 

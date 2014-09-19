@@ -30,7 +30,22 @@ admin:
   zip_code: 12345
   year_of_birth: 1980
   encrypted_password: <%= pw %>
-
+moderator_1:
+  first_name: Mod
+  last_name: Erator1
+  email: mod1@mods.com
+  roles: moderator
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
+moderator_2:
+  first_name: Mod
+  last_name: Erator2
+  email: mod2@mods.com
+  roles: moderator
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
 owner:
   first_name: Own
   last_name: Er

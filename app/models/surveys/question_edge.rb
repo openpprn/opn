@@ -8,7 +8,7 @@ class QuestionEdge < ActiveRecord::Base
 
   acts_as_dag_links node_class_name: 'Question', ancestor_id_column: 'parent_question_id', descendant_id_column: 'child_question_id'
 
-  def self.build_edge(ancestor, descendant, condition, qf_id)
+  def self.build_edge(ancestor, descendant, condition = nil, qf_id = QuestionFlow.first.id)
     source = self::EndPoint.from(ancestor)
     sink = self::EndPoint.from(descendant)
     conditions = self.conditions_for(source, sink)
