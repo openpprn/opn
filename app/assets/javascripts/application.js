@@ -16,7 +16,7 @@
 //= require chosen.jquery
 //= require forem
 //= require jquery.PrintArea
-//= require bootstrap-tagsinput
+//= require d3.min
 //= require main
 //= require pages
 //= require admin

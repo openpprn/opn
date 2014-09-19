@@ -3,14 +3,13 @@
     - research_questions.map {|qs| qs[:question]}.each do |question|
       .list-group-item.research_question
         .row
-          .col-md-1
+          .col-md-1.col-sm-2
             %h2
-              = link_to vote_path, data: {question_id: question.id, question_path: question_path(question), submit_path: vote_path, type: 'research_question'}, class: 'voting' do
+              = link_to vote_path, data: {question_id: question.id, question_path: question_path(question), submit_path: vote_path, type: 'research_question'}, class: "voting #{'disabled' if disabled}" do
                 %i.fa.research-star{class: checkbox_class(question)}
-          .col-md-1
+          .col-md-1.col-sm-2
             %h2.text-center.question-rating= question.rating
-          .col-md-10
-            %br/
+          .col-md-10.col-sm-8
             %h4
               = link_to question.text, view_research_question_path(question)
           - if editable

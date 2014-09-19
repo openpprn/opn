@@ -6,11 +6,21 @@
   .list-group
     - @incomplete_surveys.each do |survey|
       = link_to start_or_resume_survey(survey, survey.most_recent_answer_session(current_user)), class: 'list-group-item' do
-        %h3= survey.name
-        = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey, answer: nil}
+        %h3
+          = survey.name
+          .btn.btn-success.btn-lg.pull-right
+            Resume
+            &nbsp;
+            .fa.fa-arrow-right
+          = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey, answer: nil}
     - @unstarted_surveys.each do |survey|
       = link_to start_or_resume_survey(survey), class: 'list-group-item' do
-        %h3= survey.name
+        %h3
+          = survey.name
+          .btn.btn-success.btn-lg.pull-right
+            Start
+            &nbsp;
+            .fa.fa-arrow-right
         %p Survey not yet started.
         %p
           %strong
@@ -19,7 +29,6 @@
             minutes for
             = survey.all_questions.length
             questions.
-
           //= link_to "Complete Survey", start_or_resume_survey(survey), class: "btn btn-success btn-sm"
 
 .panel.panel-default
