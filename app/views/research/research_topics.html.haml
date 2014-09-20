@@ -15,19 +15,12 @@
 
 / Tab panes
 .tab-content
-  #popular.tab-pane.active= render partial: "shared/research_topics", locals: {research_questions: Vote.popular_research_questions, editable: false, disabled: false}
+  #popular.tab-pane.active= render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
   - if current_user
-    #mine.tab-pane= render partial: "shared/research_topics", locals: {research_questions: Vote.user_research_questions(current_user), editable: false, disabled: false}
-  #newest.tab-pane= render partial: "shared/research_topics", locals: {research_questions: Vote.new_research_questions, editable: false, disabled: false}
+    #mine.tab-pane= render partial: "shared/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+  #newest.tab-pane= render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.new, disabled: false}
 
-%form.form-horizontal
-  .form-group
-    .col-sm-10
-      %input.form-control.input-lg{type: "text", placeholder: "Post your own comments on this topic - coming soon!", disabled: true}
-    .col-sm-2
-      %button.btn.btn-primary.btn-lg.btn-block{type: 'submit', disabled: true} Reply
-
-
+= link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
 
 
 

@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable
 
   belongs_to :user
+  has_many :votes
 
   def tags=(val)
     tag_list.add(val)

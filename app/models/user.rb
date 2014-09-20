@@ -90,4 +90,16 @@ class User < ActiveRecord::Base
   def is_moderator?
     self.has_role? :moderator or is_admin?
   end
+
+  def incomplete_surveys
+    QuestionFlow.incomplete(current_user)
+  end
+
+  def complete_surveys
+    QuestionFlow.complete(current_user)
+  end
+
+  def unstarted_surveys
+    QuestionFlow.unstarted(current_user)
+  end
 end

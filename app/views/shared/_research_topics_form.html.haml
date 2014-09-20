@@ -1,0 +1,14 @@
+= form_for research_topic do |f|
+  .form-group
+    = f.label :text, class: 'sr-only'
+    = f.text_area :text, class: 'form-control input-lg', placeholder: "Enter your research question here...", autocomplete: :off
+  .form-group
+    = f.label :author, class: 'sr-only'
+    = f.text_area :description, placeholder: "Describe why you think this question is important...", class: 'form-control input-lg'
+  - if current_user.can_moderate?(research_topic)
+    .form-group
+      = f.label :state, class: 'sr-only'
+      = f.select :state, ResearchTopic::STATES, {prompt: "-- select state --" }, { class: 'input-lg form-control' }
+  = f.submit(nil, class: "btn btn-success pull-right")
+
+

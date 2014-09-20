@@ -1,0 +1,43 @@
+- title("Research Questions")
+.row
+  .col-md-12
+    .row
+      .col-md-1
+        %h2
+          %i.fa.fa-check-square-o
+          =@research_topic.rating
+      .col-md-11
+        = link_to research_topics_path, class: "btn btn-primary btn-xs pull-right" do
+          .fa.fa-arrow-left
+          Back to Research Questions
+        %h2= @research_topic.text
+        %p= @research_topic.description
+
+      %br/
+
+    .row
+      .col-md-12
+
+        .alert.alert-info
+          .req What stages should be available?
+          .label.label-primary= @research_topic.state
+          -#%span.small
+          -#  This research proposal is currently <strong>under consideration</strong> by the research team.
+          -#  Add your vote and voice to help increase the chances this research topic gets studied.
+
+
+    - if @research_topic.user.allows_sharing?
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Proposed By...
+        .panel-body
+          .media
+            %a.pull-left
+              = image_tag @research_topic.user.photo_url, :class => "img-responsive img-thumbnail"
+            .media-body.small
+              %strong
+                = @research_topic.user.social_profile.name
+              %p
+                = @research_topic.user.social_profile.location
+            .clearfix
+

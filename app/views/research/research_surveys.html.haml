@@ -4,7 +4,7 @@
     %h3.panel-title New Surveys
     .req surveys_ready_for_completion (title of survey, url to survey)
   .list-group
-    - @incomplete_surveys.each do |survey|
+    - current_user.incomplete_surveys.each do |survey|
       = link_to start_or_resume_survey(survey, survey.most_recent_answer_session(current_user)), class: 'list-group-item' do
         %h3
           = survey.name
@@ -13,7 +13,7 @@
             &nbsp;
             .fa.fa-arrow-right
           = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey, answer: nil}
-    - @unstarted_surveys.each do |survey|
+    - current_user.unstarted_surveys.each do |survey|
       = link_to start_or_resume_survey(survey), class: 'list-group-item' do
         %h3
           = survey.name
@@ -36,10 +36,10 @@
     %h3.panel-title Surveys You've Completed
     .req surveys_ready_for_completion (title of survey, url to survey)
   .list-group
-    - if @complete_surveys.empty?
+    - if current_user.complete_surveys.empty?
       .list-group-item
         %span.text-info None so far!
-    - @complete_surveys.each do |survey|
+    - current_user.complete_surveys.each do |survey|
       .list-group-item
         %h3= survey.name
         %p
