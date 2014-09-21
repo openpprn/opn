@@ -2,17 +2,18 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :answer_templates
   belongs_to :group
   has_many :answers
-  has_many :votes
   belongs_to :question_help_message
 
   include Localizable
-  localize :text
-
+  include Votable
   include Authority::Abilities
+
+  localize :text
+  has_dag_links :link_class_name => 'QuestionEdge'
+
   self.authorizer_name = "AdminAuthorizer"
 
   # DAG
-  has_dag_links :link_class_name => 'QuestionEdge'
 
   def next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
@@ -26,12 +27,12 @@ class Question < ActiveRecord::Base
 
   def default_next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.descendant : nil
   end
 
   def default_previous_question(question_flow)
     candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor : nil
   end
 
   def conditional_children(question_flow)
@@ -44,13 +45,6 @@ class Question < ActiveRecord::Base
     answers.where(answer_session_id: answer_session.id).first
   end
 
-  def rating
-    votes.sum(:rating)
-  end
-
-  def has_vote?(user, rating)
-    votes.where(user_id: user.id, rating: rating).count > 0
-  end
 
   def part_of_group?
     group.present?
@@ -76,18 +70,19 @@ class Question < ActiveRecord::Base
   end
 
   def answer_frequencies
-    if [3,4].include? question_type.id
-      all_options = answer_options.to_a.sort_by!{|ao| ao.value(answer_type.data_type)}
+    if answer_templates.length == 1 and [3,4].include? answer_templates.first.display_type.id
+      at = answer_templates.first
+      all_options = at.answer_options.to_a.sort_by!{|ao| ao.value }
 
       groups = []
 
       all_options.each do |o|
-        groups << {label: o.value(answer_type.data_type), answers: [], count: 0, frequency: 0.0}
+        groups << {label: o.value, answers: [], count: 0, frequency: 0.0}
       end
 
-      total_answers = answers.select{|answer| answer.show_value.present?}.length
+      total_answers = answers.map(&:answer_values).flatten.map(&:show_value).length
 
-      answers.group_by{|answer| answer.show_value}.each_pair do |key, array|
+      answers.map(&:answer_values).flatten.group_by{|av| av.show_value}.each_pair do |key, array|
         g = groups.find{|x| x[:label] == key }
         if g
           g[:answers] = array
@@ -97,7 +92,7 @@ class Question < ActiveRecord::Base
       end
 
       groups
-    elsif question_type.id == 6
+
     end
 
   end

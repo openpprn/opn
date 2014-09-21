@@ -2,5 +2,6 @@ language: ruby
 rvm:
   - 2.1.2
 before_script:
+  - "ruby lib/initial_setup.rb ../.travis_setup"
   - "psql -c 'create database \"openpprn-backend_test\";' -U postgres"
   - "bundle exec rake db:migrate"

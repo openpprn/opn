@@ -1,22 +1,6 @@
 GIT
-  remote: git://github.com/radar/forem-bootstrap.git
-  revision: 10be50afc1d0a22af1306076e41624c55fc585be
-  specs:
-    forem-bootstrap (0.0.1)
-      bootstrap-sass (~> 3.1)
-
-GIT
-  remote: git://github.com/radar/forem-redcarpet.git
-  revision: c53be9a5c3e97d65546f3f56b53f82669f3a5af5
-  specs:
-    forem-redcarpet (1.0.2)
-      nokogiri
-      pygments.rb (= 0.5.4)
-      redcarpet (= 3.0.0)
-
-GIT
-  remote: git://github.com/radar/forem.git
-  revision: 03908c467ffa156e0186528d2e60f15013a8cb55
+  remote: git://github.com/openpprn/forem.git
+  revision: 25c1b459672cc87542c51bba65b75110977b1f4f
   branch: rails4
   specs:
     forem (1.0.0.beta1)
@@ -24,7 +8,7 @@ GIT
       decorators (~> 1.0.2)
       friendly_id (~> 5.0.0)
       gemoji (= 2.1.0)
-      rails (>= 4.0.3, <= 4.1.5)
+      rails (>= 4.0.3, <= 4.1.6)
       sanitize (= 2.0.6)
       select2-rails (~> 3.5.4)
       simple_form (~> 3.0.1)
@@ -33,27 +17,27 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.1.0)
-      actionpack (= 4.1.0)
-      actionview (= 4.1.0)
-      mail (~> 2.5.4)
-    actionpack (4.1.0)
-      actionview (= 4.1.0)
-      activesupport (= 4.1.0)
+    actionmailer (4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      mail (~> 2.5, >= 2.5.4)
+    actionpack (4.1.6)
+      actionview (= 4.1.6)
+      activesupport (= 4.1.6)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    actionview (4.1.0)
-      activesupport (= 4.1.0)
+    actionview (4.1.6)
+      activesupport (= 4.1.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    activemodel (4.1.0)
-      activesupport (= 4.1.0)
+    activemodel (4.1.6)
+      activesupport (= 4.1.6)
       builder (~> 3.1)
-    activerecord (4.1.0)
-      activemodel (= 4.1.0)
-      activesupport (= 4.1.0)
+    activerecord (4.1.6)
+      activemodel (= 4.1.6)
+      activesupport (= 4.1.6)
       arel (~> 5.0.0)
-    activesupport (4.1.0)
+    activesupport (4.1.6)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -69,7 +53,7 @@ GEM
     authority (3.0.0)
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
-    autoprefixer-rails (3.0.1.20140826)
+    autoprefixer-rails (3.1.0.20140911)
       execjs
     bcrypt (3.1.7)
     better_errors (2.0.0)
@@ -78,7 +62,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-generators (3.1.1.3)
+    bootstrap-generators (3.2.0)
       railties (>= 3.1.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
@@ -124,7 +108,7 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gemoji (2.1.0)
-    geocoder (1.2.4)
+    geocoder (1.2.5)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -139,15 +123,14 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    mail (2.5.4)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
-    mime-types (1.25.1)
-    mini_magick (3.8.0)
+    mime-types (2.3)
+    mini_magick (3.8.1)
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.1)
@@ -175,36 +158,31 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
-    polyglot (0.3.5)
-    posix-spawn (0.3.9)
-    pygments.rb (0.5.4)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.1.0)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.1.0)
-      actionmailer (= 4.1.0)
-      actionpack (= 4.1.0)
-      actionview (= 4.1.0)
-      activemodel (= 4.1.0)
-      activerecord (= 4.1.0)
-      activesupport (= 4.1.0)
+    rails (4.1.6)
+      actionmailer (= 4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      activemodel (= 4.1.6)
+      activerecord (= 4.1.6)
+      activesupport (= 4.1.6)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.0)
+      railties (= 4.1.6)
       sprockets-rails (~> 2.0)
-    railties (4.1.0)
-      actionpack (= 4.1.0)
-      activesupport (= 4.1.0)
+    railties (4.1.6)
+      actionpack (= 4.1.6)
+      activesupport (= 4.1.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
-    rdoc (4.1.1)
+    rdoc (4.1.2)
       json (~> 1.4)
-    redcarpet (3.0.0)
-    rolify (3.4.0)
+    redcarpet (3.1.2)
+    rolify (3.4.1)
     ruby-progressbar (1.5.1)
     rubyzip (1.1.6)
     sanitize (2.0.6)
@@ -215,18 +193,16 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    schema_to_scaffold (0.5.2)
-      activesupport (>= 3.2.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     select2-rails (3.5.9.1)
       thor (~> 0.14)
-    selenium-webdriver (2.42.0)
-      childprocess (>= 0.5.0)
+    selenium-webdriver (2.43.0)
+      childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
-      websocket (~> 1.0.4)
+      websocket (~> 1.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -253,9 +229,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    treetop (1.4.15)
-      polyglot
-      polyglot (>= 0.3.1)
     turbolinks (2.3.0)
       coffee-rails
     tzinfo (1.2.2)
@@ -265,11 +238,10 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    websocket (1.0.7)
+    websocket (1.2.1)
     workflow (1.0.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -281,14 +253,12 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
-  bootstrap-generators (~> 3.1.1.3)
+  bootstrap-generators (~> 3.2.0)
   bootstrap-sass
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
   forem!
-  forem-bootstrap!
-  forem-redcarpet!
   geocoder
   haml
   jbuilder (~> 2.0)
@@ -300,11 +270,10 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-reporters
   pg
-  rails (= 4.1.0)
-  redcarpet
+  rails (= 4.1.6)
+  redcarpet (~> 3.1.2)
   rolify
   sass-rails (~> 4.0.3)
-  schema_to_scaffold
   sdoc (~> 0.4.0)
   selenium-webdriver
   simplecov

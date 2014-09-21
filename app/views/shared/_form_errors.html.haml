@@ -1,0 +1,7 @@
+- if resource.errors.any?
+  .alert.alert-danger.alert-dismissable
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+    %strong= message
+    %ul.unstyled
+      - resource.errors.full_messages.each do |msg|
+        %li= msg.html_safe

@@ -1,0 +1,17 @@
+= form_for [forem, :admin, @topic.forum, @topic] do |f|
+  .form-group
+    = f.label :subject, class: 'sr-only'
+    = f.text_field :subject, class: 'form-control input-lg', placeholder: User.human_attribute_name(:subject), autocomplete: :off
+  .form-group
+    = f.collection_select :forum_id, Forem::Forum.all, :id, :name, {include_blank: "Please select forum..."}, {class: 'form-control'}
+  .form-group
+    %label.checkbox-inline
+      = f.check_box :locked
+      locked
+    %label.checkbox-inline
+      = f.check_box :pinned
+      pinned
+    %label.checkbox-inline
+      = f.check_box :hidden
+      hidden
+  = f.submit :class => "btn btn-primary"

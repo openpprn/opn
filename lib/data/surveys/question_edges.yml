@@ -301,7 +301,7 @@
 - question_flow_id: 13
   parent_question_id: 549
   child_question_id: 550
-  condition: 34
+  condition: 12
 - question_flow_id: 13
   parent_question_id: 549
   child_question_id: 551

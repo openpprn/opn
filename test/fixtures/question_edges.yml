@@ -1,0 +1,61 @@
+qe1:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q2
+  direct: TRUE
+  count: 1
+qe2:
+  question_flow: survey_1
+  parent_question: q2
+  child_question: q3a
+  direct: TRUE
+  count: 1
+qe3:
+  question_flow: survey_1
+  parent_question: q3a
+  child_question: q3b
+  direct: TRUE
+  count: 1
+qe4:
+  question_flow: survey_1
+  parent_question: q3b
+  child_question: q3c
+  direct: TRUE
+  count: 1
+
+qe5:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q3a
+  direct: FALSE
+  count: 1
+qe6:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q3b
+  direct: FALSE
+  count: 1
+qe7:
+  question_flow: survey_1
+  parent_question: q1
+  child_question: q3c
+  direct: FALSE
+  count: 1
+qe8:
+  question_flow: survey_1
+  parent_question: q2
+  child_question: q3b
+  direct: FALSE
+  count: 1
+qe9:
+  question_flow: survey_1
+  parent_question: q2
+  child_question: q3c
+  direct: FALSE
+  count: 1
+qe10:
+  question_flow: survey_1
+  parent_question: q3a
+  child_question: q3c
+  direct: FALSE
+  count: 1

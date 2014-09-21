@@ -4,16 +4,15 @@ class ResearchController < ApplicationController
   before_action :no_layout, :only => [:research_questions, :vote_counter]
 
   def research_surveys
-    @incomplete_surveys = QuestionFlow.incomplete(current_user)
-    @unstarted_surveys = QuestionFlow.unstarted(current_user)
-    @complete_surveys = QuestionFlow.complete(current_user)
   end
 
 
-  def research_question
-    @question = Question.find(params[:id])
+  def new_research_topic
+    @new_research_topic = ResearchTopic.new
+  end
 
-    redirect_to research_topics_path unless @question.group == Group.research_question_group
+  def research_topic
+    @research_topic = ResearchTopic.find(params[:id])
   end
 
 

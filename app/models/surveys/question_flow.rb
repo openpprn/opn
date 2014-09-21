@@ -13,28 +13,35 @@ class QuestionFlow < ActiveRecord::Base
   # Associations
   belongs_to :first_question, class_name: "Question"
   has_many :answer_sessions
+  has_many :question_edges
 
   scope :viewable, -> { where(status: "show") }
 
   # Class Methods
   def self.complete(user)
-    joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
-      as = qf.answer_sessions.order(updated_at: :desc).first
+    res = joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
+      as = qf.answer_sessions.where(user_id: user.id).order(updated_at: :desc).first
+
 
       as.present? and as.completed?
     end
+
+    res
   end
 
   def self.unstarted(user)
-    includes(:answer_sessions).where(status: "show").select{ |qf| qf.answer_sessions.where(user_id: user.id).empty? }
+    res = includes(:answer_sessions).where(status: "show").select{ |qf| qf.answer_sessions.where(user_id: user.id).empty? }
+
+    res
   end
 
   def self.incomplete(user)
-    joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
-      as = qf.answer_sessions.order(updated_at: :desc).first
+    res = joins(:answer_sessions).where(status: "show", answer_sessions: {user_id: user.id}).select do |qf|
+      as = qf.answer_sessions.where(user_id: user.id).order(updated_at: :desc).first
 
       as.present? and !as.completed?
     end
+    res
   end
 
 

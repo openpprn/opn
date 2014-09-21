@@ -27,7 +27,11 @@
             <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
           <% end %>
         </div>
-        <%= image_tag post.user.photo_url, :class => "img-responsive img-thumbnail"  %>
+        <% if post.user.is_a?(Forem::NilUser) %>
+          <%= image_tag 'default-user.jpg', class: "img-responsive img-thumbnail" %>
+        <% else %>
+          <%= image_tag post.user.photo_url, class: "img-responsive img-thumbnail" %>
+        <% end %>
       </div>
 
       <div class='contents col-md-9'>
@@ -67,7 +71,13 @@
 
         </div>
 
-        <p><%= forem_format(post.text) %></p>
+        <p>
+          <% if post.user.is_a?(Forem::NilUser) %>
+            <span class="text-muted"><%= t(:deleted) %></span>
+          <% else %>
+            <%= forem_format(post.text) %>
+          <% end %>
+        </p>
 
       </div>
     </div>

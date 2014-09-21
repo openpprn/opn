@@ -1,5 +1,5 @@
 class SocialController < ApplicationController
-  before_action :authenticate_user!, except: [:overview, :locations]
+  before_action :authenticate_user!, except: [:overview, :locations, :discussion]
   before_action :set_active_top_nav_link_to_social
 
   def profile
@@ -11,9 +11,10 @@ class SocialController < ApplicationController
 
     if @social_profile.update(social_profile_params)
       flash[:notice] = "Updated Successfully!"
+      redirect_to social_profile_path
+    else
+      render :profile
     end
-
-    render :profile
   end
 
 

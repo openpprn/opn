@@ -12,12 +12,23 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Model Validation
+  validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
+  validates_numericality_of :year_of_birth, only_integer: true, less_than_or_equal_to: -> (user){ Date.today.year - 18 }, greater_than_or_equal_to: -> (user){ 1900 }
+
+  # Model Relationships
   has_many :answer_sessions
   has_many :answers
   has_many :votes
   has_one :social_profile
+  has_many :posts
 
+  # Named Scopes
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def self.scoped_users(email=nil, role=nil)
     users = all
@@ -32,12 +43,16 @@ class User < ActiveRecord::Base
     if social_profile and social_profile.photo.present?
       social_profile.photo.url
     else
-      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
+      "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
     end
   end
 
   def forem_name
-    email
+    if social_profile and social_profile.name.present?
+      social_profile.name
+    else
+      "Anonymous User"
+    end
   end
 
   def to_s
@@ -62,5 +77,29 @@ class User < ActiveRecord::Base
 
   def available_votes_percent
     (todays_votes.length.to_f / vote_quota) * 100.0
+  end
+
+  def is_owner?
+    self.has_role? :owner
+  end
+
+  def is_admin?
+    self.has_role? :admin or is_owner?
+  end
+
+  def is_moderator?
+    self.has_role? :moderator or is_admin?
+  end
+
+  def incomplete_surveys
+    QuestionFlow.incomplete(current_user)
+  end
+
+  def complete_surveys
+    QuestionFlow.complete(current_user)
+  end
+
+  def unstarted_surveys
+    QuestionFlow.unstarted(current_user)
   end
 end

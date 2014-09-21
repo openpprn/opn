@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905183143) do
+ActiveRecord::Schema.define(version: 20140919150504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,9 @@ ActiveRecord::Schema.define(version: 20140905183143) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "post_type"
+    t.string   "author"
+    t.text     "introduction"
   end
 
   create_table "question_edges", force: true do |t|
@@ -284,9 +287,10 @@ ActiveRecord::Schema.define(version: 20140905183143) do
     t.float    "longitude"
     t.string   "location_id"
     t.string   "location"
-    t.boolean  "show_location", default: false, null: false
-    t.boolean  "show_karma",    default: false, null: false
+    t.boolean  "show_location",           default: false, null: false
+    t.boolean  "show_karma",              default: false, null: false
     t.integer  "user_id"
+    t.datetime "accepted_forum_rules_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -336,6 +340,10 @@ ActiveRecord::Schema.define(version: 20140905183143) do
     t.string   "forem_state",            default: "pending_review"
     t.boolean  "forem_auto_subscribe",   default: false
     t.integer  "vote_quota",             default: 5
+    t.integer  "year_of_birth"
+    t.string   "zip_code"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

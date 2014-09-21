@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get 'research_surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
   get 'research_surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
   match 'research_surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
-  get 'questions/frequencies(/:question_id/:answer_session_id)', to: "surveys#question_frequencies", as: :question_frequencies, format: :json
+  get 'questions/frequencies(/:question_id/:answer_session_id)', to: "questions#frequencies", as: :question_frequencies, format: :json
 
 
   # Health Data Section
@@ -59,9 +59,13 @@ Rails.application.routes.draw do
   # Account Section
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
-  get 'consent' => 'account#consent'
-  get 'privacy' => 'account#privacy_policy', as: 'privacy'
+  match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
+  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
+  match 'update_account', to: 'account#update', as: 'update_account', via: :patch
+  match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
+  # Discussion
+  match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
 
   # Admin Section
   get 'admin' => 'admin#users'
@@ -82,8 +86,10 @@ Rails.application.routes.draw do
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
+  # Blog and Notification Posts
+  resources :posts, except: [:show, :index]
 
-  devise_for :user
+  devise_for :user, controllers: { registrations: 'registrations' }
 
 
 

@@ -1,0 +1,48 @@
+notification_1:
+  title: Watch Out! They're coming!
+  body: I don't know where, when, or why, but they will get you, so protect yourself!
+  user: moderator_1
+notification_2:
+  title: Public Service Announcement
+  body: Studies have shown that 100% of people that come in contact with dihydrogen monoxide eventually pass away. There is no known cure.
+  user: moderator_2
+accepted_blog_post:
+  title: The Best Post Ever
+  author: Chuck Norris
+  introduction: This post is great. It might be the greatest post ever created.
+  body: Homero partiendo rationibus mei ei. Ne vel affert consul, et eripuit periculis persequeris has, persius detracto democritum pro ei. Causae mollis scripta an pro. Doctus consulatu te duo, cu vix denique legendos facilisis. Animal recteque aliquando pro ei, saepe tritani ad usu, et quo solet accumsan facilisi.
+  state: accepted
+  post_type: blog
+  user: moderator_1
+hidden_blog_post:
+  title: Secret Post
+  author: Casper
+  introduction: You'll never see it hehehe
+  body:
+    Ut hinc tamquam detraxit vis. His ut sensibus laboramus, no duo habemus phaedrum, cum clita commodo euripidis an. Adipisci platonem an per. Ad qui oblique corrumpit, qui quod dicit tollit in, vim utroque molestie abhorreant ad.
+
+    Sea graece scriptorem ea. Dicta soluta tacimates id qui, per eu ullum copiosae, sea cu augue ullamcorper. Vim ei quod iusto facilis, aeque partem an nec. Latine expetendis adversarium vim ne, mucius ullamcorper no mei.
+
+    Usu ut suscipit voluptua, sea ea sale quaestio. Mei possit invenire gloriatur ad, et nec solum moderatius scriptorem, sit te debet quaeque. Ea per etiam dicunt perfecto. Congue epicuri no usu. Eu case malorum electram vix, ex deserunt omittantur vis, no sea agam consulatu. Ex soleat maiorum contentiones est, ea eam ferri aeterno, ius eu zril possit persius.
+  state: hidden
+  post_type: blog
+  user: moderator_2
+draft_blog_post:
+  title: It Ain't Ready
+  introduction: This is boring
+  author: Jimmy Buffet
+  body:
+    Vim alia latine ancillae ad, id dolor impedit nec, mel debet aeque et. Mea no quot suscipiantur. Viris possim voluptatibus vel cu, saepe impedit sea in. At eros doming his, velit populo accusata te sea. Id liber quodsi deseruisse pri, no quo utinam soluta numquam.
+
+    Erant petentium cum an, admodum delicata pertinacia ad pri. Regione iuvaret in ius. Ei est tamquam efficiantur, splendide definitiones ad sed, bonorum facilisis at eum. Eum ea tation postea appetere, eu his quod verear.
+
+    Ei quo quem consequat. Eu est commune delectus, an iriure reprimique eos. Vis unum magna an, eirmod posidonium philosophia ius ut, nostrud persequeris sea ne. Cu quo alii equidem dissentiunt, at alii evertitur complectitur est.
+
+    Putant periculis ne qui. Id vide necessitatibus vis, percipit maiestatis sed cu, per aliquip iracundia accommodare no. Ea dicam mucius sea. Ea dolorum phaedrum splendide has.
+
+    Nec cu novum semper expetenda, probatus reprimique comprehensam sed id. Eam legere ponderum id, te quo vocent salutandi incorrupte. Est eius meliore fastidii ut, ludus petentium ad duo, postea prompta facilisi no mea. Ullum nobis recusabo ei eum. Nam cu legendos consulatu, ei nec novum intellegebat. Pri cu assum erant.
+  state: draft
+  post_type: blog
+  user: moderator_1
+
+

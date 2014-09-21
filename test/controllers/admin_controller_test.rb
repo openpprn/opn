@@ -18,6 +18,16 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+  test "Moderators should not GET user administration" do
+    login(users(:moderator_1))
+
+    get :users
+
+    assert_authorization_exception
+
+  end
+
+
   test "should raise SecurityViolation for unauthorized users" do
     login(users(:user_1))
 
@@ -104,6 +114,62 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+# Notifications
+  test "should show notification administration to moderator" do
+    login(users(:moderator_1))
+
+    get :notifications
+
+    assert_response :success
+    assert_equal Post.where(post_type: "notification"), assigns(:posts)
+  end
+
+  test "should not show notification administration to normal user" do
+    login(users(:user_1))
+
+    get :notifications
+
+    assert_authorization_exception
+  end
+
+  # Research Topics
+  test "should show research topic administration to moderator" do
+    login(users(:moderator_1))
+
+    get :research_topics
+
+    assert_response :success
+
+  end
+
+  test "should not show research topic administration to normal user" do
+    login(users(:user_4))
+
+    get :research_topics
+
+    assert_authorization_exception
+  end
+
+  # Blog
+  test "should get blog admin for moderator" do
+    login(users(:moderator_2))
+
+    get :blog
+
+    assert_response :success
+    assert_equal Post.where(post_type: "blog"), assigns(:posts)
+
+  end
+
+  test "should not get blog admin for normal user" do
+    login(users(:social))
+
+    get :blog
+
+    assert_authorization_exception
+  end
+
+  # Helpers
 
   def assert_authorization_exception
     assert_response 302

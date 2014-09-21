@@ -1,0 +1,10 @@
+- if params[:id] == 'popular'
+  = render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+- elsif params[:id] == 'mine' and current_user
+  = render partial: "shared/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+- elsif params[:id] == 'newest'
+  = render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+
+
+
+

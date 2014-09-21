@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'thin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # User HAML for views
@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring', group: :development
 
 # Bootstrap
 gem 'sass-rails', '~> 4.0.3'
@@ -38,10 +38,10 @@ gem 'autoprefixer-rails'
 gem 'devise'
 
 # Scaffold Generation
-gem 'bootstrap-generators', '~> 3.1.1.3'
+gem 'bootstrap-generators', '~> 3.2.0'
 
 # Markdown Support
-gem 'redcarpet'
+gem 'redcarpet', '~> 3.1.2'
 
 # Directed Acyclic Graph
 gem 'acts-as-dag'
@@ -51,9 +51,7 @@ gem 'rolify'
 gem 'authority'
 
 # Forum
-gem 'forem', :github => "radar/forem", :branch => "rails4"
-gem 'forem-bootstrap', github: "radar/forem-bootstrap"
-gem 'forem-redcarpet', github: "radar/forem-redcarpet"
+gem 'forem', :github => "openpprn/forem", :branch => "rails4"
 gem 'kaminari', '~> 0.16.1'
 
 # Blogs and Notifications
@@ -69,7 +67,6 @@ group :development do
   gem "better_errors"
   gem "meta_request"
   gem "binding_of_caller"
-  gem 'schema_to_scaffold'
 end
 
 

@@ -4,22 +4,26 @@
 
 
   %ul.list-group.small
-    - if editable
-      = render partial: 'shared/posts_form', locals: { type: :notification }
     - notifications.each do |notification|
       %li.list-group-item
+        - if current_user
+          .btn-group.pull-right
+            = link_to "Edit", edit_post_path(notification), class: "btn btn-warning btn-xs" if current_user.can_update?(notification)
+            = link_to "Delete", post_path(notification), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(notification)
         %small
-          %strong notification.post_date
+          %strong= notification.created_at
         %br/
         - if notification.title.present?
           %h4= notification.title
-        markdown notification.body
-        - if editable
-          %button.btn.btn-danger.btn-xs.pull-right Delete
-          .clearfix
-  .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
-    .text-center.small
-      = link_to "Show More...", "#"
+        = markdown notification.body
+    -#.text-center.small
+    -#  = link_to "Show More...", "#" if notifications.present?
+
+    - if current_user.can_create?(new_notification)
+      %li.list-group-item.list-group-item-warning
+        %h5 Add a New Notification
+        = render partial: 'shared/posts_form', locals: { post: new_notification }
+        .clearfix
 
 
 

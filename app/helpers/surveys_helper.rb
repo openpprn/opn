@@ -25,7 +25,7 @@ module SurveysHelper
   end
 
   def start_or_resume_survey(question_flow, answer_session = nil)
-    if answer_session.present? and answer_session.started?
+    if answer_session.present? and answer_session.started? and answer_session.last_answer.present? and answer_session.last_answer.next_question.present?
       ask_question_path(answer_session_id: answer_session.id, question_id: answer_session.last_answer.next_question.id)
     else
       start_survey_path(question_flow_id: question_flow.id)
@@ -41,7 +41,7 @@ module SurveysHelper
     next_qf = QuestionFlow.where(status: "show").select{|qf| qf.id != current_qf.id }.first
     as = user.answer_sessions.where(question_flow_id: next_qf.id)
 
-    start_or_resume(next_qf, as)
+    start_or_resume_survey(next_qf, as)
   end
 
   def bmi(height, weight)

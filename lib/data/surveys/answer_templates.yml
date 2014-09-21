@@ -102,7 +102,7 @@
   - 223
 - id: 15
   name: improvement_grade
-  display_type_id: 8
+  display_type_id: 3
   data_type: answer_option_id
   answer_option_ids:
   - 210

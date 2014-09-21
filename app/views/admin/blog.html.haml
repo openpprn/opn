@@ -1,2 +1,2 @@
 %h3 Blog Posts
-= render :partial => "shared/blog_posts", :locals => { :editable => true, blog_posts: [] }
+= render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }

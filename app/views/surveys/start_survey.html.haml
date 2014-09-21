@@ -1,0 +1,11 @@
+#answer-session
+  .panel.panel-default
+    .panel-heading
+      = render partial: 'surveys/partials/header', locals: { question_flow: @question_flow }
+      = render partial: 'surveys/partials/session_progress', locals: { stats: @answer_session.calculate_status_stats, answer: nil }
+    .panel-body
+      %p
+        = markdown @question_flow.description
+    .panel-footer
+      %div
+        = link_to "Lets Start!", ask_question_path(answer_session_id: @answer_session.id, question_id: @question_flow.first_question.id), class: 'btn btn-primary btn-lg'
