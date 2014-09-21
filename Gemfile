@@ -62,6 +62,10 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'mini_magick'
 
+
+# Validic Health App Connections
+gem 'validic'
+
 # Development
 group :development do
   gem "better_errors"
