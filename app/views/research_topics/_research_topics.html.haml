@@ -1,0 +1,17 @@
+.panel.panel-default.research_topics
+  .list-group
+    - research_topics.each do |research_topic|
+      .list-group-item.research_question
+        .row
+          .col-md-1.col-sm-2
+            %h2
+              = link_to vote_path, data: {id: research_topic.id, submit_path: vote_path, type: 'research_topic'}, class: "voting #{'disabled' if disabled}" do
+                %i.fa.research-star{class: checkbox_class(research_topic)}
+          .col-md-1.col-sm-2
+            %h2.text-center.question-rating= research_topic.rating
+          .col-md-10.col-sm-8
+            %h4
+              = link_to research_topic.text, view_research_question_path(question)
+          - if editable
+            = link_to "Delete", research_topic_path(research_topic), method: :delete, class: "btn btn-danger btn-xs pull-right"
+            .clearfix

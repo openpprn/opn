@@ -4,6 +4,8 @@ class CreateSeparateResearchTopicModel < ActiveRecord::Migration
       t.string :text
       t.text :description
       t.string :state, null: false, default: "under_review"
+      t.references :user
+      t.timestamps
     end
 
     add_column :votes, :research_topic_id, :integer

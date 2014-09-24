@@ -1,7 +1,17 @@
 class ResearchTopicsController < ApplicationController
   authorize_actions_for ResearchTopic
 
+  before_action :no_layout, :only => [:research_questions, :vote_counter]
   before_action :set_research_topic
+
+  def index
+
+  end
+
+  def show
+    @research_topic = ResearchTopic.find(params[:id])
+  end
+
 
   def create
     @research_topic = current_user.research_topics.new(research_topic_params)

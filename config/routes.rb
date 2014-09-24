@@ -16,16 +16,18 @@ Rails.application.routes.draw do
   get 'external_link_warning' => 'static#external_link_warning'
   get 'terms' => 'static#terms'
 
+  # Research Topics
+  match 'research_question/:id', to: "research_topics#show", as: :research_topic, via: :get
+  match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
+  match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
+  resources :research_topics, except: [:show, :index, :new]
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
-  match 'research_question/:id', to: "research#research_question", as: :view_research_question, via: :get
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
   get 'data_connections' => 'research#data_connections'
-  get 'new_question' => 'research#new_question'
-  get 'research_questions' => 'research#research_questions'
   get 'vote_counter' => 'research#vote_counter'
 
   # Surveys

@@ -1,8 +1,8 @@
-- if params[:id] == 'popular'
+- if params[:tab] == 'popular'
   = render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
-- elsif params[:id] == 'mine' and current_user
+- elsif params[:tab] == 'mine' and current_user
   = render partial: "shared/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
-- elsif params[:id] == 'newest'
+- elsif params[:tab] == 'newest'
   = render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
 
 

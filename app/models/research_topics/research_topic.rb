@@ -1,5 +1,8 @@
 class ResearchTopic < ActiveRecord::Base
-  includes Votable
+  include Votable
+  include Authority::Abilities
+
+  belongs_to :user
 
   STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
 
@@ -16,7 +19,7 @@ class ResearchTopic < ActiveRecord::Base
     end
   end
 
-  def self.new
+  def self.newest
     includes(:votes).sort do |rt1, rt2|
       rt1.created_at <=> rt2.created_at
     end
@@ -24,7 +27,7 @@ class ResearchTopic < ActiveRecord::Base
 
   private
 
-  def sort_topics(rt1, rt2)
+  def self.sort_topics(rt1, rt2)
     comp = rt2.rating <=> rt1.rating
     comp.zero? ? (rt1.created_at <=> rt2.created_at) : comp
   end
