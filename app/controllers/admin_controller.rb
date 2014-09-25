@@ -50,7 +50,11 @@ class AdminController < ApplicationController
   end
 
   def research_topics
-    @research_topics = ResearchTopic.newest
+    @research_topics = ResearchTopic.all.order("created_at desc")
+  end
+
+  def research_topic
+    @research_topic = ResearchTopic.find(params[:id])
   end
 
   def surveys

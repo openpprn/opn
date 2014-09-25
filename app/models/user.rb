@@ -108,6 +108,11 @@ class User < ActiveRecord::Base
     ResearchTopic.voted_by(self)
   end
 
+  def submitted_research_topics
+    ResearchTopic.created_by(self)
+  end
+
+
   def share_research_topics?
     true
   end

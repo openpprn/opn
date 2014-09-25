@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   get 'terms' => 'static#terms'
 
   # Research Topics
-  match 'research_question/:id', to: "research_topics#show", as: :research_topic, via: :get
-  match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
-  match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
-  match 'research_topics', to: "research_topics#research_topics", via: :get, as: :research_topics_ajax
+  #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get
+  #match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
+  #match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
+  match 'research_topics_tab', to: "research_topics#research_topics", via: :get, as: :research_topics_ajax
   get 'vote_counter' => 'research_topics#vote_counter'
-  resources :research_topics, except: [:show, :index, :new]
+  resources :research_topics
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
@@ -71,12 +71,14 @@ Rails.application.routes.draw do
   match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
 
   # Admin Section
-  get 'admin' => 'admin#users'
+  get 'admin' => 'admin#notifications'
   match 'admin/users', to: 'admin#users', as: 'admin_users', via: [:get, :post]
   get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
   get 'admin/blog' => 'admin#blog', as: 'admin_blog'
   get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
   get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
+  get 'admin/research_topic/:id' => 'admin#research_topic', as: 'admin_research_topic'
+
 
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role, format: :js
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role, format: :js

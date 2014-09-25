@@ -5,7 +5,6 @@ class VotesController < ApplicationController
     if params[:vote][:research_topic_id] and current_user.can_vote_for?(ResearchTopic.find(params[:vote][:research_topic_id])) and current_user.has_votes_remaining?
       v = Vote.find_or_initialize_by(user_id: current_user.id, research_topic_id: params[:vote][:research_topic_id])
       v.rating = params[:vote]["rating"]
-      v.label = params[:vote]["label"]
       saved = v.save
     elsif params[:vote][:question_id]
       v = Vote.find_or_initialize_by(user_id: current_user.id, question_id: params[:question_id])

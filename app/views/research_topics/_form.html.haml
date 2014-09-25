@@ -9,6 +9,7 @@
     .form-group
       = f.label :state, class: 'sr-only'
       = f.select :state, ResearchTopic::STATES, {prompt: "-- select state --" }, { class: 'input-lg form-control' }
-  = f.submit(nil, class: "btn btn-success pull-right")
+  = f.submit("Submit", class: "btn btn-success pull-right")
+  .clearfix
 
 

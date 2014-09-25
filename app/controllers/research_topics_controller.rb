@@ -1,10 +1,18 @@
 class ResearchTopicsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :no_layout, :only => [:research_questions, :vote_counter]
+  before_action :no_layout, :only => [:research_topics, :vote_counter]
   before_action :set_research_topic, only: [:show, :update, :edit, :destroy]
 
+  layout "research"
+
   authorize_actions_for ResearchTopic, only: [:index, :create, :new]
+
+  def research_topics
+    raise StandardError
+  end
+
+
   def index
     @research_topics = ResearchTopic.accepted
   end
@@ -32,9 +40,18 @@ class ResearchTopicsController < ApplicationController
     end
 
     if @research_topic.update(research_topic_params)
-      redirect_to research_topic_path(@research_topic)
+      if current_user.can_moderate?(@research_topic)
+        redirect_to admin_research_topic_path(@research_topic)
+      else
+        redirect_to research_topic_path(@research_topic)
+      end
     else
-      render :edit
+      if current_user.can_moderate?(@research_topic)
+        redirect_to admin_research_topics_path
+      else
+        render :edit
+      end
+
     end
   end
 
@@ -52,7 +69,11 @@ class ResearchTopicsController < ApplicationController
 
     @research_topic.destroy
 
-    redirect_to research_topics_admin_path
+    if current_user.can?(:view_admin_dashboard)
+      redirect_to admin_research_topics_path
+    else
+      redirect_to research_topics_path
+    end
 
   end
 

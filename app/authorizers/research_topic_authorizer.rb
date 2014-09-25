@@ -30,10 +30,10 @@ class ResearchTopicAuthorizer < ApplicationAuthorizer
   end
 
   def readable_by?(user)
-    user.has_role?(:moderator) || resource.user == user || resource.state == 'accepted'
+    user.has_role?(:moderator) || resource.user == user || resource.accepted?
   end
 
   def votable_by?(user)
-    resource.accepted?
+    resource.accepted? || resource.user == user
   end
 end
