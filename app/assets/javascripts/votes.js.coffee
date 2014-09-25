@@ -1,4 +1,6 @@
-$(document).on "click", ".voting button", () ->
+$(document).on "click", "#answer_session .voting button", () ->
+  event.preventDefault()
+
   button = $(this)
   submit_path = $(this).parent().data("submit-path")
   question_path = $(this).parent().data("question-path")
@@ -31,26 +33,24 @@ $(document).on "click", ".research_topics a.voting", () ->
 
   link = $(this)
   icon = link.children().first()
-  badge = $(this).closest(".research_question").find(".question-rating")
+  badge = $(this).closest(".research_question").find(".rating")
   submit_path = $(this).data("submit-path")
-  question_path = $(this).data("question-path")
+  research_topic_path = $(this).data("research-topic-path")
   vote_counter = $(".vote_counter")
 
   if icon.hasClass('fa-square-o')
     rating = 1
   else
     rating = 0
-  label = $(this).data("type")
-  question_id = $(this).data("question-id")
+  research_topic_id = $(this).data("research-topic-id")
 
 
-  $.post(submit_path, {question_id: question_id, rating: rating, label: label}, (data) ->
+  $.post(submit_path, {vote: {research_topic_id: research_topic_id, rating: rating}}, (data) ->
     if data.saved
       icon.toggleClass('fa-square-o').toggleClass("fa-check-square-o")
 
-
       if badge.length
-        $.getJSON(question_path+".json", (data) ->
+        $.getJSON(research_topic_path+".json", (data) ->
           badge.html(data.rating)
         )
 

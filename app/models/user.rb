@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   has_one :social_profile
+  has_many :posts
+  has_many :research_topics
 
   # Named Scopes
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
@@ -92,10 +94,51 @@ class User < ActiveRecord::Base
   end
 
   def todays_votes
-    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.label == "research_question" }
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
   end
 
   def available_votes_percent
     (todays_votes.length.to_f / vote_quota) * 100.0
+  end
+
+  def is_owner?
+    self.has_role? :owner
+  end
+
+  def is_admin?
+    self.has_role? :admin or is_owner?
+  end
+
+  def is_moderator?
+    self.has_role? :moderator or is_admin?
+  end
+
+  def incomplete_surveys
+    QuestionFlow.incomplete(self)
+  end
+
+  def complete_surveys
+    QuestionFlow.complete(self)
+  end
+
+  def unstarted_surveys
+    QuestionFlow.unstarted(self)
+  end
+
+  def research_topics_with_vote
+    ResearchTopic.voted_by(self)
+  end
+
+  def submitted_research_topics
+    ResearchTopic.created_by(self)
+  end
+
+
+  def share_research_topics?
+    true
+  end
+
+  def has_votes_remaining?
+    todays_votes.length < vote_quota
   end
 end

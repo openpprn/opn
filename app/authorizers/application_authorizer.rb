@@ -15,7 +15,7 @@ class ApplicationAuthorizer < Authority::Authorizer
 
 
   def self.authorizes_to_view_admin_dashboard?(user, options = {})
-    user.has_role?(:owner) || user.has_role?(:admin)
+    user.has_role?(:owner) || user.has_role?(:admin) || user.has_role?(:moderator)
   end
 
   def self.authorizes_to_participate_in_research?(user, options={})

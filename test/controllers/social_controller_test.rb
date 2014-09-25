@@ -39,9 +39,6 @@ class SocialControllerTest < ActionController::TestCase
 
     assert_not_nil assigns(:social_profile)
 
-
-
-
     users(:user_1).reload
 
     assert_equal File.join(CarrierWave::Uploader::Base.root.call, 'uploads', 'social_profile', 'photo', assigns(:social_profile).id.to_s, 'rails.png'), assigns(:social_profile).photo.path
@@ -62,7 +59,6 @@ class SocialControllerTest < ActionController::TestCase
     assert_template 'profile'
     assert_response :success
   end
-
 
   test "List of locations of opted in users is available" do
 

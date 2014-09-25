@@ -1,24 +1,72 @@
+<% pw = User.new(:password => 'password').encrypted_password %>
+
+# $2a$10$8uaSUgIGTmueQtYP0yFTv.rs98cbkWhNS75Pdk3vvPXnQPIBmkszW
+
 <% 1.upto(10) do |i| %>
 user_<%= i %>:
   email: user_<%= i %>@mail.com
+  first_name: User
+  last_name: <%= i %>wski
   zip_code: 12345
   year_of_birth: 1980
+  encrypted_password: <%= pw %>
 <% end %>
 
 social:
+  first_name: Tommy
+  last_name: Boy
   email: tommyboy@gmail.com
   accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
   zip_code: 12345
   year_of_birth: 1980
+  encrypted_password: <%= pw %>
+
 
 admin:
+  first_name: Ad
+  last_name: Min
   email: support@myapnea.org
   roles: admin
   zip_code: 12345
   year_of_birth: 1980
-
+  encrypted_password: <%= pw %>
+moderator_1:
+  first_name: Mod
+  last_name: Erator1
+  email: mod1@mods.com
+  roles: moderator
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
+moderator_2:
+  first_name: Mod
+  last_name: Erator2
+  email: mod2@mods.com
+  roles: moderator
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
 owner:
+  first_name: Own
+  last_name: Er
   email: owner@mail.com
   roles: owner
   zip_code: 12345
   year_of_birth: 1980
+  encrypted_password: <%= pw %>
+
+has_completed_survey:
+  first_name: Complete
+  last_name: Survey
+  email: cs@mail.com
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
+
+has_incomplete_survey:
+  first_name: Incomplete
+  last_name: Survey
+  email: is@mail.com
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>

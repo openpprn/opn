@@ -7,36 +7,25 @@ q2:
   text_en: What is the air-speed velocity of an unladen swallow?
   time_estimate: 1.0
   answer_templates:
-  - number
-q3:
-  text_en: How much sleep do we really need?
+  - numeric
+q3a:
+  text_en: Why can't I even?
   time_estimate: 1.0
-  group: g1
-  created_at: <%= Time.zone.now - 1.day %>
-  answer_templates:
-  - number
-q4:
-  text_en: Do we breathe while sleeping?
-  time_estimate: 1.0
-  group: g1
-  created_at: <%= Time.zone.now - 3.hour %>
+  group: g2
+  question_help_message: hm1
   answer_templates:
   - text
-q5:
-  text_en: Why do we snore?
+q3b:
+  text_en: Seriously, what's up with that?
   time_estimate: 1.0
-  group: g1
-  created_at: <%= Time.zone.now - 2.hour %>
+  group: g2
+  question_help_message: hm1
   answer_templates:
   - text
-q6:
-  text_en: Why am I so tired?
+q3c:
+  text_en: How many days has it been?
   time_estimate: 1.0
-  group: g1
-  created_at: <%= Time.zone.now - 1.hour %>
+  group: g2
+  question_help_message: hm1
   answer_templates:
-  - text
-
-
-
-
+  - numeric

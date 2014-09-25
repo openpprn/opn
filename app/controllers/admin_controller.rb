@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
 
-  authorize_actions_for User, only: [:add_role_to_user, :remove_role_from_user, :destroy_user], actions: {add_role_to_user: :update, remove_role_from_user: :update, destroy_user: :delete}
+  authorize_actions_for User, only: [:add_role_to_user, :remove_role_from_user, :destroy_user, :users], actions: {add_role_to_user: :update, remove_role_from_user: :update, destroy_user: :delete, users: :read}
 
   ## Remote Actions
   def add_role_to_user
@@ -45,11 +45,16 @@ class AdminController < ApplicationController
   end
 
   def blog
-
+    @posts = Post.blog_posts
+    @new_post = Post.new(post_type: :blog)
   end
 
   def research_topics
-    @research_questions = Vote.new_research_questions
+    @research_topics = ResearchTopic.all.order("created_at desc")
+  end
+
+  def research_topic
+    @research_topic = ResearchTopic.find(params[:id])
   end
 
   def surveys
@@ -57,7 +62,8 @@ class AdminController < ApplicationController
   end
 
   def notifications
-
+    @posts = Post.notifications
+    @new_post = Post.new(post_type: :notification)
   end
 
 

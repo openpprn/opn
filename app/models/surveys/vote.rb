@@ -1,7 +1,12 @@
 class Vote < ActiveRecord::Base
-  belongs_to :question
+  # Always needs to belong to user
   belongs_to :user
 
+  # Can only belong to ONE of the following
+  belongs_to :question
+  belongs_to :comment
+  belongs_to :post
+  belongs_to :research_topic
 
 
   def self.popular_research_questions
@@ -23,11 +28,7 @@ class Vote < ActiveRecord::Base
   private
 
   def self.process_rq_results(results)
-    final_list = results.map {|question| {question: Question.find(question.question_id), rating: question.rating || 0}}.sort do |q1, q2|
-      comp = q2[:rating] <=> q1[:rating]
-      comp.zero? ? (q1[:question].created_at <=> q2[:question].created_at) : comp
-
-    end
+    final_list = results.map {|question| {question: Question.find(question.question_id), rating: question.rating || 0}}.sort {|q1, q2| q2[:rating] <=> q1[:rating]}
     final_list
   end
 

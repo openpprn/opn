@@ -2,17 +2,18 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :answer_templates
   belongs_to :group
   has_many :answers
-  has_many :votes
   belongs_to :question_help_message
 
   include Localizable
-  localize :text
-
+  include Votable
   include Authority::Abilities
+
+  localize :text
+  has_dag_links :link_class_name => 'QuestionEdge'
+
   self.authorizer_name = "AdminAuthorizer"
 
   # DAG
-  has_dag_links :link_class_name => 'QuestionEdge'
 
   def next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
@@ -26,12 +27,12 @@ class Question < ActiveRecord::Base
 
   def default_next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.descendant
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.descendant : nil
   end
 
   def default_previous_question(question_flow)
     candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor
+    candidate_edges.present? ? candidate_edges.select {|edge| edge.condition.blank? }.first.ancestor : nil
   end
 
   def conditional_children(question_flow)
@@ -44,13 +45,6 @@ class Question < ActiveRecord::Base
     answers.where(answer_session_id: answer_session.id).first
   end
 
-  def rating
-    votes.sum(:rating)
-  end
-
-  def has_vote?(user, rating)
-    votes.where(user_id: user.id, rating: rating).count > 0
-  end
 
   def part_of_group?
     group.present?

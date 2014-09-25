@@ -6,8 +6,8 @@
     .btn-toolbar{role: "toolbar"}
       %form#user-search.form-inline{ role: 'form', action: admin_users_path, :style => "display: inline;" }
 
-        .col-sm-4
-          .btn-group{data: {toggle: 'buttons'}}
+        .col-sm-5
+          .btn-group.btn-group-sm{data: {toggle: 'buttons'}}
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: ''} All Users
             %label.btn.btn-default
@@ -15,10 +15,8 @@
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
             %label.btn.btn-default
-              %input{type: 'radio', name: 'search_role', value: 'forum_user'} Forum Users
-            %label.btn.btn-default
-              %input{type: 'radio', name: 'search_role', value: 'forum_moderator'} Forum Moderators
-        .col-sm-8
+              %input{type: 'radio', name: 'search_role', value: 'moderator'} Moderators
+        .col-sm-7
           .btn-group
             %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
             %label.control-label.sr-only Limit by user email
@@ -60,9 +58,7 @@
                   %li
                     %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
                   %li
-                    %a.add-role{href: "#", data: {role: 'forum_user'}} Make Forum User
-                  %li
-                    %a.add-role{href: "#", data: {role: 'forum_moderator'}} Make Forum Moderator
+                    %a.add-role{href: "#", data: {role: 'moderator'}} Make Moderator
                   %li.divider
                   %li
                     %a.delete-user{href: "#"} Delete User
