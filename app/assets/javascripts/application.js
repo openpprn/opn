@@ -15,8 +15,9 @@
 //= require bootstrap-sprockets
 //= require chosen.jquery
 //= require forem
-//= require jquery.slimscroll
 //= require jquery.PrintArea
+//= require d3.min
+//= require bootstrap-tagsinput
 //= require main
 //= require pages
 //= require admin

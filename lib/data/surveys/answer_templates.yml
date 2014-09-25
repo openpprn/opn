@@ -1,0 +1,169 @@
+# Generic
+# TODO: Make a hierarchy?
+- id: 1
+  name: generic_text
+  display_type_id: 1
+  data_type: text_value
+- id: 2
+  name: generic_paragraph
+  display_type_id: 2
+  data_type: text_value
+- id: 3
+  name: generic_date
+  display_type_id: 5
+  data_type: time_value
+- id: 4
+  name: generic_number
+  display_type_id: 6
+  data_type: numeric_value
+- id: 5
+  name: time
+  display_type_id: 7
+  data_type: time_value
+
+# Specific types (sub-types)
+- id: 6
+  name: number_of_years
+  unit_id: 10
+  display_type_id: 6
+  data_type: numeric_value
+- id: 7
+  name: number_of_months
+  unit_id: 11
+  display_type_id: 6
+  data_type: numeric_value
+- id: 8
+  name: number_of_feet
+  unit_id: 14
+  display_type_id: 6
+  data_type: numeric_value
+- id: 9
+  name: number_of_inches
+  unit_id: 1
+  display_type_id: 6
+  data_type: numeric_value
+- id: 16
+  name: number_of_hours
+  unit_id: 7
+  display_type_id: 6
+  data_type: numeric_value
+- id: 17
+  name: number_of_minutes
+  unit_id: 12
+  display_type_id: 6
+  data_type: numeric_value
+- id: 24
+  name: number_of_pounds
+  unit_id: 2
+  display_type_id: 6
+  data_type: numeric_value
+
+# Templates for answer options containing questions
+- id: 10
+  name: generic_multiple_choice
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+
+- id: 11
+  name: generic_check_box
+  display_type_id: 4
+  data_type: answer_option_id
+  allow_multiple: true
+  answer_option_ids:
+
+- name: generic_select
+  id: 12
+  display_type_id: 8
+  data_type: answer_option_id
+  answer_option_ids:
+
+# Specific answer option templates
+
+- id: 13
+  name: yes_no_choice
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 36
+  - 20
+- id: 14
+  name: satisfaction_scale
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 222
+  - 74
+  - 75
+  - 76
+  - 77
+  - 214
+  - 215
+  - 223
+- id: 15
+  name: improvement_grade
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 210
+  - 75
+  - 211
+  - 77
+  - 212
+- id: 18
+  name: chance_of_dozing
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+- id: 19
+  name: quality_grade
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 101
+  - 102
+  - 103
+  - 104
+  - 270
+- id: 20
+  name: truth_scale
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 267
+  - 114
+  - 268
+  - 116
+  - 117
+- id: 21
+  name: excellence_scale
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+- id: 22
+  name: improvement_scale
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+- id: 23
+  name: yes_no_dont_know_choice
+  display_type_id: 3
+  data_type: answer_option_id
+  answer_option_ids:
+  - 36
+  - 20
+  - 19

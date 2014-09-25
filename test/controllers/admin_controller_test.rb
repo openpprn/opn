@@ -18,12 +18,22 @@ class AdminControllerTest < ActionController::TestCase
 
   end
 
+  test "Moderators should not GET user administration" do
+    login(users(:moderator_1))
+
+    get :users
+
+    assert_authorization_exception
+
+  end
+
+
   test "should raise SecurityViolation for unauthorized users" do
     login(users(:user_1))
 
     get :users
 
-    assert_response 403
+    assert_authorization_exception
   end
 
   test "should allow owner to add and remove user roles" do
@@ -42,21 +52,21 @@ class AdminControllerTest < ActionController::TestCase
     login(users(:admin))
 
     post :add_role_to_user, format: :js, user_id: users(:user_1).id, role: roles(:admin).name
-    assert_response 403
+    assert_authorization_exception
     refute users(:user_1).has_role? :admin
 
     post :remove_role_from_user, user_id: users(:admin).id, role: roles(:admin).name, format: :js
-    assert_response 403
+    assert_authorization_exception
     assert users(:admin).has_role? :admin
 
     login(users(:user_1))
 
     post :add_role_to_user, format: :js, user_id: users(:user_1).id, role: roles(:admin).name
-    assert_response 403
+    assert_authorization_exception
     refute users(:user_1).has_role? :admin
 
     post :remove_role_from_user, user_id: users(:admin).id, role: roles(:admin).name, format: :js
-    assert_response 403
+    assert_authorization_exception
     assert users(:admin).has_role? :admin
 
 
@@ -88,21 +98,76 @@ class AdminControllerTest < ActionController::TestCase
     login(users(:admin))
 
     post :destroy_user, user_id: users(:user_1).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:owner).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:admin).id, format: :js
-    assert_response 403
+    assert_authorization_exception
 
     login(users(:user_5))
     post :destroy_user, user_id: users(:user_1).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:owner).id, format: :js
-    assert_response 403
+    assert_authorization_exception
     post :destroy_user, user_id: users(:admin).id, format: :js
-    assert_response 403
+    assert_authorization_exception
 
   end
 
+# Notifications
+  test "should show notification administration to moderator" do
+    login(users(:moderator_1))
 
+    get :notifications
+
+    assert_response :success
+    assert_equal Post.where(post_type: "notification"), assigns(:posts)
+  end
+
+  test "should not show notification administration to normal user" do
+    login(users(:user_1))
+
+    get :notifications
+
+    assert_authorization_exception
+  end
+
+  # Research Topics
+  test "should show research topic administration to moderator" do
+    login(users(:moderator_1))
+
+    get :research_topics
+
+    assert_response :success
+
+  end
+
+  test "should not show research topic administration to normal user" do
+    login(users(:user_4))
+
+    get :research_topics
+
+    assert_authorization_exception
+  end
+
+  # Blog
+  test "should get blog admin for moderator" do
+    login(users(:moderator_2))
+
+    get :blog
+
+    assert_response :success
+    assert_equal Post.where(post_type: "blog"), assigns(:posts)
+
+  end
+
+  test "should not get blog admin for normal user" do
+    login(users(:social))
+
+    get :blog
+
+    assert_authorization_exception
+  end
+
+  # Helpers
 end

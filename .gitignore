@@ -30,6 +30,7 @@ capybara-*.html
 /public/assets
 /public/public
 /public/uploads
+/test/support/uploads
 /coverage/
 /spec/tmp/*
 **.orig
@@ -52,3 +53,9 @@ config/initializers/secret_token.rb
 
 # Ignore OS generated files
 .DS_Store
+
+# Ignore Generated Files
+
+/Gemfile.lock
+/db/schema.rb
+/app/assets/javascripts/google_analytics.js

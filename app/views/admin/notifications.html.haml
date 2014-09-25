@@ -1,2 +1,2 @@
 %h3 Notifications
-= render :partial => "shared/notifications", :locals => { :editable => true }
+= render partial: "shared/notifications", locals: { notifications: @posts, new_notification: @new_post }

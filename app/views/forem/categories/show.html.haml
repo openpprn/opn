@@ -1,0 +1,13 @@
+.category
+  %ol.breadcrumb
+    %li
+      = link_to t('forem.forum.forums'), forem.forums_path
+    %li.active
+      = link_to forem_emojify(@category), [forem, @category]
+    .pull-right
+      = link_to main_app.terms_and_conditions_path, class: 'btn btn-xs btn-link' do
+        %span.fa.fa-legal
+        Terms and Conditions
+
+
+  = render @category

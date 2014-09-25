@@ -15,15 +15,23 @@ class ResearchControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  #test "User can see a list of completed surveys" do
-  #  login(users(:completed_survey))
-  #
-  #end
-  #
-  #test "User can see a list of incomplete surveys" do
-  #  login(users(:incomplete_survey))
-  #
-  #
-  #end
+
+
+  test "User can see a list of completed surveys" do
+    login(users(:has_completed_survey))
+
+    get :research_surveys
+
+    assert_response :success
+
+  end
+
+  test "User can see a list of incomplete surveys" do
+    login(users(:has_incomplete_survey))
+
+    get :research_surveys
+
+    assert_response :success
+  end
 
 end
