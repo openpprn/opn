@@ -99,22 +99,25 @@ class ResearchTopicsControllerTest < ActionController::TestCase
   end
 
   test "User can view un-accepted research topic that they own" do
-    skip "Too tired"
-    login(users(:user_1))
+    login(users(:social))
 
-    assert false
+    get :show, id: research_topics(:rejected).id
+
+    assert_response :success
+    assert_equal research_topics(:rejected), assigns(:research_topic)
+
 
   end
 
   test "User cannot view un-accepted research topic that they do not own" do
-    skip "Too tired"
+
     login(users(:user_1))
 
-    assert false
+    get :show, id: research_topics(:rejected).id
+
+
+    assert_authorization_exception
   end
-
-
-
 
   test "Moderator can change state of a research topic" do
     login(users(:moderator_1))

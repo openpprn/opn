@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def todays_votes
-    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.label == "research_question" }
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
   end
 
   def available_votes_percent
@@ -110,5 +110,9 @@ class User < ActiveRecord::Base
 
   def share_research_topics?
     true
+  end
+
+  def has_votes_remaining?
+    todays_votes.length < vote_quota
   end
 end

@@ -17,7 +17,7 @@ class ResearchTopic < ActiveRecord::Base
   end
 
   def self.voted_by(user)
-    accepted.includes(:votes).where(votes: {user_id: user.id} ).select{|rt| rt.rating == 1}.sort do |rt1, rt2|
+    accepted.joins(:votes).where(votes: {user_id: user.id, rating: 1} ).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
@@ -27,11 +27,13 @@ class ResearchTopic < ActiveRecord::Base
   end
 
   def self.newest
-    accepted.includes(:votes).sort do |rt1, rt2|
-      rt1.created_at <=> rt2.created_at
-    end
+    accepted.order("created_at DESC")
   end
 
+
+  def accepted?
+    state == 'accepted'
+  end
   private
 
   def self.sort_topics(rt1, rt2)

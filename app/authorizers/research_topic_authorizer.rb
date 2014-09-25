@@ -7,6 +7,8 @@ class ResearchTopicAuthorizer < ApplicationAuthorizer
     user.has_role? :moderator
   end
 
+
+
   def self.updatable_by?(user)
     user.has_role? :moderator
   end
@@ -29,5 +31,9 @@ class ResearchTopicAuthorizer < ApplicationAuthorizer
 
   def readable_by?(user)
     user.has_role?(:moderator) || resource.user == user || resource.state == 'accepted'
+  end
+
+  def votable_by?(user)
+    resource.accepted?
   end
 end

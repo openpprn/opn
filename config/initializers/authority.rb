@@ -43,7 +43,8 @@ Authority.configure do |config|
     :read   => 'readable',
     :update => 'updatable',
     :delete => 'deletable',
-    :moderate => 'moderatable'
+    :moderate => 'moderatable',
+    :vote_for => 'votable'
   }
 
   # LOGGER
