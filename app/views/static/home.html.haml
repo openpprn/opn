@@ -45,7 +45,7 @@
         = link_to "Join today", new_user_registration_path
         to submit and vote on the research topics of tomorrow
       .questions#home-research-qs
-        = render partial: "shared/research_topics", locals: {research_questions: Vote.popular_research_questions.take(5), editable: false, disabled: true}
+        = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular.take(5), editable: false, disabled: true}
   .row
     #reason-carousel.carousel.slide
       %ol.carousel-indicators

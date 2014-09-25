@@ -25,10 +25,6 @@ Rails.application.routes.draw do
   get 'faqs' => 'static#faqs'
   get 'team' => 'static#team'
   match 'user_dashboard', to: 'account#dashboard', as: :user_dashboard, via: :get
-  match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
-  match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
-  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
-
 
   # Research Topics
   #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get
@@ -76,6 +72,8 @@ Rails.application.routes.draw do
   # Account Section
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
+  match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
+  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
   match 'update_account', to: 'account#update', as: 'update_account', via: :patch
   match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 

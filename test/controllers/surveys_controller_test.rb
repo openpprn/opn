@@ -37,8 +37,11 @@ class SurveysControllerTest < ActionController::TestCase
 
   test "User can answer question on survey" do
     login(users(:has_incomplete_survey))
+    assert users(:has_incomplete_survey).can?(:participate_in_research)
 
     post :process_answer, { 'question_id' => questions(:q3c).id, 'answer_session_id' => answer_sessions(:incomplete).id,  questions(:q3c).id.to_s => 22, "direction" => "next"}
+
+    assert_not_nil assigns(:answer_session)
 
     assert_redirected_to survey_report_path(assigns(:answer_session))
   end
