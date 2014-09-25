@@ -6,15 +6,17 @@
     .btn-toolbar{role: "toolbar"}
       %form#user-search.form-inline{ role: 'form', action: admin_users_path, :style => "display: inline;" }
 
-        .col-sm-4
-          .btn-group{data: {toggle: 'buttons'}}
+        .col-sm-5
+          .btn-group.btn-group-sm{data: {toggle: 'buttons'}}
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: ''} All Users
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: 'admin'} Admins
             %label.btn.btn-default
               %input{type: 'radio', name: 'search_role', value: 'owner'} Owners
-        .col-sm-8
+            %label.btn.btn-default
+              %input{type: 'radio', name: 'search_role', value: 'moderator'} Moderators
+        .col-sm-7
           .btn-group
             %input#auth-token{name: 'authenticity_token', type: "hidden", value: form_authenticity_token}
             %label.control-label.sr-only Limit by user email
@@ -41,7 +43,7 @@
             %td
               - user.roles.each do |role|
                 %span.label.label-default{:style => "margin-right: 5px;"}
-                  = role.name.capitalize
+                  = role.name.titleize
                   %a.remove-role{data: {role: role.name}, :style => "color: inherit;"}
                     %i.fa.fa-times
 
@@ -55,6 +57,8 @@
                     %a.add-role{href: "#", data: {role: 'admin'}} Make Admin
                   %li
                     %a.add-role{href: "#", data: {role: 'owner'}} Make Owner
+                  %li
+                    %a.add-role{href: "#", data: {role: 'moderator'}} Make Moderator
                   %li.divider
                   %li
                     %a.delete-user{href: "#"} Delete User

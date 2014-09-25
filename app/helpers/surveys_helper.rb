@@ -9,12 +9,14 @@ module SurveysHelper
     end
   end
 
-  def have_checked?(answer, val)
-    if answer.value.present?
-      if answer.value.kind_of?(Array)
-        answer.value.include? val
+  def have_checked?(answer, answer_template, val)
+    if answer.present? and answer.value.present? and answer.value[answer_template.id].present?
+      saved_val = answer.value[answer_template.id]
+
+      if saved_val.kind_of?(Array)
+        saved_val.include? val
       else
-        answer.value == val
+        saved_val == val
       end
     else
       false
@@ -23,7 +25,7 @@ module SurveysHelper
   end
 
   def start_or_resume_survey(question_flow, answer_session = nil)
-    if answer_session.present? and answer_session.started?
+    if answer_session.present? and answer_session.started? and answer_session.last_answer.present? and answer_session.last_answer.next_question.present?
       ask_question_path(answer_session_id: answer_session.id, question_id: answer_session.last_answer.next_question.id)
     else
       start_survey_path(question_flow_id: question_flow.id)
@@ -56,5 +58,22 @@ module SurveysHelper
     else
       "Obese"
     end
+  end
+
+
+  def conditional_tag(condition, tag, attributes, &block)
+    if condition
+      haml_tag :div, attributes, &block
+    else
+      haml_concat capture_haml(&block)
+    end
+  end
+
+  def show_questions
+    # show self
+
+    # show descendants
+
+
   end
 end

@@ -5,8 +5,7 @@
   <div class='col-md-4'><%= link_to t("forem.admin.forum.new_link"), forem.new_admin_forum_path, :class => "btn btn-primary btn-sm pull-right" %></div>
 </div>
 
-
-<% @forums.group_by(&:category).each do |category, forums| %>
+<% (@forums || Forem::Forum.all).group_by(&:category).each do |category, forums| %>
   <h4 class="text-primary"><%= category.try(:name) || t('.no_category') %></h4>
 
   <table id='forums' class='forums table table-striped' cellspacing='0'>

@@ -1,2 +1,24 @@
-%h3 Research Topics
-= render :partial => "shared/research_topics", :locals => { :editable => true, :star_pattern => :popular, :num_loops => 5}
+.panel.panel-default.research_topics
+  .panel-heading
+    %h3 Research Topics
+  %table.table.table-responsive.table-striped
+    %thead
+      %tr
+        %th Rating
+        %th Text
+        %th User
+        %th State
+        %th Submitted At
+        %th Options
+    %tbody
+      - @research_topics.each do |research_topic|
+        %tr
+          %td= research_topic.rating
+          %td= research_topic.text
+          %td= research_topic.user
+          %td= research_topic.state
+          %td= research_topic.created_at.strftime("%d-%m-%Y %H:%M")
+          %td
+            .btn-group
+              = link_to "Moderate", admin_research_topic_path(research_topic), class: "btn btn-success btn-xs"
+              = link_to "Delete", research_topic_path(research_topic, method: :delete), class: "btn btn-danger btn-xs"

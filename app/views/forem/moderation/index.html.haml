@@ -1,0 +1,23 @@
+%ol.breadcrumb
+  %li
+    = link_to t('forem.forum.forums'), forem.root_path
+  %li.active= t('.title', :forum => forum)
+  .pull-right
+    = link_to main_app.terms_and_conditions_path, class: 'btn btn-xs btn-link' do
+      %span.fa.fa-legal
+      Terms and Conditions
+%h3= t('posts_count', :count => @posts.count, :scope => 'forem.general')
+= form_tag forem.forum_moderate_posts_url(forum), :method => :put do
+  #posts
+    - @posts.limit(25).group_by(&:topic).each do |topic, posts|
+      %h4
+        = forem_emojify(topic.forum.title)
+        \&raquo; #{forem_emojify(topic.subject)}
+      = render posts, :mass_moderation => true
+%h3= t('topics_count', :count => @topics.count, :scope => 'forem.forum')
+#topics
+  - @topics.limit(25).each_with_index do |topic, topic_counter|
+    <div id='topic_#{topic_counter + 1}' class='topic #{cycle('odd', 'even', name: 'topics')}'>
+    .moderation.alert
+      = link_to forem_emojify(topic.subject), |
+        forem.forum_topic_path(forum, topic)  |

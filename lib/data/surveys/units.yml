@@ -11,16 +11,18 @@
 - id: 6
   name_en: cigarettes per day
 - id: 7
-  name_en: hour(s)
+  name_en: hours
 - id: 8
-  name_en: day(s)
+  name_en: days
 - id: 9
   name_en: cm H20
 - id: 10
-  name_en: year
+  name_en: years
 - id: 11
   name_en: months
 - id: 12
   name_en: minutes
 - id: 13
   name_en: naps
+- id: 14
+  name_en: feet

@@ -1,6 +1,0 @@
-text:
-  name: text
-  data_type: text_value
-numeric:
-  name: numeric
-  data_type: numeric_value

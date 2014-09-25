@@ -1,5 +1,12 @@
 # Changelog for OpenPPRN
 
+## R2
+
+## Enhancements
+- Research Democracy - submitting and voting for research topics.
+
+## Fixes
+
 ## R1 - Social Functionality
 ### Enhancements
 - Discussion forum added

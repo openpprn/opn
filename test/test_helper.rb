@@ -31,6 +31,12 @@ class ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[resource]
     sign_in(resource.class.name.downcase.to_sym, resource)
   end
+
+  def assert_authorization_exception
+    assert_response 302
+    assert flash[:alert]
+  end
+
 end
 
 class ActionDispatch::IntegrationTest

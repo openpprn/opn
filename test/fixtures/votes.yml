@@ -1,0 +1,36 @@
+v1:
+  user: user_1
+  research_topic: rt1
+  rating: 1
+v2:
+  user: user_1
+  research_topic: rt3
+  rating: 1
+v3:
+  user: user_4
+  research_topic: rt1
+  rating: 1
+v4:
+  user: user_5
+  research_topic: rt1
+  rating: 1
+v5:
+  user: user_6
+  research_topic: rt1
+  rating: 1
+v6:
+  user: user_7
+  research_topic: rt3
+  rating: 1
+v7:
+  user: user_8
+  research_topic: rt3
+  rating: 1
+v8:
+  user: user_9
+  research_topic: rt3
+  rating: 1
+v9:
+  user: social
+  rating: 1
+  research_topic: rt1

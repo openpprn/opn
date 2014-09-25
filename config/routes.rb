@@ -14,25 +14,29 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'privacy' => 'static#privacy'
   get 'terms' => 'static#terms'
 
+  # Research Topics
+  #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get
+  #match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
+  #match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
+  match 'research_topics_tab', to: "research_topics#research_topics", via: :get, as: :research_topics_ajax
+  get 'vote_counter' => 'research_topics#vote_counter'
+  resources :research_topics
 
   # Research Section
   get 'research_topics' => 'research#research_topics'
-  get 'research_question' => 'research#research_question'
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
   get 'data_connections' => 'research#data_connections'
-  get 'new_question' => 'research#new_question'
 
   # Surveys
   get 'research_surveys/report/:answer_session_id', to: 'surveys#show_report', as: :survey_report
   get 'research_surveys/:question_flow_id', to: 'surveys#start_survey', as: :start_survey
   get 'research_surveys/:answer_session_id/:question_id', to: 'surveys#ask_question', as: :ask_question
   match 'research_surveys/process_answer', to: 'surveys#process_answer', via: :post, as: :process_answer
-  get 'questions/frequencies(/:question_id/:answer_session_id)', to: "surveys#question_frequencies", as: :question_frequencies, format: :json
+  get 'questions/frequencies(/:question_id/:answer_session_id)', to: "questions#frequencies", as: :question_frequencies, format: :json
 
 
   # Health Data Section
@@ -58,16 +62,23 @@ Rails.application.routes.draw do
   # Account Section
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
-  get 'consent' => 'account#consent'
+  match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
+  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
+  match 'update_account', to: 'account#update', as: 'update_account', via: :patch
+  match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
+  # Discussion
+  match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
 
   # Admin Section
-  get 'admin' => 'admin#users'
+  get 'admin' => 'admin#notifications'
   match 'admin/users', to: 'admin#users', as: 'admin_users', via: [:get, :post]
   get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
   get 'admin/blog' => 'admin#blog', as: 'admin_blog'
   get 'admin/notifications' => 'admin#notifications', as: 'admin_notifications'
   get 'admin/research_topics' => 'admin#research_topics', as: 'admin_research_topics'
+  get 'admin/research_topic/:id' => 'admin#research_topic', as: 'admin_research_topic'
+
 
   match 'add_role', to: "admin#add_role_to_user", via: :post, as: :add_role, format: :js
   match 'remove_role', to: "admin#remove_role_from_user", via: :post, as: :remove_role, format: :js
@@ -80,8 +91,10 @@ Rails.application.routes.draw do
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
 
+  # Blog and Notification Posts
+  resources :posts, except: [:show, :index]
 
-  devise_for :user
+  devise_for :user, controllers: { registrations: 'registrations' }
 
 
 

@@ -11,7 +11,15 @@ class SurveysController < ApplicationController
   def ask_question
     @answer_session = AnswerSession.find(params[:answer_session_id])
     @question = Question.find(params[:question_id])
-    @answer = Answer.where(question_id: @question.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @question.id, answer_session_id: @answer_session.id)
+
+    if @question.part_of_group?
+      @group = @question.group
+      @questions = @group.minimum_set(@answer_session.question_flow)
+      @answer = Answer.where(question_id: @questions.first.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @questions.first.id, answer_session_id: @answer_session.id)
+    else
+      @answer = Answer.where(question_id: @question.id, answer_session_id: @answer_session.id).first || Answer.new(question_id: @question.id, answer_session_id: @answer_session.id)
+    end
+
   end
 
   def show_report
@@ -22,22 +30,23 @@ class SurveysController < ApplicationController
   end
 
   def process_answer
-    @question = Question.find(params[:question_id])
+    @questions = Question.where(id: params[:question_id])
     @answer_session = AnswerSession.find(params[:answer_session_id]) # Validate user!
 
-    answer = @answer_session.process_answer(@question, params)
+    @questions.each do |question|
+      @answer = @answer_session.process_answer(question, params)
+    end
 
     if @answer_session.completed?
       redirect_to survey_report_path(@answer_session)
     else
-      redirect_to ask_question_path(question_id: answer.next_question.id, answer_session_id: @answer_session.id)
+      redirect_to ask_question_path(question_id: @answer.next_question.id, answer_session_id: @answer_session.id)
     end
   end
 
-  def question_frequencies
-    @question = Question.find(params[:question_id])
-    @answer_session = AnswerSession.find(params[:answer_session_id])
-  end
+
+
+  private
 
 
 end
