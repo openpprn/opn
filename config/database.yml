@@ -23,16 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: myapnea-test
+  database: myapnea-development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: openpprn
+  username: myapnea
 
   # The password associated with the postgres role (username).
-  password: openpprn
+  password: myapnea
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'privacy_policy' => 'static#privacy_policy', as: 'privacy'
   get 'terms' => 'static#terms'
   get 'theme' => 'static#theme'
 
@@ -25,8 +24,7 @@ Rails.application.routes.draw do
   get 'faqs' => 'static#faqs'
   get 'team' => 'static#team'
   match 'user_dashboard', to: 'account#dashboard', as: :user_dashboard, via: :get
-  match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
-  
+
   # Research Topics
   #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get
   #match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
