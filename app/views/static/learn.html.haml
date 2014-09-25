@@ -19,7 +19,7 @@
     %br/
   .col-sm-4
     %h2 In The News
-    = render partial: 'shared/blog_posts', locals: {short: true, blog_posts: []}
+    = render partial: 'shared/blog_posts', locals: {short: true, blog_posts: [], new_blog_post: Post.new}
 
 -#:javascript
 -#  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
 
 
   def myapnea_layout
-    if (['research', 'surveys', 'health_data', 'social'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent' or params[:action] == 'privacy_policy') and current_user
+    if (['research', 'surveys', 'health_data', 'social', 'research_topics'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent' or params[:action] == 'privacy_policy') and current_user
       'dashboard'
     elsif params[:action] == "privacy_policy" or params[:action] == "consent"
       Rails.application.config.layout
