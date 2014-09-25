@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   match 'research_question/:id', to: "research_topics#show", as: :research_topic, via: :get
   match 'research_questions', to: 'research_topics#index', via: :get, as: :research_topics
   match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
+  match 'research_topics', to: "research_topics#research_topics", via: :get, as: :research_topics_ajax
+  get 'vote_counter' => 'research_topics#vote_counter'
   resources :research_topics, except: [:show, :index, :new]
 
   # Research Section
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
   get 'data_connections' => 'research#data_connections'
-  get 'vote_counter' => 'research#vote_counter'
 
   # Surveys
   get 'research_surveys/report/:answer_session_id', to: 'surveys#show_report', as: :survey_report

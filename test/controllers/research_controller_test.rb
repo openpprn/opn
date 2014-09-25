@@ -23,8 +23,6 @@ class ResearchControllerTest < ActionController::TestCase
     get :research_surveys
 
     assert_response :success
-    assert_not_nil assigns(:complete_surveys)
-    assert_not_empty assigns(:complete_surveys)
 
   end
 
@@ -34,9 +32,6 @@ class ResearchControllerTest < ActionController::TestCase
     get :research_surveys
 
     assert_response :success
-    assert_not_nil assigns(:incomplete_surveys)
-    assert_not_empty assigns(:incomplete_surveys)
-
   end
 
 end

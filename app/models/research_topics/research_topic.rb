@@ -6,21 +6,28 @@ class ResearchTopic < ActiveRecord::Base
 
   STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
 
+  scope :accepted, -> { where(state: 'accepted') }
+
+
   def self.popular
 
-    includes(:votes).sort do |rt1, rt2|
+    accepted.includes(:votes).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
 
   def self.voted_by(user)
-    includes(:votes).where(user_id: user.id).select{|rt| rt.rating == 1}.sort do |rt1, rt2|
+    accepted.includes(:votes).where(votes: {user_id: user.id} ).select{|rt| rt.rating == 1}.sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
 
+  def self.created_by(user)
+    where(user_id: user.id)
+  end
+
   def self.newest
-    includes(:votes).sort do |rt1, rt2|
+    accepted.includes(:votes).sort do |rt1, rt2|
       rt1.created_at <=> rt2.created_at
     end
   end

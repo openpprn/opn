@@ -7,7 +7,7 @@
             %h2.text-center.question-rating= research_topic.rating
           .col-md-8
             %h4
-              = link_to research_topic.text, view_research_question_path(question)
+              = link_to research_topic.text, research_topic_path(research_topic)
           .col-md-2
             = link_to "Edit", edit_research_topic_path(research_topic), class: "btn btn-success btn-xs pull-right"
             = link_to "Delete", research_topic_path(research_topic, method: :delete), class: "btn btn-danger btn-xs pull-right"

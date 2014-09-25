@@ -6,19 +6,19 @@
 
 %ul.nav.nav-tabs.nav-justified{role: "tablist"}
   %li.active
-    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_questions_path} Most Votes
+    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Most Votes
   - if current_user
     %li
-      %a{"data-toggle" => "tab", href: "#mine", role: "tab", "data-target-path" => research_questions_path} My Votes
+      %a{"data-toggle" => "tab", href: "#mine", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
   %li
-    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_questions_path} Newest
+    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
 
 / Tab panes
 .tab-content
-  #popular.tab-pane.active= render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+  #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
   - if current_user
-    #mine.tab-pane= render partial: "shared/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
-  #newest.tab-pane= render partial: "shared/research_topics", locals: {research_topics: ResearchTopic.new, disabled: false}
+    #mine.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+  #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
 
 = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
 

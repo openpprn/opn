@@ -26,7 +26,7 @@
           -#  Add your vote and voice to help increase the chances this research topic gets studied.
 
 
-    - if @research_topic.user.allows_sharing?
+    - if @research_topic.user.share_research_topics?
       .panel.panel-default
         .panel-heading
           %h3.panel-title Proposed By...

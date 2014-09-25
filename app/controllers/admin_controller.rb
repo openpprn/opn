@@ -50,7 +50,7 @@ class AdminController < ApplicationController
   end
 
   def research_topics
-    @research_questions = Vote.new_research_questions
+    @research_topics = ResearchTopic.newest
   end
 
   def surveys
