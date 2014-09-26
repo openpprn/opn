@@ -153,6 +153,10 @@ header#top-navigation.navbar-inverse.smaller {
   height: 75px;
 }
 
+.film-strip-panel img:hover {
+  border-color: $linkColorHover;
+}
+
 @media screen and (min-width: 768px) {
   .film-strip {
     text-align: right;

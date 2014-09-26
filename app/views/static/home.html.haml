@@ -1,18 +1,15 @@
 - @title = ""
 
-.video-player
-  .video-player-inner
-    .embed-responsive.embed-responsive-16by9
-      %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
-  .video-image.home-image
-
-.film-strip
-  .film-strip-panel
-    = link_to new_user_registration_path do
-      = image_tag 'myapnea/icons/sign-up.png', size: '280x100', alt: 'Sign Up Today'
-  - ['susan', 'darrel'].each do |person|
-    .film-strip-panel.hidden-xs
-      = image_tag "myapnea/team/#{person}.png", class: 'img-thumbnail', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Video Coming Soon!', style: 'cursor:pointer'
+.row.page-header-image
+  .col-lg-12
+    = link_to "Sign Up Today", new_user_registration_path, class: 'sign', id: "innerSignup"
+    #carousel
+      = image_tag 'myapnea/headers/home.jpg', class: 'header'
+      .film-strip{ style: 'position:absolute;top:17px;right:5px' }
+        - ['susan', 'darrel', 'adam'].each do |person|
+          = link_to team_path, style: 'text-decoration:none' do
+            .film-strip-panel.hidden-xs
+              = image_tag "myapnea/team/#{person}.png", class: 'img-thumbnail'
 
 #home-page
   .row
@@ -35,6 +32,10 @@
           %h3= link_to @pc[topic]['title'], send(@pc[topic]['path'])
           %p
             %i= @pc[topic]['content']
+  .video-player{ style: 'margin-bottom: 40px'}
+    .video-player-inner
+      .embed-responsive.embed-responsive-16by9
+        %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
   .row
     .col-md-6
       %h2 Our Community
