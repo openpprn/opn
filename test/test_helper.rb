@@ -32,6 +32,11 @@ class ActionController::TestCase
     sign_in(resource.class.name.downcase.to_sym, resource)
   end
 
+  def assert_authorization_exception
+    assert_response 302
+    assert flash[:alert]
+  end
+
 end
 
 class ActionDispatch::IntegrationTest

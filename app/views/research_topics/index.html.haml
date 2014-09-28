@@ -1,0 +1,29 @@
+- if current_user
+  .row.vote_counter{"data-target-path" => vote_counter_path}
+    = render partial: 'research/vote_counter'
+
+%br/
+
+%ul.nav.nav-tabs.nav-justified{role: "tablist"}
+  %li.active
+    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Most Votes
+  - if current_user
+    %li
+      %a{"data-toggle" => "tab", href: "#voted_on", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
+    %li
+      %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Submissions
+  %li
+    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+
+/ Tab panes
+.tab-content
+  #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+  - if current_user
+    #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+    #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
+  #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
+%br/
+= link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
+
+
+

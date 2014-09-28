@@ -16,22 +16,6 @@ class ResearchControllerTest < ActionController::TestCase
   end
 
 
-  test "User can view research topics" do
-    login(users(:user_1))
-
-    get :research_topics
-
-    assert_response :success
-  end
-
-  test "User can view single research topic" do
-    login(users(:user_1))
-
-    get :research_question, id: questions(:q3).id
-
-    assert_not_nil assigns(:question)
-    assert_response :success
-  end
 
   test "User can see a list of completed surveys" do
     login(users(:has_completed_survey))
@@ -39,8 +23,6 @@ class ResearchControllerTest < ActionController::TestCase
     get :research_surveys
 
     assert_response :success
-    assert_not_nil assigns(:complete_surveys)
-    assert_not_empty assigns(:complete_surveys)
 
   end
 
@@ -50,9 +32,6 @@ class ResearchControllerTest < ActionController::TestCase
     get :research_surveys
 
     assert_response :success
-    assert_not_nil assigns(:incomplete_surveys)
-    assert_not_empty assigns(:incomplete_surveys)
-
   end
 
 end

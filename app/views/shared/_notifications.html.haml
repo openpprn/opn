@@ -22,7 +22,7 @@
     - if current_user.can_create?(new_notification)
       %li.list-group-item.list-group-item-warning
         %h5 Add a New Notification
-        = render partial: 'shared/posts_form', locals: { post: new_notification }
+        = render partial: 'posts/form', locals: { post: new_notification }
         .clearfix
 
 

@@ -170,10 +170,4 @@ class AdminControllerTest < ActionController::TestCase
   end
 
   # Helpers
-
-  def assert_authorization_exception
-    assert_response 302
-    assert flash[:alert]
-  end
-
 end

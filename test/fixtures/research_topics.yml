@@ -1,23 +1,29 @@
 rt1:
   text: How much sleep do we really need?
-  description:
-  state:
+  description: I've always wonder this, but I can't be bothered to look for an answer.
+  state: accepted
+  user: user_1
   created_at: <%= Time.zone.now - 1.day %>
-q4:
-  text_en: Do we breathe while sleeping?
-  description:
+rt2:
+  text: Do we breathe while sleeping?
+  description: I sleep all the time, but can't remember noticing myself breathing.
+  state: accepted
+  user: user_2
   created_at: <%= Time.zone.now - 3.hour %>
-q5:
-  text_en: Why do we snore?
-  time_estimate: 1.0
-  group: g1
+rt3:
+  text: Why do we snore?
+  description: It's so annoying!
+  state: accepted
+  user: user_3
   created_at: <%= Time.zone.now - 2.hour %>
-  answer_templates:
-  - text
-q6:
-  text_en: Why am I so tired?
-  time_estimate: 1.0
-  group: g1
+rejected:
+  text: Why am I so tired?
+  description: 2nd cup of coffee and I'm still exhausted
+  state: rejected
+  user: social
   created_at: <%= Time.zone.now - 1.hour %>
-  answer_templates:
-  - text
+under_review:
+  text: Where am I?
+  user: social
+  description: -looks around-
+
