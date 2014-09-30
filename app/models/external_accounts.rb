@@ -1,17 +1,21 @@
 module ExternalAccounts
 
-  #after_create :provision_user_on_third_party_services
+  # Every user, upon creation, provisions their external accounts
+  # Add this line to user.rb:
+  # after_create :provision_external_accounts
+
 
   def provision_external_accounts
-    provision_oodt_user
-    provision_validic_user
+    provision_oodt_user if !self.oodt_user?
+    provision_validic_user if !self.validic_user?
   end
 
-
+  # Test if the user is provisioned on OODT
   def oodt_user?
     return !self.oodt_id.nil?
   end
 
+  # Test if the user is provisioned on Validic
   def validic_user?
     return (!self.validic_id.nil? && !self.validic_access_token.nil?)
   end

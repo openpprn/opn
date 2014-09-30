@@ -12,9 +12,6 @@
 
 unless Rails.env == "test"
 
-
-
-
   to_keep = [ "users", "schema_migrations"]
   tables = [
       "answer_edges",
@@ -43,57 +40,19 @@ unless Rails.env == "test"
   end
 
 
-  files = [
-      ["units.yml", Unit],
-      ["groups.yml", Group],
-      ["display_types.yml", DisplayType],
-      ["answer_options.yml", AnswerOption],
-      ["answer_templates.yml", AnswerTemplate],
-      ["question_help_messages.yml", QuestionHelpMessage],
-      ["questions.yml", Question],
-      ["question_flows.yml", QuestionFlow]
-  ]
 
 
-
-  files.each do |file_name, model_class|
-    file_path = Rails.root.join('lib', 'data', 'surveys', file_name)
-
-    puts(file_path)
-
-    yaml_data = YAML.load_file(file_path)
-
-    yaml_data.each do |object_attrs|
-      puts object_attrs
-      model_class.create(object_attrs)
-    end
-  end
-
-  qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
-  puts(qe_path)
-
-  yaml_data = YAML.load_file(qe_path)
-
-  yaml_data.each_with_index do |attrs, i|
-
-    q1 = Question.find(attrs['parent_question_id'])
-    q2 = Question.find(attrs['child_question_id'])
-
-    qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
-
-    puts("Creating edge #{i} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
-    raise StandardError, qe.errors.full_messages unless qe.save
-  end
-
-  QuestionFlow.all.each {|qf| qf.reset_paths }
-
-
+  # Initialize Piotr and Sean User Accounts
 
   if (user = User.find_by_email("piotr.mankowski@gmail.com"))
     user.add_role :admin
     user.add_role :owner
   else
-    user = User.create(email: "piotr.mankowski@gmail.com", password: "12345678")
+    user = User.new(email: "piotr.mankowski@gmail.com", password: "12345678")
+    user.validic_id = "54293ab084626b96a4000047"
+    user.validic_access_token = "qxmyhv-tcgzgtZEWVsfJ"
+    user.oodt_id = "urn:uuid:39fc580b-8a1a-56a8-931d-42f908fc9ea8"
+    user.save
     user.add_role :admin
     user.add_role :owner
   end
@@ -102,7 +61,11 @@ unless Rails.env == "test"
     user.add_role :admin
     user.add_role :owner
   else
-    user = User.create(email: "seanahrens@gmail.com", password: "password")
+    user = User.new(email: "seanahrens@gmail.com", password: "password")
+    user.validic_id = "542a6e4784626b85f10000c3"
+    user.validic_access_token = "vznvLEEa_pvCamSHecMT"
+    user.oodt_id = "urn:uuid:d363b4d5-db42-5434-ad0e-63a2495c9f4c"
+    user.save
     user.add_role :admin
     user.add_role :owner
   end
@@ -132,5 +95,63 @@ unless Rails.env == "test"
 
     topic.save!
   end
+
+
+
+
+
+
+
+
+
+
+  files = [
+      ["units.yml", Unit],
+      ["groups.yml", Group],
+      ["display_types.yml", DisplayType],
+      ["answer_options.yml", AnswerOption],
+      ["answer_templates.yml", AnswerTemplate],
+      ["question_help_messages.yml", QuestionHelpMessage],
+      ["questions.yml", Question],
+      ["question_flows.yml", QuestionFlow]
+  ]
+
+
+
+  files.each do |file_name, model_class|
+    file_path = Rails.root.join('lib', 'data', 'surveys', file_name)
+
+    puts(file_path)
+
+    yaml_data = YAML.load_file(file_path)
+
+    yaml_data.each do |object_attrs|
+      puts object_attrs
+      model_class.create(object_attrs)
+    end
+  end
+
+
+
+  # qe_path = Rails.root.join('lib', 'data', 'surveys', 'question_edges.yml')
+  # puts(qe_path)
+
+  # yaml_data = YAML.load_file(qe_path)
+
+  # yaml_data.each_with_index do |attrs, i|
+
+  #   q1 = Question.find(attrs['parent_question_id'])
+  #   q2 = Question.find(attrs['child_question_id'])
+
+  #   qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
+
+  #   puts("Creating edge #{i} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
+  #   raise StandardError, qe.errors.full_messages unless qe.save
+  # end
+
+  # QuestionFlow.all.each {|qf| qf.reset_paths }
+
+
+
 
 end
