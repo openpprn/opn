@@ -26,7 +26,7 @@ module ExternalAccounts
   ## OODT METHODS
   private def oodt
     conn = Faraday.new(:url => "https://whiterivercomputing.com/pcori-1")
-    conn.basic_auth(Rails.application.secrets.oodt_username, Rails.application.secrets.oodt_password)
+    conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
     conn
   end
 
@@ -54,7 +54,7 @@ module ExternalAccounts
 
   ## VALIDIC METHODS
   private def validic
-    conn = Faraday.new(:url => "https://api.validic.com/v1/organizations/#{Rails.application.secrets.validic_organization_id}/")
+    conn = Faraday.new(:url => "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}/")
   end
 
 
@@ -79,12 +79,12 @@ module ExternalAccounts
 
 
   def validic_app_marketplace_url
-    "https://app.validic.com/#{Rails.application.secrets.validic_organization_id}/#{self.validic_access_token}"
+    "https://app.validic.com/#{Figaro.env.validic_organization_id}/#{self.validic_access_token}"
   end
 
 
   def check_validic_ok
-    response = Faraday.get "https://api.validic.com/v1/organizations/#{Rails.application.secrets.validic_organization_id}.json?access_token=#{Rails.application.secrets.validic_access_token}"
+    response = Faraday.get "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}.json?access_token=#{Figaro.env.validic_access_token}"
   end
 
 

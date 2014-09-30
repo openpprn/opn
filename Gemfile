@@ -10,7 +10,11 @@ gem 'pg'
 # User HAML for views
 gem 'haml'
 
+# Debugging
 gem 'byebug'
+
+# Helps Store Secrets Securely for Heroku Deploys
+gem 'figaro'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
