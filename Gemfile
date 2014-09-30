@@ -9,6 +9,7 @@ gem 'pg'
 # User HAML for views
 gem 'haml'
 
+gem 'byebug'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -63,8 +64,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 
-# Validic Health App Connections
+# For Third-Party API Connections
 gem 'validic'
+gem 'faraday'
 
 # Development
 group :development do
