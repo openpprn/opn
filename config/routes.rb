@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
   get 'terms' => 'static#terms'
+  #Content Pages
+  get 'content/:page' => 'static#content'
+
 
   # Research Topics
   #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get

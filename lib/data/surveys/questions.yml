@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - id: 489
   text_en: |
     How did you hear about MyApnea.Org?
@@ -337,25 +338,14 @@
   - 20
 - id: 527
   text_en: I worried about not being able to fall asleep
+=======
+- id: 1000
+  text_en: How would you describe your general well-being over the last week?
+>>>>>>> S2.0-old
   time_estimate: 0.1
-  question_help_message_id: 38
-  group_id: 6
-  answer_template_ids:
-  - 20
-- id: 528
-  text_en: I was satisfied with my sleep
-  time_estimate: 0.1
-  question_help_message_id: 38
-  group_id: 6
-  answer_template_ids:
-  - 20
-- id: 529
-  text_en: |
-    In general, would you say your health is:
-  time_estimate: 0.15
-  question_help_message_id: 40
   answer_template_ids:
   - 21
+<<<<<<< HEAD
 - id: 530
   text_en: Compared to one year ago, how would you rate your health in general now?
   time_estimate: 0.15
@@ -491,13 +481,17 @@
   - 24
 - id: 549
   text_en: In what country were you born?
+=======
+- id: 1001
+  text_en: "On average, over the last week, how would you rate your abdominal pain?"
+>>>>>>> S2.0-old
   time_estimate: 0.1
-  question_help_message_id: 41
   answer_templates:
   - id: 1006
     display_type_id: 3
     data_type: answer_option_id
     answer_option_ids:
+<<<<<<< HEAD
     - 7
     - 8
     - 9
@@ -529,22 +523,28 @@
     - 19
 - id: 552
   text_en: Are you Hispanic or Latino?
+=======
+    - 504
+    - 505
+    - 506
+    - 507
+- id: 1002
+  text_en: How much blood have you seen in your stool over the last week?
+>>>>>>> S2.0-old
   time_estimate: 0.1
-  question_help_message_id: 41
   answer_templates:
   - id: 1008
     display_type_id: 3
     data_type: answer_option_id
     answer_option_ids:
-    - 21
-    - 22
-    - 23
-    - 24
-    - 20
-    - 19
-- id: 553
-  text_en: What is the **highest** level of education you completed?
+    - 500
+    - 501
+    - 502
+    - 503
+- id: 1003
+  text_en: "How many liquid or very soft stools have you had per day, on average, over the last week?"
   time_estimate: 0.1
+<<<<<<< HEAD
   question_help_message_id: 41
   answer_templates:
   - id: 1009
@@ -719,3 +719,640 @@
   group_id: 1
 
 
+=======
+  answer_template_ids:
+  - 4
+
+#########
+
+
+# - id: 489
+#   text_en: |
+#     How did you hear about MyApnea.Org?
+
+#     Check all that apply.
+#   time_estimate: 0.5
+#   answer_templates:
+#   - display_type_id: 4
+#     data_type: answer_option_id
+#     allow_multiple: true
+#     answer_option_ids:
+#     - 78
+#     - 79
+#     - 80
+#     - 81
+#     - 82
+#     - 83
+#     - 84
+#     - 85
+#     - 86
+#     - 87
+#     - 88
+#     - 89
+#     - 90
+#     - 34
+# - id: 490
+#   text_en: |
+#       Please specify how you heard about MyApnea.Org.
+#   time_estimate: 1.0
+#   answer_template_ids:
+#   - 1
+# - id: 491
+#   text_en: Has a doctor or health care professional diagnosed you with sleep apnea?
+#   time_estimate: 0.15
+#   answer_template_ids:
+#   - 13
+# - id: 492
+#   text_en: How old were you when you were first diagnosed with sleep apnea?
+#   time_estimate: 0.5
+#   answer_template_ids:
+#   - 6
+#   - 7
+# - id: 493
+#   text_en: How long do you think you had sleep apnea before you were diagnosed?
+#   time_estimate: 0.5
+#   answer_template_ids:
+#   - 6
+#   - 7
+
+
+# # Group 3
+# - id: 10494
+#   text_en: Snoring
+#   time_estimate: .2
+#   question_help_message_id: 1001
+#   group_id: 3
+#   answer_template_ids:
+#   - 13
+# - id: 20494
+#   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
+#   time_estimate: 0.5
+#   group_id: 3
+#   answer_template_ids:
+#   - 6
+#   - 7
+# - id: 10495
+#   text_en: Sleepiness
+#   time_estimate: .2
+#   question_help_message_id: 1001
+#   group_id: 3
+#   answer_template_ids:
+#   - 13
+# - id: 20495
+#   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
+#   time_estimate: 0.5
+#   group_id: 3
+#   answer_template_ids:
+#   - 6
+#   - 7
+# - id: 10496
+#   text_en: Driving or work accident
+#   time_estimate: .2
+#   question_help_message_id: 1001
+#   group_id: 3
+#   answer_template_ids:
+#   - 13
+# - id: 20496
+#   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
+#   time_estimate: 0.5
+#   group_id: 3
+#   answer_template_ids:
+#   - 6
+#   - 7
+# - id: 10497
+#   text_en: Shortness of breath during sleep
+#   time_estimate: .2
+#   question_help_message_id: 1001
+#   group_id: 3
+#   answer_template_ids:
+#   - 13
+# - id: 20497
+#   text_en: How long had this symptom been present before you were diagnosed with sleep apnea?
+#   time_estimate: 0.5
+#   group_id: 3
+#   answer_template_ids:
+#   - 6
+#   - 7
+# - id: 497
+#   text_en: What doctor first talked to you about Sleep Apnea?
+#   time_estimate: 0.2
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 190
+#     - 191
+#     - 193
+#     - 194
+#     - 34
+# - id: 498
+#   text_en: Please specify other type of doctor first talked to you about Sleep Apnea.
+#   time_estimate: 1.0
+#   answer_template_ids:
+#   - 1
+# - id: 499
+#   text_en: What type of sleep study did you have when first diagnosed with sleep apnea?
+#   time_estimate: 0.1
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 220
+#     - 221
+# - id: 500
+#   text_en: How satisified were you with the experience of getting a sleep study?
+#   time_estimate: 0.2
+#   answer_template_ids:
+#   - 14
+# - id: 10500
+#   text_en: Have you ever recieved treatment for sleep apnea?
+#   time_estimate: 0.2
+#   answer_template_ids:
+#   - 13
+# - id: 501
+#   text_en: What sleep apnea treatments have you had? Check all that apply.
+#   time_estimate: 1.0
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 280
+#     - 281
+#     - 282
+#     - 283
+#     - 284
+#     - 285
+#     - 139
+#     - 286
+#     - 287
+#     - 288
+#     - 289
+#     - 290
+#     - 291
+#     - 292
+# # Group 4
+# - id: 504
+#   text_en: Sleepiness
+#   time_estimate: 0.2
+#   question_help_message_id: 1002
+#   group_id: 4
+#   answer_template_ids:
+#   - 15
+# - id: 505
+#   text_en: Sleep quality
+#   time_estimate: 0.2
+#   question_help_message_id: 1002
+#   group_id: 4
+#   answer_template_ids:
+#   - 15
+# - id: 506
+#   text_en: Energy level
+#   time_estimate: 0.2
+#   question_help_message_id: 1002
+#   group_id: 4
+#   answer_template_ids:
+#   - 15
+# - id: 507
+#   text_en: Alertness
+#   time_estimate: 0.2
+#   question_help_message_id: 1002
+#   group_id: 4
+#   answer_template_ids:
+#   - 15
+# - id: 508
+#   text_en: Attention
+#   time_estimate: 0.2
+#   question_help_message_id: 1002
+#   group_id: 4
+#   answer_template_ids:
+#   - 15
+
+# - id: 509
+#   text_en: How many hours of sleep do you usually get per night on weekdays or workdays?
+#   time_estimate: 0.3
+#   answer_template_ids:
+#   - 16
+# - id: 510
+#   text_en: How many hours of sleep do you usually get per night on weekends or days off?
+#   time_estimate: 0.3
+#   answer_template_ids:
+#   - 16
+# - id: 511
+#   text_en: Considering only your own **feeling best** rhythm, at what time would you get up if you were entirely free to plan your day?
+#   time_estimate: 0.2
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 226
+#     - 227
+#     - 228
+#     - 229
+#     - 230
+# # Group 5
+# - id: 512
+#   text_en: Sitting and reading
+#   time_estimate: 0.2
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 513
+#   text_en: Watching TV
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 514
+#   text_en: Sitting, inactive, in a public place (e.g., a movie theater or classroom)
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 515
+#   text_en: Riding as a passenger in a car for an hour without a break
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 516
+#   text_en: Lying down to rest in the afternoon when time permits
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 517
+#   text_en: Sitting and talking to someone
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 518
+#   text_en: Sitting quietly after lunch without alcohol
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 519
+#   text_en: In a car, while stopped for a few minutes in traffic
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+# - id: 520
+#   text_en: While driving
+#   time_estimate: 0.1
+#   question_help_message_id: 37
+#   group_id: 5
+#   answer_template_ids:
+#   - 18
+
+# # Group 6
+# - id: 521
+#   text_en: My sleep quality
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 19
+# - id: 522
+#   text_en: My sleep was refreshing
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 523
+#   text_en: I had a problem with my sleep
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 524
+#   text_en: I had difficulty falling asleep
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 525
+#   text_en: My sleep was restless
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 526
+#   text_en: I tried hard to get to sleep
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 527
+#   text_en: I worried about not being able to fall asleep
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 528
+#   text_en: I was satisfied with my sleep
+#   time_estimate: 0.1
+#   question_help_message_id: 38
+#   group_id: 6
+#   answer_template_ids:
+#   - 20
+# - id: 529
+#   text_en: |
+#     In general, would you say your health is:
+#   time_estimate: 0.15
+#   question_help_message_id: 40
+#   answer_template_ids:
+#   - 21
+# - id: 530
+#   text_en: Compared to one year ago, how would you rate your health in general now?
+#   time_estimate: 0.15
+#   question_help_message_id: 40
+#   answer_template_ids:
+#   - 22
+# # Group 7
+# - id: 531
+#   text_en: Allergies
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 532
+#   text_en: Asthma
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 533
+#   text_en: Attention Deficit Disorder
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 534
+#   text_en: Cancer
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 535
+#   text_en: Chronic Obstructive Lung Disease (COPD or Emphysema)
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 536
+#   text_en: Depression
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 537
+#   text_en: Diabetes
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 538
+#   text_en: High blood pressure
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 539
+#   text_en: Heart disease
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 540
+#   text_en: Insomnia
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 541
+#   text_en: Narcolepsy
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 542
+#   text_en: Restless leg syndrome
+#   time_estimate: 0.1
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 543
+#   text_en: Stroke
+#   time_estimate: 0.2
+#   question_help_message_id: 39
+#   group_id: 7
+#   answer_template_ids:
+#   - 23
+# - id: 544
+#   text_en: |
+#     Do you have any kind of health care coverage, including health insurance,
+#     prepaid plans such as HMOs, or government plans such as Medicare?
+#   time_estimate: 0.1
+#   answer_template_ids:
+#   - 13
+# - id: 545
+#   text_en: How old are you?
+#   time_estimate: 0.5
+#   answer_template_ids:
+#   - 6
+# - id: 546
+#   text_en: What is your sex?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 5
+#     - 6
+# - id: 547
+#   text_en: What is your height?
+#   time_estimate: 0.2
+#   question_help_message_id: 41
+#   answer_template_ids:
+#   - 8
+#   - 9
+# - id: 548
+#   text_en: What is your last weight?
+#   time_estimate: 0.2
+#   answer_template_ids:
+#   - 24
+# - id: 549
+#   text_en: In what country were you born?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 7
+#     - 8
+#     - 9
+#     - 10
+#     - 11
+#     - 12
+# - id: 550
+#   text_en: Please specify in what country were you were born.
+#   time_estimate: 1.0
+#   question_help_message_id: 41
+#   answer_template_ids:
+#   - 1
+# - id: 551
+#   text_en: What is your race? Check all that apply.
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 4
+#     data_type: answer_option_id
+#     allow_multiple: true
+#     answer_option_ids:
+#     - 13
+#     - 14
+#     - 15
+#     - 16
+#     - 17
+#     - 18
+#     - 19
+# - id: 552
+#   text_en: Are you Hispanic or Latino?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 21
+#     - 22
+#     - 23
+#     - 24
+#     - 20
+#     - 19
+# - id: 553
+#   text_en: What is the **highest** level of education you completed?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 26
+#     - 295
+#     - 29
+#     - 30
+#     - 293
+#     - 19
+#     - 294
+# - id: 554
+#   text_en: What is your current marital status?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 61
+#     - 62
+#     - 63
+#     - 64
+#     - 65
+#     - 66
+#     - 34
+#     - 35
+# - id: 555
+#   text_en: Please describe your current marital status.
+#   time_estimate: 1.0
+#   question_help_message_id: 41
+#   answer_template_ids:
+#   - 1
+# - id: 556
+#   text_en: How many people, other than you, live in your household?
+#   question_help_message_id: 41
+#   time_estimate: 0.2
+#   answer_template_ids:
+#   - 4
+# - id: 557
+#   text_en: What best describes your current main daily activities?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 37
+#     - 38
+#     - 39
+#     - 40
+#     - 41
+#     - 42
+#     - 43
+#     - 35
+# - id: 558
+#   text_en: |
+#     How hard is it for you (and your family) to pay for **very basics** like
+#     food, rent, or mortgage, heating, etc?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 19
+#     - 35
+#     - 44
+#     - 45
+#     - 46
+#     - 47
+# - id: 559
+#   text_en: Last year, what was your total household income from all sources, before
+#     taxes?
+#   time_estimate: 0.1
+#   question_help_message_id: 41
+#   answer_templates:
+#   - display_type_id: 3
+#     data_type: answer_option_id
+#     answer_option_ids:
+#     - 19
+#     - 35
+#     - 52
+#     - 53
+#     - 54
+#     - 55
+#     - 56
+#     - 57
+#     - 58
+#     - 59
+#     - 60
+>>>>>>> S2.0-old

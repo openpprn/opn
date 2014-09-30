@@ -25,6 +25,8 @@
           %a{href: "/social"} Patients
         %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
           %a{href: "/blog"} Blog
+        %li{:class => "#{"active" if action_name == "content"}"}
+          %a{href: "/content/about_partners"} About
 
 
       %ul.nav.navbar-nav.pull-right

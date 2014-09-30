@@ -1,3 +1,28 @@
+- id: 500
+  text_value_en: No blood seen
+- id: 501
+  text_value_en: Streaks of blood or blood in less than 1/2 of stools
+- id: 502
+  text_value_en: Obvious blood or blood in greater than 1/2 of stools
+- id: 503
+  text_value_en: Blood passes alone
+- id: 504
+  text_value_en: None
+- id: 505
+  text_value_en: Mild
+- id: 506
+  text_value_en: Moderate
+- id: 507
+  text_value_en: Severe
+
+
+
+
+
+#####
+
+
+
 - id: 1
   text_value_en: High chance of dozing
 - id: 2
@@ -6,8 +31,10 @@
   text_value_en: Slight chance of dozing
 - id: 4
   text_value_en: Would never doze
+
 - id: 5
   text_value_en: Male
+
 - id: 6
   text_value_en: Female
 - id: 7

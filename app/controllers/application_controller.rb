@@ -50,8 +50,8 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_pprn_from_cookie
-    # if no cookie, has been set, let's assume it's myapnea
-    cookies[:pprn] = "myapnea" if !cookies[:pprn]
+    # if no cookie, has been set, let's assume it's ccfa
+    cookies[:pprn] = "ccfa" if !cookies[:pprn]
     # read the existing cookie
     @pprn = PPRNS[cookies[:pprn]]
   end
