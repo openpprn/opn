@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
 
   include Authority::UserAbilities
   include Authority::Abilities
+
+  # Enable User Connection to External API Accounts
   include ExternalAccounts
+  after_create :provision_external_accounts
 
 
   self.authorizer_name = "UserAuthorizer"

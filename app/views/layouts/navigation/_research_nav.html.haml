@@ -6,7 +6,11 @@
     %a.list-group-item{href: surveys_path, class: "#{"active" if action_name == "research_surveys"}"}
       My Surveys
       %span.badge= QuestionFlow.unstarted(current_user).count
-    %a.list-group-item{href: data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
+    - if current_user.validic_user?
+      %a.list-group-item{href: current_user.validic_app_marketplace_url, :target => "_external"} My Data Connections
+    -# %a.list-group-item{href: data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
+
+
 
 - if current_user
   = render :partial => "shared/notifications", :locals => { notifications: Post.notifications.viewable, new_notification: Post.new(post_type: :notification) }
