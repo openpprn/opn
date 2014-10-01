@@ -1,16 +1,18 @@
-<div class="row">
-  <div class="col-md-6">
-    <h3>Your Epworth Sleepiness Scale Result</h3>
-    <a href="http://epworthsleepinessscale.com/" target="_blank">Click here for more information.</a>
+<div class="list-group">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Your Epworth Sleepiness Scale Result</h3>
+      <a href="http://epworthsleepinessscale.com/" target="_blank">Click here for more information.</a>
 
-    <br/>
-    <br/>
+      <br/>
+      <br/>
 
-    Your score for the Epworth Sleepiness Scale is <%= @answer_session.epworth_sleepiness_scale %>
+      Your score for the Epworth Sleepiness Scale is <%= @answer_session.epworth_sleepiness_scale %>
 
 
+    </div>
   </div>
+
+
+  <%= javascript_include_tag "reports/report_#{@question_flow.id}" %>
 </div>
-
-
-<%= javascript_include_tag "reports/report_#{@question_flow.id}" %>

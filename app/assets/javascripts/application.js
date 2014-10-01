@@ -19,6 +19,7 @@
 //= require jquery.PrintArea
 //= require d3.min
 //= require bootstrap-tagsinput
+//= require placeholders.jquery.min
 //= require facebook
 //= require main
 //= require pages

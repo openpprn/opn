@@ -47,31 +47,33 @@
         to submit and vote on the research topics of tomorrow
       .questions#home-research-qs
         = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular.take(5), editable: false, disabled: true}
+  %br
   .row
-    #reason-carousel.carousel.slide
-      %ol.carousel-indicators
-        - @pc['testimonials'].each_with_index do |testimonial, i|
-          %li{class: ('active' if i == 0), data: {slide_to: i, target: "#reason-carousel"}}
-      .carousel-inner
-        - @pc['testimonials'].each_with_index do |testimonial, i|
-          %div{class: "item #{'active' if i == 0}"}
-            .row
-              .col-md-4
-                .testimonial-img-container
-                  .visible-xs.visible-sm
-                    = image_tag testimonial['image'], class: 'img-thumbnail'
-                  .visible-md.visible-lg
-                    = image_tag testimonial['image']
-              .col-md-5.col-md-offset-1
-                .vertical-center
-                  %blockquote
-                    %p{ 'style' => 'line-height: 1.3;'}= testimonial['quote']
-                    %footer.pull-right
-                      %cite= testimonial['name']
-      %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
-        %span.icon-prev
-      %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
-        %span.icon-next
+    .col-md-12
+      #reason-carousel.carousel.slide
+        %ol.carousel-indicators
+          - @pc['testimonials'].each_with_index do |testimonial, i|
+            %li{class: ('active' if i == 0), data: {slide_to: i, target: "#reason-carousel"}}
+        .carousel-inner
+          - @pc['testimonials'].each_with_index do |testimonial, i|
+            %div{class: "item #{'active' if i == 0}"}
+              .row
+                .col-md-4
+                  .testimonial-img-container
+                    .visible-xs.visible-sm
+                      = image_tag testimonial['image'], class: 'img-thumbnail'
+                    .visible-md.visible-lg
+                      = image_tag testimonial['image']
+                .col-md-7.col-md-offset-1
+                  .vertical-center
+                    %blockquote
+                      %p{ 'style' => 'line-height: 1.3;'}= testimonial['quote']
+                      %footer.pull-right
+                        %cite= testimonial['name']
+        %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
+          %span.icon-prev
+        %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
+          %span.icon-next
 
 = javascript_include_tag "//maps.googleapis.com/maps/api/js?key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
 = javascript_include_tag 'home'

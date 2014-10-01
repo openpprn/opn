@@ -204,6 +204,7 @@ body#MyApnea {
     right: 50px;
     width: 280px;
     background-size: 280px 100px;
+    -ms-behavior: url($bksize-path);
     background-repeat: no-repeat;
     z-index: 1000;
 

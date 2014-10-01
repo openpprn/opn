@@ -12,6 +12,7 @@ draw_frequency_table = () ->
   update_frequency_table()
 
 update_frequency_table = () ->
+  ua = $("#ua .answer")
   tbody = d3.select("#freq-table table tbody")
   question_id = $("#question-select").val()
   answer_session_id = $("#question-select").data("answer-session-id")
@@ -19,6 +20,9 @@ update_frequency_table = () ->
 
   d3.json(qf_path+'/'+question_id+'/'+answer_session_id+'.json', (error, json_data) ->
     user_answer = json_data.user_answer
+    ua.html(user_answer)
+
+    console.log user_answer
     data = json_data.frequencies.map((f) -> { label: f.label, frequency: (Math.round(f.frequency * 100) + "%") })
 
     rows = tbody.selectAll("tr").data(data)
@@ -99,8 +103,13 @@ update_frequency_graph = () ->
     .attr("dy", ".35em")
     .style("text-anchor", "middle")
     .text((d) ->
-      if d.data.frequency > 0.1
+      if d.data.frequency > 0.3
         d.data.label
+      else if d.data.frequency > .15
+        if d.data.label.length > 7
+          d.data.label.substring(0, 6) + "..."
+        else
+          d.data.label
       else
         ""
     );

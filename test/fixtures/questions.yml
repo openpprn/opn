@@ -9,12 +9,12 @@ q2:
   answer_templates:
   - numeric
 q3a:
-  text_en: Why can't I even?
+  text_en: How often can't I even?
   time_estimate: 1.0
   group: g2
   question_help_message: hm1
   answer_templates:
-  - text
+  - how_much
 q3b:
   text_en: Seriously, what's up with that?
   time_estimate: 1.0
@@ -23,9 +23,9 @@ q3b:
   answer_templates:
   - text
 q3c:
-  text_en: How many days has it been?
+  text_en: How does that make me feel?
   time_estimate: 1.0
   group: g2
   question_help_message: hm1
   answer_templates:
-  - numeric
+  - feeling

@@ -3,22 +3,17 @@
 
 = render partial: 'surveys/partials/breadcrumb'
 
-#review
-  .page-header
-    %h1
+#review.panel-default.panel
+  .panel-heading
+    %h2
       Thank you for completing the
       %strong= @question_flow.name
       Survey!
-    %br/
-    = render partial: "surveys/partials/report_nav"
-  .clearfix
-  %h2 Here's some feedback on the answers you provided
-  %br/
-  = render partial: "surveys/reports/report_#{@question_flow.id}" rescue nil
-  %br/
-  %br/
-  %br/
-  = render partial: "surveys/reports/default"
-  %br/
-  %br/
-  = render partial: "surveys/partials/report_nav"
+  .panel-body
+    .list-group
+      .alert.alert-info
+        Improved feedback for this survey is coming soon. Help us build feedback you'd like to see with
+        %a.u-voice your suggestions!
+    = render partial: "surveys/reports/report_#{@question_flow.id}" rescue nil
+
+    = render partial: "surveys/reports/default"

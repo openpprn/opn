@@ -2,7 +2,7 @@
   .col-md-12
 
     - if !@title
-      .page-header-blank
+      -#.page-header-blank
 
     - else
       .page-header
@@ -11,4 +11,4 @@
         - if @intro
           .pull-right
             = render "shared/intro_modal"
-        .clearfix
+        .clearfix                                                                                                     \

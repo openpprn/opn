@@ -9,6 +9,10 @@
     %h3.panel-title New Surveys
     .req surveys_ready_for_completion (title of survey, url to survey)
   .list-group
+    - if current_user.incomplete_surveys.empty? and current_user.unstarted_surveys.empty?
+      .list-group-item
+        %span.text-info No new surveys available. Check back later!
+
     - current_user.incomplete_surveys.each do |survey|
       = link_to start_or_resume_survey(survey, survey.most_recent_answer_session(current_user)), class: 'list-group-item' do
         %h3

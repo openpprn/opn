@@ -52,7 +52,7 @@
     .panel-heading
       .row
         .col-md-1
-          = image_tag post.user.photo_url, :class => "img-responsive img-thumbnail"
+          = image_tag post.user.photo_url, :class => "img-responsive img-thumbnail" if post.user
         .col-md-11
           - if current_user
             .btn-group.pull-right

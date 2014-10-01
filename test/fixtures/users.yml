@@ -31,6 +31,7 @@ admin:
   year_of_birth: 1980
   encrypted_password: <%= pw %>
 moderator_1:
+  id: 19
   first_name: Mod
   last_name: Erator1
   email: mod1@mods.com
