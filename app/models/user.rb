@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
   end
 
   def todays_votes
-    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
+    votes.select{|vote| vote.updated_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
   end
 
   def available_votes_percent
