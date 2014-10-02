@@ -8,9 +8,6 @@
     = form_tag(process_answer_path, {role: "form"}) do
       = hidden_field_tag :answer_session_id, @answer_session.id
       .panel-body
-        .pull-right
-          %span.text-muted Rate this question:&nbsp;
-          = render partial: 'surveys/partials/rate_question', locals: { question: @question, show_badge: false }
         = render partial: 'surveys/partials/help_message' if @question.question_help_message.present?
         - if @group.present?
           = render partial: 'surveys/partials/question_group'

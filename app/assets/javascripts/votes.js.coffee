@@ -1,4 +1,4 @@
-$(document).on "click", "#answer_session .voting button", () ->
+$(document).on "click", "#answer-session .voting button.vote", () ->
   event.preventDefault()
 
   button = $(this)
@@ -11,7 +11,7 @@ $(document).on "click", "#answer_session .voting button", () ->
 
   badge = $(this).siblings(".rating").first()
 
-  $.post(submit_path, {question_id: question_id, rating: rating, type: type}, () ->
+  $.post(submit_path, {vote: {question_id: question_id, rating: rating}}, () ->
     button.siblings(".vote").first().addClass("btn-default").removeClass("btn-success").removeClass("btn-danger")
 
 
@@ -59,7 +59,7 @@ $(document).on "click", ".research_topics a.voting", () ->
           vote_counter.html(data)
         )
     else
-      alert("Sorry! You have already used all of your votes for today.")
+      bootbox.alert("Sorry! You have already used all of your votes for today.")
 
 
   )

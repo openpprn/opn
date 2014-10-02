@@ -7,6 +7,9 @@
   %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Overview
   %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
     Discussion Forum
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
+    Research Topics
+
 .small
   %p
     = link_to 'Create a social profile', main_app.social_profile_path
@@ -27,10 +30,6 @@
       %i.fa.fa-lock &nbsp;
     My Surveys
     %span.badge= QuestionFlow.unstarted(current_user).count + QuestionFlow.incomplete(current_user).count
-  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
-    - unless current_user.signed_consent?
-      %i.fa.fa-lock &nbsp;
-    Research Topics
 .small
   %p
     = link_to 'Sign the consent form', main_app.consent_path

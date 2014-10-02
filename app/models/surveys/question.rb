@@ -6,6 +6,9 @@ class Question < ActiveRecord::Base
 
   include Localizable
   include Votable
+
+  has_many :votes
+
   include Authority::Abilities
 
   localize :text

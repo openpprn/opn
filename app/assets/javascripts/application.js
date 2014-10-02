@@ -18,6 +18,7 @@
 //= require jquery.slimscroll
 //= require jquery.PrintArea
 //= require d3.min
+//= require bootbox.min
 //= require bootstrap-tagsinput
 //= require placeholders.jquery.min
 //= require facebook
