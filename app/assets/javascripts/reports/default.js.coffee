@@ -104,7 +104,10 @@ update_frequency_graph = () ->
     .style("text-anchor", "middle")
     .text((d) ->
       if d.data.frequency > 0.3
-        d.data.label
+        if d.data.label.length > 15
+          d.data.label.substring(0,14) + "..."
+        else
+          d.data.label.substring
       else if d.data.frequency > .15
         if d.data.label.length > 7
           d.data.label.substring(0, 6) + "..."
