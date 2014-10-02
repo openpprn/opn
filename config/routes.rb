@@ -15,16 +15,6 @@ Rails.application.routes.draw do
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
   get 'terms' => 'static#terms'
-  get 'theme' => 'static#theme'
-  get 'version' => 'static#version'
-
-  # MyApnea Specific
-  get 'learn' => 'static#learn'
-  get 'share' => 'static#share'
-  get 'research' => 'static#research'
-  get 'faqs' => 'static#faqs'
-  get 'team' => 'static#team'
-  match 'user_dashboard', to: 'account#dashboard', as: :user_dashboard, via: :get
 
   # Research Topics
   #match 'research_topic/:id', to: "research_topics#show", as: :research_topic, via: :get

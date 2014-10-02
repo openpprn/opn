@@ -1,5 +1,5 @@
 class SocialController < ApplicationController
-  before_action :authenticate_user!, except: [:locations, :discussion]
+  before_action :authenticate_user!, except: [:overview, :locations, :discussion]
   before_action :set_active_top_nav_link_to_social
 
   def profile
@@ -19,13 +19,8 @@ class SocialController < ApplicationController
 
 
   def locations
-    if params[:show_user]
-      @locations = SocialProfile.locations_for_map(current_user)
-      @user_location = current_user.social_profile.location_for_map if current_user and current_user.social_profile and current_user.social_profile.show_location
-    else
-      @locations = SocialProfile.locations_for_map
-    end
-
+    @locations = SocialProfile.locations_for_map(current_user)
+    @user_location = current_user.social_profile.location_for_map if current_user and current_user.social_profile
   end
 
   private

@@ -1,5 +1,0 @@
-DEFAULT_APP_NAME = "<%= print "Enter Default App Name [MyApnea.Org]: "; s = gets.chomp().gsub('"', '\"').gsub("\\", "\\\\"); s == '' ? 'MyApnea.Org' : s %>"
-SITE_URL = "<%= print "Enter Site URL [https://myapnea.org]: "; s = gets.chomp().gsub('"', '\"').gsub("\\", "\\\\"); s == '' ? 'https://myapnea.org' : s %>"
-
-# Used so Devise knows what url to append.
-ActionMailer::Base.default_url_options[:host] = SITE_URL.gsub(/^https?:\/\//, '')

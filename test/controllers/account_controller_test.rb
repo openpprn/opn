@@ -13,18 +13,12 @@ class AccountControllerTest < ActionController::TestCase
 
   test "should get privacy_policy" do
     get :privacy_policy
-    assert_not_nil assigns(:pc)
     assert_response :success
-    assert_template layout: "myapnea/myapnea"
   end
 
   test "should get consent" do
     get :consent
-    assert_not_nil assigns(:pc)
     assert_response :success
-    assert_template layout: "myapnea/myapnea"
-
-
   end
 
   test "User should be able to sign consent" do
@@ -36,7 +30,6 @@ class AccountControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_template "consent"
-    assert_template layout: :dashboard
 
 
     post :consent, consent_read: true
@@ -46,12 +39,11 @@ class AccountControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_template "privacy_policy"
-    assert_template layout: :dashboard
 
     post :privacy_policy, agreed_to_participate: true
     assert users(:user_1).reload.accepted_consent_at
 
-    assert_redirected_to user_dashboard_path
+    assert_redirected_to social_profile_path
 
 
   end
@@ -65,7 +57,7 @@ class AccountControllerTest < ActionController::TestCase
 
     refute users(:user_1).reload.accepted_consent_at
 
-    assert_redirected_to user_dashboard_path
+    assert_redirected_to social_profile_path
 
 
   end
@@ -113,16 +105,6 @@ class AccountControllerTest < ActionController::TestCase
     get :terms_and_conditions
 
     assert_response :success
-    assert_template layout: 'myapnea/myapnea'
-  end
-
-  test "Terms and conditions should render dashboard layout when logged in" do
-    login(users(:social))
-
-    get :terms_and_conditions
-
-    assert_response :success
-    assert_template layout: 'dashboard'
   end
 
 end

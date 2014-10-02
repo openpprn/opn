@@ -72,29 +72,8 @@ class User < ActiveRecord::Base
     self.has_role? :admin
   end
 
-  def can_create_forem_topics?(forum)
-    self.can?(:participate_in_social)
-  end
-
-  def can_reply_to_forem_topic?(topic)
-    self.can?(:participate_in_social)
-  end
-
-  def can_edit_forem_posts?(forum)
-    self.can?(:participate_in_social)
-  end
-
-  def can_destroy_forem_posts?(forum)
-    self.can?(:participate_in_social)
-  end
-
-
-  def can_moderate_forem_forum?(forum)
-    self.has_role? :forum_moderator or self.has_role? :admin
-  end
-
   def todays_votes
-    votes.select{|vote| vote.updated_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
+    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
   end
 
   def available_votes_percent
@@ -138,8 +117,7 @@ class User < ActiveRecord::Base
     true
   end
 
-  def has_votes_remaining?(rating = 1)
-
-    (todays_votes.length < vote_quota) or (rating < 1)
+  def has_votes_remaining?
+    todays_votes.length < vote_quota
   end
 end

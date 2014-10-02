@@ -34,11 +34,3 @@ v9:
   user: social
   rating: 1
   research_topic: rt1
-v10:
-  user: user_1
-  question: q1
-  rating: 1
-v11:
-  user: user_2
-  question: q1
-  rating: 1

@@ -1,13 +1,5 @@
 .question-form{data: {parent_question: parent_q, condition: condition}}
-  .row
-    .col-md-9
-      %strong.text-primary= markdown question.text
-    .col-md-3
-      %p.rate-question
-        %span.text-muted.pull-left Rate this question:&nbsp;
-        .pull-right
-          = render partial: 'surveys/partials/rate_question', locals: { question: question, show_badge: false }
-      .clearfix
+  %strong.text-primary= markdown question.text
   .row
     = hidden_field_tag "question_id[]", question.id
 

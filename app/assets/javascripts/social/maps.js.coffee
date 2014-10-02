@@ -3,7 +3,7 @@
 
     loc_path = $("#user_map").data("path")
 
-    $.getJSON(loc_path, {show_user: true}, (data) ->
+    $.getJSON(loc_path, null, (data) ->
       user_location = data.user_location
 
       if user_location

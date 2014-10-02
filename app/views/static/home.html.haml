@@ -1,79 +1,70 @@
-- @title = ""
 
-.row.page-header-image
-  .col-lg-12
-    = link_to "Sign Up Today", new_user_registration_path, class: 'sign', id: "innerSignup"
-    #carousel
-      = image_tag 'myapnea/headers/home.jpg', class: 'header'
-      .film-strip{ style: 'position:absolute;top:17px;right:5px' }
-        - ['susan', 'darrel', 'adam'].each do |person|
-          = link_to team_path, style: 'text-decoration:none' do
-            .film-strip-panel.hidden-xs
-              = image_tag "myapnea/team/#{person}.png", class: 'img-thumbnail'
+.req All Page Content and Imagery
 
-#home-page
-  .row
-    .col-md-10
-      %h1= @pc['main_header']
-      %p.sub-header= @pc['sub_header']
-      = markdown @pc['content']
-    .col-md-2.text-center
-      %br.hidden-xs/
-      %br.hidden-xs/
-      #memberCount
-        .countHeader= @pc['goal']['header']
-        .countGoal= @pc['goal']['number']
-        .goalSuffix= @pc['goal']['members']
+
+
+.row
+  .col-md-8.col-md-offset-2
+    .text-center
+      %h3 Join a Movement to Solve #{@pprn_condition} Together
     %br/
-  .row
-    - ['learn', 'share', 'research'].each do |topic|
-      .col-md-4
-        .well.text-center.topic
-          %h3= link_to @pc[topic]['title'], send(@pc[topic]['path'])
-          %p
-            %i= @pc[topic]['content']
-  .video-player{ style: 'margin-bottom: 40px'}
-    .video-player-inner
-      .embed-responsive.embed-responsive-16by9
-        %iframe.embed-responsive-item{ 'src' => '//player.vimeo.com/video/104640787?title=0&amp;byline=0&amp;portrait=0', 'webkitallowfullscreen' => 'true', 'mozallowfullscreen' => 'true', 'allowfullscreen' => 'true' }
-  .row
-    .col-md-6
-      %h2 Our Community
-      .map#home-map{data: {path: locations_path}}
-    .col-md-6
-      %h2 Rate the Research
-      %h4
-        = link_to "Join today", new_user_registration_path
-        to submit and vote on the research topics of tomorrow
-      .questions#home-research-qs
-        = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular.take(5), editable: false, disabled: true}
-  %br
-  .row
-    .col-md-12
-      #reason-carousel.carousel.slide
-        %ol.carousel-indicators
-          - @pc['testimonials'].each_with_index do |testimonial, i|
-            %li{class: ('active' if i == 0), data: {slide_to: i, target: "#reason-carousel"}}
-        .carousel-inner
-          - @pc['testimonials'].each_with_index do |testimonial, i|
-            %div{class: "item #{'active' if i == 0}"}
-              .row
-                .col-md-4
-                  .testimonial-img-container
-                    .visible-xs.visible-sm
-                      = image_tag testimonial['image'], class: 'img-thumbnail'
-                    .visible-md.visible-lg
-                      = image_tag testimonial['image']
-                .col-md-7.col-md-offset-1
-                  .vertical-center
-                    %blockquote
-                      %p{ 'style' => 'line-height: 1.3;'}= testimonial['quote']
-                      %footer.pull-right
-                        %cite= testimonial['name']
-        %a.left.carousel-control{ data: {slide: 'prev'}, href: "#reason-carousel"}
-          %span.icon-prev
-        %a.right.carousel-control{ data: {slide: "next"}, href: "#reason-carousel" }
-          %span.icon-next
+    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
+    %br/
 
-= javascript_include_tag "//maps.googleapis.com/maps/api/js?key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
-= javascript_include_tag 'home'
+    = image_tag "video.png", :style => "width: 100%; border: 2px solid gray;"
+
+
+
+%br/
+%br/
+%br/
+%br/
+
+.row
+  .col-md-4.col-md-offset-4.text-center
+    %a{:href => new_user_registration_path}
+      .btn.btn-lg.btn-primary.btn-block Join
+    %br/
+    %p
+      Already a Member?
+      = link_to "Sign in", new_user_session_path
+
+
+
+%br/
+%br/
+
+
+.row
+  - 3.times do
+    .col-md-4
+      .text-center
+        %i.fa.fa-square-o{:style => "font-size: 200px;"}
+
+      %h4 Describe a Feature of the Network
+
+      %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
+
+
+
+%hr/
+
+
+
+%br/
+%br/
+
+
+.row
+  .col-md-4.col-md-offset-4.small
+    .req If we want to support other languages, translations to each language
+    %form.form-horizontal{:role => "form"}
+      .form-group
+        %label.control-label.col-md-6{for: "inputPassword3"}
+          %i.fa.fa-globe &nbsp; Language:
+        .col-md-6
+          %select.form-control.small
+            %option
+              %i.fa.fa-globe
+              English
+            %option Spanish

@@ -1,11 +1,8 @@
 class ApplicationController < ActionController::Base
-  #layout 'myapnea/myapnea'
-  layout :myapnea_layout
 
   def forem_user
     current_user
   end
-
   helper_method :forem_user
 
   # Prevent CSRF attacks by raising an exception.
@@ -16,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || user_dashboard_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || research_karma_path
   end
 
   # Send 'em back where they came from with a slap on the wrist
@@ -24,7 +21,6 @@ class ApplicationController < ActionController::Base
     Authority.logger.warn(error.message)
     redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <support@myapnea.org>."
   end
-
 
   def determine_pprn
     if Rails.env.production?
@@ -46,11 +42,18 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_pprn_from_subdomain
-    @pprn = PPRNS["myapnea"]
+    if request.subdomain == "myapnea"
+      @pprn = PPRNS["myapnea"]
+    else
+      @pprn = PPRNS["ccfa"]
+    end
   end
 
   def determine_pprn_from_cookie
-    @pprn = PPRNS["myapnea"]
+    # if no cookie, has been set, let's assume it's myapnea
+    cookies[:pprn] = "myapnea" if !cookies[:pprn]
+    # read the existing cookie
+    @pprn = PPRNS[cookies[:pprn]]
   end
 
   # Toggle the PPRN from CCFA <-> myapnea
@@ -84,26 +87,6 @@ class ApplicationController < ActionController::Base
 
   def no_layout
     render layout: false
-  end
-
-
-  def myapnea_layout
-    if (['research', 'surveys', 'health_data', 'social', 'research_topics'].include? params[:controller] or params[:action] == "dashboard" or params[:action] == 'consent' or params[:action] == 'privacy_policy') and current_user
-      'dashboard'
-    elsif params[:action] == "privacy_policy" or params[:action] == "consent"
-      Rails.application.config.layout
-    elsif template_exists? params[:controller].split('/').last, 'layouts'
-      params[:controller].split('/').last
-    else
-      Rails.application.config.layout
-    end
-
-
-  end
-
-
-  def authenticate_research
-    raise Authority::SecurityViolation.new(current_user, 'research', action_name) unless current_user.can?(:participate_in_research)
   end
 
 end
