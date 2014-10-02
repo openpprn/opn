@@ -14,7 +14,8 @@ files = [['config/environments', 'production.rb'],
   ['config/initializers', '00_site_name.rb'],
   ['config/initializers', 'action_mailer.rb'],
   ['app/assets/javascripts', 'google_analytics.js'],
-   ['config/initializers', 'secret_token.rb']
+  ['app/assets/javascripts', 'uservoice.js'],
+  ['config/initializers', 'secret_token.rb']
   # ['config/initializers', 'devise.rb']
   ]
 
