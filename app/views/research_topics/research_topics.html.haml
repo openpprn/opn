@@ -1,11 +1,11 @@
 - if params[:id] == 'popular'
-  = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
+  = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
 - elsif params[:id] == 'voted_on' and current_user
   = render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
 - elsif params[:id] == 'submitted' and current_user
   = render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
 - elsif params[:id] == 'newest'
-  = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest(current_user), disabled: false}
+  = render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
 
 
 

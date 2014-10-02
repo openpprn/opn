@@ -1,10 +1,10 @@
 require 'test_helper.rb'
 
 class SocialControllerTest < ActionController::TestCase
-  test "Logged-in User can access the social overview page" do
+  test "Not logged in and Logged-in User can access the social overview page" do
     get :overview
 
-    assert_response 302
+    assert_response :success
 
     login(users(:user_2))
 
@@ -68,12 +68,10 @@ class SocialControllerTest < ActionController::TestCase
     assert assigns(:locations)
     assert_equal 6, assigns(:locations).length
     assert_includes assigns(:locations), {latitude: social_profiles(:show_1).latitude, longitude: social_profiles(:show_1).longitude}
-  end
 
-  test "Current user's location is available seperately from location list if opted in" do
     login(users(:social))
 
-    get :locations, show_user: true, format: :json
+    get :locations, format: :json
 
     assert_equal 5, assigns(:locations).length
     assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))

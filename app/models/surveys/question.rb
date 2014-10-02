@@ -6,9 +6,6 @@ class Question < ActiveRecord::Base
 
   include Localizable
   include Votable
-
-  has_many :votes
-
   include Authority::Abilities
 
   localize :text
@@ -73,7 +70,7 @@ class Question < ActiveRecord::Base
   end
 
   def answer_frequencies
-    if answer_templates.length == 1 and ["multiple_choice", "checkbox"].include? answer_templates.first.display_type.name
+    if answer_templates.length == 1 and [3,4].include? answer_templates.first.display_type.id
       at = answer_templates.first
       all_options = at.answer_options.to_a.sort_by!{|ao| ao.value }
 

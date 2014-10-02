@@ -12,10 +12,5 @@
           .col-md-10.col-sm-8
             %h4
               = link_to research_topic.text, research_topic_path(research_topic)
-              - if current_user and current_user.can_update?(research_topic)
-                .pull-right
-                  = render partial: "research_topics/state", locals: {research_topic: research_topic}
-
-                  = link_to research_topic_path(research_topic), method: :delete, class: "btn btn-danger btn-xs" do
-                    %span.fa.fa-times
-                    Delete
+              - if current_user.can_update?(research_topic)
+                = link_to "Delete", research_topic_path(research_topic), method: :delete, class: "btn btn-danger btn-xs pull-right"

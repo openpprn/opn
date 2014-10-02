@@ -1,7 +1,5 @@
 class ResearchTopic < ActiveRecord::Base
   include Votable
-  has_many :votes
-
   include Authority::Abilities
 
   belongs_to :user
@@ -9,11 +7,11 @@ class ResearchTopic < ActiveRecord::Base
   STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
 
   scope :accepted, -> { where(state: 'accepted') }
-  scope :viewable_by, lambda { |user_id| where("state = ? or user_id = ?", "accepted", user_id)}
 
-  def self.popular(user_id = nil)
 
-    viewable_by(user_id).includes(:votes).sort do |rt1, rt2|
+  def self.popular
+
+    accepted.includes(:votes).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
@@ -28,8 +26,8 @@ class ResearchTopic < ActiveRecord::Base
     where(user_id: user.id)
   end
 
-  def self.newest(user_id = nil)
-    viewable_by(user_id).order("created_at DESC")
+  def self.newest
+    accepted.order("created_at DESC")
   end
 
 
