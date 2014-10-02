@@ -7,7 +7,7 @@
   %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Overview
   %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
     Discussion Forum
-  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"} #{'disabled' unless current_user.signed_consent?}"}
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"}
     Research Topics
 
 .small

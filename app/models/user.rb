@@ -138,7 +138,8 @@ class User < ActiveRecord::Base
     true
   end
 
-  def has_votes_remaining?
-    todays_votes.length < vote_quota
+  def has_votes_remaining?(rating = 1)
+
+    (todays_votes.length < vote_quota) or (rating < 1)
   end
 end

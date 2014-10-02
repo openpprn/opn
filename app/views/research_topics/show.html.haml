@@ -10,21 +10,23 @@
         = link_to research_topics_path, class: "btn btn-primary btn-xs pull-right" do
           .fa.fa-arrow-left
           Back to Research Questions
-        %h2= @research_topic.text
-        %p= @research_topic.description
+        %h2
+          = @research_topic.text
+          .small= render partial: "research_topics/state", locals: {research_topic: @research_topic }
 
+        %p= @research_topic.description
       %br/
 
-    .row
-      .col-md-12
-
-        .alert.alert-info
-          .req What stages should be available?
-          .label.label-primary= @research_topic.state
-          -#%span.small
-          -#  This research proposal is currently <strong>under consideration</strong> by the research team.
-          -#  Add your vote and voice to help increase the chances this research topic gets studied.
-
+    -#.row
+    -#  .col-md-12
+    -#
+    -#    .alert.alert-info
+    -#      .req What stages should be available?
+    -#
+    -#      -#%span.small
+    -#      -#  This research proposal is currently <strong>under consideration</strong> by the research team.
+    -#      -#  Add your vote and voice to help increase the chances this research topic gets studied.
+    -#
 
     - if @research_topic.user.share_research_topics?
       .panel.panel-default
