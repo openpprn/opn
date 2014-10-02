@@ -55,6 +55,6 @@
           %strong Survey finished!
         %div
           = link_to 'Review Answers', survey_report_path(answer_session_id: survey.most_recent_answer_session(current_user).id), class: 'btn btn-default btn-sm'
-          = link_to 'Retake Survey', start_survey_path(question_flow_id: survey.id), class: 'btn btn-default btn-sm', data: {confirm: "Are you sure you want to retake the questionnaire?", description: "All your progress will be lost, and you'll have complete the questionnaire again."}
+          = link_to 'Retake Survey', start_survey_path(question_flow_id: survey.id), class: 'btn btn-default btn-sm', data: {confirm: "Are you sure you want to retake this survey?", description: "All your progress will be lost, and you'll have complete all of the questions again."}
 
 

@@ -160,87 +160,87 @@ hr, .dividerLight {
 
 
 //Modal Styling
-
-.modal-dialog {
-  width:980px;
-  max-width:50%;
-}
-
-.modal-title {
-  margin:10px 0 -15px -15px;
-}
-
-.modal-header {
-  margin:5px 25px;
-  border-bottom: 1px solid #201646;
-}
-
-.modal-dialog, .modal-header, .modalHeadline, .modalBlock h3{
-  color:#251d5b;
-}
-.modalHeadline {
-  margin:0 35px;
-  font-size:20px;
-  font-size:2rem;
-  text-transform: uppercase
-}
-
-.modalBlock h3, .modalBlock h4 {
-  text-transform: uppercase;
-}
-
-.modalBlock h4 {margin-top:20px;}
-
-
-.modal-content{
-  border-radius:25px;
-  box-shadow:0px 0px 32px 5px rgba(252,184,0,.75);
-  background:linear-gradient(to bottom, #ececec 0%, rgba(221,221,227,.85) 55%);
-}
-
-.modal-content p{
-  line-height:1;
-  margin-top: 0;
-  color:#010101;
-  font-size: 1.4rem;
-}
-
-.modalBlock {
-  border:1px solid rgba(255,255,255,1);
-  border-radius:20px;
-  min-height:370px;
-  max-width:45%;
-  margin-left:3.5%;
-  background:rgba(221, 221, 227, 1);
-}
-
-.modalBlock h3 {
-  border-bottom: 1px solid #201646;
-}
-
-.modal-footer .col-md-3 a{
-  float:left;
-  text-transform: uppercase;
-}
-
-#modalSignup {
-  background-image: url('#{$assets-path}/joinNow.png');
-  display: inline-block;
-  float: right;
-  height: 129px;
-  overflow: hidden;
-  position: relative;
-  /* left: 30%; */
-  text-indent: -9999px;
-  /* bottom: 65px; */
-  width: 356px;
-  cursor: pointer;
-  z-index: 1000;
-  background-size: 356px 129px;
-  background-repeat: no-repeat;
-  padding: 0px;
-  margin: 1px;
-}
+//
+//.modal-dialog {
+//  width:980px;
+//  max-width:50%;
+//}
+//
+//.modal-title {
+//  margin:10px 0 -15px -15px;
+//}
+//
+//.modal-header {
+//  margin:5px 25px;
+//  border-bottom: 1px solid #201646;
+//}
+//
+//.modal-dialog, .modal-header, .modalHeadline, .modalBlock h3{
+//  color:#251d5b;
+//}
+//.modalHeadline {
+//  margin:0 35px;
+//  font-size:20px;
+//  font-size:2rem;
+//  text-transform: uppercase
+//}
+//
+//.modalBlock h3, .modalBlock h4 {
+//  text-transform: uppercase;
+//}
+//
+//.modalBlock h4 {margin-top:20px;}
+//
+//
+//.modal-content{
+//  border-radius:25px;
+//  box-shadow:0px 0px 32px 5px rgba(252,184,0,.75);
+//  background:linear-gradient(to bottom, #ececec 0%, rgba(221,221,227,.85) 55%);
+//}
+//
+//.modal-content p{
+//  line-height:1;
+//  margin-top: 0;
+//  color:#010101;
+//  font-size: 1.4rem;
+//}
+//
+//.modalBlock {
+//  border:1px solid rgba(255,255,255,1);
+//  border-radius:20px;
+//  min-height:370px;
+//  max-width:45%;
+//  margin-left:3.5%;
+//  background:rgba(221, 221, 227, 1);
+//}
+//
+//.modalBlock h3 {
+//  border-bottom: 1px solid #201646;
+//}
+//
+//.modal-footer .col-md-3 a{
+//  float:left;
+//  text-transform: uppercase;
+//}
+//
+//#modalSignup {
+//  background-image: url('#{$assets-path}/joinNow.png');
+//  display: inline-block;
+//  float: right;
+//  height: 129px;
+//  overflow: hidden;
+//  position: relative;
+//  /* left: 30%; */
+//  text-indent: -9999px;
+//  /* bottom: 65px; */
+//  width: 356px;
+//  cursor: pointer;
+//  z-index: 1000;
+//  background-size: 356px 129px;
+//  background-repeat: no-repeat;
+//  padding: 0px;
+//  margin: 1px;
+//}
 
 // Video Player Div
 
