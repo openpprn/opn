@@ -1,0 +1,91 @@
+en:
+  team:
+    main_header: Our Team
+
+    myapnea:
+      title: What is MyApnea.Org?
+      content: |
+        MyApnea.Org is a network created by people with sleep apnea to empower others like you and us get the answers WE want and need through what’s called patient-powered research.  We are funded by the Patient Centered Outcomes Research Institute (Link to PCORnet), which was created by the federal government.  You and others like us share health information, discuss experiences regarding treatment, and express views on future research projects directly with researchers and sleep experts that can make a difference.  In return, you will get easy to use tools to track your health and learn from others about treatments, symptoms, and coping with sleep apnea in order to take control of your life.
+
+        Information collected from you will be combined with information from others in the network to describe the health outcomes being studied.  Other patients and researchers will be able to view graphs and summary information on groups of patients.  When combining this information, your name and other personal information WILL NEVER be used.  You always decide how you want to share your personal information.
+
+        Initially, MyApnea.Org will collect information about you and your health via a series of quick and easy surveys.  As we collect this information, we will be building powerful tools and apps to share this information back with you.
+
+        Ultimately MyApnea.Org will:
+
+        - Connect you to thousands of other members to share information and advice about living with sleep apnea.
+        - Provide a secure and dynamic dashboard of sleep, health and risk measures based on the personal health data you submit by survey and by positive airway pressure (PAP) machines and other health monitoring devices.
+        - Support you with “how-to” information and other educational resources.
+        - Present the latest in sleep health news and research findings.
+        - Give you a voice in what health outcomes are important to you.
+    sapcon:
+      title: What is the Sleep Apnea Patient Centered Outcome Network?
+      content: |
+        The Sleep Apnea Patient Centered Outcomes Network (SAPCON) is the formal network name for MyApnea.Org.  It is coordinated by the American Sleep Apnea Association and the Division of Sleep and Circadian Disorders at Brigham and Women’s Hospital, Harvard Medical School, under the guidance of principal investigator Susan Redline, M.D., M.P.H. The MyApnea.Org network is part of a historic national research endeavor that will ultimately enlist one hundred million people to provide personal health data and to guide the course of comparative effectiveness research for multiple, serious and chronic diseases.  Funded by the Patient Centered Outcomes Research Institute (PCORI), MyApnea.Org/SAPCON is one of 18 Patient Powered Research Networks (PPRN) that will comprise a national “network of networks” dedicated to conducting comparative effectiveness research.  It is an unprecedented effort that will redefine how health research is done in this country and it holds tremendous promise for people who suffer from these conditions each day.
+    steering_title: The MyApnea.Org Steering Committee
+    steering:
+      - name: Susan Redline, M.D., M.P.H.
+        image: sRedline.png
+        role: Principal Investigator and MyApnea.Org Steering Committee Co-chair
+        description: |
+          Susan Redline is the Peter C. Farrell Professor of Sleep Medicine at Harvard Medical School and Director of the Programs in Sleep and Cardiovascular Medicine and Sleep Medicine Epidemiology at Brigham and Women’s Hospital and Beth Israel Deaconess Medical Center.  She is an internationally recognized researcher focusing on understanding the risk factors and treatment outcomes of sleep disorders.  She has published more than 200 scientific articles and participates in many national organizations involved in setting policies for sleep medicine practice and research.
+      - name: Adam Amdur
+        image: aAmdur.png
+        role: MyApnea.Org Steering Committee Co-chair
+        description: |
+          Adam Amdur is the chief operating officer and immediate past-chair of the American Sleep Apnea Association, the nation’s leading patient-led organization dedicated to reducing injury and disability from sleep apnea and to enhancing the well-being of those affected by this common disorder. Adam was diagnosed with severe obstructive sleep apnea (OSA) in 2008. As he struggled to manage his OSA, it wasn't until he found his way to the sleep center at Stanford University that he received the support to adequately control his overall medical condition. Since then, Adam has been passionate about assisting others in understanding this disease and in getting the help they need. He is currently writing a memoir, Asleep at the Wheel with Sleep Apnea, in the hope of educating the public about apnea and its effects on adults and children.
+      - name: Judith Owens, M.D., M.P.H.
+        image: jOwens.png
+        role: MyApnea.Org Steering Committee Member
+        description: |
+          Judith Owens is president and chief medical officer of the American Sleep Apnea Association. She is also the director of sleep medicine at Children’s National Medical Center and a professor at George Washington University School of Medicine and Health Sciences. She is an internationally recognized authority on pediatric sleep and the author of more than 100 original research and peer-reviewed journals, chapters, and books. Before taking her present position in 2010, she was associate professor of pediatrics at Brown University Medical School and director of pediatric sleep disorders at Hasbro Hospital in Providence, RI.
+      - name: Will Headapohl
+        image: wHeadapohl.png
+        role: MyApnea.Org Steering Committee Member
+        description: |
+          Will Headapohl is chairman of the board of directors for the American Sleep Apnea Association. He is a patient advocate, writer, and consultant focused on the challenges of getting all undiagnosed apnea sufferers into treatment. He is the co-author of the book, Sleep or Die: Overcome Apnea Before It Overcomes You. His work is aimed at mobilizing all those touched by the disease, including partners, association members, loved ones, medical care providers, and victims. Will’s resume includes executive vice president, chief information officer, and chief operating officer roles in the Internet, information technology, and wireless industries.
+      - name: Vishesh Kapur, M.D., M.P.H.
+        image: vKapur.png
+        role: MyApnea.Org Steering Committee Member
+        description: |
+          Dr. Kapur, University of Washington Professor of Medicine, is the founder of the UW Medicine Sleep Center and an active educator and researcher. He directs the UW Medicine Sleep Laboratory and the UW Sleep Medicine Fellowship.  Dr. Kapur is a fellow of the American Academy of Sleep Medicine and has board certifications in sleep medicine and pulmonary medicine.  He lectures nationally on a variety of topics related to sleep disordered breathing and is an associate editor for the Journal of Clinical Sleep Medicine and the journal SLEEP.
+    funder_header: Our Funder
+    funder_title: Patient-Centered Outcomes Research Institute (PCORI)
+    funder_link: http://www.pcori.org/funding-opportunities/pcornet-national-patient-centered-clinical-research-network
+    funder_description: |
+      The Patient-Centered Outcomes Research Institute (PCORI) is an independent, non-profit organization authorized by Congress in 2010 to fund research aimed at improving the health of entire populations.
+
+      In December 2013, the Patient-Centered Outcomes Research Institute approved $93.5 million to support 29 clinical research data networks that together will form an ambitious new resource known as PCORnet, or the National Patient-Centered Outcomes Clinical Research Network. PCORnet will be a large, highly representative, national network for conducting clinical outcomes research. PCORnet will integrate data from 11 Clinical Data Research Networks—networks that originate in healthcare systems such as hospitals, health plans, and practice-based networks and securely collect real-time health information during the routine course of patient care—and 18 Patient-Powered Research Networks—networks operated and governed by groups of patients and their partners who are focused on a particular condition and interested in sharing health information and participating in research.
+    partners_header: Our partners
+    partners:
+      - name: American Sleep Apnea Association
+        link: http://www.sleepapnea.org
+        description: |
+          The American Sleep Apnea Association (ASAA), founded in 1990, is a 501(c)(3) nonprofit organization that promotes awareness of sleep apnea, works for continuing improvements in treatments for this serious disease, and advocates for the interests of sleep apnea patients. Its mission is to reduce injury, disability, and death from sleep apnea and to enhance the wellbeing of those affected by this common disorder. The ASAA promotes education and awareness, coordinates the A.W.A.K.E. Network of voluntary support groups, and promotes research and continuous improvement of care.
+
+          The Association's governing board of directors includes healthcare professionals, patients, and patient advocates among its members. ASAA policy requires that a majority of its directors always be patients and their advocates. Its bylaws also require that the chair of the board be a patient or patient advocate to ensure that ASAA will always be a patient-driven organization.
+      - name: Division of Sleep and Circadian Disorders, Brigham and Women's Hospital
+        link: http://www.brighamandwomens.org/Departments_and_Services/medicine/services/sleepmedicine/default.aspx
+        description: |
+          Boston's Brigham and Women's Hospital (BWH) is an international leader in virtually every area of medicine and has been the site of pioneering breakthroughs that have improved lives around the world. A major teaching hospital of Harvard Medical School, BWH has a legacy of excellence that continues to grow year after year.
+
+          The Division of Sleep and Circadian Disorders was formed in 2013 by the Departments of Medicine and Neurology to unify the delivery of clinical care, increase educational opportunities, and promote interdisciplinary research in the fields of sleep and circadian biology. Its mission is to forge a path of discovery in sleep medicine while providing the highest standard of clinical care for patients with sleep disorders and training the next generation of leaders in sleep and circadian biology.
+      - name: Brigham & Women’s Hospital Sleep Medicine Epidemiology Program
+        link: https://sleepepi.partners.org/about
+        description: |
+          Brigham & Women’s Hospital Sleep Medicine Epidemiology Program (SMEP) is an integrated research and clinical program that aims to improve the care of patients with sleep disorders through clinical trials and comparative effectiveness research. SMEP also is a leader in data management for sleep disorders research. It has served as the data coordinating center for comparative effectiveness studies and clinical trials that evaluate sleep apnea interventions. SMEP also has pioneered a novel informatics platform to support sleep research through initiatives supported by the National Institutes of Health (NIH).
+
+      - name: The Sleep Research Network (SRN)
+        link: http://www.sleepresearchnetwork.org
+        description: |
+          The Sleep Research Network (SRN) promotes sustainable, multi-institutional collaborations in clinical and translational research that address significant public health questions related to sleep medicine and circadian biology. SRN also supports the training of the next generation of sleep medicine investigators and is currently comprised of researchers representing 40 institutions that participate in the Clinical and Translational Science Award program across the nation.
+
+      - name: Informatics for Integrating Biology and the Bedside (i2b2)
+        link: https://www.i2b2.org
+        description: |
+          Informatics for Integrating Biology and the Bedside (i2b2) is a National Institute of Health-funded National Center for Biomedical Computing based at Partners HealthCare System in Boston.  Established in 2004, the i2b2 Center is led by Director Isaac Kohane, M.D., Ph.D., professor of pediatrics at Harvard Medical School at Children's Hospital Boston. The center is developing a computational framework to disseminate tools, methodologies, biomedical data sets, and educational materials widely within the biomedical and computational research communities to improve public health.
+
+      - name: Shared Health Research Information Network (SHRINE)
+        link: http://catalyst.harvard.edu/services/shrine
+        description: |
+          The Shared Health Research Information Network (SHRINE) helps researchers overcome one of the greatest problems in population-based research: compiling large groups of well-characterized patients.  Eligible investigators may use the SHRINE web-based query tool to determine the aggregate total number of patients at participating hospitals who meet a given set of inclusion and exclusion criteria (currently demographics, diagnoses, medications, and selected laboratory values).

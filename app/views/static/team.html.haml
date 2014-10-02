@@ -1,0 +1,40 @@
+- @title = ""
+
+= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/team.jpg', signup_id: "innerSignup" }
+
+%h1= @pc['main_header']
+%h2= @pc['steering_title']
+%br/
+%br/
+
+#team
+  - @pc['steering'].each do |member|
+    .row
+      .col-md-3
+        = image_tag "myapnea/#{member['image']}", class: 'img-responsive'
+      .col-md-9
+        %h3
+          = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+          = "#{member['name']}, #{member['role']}"
+        %p
+          = member['description']
+  .row
+    %hr.divider-md
+  .row
+    .col-md-12
+      %h2 MyApnea.Org and the Sleep Apnea Patient Centered Outcomes Network
+      %p The Sleep Apnea Patient Centered Outcomes Network (SAPCON) is the formal network name for MyApnea.Org. It is coordinated by the American Sleep Apnea Association and the Division of Sleep and Circadian Disorders at Brigham and Women’s Hospital, Harvard Medical School, under the guidance of Principal Investigator Susan Redline, M.D., M.P.H. The MyApnea.Org network is part of a historic national research endeavor that will ultimately enlist 100 million people to provide personal health data to guide the course of comparative effectiveness research for multiple, serious, and chronic diseases. Funded by the Patient-Centered Outcomes Research Institute (PCORI), MyApnea.org/SAPCON is one of 18 Patient-Powered Research Networks (PPRN) that will comprise a national “network of networks” dedicated to conducting comparative effectiveness research. It is an unprecedented effort that will redefine how health research is done in this country, and it holds tremendous promise for people who suffer from these conditions.
+  .row
+    .col-md-10
+      %h3= @pc['funder_header']
+      %h4
+        %a{ href: "#{@pc['funder_link']}" }= @pc['funder_title']
+      = markdown @pc['funder_description']
+  .row
+    .col-md-10
+      %h3= @pc['partners_header']
+
+      - @pc['partners'].each do |partner|
+        %h4
+          %a{ href: "#{partner['link']}" }= partner['name']
+        = markdown partner['description']

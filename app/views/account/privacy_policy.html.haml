@@ -4,8 +4,8 @@
       .panel.panel-default
         .panel-body
           #print-area
-            %h2 Privacy Policy
-            %p Here is the privacy policy.
+            %h2= @pc['title']
+            = markdown @pc['privacy_policy']
           %br/
           = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
             %i.fa.fa-print

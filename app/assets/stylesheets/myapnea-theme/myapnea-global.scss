@@ -1,0 +1,228 @@
+// TODO: The following couple sections could be moved into seperate files
+
+// Research Breadcrumb Styles
+ol.breadcrumb.research {
+  padding: 13px 20px;
+  font-size: $baseFontSize * 1.5;
+  background-color: $breadcrumb-research-bg;
+  border: 1px solid $breadcrumb-research-border;
+
+  > li + li:before {
+    color: $breadcrumb-research-divider;
+  }
+
+  a {
+    color: $blueDark;
+  }
+}
+
+// Instruction styles
+
+.instructions {
+  border: 1px solid #eeecf8;
+  padding: 30px;
+  border-radius: 15px;
+
+  h2 {
+    color: $orange;
+  }
+
+  h3 {
+    color: $orange;
+  }
+
+  p {
+    // font-family: 'Palatino', sans-serif;
+  }
+}
+
+
+// Coming Soon Styles
+#coming-soon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  .background {
+    background-color: $gray; filter:alpha(opacity=40); opacity:.4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10001;
+
+
+  }
+  .content {
+    margin: 150px 50px 0 50px;
+    z-index: 10002;
+    position: absolute;
+    color: $white;
+    background-color: $white; filter:alpha(opacity=80); opacity:.8;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 25px;
+
+
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+
+      a {
+        cursor: pointer;
+        cursor: hand;
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 200px;
+      left: 300px;
+    }
+  }
+
+
+}
+
+
+
+// **
+// Main Styles start here
+// **
+
+
+
+// LAYOUT STYLES
+body#MyApnea {
+  font-size:$baseFontSize;
+  font-family:$contentFontFamily;
+  overflow-x:hidden;
+
+  a {
+    // text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    // font-weight:bolder;
+  }
+
+  > .container {
+    margin-top: $normal-nav-height - 10px;
+    background-color: transparent;
+  }
+
+  .page-header-blank {
+    height: 50px;
+  }
+
+  a.disabled {
+    pointer-events: none;
+
+  }
+  a.disabled:after {
+    pointer-events: none;
+
+  }
+
+  a[disabled] {
+    pointer-events: none;
+  }
+
+  .community-img {
+    height: 60px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color:$headings-Color;
+  font-family:$sansFontFamily;
+}
+
+h1, .h1 {
+  font-size:$font-size-h1;
+}
+ul li {
+  padding-left:25px;
+}
+
+ul {
+  list-style-image: url('#{$assets-path}/myapnea/icons/myapnea-logo-list-style-image.png');
+}
+
+ul.unstyled {
+  list-style-image: none;
+}
+
+p{
+  margin:20px 0;
+  line-height: 1.75;
+}
+
+// Footer
+
+#footer {
+  background:$white;
+
+
+  img {
+    padding-top: 15px;
+    max-width: 100%;
+  }
+
+}
+
+body#MyApnea {
+  .highlightPanel {
+    background: $highlightPanel;
+    border-top: 1px solid $white;
+    box-shadow: $subtleShadow;
+  }
+
+  .highlightPanelTop {
+    background: $highlightBox;
+    box-shadow: $subtleShadow;
+    margin-top: -40px;
+    border-top: 1px solid rgba(255, 255, 255, .05);
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+    position: relative;
+    z-index: 999;
+  }
+
+  #innerSignup {
+    background-image: url('#{$assets-path}/myapnea/icons/sign-up.png');
+    display: inline-block;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    /* left: -4%; */
+    text-indent: -9999px;
+    top: 250px;
+    right: 50px;
+    width: 280px;
+    background-size: 280px 100px;
+    -ms-behavior: url($bksize-path);
+    background-repeat: no-repeat;
+    z-index: 1000;
+
+
+  }
+
+}
+
+// Forms
+
+.field_with_errors {
+  .form-control:focus {
+    border-color: darken($alert-danger-border, 10%);
+    $myshadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $alert-danger-border;
+    @include box-shadow($myshadow);
+  }
+
+  .form-control {
+    border: 1px solid $alert-danger-border;
+  }
+}

@@ -1,0 +1,45 @@
+%h2 Community
+.list-group
+  - if current_user.created_social_profile?
+    %a.list-group-item{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} My Social Profile
+  - else
+    %a.list-group-item#social-profile-link{href: main_app.social_profile_path, class: "#{"active" if action_name == "profile"}"} Create Social Profile
+  %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Overview
+  %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
+    Discussion Forum
+  %a.list-group-item{href: main_app.research_topics_path, class: "#{"active" if action_name == "research_topics"}"}
+    Research Topics
+
+.small
+  %p
+    = link_to 'Create a social profile', main_app.social_profile_path
+    to join and contribute to the community
+
+%h2 Research
+.list-group
+  - if current_user.signed_consent?
+    .list-group-item.list-group-item-success
+      %div You have signed the consent!
+      %div
+        = link_to 'View consent', main_app.consent_path, class: 'btn-xs btn btn-primary'
+        = link_to 'Leave research study', main_app.account_path, class: 'btn-xs btn btn-warning'
+  - else
+    %a.list-group-item#consent-link{href: main_app.consent_path, class: "#{"active" if action_name == "consent"}"} Sign consent
+  %a.list-group-item{href: main_app.surveys_path, class: "#{"active" if action_name == "research_surveys"} #{'disabled' unless current_user.signed_consent?}"}
+    - unless current_user.signed_consent?
+      %i.fa.fa-lock &nbsp;
+    My Surveys
+    %span.badge= QuestionFlow.unstarted(current_user).count + QuestionFlow.incomplete(current_user).count
+.small
+  %p
+    = link_to 'Sign the consent form', main_app.consent_path
+    to get involved in sleep apnea research
+
+%h2 Coming Soon!
+.list-group
+  %a.list-group-item{href: main_app.research_today_path, class: "#{"active" if action_name == "research_today"}"}
+    Daily Trends
+  %a.list-group-item{href: main_app.data_connections_path, class: "#{"active" if action_name == "data_connections"}"} My Data Connections
+  %a.list-group-item{href: main_app.data_explore_path, class: "#{"active" if action_name == "explore"}"} My Health Data
+  / %a.list-group-item{href: main_app.data_reports_path, class: "#{"active" if action_name == "reports"}"} My Reports
+  / %a.list-group-item{href: main_app.data_medications_path, class: "#{"active" if action_name == "medications"}"} My Medications

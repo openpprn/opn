@@ -1,3 +1,11 @@
+= render partial: 'shared/coming_soon'
+
+%ol.breadcrumb.research
+  %li
+    %a{href: "#"} Research
+  %li.active
+    %a{href: "#"} Daily Trends
+
 - questions = {"How would you describe your general well-being over the last week?" => ["Generally Well", "Slightly below Par", "Poor", "Very Poor", "Terrible"], "On average, over the past week, would you rate your abdominal pain as..." => ["None","Mild","Moderate","Severe"], "On average, over the past week, how many liquid or very soft stools have you had per day?" => ["0","1","2","3","4-7","8-14","15+"]}
 
 - questions.each do |question, answers|

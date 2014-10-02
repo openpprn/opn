@@ -7,6 +7,15 @@ class ResearchControllerTest < ActionController::TestCase
     assert_response 302
   end
 
+  test "User needs to have signed consent to see surveys" do
+    login(users(:user_1))
+
+    get :research_surveys
+
+    assert_response 302
+
+  end
+
   test "User can see a list of unstarted surveys" do
     login(users(:social))
 

@@ -31,6 +31,7 @@ admin:
   year_of_birth: 1980
   encrypted_password: <%= pw %>
 moderator_1:
+  id: 19
   first_name: Mod
   last_name: Erator1
   email: mod1@mods.com
@@ -61,6 +62,7 @@ has_completed_survey:
   email: cs@mail.com
   zip_code: 12345
   year_of_birth: 1980
+  accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
   encrypted_password: <%= pw %>
 
 has_incomplete_survey:
@@ -68,5 +70,6 @@ has_incomplete_survey:
   last_name: Survey
   email: is@mail.com
   zip_code: 12345
+  accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
   year_of_birth: 1980
   encrypted_password: <%= pw %>

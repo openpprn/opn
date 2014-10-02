@@ -1,0 +1,54 @@
+- @title = ""
+
+= render partial: 'layouts/myapnea/page_header_image', locals: { image: 'myapnea/headers/share.jpg', signup_id: "innerSignup" }
+
+#share.row
+
+  .col-md-8
+    %h1
+      %h1
+        = @pc['main_header']
+        = image_tag 'myapnea/icons/communityIcon.png', class: 'community-img'
+    %p= @pc['content']
+
+    %h2= @pc['ways_to_share_title']
+
+    %p= markdown @pc['ways_to_share_description']
+
+    %hr.divider-md
+
+    %h2= @pc['getting_started_title']
+    .instructions
+      - @pc['getting_started_steps'].each do |step|
+        %h3
+          = image_tag 'myapnea/icons/myapnea-logo-transparent.png', size: '28x28', style: 'vertical-align: text-bottom'
+          = step['step_title']
+        %p= markdown step['step_description']
+  .col-md-4
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "false", "data-href" => "https://www.facebook.com/sleepapneaassn", "data-show-border" => "false", "data-show-faces" => "false", "data-stream" => "true", "data-height" => "750"}
+  .clearfix
+  .row
+    .col-xs-4
+      %a{href: 'https://www.facebook.com/sleepapneaassn'}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-facebook
+    .col-xs-4
+      %a{href: 'https://www.youtube.com/user/sleepapneaed'}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-youtube
+    .col-xs-4
+      %a{href: 'https://twitter.com/sleepapnea_ed'}
+        %h1{:style => "text-align:center"}
+          %i.fa.fa-twitter
+
+  %br/
+  %br/
+%br/
+%br/
+
+.text-center
+  = link_to new_user_registration_path do
+    = image_tag 'myapnea/icons/joinNow.png'
+
+  %br/
+  %br/

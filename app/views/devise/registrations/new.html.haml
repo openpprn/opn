@@ -1,49 +1,49 @@
+.row
+  .col-md-8.col-md-offset-2
+    #registration.panel.panel-default
+      .panel-heading
+        .row
+          .col-md-6
+            %h2 Sign Up For MyApnea.Org
+          .col-md-6
+            %p.pull-right
+              Already a member?
+              = link_to 'Sign in!', new_session_path(:user)
+      .panel-body
+        - if resource.errors.any?
+          .alert.alert-danger.alert-dismissable
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+            %strong= t :registration_problems
+            %ul
+              - resource.errors.full_messages.each do |msg|
+                %li= msg.html_safe
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {}) do |f|
+          .form-group
+            = label "#{resource_name}[first_name]", :first_name, class: 'sr-only'
+            = text_field_tag "#{resource_name}[first_name]", (params[resource_name] ? params[resource_name][:first_name] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:first_name), autocomplete: :off
+          .form-group
+            = label "#{resource_name}[last_name]", :last_name, class: 'sr-only'
+            = text_field_tag "#{resource_name}[last_name]", (params[resource_name] ? params[resource_name][:last_name] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:last_name), autocomplete: :off
+          .form-group
+            = label "#{resource_name}[year_of_birth]", :year_of_birth, class: 'sr-only'
+            = text_field_tag "#{resource_name}[year_of_birth]", (params[resource_name] ? params[resource_name][:year_of_birth] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:year_of_birth), autocomplete: :off
+          .form-group
+            = label "#{resource_name}[zip_code]", :zip_code, class: 'sr-only'
+            = text_field_tag "#{resource_name}[zip_code]", (params[resource_name] ? params[resource_name][:zip_code] : ''), class: 'form-control input-lg', placeholder: User.human_attribute_name(:zip_code), autocomplete: :off
+          .form-group
+            = f.label :email, class: 'sr-only'
+            = f.email_field :email, class: 'form-control input-lg', placeholder: User.human_attribute_name(:email), autocomplete: :off
+          .form-group
+            = f.label :password, class: 'sr-only'
+            = f.password_field :password, class: 'form-control input-lg', placeholder: User.human_attribute_name(:password)
+
+
+          = f.submit "Sign Up", class: 'btn btn-primary btn-block btn-lg'
 
 .row
   .col-md-8.col-md-offset-2
-
-    %h3 Here's how it works
-    .req The explanatory content here, and imagery if applicable
-    %p
-      Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro. Usu movet oporteat apeirian no, te pri quis quando. Mandamus pertinacia mel in, in vim laoreet lucilius. Mundi repudiandae consectetuer et eos, nam ex sumo recusabo.
-    %p
-      Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro. Usu movet oporteat apeirian no, te pri quis quando. Mandamus pertinacia mel in, in vim laoreet lucilius. Mundi repudiandae consectetuer et eos, nam ex sumo recusabo.
-
-%br/
-%br/
-
-.row
-  .col-md-6.col-md-offset-3
-    .panel.panel-default
-      .panel-heading
-        .panel-title Join
-      .panel-body
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal") do |f|
-          = devise_error_messages!
-          .form-group
-            = f.label :email, :class => "control-label col-sm-5"
-            .col-sm-7
-              = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
-          .form-group
-            = f.label :password, :class => "control-label col-sm-5"
-            .col-sm-7
-              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
-          .form-group
-            = f.label :password_confirmation, "Password Confirm", :class => "control-label col-sm-5"
-            .col-sm-7
-              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
-          .form-group
-            = f.label :condition, :class => "control-label col-sm-5"
-            .col-sm-7
-              %select.form-control
-                - @pprn_conditions.each do |condition|
-                  %option
-                    = condition
-          .form-group
-            .col-sm-offset-5.col-sm-7
-              = f.submit "Sign up", :class => "btn btn-primary"
-    %p.text-center
-      Already a Member
-      %a{:href => new_user_session_path} Sign in.
-
-
+    %h3 Here's how to sign up and get involved
+    %ol
+      %li Fill out this form to become a member
+      %li Create a social profile so you can join and contribute to the community
+      %li Get involved in sleep apnea research by signing a consent form

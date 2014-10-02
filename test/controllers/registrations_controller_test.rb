@@ -18,7 +18,7 @@ class RegistrationsControllerTest < ActionController::TestCase
     assert_equal '12345', assigns(:user).zip_code
     assert_equal 'new_user@example.com', assigns(:user).email
 
-    assert_redirected_to research_karma_path
+    assert_redirected_to user_dashboard_path
   end
 
   test "a new user should not be able to sign up without required fields" do

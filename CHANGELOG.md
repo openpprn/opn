@@ -3,9 +3,10 @@
 ## R2
 
 ## Enhancements
-- Research Democracy - submitting and voting for research topics.
+- Research Democracy - voting for research topics.
 
 ## Fixes
+- home page learn and share and research boxes now have the same height.
 
 ## R1 - Social Functionality
 ### Enhancements

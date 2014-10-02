@@ -1,0 +1,27 @@
+en:
+  share:
+    main_header: Share
+    content: |
+      If you have been diagnosed with sleep apnea, or if you love someone diagnosed with apnea, join us—become part of a national community of people who know just what you go through every night and every day. We get it. Together, we can fight sleep apnea and improve our lives.
+
+    ways_to_share_title: Ways to Share
+    ways_to_share_description: |
+      MyApnea.Org offers several ways to connect and share with others through:
+
+      - A dynamic discussion forum in which patients, caregivers and researchers can interact with one another and discuss, debate and dig into the research related issues that matter to them
+      - Engaging social media communities on Twitter, Facebook, and Instagram
+      - An opportunity for members to weigh in and vote on research issues that are important to them
+    getting_started_title: How do I get started?
+    getting_started_steps:
+    - step_title: "Step 1: Become a member"
+      step_description: |
+        To access the dynamic features of MyApnea.Org, including the social community, you first need to join the site as a member by entering your basic information and creating a username and password.
+    - step_title: "Step 2: Create a social profile"
+      step_description: |
+        To join the social community of MyApnea.Org, you will be asked to provide some information about yourself to create a social profile. You can decide if you want this information shared with other members who have also joined the social community of MyApnea.Org.
+    - step_title: "Step 3: Join the discussion"
+      step_description: |
+        Once you have created your social profile, you will be able to access and post within the discussion forum. You will also be able to rate which research questions are most important to you.
+    - step_title: "Step 4: Join MyApnea.org on social media"
+      step_description: |
+        Follow and interact with the MyApnea.Org community on social media by following the MyApnea.Org Twitter page, Facebook page, and YouTube page. Just click on the icons below.

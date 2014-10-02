@@ -1,0 +1,335 @@
+// myapnea-extras.scss
+
+// Layout Parts
+@import 'myapnea-fonts';
+@import "myapnea-global";
+@import "myapnea-top-navigation";
+@import "myapnea-page-header";
+@import "myapnea-md-screen";
+@import "myapnea-sm-screen";
+@import "myapnea-video";
+@import "myapnea-faqs";
+
+// Specific Pages
+@import "myapnea-home";
+@import "myapnea-learn";
+@import "myapnea-consent";
+
+
+
+//
+//.affix{
+//  //   left: 65%;
+//  top: 80px;
+//}
+//
+//// .affix:before, #affix-nav:before {
+////     border-top:2px solid #fff;
+////      min-height:350px;
+//// }
+//
+//
+//.affix, #affix-nav {
+//  font-size:10px;
+//  line-height:1.4;
+//  background:linear-gradient(to bottom, rgba(255, 255, 255, 0.75)0%, rgba(255, 255, 255, 0.4)80%, rgba(255,255,255,0)100%);
+//  padding-top:25px;
+//  border-radius:5px 5px 0 0;
+//  border-style: solid;
+//  border-width:1px;
+//  border-color:rgba(255,255,255,.5);
+//  // border-image: linear-gradient(rgba(255,255,255,1)0%, rgba(0, 0, 0, 0)) 1 100%;
+//  border-bottom: none;
+//  max-width: 280px;
+//  width:25%;
+//}
+//
+
+// .affix:after, #affix-nav:after {
+//     content:"";
+//     top:-3px;
+//     bottom:-3px;
+//     width:3px;
+//     position:absolute;
+//     background:linear-gradient(to bottom, rgba(255, 255, 255, 0.75)0%, rgba(255, 255, 255, 0.4)80%, rgba(255,255,255,0)100%);
+// }
+
+
+hr, .dividerLight {
+  border-top:1px solid $grayLight;
+  clear: both;
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width:100%;
+}
+
+.dividerClear {
+  margin-top:120px;
+  margin-bottom:30px;
+  width:100%;
+  display:inline-block;
+  clear:both;
+}
+
+
+.faqImg {
+  // background-image: url("../images/faqImg.jpg");
+  // background-image: url("../images/faqImg.jpg");
+  border-radius: 0 237px 237px 0;
+  height: 320px;
+  left: -102%;
+  margin-top: 20px;
+  position: absolute;
+  width: 609px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 0px 22px 9px rgba(0, 0, 0, 0.08) inset;    box-shadow:$subtleShadow inset;
+  background:#049cdb;
+}
+
+
+.learnImg {
+  // background-image: url("../images/learn01.jpg");
+  border-radius: 0 320px 320px 0;
+  height: 460px;
+  left: 0;
+  margin-top: 65px;
+  position: absolute;
+  width: 40%;
+  background-repeat: no-repeat;
+  box-shadow:$subtleShadow inset;
+  background:#049cdb;
+
+}
+
+.shareImg {
+  border-radius: 0 237px 237px 0;
+  height: 485px;
+  left: -20px;
+  margin-top: 0%;
+  position: absolute;
+  width: 100%;
+  background-repeat: no-repeat;
+  background: #049cdb;
+}
+
+.patientImg {
+
+  // background-image: url("../images/patient01.jpg");
+  background-repeat: no-repeat;
+  background-size: 624px 645px;
+  border-radius: 300px 0 0 300px;
+  height: 321px;
+  left: 40%;
+  margin-bottom: -30px;
+  margin-top: 25%;
+  position: absolute;
+  width: 645px;
+  background:#049cdb;
+}
+
+.communityImg {
+  background-repeat: no-repeat;
+  border-radius: 50% 0 0 50%;
+  right: -20%;
+  position: absolute;
+  width: 60%;
+  float: right;
+  height: 80%;
+  max-height: 850px;
+  max-width: 805px;
+  background: #049cdb;
+  margin-top: 70px;
+}
+
+.img-float-leftLarge {
+  left: -50%;
+  margin-bottom: -30px;
+  position: absolute;
+}
+
+.img-float-right {
+  right: 0;
+  margin-bottom: -30px;
+  position: absolute;
+  border-radius:0px 215px 215px 0px;
+}
+
+
+
+
+
+//Modal Styling
+//
+//.modal-dialog {
+//  width:980px;
+//  max-width:50%;
+//}
+//
+//.modal-title {
+//  margin:10px 0 -15px -15px;
+//}
+//
+//.modal-header {
+//  margin:5px 25px;
+//  border-bottom: 1px solid #201646;
+//}
+//
+//.modal-dialog, .modal-header, .modalHeadline, .modalBlock h3{
+//  color:#251d5b;
+//}
+//.modalHeadline {
+//  margin:0 35px;
+//  font-size:20px;
+//  font-size:2rem;
+//  text-transform: uppercase
+//}
+//
+//.modalBlock h3, .modalBlock h4 {
+//  text-transform: uppercase;
+//}
+//
+//.modalBlock h4 {margin-top:20px;}
+//
+//
+//.modal-content{
+//  border-radius:25px;
+//  box-shadow:0px 0px 32px 5px rgba(252,184,0,.75);
+//  background:linear-gradient(to bottom, #ececec 0%, rgba(221,221,227,.85) 55%);
+//}
+//
+//.modal-content p{
+//  line-height:1;
+//  margin-top: 0;
+//  color:#010101;
+//  font-size: 1.4rem;
+//}
+//
+//.modalBlock {
+//  border:1px solid rgba(255,255,255,1);
+//  border-radius:20px;
+//  min-height:370px;
+//  max-width:45%;
+//  margin-left:3.5%;
+//  background:rgba(221, 221, 227, 1);
+//}
+//
+//.modalBlock h3 {
+//  border-bottom: 1px solid #201646;
+//}
+//
+//.modal-footer .col-md-3 a{
+//  float:left;
+//  text-transform: uppercase;
+//}
+//
+//#modalSignup {
+//  background-image: url('#{$assets-path}/joinNow.png');
+//  display: inline-block;
+//  float: right;
+//  height: 129px;
+//  overflow: hidden;
+//  position: relative;
+//  /* left: 30%; */
+//  text-indent: -9999px;
+//  /* bottom: 65px; */
+//  width: 356px;
+//  cursor: pointer;
+//  z-index: 1000;
+//  background-size: 356px 129px;
+//  background-repeat: no-repeat;
+//  padding: 0px;
+//  margin: 1px;
+//}
+
+// Video Player Div
+
+div.videoPlayer{
+  box-shadow: $subtleShadow;
+}
+
+// Member Count Badge on Index Page
+
+// End Member Count
+// #innerSignup{
+//   background-image: url("../images/sign-up.png");
+//   display: inline-block;
+//   float: right;
+//   height: 100px;
+//   overflow: hidden;
+//   position: absolute;
+//   right: 380px;
+//   text-indent: -9999px;
+//   top: 230px;
+//   width: 280px;
+//   background-size: 280px 100px;
+//   background-repeat: no-repeat;
+//   z-index: 1000;
+// }
+
+
+
+.tall {
+  min-height:580px;
+}
+
+.community {
+  min-height:850px;
+}
+
+.highlightPanel {
+  background:$highlightPanel;
+  border-top:1px solid $white;
+  box-shadow: $subtleShadow;
+}
+
+// Home Page Areas
+
+.homeTest div.container div.dividerLight {
+  margin:90px 0;
+}
+
+.highlightPanelTop > .container {
+  margin-top:40px;
+  margin-bottom:-100px;
+}
+
+//Team Page
+
+.team {
+  position:relative;
+  font-size: 20px;
+  line-height: 30px;
+  margin: 50px 10px;
+}
+
+.teamPhoto {
+  width: 100%
+}
+
+@media screen and (min-width:768px) {
+  .team p {
+    margin-left: 150px;
+    margin-right: 100px;
+  }
+  .teamPhoto {
+    position:absolute;
+     right: 190px;
+  }
+}
+
+// Bacon
+
+.line, .line_content {
+  position:absolute;
+  text-align:justify;
+}
+
+.line_content:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+// End Bacon
+

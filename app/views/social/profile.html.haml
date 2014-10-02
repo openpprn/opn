@@ -1,82 +1,90 @@
+- @title = "Your Social Profile"
 
 = form_for @social_profile, html: {role: "form", class: 'form-horizontal'}, url: social_profile_path do |f|
   .panel.panel-default
-    .panel-heading
-      %h4 Do you want other patients in the #{@pprn_title} to see you?
-      .radio
-        %label
-          = f.radio_button :show_location, true, id: 'optionsRadios2'
-          %strong
-            Show me.
-          %span.small Add a marker for me on the map that shows the following info.
+    .list-group
+      .list-group-item.list-group-item-info
+        %h4 Do you want other members of the MyApnea.Org community to see you?
+        .radio
+          %label
+            = f.radio_button :visible_to_community, true, id: 'optionsRadios2'
+            %strong
+              Show me.
+            %span.small Make my profile visible to other MyApnea members and allow me to submit research topics or post on the forum.
 
-      .radio
-        %label
-          = f.radio_button :show_location, false, id: 'optionsRadios1'
-          %strong
-            Don't show me.
-          %span.small Don't let other patients on this site see any map marker for me.
+        .radio
+          %label
+            = f.radio_button :visible_to_community, false, id: 'optionsRadios1'
+            %strong
+              Don't show me.
+            %span.small Don't let other people on this site see my profile information.
+      .list-group-item.list-group-item-info
+        %h4 Do you want your location to be shown on the community map?
+        .radio
+          %label
+            = f.radio_button :show_location, true, id: 'optionsRadios2'
+            %strong
+              Show me.
+            %span.small Drop a map pin at the location I provide.
+        .radio
+          %label
+            = f.radio_button :show_location, false, id: 'optionsRadios1'
+            %strong
+              Don't show me.
+            %span.small Don't add a pin for my location.
+      .list-group-item
+        - if @social_profile.errors.any?
+          .alert.alert-danger.alert-dismissable
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+            %strong Profile Errors
+            %ul
+              - @social_profile.errors.full_messages.each do |msg|
+                %li= msg.html_safe
 
-    .panel-body
-      - if @social_profile.errors.any?
-        .alert.alert-danger.alert-dismissable
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-          %strong Profile Errors
-          %ul
-            - @social_profile.errors.full_messages.each do |msg|
-              %li= msg.html_safe
-
-      .form-group
-        %label.col-sm-3.control-label
-          = image_tag current_user.photo_url, :class => "img-responsive img-thumbnail"
-        .col-sm-9
-          %h3 Change Photo
-          =f.file_field :photo
-      .form-group
-        %label.col-sm-3.control-label Nickname
-        .col-sm-6
-          =f.text_field(:name, class: 'form-control')
-      .form-group
-        %label.col-sm-3.control-label City
-        .col-sm-6
-          =f.text_field(:location, autocomplete: 'off', id: 'location', class: 'form-control')
-          =f.hidden_field :latitude
-          =f.hidden_field :longitude
-          =f.hidden_field :location_id
-      .form-group
-        %label.col-sm-3.control-label Age
-        .col-sm-6
-          =f.number_field(:age, class: 'form-control')
-      .form-group
-        %label.col-sm-3.control-label Sex
-        .col-sm-6
-          =f.select(:sex, ["Male", "Female", "Other"], {}, class: 'form-control')
-
-      .form-group
-        .col-sm-3.control-label
-          .checkbox.pull-right
-            %label
-              =f.check_box :show_karma, id: 'checkbox'
-        .col-sm-6
-          %h4 Show me in the top karma earners list if I qualify.
-      =f.submit("Save", class: 'btn btn-primary pull-right')
+        .form-group
+          %label.col-sm-3.control-label
+            = image_tag current_user.photo_url, :class => "img-responsive img-thumbnail"
+          .col-sm-9
+            %h3 Change Photo (optional)
+            =f.file_field :photo
+        .form-group
+          %label.col-sm-3.control-label Nickname
+          .col-sm-6
+            =f.text_field(:name, class: 'form-control')
+        .form-group
+          %label.col-sm-3.control-label City
+          .col-sm-6
+            =f.text_field(:location, autocomplete: 'off', id: 'location', class: 'form-control')
+            =f.hidden_field :latitude
+            =f.hidden_field :longitude
+            =f.hidden_field :location_id
+        .form-group
+          %label.col-sm-3.control-label Age
+          .col-sm-6
+            =f.number_field(:age, class: 'form-control')
+        .form-group
+          %label.col-sm-3.control-label Sex
+          .col-sm-6
+            =f.select(:sex, ["Male", "Female", "Other"], {}, class: 'form-control')
+        =f.submit("Save", class: 'btn btn-primary pull-right')
+        .clearfix
 
 
-- if !ccfa_pprn?
-  .panel.panel-default
-    .panel-heading
-      %h4.panel-title Do you want people in the outside world to see you?
-      .radio
-        %label
-          = radio_button "show_location_public", true, id: 'optionsRadios2'
-          %strong
-            Show me.
-          %span.small Add a marker for me on the map that shows the following info.
-
-    .panel-body
-      This is what you'll look like to the outside world:
-      .text-center [map]
-      .text-center [photo]
+-#- if !ccfa_pprn?
+-#  .panel.panel-default
+-#    .panel-heading
+-#      %h4.panel-title Do you want people in the outside world to see you?
+-#      .radio
+-#        %label
+-#          = radio_button "show_location_public", true, id: 'optionsRadios2'
+-#          %strong
+-#            Show me.
+-#          %span.small Add a marker for me on the map that shows the following info.
+-#
+-#    .panel-body
+-#      This is what you'll look like to the outside world:
+-#      .text-center [map]
+-#      .text-center [photo]
 
 
 

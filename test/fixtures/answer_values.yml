@@ -8,8 +8,8 @@ av2:
   numeric_value: 54
 av3:
   answer: a3
-  answer_template: text
-  text_value: not sure...
+  answer_template: how_much
+  answer_option: some
 av4:
   answer: a4
   answer_template: text
@@ -24,13 +24,13 @@ av6:
   numeric_value: 100
 av7:
   answer: a7
-  answer_template: text
-  text_value: It's all the haters
+  answer_template: how_much
+  answer_option: most
 av8:
   answer: a8
   answer_template: text
   text_value: I just told you.
 av9:
   answer: a9
-  answer_template: numeric
-  numeric_value: 2
+  answer_template: feeling
+  answer_option: fair

@@ -17,11 +17,11 @@
 
 / Tab panes
 .tab-content
-  #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+  #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
   - if current_user
     #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
     #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
-  #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
+  #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest(current_user), disabled: false}
 %br/
 = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
 

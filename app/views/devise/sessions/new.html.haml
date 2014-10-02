@@ -3,29 +3,30 @@
   .col-md-6.col-md-offset-3
     .panel.panel-default
       .panel-heading
-        .panel-title Sign in
+        .row
+          .col-md-6
+            %h2 Sign In
+          .col-md-6
+            %p.pull-right
+              Not yet a Member?
+              %a{:href => new_user_registration_path}
+                Join.
+
       .panel-body
-        = form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal", role: "form") do |f|
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f|
           .form-group
-            = f.label :email, :class => "control-label col-sm-4"
-            .col-sm-8
-              = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
+            = f.label :email, :class => "sr-only"
+            = f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email"
           .form-group
-            = f.label :password, :class => "control-label col-sm-4"
-            .col-sm-8
-              = f.password_field :password, class: "form-control", placeholder: "Password"
-          - if devise_mapping.rememberable?
-            .form-group
-              .col-sm-offset-4.col-sm-8
+            = f.label :password, :class => "sr-only"
+            = f.password_field :password, class: "form-control input-lg", placeholder: "Password"
+          .form-group
+            - if devise_mapping.recoverable?
+              %small.forgot
+                = link_to "Forgot Password?", new_user_password_path
+            - if devise_mapping.rememberable?
+              .pull-right
                 = f.check_box :remember_me
                 = f.label :remember_me
-          - if devise_mapping.recoverable?
-            %small.forgot
-              = link_to "Forgot Password?", new_user_password_path
           .form-group
-            .col-sm-offset-4.col-sm-8
-              = submit_tag 'Sign in', :class => "btn btn-primary"
-    %p.text-center
-      Not yet a Member?
-      %a{:href => new_user_registration_path}
-        Join.
+            = submit_tag 'Sign In', :class => "btn btn-primary btn-block btn-lg"
