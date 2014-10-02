@@ -19,8 +19,13 @@ class SocialController < ApplicationController
 
 
   def locations
-    @locations = SocialProfile.locations_for_map(current_user)
-    @user_location = current_user.social_profile.location_for_map if current_user and current_user.social_profile
+    if params[:show_user]
+      @locations = SocialProfile.locations_for_map(current_user)
+      @user_location = current_user.social_profile.location_for_map if current_user and current_user.social_profile and current_user.social_profile.show_location
+    else
+      @locations = SocialProfile.locations_for_map
+    end
+
   end
 
   private
