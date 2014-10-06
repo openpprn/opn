@@ -10,7 +10,6 @@ class ResearchTopic < ActiveRecord::Base
 
 
   def self.popular
-
     accepted.includes(:votes).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end

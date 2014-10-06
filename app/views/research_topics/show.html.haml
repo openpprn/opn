@@ -5,7 +5,7 @@
       .col-md-1
         %h2
           %i.fa.fa-check-square-o
-          =@research_topic.rating
+          =@research_topic.votes.count
       .col-md-11
         = link_to research_topics_path, class: "btn btn-primary btn-xs pull-right" do
           .fa.fa-arrow-left
@@ -36,8 +36,8 @@
               = image_tag @research_topic.user.photo_url, :class => "img-responsive img-thumbnail"
             .media-body.small
               %strong
-                = @research_topic.user.social_profile.name
+                =# @research_topic.user.social_profile.name
               %p
-                = @research_topic.user.social_profile.location
+                =# @research_topic.user.social_profile.location
             .clearfix
 

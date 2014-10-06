@@ -36,13 +36,36 @@ unless Rails.env == "test"
     user.add_role :owner
   end
 
+  i = 0
+  5.times do
+    i+=1
+    User.create(email: "#{i}demo@gmail.com", password: "password")
+  end
+
 
   lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
-
   # Research Topics
-  ResearchTopic.create(user: User.first, text: "How many people with this condition have mothers who have over thyroidism?", description: lorem)
-  ResearchTopic.create(user: User.second, text: "How many seed questions does it take for this to look like an active app?", description: lorem)
+  ResearchTopic.create(user: User.first, text: "How many people with this condition have mothers who have over thyroidism?", description: lorem, state: "accepted")
+  ResearchTopic.create(user: User.second, text: "Can a six week schedule of 10,000 steps improve Crohn's symptoms?", description: lorem, state: "accepted")
+  ResearchTopic.create(user: User.first, text: "Does acupuncture work for Ulcerative Colitis?", description: lorem, state: "accepted")
+  ResearchTopic.create(user: User.second, text: "Does Drug A work better than Drug B?", description: lorem, state: "accepted")
+  ResearchTopic.create(user: User.first, text: "Which is a more effective dosing schedule of Humira?", description: lorem, state: "accepted")
+
+
+
+
+
+  ResearchTopic.all.each do |topic|
+    Vote.create(:research_topic => topic, user: User.second) if (User.second.votes.count >= 4)
+    User.all.each do |u|
+      Vote.create(:research_topic => topic, user: u) if [true, false].sample
+    end
+  end
+
+
+
+
 
   # Blog Posts
   Post.create(user: User.first, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
