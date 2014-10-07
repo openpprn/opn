@@ -23,7 +23,7 @@
     #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
   #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
 %br/
-= link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
+= link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm"
 
 
 
