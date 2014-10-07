@@ -108,6 +108,7 @@ unless Rails.env == "test"
     user.save!
     user.add_role :admin
     user.add_role :owner
+    user.add_role :moderator
   end
 
   if !(user = User.find_by_email("seanahrens@gmail.com"))
@@ -118,6 +119,7 @@ unless Rails.env == "test"
     user.save!
     user.add_role :admin
     user.add_role :owner
+    user.add_role :moderator
   end
 
   i = 0
