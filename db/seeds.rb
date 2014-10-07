@@ -14,100 +14,6 @@ unless Rails.env == "test"
 
 
 
-  # Initialize Piotr and Sean User Accounts
-
-  if !(user = User.find_by_email("piotr.mankowski@gmail.com"))
-    user = User.new(email: "piotr.mankowski@gmail.com", password: "12345678")
-    user.validic_id = "54293ab084626b96a4000047"
-    user.validic_access_token = "qxmyhv-tcgzgtZEWVsfJ"
-    user.oodt_id = "urn:uuid:39fc580b-8a1a-56a8-931d-42f908fc9ea8"
-    user.save
-    user.add_role :admin
-    user.add_role :owner
-  end
-
-  if !(user = User.find_by_email("seanahrens@gmail.com"))
-    user = User.new(email: "seanahrens@gmail.com", password: "password")
-    user.validic_id = "542a6e4784626b85f10000c3"
-    user.validic_access_token = "vznvLEEa_pvCamSHecMT"
-    user.oodt_id = "urn:uuid:d363b4d5-db42-5434-ad0e-63a2495c9f4c"
-    user.save
-    user.add_role :admin
-    user.add_role :owner
-  end
-
-  i = 0
-  5.times do
-    i+=1
-    User.create(email: "#{i}demo@gmail.com", password: "password")
-  end
-
-
-  lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-
-  # Research Topics
-  ResearchTopic.create(user: User.first, text: "How many people with this condition have mothers who have over thyroidism?", description: lorem, state: "accepted")
-  ResearchTopic.create(user: User.second, text: "Can a six week schedule of 10,000 steps improve Crohn's symptoms?", description: lorem, state: "accepted")
-  ResearchTopic.create(user: User.first, text: "Does acupuncture work for Ulcerative Colitis?", description: lorem, state: "accepted")
-  ResearchTopic.create(user: User.second, text: "Does Drug A work better than Drug B?", description: lorem, state: "accepted")
-  ResearchTopic.create(user: User.first, text: "Which is a more effective dosing schedule of Humira?", description: lorem, state: "accepted")
-
-
-
-
-
-  ResearchTopic.all.each do |topic|
-    Vote.create(:research_topic => topic, user: User.second) if (User.second.votes.count >= 4)
-    User.all.each do |u|
-      Vote.create(:research_topic => topic, user: u) if [true, false].sample
-    end
-  end
-
-
-
-
-
-  # Blog Posts
-  Post.create(user: User.first, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
-  Post.create(user: User.second, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
-
-  # Notifications
-  Post.create(user: User.second, title: "Short Notification", body: "This is an example of a short notification.", state: "accepted", post_type: "notification")
-  Post.create(user: User.first, title: "Longer Notification Title This Is", body: "This is an example of a slightly longer notification that might be a little bigger that a short one.", state: "accepted", post_type: "notification")
-
-
-
-  # Forum
-  if Forem::Category.count == 0
-
-    Forem.decorate_user_class!
-
-    Forem::Category.create(:name => 'General')
-
-    #user = Forem.user_class.first
-
-    unless user.nil?
-      forum = Forem::Forum.find_or_create_by(:category_id => Forem::Category.first.id,
-                                             :name => "Introductions",
-                                             :description => "Are you new to the site? Stop in and say hi!")
-
-      post = Forem::Post.find_or_initialize_by(text: "OpenPPRN is all about you—the patients and caregivers and what is most important to you. We want to hear from you, we want you to share your thoughts about how you would like to interact with one another as well as with researchers and health care providers within this space. Thank you for helping to build a better MyApnea.Org!")
-      post.user = user
-
-      topic = Forem::Topic.find_or_initialize_by(subject: "We want to hear from you! What do you want this space to offer?")
-      topic.forum = forum
-      topic.user = user
-      topic.posts = [ post ]
-
-      topic.save!
-    end
-  end
-
-
-
-
-
-
   # Question Generation
 
   if Question.count == 0
@@ -184,6 +90,105 @@ unless Rails.env == "test"
     QuestionFlow.all.each {|qf| qf.reset_paths }
 
   end
+
+
+
+
+  # Initialize Piotr and Sean User Accounts
+
+  if !(user = User.find_by_email("piotr.mankowski@gmail.com"))
+    user = User.new(email: "piotr.mankowski@gmail.com", password: "12345678")
+    user.validic_id = "54293ab084626b96a4000047"
+    user.validic_access_token = "qxmyhv-tcgzgtZEWVsfJ"
+    user.oodt_id = "urn:uuid:39fc580b-8a1a-56a8-931d-42f908fc9ea8"
+    user.save!
+    user.add_role :admin
+    user.add_role :owner
+  end
+
+  if !(user = User.find_by_email("seanahrens@gmail.com"))
+    user = User.new(email: "seanahrens@gmail.com", password: "password")
+    user.validic_id = "542a6e4784626b85f10000c3"
+    user.validic_access_token = "vznvLEEa_pvCamSHecMT"
+    user.oodt_id = "urn:uuid:d363b4d5-db42-5434-ad0e-63a2495c9f4c"
+    user.save!
+    user.add_role :admin
+    user.add_role :owner
+  end
+
+  i = 0
+  5.times do
+    i+=1
+    User.create!(email: "#{i}demo@gmail.com", password: "password")
+  end
+
+
+  lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
+  # Research Topics
+  ResearchTopic.create!(user: User.first, text: "How many people with this condition have mothers who have over thyroidism?", description: lorem, state: "accepted")
+  ResearchTopic.create!(user: User.second, text: "Can a six week schedule of 10,000 steps improve Crohn's symptoms?", description: lorem, state: "accepted")
+  ResearchTopic.create!(user: User.first, text: "Does acupuncture work for Ulcerative Colitis?", description: lorem, state: "accepted")
+  ResearchTopic.create!(user: User.second, text: "Does Drug A work better than Drug B?", description: lorem, state: "accepted")
+  ResearchTopic.create!(user: User.first, text: "Which is a more effective dosing schedule of Humira?", description: lorem, state: "accepted")
+
+
+
+
+
+  ResearchTopic.all.each do |topic|
+    Vote.create!(:research_topic => topic, user: User.second) if (User.second.votes.count >= 4)
+    User.all.each do |u|
+      Vote.create!(:research_topic => topic, user: u) if [true, false].sample
+    end
+  end
+
+
+
+
+  lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
+  # Blog Posts
+  Post.create!(user: User.first, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
+  Post.create!(user: User.second, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
+
+  # Notifications
+  Post.create!(user: User.second, title: "Short Notification", body: "This is an example of a short notification.", state: "accepted", post_type: "notification")
+  Post.create!(user: User.first, title: "Longer Notification Title This Is", body: "This is an example of a slightly longer notification that might be a little bigger that a short one.", state: "accepted", post_type: "notification")
+
+
+
+  # Forum
+  if Forem::Category.count == 0
+
+    Forem.decorate_user_class!
+
+    Forem::Category.create(:name => 'General')
+
+    #user = Forem.user_class.first
+
+    unless user.nil?
+      forum = Forem::Forum.find_or_create_by(:category_id => Forem::Category.first.id,
+                                             :name => "Introductions",
+                                             :description => "Are you new to the site? Stop in and say hi!")
+
+      post = Forem::Post.find_or_initialize_by(text: "OpenPPRN is all about you—the patients and caregivers and what is most important to you. We want to hear from you, we want you to share your thoughts about how you would like to interact with one another as well as with researchers and health care providers within this space. Thank you for helping to build a better MyApnea.Org!")
+      post.user = user
+
+      topic = Forem::Topic.find_or_initialize_by(subject: "We want to hear from you! What do you want this space to offer?")
+      topic.forum = forum
+      topic.user = user
+      topic.posts = [ post ]
+
+      topic.save!
+    end
+  end
+
+
+
+
+
+
 
 
 end

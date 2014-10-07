@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   include Authority::Abilities
 
   # Enable User Connection to External API Accounts
-  include ExternalAccounts
-  after_create :provision_external_accounts
+  include OODTUser
+  include ValidicUser
+  after_create :provision_oodt_user, :provision_validic_user
 
 
   self.authorizer_name = "UserAuthorizer"
