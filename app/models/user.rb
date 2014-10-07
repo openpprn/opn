@@ -71,7 +71,10 @@ class User < ActiveRecord::Base
   end
 
   def signed_consent?
-    self.accepted_consent_at.present?
+    # Local Consent Storage
+    # self.accepted_consent_at.present?
+    # OODT Consent Storage
+    self.oodt_status
   end
 
   def forem_admin?

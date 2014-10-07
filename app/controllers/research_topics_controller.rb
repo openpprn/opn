@@ -6,7 +6,7 @@ class ResearchTopicsController < ApplicationController
 
   layout "research"
 
-  authorize_actions_for ResearchTopic, only: [:index, :create, :new]
+  authorize_actions_for ResearchTopic, only: [:index] #, :create, :new]
 
   def research_topics
     raise StandardError
@@ -26,7 +26,7 @@ class ResearchTopicsController < ApplicationController
     @research_topic = current_user.research_topics.new(research_topic_params)
 
     if @research_topic.save
-      redirect_to research_topics_path
+      redirect_to research_topics_path, notice: "Your research question was successfully added."
     else
       render :new
     end

@@ -94,6 +94,10 @@ unless Rails.env == "test"
 
 
 
+
+
+
+
   # Initialize Piotr and Sean User Accounts
 
   if !(user = User.find_by_email("piotr.mankowski@gmail.com"))
@@ -123,6 +127,11 @@ unless Rails.env == "test"
   end
 
 
+
+
+
+
+
   lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
   # Research Topics
@@ -133,20 +142,19 @@ unless Rails.env == "test"
   ResearchTopic.create!(user: User.first, text: "Which is a more effective dosing schedule of Humira?", description: lorem, state: "accepted")
 
 
-
+  primary_user = User.second
 
 
   ResearchTopic.all.each do |topic|
-    Vote.create!(:research_topic => topic, user: User.second) if (User.second.votes.count >= 4)
-    User.all.each do |u|
+    Vote.create!(:research_topic => topic, user: primary_user) if (primary_user.votes.count <= 1)
+
+    (User.all - [primary_user]).each do |u|
       Vote.create!(:research_topic => topic, user: u) if [true, false].sample
     end
   end
 
 
 
-
-  lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
   # Blog Posts
   Post.create!(user: User.first, title: "This is a Blog Post", body: lorem, state: "accepted", post_type: "blog")
@@ -155,6 +163,8 @@ unless Rails.env == "test"
   # Notifications
   Post.create!(user: User.second, title: "Short Notification", body: "This is an example of a short notification.", state: "accepted", post_type: "notification")
   Post.create!(user: User.first, title: "Longer Notification Title This Is", body: "This is an example of a slightly longer notification that might be a little bigger that a short one.", state: "accepted", post_type: "notification")
+
+
 
 
 

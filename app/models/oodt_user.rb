@@ -40,15 +40,20 @@ module OODTUser
 
 
   def oodt_status #6
-    response = oodt.post "documents/@@latestConsentGiven", user_hash
+    #response = oodt.post "documents/@@latestConsentGiven", user_hash
 
-    if response.success?
-      body = parse_body(response)
-      return body['status']
-    else
-      logger.error "Unsuccessful OODT Status"
-      return false
-    end
+    # if response.success?
+    #   body = parse_body(response)
+    #   return body['status']
+    # else
+    #   logger.error "Unsuccessful OODT Status"
+    #   return false
+    # end
+    return true
+  end
+
+  def signed_consent?
+
   end
 
 
