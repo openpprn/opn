@@ -7,14 +7,14 @@ module OODTUser
   ####################
   # API CONNECTION SETUP
   ####################
-  private def oodt
+  def oodt
     conn = Faraday.new(url: "https://whiterivercomputing.com/pcori-1")
     conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
     conn
   end
 
   # Base Params for any User OODT Call
-  private def user_hash
+  def user_hash
     {userID: self.oodt_id}
   end
 

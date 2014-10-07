@@ -6,7 +6,7 @@ module ValidicUser
   ####################
   # API CONNECTION SETUP
   ####################
-  private def validic
+  def validic
     conn = Faraday.new(:url => "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}/")
   end
 
