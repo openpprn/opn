@@ -1,8 +1,8 @@
 - if current_user
   .list-group
-    %a.list-group-item{href: research_karma_path, class: "#{"active" if action_name == "research_karma"}"} My Karma
+    %a.list-group-item{href: research_topics_path, class: "#{"active" if controller_name == "research_topics"}"} Research Democracy
     %a.list-group-item{href: start_survey_path(14), class: "#{"active" if action_name == "start_survey"}"} Weekly Health Survey
-    %a.list-group-item{href: research_topics_path, class: "#{"active" if action_name == "research_topics"}"} Research Democracy
+    %a.list-group-item{href: research_karma_path, class: "#{"active" if action_name == "research_karma"}"} My Karma
     %a.list-group-item{href: surveys_path, class: "#{"active" if action_name == "research_surveys"}"}
       My Surveys
       %span.badge= QuestionFlow.unstarted(current_user).count

@@ -15,8 +15,6 @@
             .col-md-10.col-sm-8
               %h4
                 = link_to research_topic.text, research_topic_path(research_topic)
-                - if current_user.can_update?(research_topic)
-                  = link_to "Delete", research_topic_path(research_topic), method: :delete, class: "btn btn-danger btn-xs pull-right"
 
   - else
     .panel-body.text-center

@@ -41,3 +41,9 @@
                 =# @research_topic.user.social_profile.location
             .clearfix
 
+    - if current_user.can_update?(@research_topic)
+
+      .text-left
+        .btn-group
+          = link_to "Edit", edit_research_topic_path(@research_topic), class: "btn btn-default btn-xs" if current_user.can_update?(@research_topic)
+          = link_to "Delete", research_topic_path(@research_topic), method: :delete, class: "btn btn-default btn-xs pull-right"

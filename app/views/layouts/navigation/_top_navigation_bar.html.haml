@@ -12,13 +12,8 @@
         %span.req
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
-        - if current_user
-          %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-            %a{href: research_karma_path} Research
-        - else
-          %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
-            %a{href: research_topics_path} Research
-
+        %li{:class => "#{"active" if @active_top_nav_link == :research}"}
+          %a{href: research_topics_path} Research
         %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
           %a{href: data_explore_path} My Health Data
         %li{:class => "#{"active" if @active_top_nav_link == :social}"}
