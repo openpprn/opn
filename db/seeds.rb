@@ -23,7 +23,7 @@ unless Rails.env == "test"
     tables = [
         "answer_edges",
         "answer_options",
-        "answer_options_answer_templates",
+        "answer_options_templates",
         "answer_sessions",
         "answer_templates",
         "answer_templates_questions",
