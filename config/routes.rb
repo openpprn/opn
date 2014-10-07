@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'terms' => 'static#terms'
   #Content Pages
   get 'content/:page' => 'static#content'
+  get 'content/' => 'static#content'
 
 
   # Research Topics

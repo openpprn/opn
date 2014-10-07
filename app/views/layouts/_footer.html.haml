@@ -2,15 +2,12 @@
 
 .row
   .col-md-2.small
-    %a{href: "/about"} About
+    %a{href: about_path} About
     %br/
-    %a{href: "/terms"} Terms of Service
+    %a{href: terms_path} Terms of Service
     %br/
-    %a{href: "/privacy"} Privacy Policy
+    %a{href: privacy_path} Privacy Policy
     %br/
-
-    - if Rails.env.development?
-      %a{href: "/pprn", :title => "Toggle through PPRNs"} Change PPRN
 
   .col-md-6.small
     Attribution and Organization behind this site. Lorem ipsum dolor sit amet, ius sonet veniam signiferumque eu, pri ad libris aperiam euripidis. Est ei ferri dolores, purto equidem ea eum. Latine tibique detracto cu pro.

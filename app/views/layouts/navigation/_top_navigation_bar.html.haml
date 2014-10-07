@@ -7,32 +7,29 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{href: "/"}
+      %a.navbar-brand{href: root_path}
         = @pprn_title
         %span.req
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         - if current_user
           %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-            %a{href: "/research_karma"} Research
+            %a{href: research_karma_path} Research
         - else
           %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
-            %a{href: "/research_topics"} Research
+            %a{href: research_topics_path} Research
 
         %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-          %a{href: "/data_explore"} My Health Data
+          %a{href: data_explore_path} My Health Data
         %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-          %a{href: "/social"} Patients
+          %a{href: social_path} Patients
         %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
-          %a{href: "/blog"} Blog
+          %a{href: blog_path} Blog
         %li{:class => "#{"active" if action_name == "content"}"}
-          %a{href: "/content/about_partners"} About
+          %a{href: content_path(page: "about_partners")} About
 
 
       %ul.nav.navbar-nav.pull-right
-        %li
-          %a.req{href: "/req", style: "display:none !important; color: red;"}
-
 
         - if current_user
           %li.dropdown
@@ -41,11 +38,11 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                %a{href: "/account"}
+                %a{href: account_path}
                   %i.fa.fa-user &nbsp; Account Settings
               - if current_user.can?(:view_admin_dashboard)
                 %li
-                  %a{href: "/admin", :title => "Admin Panel"}
+                  %a{href: admin_path, :title => "Admin Panel"}
                     %i.fa.fa-wrench &nbsp; Admin Panel
               %li
                 = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete

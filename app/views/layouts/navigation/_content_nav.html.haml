@@ -1,17 +1,17 @@
 
 
 .list-group
-  %a.list-group-item{href: "/content/about_partners", class: "#{"active" if @page == "about_partners"}"}
+  %a.list-group-item{href: content_path(page: "about_partners"), class: "#{"active" if @page == "about_partners"}"}
     About Partners
-  -# %a.list-group-item{href: "/content/about_kids_and_teens", class: "#{"active" if @page == "about_kids_and_teens"}"}
+  -# %a.list-group-item{href: content_path(page: "about_kids_and_teens"), class: "#{"active" if @page == "about_kids_and_teens"}"}
   -#   About Kids and Teens
-  %a.list-group-item{href: "/content/about_ccfa", class: "#{"active" if @page == "about_ccfa"}"}
+  %a.list-group-item{href: content_path(page: "about_ccfa"), class: "#{"active" if @page == "about_ccfa"}"}
     About CCFA
-  %a.list-group-item{href: "/content/research_team", class: "#{"active" if @page == "research_team"}"}
+  %a.list-group-item{href: content_path(page: "research_team"), class: "#{"active" if @page == "research_team"}"}
     Research Team
-  %a.list-group-item{href: "/content/results", class: "#{"active" if @page == "results"}"}
+  %a.list-group-item{href: content_path(page: "results"), class: "#{"active" if @page == "results"}"}
     Results
-  %a.list-group-item{href: "/content/faq", class: "#{"active" if @page == "faq"}"}
+  %a.list-group-item{href: content_path(page: "faq"), class: "#{"active" if @page == "faq"}"}
     FAQ
 
 
