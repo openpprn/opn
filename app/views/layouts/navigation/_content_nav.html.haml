@@ -1,0 +1,50 @@
+
+
+.list-group
+  %a.list-group-item{href: content_path(page: "about_partners"), class: "#{"active" if @page == "about_partners"}"}
+    About Partners
+  -# %a.list-group-item{href: content_path(page: "about_kids_and_teens"), class: "#{"active" if @page == "about_kids_and_teens"}"}
+  -#   About Kids and Teens
+  %a.list-group-item{href: content_path(page: "about_ccfa"), class: "#{"active" if @page == "about_ccfa"}"}
+    About CCFA
+  %a.list-group-item{href: content_path(page: "research_team"), class: "#{"active" if @page == "research_team"}"}
+    Research Team
+  %a.list-group-item{href: content_path(page: "results"), class: "#{"active" if @page == "results"}"}
+    Results
+  %a.list-group-item{href: content_path(page: "faq"), class: "#{"active" if @page == "faq"}"}
+    FAQ
+
+
+%br/
+
+%h4 More CCFA Resources
+
+.list-group.small
+  %a.list-group-item{href: "http://www.ccfa.org/chapters/", :target => "_blank"}
+    Chapters and Support Groups
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfacommunity.org/"}
+    Community Website
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfa.org/living-with-crohns-colitis/talk-to-a-specialist/"}
+    IBD Help Center
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfa.org/what-are-crohns-and-colitis/"}
+    Disease Information
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfacommunity.org/ChatSeries.aspx"}
+    Online Support Groups
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfacommunity.org/ExpertQA.aspx"}
+    Expert Q&A Library
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfa.org/get-involved/be-an-advocate/"}
+    Advocacy Information
+    %i.fa.fa-external-link.pull-right
+  %a.list-group-item{href: "http://www.ccfa.org/resources/webcasts.html"}
+    Webcasts
+    %i.fa.fa-external-link.pull-right
+
+-# Description of this section
+
+= render partial: "shared/promotion_to_join" if !current_user

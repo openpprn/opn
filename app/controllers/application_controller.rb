@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || research_karma_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || research_topics_path
   end
+
 
   # Send 'em back where they came from with a slap on the wrist
   def authority_forbidden(error)
@@ -24,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def determine_pprn
     if Rails.env.production?
-      determine_pprn_from_subdomain
+      determine_pprn_from_subdomain #replace this with environmental config on heroku soon
     else
       determine_pprn_from_cookie
     end
@@ -50,8 +51,8 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_pprn_from_cookie
-    # if no cookie, has been set, let's assume it's myapnea
-    cookies[:pprn] = "myapnea" if !cookies[:pprn]
+    # if no cookie, has been set, let's assume it's ccfa
+    cookies[:pprn] = "ccfa" if !cookies[:pprn]
     # read the existing cookie
     @pprn = PPRNS[cookies[:pprn]]
   end

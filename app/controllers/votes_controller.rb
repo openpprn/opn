@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   before_filter :authenticate_user!
 
   def vote
-    if params[:vote][:research_topic_id] and current_user.can_vote_for?(ResearchTopic.find(params[:vote][:research_topic_id])) and current_user.has_votes_remaining?
+    if params[:vote][:research_topic_id] and current_user.can_vote_for?(ResearchTopic.find(params[:vote][:research_topic_id])) and (current_user.has_votes_remaining? || params[:vote][:rating] == "0")
       v = Vote.find_or_initialize_by(user_id: current_user.id, research_topic_id: params[:vote][:research_topic_id])
       v.rating = params[:vote]["rating"]
       saved = v.save

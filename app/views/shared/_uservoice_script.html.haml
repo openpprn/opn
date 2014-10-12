@@ -1,4 +1,4 @@
-- if Rails.configuration.uservoice_api_key
+- if Figaro.env.uservoice_api_key
 
   :javascript
     // Include the UserVoice JavaScript SDK (only needed once on a page)

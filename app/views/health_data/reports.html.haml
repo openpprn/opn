@@ -2,9 +2,18 @@
 %h3 My Reports
 %hr/
 
-- @report_names = ["My Disease Activity", "My Quality of Life", "My Anxiety", "My Depression", "My Fatigue","My Pain","My Sleep Disturbance","My Social Relations"]
-- @report_names.each do |report_name|
+- current_user.health_attribute_data.each do |attribute|
+  %h4= attribute[:title]
+  / = render :partial => "shared/progress", locals: {attribute: attribute}
 
-  %h4= report_name
-  = render :partial => "shared/progress"
+  .progress
+    - attribute[:zones].each do |zone|
+      .progress-bar.progress-bar-success{style: "width: #{zone[:endValue] / 10}%"}
+        %span= zone[:title]
+
+
+
+    /{element: 1, title: "Blood Type", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+
+
   %hr/

@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   rolify role_join_table_name: 'roles_users'
 
-
   include Authority::UserAbilities
   include Authority::Abilities
+
+  # Enable User Connection to External API Accounts
+  include ExternalUsers
+
 
   self.authorizer_name = "UserAuthorizer"
 
@@ -13,8 +16,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Model Validation
-  validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
-  validates_numericality_of :year_of_birth, only_integer: true, less_than_or_equal_to: -> (user){ Date.today.year - 18 }, greater_than_or_equal_to: -> (user){ 1900 }
+  # validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
+  validates_numericality_of :year_of_birth, only_integer: true, less_than_or_equal_to: -> (user){ Date.today.year - 18 }, greater_than_or_equal_to: -> (user){ 1900 }, allow_nil: true, allow_blank: true
 
   # Model Relationships
   has_many :answer_sessions
@@ -65,7 +68,10 @@ class User < ActiveRecord::Base
   end
 
   def signed_consent?
-    self.accepted_consent_at.present?
+    # Local Consent Storage
+    # self.accepted_consent_at.present?
+    # OODT Consent Storage
+    self.oodt_status
   end
 
   def forem_admin?
@@ -120,4 +126,6 @@ class User < ActiveRecord::Base
   def has_votes_remaining?
     todays_votes.length < vote_quota
   end
+
+
 end
