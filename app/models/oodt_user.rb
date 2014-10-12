@@ -1,5 +1,9 @@
 module OODTUser
 
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
   # To automatically provision OODT account on user hook, add it to User.rb like so:
   # after_create :provision_oodt_user
 
@@ -33,7 +37,7 @@ module OODTUser
       body = parse_body(response)
       self.oodt_id = body['participantID']
     else
-      logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.inspect}"
+      logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
       return false
     end
   end
@@ -64,16 +68,52 @@ module OODTUser
       body = parse_body(response)
       return body['message']  # ...body['matchedEmail'] doing nothing with this now, but we could at least marked in the DB that this user was matched, so we don't ask them to again?
     else
-      logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.inspect}"
+      logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.body}"
       return false
     end
   end
 
 
   # Test if our local database knows the user is provisioned on OODT
-  def oodt_user?
+  def oodt_user_provisioned?
     return !self.oodt_id.nil?
   end
+
+
+
+  ###################
+  # USER DELETION
+  ###################
+  def delete_oodt_user
+    response = oodt.post "users/@@delete", user_hash
+
+    if response.success?
+      self.oodt_id = nil
+      self.save
+    else
+      logger.error "API Call to OODT to delete user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
+      return false
+    end
+
+  end
+
+  module ClassMethods
+    def delete_all_oodt_users
+      User.all.each { |u| u.delete_oodt_user }
+    end
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

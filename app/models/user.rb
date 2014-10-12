@@ -1,14 +1,11 @@
 class User < ActiveRecord::Base
   rolify role_join_table_name: 'roles_users'
 
-
   include Authority::UserAbilities
   include Authority::Abilities
 
   # Enable User Connection to External API Accounts
-  include OODTUser
-  include ValidicUser
-  after_create :provision_oodt_user, :provision_validic_user
+  include ExternalUsers
 
 
   self.authorizer_name = "UserAuthorizer"

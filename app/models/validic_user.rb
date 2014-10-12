@@ -1,7 +1,8 @@
 module ValidicUser
 
-  # To automatically provision Validic account as a user callback, add it to User.rb like so:
-  # after_create :provision_validic_user
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
 
   ####################
   # API CONNECTION SETUP
@@ -24,7 +25,7 @@ module ValidicUser
   ###################
   def provision_validic_user
     response = validic.post "users.json", {
-      :access_token => "01e6f0829482d546b9d5889de97b54ca1c0655fc2fa5d82b2a2e73373cbde02a",
+      :access_token => Figaro.env.validic_access_token,
       "user[uid]" => self.id
     }
 
@@ -35,16 +36,46 @@ module ValidicUser
       self.save
       #send_validic_credentials_to_oodt if self.oodt_user? #oodt does not currently have this API call up
     else
-      logger.error "API Call to Validic to provision user ##{self.id} was unsucccessful. Validic returned the following response:\n#{response}"
+      logger.error "API Call to Validic to provision user ##{self.id} was unsucccessful. Validic returned the following response:\n#{response.body}"
       return false
     end
 
   end
 
   # Test if the user is provisioned on Validic
-  def validic_user?
+  def validic_user_provisioned?
     return (!self.validic_id.nil? && !self.validic_access_token.nil?)
   end
+
+
+
+  ###################
+  # USER DELETION
+  ###################
+  def delete_validic_user
+    response = validic.delete "users.json", {
+      :access_token => Figaro.env.validic_access_token,
+      :uid => self.id
+    }
+
+    if response.success?
+      self.validic_id = nil
+      self.validic_access_token = nil
+      self.save
+    else
+      logger.error "API Call to Validic to delete user ##{self.id} was unsucccessful. Validic returned the following response:\n#{response.body}"
+      return false
+    end
+
+  end
+
+  module ClassMethods
+    def delete_all_validic_users
+      User.all.each { |u| u.delete_validic_user }
+    end
+  end
+
+
 
 
 end
