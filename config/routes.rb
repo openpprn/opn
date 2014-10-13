@@ -14,10 +14,14 @@ Rails.application.routes.draw do
   root 'static#home'
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
-  get 'terms' => 'static#terms'
   #Content Pages
   get 'content/:page' => 'static#content'
   get 'content/' => 'static#content'
+
+
+  get 'privacy_policy_document' => 'static#content', :page => "privacy_policy"
+  get 'terms_of_service' => 'static#content', :page => "terms_of_service"
+
 
 
   # Research Topics
@@ -67,7 +71,7 @@ Rails.application.routes.draw do
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
   match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
-  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
+  #match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
   match 'update_account', to: 'account#update', as: 'update_account', via: :patch
   match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
