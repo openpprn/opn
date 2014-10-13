@@ -39,10 +39,14 @@ bundle exec rake assets:precompile RAILS_ENV=production
 ```
 
 To set up your secret keys, run
+
+```
 figaro install
+```
 
 Add the following lines to the /config/application.yml file it generates, complete with appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
 
+```
 uservoice_api_key: 
 google_analytics_web_property_id:
 
@@ -51,13 +55,12 @@ validic_organization_id:
 
 oodt_username: 
 oodt_password: 
-
 ```
+
 Open PPRN.rb to 
 - Configure the basic information about your PPRN
 - Enable or Disable Validic and OODT
 
-```
 Run Rails Server (or use Apache or nginx)
 
 ```
