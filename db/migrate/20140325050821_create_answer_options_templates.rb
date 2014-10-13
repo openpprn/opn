@@ -1,6 +1,6 @@
 class CreateAnswerOptionsAnswerTemplates < ActiveRecord::Migration
   def change
-    create_table :answer_options_answer_templates do |t|
+    create_table :answer_options_templates do |t|
       t.references :answer_template
       t.references :answer_option
 
