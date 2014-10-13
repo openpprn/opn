@@ -36,7 +36,7 @@
             = f.label :condition, :class => "control-label col-sm-5"
             .col-sm-7
               %select.form-control
-                - @pprn_conditions.each do |condition|
+                - PPRN_CONDITIONS.each do |condition|
                   %option
                     = condition
           .form-group

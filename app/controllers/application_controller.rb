@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :determine_pprn
 
 
 
@@ -20,52 +19,7 @@ class ApplicationController < ActionController::Base
   # Send 'em back where they came from with a slap on the wrist
   def authority_forbidden(error)
     Authority.logger.warn(error.message)
-    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <support@myapnea.org>."
-  end
-
-  def determine_pprn
-    if Rails.env.production?
-      determine_pprn_from_subdomain #replace this with environmental config on heroku soon
-    else
-      determine_pprn_from_cookie
-    end
-
-    # Grab the PPRN Specifics from the YAML file
-
-    @pprn_code = @pprn["code"]
-    @pprn_title = @pprn["title"]
-    @pprn_condition = @pprn["condition"]
-    @pprn_conditions = @pprn["conditions"]
-    @pprn_research_questions = @pprn["research_questions"]
-    @pprn_research_team = @pprn["research_team"]
-    @pprn_patient_team = @pprn["patient_team"]
-    @pprn_surveys = @pprn["surveys"]
-  end
-
-  def determine_pprn_from_subdomain
-    if request.subdomain == "myapnea"
-      @pprn = PPRNS["myapnea"]
-    else
-      @pprn = PPRNS["ccfa"]
-    end
-  end
-
-  def determine_pprn_from_cookie
-    # if no cookie, has been set, let's assume it's ccfa
-    cookies[:pprn] = "ccfa" if !cookies[:pprn]
-    # read the existing cookie
-    @pprn = PPRNS[cookies[:pprn]]
-  end
-
-  # Toggle the PPRN from CCFA <-> myapnea
-  def toggle_pprn_cookie
-    if cookies[:pprn] == "ccfa"
-      cookies[:pprn] = "myapnea"
-    elsif cookies[:pprn] == "myapnea"
-      cookies[:pprn] = "ccfa"
-    end
-
-    redirect_to root_path
+    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <#{SUPPORT_EMAIL}>."
   end
 
 

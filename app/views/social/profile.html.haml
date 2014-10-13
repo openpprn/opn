@@ -2,7 +2,7 @@
 = form_for @social_profile, html: {role: "form", class: 'form-horizontal'}, url: social_profile_path do |f|
   .panel.panel-default
     .panel-heading
-      %h4 Do you want other patients in the #{@pprn_title} to see you?
+      %h4 Do you want other patients in the #{PPRN_TITLE} to see you?
       .radio
         %label
           = f.radio_button :show_location, true, id: 'optionsRadios2'
@@ -62,21 +62,21 @@
       =f.submit("Save", class: 'btn btn-primary pull-right')
 
 
-- if !ccfa_pprn?
-  .panel.panel-default
-    .panel-heading
-      %h4.panel-title Do you want people in the outside world to see you?
-      .radio
-        %label
-          = radio_button "show_location_public", true, id: 'optionsRadios2'
-          %strong
-            Show me.
-          %span.small Add a marker for me on the map that shows the following info.
 
-    .panel-body
-      This is what you'll look like to the outside world:
-      .text-center [map]
-      .text-center [photo]
+.panel.panel-default
+  .panel-heading
+    %h4.panel-title Do you want people in the outside world to see you?
+    .radio
+      %label
+        = radio_button "show_location_public", true, id: 'optionsRadios2'
+        %strong
+          Show me.
+        %span.small Add a marker for me on the map that shows the following info.
+
+  .panel-body
+    This is what you'll look like to the outside world:
+    .text-center [map]
+    .text-center [photo]
 
 
 

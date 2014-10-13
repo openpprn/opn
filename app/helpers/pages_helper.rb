@@ -1,23 +1,11 @@
 module PagesHelper
 
-  def ccfa_pprn?
-    @pprn_code == "ccfa"
-  end
-
-  def myapnea_pprn?
-    @pprn_code == "myapnea"
-  end
-
-  def req?
-    cookies[:req] || false
-  end
-
   def random_name
-    ["Brian", "Jessica", "Martha", "Max", "JT", "Sean", "Ryan", "Prisca", "Elizabeth"].shuffle.first
+    ["Brian", "Jessica", "Martha", "Max", "JT", "Sean", "Ryan", "Prisca", "Elizabeth"].sample
   end
 
   def random_place
-    ["San Francisco, CA", "Raleigh, NC", "London, UK", "Mexico City, MX", "Seattle, WA", "New York City, NY", "Chicago, IL", "New Orleans, LA", "Austin, TX"].shuffle.first
+    ["San Francisco, CA", "Raleigh, NC", "London, UK", "Mexico City, MX", "Seattle, WA", "New York City, NY", "Chicago, IL", "New Orleans, LA", "Austin, TX"].sample
   end
 
   def random_age
@@ -25,7 +13,7 @@ module PagesHelper
   end
 
   def random_sex
-    ["Male", "Female", ""].shuffle.first
+    ["Male", "Female", ""].sample
   end
 
 end

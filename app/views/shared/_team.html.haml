@@ -1,32 +1,15 @@
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title Research Team
+- [["Research Team", User.with_role(:research_team)], ["Patient Team",User.with_role(:patient_team)]].each do |title,team|
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title= title
 
-  - @pprn_research_team.each do |name, title, img_src|
-    .panel-body
-      .media
-        %a.pull-left
-          = image_tag img_src, :class => " media-object img-circle user-avatar" if img_src
-          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar" if !img_src
-        .media-body.small
-          %strong
-            = name
-          %p
-            = title
-
-
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title Research Team
-
-  - @pprn_patient_team.each do |name, title, img_src|
-    .panel-body
-      .media
-        %a.pull-left
-          = image_tag img_src, :class => " media-object img-circle user-avatar" if img_src
-          = image_tag "default-user.jpg", :class => "media-object img-circle user-avatar" if !img_src
-        .media-body.small
-          %strong
-            = name
-          %p
-            = title
+    - team.each do |user|
+      .panel-body
+        .media
+          %a.pull-left
+            = image_tag user.photo_url, :class => " media-object img-circle user-avatar" if user.photo_url
+          .media-body.small
+            %strong
+              = user.name
+            %p
+              = "Title"
