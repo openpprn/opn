@@ -102,9 +102,6 @@ unless Rails.env == "test"
 
   if !(user = User.find_by_email("piotr.mankowski@gmail.com"))
     user = User.new(email: "piotr.mankowski@gmail.com", password: "12345678")
-    user.validic_id = "54293ab084626b96a4000047"
-    user.validic_access_token = "qxmyhv-tcgzgtZEWVsfJ"
-    user.oodt_id = "urn:uuid:39fc580b-8a1a-56a8-931d-42f908fc9ea8"
     user.save!
     user.add_role :admin
     user.add_role :owner
@@ -113,13 +110,20 @@ unless Rails.env == "test"
 
   if !(user = User.find_by_email("seanahrens@gmail.com"))
     user = User.new(email: "seanahrens@gmail.com", password: "password")
-    user.validic_id = "542a6e4784626b85f10000c3"
-    user.validic_access_token = "vznvLEEa_pvCamSHecMT"
-    user.oodt_id = "urn:uuid:d363b4d5-db42-5434-ad0e-63a2495c9f4c"
     user.save!
     user.add_role :admin
     user.add_role :owner
     user.add_role :moderator
+    user.add_role :patient_team
+  end
+
+  if !(user = User.find_by_email("kappeleman@partnerstestkapp.com"))
+    user = User.new(email: "kappeleman@partnerstestkapp.com", password: "password")
+    user.save!
+    user.add_role :admin
+    user.add_role :owner
+    user.add_role :moderator
+    user.add_role :research_team
   end
 
   i = 0

@@ -13,7 +13,7 @@
       %td Health Info
       %td Source
     %tbody
-      - @pprn["data_sources"].each do |data_source_name,supported_data_source_types|
+      - DUMMY_DATA_SOURCES.each do |data_source_name,supported_data_source_types|
         %tr
           %td= rand(Time.now - 3.months..Time.now)
           %td= rand(0..10000)
