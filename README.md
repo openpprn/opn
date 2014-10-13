@@ -33,6 +33,8 @@ Install default configuration files for database connection, email server connec
 ```
 ruby lib/initial_setup.rb
 
+ruby config/pprn.rb
+
 bundle exec rake db:migrate RAILS_ENV=production
 
 bundle exec rake assets:precompile RAILS_ENV=production
