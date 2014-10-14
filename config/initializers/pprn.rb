@@ -11,8 +11,8 @@ PPRN_SUPPORT_EMAIL = "support@partners.ccfa.org"
 #####################
 # External Accounts
 #####################
-OODT_ENABLED = true
-VALIDIC_ENABLED = true
+OODT_ENABLED = false
+VALIDIC_ENABLED = false
 
 
 # Load dummy health data for demonstration

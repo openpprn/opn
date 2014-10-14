@@ -11,23 +11,31 @@ module ValidicUser
     conn = Faraday.new(:url => "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}/")
   end
 
-  def check_validic_ok
-    response = Faraday.get "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}.json?access_token=#{Figaro.env.validic_access_token}"
+  def basic_data
+    {access_token: Figaro.env.validic_access_token}
+  end
+
+  def basic_user_data
+    {access_token: Figaro.env.validic_access_token, "user[uid]" => self.id}
   end
 
   def validic_app_marketplace_url
     "https://app.validic.com/#{Figaro.env.validic_organization_id}/#{self.validic_access_token}"
   end
 
+  def check_validic_alive
+    response = Faraday.get "https://api.validic.com/v1/organizations/#{Figaro.env.validic_organization_id}.json", basic_data
+    response.success?
+  end
+
+
+
 
   ###################
   # USER PROVISIONING
   ###################
   def provision_validic_user
-    response = validic.post "users.json", {
-      :access_token => Figaro.env.validic_access_token,
-      "user[uid]" => self.id
-    }
+    response = validic.post "users.json", basic_user_data
 
     if response.success?
       body = JSON.parse(response.body)
@@ -48,15 +56,24 @@ module ValidicUser
   end
 
 
+  def get_all_validic_users
+    response = validic.get "users.json", basic_user_data
+    if response.success?
+      body = JSON.parse(response.body)
+      # gather up all the ids into a flat array
+      body["users"].collect { |u| u["_id"] }
+    else
+      logger.error "API Call to Validic to provision user ##{self.id} was unsucccessful. Validic returned the following response:\n#{response.body}"
+      return false
+    end
+  end
+
 
   ###################
   # USER DELETION
   ###################
-  def delete_validic_user
-    response = validic.delete "users.json", {
-      :access_token => Figaro.env.validic_access_token,
-      :uid => self.id
-    }
+  def delete_validic_user(id = self.validic_id)
+    response = validic.delete "users/#{id}.json", basic_data
 
     if response.success?
       self.validic_id = nil
@@ -69,13 +86,15 @@ module ValidicUser
 
   end
 
-  module ClassMethods
-    def delete_all_validic_users
-      User.all.each { |u| u.delete_validic_user }
-    end
+
+  def delete_all_validic_users
+    get_all_validic_users.each { |id| delete_validic_user(id) }
   end
 
 
+  module ClassMethods
+    #FIXME need to factor out most of these methods into class methods, but time constraints
+  end
 
 
 end

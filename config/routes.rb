@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   get 'account' => 'account#account'
   get 'account_export' => 'account#account_export'
   match 'consent', to: "account#consent", as: :consent, via: [:get, :post]
-  #match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
+  match 'privacy_policy', to: "account#privacy_policy", as: :privacy, via: [:get, :post]
   match 'update_account', to: 'account#update', as: 'update_account', via: :patch
   match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
