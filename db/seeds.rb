@@ -132,9 +132,8 @@ unless Rails.env == "test"
     User.create!(email: "#{i}demo@gmail.com", password: "password")
   end
 
-
-
-
+  # Set up all users with their external accounts
+  User.provision_all_external_users
 
 
 

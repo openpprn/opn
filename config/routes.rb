@@ -102,7 +102,7 @@ Rails.application.routes.draw do
   # Blog and Notification Posts
   resources :posts, except: [:show, :index]
 
-  devise_for :user, controllers: { registrations: 'registrations' }
+  devise_for :user, controllers: { registrations: 'registrations'}
 
 
 
