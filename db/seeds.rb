@@ -117,8 +117,8 @@ unless Rails.env == "test"
     user.add_role :patient_team
   end
 
-  if !(user = User.find_by_email("kappeleman@partnerstestkapp.com"))
-    user = User.new(email: "kappeleman@partnerstestkapp.com", password: "password")
+  if !(user = User.find_by_email("demo@openpprn.org"))
+    user = User.new(email: "demo@openpprn.org", password: "password")
     user.save!
     user.add_role :admin
     user.add_role :owner
