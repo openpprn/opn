@@ -51,6 +51,7 @@ GEM
     airbrake (4.1.0)
       builder
       multi_json
+    ambry (0.3.1)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
     authority (3.0.0)
@@ -141,6 +142,8 @@ GEM
       activesupport (>= 3.0.0)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    merit (2.2.0)
+      ambry (~> 0.3.0)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -296,6 +299,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.16.1)
+  merit
   meta_request
   mini_magick
   minitest-rails
