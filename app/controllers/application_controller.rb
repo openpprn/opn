@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
 
   def set_active_top_nav_link_to_research
-    @active_top_nav_link = :research
+    @active_top_nav_link = :research_topics
   end
 
   def set_active_top_nav_link_to_health_data

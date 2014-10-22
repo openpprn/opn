@@ -1,77 +1,31 @@
+- content_for :community_contributions do
+  .row
+    .col-md-12
+      .panel.panel-primary
+        .panel-heading
+          Community Contributions
+        .panel-body.text-right
+          .row
+            .col-md-3
+              Members
+              %br/
+              %span.h0 5,432
+            .col-md-3
+              Research Ideas
+              %br/
+              %span.h0 214
+            .col-md-3
+              Surveys Completed
+              %br/
+              %span.h0 450
+            .col-md-3
+              Health Data Streams
+              %br/
+              %span.h0 681
+
+- content_for :your_contributions do
+  = render partial: "shared/badge_list"
 
 
-.row
-  .col-md-12
-    = render partial: "/shared/avatar_mosaic"
-
-
-
-.req All Page Content and Imagery
-
-
-
-.row
-  .col-md-8.col-md-offset-2
-    .text-center
-      %h3 Join a Movement to Solve #{PPRN_CONDITION} Together
-    %br/
-    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
-    %br/
-
-    = image_tag "video.png", :style => "width: 100%; border: 2px solid gray;"
-
-
-
-%br/
-%br/
-%br/
-%br/
-
-.row
-  .col-md-4.col-md-offset-4.text-center
-    %a{:href => new_user_registration_path}
-      .btn.btn-lg.btn-primary.btn-block Join
-    %br/
-    %p
-      Already a Member?
-      = link_to "Sign in", new_user_session_path
-
-
-
-%br/
-%br/
-
-
-.row
-  - 3.times do
-    .col-md-4
-      .text-center
-        %i.fa.fa-square-o{:style => "font-size: 200px;"}
-
-      %h4 Describe a Feature of the Network
-
-      %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
-
-
-
-%hr/
-
-
-
-%br/
-%br/
-
-
-.row
-  .col-md-4.col-md-offset-4.small
-    .req If we want to support other languages, translations to each language
-    %form.form-horizontal{:role => "form"}
-      .form-group
-        %label.control-label.col-md-6{for: "inputPassword3"}
-          %i.fa.fa-globe &nbsp; Language:
-        .col-md-6
-          %select.form-control.small
-            %option
-              %i.fa.fa-globe
-              English
-            %option Spanish
+%h3 Blog Posts
+= render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }

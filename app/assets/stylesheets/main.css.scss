@@ -8,6 +8,20 @@
   border: 1px solid #ddd;
 }
 
+
+.badger {
+  i { font-size: 36px; }
+  color: #DDD;
+  .media i {
+    color: #DDD;
+  }
+}
+
+
+.badger-earned .media, .badger-earned .media i, {
+  color: green !important;
+}
+
 // .pprn-heading {
 //   background-color: #428bca;
 // }

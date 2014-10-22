@@ -2,45 +2,45 @@
 - @intro = true
 
 - content_for :sublayout do
+
+  -# MOSAIC AND TITLE
   .row.mosaic-bg
     .col-md-9
       <br/>
-      .row
-        .col-md-6
-          .panel.panel-primary.display-inline-block
-            .panel-heading
-              %span.h1= @active_top_nav_link.to_s.titleize
+      .panel.panel-primary.display-inline-block
+        .panel-heading
+          %span.h1= @active_top_nav_link.to_s.titleize
 
+
+
+      -# COMMUNITY CONTRIBUTIONS PANEL
       - if content_for(:community_contributions)
-        .row
-          .col-md-6
-            .panel.panel-primary
-              .panel-heading
-                Community Contributions
-              = yield :community_contributions
+        = yield :community_contributions
         <br/><br/>
       - else
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-
+      -#################
+      -# PAGE CONTENT! #
       = yield
 
+
+    -# YOUR CONTRIBUTIONS SIDEBAR
     .col-md-3
-
-      <br/><br/><br/><br/><br/>
-      .panel.panel-primary
-        = render partial: "shared/bio"
-
+      = render partial: "shared/promotion_to_join" if !current_user
 
       - if content_for(:your_contributions)
+
+        <br/><br/><br/><br/><br/>
+        .panel.panel-primary
+          = render partial: "shared/bio"
+
+
         .panel.panel-primary
           .panel-heading
             Your Contributions
           = yield :your_contributions
 
-          = render partial: "layouts/navigation/badge_nav/badge_list"
-
-        = render partial: "shared/promotion_to_join" if !current_user
 
 
 

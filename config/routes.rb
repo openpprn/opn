@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # Static Pages
-  root 'static#home'
+  root 'static#splash'
+  get 'home' => "static#home"
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages

@@ -45,9 +45,9 @@
 .row
   .col-md-12.pprn-nav
     %ul.nav.nav-pills.top-nav
-      %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-        %a{href: social_path} Home
-      %li{:class => "#{"active" if @active_top_nav_link == :research}"}
+      %li{:class => "#{"active" if @active_top_nav_link == :home}"}
+        %a{href: home_path} Home
+      %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
         %a{href: research_topics_path} Research Topics
       %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
         %a{href: data_explore_path} Health Data

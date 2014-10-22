@@ -1,18 +1,63 @@
 - content_for :community_contributions do
-  .panel-body.text-right
-    .row
-      .col-md-4
-        Data Sources
-        %br/
-        %span.h0 12
-      .col-md-4
-        Data Points
-        %br/
-        %span.h0 40
-      .col-md-4
-        Studies
-        %br/
-        %span.h0 1
+  .row
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading
+          Community Contributions
+        .panel-body.text-right
+          .row
+            .col-md-4
+              Data Sources
+              %br/
+              %span.h0 12
+            .col-md-4
+              Data Points
+              %br/
+              %span.h0 40
+            .col-md-4
+              Studies
+              %br/
+              %span.h0 1
+
+- content_for :your_contributions do
+  = render partial: "shared/badge_list", :locals => {badges: [{title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},
+                                                              {title: "Data Dumper", earned: false, body: "Use Your Connected Devices", icon: "fa-bar-chart"},
+                                                              {title: "Sherlock", earned: false, body: "Investigate and graph your data", icon: "fa-search"}] }
+
+  / %i.fa.fa-lightbulb-o.badger.badger-earned
+  / %i.fa.fa-life-ring.badger
+  / %i.fa.fa-slideshare.badger
+  / %i.fa.fa-comments.badger
+  / %i.fa.fa-bullhorn.badger
+  / %i.fa.fa-list-ul.badger
+
+
+
+  / %ul.list-group
+
+  /   %li.list-group-item.list-group-item-success.badger.badger-earned
+  /     .media
+  /       %a.pull-left{:href => "#"}
+  /         %i.fa.fa-link.media-object
+  /       .media-body
+  /         %h4.media-heading Connector
+  /         %small You've connected 3 Data Sources
+
+  /   %li.list-group-item.badger.badger-unearned
+  /     .media
+  /       %a.pull-left{:href => "#"}
+  /         %i.fa.fa-bar-chart.media-object
+  /       .media-body
+  /         %h4.media-heading Data Dumper
+  /         %small Use your connected devices.
+
+  /   %li.list-group-item.badger.badger-unearned
+  /     .media
+  /       %a.pull-left{:href => "#"}
+  /         %i.fa.fa-search.media-object
+  /       .media-body
+  /         %h4.media-heading Sherlock
+  /         %small Investigate and graph your data
 
 
 %ul.nav.nav-tabs{role: "tablist"}
