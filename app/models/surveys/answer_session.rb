@@ -166,11 +166,17 @@ class AnswerSession < ActiveRecord::Base
   end
 
   def all_answers
-    [first_answer] + first_answer.descendants
+    if first_answer
+      [first_answer] + first_answer.descendants
+    end
   end
 
   def all_reportable_answers
-    all_answers.select {|answer| answer.answer_values.map{|av| av.answer_template.data_type }.include? "answer_option_id" and answer.show_value.present? }
+    all_answers.select {|answer| answer.answer_values.map{|av| av.answer_template.data_type }.include? "answer_option_id" and answer.show_value.present? } if all_answers
+  end
+
+  def grouped_reportable_answers
+    all_reportable_answers.group_by{|a| a.question.question_help_message ? a.question.question_help_message.message : ""}
   end
 
   def get_answer(question_id)
@@ -211,7 +217,12 @@ class AnswerSession < ActiveRecord::Base
 
     coll
   end
-  
+
+
+  ## Reports
+
+
+
   private
 
   def completed_path
@@ -241,5 +252,6 @@ class AnswerSession < ActiveRecord::Base
       end
     end
   end
+
 
 end

@@ -6,6 +6,9 @@ class Question < ActiveRecord::Base
 
   include Localizable
   include Votable
+
+  has_many :votes
+
   include Authority::Abilities
 
   localize :text
@@ -70,7 +73,8 @@ class Question < ActiveRecord::Base
   end
 
   def answer_frequencies
-    if answer_templates.length == 1 and [3,4].include? answer_templates.first.display_type.id
+    #raise StandardError, "#{self.text_en} #{answer_templates.first.display_type.name}"
+    if answer_templates.length == 1 and ["multiple_choice", "check_box"].include? answer_templates.first.display_type.name
       at = answer_templates.first
       all_options = at.answer_options.to_a.sort_by!{|ao| ao.value }
 
@@ -80,9 +84,10 @@ class Question < ActiveRecord::Base
         groups << {label: o.value, answers: [], count: 0, frequency: 0.0}
       end
 
-      total_answers = answers.map(&:answer_values).flatten.map(&:show_value).length
+      valid_answers = answers.map(&:answer_values).flatten.select{|av| av.value.present?}
+      total_answers = valid_answers.map(&:show_value).length
 
-      answers.map(&:answer_values).flatten.group_by{|av| av.show_value}.each_pair do |key, array|
+      valid_answers.group_by{|av| av.show_value}.each_pair do |key, array|
         g = groups.find{|x| x[:label] == key }
         if g
           g[:answers] = array

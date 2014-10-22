@@ -1,24 +1,25 @@
-<h3>Compare your answers to the rest of the <%= PPRN_TITLE %> community.</h3>
-<div class="row">
+.list-group
+  - if @answer_session.all_reportable_answers.blank?
 
-  <div class="col-md-4">
-    <span class="help-block">Choose question to view results for.</span>
-    <select class="form-control no-focus" id="question-select" data-answer-session-id="<%= @answer_session.id %>" data-json-path="<%= question_frequencies_path %>">
-      <% @answer_session.all_reportable_answers.each do |answer| %>
-        <option value="<%= answer.question.id %>"><%= markdown answer.question.text %></option>
-      <% end %>
-    </select>
-  </div>
-  <div class="col-md-2 col-md-offset-1">
+  - else
+    %h3 Compare your answers to the rest of the community.
+    .row
+      .col-md-12
+        %span.help-block Choose question to view results for:
+        %select#question-select.form-control.no-focus{"data-answer-session-id" => @answer_session.id, "data-json-path" => question_frequencies_path}
+          - @answer_session.grouped_reportable_answers.each do |help_message, answers|
+            %optgroup{:label =>  help_message.blank? ? "-- Standalone Questions --" : help_message}
+              - answers.each do |answer|
+                %option{:value => answer.question.id}= markdown answer.question.text
 
-    <div id="freq-table"></div>
-  </div>
-  <div class="col-md-4 col-md-offset-1">
-    <div id="freq-graph"></div>
-  </div>
-
-</div>
-
-
-
-<%= javascript_include_tag "reports/default" %>
+    %br/
+    .row
+      .col-md-6
+        #ua
+          %strong My Answer:
+          %span.answer
+        %br/
+        #freq-table
+      .col-md-5.col-md-offset-1
+        #freq-graph
+    = javascript_include_tag "reports/default"

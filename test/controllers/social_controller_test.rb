@@ -30,7 +30,7 @@ class SocialControllerTest < ActionController::TestCase
 
   test "User can edit own social profile" do
     login(users(:user_1))
-    profile_params = {social_profile: {name: "Bobby Valentine", location: "Anywhere, ND", age: 66, sex: "Male", photo: fixture_file_upload('../../test/support/rails.png')}}
+    profile_params = {social_profile: {name: "Bobby Valentine", location: "Anywhere, ND", age: 66, sex: "Male",  photo: fixture_file_upload('../../test/support/rails.png'), visible_to_community: true, visible_to_world: true}}
 
     get :profile
 
@@ -45,6 +45,8 @@ class SocialControllerTest < ActionController::TestCase
 
     assert users(:user_1).social_profile
     assert_equal profile_params[:social_profile][:name], users(:user_1).social_profile.name
+    assert_equal profile_params[:social_profile][:visible_to_community], users(:user_1).social_profile.visible_to_community
+    assert_equal profile_params[:social_profile][:visible_to_world], users(:user_1).social_profile.visible_to_world
   end
 
   test "should not allow user to save profile with non-unique name" do

@@ -2,11 +2,6 @@
 - @intro = true
 
 - content_for :sublayout do
-  .row
-    .col-md-3
-      = render :partial => "layouts/navigation/admin_nav"
-    .col-md-9#admin-content
-      = yield
+  = render partial: "layouts/sublayout_sidebar", locals: {nav: 'layouts/navigation/admin_nav'}
 
-
-= render template: "layouts/application"
+= render template: "layouts/#{Rails.application.config.layout}"
