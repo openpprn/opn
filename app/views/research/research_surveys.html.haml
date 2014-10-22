@@ -1,3 +1,29 @@
+- content_for :community_contributions do
+  .row
+    .col-md-7
+      .panel.panel-primary
+        .panel-heading
+          Community Contributions
+        .panel-body.text-right
+          .row
+            .col-md-4
+              Surveys Answered
+              %br/
+              %span.h0 560
+            .col-md-4
+              Symptom Check-ins
+              %br/
+              %span.h0 1.3k
+            .col-md-4
+              Members Doing
+              %br/
+              %span.h0 350
+
+- content_for :your_contributions do
+  = render partial: "shared/badge_list", :locals => {badges: [{title:"Frequent Check-iner",body:"You've done 40 frequent surveys", icon: "fa-clock-o", earned: true},
+                                                              {title:"Dutiful Citizen",body:"You've responded to 10 biannual surveys!", icon: "fa-list-ul"},  {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true} ]}
+
+
 
 .panel.panel-default
   .panel-heading

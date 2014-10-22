@@ -32,8 +32,9 @@
       - if content_for(:your_contributions)
 
         <br/><br/><br/><br/><br/>
-        .panel.panel-primary
-          = render partial: "shared/bio"
+        %a{href: account_path}
+          .panel.panel-primary
+            = render partial: "shared/bio"
 
 
         .panel.panel-primary
