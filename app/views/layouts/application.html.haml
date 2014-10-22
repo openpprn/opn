@@ -12,13 +12,18 @@
 
       = render "layouts/navigation/top_navigation_bar"
       = render "layouts/flash_messages"
-      = render "layouts/page_title_heading"
+
 
       - if content_for(:sublayout)
         = yield :sublayout # the sublayouts must make their own call to yield
       - else
         = yield
 
+
       = render "layouts/footer"
       = render "layouts/after_scripts"
+
+
+
+
 

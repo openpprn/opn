@@ -4,6 +4,8 @@ class HealthDataController < ApplicationController
   before_action :validate_oodt_module, :only => [:explore, :reports]
   before_action :validate_validic_module, :only => []
 
+  layout "community"
+
 def validate_oodt_module
   raise "OODT must be enabled for this feature." if !OODT_ENABLED
 end

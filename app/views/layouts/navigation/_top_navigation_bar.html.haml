@@ -1,30 +1,20 @@
-.navbar.navbar-default{role: "navigation"}
-  -#.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{href: root_path}
-        = PPRN_TITLE
-        %span.req
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-          %a{href: research_topics_path} Research
-        %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-          %a{href: data_explore_path} My Health Data
-        %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-          %a{href: social_path} Members
-        %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
-          %a{href: blog_path} Blog
-        %li{:class => "#{"active" if action_name == "content"}"}
-          %a{href: content_path(page: "about_partners")} About
+
+.row
+  .col-md-12.pprn-heading
+    %h1.pull-left= PPRN_TITLE
 
 
-      %ul.nav.navbar-nav.pull-right
+    .pull-right
+      %br/
+
+
+      %ul.nav.nav-pills.small
+        %li
+          %a{:href => content_path(:about_partners)} About
+        %li
+          %a{:href => "#"} Resources
+        %li
+          %a{:href => "#"} Help
 
         - if current_user
           %li.dropdown
@@ -46,3 +36,25 @@
             %a{:href => new_user_session_path}
               %i.fa.fa-sign-in
                 Sign In
+
+    .clearfix
+    %hr
+
+
+
+.row
+  .col-md-12.pprn-nav
+    %ul.nav.nav-pills.top-nav
+      %li{:class => "#{"active" if @active_top_nav_link == :social}"}
+        %a{href: social_path} Home
+      %li{:class => "#{"active" if @active_top_nav_link == :research}"}
+        %a{href: research_topics_path} Research Topics
+      %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
+        %a{href: data_explore_path} Health Data
+      %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
+        %a{href: surveys_path} Surveys
+      - if PPRN == :my_apnea
+        %li
+          %a{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"} Discussion
+
+

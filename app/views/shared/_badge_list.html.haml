@@ -1,0 +1,38 @@
+
+
+- badges = Hash.new
+
+
+- if @active_top_nav_link == :research
+  - badges = {title:"Inquisitor",body:"You asked 1 research question"},{title:"Voter",body:"You cast 5 votes"},{title:"Discusser",body:"You commented on 3 topics"},{title:"Great Ideamaker",body:"Your ideas are in the top 25%"}
+- elsif @active_top_nav_link == :health_data
+  - badges = {title:"Connector", body: "You've connected 2 apps!", link: current_user.validic_app_marketplace_url}, {title:"Data Dumper",body:"Your apps are sending daily data!"}
+- elsif @active_top_nav_link == :surveys
+  - badges = {title:"Updater",body:"You've done 40 frequent surveys"},{title:"Census Respondent",body:"You've responded to 10 biannual surveys!"},{title:"Checkstreaker",body:"You are on a 5 survey streak!"}
+
+
+/   %a{href: research_topics_path} Research Topics
+/ %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
+/   %a{href: data_explore_path} Health Data
+/ %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
+
+
+
+%ul.list-group
+  - badges.each do |badge|
+    %li.list-group-item#tip{"data-toggle" => "tooltip", "data-placement" => "left", "title" => "Earn this badge!"}
+      .media
+        .pull-left
+          = image_tag "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(badge[:title])}?d=identicon", :class => " media-item-object img-circle user-avatar"
+        .media-body.small
+          %strong
+            = badge[:title]
+          %p
+            = badge[:body]
+
+          - if badge[:link]
+            %a.btn.btn-default.btn-sm{:href => badge[:link]} Take Action
+
+
+/ - content_for :js do
+/   $('#tip').tooltip('show')
