@@ -56,6 +56,7 @@ $.rails.allowAction = (element) ->
     width: '100%'
 
 
+
 @loaders = () ->
   mainLoader()
   #socialProfileReady()

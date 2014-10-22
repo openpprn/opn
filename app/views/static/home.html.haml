@@ -9,7 +9,7 @@
             .col-md-3
               Members
               %br/
-              %span.h0 5,432
+              %span.h0 5.4k
             .col-md-3
               Research Ideas
               %br/
@@ -42,7 +42,14 @@
         .media-body
           %h1.media-heading
             6/20
-            %small Badges
+            %small Badges:
 
-%h3 Blog Posts
+    = render partial: "shared/badge_list", :locals => {badges: [{title:"Frequent Check-iner",body:"You've done 40 frequent surveys", icon: "fa-clock-o", earned: true},  {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true},{title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},{title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},{title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},{title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]}
+
+
+%h3 Blog Posts from the Governance Team
 = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+%br/
+%br/
+= render :partial => "/shared/team", :locals => { :editable => false }
+

@@ -26,157 +26,220 @@
 
 
 
-  / %i.fa.fa-lightbulb-o.badger.badger-earned
-  / %i.fa.fa-life-ring.badger
-  / %i.fa.fa-slideshare.badger
-  / %i.fa.fa-comments.badger
-  / %i.fa.fa-bullhorn.badger
-  / %i.fa.fa-list-ul.badger
+/ %ul.nav.nav-tabs{role: "tablist"}
+/   %li.active
+/     %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target" => "research_topics_ajax_path"} Community
+/   %li
+/     %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => "research_topics_ajax_path"} My Data
+/   %li
+/     %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} My Connections
 
 
 
-  / %ul.list-group
-
-  /   %li.list-group-item.list-group-item-success.badger.badger-earned
-  /     .media
-  /       %a.pull-left{:href => "#"}
-  /         %i.fa.fa-link.media-object
-  /       .media-body
-  /         %h4.media-heading Connector
-  /         %small You've connected 3 Data Sources
-
-  /   %li.list-group-item.badger.badger-unearned
-  /     .media
-  /       %a.pull-left{:href => "#"}
-  /         %i.fa.fa-bar-chart.media-object
-  /       .media-body
-  /         %h4.media-heading Data Dumper
-  /         %small Use your connected devices.
-
-  /   %li.list-group-item.badger.badger-unearned
-  /     .media
-  /       %a.pull-left{:href => "#"}
-  /         %i.fa.fa-search.media-object
-  /       .media-body
-  /         %h4.media-heading Sherlock
-  /         %small Investigate and graph your data
-
-
-%ul.nav.nav-tabs{role: "tablist"}
+/ Nav tabs
+%ul.nav.nav-tabs#tabs
   %li.active
-    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Community
+    %a{"data-toggle" => "tab", :href => "#first"} Community
   %li
-    %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Data
+    %a{"data-toggle" => "tab", :href => "#profile"} My Health Data
   %li
-    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} My Connections
+    %a{"data-toggle" => "tab", :href => "#reports"} My Reports
+  %li
+    %a{"data-toggle" => "tab", :href => "#connect"} My Connections
+  %li.pull-right
+    %a{"data-toggle" => "tab", :href => "#tutorial"}
+      %i.fa.fa-info-circle
+      Tutorial
 
-.graphs
-
-  .row
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Age
-        .panel-body
-          = image_tag "histogram.png"
-          .req age_distribution (hash of age -> count)
-
-
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Gender
-        .panel-body
-          = image_tag "donut.png"
-          .req sex_distribution (sex -> count)
-
-
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Location
-        .panel-body
-          = image_tag "bar.png"
-          .req locations (location(lat/lon, city, state, country) -> count)
-
-  .row
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Surveys Completed
-        .panel-body
-          = image_tag "pie.png"
-          .req surveys_completed [date,survey_id]
-
-
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Research Topic Input
-        .panel-body
-          = image_tag "histogram.png"
-
-    .col-md-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Connected Data Sources
-        .panel-body
-          = image_tag "pie.png"
-          .req data_sources_connected [date,data_source_id]
+%br/
 
 
 
-/ = image_tag "time-series.png", :width => "100%"
 
-/ %br/
-/ %br/
-
-/ .panel.panel-default
-/   .panel-heading
-/     %h4.panel-title Stream
-
-/   %table.table.table-striped.table-responsive
-/     %thead.small
-/       %td Date
-/       %td Health Info
-/       %td Source
-/     %tbody
-/       - DUMMY_DATA_SOURCES.each do |data_source_name,supported_data_source_types|
-/         %tr
-/           %td= rand(Time.now - 3.months..Time.now)
-/           %td= rand(0..10000)
-/           %td= data_source_name
-
-/   .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
-/     .text-center
-/       %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
-/         %li
-/           %span &laquo;
-/         %li.disabled
-/           %span ...
-/         %li
-/           %span &raquo;
+/ Tab panes
 
 
 
-/ %td.no-wrap{:style => "background-color: #f5f5f5 !important;"}
-/   Today
-/ %td{:style => "background-color: #f5f5f5 !important;"}
-/   %div.col-md-4.col-xs-12.text-center
-/     How are you feeling?
-/     / %br/
-/     / %i.fa.fa-circle
-/     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-/     / %i.fa.fa-circle
-/     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-/     / %i.fa.fa-circle
-/     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-/     / %i.fa.fa-circle
-/     / %br/
-/     %input{:type => "range"}
-/     %br/
-/   .col-md-6.col-xs-12
-/     %textarea.form-control{:placeholder => "Type a journal entry here.."}
-/     %br/
-/   %div.col-md-2.col-xs-12
-/     %a.btn.btn-primary.btn-block{:href=>"javascript:location.reload();"} Post
+.tab-content
+
+
+  #tutorial.tab-pane
+    %h4 Welcome to the CCFA Partners PPRN My Health Data Environment
+
+    %p In this area you will be able to:
+    %ul
+      %li Record, Track and Analyze your IBD Symptoms
+      %li Link and Share Information from Selected Apps and Devices
+
+    %h4 How to participate
+
+    %p We have identified 2 ways to share data.  Sources of data include:
+    %ul
+      %li Direct participation in CCFA Partners surveys (participant entered data (surveys & portal)
+      %li Authorization of data to be shared from external sources
+
+    %p Apps and devices offer a growing range of ways to get the important health information you're tracking into you’re My Health Data record. Many apps let you analyze and managethat information to help you achieve your health goals.
+
+    %p Connected apps and devices are websites, software programs, and mobile apps that can help you get more out of—and put more into My Health Data.
+
+    %p My Health Data lets you integrate data from apps and devices with your survey data, to track your health, manage your goals, and simultaneously contribute to research.
+
+
+    %h4 Apps & Devices
+
+    %p Share your data from the following Apps and Devices
+    = render partial: "health_data/data_source_table"
+
+
+
+
+
+
+  #first.tab-pane.active
+    .graphs
+
+      .row
+        .col-md-4
+          .panel.panel-default
+
+            .panel-body
+              = image_tag "histogram.png"
+              .req age_distribution (hash of age -> count)
+
+
+        .col-md-4
+          .panel.panel-default
+
+            .panel-body
+              = image_tag "donut.png"
+              .req sex_distribution (sex -> count)
+
+
+        .col-md-4
+          .panel.panel-default
+
+            .panel-body
+              = image_tag "bar.png"
+              .req locations (location(lat/lon, city, state, country) -> count)
+
+      .row
+        .col-md-4
+          .panel.panel-default
+
+            .panel-body
+              = image_tag "pie.png"
+              .req surveys_completed [date,survey_id]
+
+
+        .col-md-4
+          .panel.panel-default
+
+            .panel-body
+              = image_tag "histogram.png"
+
+        .col-md-4
+          .panel.panel-default
+            .panel-body
+              = image_tag "pie.png"
+              .req data_sources_connected [date,data_source_id]
+  #profile.tab-pane
+
+    .pull-left
+      Graph this
+      %select.form-control{:style => "width: inherit"}
+        %option FitBit
+        %option Argus
+        %option Moves
+        %option MapMyFitness
+    .pull-left{:style => "margin-left: 20px;"}
+      Against this
+      %select.form-control{:style => "width: inherit"}
+        %option --
+        %option FitBit
+        %option Argus
+        %option Moves
+        %option MapMyFitness
+    / .pull-left{:style => "margin-left: 20px;"}
+    /   %a.btn.btn-success.btn-sm{:href => current_user.validic_app_marketplace_url} Add or Remove Device Connections
+    = image_tag "time-series-min.png", :width => "100%"
+
+    %br/
+    %br/
+
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title Stream
+
+      %table.table.table-striped.table-responsive
+        %thead.small
+          %td Date
+          %td Health Info
+          %td Source
+        %tbody
+          - DUMMY_DATA_SOURCES.each do |data_source_name,supported_data_source_types|
+            %tr
+              %td= rand(Time.now - 3.months..Time.now)
+              %td= rand(0..10000)
+              %td= data_source_name
+
+      .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
+        .text-center
+          %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+            %li
+              %span &laquo;
+            %li.disabled
+              %span ...
+            %li
+              %span &raquo;
+
+
+
+    / %td.no-wrap{:style => "background-color: #f5f5f5 !important;"}
+    /   Today
+    / %td{:style => "background-color: #f5f5f5 !important;"}
+    /   %div.col-md-4.col-xs-12.text-center
+    /     How are you feeling?
+    /     / %br/
+    /     / %i.fa.fa-circle
+    /     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    /     / %i.fa.fa-circle
+    /     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    /     / %i.fa.fa-circle
+    /     / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    /     / %i.fa.fa-circle
+    /     / %br/
+    /     %input{:type => "range"}
+    /     %br/
+    /   .col-md-6.col-xs-12
+    /     %textarea.form-control{:placeholder => "Type a journal entry here.."}
+    /     %br/
+    /   %div.col-md-2.col-xs-12
+    /     %a.btn.btn-primary.btn-block{:href=>"javascript:location.reload();"} Post
+
+
+  #connect.tab-pane
+    %h4 Please visit the Validic App Marketplace to Authorize your Apps:
+    %br/
+    %a.btn.btn-success.btn-md{:href => current_user.validic_app_marketplace_url, :target => "_blank"} Add or Remove Device Connections
+
+
+  #reports.tab-pane
+    %h3 My Reports
+    %hr/
+
+    - current_user.health_attribute_data.each do |attribute|
+      %h4= attribute[:title]
+      / = render :partial => "shared/progress", locals: {attribute: attribute}
+
+      .progress
+        - attribute[:zones].each do |zone|
+          .progress-bar.progress-bar-success{style: "width: #{zone[:endValue] / 10}%"}
+            %span= zone[:title]
+
+
+
+        /{element: 1, title: "Blood Type", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+
+
+      %hr/
+

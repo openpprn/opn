@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_active_top_nav_link_to_social
-    @active_top_nav_link = :home
+    @active_top_nav_link = :community
   end
 
   def set_active_top_nav_link_to_surveys

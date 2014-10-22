@@ -29,37 +29,57 @@
 
 %ul.nav.nav-tabs{role: "tablist"}
   %li.active
-    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Idea Stage
+    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Proposed Questions
   %li
-    %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} Being Researched
+    %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} Currently Being Researched
+  / %li
+  /   %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Published Research
   %li
-    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Complete
+    %a{"data-toggle" => "tab", href: "#published", role: "tab"} Published Research
 
+  %li.pull-right
+    %a{"data-toggle" => "tab", :href => "#tutorial"}
+      %i.fa.fa-info-circle
+      Tutorial
+
+%br/
 
 
 .row
-  .col-md-3
-    %br/
-    %ul.nav.nav-pills.nav-stacked
-      %li.active
-        %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
-      - if current_user
-        %li
-          %a{"data-toggle" => "tab", href: "#voted_on", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
-        %li
-          %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Submissions
-      %li
-        %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
-  .col-md-9
+  / .col-md-3
+  /   %br/
+  /   %ul.nav.nav-pills.nav-stacked
+  /     %li.active
+  /       %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
+  /     - if current_user
+  /       %li
+  /         %a{"data-toggle" => "tab", href: "#voted_on", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
+  /       %li
+  /         %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Submissions
+  /     %li
+  /       %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+  .col-md-12
 
+    %br/
     / Tab panes
     .tab-content
       #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
       - if current_user
         #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
         #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
-      #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
-    %br/
+        / #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
+        #published.tab-pane= render partial: "research_topics/results"
+
+      #tutorial.tab-pane
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum placerat nibh diam, vel blandit lorem porta eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus vulputate facilisis ornare. In sed sollicitudin ante, at iaculis ligula. Fusce imperdiet velit sed dui volutpat tempor. Sed ut lobortis lectus. Aliquam non finibus diam, non ornare nulla.
+
+        %p Vivamus non lacus in justo pharetra blandit. Integer tincidunt erat et eros ornare, quis porttitor nulla ullamcorper. Curabitur et pharetra purus, eget accumsan est. Phasellus laoreet mollis dui, sit amet convallis diam convallis in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce diam ex, tincidunt id egestas sed, vehicula eget leo. Sed fermentum justo tempor dolor scelerisque, vel ornare felis dapibus. Aliquam porta scelerisque lacus, vel mattis quam pharetra vitae. Nullam suscipit pharetra posuere. Donec maximus turpis sit amet diam scelerisque, sit amet porta risus egestas. Etiam finibus tristique eros vitae porta. In hac habitasse platea dictumst. Donec non ligula vehicula, posuere odio quis, maximus elit. Proin ac risus arcu.
+
+        %p Aenean euismod nisl non massa rutrum, a placerat velit facilisis. In sed suscipit ante. Maecenas tristique libero lacus, in consectetur tellus rutrum ac. Maecenas a viverra enim. Fusce varius arcu ut nibh pharetra interdum. Fusce ut felis arcu. Phasellus ut magna vel odio rutrum interdum quis in odio. Proin semper odio ac condimentum ultrices. Duis pretium tellus ut erat finibus, a venenatis enim tristique. Donec ornare at risus sed interdum. Aliquam porta, diam non porta rhoncus, dui mauris fringilla nunc, sed pellentesque tortor metus nec ante. Cras sagittis aliquet tortor lacinia ultrices. Duis vitae metus sem.
+
+        %p Mauris vitae ullamcorper risus, eu viverra neque. Duis eget diam mollis, mattis eros mattis, laoreet ipsum. Suspendisse egestas et nisl in porttitor. Proin tellus nisl, elementum nec nibh quis, consequat lacinia justo. Praesent eu lectus gravida, sollicitudin eros mattis, blandit dui. Morbi quis velit sem. Proin placerat justo ac risus pulvinar, in sagittis mauris ornare. Sed congue a augue sit amet pretium. Ut et quam in quam euismod pretium. Maecenas ornare faucibus iaculis. Mauris tincidunt vehicula magna, tincidunt elementum augue aliquet quis. Mauris a enim vel risus eleifend sodales eget et lectus. Maecenas rutrum volutpat ex, a finibus quam commodo id. Nam tincidunt auctor sem. Vestibulum vulputate velit vel aliquam dignissim. Vestibulum malesuada, urna vitae venenatis posuere, massa purus tincidunt augue, ac mattis magna orci a ligula.
+
+        %p Cras cursus et justo quis tristique. Sed facilisis, magna at egestas convallis, turpis lacus consequat elit, congue mollis ligula elit id risus. Phasellus luctus accumsan orci eu accumsan. Aliquam vehicula arcu at neque feugiat, eu sollicitudin purus lobortis. Suspendisse nec leo nec eros viverra hendrerit tristique tincidunt sem. Sed sed eleifend nibh. Nam tincidunt sit amet nisi nec bibendum. Nulla nec sem purus. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod arcu id dictum ullamcorper. Maecenas euismod urna in tristique tempus. Maecenas nulla eros, dictum in est in, euismod tempus lacus.
     = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm"
 
 

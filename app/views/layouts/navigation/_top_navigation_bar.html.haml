@@ -1,7 +1,8 @@
 
 .row
   .col-md-12.pprn-heading
-    %h1.pull-left= PPRN_TITLE
+    %a{href: root_path, style: "color: #222"}
+      %h1.pull-left= PPRN_TITLE
 
 
     .pull-right
@@ -10,9 +11,9 @@
 
       %ul.nav.nav-pills.small
         %li
-          %a{:href => content_path(:about_partners)} About
+          %a{:href => content_path(page: "about_partners")} About
         %li
-          %a{:href => "#"} Resources
+          %a{:href => content_path(page: "resources")} Resources
         %li
           %a{:href => "#"} Help
 
@@ -53,6 +54,9 @@
         %a{href: data_explore_path} Health Data
       %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
         %a{href: surveys_path} Surveys
+      %li{class: "#{"active" if @active_top_nav_link == :community}"}
+        %a{href: social_path} Community
+
       - if PPRN == :my_apnea
         %li
           %a{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"} Discussion
