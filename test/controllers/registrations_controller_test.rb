@@ -15,7 +15,7 @@ class RegistrationsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:user)
     assert_equal 'new_user@example.com', assigns(:user).email
 
-    assert_redirected_to research_topics_path
+    assert_redirected_to social_path
   end
 
   test "a new user should not be able to sign up without password + password comf" do

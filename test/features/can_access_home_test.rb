@@ -5,6 +5,7 @@ Warden.test_mode!
 feature "CanAccessHome" do
 
   def setup
+    skip "Not Ready"
     @user = users(:user_1)
   end
 
