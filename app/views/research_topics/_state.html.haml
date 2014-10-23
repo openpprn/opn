@@ -1,0 +1,6 @@
+- if research_topic.state == "under_review"
+  %span.label.label-info= research_topic.state
+- elsif research_topic.state == "accepted"
+  %span.label.label-success= research_topic.state
+- elsif research_topic.state == "rejected"
+  %span.label.label-warning= research_topic.state

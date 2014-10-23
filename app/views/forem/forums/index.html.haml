@@ -1,5 +1,4 @@
 #forums_container
-  = render @categories
 
   %ol.breadcrumb
     %li Forums
@@ -13,16 +12,11 @@
         %span.fa.fa-legal
         Terms and Conditions
 
+  = render @categories
+
   .panel.panel-default#intro
     .panel-heading
-      %h2 Welcome to the MyApnea.Org Forums!
+      %h2 Welcome to the Forums!
     .panel-body
       .col-lg-10
-        %p There are other support forums dedicated to sleep apnea and our goal is to offer something a bit different. Our idea is to offer this space so that patients, caregivers, health care providers and researchers can interact with one another and discuss, debate and dig into the research-related issues that matter to them.
-        %ul
-          %li
-            Where do patients want the science of sleep apnea and treatment to go?
-            %li What questions related to sleep apnea prevention, diagnosis and treatment need better answers?
-            %li What sleep apnea questions do we have good answers for and what ones need more research?
-            %li How would better research improve the lives of people with sleep apnea?
-        %p Let the dialogue begin here so that we can work together to improve the lives of people with sleep apnea.
+        %p Let the dialogue begin here so that we can work together to improve the lives of people.

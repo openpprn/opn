@@ -37,8 +37,11 @@ class SurveysControllerTest < ActionController::TestCase
 
   test "User can answer question on survey" do
     login(users(:has_incomplete_survey))
+    assert users(:has_incomplete_survey).can?(:participate_in_research)
 
     post :process_answer, { 'question_id' => questions(:q3c).id, 'answer_session_id' => answer_sessions(:incomplete).id,  questions(:q3c).id.to_s => 22, "direction" => "next"}
+
+    assert_not_nil assigns(:answer_session)
 
     assert_redirected_to survey_report_path(assigns(:answer_session))
   end
@@ -47,6 +50,15 @@ class SurveysControllerTest < ActionController::TestCase
     login(users(:has_completed_survey))
 
     get :show_report, answer_session_id: answer_sessions(:complete)
+
+    assert_response :success
+  end
+
+  test "Survey report does not break when survey not started" do
+    login(users(:has_unstarted_survey))
+
+
+    get :show_report, answer_session_id: answer_sessions(:unstarted)
 
     assert_response :success
   end

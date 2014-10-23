@@ -1,0 +1,22 @@
+- if can?(:read, forum)
+  %tr{:class => "forum #{cycle("odd", "even")}"}
+    %td
+      %h4
+        = link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "title"
+      .description= forem_format(forum.description)
+      = t('forem.forums.index.last_post')
+      %span.last_post
+        - if last_post = forum.last_post_for(forem_user)
+          = link_to(forem_emojify(last_post.topic.subject), forem.forum_topic_path(forum, last_post.topic))
+          = t('by')
+          = last_post.user.forem_name
+          %time{:datetime => last_post.created_at.to_s(:db)}= "#{time_ago_in_words(last_post.created_at)} #{t("ago")}"
+        - else
+          = t('forem.forums.index.none')
+    %td.topics-count= topics_count(forum)
+    %td.posts-count= posts_count(forum)
+    %td.views-count= forum.views_count
+    %td.enter
+      = link_to forem.forum_path(forum), class: 'btn btn-sm btn-primary' do
+        %strong Enter Forum&nbsp;
+        %span.fa.fa-arrow-right
