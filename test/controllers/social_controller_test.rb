@@ -73,10 +73,10 @@ class SocialControllerTest < ActionController::TestCase
 
     login(users(:social))
 
-    get :locations, format: :json
+    get :locations, show_user: true, format: :json
 
-    assert_equal 5, assigns(:locations).length
     assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))
+    assert_equal 5, assigns(:locations).length
   end
 
   # Forums

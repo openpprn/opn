@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ValidicTest < ActiveSupport::TestCase
+class ValidicUserTest < ActiveSupport::TestCase
 
 
   def setup
