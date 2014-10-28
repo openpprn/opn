@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || social_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_path
   end
 
 
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
 
   def set_active_top_nav_link_to_research
-    @active_top_nav_link = :research_topics
+    @active_top_nav_link = :research
   end
 
   def set_active_top_nav_link_to_health_data
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_active_top_nav_link_to_social
-    @active_top_nav_link = :community
+    @active_top_nav_link = :members
   end
 
   def set_active_top_nav_link_to_surveys

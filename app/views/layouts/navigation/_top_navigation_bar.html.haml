@@ -12,12 +12,13 @@
       %ul.nav.nav-pills.small
         %li
           %a{:href => content_path(page: "about_partners")} About
-        %li
-          %a{:href => content_path(page: "resources")} Resources
+        / %li
+        /   %a{:href => content_path(page: "resources")} Resources
         %li
           %a{:href => "#"} Help
 
         - if current_user
+
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               My Settings
@@ -30,8 +31,9 @@
                 %li
                   %a{href: admin_path, :title => "Admin Panel"}
                     %i.fa.fa-wrench &nbsp; Admin Panel
-              %li
-                = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
+          %li
+            = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
+
         - else
           %li
             %a{:href => new_user_session_path}
@@ -48,14 +50,14 @@
     %ul.nav.nav-pills.top-nav
       %li{:class => "#{"active" if @active_top_nav_link == :home}"}
         %a{href: home_path} Home
-      %li{:class => "#{"active" if @active_top_nav_link == :research_topics}"}
-        %a{href: research_topics_path} Research Topics
+      %li{:class => "#{"active" if @active_top_nav_link == :research}"}
+        %a{href: research_topics_path} Research
       %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-        %a{href: data_explore_path} Health Data
-      %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
-        %a{href: surveys_path} Surveys
-      %li{class: "#{"active" if @active_top_nav_link == :community}"}
-        %a{href: social_path} Community
+        %a{href: data_explore_path} My Health Data
+      / %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
+      /   %a{href: surveys_path} Surveys
+      %li{class: "#{"active" if @active_top_nav_link == :members}"}
+        %a{href: social_path} Members
 
       - if PPRN == :my_apnea
         %li

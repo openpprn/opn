@@ -38,12 +38,13 @@
 
 / Nav tabs
 %ul.nav.nav-tabs#tabs
+
   %li.active
-    %a{"data-toggle" => "tab", :href => "#first"} Community
+    %a{"data-toggle" => "tab", :href => "#slider"} My Health Data
   %li
-    %a{"data-toggle" => "tab", :href => "#profile"} My Health Data
+    %a{"data-toggle" => "tab", :href => "#profile"} My Trends
   %li
-    %a{"data-toggle" => "tab", :href => "#reports"} My Reports
+    %a{"data-toggle" => "tab", :href => "#reports"} My Health Measures
   %li
     %a{"data-toggle" => "tab", :href => "#connect"} My Connections
   %li.pull-right
@@ -90,58 +91,89 @@
     %p Share your data from the following Apps and Devices
     = render partial: "health_data/data_source_table"
 
+  #slider.active.tab-pane
+
+    .panel.panel-default
+      / .panel-heading
+      /   %h3.panel-title Frequent Survey Questions
+      .list-group
+        - current_user.incomplete_surveys.each do |survey|
+          = link_to start_or_resume_survey(survey, survey.most_recent_answer_session(current_user)), class: 'list-group-item' do
+            %h3
+              = survey.name
+              .btn.btn-success.btn-lg.pull-right
+                Resume
+                &nbsp;
+                .fa.fa-arrow-right
+              = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey, answer: nil}
+        - current_user.unstarted_surveys.each do |survey|
+          = link_to start_or_resume_survey(survey), class: 'list-group-item' do
+            %h3
+              = survey.name
+              .btn.btn-success.btn-lg.pull-right
+                Start
+                &nbsp;
+                .fa.fa-arrow-right
+            %p Survey not yet started.
+            %p
+              %strong
+                Estimated time commitment:
+                = survey.total_time.ceil
+                minutes for
+                = survey.all_questions.length
+                questions.
+              //= link_to "Complete Survey", start_or_resume_survey(survey), class: "btn btn-success btn-sm"
 
 
 
 
+  / #first.tab-pane.active
+  /   .graphs
 
-  #first.tab-pane.active
-    .graphs
+  /     .row
+  /       .col-md-4
+  /         .panel.panel-default
 
-      .row
-        .col-md-4
-          .panel.panel-default
-
-            .panel-body
-              = image_tag "histogram.png"
-              .req age_distribution (hash of age -> count)
-
-
-        .col-md-4
-          .panel.panel-default
-
-            .panel-body
-              = image_tag "donut.png"
-              .req sex_distribution (sex -> count)
+  /           .panel-body
+  /             = image_tag "histogram.png"
+  /             .req age_distribution (hash of age -> count)
 
 
-        .col-md-4
-          .panel.panel-default
+  /       .col-md-4
+  /         .panel.panel-default
 
-            .panel-body
-              = image_tag "bar.png"
-              .req locations (location(lat/lon, city, state, country) -> count)
-
-      .row
-        .col-md-4
-          .panel.panel-default
-
-            .panel-body
-              = image_tag "pie.png"
-              .req surveys_completed [date,survey_id]
+  /           .panel-body
+  /             = image_tag "donut.png"
+  /             .req sex_distribution (sex -> count)
 
 
-        .col-md-4
-          .panel.panel-default
+  /       .col-md-4
+  /         .panel.panel-default
 
-            .panel-body
-              = image_tag "histogram.png"
+  /           .panel-body
+  /             = image_tag "bar.png"
+  /             .req locations (location(lat/lon, city, state, country) -> count)
 
-        .col-md-4
-          .panel.panel-default
-            .panel-body
-              = image_tag "pie.png"
-              .req data_sources_connected [date,data_source_id]
+  /     .row
+  /       .col-md-4
+  /         .panel.panel-default
+
+  /           .panel-body
+  /             = image_tag "pie.png"
+  /             .req surveys_completed [date,survey_id]
+
+
+  /       .col-md-4
+  /         .panel.panel-default
+
+  /           .panel-body
+  /             = image_tag "histogram.png"
+
+  /       .col-md-4
+  /         .panel.panel-default
+  /           .panel-body
+  /             = image_tag "pie.png"
+  /             .req data_sources_connected [date,data_source_id]
   #profile.tab-pane
 
     .pull-left
