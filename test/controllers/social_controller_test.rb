@@ -79,11 +79,4 @@ class SocialControllerTest < ActionController::TestCase
     assert_equal 5, assigns(:locations).length
   end
 
-  # Forums
-
-  test "Forums should be visible to non-logged in user" do
-    get :discussion, use_route: :forem
-
-    assert_response :success
-  end
 end

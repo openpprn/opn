@@ -49,7 +49,7 @@ config/initializers/secret_token.rb
 /config/initializers/00_site_name.rb
 /config/initializers/db.rb
 /config/environments/production.rb
-#/config/secrets.yml
+/config/secrets.yml
 /config/initializers/validic.rb
 
 # Ignore OS generated files
@@ -59,8 +59,6 @@ config/initializers/secret_token.rb
 
 /Gemfile.lock
 /db/schema.rb
-/app/assets/javascripts/google_analytics.js
-/app/assets/javascripts/uservoice.js
 
 # Ignore application configuration
 /config/application.yml

@@ -1,8 +1,14 @@
 # Changelog for OpenPPRN
 
 
+
+- **Technology Changes**
+  - Updated to Ruby 2.1.4
+  - Updated to Rails 4.2.0.beta2
+
+
 ## Sean Full Integration
-- Sean removed social security check for posting new questions. 
+- Sean removed social security check for posting new questions.
 - Commented out forum link in admin panel (_admin_nav)
 
 
