@@ -1,28 +1,3 @@
-- id: 500
-  text_value_en: No blood seen
-- id: 501
-  text_value_en: Streaks of blood or blood in less than 1/2 of stools
-- id: 502
-  text_value_en: Obvious blood or blood in greater than 1/2 of stools
-- id: 503
-  text_value_en: Blood passes alone
-- id: 504
-  text_value_en: None
-- id: 505
-  text_value_en: Mild
-- id: 506
-  text_value_en: Moderate
-- id: 507
-  text_value_en: Severe
-
-
-
-
-
-#####
-
-
-
 - id: 1
   text_value_en: High chance of dozing
 - id: 2
@@ -31,10 +6,8 @@
   text_value_en: Slight chance of dozing
 - id: 4
   text_value_en: Would never doze
-
 - id: 5
   text_value_en: Male
-
 - id: 6
   text_value_en: Female
 - id: 7
@@ -621,6 +594,133 @@
   text_value_en: Prefer not to answer
 - id: 295
   text_value_en: High school diploma
+- id: 296
+  text_value_en: American Sleep Apnea Association (ASAA)
+# Sleep Champioons
+- id: 10002
+  text_value_en: Albert Einstein College of Medicine
+- id: 10003
+  text_value_en: Beth Israel Deaconess Medical Center
+- id: 10004
+  text_value_en: Biomedical Research Alliance of New York
+- id: 10005
+  text_value_en: Boston Children’s Hospital
+- id: 10006
+  text_value_en: Boston Health Net (Boston Medical Center and Community Health Centers)
+- id: 10007
+  text_value_en: Case Western Research University
+- id: 10008
+  text_value_en: Children's Mercy Hospital
+- id: 10009
+  text_value_en: Children’s Hospital Colorado
+- id: 10010
+  text_value_en: Cincinnati Children's Hospital Medical Center
+- id: 10011
+  text_value_en: Cleveland Clinic
+- id: 10012
+  text_value_en: College of Physicians and Surgeons at Columbia University
+- id: 10013
+  text_value_en: Columbia University Medical Center
+- id: 10014
+  text_value_en: Fenway Health
+- id: 10015
+  text_value_en: Health Choice Network
+- id: 10016
+  text_value_en: Hershey Medical Center
+- id: 10017
+  text_value_en: Icahn School of Medicine at Mount Sinai
+- id: 10018
+  text_value_en: Johns Hopkins Health Care
+- id: 10019
+  text_value_en: Johns Hopkins Health System
+- id: 10020
+  text_value_en: Louisiana Public Health Institute (LPHI)
+- id: 10021
+  text_value_en: Marshfield Clinic
+- id: 10022
+  text_value_en: Massachusetts General Hospital
+- id: 10023
+  text_value_en: Medical College of Wisconsin
+- id: 10024
+  text_value_en: MetroHealth Medical Center
+- id: 10025
+  text_value_en: Montefiore Medical Center
+- id: 10026
+  text_value_en: Morehouse School of Medicine/Grady Memorial Hospital (Research Centers in Minority Institutions)
+- id: 10027
+  text_value_en: Morehouse University
+- id: 10028
+  text_value_en: Mount Sinai Health System
+- id: 10029
+  text_value_en: Nationwide Children’s Hospital
+- id: 10030
+  text_value_en: Nemours Children’s Health System
+- id: 10031
+  text_value_en: New York Presbyterian Hospital
+- id: 10032
+  text_value_en: NYU Langone Medical Center
+- id: 10033
+  text_value_en: NYU School of Medicine
+- id: 10034
+  text_value_en: Oregon Community Health Information Network
+- id: 10035
+  text_value_en: Partners Healthcare System
+- id: 10036
+  text_value_en: Brigham & Women's Hospital
+- id: 10037
+  text_value_en: Penn State College of Medicine
+- id: 10038
+  text_value_en: Pennington Biomedical Research Center
+- id: 10039
+  text_value_en: Rockefeller University - New York Presbyterian Hospital
+- id: 10040
+  text_value_en: Seattle Children’s Hospital
+- id: 10041
+  text_value_en: St. Louis Children’s Hospital
+- id: 10042
+  text_value_en: Temple University School of Medicine
+- id: 10043
+  text_value_en: The Children’s Hospital of Philadelphia
+- id: 10044
+  text_value_en: The University of Texas Health Science Center at Houston
+- id: 10045
+  text_value_en: Tulane University
+- id: 10046
+  text_value_en: University of Mississippi Medical Center
+- id: 10047
+  text_value_en: University of California San Francisco
+- id: 10048
+  text_value_en: University of California, San Diego (UCSD)
+- id: 10049
+  text_value_en: University of Iowa Healthcare
+- id: 10050
+  text_value_en: University of Kansas Medical Center
+- id: 10051
+  text_value_en: University of Minnesota Academic Health Center
+- id: 10052
+  text_value_en: University of Nebraska Medical Center
+- id: 10053
+  text_value_en: University of Pittsburgh at Pittsburgh
+- id: 10054
+  text_value_en: University of Texas Health Sciences Center at San Antonio
+- id: 10055
+  text_value_en: University of Texas Southwestern Medical Center
+- id: 10056
+  text_value_en: UPMC Health Plan
+- id: 10057
+  text_value_en: Vanderbilt Healthcare Affiliated Network
+- id: 10058
+  text_value_en: Vanderbilt University
+- id: 10059
+  text_value_en: W.G. Hefner VAMC
+- id: 10060
+  text_value_en: Wake Forest Baptist Medical Center
+- id: 10061
+  text_value_en: Wake Forest Medical Center
+- id: 10062
+  text_value_en: Weill Medical College of Cornell University
+
+#
 - id: 200001
   numeric_value: 1
 

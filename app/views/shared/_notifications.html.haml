@@ -6,22 +6,24 @@
   %ul.list-group.small
     - notifications.each do |notification|
       %li.list-group-item
+        - if current_user
+          .btn-group.pull-right
+            = link_to "Edit", edit_post_path(notification), class: "btn btn-warning btn-xs" if current_user.can_update?(notification)
+            = link_to "Delete", post_path(notification), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(notification)
         %small
           %strong= notification.created_at
         %br/
         - if notification.title.present?
           %h4= notification.title
         = markdown notification.body
-
-        - if controller_name == "admin" || (notifications.one? && current_user.can_update?(notification))
-          .text-left
-            .btn-group
-              = link_to "Edit", edit_post_path(notification), class: "btn btn-default btn-xs" if current_user.can_update?(notification)
-              = link_to "Delete", post_path(notification), method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(notification)
-
     -#.text-center.small
     -#  = link_to "Show More...", "#" if notifications.present?
 
-- if controller_name == "admin" && current_user and current_user.can_create?(Post)
-  = link_to "New Notification", new_post_path(post_type: :notification), class: "btn btn-success btn-sm"
+    - if current_user.can_create?(new_notification)
+      %li.list-group-item.list-group-item-warning
+        %h5 Add a New Notification
+        = render partial: 'posts/form', locals: { post: new_notification }
+        .clearfix
+
+
 

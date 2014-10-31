@@ -3,8 +3,12 @@
     .panel-heading
       .row
         .col-md-1
-          = image_tag post.user.photo_url, :class => "img-responsive img-thumbnail"
+          = image_tag post.user.photo_url, :class => "img-responsive img-thumbnail" if post.user
         .col-md-11
+          - if current_user
+            .btn-group.pull-right
+              = link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-xs" if current_user.can_update?(post)
+              = link_to "Delete", post_path(post), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(post)
           =link_to blog_path do
             %h4.media-heading= post.title
           %small
@@ -23,12 +27,9 @@
         %p= link_to "Read more...", blog_path
       - else
         = markdown post.body
-    - if controller_name == "admin" || (blog_posts.one? && current_user.can_update?(post))
-      .panel-footer.text-left
-        .btn-group
-          = link_to "Edit", edit_post_path(post), class: "btn btn-default btn-xs" if current_user.can_update?(post)
-          = link_to "Delete", post_path(post), method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(post)
-
-
-- if current_user and current_user.can_create?(Post)
-  = link_to "New Blog Post", new_post_path(post_type: "blog"), class: "btn btn-success btn-sm"
+- if current_user and current_user.can_create?(new_blog_post)
+  .panel.panel-warning
+    .panel-heading
+      %h3 Create new blog post
+    .panel-body
+      = render partial: 'posts/form', locals: { post: new_blog_post }

@@ -15,12 +15,18 @@
 //= require bootstrap-sprockets
 //= require chosen.jquery
 //= require forem
+//= require jquery.slimscroll
 //= require jquery.PrintArea
 //= require d3.min
+//= require bootbox.min
+//= require typeahead
+//= require bloodhound
 //= require bootstrap-tagsinput
+//= require placeholders.jquery.min
 //= require main
 //= require pages
 //= require admin
 //= require votes
+//= require surveys
 
 
