@@ -13,15 +13,15 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-          %a{href: research_topics_path} Research
+          %a{href: main_app.research_topics_path} Research
         %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-          %a{href: data_explore_path} My Health Data
+          %a{href: main_app.data_explore_path} My Health Data
         %li{:class => "#{"active" if @active_top_nav_link == :social}"}
-          %a{href: social_path} Members
+          %a{href: main_app.social_path} Members
         %li{:class => "#{"active" if @active_top_nav_link == :blog}"}
-          %a{href: blog_path} Blog
+          %a{href: main_app.blog_path} Blog
         %li{:class => "#{"active" if action_name == "content"}"}
-          %a{href: content_path(page: "about_partners")} About
+          %a{href: main_app.content_path(page: "about_partners")} About
 
 
       %ul.nav.navbar-nav.pull-right
@@ -43,6 +43,6 @@
                 = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
         - else
           %li
-            %a{:href => new_user_session_path}
+            %a{:href => main_app.new_user_session_path}
               %i.fa.fa-sign-in
                 Sign In

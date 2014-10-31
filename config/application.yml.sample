@@ -1,0 +1,13 @@
+# Add configuration values here, as shown below.
+
+secret_key_base: null
+secret_key: null
+
+validic_access_token: null
+validic_orangization_id: null
+
+oodt_username: null
+oodt_password: null
+
+uservoice_api_key: null
+google_analytics_web_property_id: null
