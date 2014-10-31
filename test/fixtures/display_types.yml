@@ -6,3 +6,12 @@ number:
   name: number
   tag: input
   input_type: number
+multiple_choice:
+  name: multiple_choice
+  tag: input
+  input_type: radio
+
+check_box:
+  name: check_box
+  tag: input
+  input_type: checkbox

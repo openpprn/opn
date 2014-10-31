@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   rolify role_join_table_name: 'roles_users'
 
+
   include Authority::UserAbilities
   include Authority::Abilities
 
@@ -16,9 +17,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Model Validation
-  # validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
-  validates_numericality_of :year_of_birth, only_integer: true, less_than_or_equal_to: -> (user){ Date.today.year - 18 }, greater_than_or_equal_to: -> (user){ 1900 }, allow_nil: true, allow_blank: true
-
+  #validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
+  validates_numericality_of :year_of_birth, allow_nil: true, only_integer: true, less_than_or_equal_to: -> (user){ Date.today.year - 18 }, greater_than_or_equal_to: -> (user){ 1900 }
 
   # Model Relationships
   has_many :answer_sessions
@@ -79,8 +79,29 @@ class User < ActiveRecord::Base
     self.has_role? :admin
   end
 
+  def can_create_forem_topics?(forum)
+    self.can?(:participate_in_social)
+  end
+
+  def can_reply_to_forem_topic?(topic)
+    self.can?(:participate_in_social)
+  end
+
+  def can_edit_forem_posts?(forum)
+    self.can?(:participate_in_social)
+  end
+
+  def can_destroy_forem_posts?(forum)
+    self.can?(:participate_in_social)
+  end
+
+
+  def can_moderate_forem_forum?(forum)
+    self.has_role? :forum_moderator or self.has_role? :admin
+  end
+
   def todays_votes
-    votes.select{|vote| vote.created_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
+    votes.select{|vote| vote.updated_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
   end
 
   def available_votes_percent
@@ -124,9 +145,8 @@ class User < ActiveRecord::Base
     true
   end
 
-  def has_votes_remaining?
-    todays_votes.length < vote_quota
+  def has_votes_remaining?(rating = 1)
+
+    (todays_votes.length < vote_quota) or (rating < 1)
   end
-
-
 end

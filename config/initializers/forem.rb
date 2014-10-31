@@ -1,6 +1,6 @@
 require 'emoji'
 Forem.user_class = "User"
-Forem.main_layout = "myapnea/myapnea"
+Forem.main_layout = "application"
 Forem.admin_layout = "admin"
 Forem.logged_in_layout = "social"
 Forem.avatar_user_method = :photo_url

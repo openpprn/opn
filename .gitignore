@@ -52,7 +52,6 @@ config/initializers/secret_token.rb
 #/config/secrets.yml
 /config/initializers/validic.rb
 
-
 # Ignore OS generated files
 .DS_Store
 
@@ -61,6 +60,7 @@ config/initializers/secret_token.rb
 /Gemfile.lock
 /db/schema.rb
 /app/assets/javascripts/google_analytics.js
+/app/assets/javascripts/uservoice.js
 
 # Ignore application configuration
 /config/application.yml
