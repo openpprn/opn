@@ -25,7 +25,7 @@ namespace :surveys do
     if warn_user
       tables_to_update = [
           "answer_options",
-          "answer_options_answer_templates",
+          "answr_options_answer_templates",
           "answer_templates",
           "answer_templates_questions",
           "display_types",
@@ -37,7 +37,7 @@ namespace :surveys do
       ]
 
       join_tables = [
-          "answer_options_answer_templates",
+          "answr_options_answer_templates",
           "answer_templates_questions"
       ]
 
