@@ -77,11 +77,4 @@ class SocialControllerTest < ActionController::TestCase
     assert_equal({latitude: users(:social).social_profile.latitude, longitude: users(:social).social_profile.longitude, title: users(:social).social_profile.name }, assigns(:user_location))
   end
 
-  # Forums
-
-  test "Forums should be visible to non-logged in user" do
-    get :discussion, use_route: :forem
-
-    assert_response :success
-  end
 end

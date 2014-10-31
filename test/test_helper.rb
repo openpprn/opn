@@ -44,7 +44,7 @@ class ActionDispatch::IntegrationTest
     user = User.create(password: password, password_confirmation: password, email: email,
                        first_name: user_template.first_name, last_name: user_template.last_name)
     user.save!
-    post_via_redirect 'users/sign_up', user: { email: email, password: password }
+    post_via_redirect '/users', user: { email: email, password: password }
     user
   end
 end
