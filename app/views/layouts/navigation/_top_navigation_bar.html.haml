@@ -78,17 +78,17 @@
   .col-md-12.pprn-nav
     %ul.nav.nav-pills.top-nav
       %li{:class => "#{"active" if @active_top_nav_link == :home}"}
-        %a{href: home_path} Home
+        %a{href: main_app.home_path} Home
       %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-        %a{href: research_topics_path} Research
+        %a{href: research_path} Research
       %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-        %a{href: data_explore_path} My Health Data
+        %a{href: health_data_path} My Health Data
       / %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
       /   %a{href: surveys_path} Surveys
       %li{class: "#{"active" if @active_top_nav_link == :members}"}
         %a{href: social_path} Members
 
-      - if PPRN == :my_apnea
+      - if PPRN == :my_apnea #|| true
         %li
           %a{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"} Discussion
 

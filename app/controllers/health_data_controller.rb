@@ -6,13 +6,13 @@ class HealthDataController < ApplicationController
 
   layout "community"
 
-def validate_oodt_module
-  raise "OODT must be enabled for this feature." if !OODT_ENABLED
-end
+  def validate_oodt_module
+    raise "OODT must be enabled for this feature." if !OODT_ENABLED
+  end
 
-def validate_validic_module
-  raise "Validic must be enabled for this feature." if !VALIDIC_ENABLED
-end
+  def validate_validic_module
+    raise "Validic must be enabled for this feature." if !VALIDIC_ENABLED
+  end
 
 
 end

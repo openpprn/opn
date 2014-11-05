@@ -12,7 +12,7 @@ PPRN_SUPPORT_EMAIL = "support@myapnea.org"
 # External Accounts
 #####################
 OODT_ENABLED = true
-VALIDIC_ENABLED = false
+VALIDIC_ENABLED = true
 
 
 # Load dummy health data for demonstration

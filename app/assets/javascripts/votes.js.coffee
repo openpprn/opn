@@ -64,9 +64,8 @@ $(document).on "click", ".research_topics a.voting", (event) ->
 
   )
 
-#<<<<<<< HEAD
+# <<<<<<< HEAD
 # $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
-
 $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
 
 

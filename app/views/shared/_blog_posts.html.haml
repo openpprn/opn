@@ -27,7 +27,7 @@
         %p= link_to "Read more...", blog_path
       - else
         = markdown post.body
-- if current_user and current_user.can_create?(new_blog_post)
+- if current_user and new_blog_post and current_user.can_create?(new_blog_post)
   .panel.panel-warning
     .panel-heading
       %h3 Create new blog post

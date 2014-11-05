@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Static Pages
   root 'static#splash'
-  get 'home' => "static#home"
+  get 'home' => "home#index"
   get 'about' => 'static#about'
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :research_topics
 
   # Research Section
-  get 'research_topics' => 'research#research_topics'
+  get 'research' => 'research#index'
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
@@ -42,15 +42,15 @@ Rails.application.routes.draw do
   get 'questions/typeahead/:question_id', to: "questions#typeahead", as: :question_typeahead, format: :json
 
   # Health Data Section
-  get 'data_explore' => 'health_data#explore'
+  get 'health_data' => 'health_data#index'
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'
 
 
 
-  # Social Section
-  match 'social', to: 'social#overview', via: :get, as: 'social' # show
+  # social Section
+  match 'social', to: 'social#index', via: :get, as: 'social' # show
   match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
   match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
   match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
