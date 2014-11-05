@@ -10,7 +10,7 @@ feature "CanAccessHome" do
 
   scenario "logged out homepage loads" do
     visit root_path
-    page.must_have_content "Patients"
+    page.must_have_content "Movement to Solve"
     #page.wont_have_content "Goobye All!"
   end
 

@@ -8,6 +8,10 @@ complete:
   question_flow: survey_1
   first_answer: a5
   last_answer: a9
+unstarted:
+  user: has_unstarted_survey
+  question_flow: survey_1
+
 
 
 

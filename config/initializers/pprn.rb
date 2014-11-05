@@ -1,18 +1,18 @@
 #####################
 # The title of your network and the conditions it helps
 #####################
-PPRN = "ccfa"
-PPRN_TITLE = "CCFA Partners"
-PPRN_CONDITION = "Crohn's & Ulcerative Colitis"
-PPRN_CONDITIONS = ["Crohn's", "Ulcerative Colitis", "Indeterminate Colitis"]
-PPRN_SUPPORT_EMAIL = "support@partners.ccfa.org"
+PPRN = "myapnea"
+PPRN_TITLE = "MyApnea.Org"
+PPRN_CONDITION = "Sleep Apnea"
+PPRN_CONDITIONS = ["Sleep Apnea", "Apnea"]
+PPRN_SUPPORT_EMAIL = "support@myapnea.org"
 
 
 #####################
 # External Accounts
 #####################
 OODT_ENABLED = true
-VALIDIC_ENABLED = true
+VALIDIC_ENABLED = false
 
 
 # Load dummy health data for demonstration

@@ -1,0 +1,51 @@
+aoat1:
+  answer_template: how_much
+  answer_option: all
+aoat2:
+  answer_template: how_much
+  answer_option: most
+aoat3:
+  answer_template: how_much
+  answer_option: good_bit
+aoat4:
+  answer_template: how_much
+  answer_option: some
+aoat5:
+  answer_template: how_much
+  answer_option: little
+aoat6:
+  answer_template: how_much
+  answer_option: none
+aoat7:
+  answer_template: feeling
+  answer_option: excellent
+aoat8:
+  answer_template: feeling
+  answer_option: very_good
+aoat9:
+  answer_template: feeling
+  answer_option: good
+aoat10:
+  answer_template: feeling
+  answer_option: fair
+aoat11:
+  answer_template: feeling
+  answer_option: poor
+aoat12:
+  answer_template: colors
+  answer_option: red
+aoat13:
+  answer_template: colors
+  answer_option: blue
+aoat14:
+  answer_template: colors
+  answer_option: green
+aoat15:
+  answer_template: colors
+  answer_option: yellow
+aoat16:
+  answer_template: colors
+  answer_option: purple
+aoat17:
+  answer_template: colors
+  answer_option: brown

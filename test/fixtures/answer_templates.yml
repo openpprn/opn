@@ -7,3 +7,28 @@ numeric:
   name: numeric
   display_type: number
   data_type: numeric_value
+
+how_much:
+  name: how_much
+  display_type: multiple_choice
+  data_type: answer_option_id
+  #answer_options: all, most, good_bit, some, little, none
+
+feeling:
+  name: feeling
+  display_type: multiple_choice
+  data_type: answer_option_id
+  #answer_options: excellent, very_good, good, fair, poor
+
+colors:
+  name: colors
+  display_type: check_box
+  data_type: answer_option_id
+  allow_multiple: true
+#  answer_options:
+#  - red
+#  - blue
+#  - green
+#  - yellow
+#  - purple
+#  - brown

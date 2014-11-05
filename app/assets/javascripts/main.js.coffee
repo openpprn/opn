@@ -50,16 +50,26 @@ $.rails.allowAction = (element) ->
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '100%'
+
   $(".chosen").chosen
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '100%'
 
+  $(document.links).filter(() ->
+    return this.hostname != window.location.hostname
+  ).attr('target', '_blank')
+
+  # Offcanvas
+  $("[data-toggle=\"offcanvas\"]").click ->
+    $(".row-offcanvas").toggleClass "active"
+    $(".offcanvas-toggle a").toggleClass "active"
+    return
 
 
 @loaders = () ->
   mainLoader()
-  #socialProfileReady()
+  surveysReady()
 
 
 $(document).ready(loaders)

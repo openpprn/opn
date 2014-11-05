@@ -2,6 +2,11 @@
   name: text
   tag: input
   input_type: text
+- id: 9
+  name: autocomplete
+  tag: input
+  input_type: text
+  class_string: 'typeahead'
 - id: 2
   name: paragraph
   tag: textarea

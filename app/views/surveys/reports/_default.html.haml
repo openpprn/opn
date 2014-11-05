@@ -1,0 +1,25 @@
+.list-group
+  - if @answer_session.all_reportable_answers.blank?
+
+  - else
+    %h3 Compare your answers to the rest of the community.
+    .row
+      .col-md-12
+        %span.help-block Choose question to view results for:
+        %select#question-select.form-control.no-focus{"data-answer-session-id" => @answer_session.id, "data-json-path" => question_frequencies_path}
+          - @answer_session.grouped_reportable_answers.each do |help_message, answers|
+            %optgroup{:label =>  help_message.blank? ? "-- Standalone Questions --" : help_message}
+              - answers.each do |answer|
+                %option{:value => answer.question.id}= markdown answer.question.text
+
+    %br/
+    .row
+      .col-md-6
+        #ua
+          %strong My Answer:
+          %span.answer
+        %br/
+        #freq-table
+      .col-md-5.col-md-offset-1
+        #freq-graph
+    = javascript_include_tag "reports/default"

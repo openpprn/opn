@@ -136,6 +136,19 @@
         %p Mauris vitae ullamcorper risus, eu viverra neque. Duis eget diam mollis, mattis eros mattis, laoreet ipsum. Suspendisse egestas et nisl in porttitor. Proin tellus nisl, elementum nec nibh quis, consequat lacinia justo. Praesent eu lectus gravida, sollicitudin eros mattis, blandit dui. Morbi quis velit sem. Proin placerat justo ac risus pulvinar, in sagittis mauris ornare. Sed congue a augue sit amet pretium. Ut et quam in quam euismod pretium. Maecenas ornare faucibus iaculis. Mauris tincidunt vehicula magna, tincidunt elementum augue aliquet quis. Mauris a enim vel risus eleifend sodales eget et lectus. Maecenas rutrum volutpat ex, a finibus quam commodo id. Nam tincidunt auctor sem. Vestibulum vulputate velit vel aliquam dignissim. Vestibulum malesuada, urna vitae venenatis posuere, massa purus tincidunt augue, ac mattis magna orci a ligula.
 
         %p Cras cursus et justo quis tristique. Sed facilisis, magna at egestas convallis, turpis lacus consequat elit, congue mollis ligula elit id risus. Phasellus luctus accumsan orci eu accumsan. Aliquam vehicula arcu at neque feugiat, eu sollicitudin purus lobortis. Suspendisse nec leo nec eros viverra hendrerit tristique tincidunt sem. Sed sed eleifend nibh. Nam tincidunt sit amet nisi nec bibendum. Nulla nec sem purus. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod arcu id dictum ullamcorper. Maecenas euismod urna in tristique tempus. Maecenas nulla eros, dictum in est in, euismod tempus lacus.
+/ =======
+/     %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+
+/ / Tab panes
+/ .tab-content
+/   #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
+/   - if current_user
+/     #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+/     #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
+/   #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest(current_user), disabled: false}
+/ %br/
+/ = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
+/ >>>>>>> master
 
 
 

@@ -43,6 +43,7 @@ config/initializers/secret_token.rb
 /app/assets/images/avatars/sample_mosaics
 
 
+
 # Ignore IDE files
 /.idea
 
@@ -52,9 +53,8 @@ config/initializers/secret_token.rb
 /config/initializers/00_site_name.rb
 /config/initializers/db.rb
 /config/environments/production.rb
-#/config/secrets.yml
+/config/secrets.yml
 /config/initializers/validic.rb
-
 
 # Ignore OS generated files
 .DS_Store
@@ -63,7 +63,6 @@ config/initializers/secret_token.rb
 
 /Gemfile.lock
 /db/schema.rb
-/app/assets/javascripts/google_analytics.js
 
 # Ignore application configuration
 /config/application.yml

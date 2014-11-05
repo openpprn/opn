@@ -88,7 +88,7 @@ module ValidicUser
 
 
   def delete_all_validic_users
-    get_all_validic_users.each { |id| delete_validic_user(id) }
+    get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
   end
 
 
