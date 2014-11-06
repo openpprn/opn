@@ -18,8 +18,6 @@
 -##############
 %ul.nav.nav-tabs#tabs
   %li.active
-    %a{"data-toggle" => "tab", :href => "#my_health_data"} My Data
-  %li
     %a{"data-toggle" => "tab", :href => "#my_trends"} My Trends
   %li
     %a{"data-toggle" => "tab", :href => "#my_health_measures"} My Health Measures
@@ -34,10 +32,7 @@
 %br/
 
 .tab-content
-  #my_health_data.active.tab-pane
-    = render partial: "my_health_data"
-
-  #my_trends.tab-pane
+  #my_trends.tab-pane.active
     = render partial: "my_trends"
 
   #my_health_measures.tab-pane
