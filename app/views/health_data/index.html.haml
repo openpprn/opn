@@ -1,8 +1,7 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- scores = { "Data Sources" => "121", "Data Points" => "4.6k", "Studies" => "1" }
-- content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
+- content_for :community_contributions, render(partial: "my_health_data")
 
 
 -##############
@@ -19,32 +18,36 @@
 -##############
 %ul.nav.nav-tabs#tabs
   %li.active
-    %a{"data-toggle" => "tab", :href => "#my_health_data"} My Health Data
+    %a{"data-toggle" => "tab", :href => "#my_health_data"} My Data
   %li
     %a{"data-toggle" => "tab", :href => "#my_trends"} My Trends
   %li
-    %a{"data-toggle" => "tab", :href => "#reports"} My Health Measures
+    %a{"data-toggle" => "tab", :href => "#my_health_measures"} My Health Measures
+  %li
+    %a{"data-toggle" => "tab", :href => "#my_dashboard"} My Dashboard
   %li
     %a{"data-toggle" => "tab", :href => "#my_connections"} My Connections
   %li.pull-right
     %a{"data-toggle" => "tab", :href => "#tutorial"}
       %i.fa.fa-info-circle
-      Tutorial
 
 %br/
 
 .tab-content
-  #my_health_date.active.tab-pane
+  #my_health_data.active.tab-pane
     = render partial: "my_health_data"
 
   #my_trends.tab-pane
     = render partial: "my_trends"
 
+  #my_health_measures.tab-pane
+    = render partial: "my_health_measures"
+
+  #my_dashboard.tab-pane
+    = render partial: "my_dashboard"
+
   #my_connections.tab-pane
     = render partial: "my_connections"
-
-  #reports.tab-pane
-    = render partial: "my_reports"
 
   #tutorial.tab-pane
     = render partial: "tutorial"

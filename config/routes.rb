@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'static#splash'
   get 'home' => "home#index"
   get 'about' => 'static#about'
+  get 'resources' => 'static#resources'
+
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages
   get 'content/:page' => 'static#content'

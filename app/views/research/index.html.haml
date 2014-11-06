@@ -19,15 +19,16 @@
 -##############
 %ul.nav.nav-tabs{role: "tablist"}
   %li.active
-    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Patient-Proposed Research
+    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Research Prioritization
   %li
-    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} Surveys
+    %a{"data-toggle" => "tab", href: "#active-studies", role: "tab"} Active Studies
   %li
-    %a{"data-toggle" => "tab", href: "#activity-log", role: "tab"} Research Access Log
+    %a{"data-toggle" => "tab", href: "#completed-research", role: "tab"} Completed Research
+  %li
+    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} My Contributions
   %li.pull-right
     %a{"data-toggle" => "tab", :href => "#tutorial"}
       %i.fa.fa-info-circle
-      Tutorial
 %br/
 
 .row
@@ -35,10 +36,16 @@
     .tab-content
       #research-democracy.tab-pane.active
         = render partial: "research_democracy"
+      #active-studies.tab-pane
+
+      #completed-research.tab-pane
+        = render partial: "research_topics/results"
       #surveys.tab-pane
         = render partial: "survey_scorecard"
-      #activity-log.tab-pane
         = render partial: "activity_log"
+        "# health checkins"
+      #activity-log.tab-pane
+
       #tutorial.tab-pane
         = render partial: "tutorial"
 

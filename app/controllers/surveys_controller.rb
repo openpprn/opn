@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_active_top_nav_link_to_surveys
+  before_action :set_active_top_nav_link_to_health_data
 
   layout "community"
 
