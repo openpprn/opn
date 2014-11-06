@@ -39,8 +39,6 @@ pickle-email-*.html
 .project
 config/initializers/secret_token.rb
 **~
-/app/assets/images/avatars/sample
-/app/assets/images/avatars/sample_mosaics
 
 
 
