@@ -27,20 +27,21 @@
 
     -# YOUR CONTRIBUTIONS SIDEBAR
     .col-md-3
-      = render partial: "shared/promotion_to_join" if !current_user
+      - if !current_user
+        = render partial: "shared/promotion_to_join"
+      - else
+        - if content_for(:your_contributions)
 
-      - if content_for(:your_contributions)
+          <br/><br/><br/><br/><br/>
+          %a{href: account_path}
+            .panel.panel-primary
+              = render partial: "shared/bio"
 
-        <br/><br/><br/><br/><br/>
-        %a{href: account_path}
+
           .panel.panel-primary
-            = render partial: "shared/bio"
-
-
-        .panel.panel-primary
-          .panel-heading
-            Your Contributions
-          = yield :your_contributions
+            .panel-heading
+              Your Contributions
+            = yield :your_contributions
 
 
 
