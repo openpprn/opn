@@ -36,7 +36,7 @@
             = f.label :condition, :class => "control-label col-sm-5"
             .col-sm-7
               %select.form-control
-                - Figaro.env.pprn_conditions.each do |condition|
+                - Figaro.env.pprn_conditions.split(",").each do |condition|
                   %option
                     = condition
           .form-group

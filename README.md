@@ -70,3 +70,20 @@ rails s
 Open a browser and go to: [http://localhost:3000](http://localhost:3000)
 
 All done!
+
+
+
+## Modification of Content & Layout
+
+The main navigation of the application is structured like so (in controller#action/view_name format):
+- Home#Index
+- Research#Index
+- HealthData#Index
+- Members#Index
+If you want to edit any of the major views, you'll find them in the app/views/home, app/views/research, app/views/health_data, &app/views/members directories in .html.haml formats (eg. app/views/home/index.html.haml is the logged-in home page)
+
+Each of those directories contains related partials that are used to help support the views, by the naming convention _<partial_name>, eg. _tutorial.html.haml, which is the tutorial accessible by tab on most of the major views.
+
+The logged out homepage is Static#Splash (can be found in app/views/static/splash.html.haml). Other static (about/tos/pp) and content pages (lots of text about the network) can be found in this same directory.
+
+
