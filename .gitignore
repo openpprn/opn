@@ -58,7 +58,7 @@ config/initializers/secret_token.rb
 .DS_Store
 
 # Ignore Generated Files
-
+.gitignore
 /db/schema.rb
 
 # Ignore application configuration

@@ -44,9 +44,18 @@ To set up your secret keys, run
 figaro install
 ```
 
-Add the following lines to the /config/application.yml file it generates, complete with appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
+Add the following lines to the /config/application.yml file it generates and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
 
 ```
+pprn: "ccfa"
+pprn_title: "CCFA Partners"
+pprn_condition: "Crohn's & Ulcerative Colitis"
+pprn_conditions: "Crohn's, Ulcerative Colitis"
+pprn_support_email: "support@ccfapartners.org"
+
+oodt_enabled: "true"
+validic_enabled: "true"
+
 uservoice_api_key: 
 google_analytics_web_property_id:
 
@@ -71,6 +80,12 @@ Open a browser and go to: [http://localhost:3000](http://localhost:3000)
 
 All done!
 
+## Deploying to Heroku
+
+If you are deploying to heroku, to get your application.yml loaded into heroku environment configuration (required to function), do
+```
+figaro heroku:set -e production
+```
 
 
 ## Modification of Content & Layout
