@@ -87,6 +87,17 @@ If you are deploying to heroku, to get your application.yml loaded into heroku e
 figaro heroku:set -e production
 ```
 
+## Seeding your Database
+
+If you are just doing test installs or demonstrations of the website, you may want to start with some seed data. Some combination and/or all of these below should get you started:
+
+```
+rake db:seed
+rake surveys
+rake legacy_seed
+```
+
+
 
 ## Modification of Content & Layout
 
@@ -95,9 +106,10 @@ The main navigation of the application is structured like so (in controller#acti
 - Research#Index
 - HealthData#Index
 - Members#Index
-If you want to edit any of the major views, you'll find them in the app/views/home, app/views/research, app/views/health_data, &app/views/members directories in .html.haml formats (eg. app/views/home/index.html.haml is the logged-in home page)
 
-Each of those directories contains related partials that are used to help support the views, by the naming convention _<partial_name>, eg. _tutorial.html.haml, which is the tutorial accessible by tab on most of the major views.
+If you want to edit any of the major views, you'll find them in the app/views/home, app/views/research, app/views/health_data, & app/views/members directories in .html.haml formats (eg. app/views/home/index.html.haml is the logged-in home page)
+
+Each of those directories contains related partials that are used to help support the views, named with a leading underscore, eg. _tutorial.html.haml, which is the tutorial accessible by tab on most of the major views.
 
 The logged out homepage is Static#Splash (can be found in app/views/static/splash.html.haml). Other static (about/tos/pp) and content pages (lots of text about the network) can be found in this same directory.
 
