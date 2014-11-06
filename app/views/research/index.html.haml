@@ -9,7 +9,7 @@
 -### YOUR CONTRIBUTIONS
 -##############
 - content_for :your_contributions do
-  = render partial: "shared/badge_list"
+  = render partial: "shared/badge_list" if current_user
 
 
 

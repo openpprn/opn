@@ -59,7 +59,6 @@ config/initializers/secret_token.rb
 
 # Ignore Generated Files
 
-/Gemfile.lock
 /db/schema.rb
 
 # Ignore application configuration
