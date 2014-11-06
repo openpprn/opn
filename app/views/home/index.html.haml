@@ -1,55 +1,61 @@
-- content_for :community_contributions do
-  .row
-    .col-md-12
-      .panel.panel-primary
-        .panel-heading
-          Community Contributions
-        .panel-body.text-right
-          .row
-            .col-md-3
-              Members
-              %br/
-              %span.h0 5.4k
-            .col-md-3
-              Research Ideas
-              %br/
-              %span.h0 214
-            .col-md-3
-              Surveys Completed
-              %br/
-              %span.h0 450
-            .col-md-3
-              Health Data Streams
-              %br/
-              %span.h0 681
+-##############
+-### COMMUNITY CONTRIBUTIONS
+-##############
+- scores = { "Members" => "5.4k", "Research Ideas" => "214", "Surveys Completed" => "450", "Health Data Streams" => "681" }
+- content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
+
+-##############
+-### YOUR CONTRIBUTIONS
+-##############
 - content_for :your_contributions do
-  %ul.list-group
-    %li.list-group-item.tip{"data-toggle" => "tooltip", "data-placement" => "left", "title" => "Well done!!"}
-      .media
-        %a.pull-left{:href => "#"}
-          %span.fa-stack.fa-lg.media-object{:style => "color: red;"}
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-heart-o.fa-stack-1x.fa-inverse
-        .media-body
-          %h1.media-heading
-            900
-            %small Karma
-    %li.list-group-item.tip{"data-toggle" => "tooltip", "data-placement" => "left", "title" => "Well done!!"}
-      .media
-        %a.pull-left{:href => "#"}
-          %i.fa.fa-certificate.media-object.badger{:style => "color: gold;"}
-        .media-body
-          %h1.media-heading
-            6/20
-            %small Badges:
-
-    = render partial: "shared/badge_list", :locals => {badges: [{title:"Frequent Check-iner",body:"You've done 40 frequent surveys", icon: "fa-clock-o", earned: true},  {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true},{title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},{title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},{title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},{title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]}
+  = render partial: "shared/karma_badge"
+  = render partial: "shared/badge_list"
 
 
-%h3 Blog Posts from the Governance Team
-= render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+
+
+-##############
+-### MAIN CONTENT SECTION
+-##############
+%h3 Blog Posts
+
+%ul.nav.nav-tabs{role: "tablist"}
+  %li.active
+    %a{"data-toggle" => "tab", href: "#all-blogs", role: "tab"} All Team Members
+  %li
+    %a{"data-toggle" => "tab", href: "#patient-blogs", role: "tab"} Patient Team
+  %li
+    %a{"data-toggle" => "tab", href: "#research-blogs", role: "tab"} Research Team
+  %li
+    %a{"data-toggle" => "tab", href: "#tech-blogs", role: "tab"} Tech Team
+  %li.pull-right
+    %a{"data-toggle" => "tab", :href => "#tutorial"}
+      %i.fa.fa-info-circle
+      Tutorial
 %br/
-%br/
-= render :partial => "/shared/team", :locals => { :editable => false }
+
+/ Tab panes
+.tab-content
+  #all-blogs.tab-pane.active
+    = render partial: "shared/team_carousel", locals: { users: User.with_role(:admin).limit(6) }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, short: false }
+  #patient-blogs.tab-pane
+    = render partial: "shared/team_carousel", locals: { users: User.with_role(:patient_team).limit(6) }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+  #research-blogs.tab-pane
+    = render partial: "shared/team_carousel", locals: { users: User.with_role(:research_team).limit(6) }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+  #tech-blogs.tab-pane
+    = render partial: "shared/team_carousel", locals: { users: User.with_role(:tech_team).limit(6) }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+  #tutorial.tab-pane
+    Tutorial Goes Here
+
+
+-##### HOW TO LOAD AJAXY ######
+-# %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Published Research
+-# %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+-# .tab-content
+-#   #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
 

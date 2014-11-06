@@ -7,29 +7,29 @@ module ExternalUsers
   end
 
   # Configure your application to use OODT and/or Validic in config/initalizers/pprn.rb
-  include OODTUser if OODT_ENABLED
-  include ValidicUser if VALIDIC_ENABLED
+  include OODTUser if Figaro.env.oodt_enabled
+  include ValidicUser if Figaro.env.validic_enabled
 
 
 
   def oodt_user?
-    OODT_ENABLED && oodt_user_provisioned?
+    Figaro.env.oodt_enabled && oodt_user_provisioned?
   end
 
   def validic_user?
-    VALIDIC_ENABLED && validic_user_provisioned?
+    Figaro.env.validic_enabled && validic_user_provisioned?
   end
 
 
 
   def provision_external_users
-    provision_oodt_user if OODT_ENABLED
-    provision_validic_user if VALIDIC_ENABLED
+    provision_oodt_user if Figaro.env.oodt_enabled
+    provision_validic_user if Figaro.env.validic_enabled
   end
 
   def delete_external_users
-    delete_oodt_user if OODT_ENABLED
-    delete_validic_user if VALIDIC_ENABLED
+    delete_oodt_user if Figaro.env.oodt_enabled
+    delete_validic_user if Figaro.env.validic_enabled
   end
 
 

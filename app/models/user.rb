@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
 
   def name
+    return "Anonymous" unless first_name && last_name
     "#{first_name} #{last_name}"
   end
 

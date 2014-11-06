@@ -2,7 +2,7 @@
 .row
   .col-md-12.pprn-heading
     %a{href: root_path, style: "color: #222"}
-      %h1.pull-left= PPRN_TITLE
+      %h1.pull-left= Figaro.env.pprn_title
 
 
     .pull-right
@@ -11,9 +11,9 @@
 
       %ul.nav.nav-pills.small
         %li
-          %a{:href => content_path(page: "about_partners")} About
+          %a{:href => main_app.content_path(page: "about_partners")} About
         / %li
-        /   %a{:href => content_path(page: "resources")} Resources
+        /   %a{:href => main_app.content_path(page: "resources")} Resources
         %li
           %a{:href => "#"} Help
         / =======
@@ -27,7 +27,7 @@
         /         %span.icon-bar
         /         %span.icon-bar
         /       %a.navbar-brand{href: root_path}
-        /         = PPRN_TITLE
+        /         =Figaro.env.pprn_title
         /         %span.req
         /     .collapse.navbar-collapse
         /       %ul.nav.navbar-nav
@@ -54,11 +54,11 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                %a{href: account_path}
+                %a{href: main_app.account_path}
                   %i.fa.fa-user &nbsp; Account Settings
               - if current_user.can?(:view_admin_dashboard)
                 %li
-                  %a{href: admin_path, :title => "Admin Panel"}
+                  %a{href: main_app.admin_path, :title => "Admin Panel"}
                     %i.fa.fa-wrench &nbsp; Admin Panel
           %li
             = link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, :method => :delete
@@ -80,15 +80,15 @@
       %li{:class => "#{"active" if @active_top_nav_link == :home}"}
         %a{href: main_app.home_path} Home
       %li{:class => "#{"active" if @active_top_nav_link == :research}"}
-        %a{href: research_path} Research
+        %a{href: main_app.research_path} Research
       %li{:class => "#{"active" if @active_top_nav_link == :health_data}"}
-        %a{href: health_data_path} My Health Data
+        %a{href: main_app.health_data_path} My Health Data
       / %li{class: "#{"active" if @active_top_nav_link == :surveys}"}
       /   %a{href: surveys_path} Surveys
       %li{class: "#{"active" if @active_top_nav_link == :members}"}
-        %a{href: social_path} Members
+        %a{href: main_app.members_path} Members
 
-      - if PPRN == :my_apnea #|| true
+      - if Figaro.env.pprn == :my_apnea
         %li
           %a{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"} Discussion
 

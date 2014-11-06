@@ -3,7 +3,7 @@
 %html{lang: "en"}
   %head
 
-    %title= yield(:title) + " " + PPRN_TITLE
+    %title= yield(:title) + " " +Figaro.env.pprn_title
     = render "layouts/before_scripts"
 
 

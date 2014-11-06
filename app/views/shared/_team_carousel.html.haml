@@ -1,0 +1,10 @@
+
+.well
+  .row
+    - users.limit(6).each do |user|
+      .col-sm-2
+        = image_tag user.photo_url, :class => "img-circle" if user.photo_url
+        .small
+          %strong
+            = user.name
+%br/

@@ -49,11 +49,11 @@ Rails.application.routes.draw do
 
 
 
-  # social Section
-  match 'social', to: 'social#index', via: :get, as: 'social' # show
-  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
-  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
-  match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
+  # members Section
+  match 'members', to: 'members#index', via: :get, as: 'members' # show
+  match 'members/profile', to: 'members#profile', as: 'social_profile', via: :get #edit
+  match 'members/profile', to: 'members#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'members#locations'
 
 
   # Blog Section
@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
   # Discussion
-  match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
+  match 'members/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
 
   # Admin Section
   get 'admin' => 'admin#notifications'
@@ -103,7 +103,7 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  mount Forem::Engine, :at => '/social/discussion'
+  mount Forem::Engine, :at => '/members/discussion'
 
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]

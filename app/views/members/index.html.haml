@@ -1,40 +1,32 @@
-- content_for :community_contributions do
-  .row
-    .col-md-7
-      .panel.panel-primary
-        .panel-heading
-          Community Contributions
-        .panel-body.text-right
-          .row
-            .col-md-4
-              Members
-              %br/
-              %span.h0 5.4k
-            .col-md-4
-              Social Profiles
-              %br/
-              %span.h0 1,321
-            .col-md-4
-              Unique Cities
-              %br/
-              %span.h0 350
+-##############
+-### COMMUNITY CONTRIBUTIONS
+-##############
+- scores = { "Members" => "5.4k", "Social Profiles" => "1,321", "Unique Cities" => "350" }
+- content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
+
+-##############
+-### YOUR CONTRIBUTIONS
+-##############
 - content_for :your_contributions do
-  = render partial: "shared/badge_list", :locals => {badges: [{title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},
-                                                              {title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]}
+  = render partial: "shared/badge_list"
 
 
 
 
+
+-##############
+-### MAIN CONTENT SECTION
+-##############
+
+
+-#### MAP OF MEMBERS
 .panel.panel-default
   .panel-heading
     .row
       .col-md-6
         %h3.panel-title Map
-
       .col-md-6
-
-
         .btn-group.btn-group-sm.pull-right{data: {toggle: "buttons"}}
           %label.btn.btn-default#city-view
             %input{type: "radio", name: "zoomLevel"}
@@ -48,9 +40,7 @@
           %label.btn.btn-default#world-view
             %input{type: "radio", name: "zoomLevel"}
             World
-
   #user_map{data: {path: locations_path}}
-
   .panel-footer.small
     - if current_user and current_user.social_profile and current_user.social_profile.location
       .pull-right
@@ -61,6 +51,9 @@
     - else
       Where do you live?
       = link_to "Add yourself to this map.", social_profile_path
+
+
+-#### GRAPHICAL STATS
 .graphs
 
   .row
@@ -70,8 +63,6 @@
           %h3.panel-title Age
         .panel-body
           = image_tag "histogram.png"
-          .req age_distribution (hash of age -> count)
-
 
     .col-md-4
       .panel.panel-default
@@ -79,8 +70,6 @@
           %h3.panel-title Gender
         .panel-body
           = image_tag "donut.png"
-          .req sex_distribution (sex -> count)
-
 
     .col-md-4
       .panel.panel-default
@@ -88,32 +77,9 @@
           %h3.panel-title Location
         .panel-body
           = image_tag "bar.png"
-          .req locations (location(lat/lon, city, state, country) -> count)
-
-  / .row
-  /   .col-md-4
-  /     .panel.panel-default
-  /       .panel-heading
-  /         %h3.panel-title Surveys Completed
-  /       .panel-body
-  /         = image_tag "pie.png"
-  /         .req surveys_completed [date,survey_id]
 
 
-  /   .col-md-4
-  /     .panel.panel-default
-  /       .panel-heading
-  /         %h3.panel-title Research Topic Input
-  /       .panel-body
-  /         = image_tag "histogram.png"
 
-  /   .col-md-4
-  /     .panel.panel-default
-  /       .panel-heading
-  /         %h3.panel-title Connected Data Sources
-  /       .panel-body
-  /         = image_tag "pie.png"
-  /         .req data_sources_connected [date,data_source_id]
 
 = javascript_include_tag "//maps.googleapis.com/maps/api/js?key=AIzaSyBB91qMUvtmPzct9z7slTqm-lTUEVuYjKo"
 = javascript_include_tag 'social/maps'
