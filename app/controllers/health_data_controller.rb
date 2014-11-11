@@ -7,11 +7,11 @@ class HealthDataController < ApplicationController
   layout "community"
 
   def validate_oodt_module
-    raise "OODT must be enabled for this feature." if !OODT_ENABLED
+    raise "OODT must be enabled for this feature." if !Figaro.env.oodt_enabled
   end
 
   def validate_validic_module
-    raise "Validic must be enabled for this feature." if !VALIDIC_ENABLED
+    raise "Validic must be enabled for this feature." if !Figaro.env.validic_enabled
   end
 
 

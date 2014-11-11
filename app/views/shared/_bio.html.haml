@@ -6,5 +6,7 @@
       .pull-left
         = image_tag current_user.photo_url, :class => " media-item-object img-circle user-avatar"
       .media-body.small
-        %h4 Sean Ahrens
-        .badge.badge-primary 900 Karma
+        %h4= current_user.name
+        .badge.badge-primary
+          = current_user.karma
+          Karma

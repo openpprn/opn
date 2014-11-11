@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
   def self.health_data_streams_count
     34112 #FIXME #TODO #STUB
   end
+  def karma
+    199
+  end
 
 
   def name

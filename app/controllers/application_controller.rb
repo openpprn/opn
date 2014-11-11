@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # Send 'em back where they came from with a slap on the wrist
   def authority_forbidden(error)
     Authority.logger.warn(error.message)
-    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <#{PPRN_SUPPORT_EMAIL}>."
+    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <#{Figaro.env.pprn_support_email}>."
   end
 
 

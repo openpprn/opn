@@ -42,7 +42,7 @@ class ValidicUserTest < ActiveSupport::TestCase
 
 
   def skip_if_disabled
-    skip "Validic is not enabled so we are skipping this test, since it tests the Validic module." if !VALIDIC_ENABLED
+    skip "Validic is not enabled so we are skipping this test, since it tests the Validic module." if !Figaro.env.validic_enabled
   end
 
 

@@ -1,14 +1,14 @@
 require 'test_helper.rb'
 
-class SocialControllerTest < ActionController::TestCase
+class MembersControllerTest < ActionController::TestCase
   test "Not logged in and Logged-in User can access the social overview page" do
-    get :overview
+    get :index
 
     assert_response :success
 
     login(users(:user_2))
 
-    get :overview
+    get :index
 
     assert_response :success
 
