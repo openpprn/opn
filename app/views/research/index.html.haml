@@ -1,7 +1,7 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- scores = { "Proposed Questions" => "56", "Votes Cast" => "329", "Being Researched" => "2" }
+- scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.accepted.count}
 - content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 

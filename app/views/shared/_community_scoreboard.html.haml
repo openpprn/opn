@@ -8,11 +8,11 @@
           .col-sm-4.col-xs-6
             = label
             %br/
-            %span.h0= value
+            %span.h0= number_in_largest_unit(value)
       - elsif scores.count >= 4
         - scores.each do |label, value|
           .col-sm-3.col-xs-6
             = label
             %br/
-            %span.h0= value
+            %span.h0= number_in_largest_unit(value)
 
