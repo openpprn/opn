@@ -2,45 +2,82 @@
 -#### DEFINE BADGES
 -##############
 
-- if @active_top_nav_link == :home
-  - badges = [{title:"Frequent Check-iner",body:"You've done 40 frequent surveys", icon: "fa-clock-o", earned: true},
-              {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true},
-              {title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},
-              {title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},
-              {title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},
-              {title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]
-
-- elsif @active_top_nav_link == :research
-  - badges = [{title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},
-              {title:"Voter",body:"You cast 5 votes", icon: "fa-check-circle-o"},
-              {title:"Discusser",body:"You commented on 3 topics", icon: "fa-comments-o"},
-              {title:"Great Ideamaker",body:"Your ideas are in the top 25%", icon: "fa-lightbulb-o"},
-              {title:"Dutiful Citizen",body:"You've responded to 10 biannual surveys!", icon: "fa-list-ul"},
-              {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true} ]
-
-- elsif @active_top_nav_link == :health_data
-  - badges = [{title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},
-              {title: "Data Dumper", earned: false, body: "Use Your Connected Devices", icon: "fa-bar-chart"},
-              {title: "Sherlock", earned: false, body: "Investigate and graph your data", icon: "fa-search"}]
-
-- elsif @active_top_nav_link == :members
-  - badges = [{title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},
-              {title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]
-
-
 -##############
 -#### SHOW BADGES
 -##############
+
+
+
+
 %ul.list-group.badgers
-  - badges.each do |badge|
-    %li.list-group-item.badger.tip{class: "#{badge[:earned] ? 'badger-earned list-group-item-success' : nil}", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "Earn this badge!"}
+  - current_user.badges.each do |badge|
+    %li.list-group-item.badger.badger-earned.list-group-item-success
       .media
         %a.pull-left{:href => "#"}
-          %i.fa.media-object{class: badge[:icon]}
+          %i.fa.media-object{:class => badge.custom_fields[:icon]}
         .media-body
-          %h4.media-heading= badge[:title]
-          %small= badge[:body]
+          %h4.media-heading= badge.custom_fields[:title]
+          - if badge.level
+            %h4= badge.level
+          %small= badge.description
 
-- content_for :js do
-  $('.tip').tooltip()
+
+
+
+-#%ul.list-group.badgers
+-#  - current_user.badges.group_by{ |b| b.name }.each do |badge_group|
+-#    - badge = badge_group.second.sort_by { |b| b.level }.last
+-#    %li.list-group-item.badger.badger-earned.list-group-item-success
+-#      .media
+-#        %a.pull-left{:href => "#"}
+-#          %i.fa.media-object{:class => badge.custom_fields[:icon]}
+-#        .media-body
+-#          %h4.media-heading= badge.custom_fields[:title]
+-#          - if badge.level
+-#            %h4= badge.level
+-#          %small= badge.description
+
+
+
+-#- if @active_top_nav_link == :home
+-#  - badges = [{title:"Frequent Check-iner",body:"You've done 40 frequent surveys", icon: "fa-clock-o", earned: true},
+-#              {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true},
+-#              {title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},
+-#              {title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},
+-#              {title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},
+-#              {title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]
+
+-#- elsif @active_top_nav_link == :research
+-#  - badges = [{title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},
+-#              {title:"Voter",body:"You cast 5 votes", icon: "fa-check-circle-o"},
+-#              {title:"Discusser",body:"You commented on 3 topics", icon: "fa-comments-o"},
+-#              {title:"Great Ideamaker",body:"Your ideas are in the top 25%", icon: "fa-lightbulb-o"},
+-#              {title:"Dutiful Citizen",body:"You've responded to 10 biannual surveys!", icon: "fa-list-ul"},
+-#              {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true} ]
+
+-#- elsif @active_top_nav_link == :health_data
+-#  - badges = [{title: "Connector", earned: true, body: "You've connected 3 Data Sources", icon: "fa-link"},
+-#              {title: "Data Dumper", earned: false, body: "Use Your Connected Devices", icon: "fa-bar-chart"},
+-#              {title: "Sherlock", earned: false, body: "Investigate and graph your data", icon: "fa-search"}]
+
+-#- elsif @active_top_nav_link == :members
+-#  - badges = [{title:"Friendly",body:"You've made a social profile", icon: "fa-smile-o", earned: true},
+-#              {title:"Greeter",body:"You have posted your photo on the homepage!", icon: "fa-slideshare", earned: true}]
+
+
+-#-##############
+-#-#### SHOW BADGES
+-#-##############
+-#%ul.list-group.badgers
+-#  - badges.each do |badge|
+-#    %li.list-group-item.badger.tip{class: "#{badge[:earned] ? 'badger-earned list-group-item-success' : nil}", "data-toggle" => "tooltip", "data-placement" => "left", "title" => "Earn this badge!"}
+-#      .media
+-#        %a.pull-left{:href => "#"}
+-#          %i.fa.media-object{class: badge[:icon]}
+-#        .media-body
+-#          %h4.media-heading= badge[:title]
+-#          %small= badge[:body]
+
+-#- content_for :js do
+-#  $('.tip').tooltip()
 

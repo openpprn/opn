@@ -23,7 +23,23 @@ module Merit
     def initialize
       # If it creates user, grant badge
       # Should be "current_user" after registration for badge to be granted.
-      # grant_on 'users#create', badge: 'just-registered', to: :itself
+      grant_on 'registrations#create', badge: 'just-registered', model_name: 'User'
+
+      # Inquisitor Badges
+      grant_inquisitor_badge_on(1,1..1)
+      grant_inquisitor_badge_on(2,2..4)
+      grant_inquisitor_badge_on(3,5..9999)
+
+      # Vote Badges
+      grant_voter_badge_on(1,1..1)
+      grant_voter_badge_on(2,2..4)
+      grant_voter_badge_on(3,5..5)
+
+
+      # grant_on 'members#update_profile', badge: 'socialite', temporary: true do |social_profile|
+      #   social_profile.present? && social_profile.show_location
+      # end
+
 
       # If it has 10 comments, grant commenter-10 badge
       # grant_on 'comments#create', badge: 'commenter', level: 10 do |comment|
@@ -44,5 +60,18 @@ module Merit
       #   user.name.length > 4
       # end
     end
+
+    def grant_inquisitor_badge_on(level, range)
+      grant_on ['research_topics#create', 'research_topics#destroy'], badge: 'inquisitor', temporary: true, level: level do |research_topic|
+        range.include? research_topic.user.research_topics.count
+      end
+    end
+
+    def grant_voter_badge_on(level, range)
+      grant_on 'votes#vote', badge: 'voter', temporary: true, level: level, to: :user do |vote|
+        range.include? vote.user.votes.where("rating > 0").count
+      end
+    end
+
   end
 end

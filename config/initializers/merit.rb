@@ -20,14 +20,24 @@ Merit.setup do |config|
 end
 
 # Create application badges (uses https://github.com/norman/ambry)
-# badge_id = 0
-# [{
-#   id: (badge_id = badge_id+1),
-#   name: 'just-registered'
-# }, {
-#   id: (badge_id = badge_id+1),
-#   name: 'best-unicorn',
-#   custom_fields: { category: 'fantasy' }
-# }].each do |attrs|
-#   Merit::Badge.create! attrs
-# end
+
+# Multi-Level Badges
+inquisitor_attr = {name: 'inquisitor', custom_fields: { title: 'Inquisitor', icon: 'fa-question-circle', category: 'research' } }
+voter_attr = {name: 'voter', custom_fields: { title: 'Voter', icon: 'fa-check-circle-o', category: 'research' } }
+
+badges = [inquisitor_attr.merge({level: 1, description: "level one son!"}),
+  inquisitor_attr.merge({level: 2, description: "level two blue!"}),
+  inquisitor_attr.merge({level: 3, description: "level three bee!"}),
+  voter_attr.merge({level: 1, description: "newbie voter"}),
+  voter_attr.merge({level: 2, description: "voted twice"}),
+  voter_attr.merge({level: 3, description: "you've voted like everything!"}),
+  {name: 'just-registered', description: 'You joined! You\'re a boss!', custom_fields: { title: 'You Joined!', icon: 'fa-user', category: 'home' }},
+  {name: 'socialite', description: 'You socialize like a boss!', custom_fields: { title: 'Socialite', icon: 'fa-user-group', category: 'members' }}
+]
+
+badge_id = 1
+
+badges.each do |attrs|
+  Merit::Badge.create!(attrs.merge({id: badge_id}))
+  badge_id += 1
+end
