@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_merit
+
   rolify role_join_table_name: 'roles_users'
 
 
