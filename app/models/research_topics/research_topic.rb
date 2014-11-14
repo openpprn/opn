@@ -10,6 +10,7 @@ class ResearchTopic < ActiveRecord::Base
 
   scope :accepted, -> { where(state: 'accepted') }
   scope :viewable_by, lambda { |user_id| where("state = ? or user_id = ?", "accepted", user_id)}
+  scope :sorted, -> { order(:votes_count)}
 
   def self.popular(user_id = nil)
 

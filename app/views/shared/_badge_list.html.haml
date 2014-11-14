@@ -1,25 +1,21 @@
--##############
--#### DEFINE BADGES
--##############
+
 
 -##############
 -#### SHOW BADGES
 -##############
 
-
-
-
-%ul.list-group.badgers
-  - current_user.badges.each do |badge|
-    %li.list-group-item.badger.badger-earned.list-group-item-success
-      .media
-        %a.pull-left{:href => "#"}
-          %i.fa.media-object{:class => badge.custom_fields[:icon]}
-        .media-body
-          %h4.media-heading= badge.custom_fields[:title]
-          - if badge.level
-            %h4= badge.level
-          %small= badge.description
+- if current_user
+  %ul.list-group.badgers
+    - current_user.badges.each do |badge|
+      %li.list-group-item.badger.badger-earned.list-group-item-success
+        .media
+          %a.pull-left{:href => "#"}
+            %i.fa.media-object{:class => badge.custom_fields[:icon]}
+          .media-body
+            %h4.media-heading= badge.custom_fields[:title]
+            - if badge.level
+              %h4= badge.level
+            %small= badge.description
 
 
 
