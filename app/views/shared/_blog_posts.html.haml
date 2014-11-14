@@ -11,6 +11,13 @@
           = post.author
           = post.created_at.strftime("%m/%d/%Y")
 
+
+          - if current_user && new_blog_post
+            %div
+              = link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-xs" if current_user.can_update?(post)
+              = link_to "Delete", post_path(post), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(post)
+
+
         .media-body
           %h4.media-heading= post.title
           -#.pull-right= post.created_at.strftime("%m/%d/%Y")
@@ -24,22 +31,20 @@
 
 
 
-/ - if current_user and new_blog_post and current_user.can_create?(new_blog_post)
-/   .panel.panel-warning
-/     .panel-heading
-/       %h3 Create new blog post
-/     .panel-body
-/       = render partial: 'posts/form', locals: { post: new_blog_post }
+
+%hr/
+
+- if current_user &&  new_blog_post &&  current_user.can_create?(new_blog_post)
+  .panel.panel-success
+    .panel-heading
+      %h4.panel-title Create new blog post
+    .panel-body
+      = render partial: 'posts/form', locals: { post: new_blog_post }
 
 
-/ - if current_user
-/   .btn-group.pull-right
-/     = link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-xs" if current_user.can_update?(post)
-/     = link_to "Delete", post_path(post), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if current_user.can_delete?(post)
-
-/ %br
-/ %small
-/   Tags:
-/   - post.tag_list.each do |tag|
-/     %span.label.label-primary= tag
+-#%br
+-#%small
+-#  Tags:
+-#  - post.tag_list.each do |tag|
+-#    %span.label.label-primary= tag
 

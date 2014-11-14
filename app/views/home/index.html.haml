@@ -34,20 +34,30 @@
 
 %br/
 
+
+- @patient_team = User.with_role(:patient_team).shuffle.first(6)
+- @patient_posts = Post.blog_posts.where("user_id IN (?)", @patient_team.collect(&:id))
+- @research_team = User.with_role(:research_team).shuffle.first(6)
+- @research_posts = Post.blog_posts.where("user_id IN (?)", @research_team.collect(&:id))
+- @tech_team = User.with_role(:tech_team).shuffle.first(6)
+- @tech_posts = Post.blog_posts.where("user_id IN (?)", @tech_team.collect(&:id))
+- @all_team = (@patient_team+@research_team+@tech_team).shuffle.first(6)
+- @all_posts = Post.blog_posts.where("user_id IN (?)", @all_team.collect(&:id))
+
 / Tab panes
 .tab-content
   #all-blogs.tab-pane.active
-    = render partial: "shared/team_carousel", locals: { users: User.with_role(:admin).limit(6) }
-    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, short: false }
+    = render partial: "shared/team_carousel", locals: { users: @all_team }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @all_posts, new_blog_post: nil, short: false }
   #patient-blogs.tab-pane
-    = render partial: "shared/team_carousel", locals: { users: User.with_role(:patient_team).limit(6) }
-    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+    = render partial: "shared/team_carousel", locals: { users: @patient_team }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @patient_posts, new_blog_post: nil, short: false }
   #research-blogs.tab-pane
-    = render partial: "shared/team_carousel", locals: { users: User.with_role(:research_team).limit(6) }
-    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+    = render partial: "shared/team_carousel", locals: { users: @research_team }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @research_posts, new_blog_post: nil, short: false }
   #tech-blogs.tab-pane
-    = render partial: "shared/team_carousel", locals: { users: User.with_role(:tech_team).limit(6) }
-    = render partial: "shared/blog_posts", locals: { blog_posts: @posts, new_blog_post: @new_post, short: false }
+    = render partial: "shared/team_carousel", locals: { users: @tech_team }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @tech_posts, new_blog_post: nil, short: false }
   #tutorial.tab-pane
     Tutorial Goes Here
 

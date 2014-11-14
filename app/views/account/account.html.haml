@@ -56,6 +56,19 @@
         %tr
           %td Member Number
           %td= "##{current_user.id}"
+
+    - if current_user.roles.any?
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title Special Roles
+        .panel-body
+          - current_user.roles.each do |role|
+            %span.label.label-default{:style => "margin-right: 5px;"}
+              = role.name.titleize
+          .small
+            %br/
+            To have your roles changed, ask an admin.
+
     .panel.panel-default
       .panel-heading
         %h4.panel-title Notification Preferences
