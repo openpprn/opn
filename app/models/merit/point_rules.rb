@@ -13,16 +13,25 @@ module Merit
     include Merit::PointRulesMethods
 
     def initialize
-      # score 10, :on => 'users#update' do
-      #   user.name.present?
-      # end
-      #
-      # score 15, :on => 'reviews#create', :to => [:reviewer, :reviewed]
-      #
-      # score 20, :on => [
-      #   'comments#create',
-      #   'photos#create'
-      # ]
+      score 50, :on => 'registrations#create', model_name: "User"
+
+      # Give points to research topic authors that get upvoted
+      score 25, :on => 'votes#vote', :to => [:research_topic_author] do |vote|
+        vote.research_topic.present? && (vote.rating > 0)
+      end
+
+      score 20, :on => 'research_topics#create'
+
+      score 10, :on => 'comments#create'
+
+
+      # Add points for every badge awarded? How?
+
+      # Add some scoring here for data points that come from their connected devices, etc.
+
+      # Add some scoring here for surveys that are anwered, longitudinal
+
+      # Add some scoring here for surveys (freqent) that are done freq
     end
   end
 end

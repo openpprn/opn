@@ -42,10 +42,6 @@ class User < ActiveRecord::Base
   def self.health_data_streams_count
     34112340123142 #FIXME #TODO #STUB
   end
-  def karma
-    9999
-  end
-
 
   def name
     return "Anonymous" unless first_name && last_name
