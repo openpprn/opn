@@ -14,6 +14,23 @@
 
 
 
+
+-# REFACTOR ME
+- @patient_team = User.with_role(:patient_team).shuffle.first(6)
+- @patient_posts = Post.blog_posts.where("user_id IN (?)", @patient_team.collect(&:id))
+- @research_team = User.with_role(:research_team).shuffle.first(6)
+- @research_posts = Post.blog_posts.where("user_id IN (?)", @research_team.collect(&:id))
+- @tech_team = User.with_role(:tech_team).shuffle.first(6)
+- @tech_posts = Post.blog_posts.where("user_id IN (?)", @tech_team.collect(&:id))
+- @all_team = (@patient_team+@research_team+@tech_team).shuffle.first(6)
+- @all_posts = Post.blog_posts.where("user_id IN (?)", @all_team.collect(&:id))
+- @help_center_team = User.with_role(:help_center).shuffle.first(6)
+- @help_center_posts = Post.blog_posts.where("user_id IN (?)", @help_center_team.collect(&:id))
+
+
+
+
+
 -##############
 -### MAIN CONTENT SECTION
 -##############
@@ -28,21 +45,13 @@
     %a{"data-toggle" => "tab", href: "#research-blogs", role: "tab"} Research Team
   %li
     %a{"data-toggle" => "tab", href: "#tech-blogs", role: "tab"} Tech Team
+  %li
+    %a{"data-toggle" => "tab", href: "#help-center-blogs", role: "tab"} Help Center
   %li.pull-right
-    %a{"data-toggle" => "tab", :href => "#tutorial"}
+    %a{"data-toggle" => "tab", href: "#tutorial", role: "tab"}
       %i.fa.fa-info-circle
 
 %br/
-
-
-- @patient_team = User.with_role(:patient_team).shuffle.first(6)
-- @patient_posts = Post.blog_posts.where("user_id IN (?)", @patient_team.collect(&:id))
-- @research_team = User.with_role(:research_team).shuffle.first(6)
-- @research_posts = Post.blog_posts.where("user_id IN (?)", @research_team.collect(&:id))
-- @tech_team = User.with_role(:tech_team).shuffle.first(6)
-- @tech_posts = Post.blog_posts.where("user_id IN (?)", @tech_team.collect(&:id))
-- @all_team = (@patient_team+@research_team+@tech_team).shuffle.first(6)
-- @all_posts = Post.blog_posts.where("user_id IN (?)", @all_team.collect(&:id))
 
 / Tab panes
 .tab-content
@@ -58,6 +67,10 @@
   #tech-blogs.tab-pane
     = render partial: "shared/team_carousel", locals: { users: @tech_team }
     = render partial: "shared/blog_posts", locals: { blog_posts: @tech_posts, new_blog_post: nil, short: false }
+  #help-center-blogs.tab-pane
+    = render partial: "shared/team_carousel", locals: { users: @help_center_team }
+    = render partial: "shared/blog_posts", locals: { blog_posts: @help_center_posts, new_blog_post: nil, short: false }
+    = mail_to Figaro.env.pprn_support_email, "<i class='fa-envelope-o fa'></i> Ask a Question of the IBD Help Center".html_safe, {subject: "Ask your question to the IBD Help Center here.", class: "btn btn-success"}
   #tutorial.tab-pane
     Tutorial Goes Here
 
