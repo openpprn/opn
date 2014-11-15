@@ -57,27 +57,43 @@
 .graphs
 
   .row
-    .col-md-4
+    .col-md-6
       .panel.panel-default
         .panel-heading
-          %h3.panel-title Age
+          %h3.panel-title Locations
         .panel-body
-          = image_tag "histogram.png"
+          = image_tag "https://cgibd.med.unc.edu/ccfapartners/graphs/location_img.php?width=200&height=200&colors=88ddcc|3388ee&textcolor=000000"
 
-    .col-md-4
+    .col-md-6
       .panel.panel-default
         .panel-heading
           %h3.panel-title Gender
         .panel-body
-          = image_tag "donut.png"
+          = image_tag "https://cgibd.med.unc.edu/ccfapartners/graphs/gender_img.php?height=200&width=200&color1=88ccff&color2=3388ee&textcolor=000000"
 
-    .col-md-4
+  .row
+    .col-md-12
       .panel.panel-default
         .panel-heading
-          %h3.panel-title Location
+          %h3.panel-title Age
         .panel-body
-          = image_tag "bar.png"
+          = image_tag "https://cgibd.med.unc.edu/ccfapartners/graphs/age_img.php?width=600&height=300&colors=88ccee|00FF00"
 
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title IBD Age
+        .panel-body
+          = image_tag "https://cgibd.med.unc.edu/ccfapartners/graphs/ibdage_img.php?width=600&height=300&colors=88ccee|00FF00"
+
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Meds
+        .panel-body
+          = image_tag "https://cgibd.med.unc.edu/ccfapartners/graphs/medchart.php?height=450&width=600&disease=uc&colors=3388cc|cceeff"
 
 
 
