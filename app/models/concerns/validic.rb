@@ -4,6 +4,9 @@ module Validic
 
   module ClassMethods
     #FIXME need to factor out most of these methods into class methods, but time constraints
+    def delete_all_validic_users
+      get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
+    end
   end
 
 
@@ -90,9 +93,7 @@ module Validic
   end
 
 
-  def delete_all_validic_users
-    get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
-  end
+
 
 
 

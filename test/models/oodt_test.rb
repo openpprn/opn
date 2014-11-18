@@ -18,7 +18,7 @@ class OODTTest < ActiveSupport::TestCase
     @user.delete_oodt_user
     assert_not @user.oodt_user?, "User should not be a oodt user after deprovisioning"
 
-    @user.provision_oodt_user
+    @user.create_oodt
     assert @user.oodt_user?, "User should be a oodt user after re-provisioning"
   end
 

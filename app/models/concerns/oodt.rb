@@ -7,14 +7,21 @@ module OODT
 
   module ClassMethods
     #FIXME need to factor out most of these methods into class methods, but time constraints
+    def delete_all_oodt_users
+      User.all.each { |u| u.delete_oodt_user }
+    end
   end
 
+  included do
+    after_create :create_oodt
+  end
 
   ####################
   # API CONNECTION SETUP
   ####################
   def oodt
-    conn = Faraday.new(url: "https://whiterivercomputing.com/pcori-1")
+    prefix = "api/pcori/sandbox/v1/"
+    conn = Faraday.new(url: "https://whiterivercomputing.com/#{prefix}")
     conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
     conn
   end
@@ -47,7 +54,7 @@ module OODT
 
     if response.success?
       store_basics(body)
-      return true
+      return body
     else
       logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
@@ -60,7 +67,7 @@ module OODT
 
     if response.success?
       store_basics_type_b(body)
-      return true
+      return body
     else
       logger.error "API Call to OODT to get user status for ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
@@ -83,25 +90,26 @@ module OODT
 
 
 
-  private
-    def store_basics(body)
-      external_account = ExternalAccount.new  if !external_account
+  def store_basics(body)
+    self.external_account = ExternalAccount.new if !external_account
 
-      oodt_id = body['userID']
-      oodt_baseline_survey_complete = true if body['status'] == "baselineSurveyComplete"
-      oodt_baseline_survey_complete = false if body['status'] == "baselineSurveyIncomplete"
-      oodt_baseline_survey_url = body['url']
+    self.oodt_id = body['userID']
+    self.oodt_baseline_survey_complete = true if body['status'] == "baselineSurveyComplete"
+    self.oodt_baseline_survey_complete = false if body['status'] == "baselineSurveyIncomplete"
+    self.oodt_baseline_survey_url = body['url']
 
-      return external_account
-    end
+    self.external_account.save
+    return external_account
+  end
 
-    # Implementation for API Call #6
-    def store_basics_type_b(body)
-      oodt_baseline_survey_complete = body['baselineSurveyComplete']
-      oodt_baseline_survey_url = body['url']
+  # Implementation for API Call #6
+  def store_basics_type_b(body)
+    oodt_baseline_survey_complete = body['baselineSurveyComplete']
+    oodt_baseline_survey_url = body['url']
 
-      return external_account
-    end
+    self.external_account.save
+    return external_account
+  end
 
 
 
@@ -122,14 +130,6 @@ module OODT
     end
 
   end
-
-  module ClassMethods
-    def delete_all_oodt_users
-      User.all.each { |u| u.delete_oodt_user }
-    end
-  end
-
-
 
 
 
