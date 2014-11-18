@@ -1,8 +1,11 @@
-module ValidicUser
+module Validic
+  extend ActiveSupport::Concern
 
-  def self.included(base)
-    base.extend(ClassMethods)
+
+  module ClassMethods
+    #FIXME need to factor out most of these methods into class methods, but time constraints
   end
+
 
   ####################
   # API CONNECTION SETUP
@@ -92,9 +95,6 @@ module ValidicUser
   end
 
 
-  module ClassMethods
-    #FIXME need to factor out most of these methods into class methods, but time constraints
-  end
 
 
 end

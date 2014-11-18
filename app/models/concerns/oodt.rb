@@ -1,11 +1,13 @@
-module OODTUser
+module OODT
+  extend ActiveSupport::Concern
 
-  def self.included(base)
-    base.extend(ClassMethods)
-  end
 
   # To automatically provision OODT account on user hook, add it to User.rb like so:
   # after_create :provision_oodt_user
+
+  module ClassMethods
+    #FIXME need to factor out most of these methods into class methods, but time constraints
+  end
 
 
   ####################
@@ -31,68 +33,75 @@ module OODTUser
     return !self.oodt_id.nil?
   end
 
-
-  ###################
-  # USER PROVISIONING
-  ###################
-  def provision_oodt_user #2
-    return "You already are provisioned" if !self.oodt_id.nil?
-
-    response = oodt.post "users/@@create", {:opnUserID => self.id} #not needed
-
-    if response.success?
-      body = parse_body(response)
-      self.oodt_id = body['participantID']
-      return "User successfully linked. His/her OODT ID is #{body['participantID']}"
-    else
-      logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
-      return false
-    end
+  def paired_with_LCP
+    oodt_id.present?
   end
 
 
-  def oodt_status #6
+  ###################
+  # ACCOUNT SETUP
+  ###################
+  def create_oodt(email_to_try = self.email) #2
+    response = oodt.post "users/@@create", {:email => email_to_try}
+    body = parse_body(response)
+
+    if response.success?
+      store_basics(body)
+      return true
+    else
+      logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
+  end
+
+  def refresh_oodt_status #6
     response = oodt.post "users/@@status", user_hash
     body = parse_body(response)
 
     if response.success?
-      if body['linked']
-        if !body['baselineSurveyComplete']
-          return "Connected but no consent! Visit " + body['url'] + " to finish survey"
-        else
-          return "Connected and Consented"
-        end
-      else
-        return "Not connected to partners!"
-      end
+      store_basics_type_b(body)
+      return true
     else
-      logger.error "Unsuccessful call to fetch OODT Status"
+      logger.error "API Call to OODT to get user status for ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
     end
-
   end
 
-
-  def pair_with_legacy_ccfa_partners_account(email) #3
-    response = oodt.post "users/@@link", user_hash.merge!({email: email})
+  def get_LCP_reg_url
+    response = oodt.post "users/@@registrationURL", {:email => email}
     body = parse_body(response)
 
     if response.success?
-      if body.status
-        return "You match an existing Partners users and you've done your survey"
-      else
-        return "You match an existing Partners users, but you need to visit #{body.url} to complete first survey."
-      end
+      return body['url']
     else
-      if body['errorType'] == "NotFound"
-        return "Provided email does not match partners acct"
-      else
-        logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.body}"
-        return body['errorMessage'] || body
-      end
+      logger.error "Unable to retrieve LCP reg URL for ##{self.id}. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
     end
   end
 
+
+
+
+
+  private
+    def store_basics(body)
+      external_account = ExternalAccount.new  if !external_account
+
+      oodt_id = body['userID']
+      oodt_baseline_survey_complete = true if body['status'] == "baselineSurveyComplete"
+      oodt_baseline_survey_complete = false if body['status'] == "baselineSurveyIncomplete"
+      oodt_baseline_survey_url = body['url']
+
+      return external_account
+    end
+
+    # Implementation for API Call #6
+    def store_basics_type_b(body)
+      oodt_baseline_survey_complete = body['baselineSurveyComplete']
+      oodt_baseline_survey_url = body['url']
+
+      return external_account
+    end
 
 
 

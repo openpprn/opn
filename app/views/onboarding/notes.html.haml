@@ -1,0 +1,114 @@
+
+
+
+-### STEP 1A. USER SIGNS UP
+= render :user_sign_up_form
+-## Background Task. Call users/@@create with OODT
+REDIRECT TO 2. PAIRING
+
+
+
+-### STEP 1B. USER SIGNS IN
+= render :user_sign_in_form
+-## Background Task. Call users/@@status with OODT
+REDIRECT TO 3. DASHBOARD
+
+
+
+
+before_filter REQUIRE USER HAS PAIRED WITH LEGACY CCFA PARTNERS. IF NOT REDIRECT TO PAIRING
+
+
+
+
+
+
+
+### STEP 2. PAIRING
+
+-### MATCHED
+- if current_user.paired_with_LCP?
+  Congrats, we matched up your email with the OLD legacy CCFA system.
+  Jump right into the rest of the site.{#STEP 3}
+
+  -#OPTIONAL?
+  - if !current_user.paired_with_crohnology?
+    [ ] Pair this account with my Crohnology Account #{if acct found}
+    [ ] Create a Crohnology acct #{if no acct found}
+
+  .btn NEXT (enabled if top complete)
+
+
+-### NOT MATCHED
+- else
+    -### TRY MATCHING
+    Have you already registered on CCFAPartners.com in the past?
+    %form{:url => "attempt_linkage"}
+      %email
+
+    -### GIVE UP (CREATE NEW ACCOUNT)
+    .btn= link_to "Next Step", redirect_to_legacy_reg
+
+
+
+
+
+
+
+
+
+### STEP 3. DASHBOARD
+- if !current_user.completed_baseline_survey?
+  You need to complete your baseline survey
+  = link_to "Click here to do it.", current_user.baseline_survey_url
+- else
+  Do fun website stuff!!
+
+
+
+
+
+
+
+.paired_with_LCP?
+.paired_with_crohnology?
+.completed_baseline_survey?
+.baseline_survey_url
+
+
+
+
+
+
+  ##### CONTROLLERS
+
+ REGISTRATIONS_CONTROLLER
+  OODT CONCERN
+
+  def attempt_linkage
+    response = current_user.try_to_link(params[:email])
+    if link_successful
+      :alert => "Successfully linked your Partners account to Portal"
+    else
+      :alert => "Couldn't successfully link accounts."
+    end
+    render "link_results"
+  end
+
+
+  def redirect_to_legacy_reg
+    redirect_to current_user.fetch_reg_url, :redirect_url => attempt_linkage_url
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
