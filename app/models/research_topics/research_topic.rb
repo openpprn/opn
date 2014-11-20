@@ -33,6 +33,24 @@ class ResearchTopic < ActiveRecord::Base
   end
 
 
+  def self.top_research_topics(minimum_percentage)
+    ActiveRecord::Base.connection.execute(
+        "
+    select
+    rt.id research_topic_id,
+          count(v.id) topic_votes,
+    max(vc.total) total_votes,
+    count(v.id)/(1.00 * max(vc.total)) vote_percentage
+
+    from research_topics rt, (select count(*) total from votes where research_topic_id is not null) vc, votes v
+    where v.research_topic_id = rt.id
+    group by rt.id
+    having count(v.id)/(1.00 * max(vc.total)) > #{minimum_percentage};
+    "
+    ).to_a
+  end
+
+
   def accepted?
     state == 'accepted'
   end

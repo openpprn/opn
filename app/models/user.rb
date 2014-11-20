@@ -149,4 +149,12 @@ class User < ActiveRecord::Base
 
     (todays_votes.length < vote_quota) or (rating < 1)
   end
+
+  def topics_in_top_percentile(minimum_percentage)
+    all = ResearchTopic.top_research_topics(minimum_percentage)
+    my_rt_ids = research_topics.map{|rt| rt.id.to_s}
+    mine = all.select{|result| my_rt_ids.include?(result["research_topic_id"])}
+
+    mine
+  end
 end
