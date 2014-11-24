@@ -1,30 +1,59 @@
 
 
 
--### STEP 1A. USER SIGNS UP
+-######################################
+-#### NEW USER REGISTRATION FLOW (NOT DELIBERATE, BUT EFFECTIVELY SO) ######
+-######################################
+
+-# A.
 = render :user_sign_up_form
--## Background Task. Call users/@@create with OODT
-REDIRECT TO 2. PAIRING
+  -# automatic call to attempt_linkage
+
+-# B.
+= render :pairing_wizard_form # shows the result of linkage or whatnot
+  -# user clicks "register with CCFA Parters" if not paired
+  -# user clicks "next (to dashboard)" if paired
+
+  -# B1. (if user doesn't have existing CCFA partners acct)
+    -# visit CCFA partners website to try to register
+    -# get redirected back to attempt_linkage which loops back to pairing wizard.
+
+  -# B2. (if user is paired)
+    -# Next button enables them to finally get to dashboard
+
+-# D.
+= render :dashboard
 
 
 
--### STEP 1B. USER SIGNS IN
-= render :user_sign_in_form
--## Background Task. Call users/@@status with OODT
-REDIRECT TO 3. DASHBOARD
 
-
-
-
-before_filter REQUIRE USER HAS PAIRED WITH LEGACY CCFA PARTNERS. IF NOT REDIRECT TO PAIRING
+-######################################
+-#### IMPLEMENTATION IN PSUEDO-CODE ######
+-######################################
 
 
 
 
 
+###################
+USER.RB
+def paired_with_LCP?
+  oodt_id.present?
+end
+#.paired_with_crohnology? (will write later)
+
+## BY DEFAULT
+#.oodt_baseline_survey_complete?
+#.oodt_baseline_survey_url
 
 
-### STEP 2. PAIRING
+
+
+
+
+###################
+PAIRING_WIZARD.HAML
+
 
 -### MATCHED
 - if current_user.paired_with_LCP?
@@ -54,15 +83,11 @@ before_filter REQUIRE USER HAS PAIRED WITH LEGACY CCFA PARTNERS. IF NOT REDIRECT
 
 
 
-
-
-
-### STEP 3. DASHBOARD
+###################
+HOME/INDEX.HAML (AKA DASHBOARD)
 - if !current_user.completed_baseline_survey?
   You need to complete your baseline survey
   = link_to "Click here to do it.", current_user.baseline_survey_url
-- else
-  Do fun website stuff!!
 
 
 
@@ -70,29 +95,42 @@ before_filter REQUIRE USER HAS PAIRED WITH LEGACY CCFA PARTNERS. IF NOT REDIRECT
 
 
 
-.paired_with_LCP?
-.paired_with_crohnology?
-.completed_baseline_survey?
-.baseline_survey_url
+###################
+APPLICATION CONTROLLER
+  before_action redirect_to_pairing_if_user_not_paired :except => "registrations#create"  ##### (can do this with CAN-CAN probably)
+
+  ...
+END
+
+
+################
+SESSIONS_CONTROLLER
+  after :create, fetch_and_store_oodt_status (oodt status call) ### CCFA PPRN ONLY
+
+  def fetch_and_store_oodt_status
+    current_user.fetch_and_store_oodt_status
+  end
+end
 
 
 
+###################
+REGISTRATIONS_CONTROLLER
+  OODT CONCERN (?)
+  after_action :create, attempt_linkage (CCFAPPRN ONLY)
 
 
-
-  ##### CONTROLLERS
-
- REGISTRATIONS_CONTROLLER
-  OODT CONCERN
+  def create
+    ... ## (run of the mill create new user stuff)
+  end
 
   def attempt_linkage
     response = current_user.try_to_link(params[:email])
     if link_successful
       :alert => "Successfully linked your Partners account to Portal"
-    else
-      :alert => "Couldn't successfully link accounts."
     end
-    render "link_results"
+
+    render "pairing wizard"
   end
 
 
@@ -100,8 +138,8 @@ before_filter REQUIRE USER HAS PAIRED WITH LEGACY CCFA PARTNERS. IF NOT REDIRECT
     redirect_to current_user.fetch_reg_url, :redirect_url => attempt_linkage_url
   end
 
-
-
+  ...
+end
 
 
 
