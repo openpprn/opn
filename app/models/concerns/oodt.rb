@@ -13,7 +13,7 @@ module OODT
   end
 
   included do
-    after_create :create_oodt
+
   end
 
   ####################
@@ -40,7 +40,7 @@ module OODT
     return !self.oodt_id.nil?
   end
 
-  def paired_with_LCP
+  def paired_with_lcp
     oodt_id.present?
   end
 
@@ -48,33 +48,35 @@ module OODT
   ###################
   # ACCOUNT SETUP
   ###################
-  def create_oodt(email_to_try = self.email) #2
+  def pair_with_lcp(email_to_try) #2
     response = oodt.post "users/@@create", {:email => email_to_try}
     body = parse_body(response)
 
     if response.success?
+      return false if body[:oodt_id]
+
       store_basics(body)
-      return body
+      return true
     else
       logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
-      return body['errorMessage'] || body
+      return false # body['errorMessage'] || body
     end
   end
 
-  def refresh_oodt_status #6
+  def sync_oodt_status #6
     response = oodt.post "users/@@status", user_hash
     body = parse_body(response)
 
     if response.success?
-      store_basics_type_b(body)
+      store_basics_in_status_format(body)
       return body
     else
       logger.error "API Call to OODT to get user status for ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
-      return body['errorMessage'] || body
+      return body # body['errorMessage'] || body
     end
   end
 
-  def get_LCP_reg_url
+  def get_lcp_reg_url
     response = oodt.post "users/@@registrationURL", {:email => email}
     body = parse_body(response)
 
@@ -103,7 +105,7 @@ module OODT
   end
 
   # Implementation for API Call #6
-  def store_basics_type_b(body)
+  def store_basics_in_status_format(body)
     oodt_baseline_survey_complete = body['baselineSurveyComplete']
     oodt_baseline_survey_url = body['url']
 

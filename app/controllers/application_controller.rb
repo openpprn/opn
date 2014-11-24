@@ -1,4 +1,13 @@
 class ApplicationController < ActionController::Base
+  before_action :redirect_to_pairing_if_user_not_paired #CCFA PPRN ONLY
+
+  def redirect_to_pairing_if_user_not_paired
+    if current_user && !current_user.paired_with_lcp
+      redirect_to pairing_wizard_path
+      return
+    end
+  end ##FACTOR OUT INTO CONCERN?
+
 
   def forem_user
     current_user

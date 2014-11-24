@@ -1,0 +1,40 @@
+-### pairing wizard
+
+%h3 This is the pairing wizard.
+
+-## Alert appears up here if paired with specifics (automatically paired / yada yada)
+
+
+- if current_user.paired_with_lcp
+  %h2 You are paired with CCFA Partners! You rock.
+  You can go ahead and move on into the site. Just press next.
+
+- else
+  -### PAIRING WITH CCFA PARTNERS INSTRUCTIONS
+  -###########################################
+
+  -### TRY MATCHING
+  Have you already registered on CCFAPartners.com in the past?
+  %form{url: "pair_with_lcp_fix_me"}
+    -#FIXME -- need to re-learn how to construct a rails form that will hit that action. read railsguide on form_for...
+    %input{type: "email"}
+    %submit.btn Attempt Pairing
+
+  -### GIVE UP (CREATE NEW ACCOUNT)
+  If not, no problem. Just do this:
+  %a.btn.btn-primary{href: redirect_to_lcp_reg_path} Set up Account
+
+
+
+-#- if !current_user.paired_with_crohnology?
+-#  [ ] Pair this account with my Crohnology Account #{if acct found}
+-#  [ ] Create a Crohnology acct #{if no acct found}
+
+-# else
+-### PAIRING WITH CROHNOLOGY INSTRUCTIONS
+-###########################################
+
+
+
+- if current_user.paired_with_lcp
+  %a.btn.btn-primary{href: home_path} Next

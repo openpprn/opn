@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'resources' => 'static#resources'
 
   get 'external_link_warning' => 'static#external_link_warning'
+
   #Content Pages
   get 'content/:page' => 'static#content'
   get 'content/' => 'static#content'
@@ -98,7 +99,14 @@ Rails.application.routes.draw do
   # Blog and Notification Posts
   resources :posts, except: [:show, :index]
 
-  devise_for :user, controllers: { registrations: 'registrations'}
+  # Custome Devise Controller Overrides
+  devise_for :user, controllers: { registrations: 'registrations', sessions: 'sessions'}
+
+  # Pairing Wizard
+  devise_scope :user do
+    get 'pairing_wizard' => 'registrations#pairing_wizard'
+    get 'redirect_to_lcp_reg' => 'registrations#redirect_to_lcp_reg'
+  end
 
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.

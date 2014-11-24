@@ -33,61 +33,23 @@
 
 
 
+-####################
+-#OODT.RB
+
+-#def pair_with_lcp ...
+-#def sync_status ...
+-#def get_legacy_reg_url ...
 
 
-###################
-USER.RB
-def paired_with_LCP?
-  oodt_id.present?
-end
-#.paired_with_crohnology? (will write later)
+-#def paired_with_LCP?
+-#  oodt_id.present?
+-#end
 
-## BY DEFAULT
-#.oodt_baseline_survey_complete?
-#.oodt_baseline_survey_url
+-##.paired_with_crohnology? (will write later)
 
-
-
-
-
-
-###################
-PAIRING_WIZARD.HAML
-
-
--### MATCHED
-- if current_user.paired_with_LCP?
-  Congrats, we matched up your email with the OLD legacy CCFA system.
-  Jump right into the rest of the site.{#STEP 3}
-
-  -#OPTIONAL?
-  - if !current_user.paired_with_crohnology?
-    [ ] Pair this account with my Crohnology Account #{if acct found}
-    [ ] Create a Crohnology acct #{if no acct found}
-
-  .btn NEXT (enabled if top complete)
-
-
--### NOT MATCHED
-- else
-    -### TRY MATCHING
-    Have you already registered on CCFAPartners.com in the past?
-    %form{:url => "attempt_linkage"}
-      %email
-
-    -### GIVE UP (CREATE NEW ACCOUNT)
-    .btn= link_to "Next Step", redirect_to_legacy_reg
-
-
-
-
-
-
-###################
-HOME/INDEX.HAML (AKA DASHBOARD)
-- if !current_user.completed_baseline_survey?
-  You need to complete your baseline survey
-  = link_to "Click here to do it.", current_user.baseline_survey_url
+-### BY DEFAULT
+-##.oodt_baseline_survey_complete?
+-##.oodt_baseline_survey_url
 
 
 
@@ -95,52 +57,101 @@ HOME/INDEX.HAML (AKA DASHBOARD)
 
 
 
-###################
-APPLICATION CONTROLLER
-  before_action redirect_to_pairing_if_user_not_paired :except => "registrations#create"  ##### (can do this with CAN-CAN probably)
-
-  ...
-END
 
 
-################
-SESSIONS_CONTROLLER
-  after :create, fetch_and_store_oodt_status (oodt status call) ### CCFA PPRN ONLY
-
-  def fetch_and_store_oodt_status
-    current_user.fetch_and_store_oodt_status
-  end
-end
+-####################
+-#PAIRING_WIZARD.HAML
 
 
+-#-### MATCHED
+-#- if current_user.paired_with_LCP?
+-#  Congrats, we matched up your email with the OLD legacy CCFA system.
+-#  Jump right into the rest of the site.{#STEP 3}
 
-###################
-REGISTRATIONS_CONTROLLER
-  OODT CONCERN (?)
-  after_action :create, attempt_linkage (CCFAPPRN ONLY)
+-#  -#OPTIONAL?
+-#  - if !current_user.paired_with_crohnology?
+-#    [ ] Pair this account with my Crohnology Account #{if acct found}
+-#    [ ] Create a Crohnology acct #{if no acct found}
 
-
-  def create
-    ... ## (run of the mill create new user stuff)
-  end
-
-  def attempt_linkage
-    response = current_user.try_to_link(params[:email])
-    if link_successful
-      :alert => "Successfully linked your Partners account to Portal"
-    end
-
-    render "pairing wizard"
-  end
+-#  .btn NEXT (enabled if top complete)
 
 
-  def redirect_to_legacy_reg
-    redirect_to current_user.fetch_reg_url, :redirect_url => attempt_linkage_url
-  end
+-#-### NOT MATCHED
+-#- else
+-#    -### TRY MATCHING
+-#    Have you already registered on CCFAPartners.com in the past?
+-#    %form{:url => "attempt_linkage"}
+-#      %email
 
-  ...
-end
+-#    -### GIVE UP (CREATE NEW ACCOUNT)
+-#    .btn= link_to "Next Step", redirect_to_legacy_reg
 
+
+
+
+
+
+
+
+
+
+-####################
+-#REGISTRATIONS_CONTROLLER
+-#  OODT CONCERN (?)
+-#  after_action :create, attempt_linkage (CCFAPPRN ONLY)
+
+
+  -#def create
+  -#  ... ## (run of the mill create new user stuff)
+  -#end
+
+  -#def pair_with_lcp
+  -#  response = current_user.try_to_link(params[:email])
+  -#  if link_successful
+  -#    :alert => "Successfully linked your Partners account to Portal"
+  -#  end
+
+  -#  render "pairing wizard"
+  -#end
+
+
+  -#def redirect_to_legacy_reg
+  -#  redirect_to current_user.fetch_reg_url, :redirect_url => attempt_linkage_url
+  -#end
+
+-#  ...
+-#end
+
+
+
+
+-####################
+-#APPLICATION CONTROLLER
+-#  before_action redirect_to_pairing_if_user_not_paired :except => "registrations#create"  ##### (can do this with CAN-CAN probably)
+
+-#  ...
+-#END
+
+
+-#################
+-#SESSIONS_CONTROLLER
+-#  after :create, fetch_and_store_oodt_status (oodt status call) ### CCFA PPRN ONLY
+
+-#  def fetch_and_store_oodt_status
+-#    current_user.fetch_and_store_oodt_status
+-#  end
+-#end
+
+
+
+
+
+
+-####################
+-#HOME/INDEX.HAML (AKA DASHBOARD)
+-#- if !current_user.completed_baseline_survey?
+-#  You need to complete your baseline survey
+-#  = link_to "Click here to do it.", current_user.baseline_survey_url
 
 
 
