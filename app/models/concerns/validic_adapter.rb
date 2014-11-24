@@ -1,5 +1,6 @@
-module Validic
+module ValidicAdapter
   extend ActiveSupport::Concern
+
 
 
   module ClassMethods
@@ -7,6 +8,10 @@ module Validic
     def delete_all_validic_users
       get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
     end
+  end
+
+  included do
+    after_create :provision_validic_user
   end
 
 
