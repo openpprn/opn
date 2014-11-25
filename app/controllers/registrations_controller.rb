@@ -19,8 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   def pairing_wizard #(email)
-    #byebug
-    # Makes sure everytime we run pairing_wizard we are working with the latest data
+    #Try pairing to make sure everytime we run pairing_wizard we are working with the latest data
     try_pairing if !current_user.paired_with_lcp
 
     # Then render pairing page
@@ -29,13 +28,8 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   def redirect_to_lcp_reg
-    # lcp_reg_url = current_user.get_lcp_reg_url
-    # if lcp_reg_url
-    redirect_to current_user.get_lcp_reg_url + "&return_url=#{pairing_wizard_url}"
-    # else
-    #   flash[:error] = "User already registered on Legacy CCFA Partners"
-    #   redirect :back
-    # end
+
+    redirect_to current_user.get_lcp_reg_url(return_url: pairing_wizard_url)
     return
   end
 
@@ -54,7 +48,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def try_pairing
+  def try_pairing #accepts optional URL param of email
     email_to_try = params[:email] || current_user.email
 
     if current_user.pair_with_lcp(email_to_try)

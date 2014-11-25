@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :redirect_to_pairing_if_user_not_paired #CCFA PPRN ONLY
+  #REFACTOR TO CONCERN
 
   def redirect_to_pairing_if_user_not_paired
     if current_user && !current_user.paired_with_lcp

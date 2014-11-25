@@ -1,7 +1,6 @@
 module OODT
   extend ActiveSupport::Concern
 
-
   # To automatically provision OODT account on user hook, add it to User.rb like so:
   # after_create :provision_oodt_user
 
@@ -63,8 +62,8 @@ module OODT
     end
   end
 
-  def sync_oodt_status #6
-    response = oodt.post "users/@@status", user_hash
+  def sync_oodt_status #Allowed Option :return_url #6
+    response = oodt.post "users/@@status", user_hash.merge(:return_url => root_url) #where you want the baseline survey to drop back users
     body = parse_body(response)
 
     if response.success?
@@ -76,8 +75,8 @@ module OODT
     end
   end
 
-  def get_lcp_reg_url
-    response = oodt.post "users/@@registrationURL", {:email => email}
+  def get_lcp_reg_url(options = {}) #Allowed Option :return_url
+    response = oodt.post "users/@@registrationURL", {:email => email, :return_url => options[:return_url]}
     body = parse_body(response)
 
     if response.success?
