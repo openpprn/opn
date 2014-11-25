@@ -10,6 +10,7 @@ user_<%= i %>:
   zip_code: 12345
   year_of_birth: 1980
   encrypted_password: <%= pw %>
+
 <% end %>
 
 social:
@@ -20,7 +21,6 @@ social:
   zip_code: 12345
   year_of_birth: 1980
   encrypted_password: <%= pw %>
-
 
 admin:
   first_name: Ad

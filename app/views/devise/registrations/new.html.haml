@@ -31,13 +31,14 @@
             = f.label :password_confirmation, "Password Confirm", :class => "control-label col-sm-5"
             .col-sm-7
               = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation"
-          .form-group
-            = f.label :condition, :class => "control-label col-sm-5"
-            .col-sm-7
-              %select.form-control
-                - Figaro.env.pprn_conditions.split(",").each do |condition|
-                  %option
-                    = condition
+          - if Figaro.env.pprn_conditions
+            .form-group
+              = f.label :condition, :class => "control-label col-sm-5"
+              .col-sm-7
+                %select.form-control
+                  - Figaro.env.pprn_conditions.split(",").each do |condition|
+                    %option
+                      = condition
           .form-group
             .col-sm-offset-5.col-sm-7
               = f.submit "Sign up", :class => "btn btn-primary"

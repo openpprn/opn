@@ -1,12 +1,20 @@
 class SessionsController < Devise::SessionsController;
-  after_action :sync_oodt_status, only: [:create] ### CCFA PPRN ONLY
-  skip_before_action :redirect_to_pairing_if_user_not_paired
+
+  def initialize
+    include_plugins
+    super
+  end
 
 
   private
 
   def sync_oodt_status
-    current_user.sync_oodt_status
+    current_user.sync_oodt_status(return_url: root_url) if current_user
+  end
+
+
+  def include_plugins
+    self.class.send(:include, OODTSessionsController) if Figaro.env.oodt_enabled?
   end
 
 end

@@ -1,14 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :redirect_to_pairing_if_user_not_paired #CCFA PPRN ONLY
-  #REFACTOR TO CONCERN
 
-  def redirect_to_pairing_if_user_not_paired
-    if current_user && !current_user.paired_with_lcp
-      redirect_to pairing_wizard_path
-      return
-    end
-  end ##FACTOR OUT INTO CONCERN?
-
+  def initialize
+    include_plugins
+    super
+  end
 
   def forem_user
     current_user
@@ -52,5 +47,14 @@ class ApplicationController < ActionController::Base
   def no_layout
     render layout: false
   end
+
+
+  private
+
+
+  def include_plugins
+    self.class.send(:include, OODTApplicationController) if Figaro.env.oodt_enabled?
+  end
+
 
 end

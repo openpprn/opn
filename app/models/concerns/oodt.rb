@@ -62,8 +62,8 @@ module OODT
     end
   end
 
-  def sync_oodt_status #Allowed Option :return_url #6
-    response = oodt.post "users/@@status", user_hash.merge(:return_url => root_url) #where you want the baseline survey to drop back users
+  def sync_oodt_status(options) #Allowed Option :return_url #6
+    response = oodt.post "users/@@status", user_hash.merge(:return_url => options[:return_url]) #where you want the baseline survey to drop back users
     body = parse_body(response)
 
     if response.success?
