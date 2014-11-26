@@ -105,6 +105,7 @@ Rails.application.routes.draw do
   # Pairing Wizard
   devise_scope :user do
     get 'pairing_wizard' => 'registrations#pairing_wizard'
+    post 'pairing_wizard' => 'registrations#pairing_wizard' #enables trying specified email
     get 'redirect_to_lcp_reg' => 'registrations#redirect_to_lcp_reg'
   end
 

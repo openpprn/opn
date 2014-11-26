@@ -32,9 +32,13 @@
 
 -####################
 -#HOME/INDEX.HAML (AKA DASHBOARD)
-- if Figaro.env.oodt_enabled && current_user && !current_user.oodt_baseline_survey_complete
-  %h2 You need to complete your baseline survey!
-  = link_to "Click here to do it.", current_user.oodt_baseline_survey_url+"&return_url=#{home_url}"
+- if Figaro.env.oodt_enabled && current_user
+  .alert.alert-info
+    -if !current_user.oodt_baseline_survey_complete
+      %strong You need to complete your baseline survey!
+      = link_to "Click here to do it.", current_user.oodt_baseline_survey_url
+    -else
+      Great, you've completed your baseline survey!
 
 
 

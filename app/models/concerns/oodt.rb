@@ -52,7 +52,7 @@ module OODT
     body = parse_body(response)
 
     if response.success?
-      return false if body[:oodt_id]
+      return false if !body['userID']
 
       store_basics(body)
       return true

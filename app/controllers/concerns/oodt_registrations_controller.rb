@@ -12,9 +12,9 @@ module OODTRegistrationsController
 
 
 
-  def pairing_wizard #(email)
-    #Try pairing to make sure everytime we run pairing_wizard we are working with the latest data
-    try_pairing if !current_user.paired_with_lcp
+  def pairing_wizard #(optional param: email)
+    #Try pairing to make sure everytime we run pairing_wizard we are working with the latest data\
+    try_pairing(params[:email]) if !current_user.paired_with_lcp
 
     # Then render pairing page
   end
@@ -26,18 +26,19 @@ module OODTRegistrationsController
 
 
 
+
   private
 
-  def try_pairing #accepts optional URL param of email
-    email_to_try = params[:email] || current_user.email
+  def try_pairing(alt_email) #accepts optional URL param of email
+
+    email_to_try = alt_email || current_user.email
 
     if current_user.pair_with_lcp(email_to_try)
-      flash[:success] = "Success! We linked your account with a Partners account that has the email address, #{email_to_try}. Wonderful!"
+      flash.now[:notice] = "Success! We found that your email address, #{email_to_try}, matches an existing CCFA Partners account. Wonderful! We've connected them automatically to save you time entering data."
       #TODO: make this message be different if the user was automatically paired
-    else
-      flash[:notice] = "Your email address, #{email_to_try}, didn't match an existing CCFA Partners account. Please try pairing:"
+    elsif alt_email
+      flash.now[:notice] = "Your email address, #{email_to_try}, didn't match an existing CCFA Partners account. Would you like to try another email?"
     end
-
   end
 
 

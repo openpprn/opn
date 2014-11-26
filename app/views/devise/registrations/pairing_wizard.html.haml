@@ -1,40 +1,36 @@
 -### pairing wizard
 
-%h3 This is the pairing wizard.
+%h2 Pairing Wizard
+%p Let's start by seeing if you've registered for the old CCFA Partners website, so we can bring your data over.
 
--## Alert appears up here if paired with specifics (automatically paired / yada yada)
+.panel.panel-default
+  .panel-heading
+    Legacy CCFA Partners
+  .panel-body
+    - if current_user.paired_with_lcp
+      %i.fa.fa-check-square-o
+      Wonderful, you've paired your account with CCFA Partners! You're ready to continue into the site!
+    - else
+      %i.fa.fa-square-o
+      = "Do you know if you've registered with CCFAPartners.com in the past under a different email address than #{current_user.email}? If so, you can try to link this account to it. Provide an alternative email you may have used to register for that site here. If you are pretty sure you have no existing CCFA Partners account, you can just set up a new account below."
+      %br/
 
-
-- if current_user.paired_with_lcp
-  %h2 You are paired with CCFA Partners! You rock.
-  You can go ahead and move on into the site. Just press next.
-
-- else
-  -### PAIRING WITH CCFA PARTNERS INSTRUCTIONS
-  -###########################################
-
-  -### TRY MATCHING
-  Have you already registered on CCFAPartners.com in the past?
-  %form{url: "pair_with_lcp_fix_me"}
-    -#FIXME -- need to re-learn how to construct a rails form that will hit that action. read railsguide on form_for...
-    %input{type: "email"}
-    %submit.btn Attempt Pairing
-
-  -### GIVE UP (CREATE NEW ACCOUNT)
-  If not, no problem. Just do this:
-  %a.btn.btn-primary{href: redirect_to_lcp_reg_path} Set up Account
-
-
+      =form_tag(pairing_wizard_path, class: "form-inline")
+      .form-group
+        .input-group
+          %label.sr-only{:for => "email"} Email address
+          =text_field_tag(:email, nil, class: "form-control", :placeholder => "Alternative Email Address", :type => "email")
+      .form-group
+        .input-group
+          =submit_tag "Try Matching Account", class: "btn btn-success"
 
 -#- if !current_user.paired_with_crohnology?
 -#  [ ] Pair this account with my Crohnology Account #{if acct found}
 -#  [ ] Create a Crohnology acct #{if no acct found}
 
--# else
--### PAIRING WITH CROHNOLOGY INSTRUCTIONS
--###########################################
-
-
 
 - if current_user.paired_with_lcp
-  %a.btn.btn-primary{href: home_path} Next
+  %a.btn.btn-primary{href: home_path} Continue
+- else
+  %a.btn.btn-primary{href: redirect_to_lcp_reg_path} Set up New Account
+

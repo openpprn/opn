@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 
   # Enable User Connection to External API Accounts
   include ExternalAccounts
-  has_one :external_account
 
   self.authorizer_name = "UserAuthorizer"
 
