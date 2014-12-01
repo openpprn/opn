@@ -1,12 +1,12 @@
 
 .panel.panel-default
   .panel-heading
-    %h3.panel-title Research Projects that have gained from your Contributions
+    %h3.panel-title Data Access Logs
 
 
   - if @research_access_events.empty?
     .panel-body
-      .alert.alert-info No researchers has yet used your data to advance science. When researchers have, we will list it here.
+      .alert.alert-info Your data has not been accessed yet.
   - else
     %table.table
       %thead

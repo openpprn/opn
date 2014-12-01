@@ -14,7 +14,7 @@
         %br/
         = @survey_scorecard['completed'].count if !@survey_scorecard['completed'].nil?
         = "/"
-        = @survey_scorecard['incomplete'].count if !@survey_scorecard['incomplete'].nil?
+        = @survey_scorecard['incomplete'].count + @survey_scorecard['completed'].count if !@survey_scorecard['incomplete'].nil? && !@survey_scorecard['completed'].nil?
 
       - if @survey_scorecard['openingDate']
         - opening_date = Time.parse(@survey_scorecard['openingDate'])

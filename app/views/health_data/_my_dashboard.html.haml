@@ -18,5 +18,6 @@ Dashboard goes here.
 
   .panel-footer
     %em.pull-left= "Current as of #{@med_list['date']}" if @med_list['date']
-    %a.btn.btn-success.pull-right{href: current_user.get_med_update_url} Update my Meds
+    - if current_user
+      %a.btn.btn-success.pull-right{href: current_user.get_med_update_url} Update my Meds
     .clearfix
