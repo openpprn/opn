@@ -1,0 +1,50 @@
+-##############
+-### COMMUNITY CONTRIBUTIONS
+-##############
+- content_for :community_contributions, render(partial: "health_check_in")
+
+
+-##############
+-### YOUR CONTRIBUTIONS
+-#############
+- content_for :your_contributions do
+  = render partial: "shared/badge_list"
+
+
+
+
+-##############
+-### MAIN CONTENT SECTION
+-##############
+%ul.nav.nav-tabs#tabs
+  %li.active
+    %a{"data-toggle" => "tab", :href => "#my_trends"} My Trends
+  %li
+    %a{"data-toggle" => "tab", :href => "#my_health_measures"} My Health Measures
+  %li
+    %a{"data-toggle" => "tab", :href => "#my_dashboard"} My Dashboard
+  %li
+    %a{"data-toggle" => "tab", :href => "#my_connections"} My Connections
+  %li.pull-right
+    %a{"data-toggle" => "tab", :href => "#tutorial"}
+      %i.fa.fa-info-circle
+
+%br/
+
+.tab-content
+  #my_trends.tab-pane.active
+    = render partial: "my_trends"
+
+  #my_health_measures.tab-pane
+    = render partial: "my_health_measures"
+
+  #my_dashboard.tab-pane
+    = render partial: "my_dashboard"
+
+  #my_connections.tab-pane
+    = render partial: "my_connections"
+
+  #tutorial.tab-pane
+    = render partial: "tutorial"
+
+

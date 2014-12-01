@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || research_topics_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_path
   end
 
   # Send 'em back where they came from with a slap on the wrist
   def authority_forbidden(error)
     Authority.logger.warn(error.message)
-    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <#{PPRN_SUPPORT_EMAIL}>."
+    redirect_to request.referrer.presence || root_path, :alert => "Sorry! You attempted to visit a page you do not have access to. If you believe this message to be unjustified, please contact us at <#{Figaro.env.pprn_support_email}>."
   end
 
 
@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
     @active_top_nav_link = :health_data
   end
 
-  def set_active_top_nav_link_to_social
-    @active_top_nav_link = :social
+  def set_active_top_nav_link_to_members
+    @active_top_nav_link = :members
   end
 
   def set_active_top_nav_link_to_blog

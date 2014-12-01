@@ -44,9 +44,18 @@ To set up your secret keys, run
 figaro install
 ```
 
-Add the following lines to the /config/application.yml file it generates, complete with appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
+Add the following lines to the /config/application.yml file it generates and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
 
 ```
+pprn: "ccfa"
+pprn_title: "CCFA Partners"
+pprn_condition: "Crohn's & Ulcerative Colitis"
+pprn_conditions: "Crohn's, Ulcerative Colitis"
+pprn_support_email: "support@ccfapartners.org"
+
+oodt_enabled: "true"
+validic_enabled: "true"
+
 uservoice_api_key: 
 google_analytics_web_property_id:
 
@@ -70,3 +79,38 @@ rails s
 Open a browser and go to: [http://localhost:3000](http://localhost:3000)
 
 All done!
+
+## Deploying to Heroku
+
+If you are deploying to heroku, to get your application.yml loaded into heroku environment configuration (required to function), do
+```
+figaro heroku:set -e production
+```
+
+## Seeding your Database
+
+If you are just doing test installs or demonstrations of the website, you may want to start with some seed data. Some combination and/or all of these below should get you started:
+
+```
+rake db:seed
+rake surveys
+rake legacy_seed
+```
+
+
+
+## Modification of Content & Layout
+
+The main navigation of the application is structured like so (in controller#action/view_name format):
+- Home#Index
+- Research#Index
+- HealthData#Index
+- Members#Index
+
+If you want to edit any of the major views, you'll find them in the app/views/home, app/views/research, app/views/health_data, & app/views/members directories in .html.haml formats (eg. app/views/home/index.html.haml is the logged-in home page)
+
+Each of those directories contains related partials that are used to help support the views, named with a leading underscore, eg. _tutorial.html.haml, which is the tutorial accessible by tab on most of the major views.
+
+The logged out homepage is Static#Splash (can be found in app/views/static/splash.html.haml). Other static (about/tos/pp) and content pages (lots of text about the network) can be found in this same directory.
+
+

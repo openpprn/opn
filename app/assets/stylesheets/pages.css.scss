@@ -29,28 +29,9 @@ body {
   }
 }
 
-.req {
-  color: red;
-  display: none;
-  font-size: 10px;
-}
-
-// .requirement-flag {
-//   position: absolute;
-//   color: red;
-//   top: 0px;
-//   right: 0px;
-//   z-index: 10;
-// }
 
 .graphs .panel-body {
-  height: 200px;
   text-align: center;
-  img {
-    max-height: 180px;
-    max-width: 100%;
-
-  }
 }
 
 .research-list-heading {
@@ -59,9 +40,6 @@ body {
 
 .user-avatar {
   width: 60px;
+  height: 60px;
 }
 
-
-// #requirements-toggler {
-//   color: red;
-// }

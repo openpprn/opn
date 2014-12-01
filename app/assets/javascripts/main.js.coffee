@@ -66,6 +66,7 @@ $.rails.allowAction = (element) ->
     $(".offcanvas-toggle a").toggleClass "active"
     return
 
+
 @loaders = () ->
   mainLoader()
   surveysReady()

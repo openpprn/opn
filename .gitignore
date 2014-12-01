@@ -40,6 +40,8 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 **~
 
+
+
 # Ignore IDE files
 /.idea
 
@@ -56,8 +58,7 @@ config/initializers/secret_token.rb
 .DS_Store
 
 # Ignore Generated Files
-
-/Gemfile.lock
+.gitignore
 /db/schema.rb
 
 # Ignore application configuration

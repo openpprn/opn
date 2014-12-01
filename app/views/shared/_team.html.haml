@@ -1,15 +1,24 @@
-- [["Research Team", User.with_role(:research_team)], ["Patient Team",User.with_role(:patient_team)]].each do |title,team|
-  .panel.panel-default
-    .panel-heading
-      %h3.panel-title= title
 
-    - team.each do |user|
-      .panel-body
-        .media
-          %a.pull-left
-            = image_tag user.photo_url, :class => " media-object img-circle user-avatar" if user.photo_url
-          .media-body.small
-            %strong
-              = user.name
-            %p
-              = "Title"
+%h2 Team
+
+.panel.panel-default
+  -# .panel-heading
+  -#   %h3.panel-title Governance Team
+
+
+  .panel-body
+
+    - [["Patient Team",User.with_role(:patient_team)],["Research Team", User.with_role(:research_team)], ["Tech Team",User.with_role(:patient_team)]].each do |title,team|
+
+      %h4= title
+
+
+      - team.each do |user|
+        .row
+          - 3.times do
+            .col-sm-2
+              = image_tag user.photo_url, :class => "img-circle" if user.photo_url
+              .small
+                %strong
+                  = "Ms. Lorem Ipsum" || user.name
+        %hr/

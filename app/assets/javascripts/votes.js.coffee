@@ -64,16 +64,18 @@ $(document).on "click", ".research_topics a.voting", (event) ->
 
   )
 
-
+# <<<<<<< HEAD
+# $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
 $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
 
-  target_path = $(event.target).data("target-path")
-  target_pane = $($(event.target).attr("href"))
-  target_pane.hide()
 
-  id = target_pane.attr("id")
+#   target_path = $(event.target).data("target-path")
+#   target_pane = $($(event.target).attr("href"))
+#   target_pane.hide()
 
-  $.get(target_path, { id: id}, (data) ->
-    target_pane.html(data)
-    target_pane.show()
-  )
+#   id = target_pane.attr("id")
+
+#   $.get(target_path, { id: id}, (data) ->
+#     target_pane.html(data)
+#     target_pane.show()
+#   )

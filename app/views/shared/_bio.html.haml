@@ -1,0 +1,12 @@
+-# Bio Spot
+
+%ul.list-group
+  %li.list-group-item
+    .media
+      .pull-left
+        = image_tag current_user.photo_url, :class => " media-item-object img-circle user-avatar"
+      .media-body.small
+        %h4= current_user.name
+        .badge.badge-primary
+          = pprn_number_to_human(current_user.points)
+          Karma

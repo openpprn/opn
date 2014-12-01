@@ -1,29 +1,153 @@
-- if current_user
-  .row.vote_counter{"data-target-path" => vote_counter_path}
-    = render partial: 'research/vote_counter'
+- content_for :community_contributions do
+  .row
+    .col-md-7
+      .panel.panel-primary
+        .panel-heading
+          Community Contributions
+        .panel-body.text-right
+          .row
+            .col-md-4
+              Proposed Questions
+              %br/
+              %span.h0 56
+            .col-md-4
+              Votes Cast
+              %br/
+              %span.h0 329
+            .col-md-4
+              Being Researched
+              %br/
+              %span.h0 2
 
-%br/
+- content_for :your_contributions do
+  = render partial: "shared/badge_list", :locals => {badges: [{title:"Inquisitor",body:"You asked 1 research question", earned:true, icon: "fa-question-circle"},
+                                                              {title:"Voter",body:"You cast 5 votes", icon: "fa-check-circle-o"},
+                                                              {title:"Discusser",body:"You commented on 3 topics", icon: "fa-comments-o"},
+                                                              {title:"Great Ideamaker",body:"Your ideas are in the top 25%", icon: "fa-lightbulb-o"},
+                                                              {title:"Dutiful Citizen",body:"You've responded to 10 biannual surveys!", icon: "fa-list-ul"},
+                                                              {title:"On Fire!",body:"You are on a 5 survey streak!", icon: "fa-fire", earned: true} ]}
 
-%ul.nav.nav-tabs.nav-justified{role: "tablist"}
+
+
+%ul.nav.nav-tabs{role: "tablist"}
   %li.active
-    %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Most Votes
-  - if current_user
-    %li
-      %a{"data-toggle" => "tab", href: "#voted_on", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
-    %li
-      %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Submissions
+    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Patient-Proposed Research
   %li
-    %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} Surveys
+  %li
+    %a{"data-toggle" => "tab", href: "#activity-log", role: "tab"} Research Access Log
 
-/ Tab panes
-.tab-content
-  #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
-  - if current_user
-    #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
-    #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
-  #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest(current_user), disabled: false}
+  %li.pull-right
+    %a{"data-toggle" => "tab", :href => "#tutorial"}
+      %i.fa.fa-info-circle
+
 %br/
-= link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
+
+
+.row
+  / .col-md-3
+  /   %br/
+  /   %ul.nav.nav-pills.nav-stacked
+  /     %li.active
+  /       %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
+  /     - if current_user
+  /       %li
+  /         %a{"data-toggle" => "tab", href: "#voted_on", role: "tab", "data-target-path" => research_topics_ajax_path} My Votes
+  /       %li
+  /         %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} My Submissions
+  /     %li
+  /       %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+  .col-md-12
+
+
+    / Tab panes
+    .tab-content
+      #research-democracy.tab-pane.active
+        %ul.nav.nav-pills{role: "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Idea Voting
+          %li
+            %a{"data-toggle" => "tab", href: "#submitted", role: "tab", "data-target-path" => research_topics_ajax_path} Winning Ideas
+          / %li
+          /  %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Published Research
+          %li
+            %a{"data-toggle" => "tab", href: "#published", role: "tab"} Completed Research
+        %br/
+
+        .tab-content
+          #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, disabled: false}
+          - if current_user
+            #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+            #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
+            / #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, disabled: false}
+            #published.tab-pane= render partial: "research_topics/results"
+        = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm"
+
+
+      #surveys.tab-pane
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Surveys You've Completed
+          %table.table
+            %thead
+              %th Date
+              %th Survey
+            %tbody
+              %tr
+                %td Feb 2014
+                %td Recurring Six-Month Survey
+              %tr
+                %td Aug 2013
+                %td Recurring Six-Month Survey
+              %tr
+                %td Jan 2013
+                %td Recurring Six-Month Survey
+
+
+      #activity-log.tab-pane
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Research Projects that have gained from your Contributions
+          %table.table
+            %thead
+              %th Date
+              %th Project
+            %tbody
+              %tr
+                %td Nov 2014
+                %td University of Chapel Hill. Study on the Specific Carbohydrate Diet.
+              %tr
+                %td Sep 2014
+                %td Dr. Bob Sandler. Study on Biologics and Fitness.
+              %tr
+                %td Jul 2014
+                %td Dr. Michael Kappelman. Study on Patient Powered Research.
+
+
+      #tutorial.tab-pane
+        %br/
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum placerat nibh diam, vel blandit lorem porta eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus vulputate facilisis ornare. In sed sollicitudin ante, at iaculis ligula. Fusce imperdiet velit sed dui volutpat tempor. Sed ut lobortis lectus. Aliquam non finibus diam, non ornare nulla.
+
+        %p Vivamus non lacus in justo pharetra blandit. Integer tincidunt erat et eros ornare, quis porttitor nulla ullamcorper. Curabitur et pharetra purus, eget accumsan est. Phasellus laoreet mollis dui, sit amet convallis diam convallis in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce diam ex, tincidunt id egestas sed, vehicula eget leo. Sed fermentum justo tempor dolor scelerisque, vel ornare felis dapibus. Aliquam porta scelerisque lacus, vel mattis quam pharetra vitae. Nullam suscipit pharetra posuere. Donec maximus turpis sit amet diam scelerisque, sit amet porta risus egestas. Etiam finibus tristique eros vitae porta. In hac habitasse platea dictumst. Donec non ligula vehicula, posuere odio quis, maximus elit. Proin ac risus arcu.
+
+        %p Aenean euismod nisl non massa rutrum, a placerat velit facilisis. In sed suscipit ante. Maecenas tristique libero lacus, in consectetur tellus rutrum ac. Maecenas a viverra enim. Fusce varius arcu ut nibh pharetra interdum. Fusce ut felis arcu. Phasellus ut magna vel odio rutrum interdum quis in odio. Proin semper odio ac condimentum ultrices. Duis pretium tellus ut erat finibus, a venenatis enim tristique. Donec ornare at risus sed interdum. Aliquam porta, diam non porta rhoncus, dui mauris fringilla nunc, sed pellentesque tortor metus nec ante. Cras sagittis aliquet tortor lacinia ultrices. Duis vitae metus sem.
+
+        %p Mauris vitae ullamcorper risus, eu viverra neque. Duis eget diam mollis, mattis eros mattis, laoreet ipsum. Suspendisse egestas et nisl in porttitor. Proin tellus nisl, elementum nec nibh quis, consequat lacinia justo. Praesent eu lectus gravida, sollicitudin eros mattis, blandit dui. Morbi quis velit sem. Proin placerat justo ac risus pulvinar, in sagittis mauris ornare. Sed congue a augue sit amet pretium. Ut et quam in quam euismod pretium. Maecenas ornare faucibus iaculis. Mauris tincidunt vehicula magna, tincidunt elementum augue aliquet quis. Mauris a enim vel risus eleifend sodales eget et lectus. Maecenas rutrum volutpat ex, a finibus quam commodo id. Nam tincidunt auctor sem. Vestibulum vulputate velit vel aliquam dignissim. Vestibulum malesuada, urna vitae venenatis posuere, massa purus tincidunt augue, ac mattis magna orci a ligula.
+
+        %p Cras cursus et justo quis tristique. Sed facilisis, magna at egestas convallis, turpis lacus consequat elit, congue mollis ligula elit id risus. Phasellus luctus accumsan orci eu accumsan. Aliquam vehicula arcu at neque feugiat, eu sollicitudin purus lobortis. Suspendisse nec leo nec eros viverra hendrerit tristique tincidunt sem. Sed sed eleifend nibh. Nam tincidunt sit amet nisi nec bibendum. Nulla nec sem purus. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod arcu id dictum ullamcorper. Maecenas euismod urna in tristique tempus. Maecenas nulla eros, dictum in est in, euismod tempus lacus.
+/ =======
+/     %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+
+/ / Tab panes
+/ .tab-content
+/   #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular(current_user), disabled: false}
+/   - if current_user
+/     #voted_on.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+/     #submitted.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: current_user.submitted_research_topics, disabled: false}
+/   #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest(current_user), disabled: false}
+/ %br/
+/ = link_to "Add a new research question", new_research_topic_path, class: "btn btn-success btn-sm btn-block"
+/ >>>>>>> master
 
 
 

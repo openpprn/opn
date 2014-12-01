@@ -1,0 +1,51 @@
+- @title = "Community"
+- @intro = true
+
+- content_for :sublayout do
+
+  -# MOSAIC AND TITLE
+  .row.mosaic-bg
+    .col-md-9
+      <br/>
+      .panel.panel-primary.display-inline-block
+        .panel-heading
+          %span.h1= @active_top_nav_link.to_s.titleize
+
+
+
+      -# COMMUNITY CONTRIBUTIONS PANEL
+      - if content_for(:community_contributions)
+        .community-scoreboard
+          = yield :community_contributions
+        <br/><br/>
+      - else
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+      -#################
+      -# PAGE CONTENT! #
+      = yield
+
+
+    -# YOUR CONTRIBUTIONS SIDEBAR
+    .col-md-3
+      - if !current_user
+        = render partial: "shared/promotion_to_join"
+      - else
+        - if content_for(:your_contributions)
+
+          <br/><br/><br/><br/><br/>
+          %a{href: account_path}
+            .panel.panel-primary
+              = render partial: "shared/bio"
+
+
+          .panel.panel-primary
+            .panel-heading
+              Badges You've Earned
+            = yield :your_contributions
+
+
+
+
+= render template: "layouts/application"
+

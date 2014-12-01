@@ -1,0 +1,15 @@
+
+
+- if !users.any?
+  .alert.alert-warning No People Fit This Role Yet.
+- else
+  .well
+    .row
+      - users.each do |user|
+        .col-sm-2
+          = image_tag user.photo_url, :class => "img-circle" if user.photo_url
+          .small
+            %strong
+              = user.name
+
+%br/

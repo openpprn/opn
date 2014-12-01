@@ -25,6 +25,17 @@ class Vote < ActiveRecord::Base
     res.map {|question| {question: Question.find(question.question_id), created_at: question.created_at, rating: question.rating || 0}}.sort {|q1, q2| q1[:created_at] <=> q2[:created_at]}
   end
 
+
+  # This helps with app/models/merit/point_rules.rb
+  def research_topic_author
+    if research_topic
+      return research_topic.user
+    else
+      return false
+    end
+  end
+
+
   private
 
   def self.process_rq_results(results)

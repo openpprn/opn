@@ -37,12 +37,12 @@
   .form-group
     = f.label :title, class: 'sr-only'
     = f.text_field :title, class: 'form-control input-lg', placeholder: "Title of Post", autocomplete: :off
-  .form-group
-    = f.label :author, class: 'sr-only'
-    = f.text_area :author, placeholder: "Author", class: 'form-control input-lg'
-  .form-group
-    = f.label :tags, class: 'sr-only'
-    = f.select :tags, post.tag_list, {}, {multiple:true, placeholder: "Enter tags for this post...", data: {role: 'tagsinput'}, class: 'input-lg'}
+  -#.form-group
+  -#  = f.label :author, class: 'sr-only'
+  -#  = f.text_area :author, placeholder: "Author", class: 'form-control input-lg'
+  -#.form-group
+  -#  = f.label :tags, class: 'sr-only'
+  -#  = f.select :tags, post.tag_list, {}, {multiple:true, placeholder: "Enter tags for this post...", data: {role: 'tagsinput'}, class: 'input-lg'}
   .form-group
     = f.label :state, class: 'sr-only'
     = f.select :state, ["accepted", "draft", "hidden"], {prompt: "-- select state --" }, { class: 'input-lg form-control' }

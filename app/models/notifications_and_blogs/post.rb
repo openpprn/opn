@@ -10,6 +10,12 @@ class Post < ActiveRecord::Base
   scope :notifications, -> { where(post_type: "notification") }
   scope :viewable, -> { where(state: "accepted").order(:created_at) }
 
+  #TODO
+  scope :research_blog, -> { where(post_type: "blog") }
+  scope :patient_blog, -> { where(post_type: "blog") }
+  scope :tech_blog, -> { where(post_type: "blog") }
+
+
   acts_as_taggable
 
   belongs_to :user

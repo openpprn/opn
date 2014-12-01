@@ -22,13 +22,13 @@ feature "CanAccessHome" do
     fill_in 'Password', :with => "password"
     click_button 'Sign in'
 
-    page.must_have_content "Signed in successfully."
+    page.must_have_content @user.name
   end
 
   scenario "user can log out" do
     login_as(@user, :scope => :user)
     visit research_topics_path
-    page.must_have_content "to cast today"
+    page.must_have_content @user.name
     click_on 'Sign out'
     page.must_have_content "Sign in"
 

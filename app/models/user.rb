@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_merit
+
   rolify role_join_table_name: 'roles_users'
 
 
@@ -31,7 +33,18 @@ class User < ActiveRecord::Base
   # Named Scopes
   scope :search_by_email, ->(terms) { where("LOWER(#{self.table_name}.email) LIKE ?", terms.to_s.downcase.gsub(/^| |$/, '%')) }
 
+
+  # STUBS # TODO # TO IMPLEMENT
+  scope :social, -> { where("1=1") } #TODO MUST DEFINE SOCIAL USERS
+  def self.unique_cities_count
+    self.count #FIXME #TODO #STUB
+  end
+  def self.health_data_streams_count
+    34112340123142 #FIXME #TODO #STUB
+  end
+
   def name
+    return "Anonymous" unless first_name && last_name
     "#{first_name} #{last_name}"
   end
 

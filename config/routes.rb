@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # Static Pages
-  root 'static#home'
+  root 'static#splash'
+  get 'home' => "home#index"
   get 'about' => 'static#about'
+  get 'resources' => 'static#resources'
+
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages
   get 'content/:page' => 'static#content'
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
   resources :research_topics
 
   # Research Section
-  get 'research_topics' => 'research#research_topics'
+  get 'research' => 'research#index'
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
@@ -41,18 +44,18 @@ Rails.application.routes.draw do
   get 'questions/typeahead/:question_id', to: "questions#typeahead", as: :question_typeahead, format: :json
 
   # Health Data Section
-  get 'data_explore' => 'health_data#explore'
+  get 'health_data' => 'health_data#index'
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'
 
 
 
-  # Social Section
-  match 'social', to: 'social#overview', via: :get, as: 'social' # show
-  match 'social/profile', to: 'social#profile', as: 'social_profile', via: :get #edit
-  match 'social/profile', to: 'social#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
-  match 'locations', via: :get, as: :locations, format: :json, to: 'social#locations'
+  # members Section
+  match 'members', to: 'members#index', via: :get, as: 'members' # show
+  match 'members/profile', to: 'members#profile', as: 'social_profile', via: :get #edit
+  match 'members/profile', to: 'members#update_profile', as: 'update_social_profile', via: [:put, :post, :patch] # update
+  match 'locations', via: :get, as: :locations, format: :json, to: 'members#locations'
 
 
   # Blog Section
@@ -69,10 +72,10 @@ Rails.application.routes.draw do
   match 'change_password', to: 'account#change_password', as: 'change_password', via: :patch
 
   # Discussion
-  match 'social/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
+  match 'members/discussion/terms_and_conditions', to: 'account#terms_and_conditions', via: :get, as: :terms_and_conditions
 
   # Admin Section
-  get 'admin' => 'admin#notifications'
+  get 'admin' => 'admin#users'
   match 'admin/users', to: 'admin#users', as: 'admin_users', via: [:get, :post]
   get 'admin/surveys' => 'admin#surveys', as: 'admin_surveys'
   get 'admin/blog' => 'admin#blog', as: 'admin_blog'
@@ -102,7 +105,7 @@ Rails.application.routes.draw do
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
-  mount Forem::Engine, :at => '/social/discussion'
+  mount Forem::Engine, :at => '/members/discussion'
 
 # # Authentication
 #   devise_for :user, skip: [:sessions, :passwords, :confirmations, :registrations]

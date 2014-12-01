@@ -26,16 +26,24 @@ module OODTUser
     JSON.parse(response.body)
   end
 
+  # Test if our local database knows the user is provisioned on OODT
+  def oodt_user_provisioned?
+    return !self.oodt_id.nil?
+  end
+
 
   ###################
   # USER PROVISIONING
   ###################
   def provision_oodt_user #2
+    return "You already are provisioned" if !self.oodt_id.nil?
+
     response = oodt.post "users/@@create", {:opnUserID => self.id} #not needed
 
     if response.success?
       body = parse_body(response)
       self.oodt_id = body['participantID']
+      return "User successfully linked. His/her OODT ID is #{body['participantID']}"
     else
       logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
       return false
@@ -44,40 +52,49 @@ module OODTUser
 
 
   def oodt_status #6
-    #response = oodt.post "documents/@@latestConsentGiven", user_hash
+    response = oodt.post "users/@@status", user_hash
+    body = parse_body(response)
 
-    # if response.success?
-    #   body = parse_body(response)
-    #   return body['status']
-    # else
-    #   logger.error "Unsuccessful OODT Status"
-    #   return false
-    # end
-    return true
-  end
-
-  def signed_consent?
+    if response.success?
+      if body['linked']
+        if !body['baselineSurveyComplete']
+          return "Connected but no consent! Visit " + body['url'] + " to finish survey"
+        else
+          return "Connected and Consented"
+        end
+      else
+        return "Not connected to partners!"
+      end
+    else
+      logger.error "Unsuccessful call to fetch OODT Status"
+      return body['errorMessage'] || body
+    end
 
   end
 
 
   def pair_with_legacy_ccfa_partners_account(email) #3
     response = oodt.post "users/@@link", user_hash.merge!({email: email})
+    body = parse_body(response)
 
     if response.success?
-      body = parse_body(response)
-      return body['message']  # ...body['matchedEmail'] doing nothing with this now, but we could at least marked in the DB that this user was matched, so we don't ask them to again?
+      if body.status
+        return "You match an existing Partners users and you've done your survey"
+      else
+        return "You match an existing Partners users, but you need to visit #{body.url} to complete first survey."
+      end
     else
-      logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.body}"
-      return false
+      if body['errorType'] == "NotFound"
+        return "Provided email does not match partners acct"
+      else
+        logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.body}"
+        return body['errorMessage'] || body
+      end
     end
   end
 
 
-  # Test if our local database knows the user is provisioned on OODT
-  def oodt_user_provisioned?
-    return !self.oodt_id.nil?
-  end
+
 
 
 
@@ -115,36 +132,25 @@ module OODTUser
 
 
 
-
-
   ###############
   # SURVEYS
   ###############
+  def get_surveys #11
+    response = oodt.post "users/@@surveys", user_hash
+    body = parse_body(response)
 
-  def surveys
-    data = [ {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"},
-             {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"},
-             {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"}
-           ]
+    if response.success?
+      surveyOpenDate = body['surveyDate']
+      surveyURL = body['url']
+      num_completed = body['completed'].count
+      num_incompleted = body['incomplete'].count
+      num_surveys = num_completed + num_incompleted
+      return "The next survey opens on #{surveyOpenDate} at #{surveyURL}. The user has completed #{num_completed}/#{num_surveys} surveys"
+    else
+      logger.error "API Call to get surveys for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
   end
-
-  def surveys_completed
-    data = [ {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"},
-             {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"},
-             {url: "https://...", surveyID: 1, deadline: "2014-08-22T10:12:34.771672", title: "A Survey"}
-           ]
-  end
-
-  def num_surveys_completed
-    4
-  end
-
-  def num_surveys_available_since(datetime)
-    10
-  end
-
-
-
 
 
 
@@ -152,60 +158,108 @@ module OODTUser
   # HEALTH DATA
   ###############
 
+  #### MEDICATIONS ####
+  def get_med_update_url #18
+    response = oodt.post "users/@@medicationUpdateURL", user_hash
+    body = parse_body(response)
 
-  #### STREAMS ####
-  def health_streams
-    data = [ {source: "Name of Source 1", description: "Description 1", title: "Title 1", numberAvailable: 99, id: 1, sortKey: 1, latest: "2014-08-22T10:12:34.771672"},
-            {source: "Name of Source 2", description: "Description 2", title: "Title 2", numberAvailable: 99, id: 1, sortKey: 1, latest: "2014-08-22T10:12:34.771672"},
-            {source: "Name of Source 3", description: "Description 3", title: "Title 3", numberAvailable: 99, id: 1, sortKey: 1, latest: "2014-08-22T10:12:34.771672"}
-          ]
+    if response.success?
+      return body['url']
+    else
+      logger.error "API Call to fetch med update url for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
   end
 
-  def health_stream_data
-    data = {element: "Name of Source 1", values: [0,1,2,3,4,5,4,3,2,1,0,1,2,3,4,5,4,3,2,1] }
+
+  ## MEDICATIONS ####
+  def get_med_list #19
+    response = oodt.post "users/@@medications", user_hash
+    body = parse_body(response)
+
+    if response.success?
+      current_as_of = body['date']
+      meds = body['meds']
+      return "Med List (as of #{current_as_of}): #{meds}"
+    else
+      logger.error "API Call to fetch med list for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
   end
+
+
+
+  ## RESEARCHER ACCESS LOG ####
+  def get_research_access_events #19
+    response = oodt.post "users/@@pubAnalyses", user_hash
+    body = parse_body(response)
+
+    if response.success?
+      #[{"timestamp": "YYYY-MM-DD", "description": "DESCRIPTION", "status": "STATUS", "url": "URL"}, ...]
+      return body
+    else
+      logger.error "API Call to fetch researcher access log for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
+  end
+
+
+
+  ## MEDICATIONS ####
+  def get_oodt_user_count #19
+    response = oodt.post "users/@@count"
+    body = parse_body(response)
+
+    if response.success?
+      return body['count']
+    else
+      logger.error "API Call to fetch oodt user count failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
+  end
+
+
+
+
+  ## RESET SANDBOX ####
+  # requires date: current date in UTC
+  def reset_sandbox(date) #19
+    response = oodt.post "users/@@reset", {confirmation: date}
+
+    if response.success?
+      return "The OODT Sandbox has been reset"
+    else
+      logger.error "API call to reset sandbox failed, OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
+  end
+
+
+
+
 
 
   #### ATTRIBUTES ####
   def health_attributes
-    data = [ "Blood Type", "Age", "Weight"]
+    data = [ "My Disease Activity", "My Quality of Life", "My Anxiety Symptoms"]
   end
 
   def health_attribute_data
     data = [
-             {element: 1, title: "Blood Type", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
-             {element: 2, title: "Average Symptoms", value: 300, zones: [{startValue: 1, endValue: 200, title: "Low"}, {startValue: 900, endValue: 999, title: "High"}], markers: [{value: 1, title: "Yesterday"}, {value: 2, title: "Last Week"}] },
-             {element: 3, title: "Weight", value: 100, zones: [{startValue: 1, endValue: 100, title: "Low"}, {startValue: 700, endValue: 999, title: "High"}], markers: [{value: 1, title: "Perfect"}, {value: 2, title: "See a Doctor"}] }
-            ]
-  end
-
-
-  #### TREAMENTS ####
-  def treatments
-    "Treament 1, Treatment 2, Treatment 3, Treatment 4"
-  end
-
-  def treatment_update_url
-    "http://url_to_update_your_treatments"
-  end
-
-
-
-  #### OODT CALLS REGARDING VALIDIC DATA ####
-  def send_validic_credentials_to_oodt #20 #required if using validic and oodt
-    return false
-  end
-
-  def connected_devices
-    data = [ {url: "https://...", title: "Device 1"},
-             {url: "https://...", title: "Device 2"},
-             {url: "https://...", title: "Device 3"}
+             {element: 1, title: "My Disease Activity", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+             {element: 2, title: "My Quality of Life", value: 300, zones: [{startValue: 1, endValue: 200, title: "Low"}, {startValue: 900, endValue: 999, title: "High"}], markers: [{value: 1, title: "Yesterday"}, {value: 2, title: "Last Week"}] },
+             {element: 3, title: "My Anxiety Symptoms", value: 100, zones: [{startValue: 1, endValue: 100, title: "Low"}, {startValue: 700, endValue: 999, title: "High"}], markers: [{value: 1, title: "Perfect"}, {value: 2, title: "See a Doctor"}] },
+             {element: 1, title: "My Depression Symptoms", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+             {element: 2, title: "My Fatigue Symptoms", value: 300, zones: [{startValue: 1, endValue: 200, title: "Low"}, {startValue: 900, endValue: 999, title: "High"}], markers: [{value: 1, title: "Yesterday"}, {value: 2, title: "Last Week"}] },
+             {element: 3, title: "My Pain Symptoms", value: 100, zones: [{startValue: 1, endValue: 100, title: "Low"}, {startValue: 700, endValue: 999, title: "High"}], markers: [{value: 1, title: "Perfect"}, {value: 2, title: "See a Doctor"}] },
+             {element: 1, title: "My Sleep Disturbances", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+             {element: 2, title: "My Social Relations", value: 300, zones: [{startValue: 1, endValue: 200, title: "Low"}, {startValue: 900, endValue: 999, title: "High"}], markers: [{value: 1, title: "Yesterday"}, {value: 2, title: "Last Week"}] },
+             {element: 3, title: "My Anxiety Symptoms", value: 100, zones: [{startValue: 1, endValue: 100, title: "Low"}, {startValue: 700, endValue: 999, title: "High"}], markers: [{value: 1, title: "Perfect"}, {value: 2, title: "See a Doctor"}] }
            ]
   end
 
-  def num_connected_devices
-    3
-  end
+
+
 
 
 
@@ -214,6 +268,24 @@ module OODTUser
   def self.oodt_locations
     data = [ "Dogstown, MA", "Brooksfield", "Ohio", "UK", "Ko Pha Ngan", "Tennessee, USA", "America", "The Earth"]
   end
+
+
+  #### OODT CALLS REGARDING VALIDIC DATA ####
+  # def send_validic_credentials_to_oodt #20 #required if using validic and oodt
+  #   return false
+  # end
+
+  # def connected_devices
+  #   data = [ {url: "https://...", title: "Device 1"},
+  #            {url: "https://...", title: "Device 2"},
+  #            {url: "https://...", title: "Device 3"}
+  #          ]
+  # end
+
+  # def num_connected_devices
+  #   3
+  # end
+
 
 
 

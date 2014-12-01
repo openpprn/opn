@@ -1,0 +1,73 @@
+
+
+.row
+  .col-md-12
+    = render partial: "/shared/avatar_mosaic"
+
+
+
+
+
+.row
+  .col-md-8.col-md-offset-2
+    .text-center
+      %h3 Join a Movement to Solve #{Figaro.env.pprn_condition} Together
+    %br/
+    %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum. Nunc condimentum dolor eget erat varius, sit amet vulputate ipsum feugiat. Duis porttitor dolor a tortor dignissim, vel fringilla elit interdum. Vestibulum vitae bibendum massa. Integer ultricies eleifend laoreet. In ut nisl purus.
+    %br/
+
+    <iframe src="//player.vimeo.com/video/110910837" width="620" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/110910837">CCFA PPRN Test Video</a> from <a href="http://vimeo.com/crohnology">Crohnology</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+
+%br/
+%br/
+%br/
+%br/
+
+.row
+  .col-md-4.col-md-offset-4.text-center
+    %a{:href => new_user_registration_path}
+      .btn.btn-lg.btn-primary.btn-block Join
+    %br/
+    %p
+      Already a Member?
+      = link_to "Sign in", new_user_session_path
+
+
+
+%br/
+%br/
+
+
+.row
+  - 3.times do
+    .col-md-4
+      .text-center
+        %i.fa.fa-square-o{:style => "font-size: 200px;"}
+
+      %h4 Describe a Feature of the Network
+
+      %p Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est. Etiam vitae molestie lectus. Mauris ut nisl augue. Donec sollicitudin ut erat eget vestibulum.
+
+
+
+%hr/
+
+
+
+%br/
+%br/
+
+
+.row
+  .col-md-4.col-md-offset-4.small
+    %form.form-horizontal{:role => "form"}
+      .form-group
+        %label.control-label.col-md-6{for: "inputPassword3"}
+          %i.fa.fa-globe &nbsp; Language:
+        .col-md-6
+          %select.form-control.small
+            %option
+              %i.fa.fa-globe
+              English
+            %option Spanish
