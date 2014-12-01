@@ -14,5 +14,8 @@ class HealthDataController < ApplicationController
     raise "Validic must be enabled for this feature." if !Figaro.env.validic_enabled
   end
 
+  def index
+    @med_list = current_user ? current_user.get_med_list : {}
+  end
 
 end

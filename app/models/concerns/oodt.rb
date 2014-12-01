@@ -4,34 +4,69 @@ module OODT
   # To automatically provision OODT account on user hook, add it to User.rb like so:
   # after_create :provision_oodt_user
 
-  module ClassMethods
-    #FIXME need to factor out most of these methods into class methods, but time constraints
-    # def delete_all_oodt_users
-    #   User.all.each { |u| u.delete_oodt_user }
-    # end
-  end
 
   included do
 
   end
 
-  ####################
-  # API CONNECTION SETUP
-  ####################
-  def oodt
-    prefix = "api/pcori/sandbox/v1/"
-    conn = Faraday.new(url: "https://whiterivercomputing.com/#{prefix}")
-    conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
-    conn
+  module ClassMethods
+
+    ####################
+    # API CONNECTION SETUP
+    ####################
+    def oodt
+      prefix = "api/pcori/sandbox/v1/"
+      conn = Faraday.new(url: "https://whiterivercomputing.com/#{prefix}")
+      conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
+      conn
+    end
+
+    def parse_body(response)
+      JSON.parse(response.body)
+    end
+
+
+
+    ## USER COUNT ####
+    def get_oodt_user_count #19
+      response = oodt.post "users/@@count"
+      body = parse_body(response)
+
+      if response.success?
+        return body['count']
+      else
+        logger.error "API Call to fetch oodt user count failed. OODT returned the following response:\n#{response.body}"
+        return body['errorMessage'] || body
+      end
+    end
+
+    def oodt_locations
+      data = [ "Dogstown, MA", "Brooksfield", "Ohio", "UK", "Ko Pha Ngan", "Tennessee, USA", "America", "The Earth"]
+    end
+
+    # def delete_all_oodt_users
+    #   User.all.each { |u| u.delete_oodt_user }
+    # end
   end
+
+
+  ## Hacks to simplify access to class methods.... Fixme:
+  def oodt
+    User.oodt
+  end
+  def parse_body(response)
+    User.parse_body(response)
+  end
+
+
+
+  ####################
+  # INSTANCE CONVENIENCE METHODS
+  ####################
 
   # Base Params for any User OODT Call
   def user_hash
     {userID: self.oodt_id}
-  end
-
-  def parse_body(response)
-    JSON.parse(response.body)
   end
 
   # Test if our local database knows the user is provisioned on OODT
@@ -42,6 +77,8 @@ module OODT
   def paired_with_lcp
     oodt_id.present?
   end
+
+
 
 
   ###################
@@ -189,9 +226,10 @@ module OODT
     body = parse_body(response)
 
     if response.success?
-      current_as_of = body['date']
-      meds = body['meds']
-      return "Med List (as of #{current_as_of}): #{meds}"
+      # current_as_of = body['date']
+      # meds = body['meds']
+      # return "Med List (as of #{current_as_of}): #{meds}"
+      return body
     else
       logger.error "API Call to fetch med list for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
@@ -215,19 +253,6 @@ module OODT
   end
 
 
-
-  ## MEDICATIONS ####
-  def get_oodt_user_count #19
-    response = oodt.post "users/@@count"
-    body = parse_body(response)
-
-    if response.success?
-      return body['count']
-    else
-      logger.error "API Call to fetch oodt user count failed. OODT returned the following response:\n#{response.body}"
-      return body['errorMessage'] || body
-    end
-  end
 
 
 
@@ -276,9 +301,6 @@ module OODT
 
 
 
-  def self.oodt_locations
-    data = [ "Dogstown, MA", "Brooksfield", "Ohio", "UK", "Ko Pha Ngan", "Tennessee, USA", "America", "The Earth"]
-  end
 
 
   #### OODT CALLS REGARDING VALIDIC DATA ####

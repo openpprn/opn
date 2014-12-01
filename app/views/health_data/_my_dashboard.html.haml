@@ -1,1 +1,22 @@
 Dashboard goes here.
+%br/
+
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title My Medications
+
+  - if @med_list.empty?
+    .panel-body
+      .alert.alert-info We currently have no medication information on you.
+  - elsif @med_list['meds'].any?
+    %table.table
+      %tbody
+        - @med_list['meds'].each do |med|
+          %tr
+            %td= med
+
+
+  .panel-footer
+    %em.pull-left= "Current as of #{@med_list['date']}" if @med_list['date']
+    %a.btn.btn-success.pull-right{href: current_user.get_med_update_url} Update my Meds
+    .clearfix
