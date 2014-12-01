@@ -1,17 +1,25 @@
+
 .panel.panel-default
   .panel-heading
-    %h3.panel-title Surveys You've Completed
-  %table.table
-    %thead
-      %th Date
-      %th Survey
-    %tbody
-      %tr
-        %td Feb 2014
-        %td Recurring Six-Month Survey
-      %tr
-        %td Aug 2013
-        %td Recurring Six-Month Survey
-      %tr
-        %td Jan 2013
-        %td Recurring Six-Month Survey
+    %h3.panel-title Your Survey Scorecard
+
+
+  - if @survey_scorecard.empty?
+    .panel-body
+      .alert.alert-info We have no data on your survey taking history...yet.
+  - else
+    .panel-body
+      %h2
+        Surveys Completed
+        %br/
+        = @survey_scorecard['completed'].count if !@survey_scorecard['completed'].nil?
+        = "/"
+        = @survey_scorecard['incomplete'].count if !@survey_scorecard['incomplete'].nil?
+
+      - if @survey_scorecard['openingDate']
+        - opening_date = Time.parse(@survey_scorecard['openingDate'])
+
+        - if opening_date.future?
+          = "Your survey will be avaialble on #{opening_date}"
+        - else
+          = link_to 'The current survey is open. click here to do it.', @survey_scorecard['url']

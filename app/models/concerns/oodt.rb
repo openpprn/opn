@@ -6,9 +6,9 @@ module OODT
 
   module ClassMethods
     #FIXME need to factor out most of these methods into class methods, but time constraints
-    def delete_all_oodt_users
-      User.all.each { |u| u.delete_oodt_user }
-    end
+    # def delete_all_oodt_users
+    #   User.all.each { |u| u.delete_oodt_user }
+    # end
   end
 
   included do
@@ -145,17 +145,18 @@ module OODT
   ###############
   # SURVEYS
   ###############
-  def get_surveys #11
+  def get_survey_scorecard #11
     response = oodt.post "users/@@surveys", user_hash
     body = parse_body(response)
 
     if response.success?
-      surveyOpenDate = body['surveyDate']
-      surveyURL = body['url']
-      num_completed = body['completed'].count
-      num_incompleted = body['incomplete'].count
-      num_surveys = num_completed + num_incompleted
-      return "The next survey opens on #{surveyOpenDate} at #{surveyURL}. The user has completed #{num_completed}/#{num_surveys} surveys"
+      # surveyOpenDate = body['surveyDate']
+      # surveyURL = body['url']
+      # num_completed = body['completed'].count
+      # num_incompleted = body['incomplete'].count
+      # num_surveys = num_completed + num_incompleted
+      #return "The next survey opens on #{surveyOpenDate} at #{surveyURL}. The user has completed #{num_completed}/#{num_surveys} surveys"
+      return body
     else
       logger.error "API Call to get surveys for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
