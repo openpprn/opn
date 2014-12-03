@@ -85,7 +85,11 @@ class User < ActiveRecord::Base
     # Local Consent Storage
     # self.accepted_consent_at.present?
     # OODT Consent Storage
-    self.oodt_status
+    if OODT_ENABLED
+      self.oodt_status
+    else
+      self.accepted_consent_at.present?
+    end
   end
 
   def forem_admin?
