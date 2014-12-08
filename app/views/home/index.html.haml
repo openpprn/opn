@@ -1,7 +1,7 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- scores = { "Members" => User.get_oodt_user_count, "Research Ideas" => ResearchTopic.count, "Surveys Completed" => AnswerSession.count, "Health Data Streams" => User.health_data_streams_count }
+- scores = { "Members" => User.get_network_user_count, "Research Ideas" => ResearchTopic.count, "Surveys Completed" => User.num_network_surveys_completed, "Health Data Streams" => User.num_health_data_streams }
 - content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 

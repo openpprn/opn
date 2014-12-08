@@ -28,14 +28,14 @@ module OODT
 
 
     ## USER COUNT ####
-    def get_oodt_user_count #19
-      response = oodt.post "users/@@count"
+    def get_network_user_count #19
+      response = oodt.post "surveys/@@globalNumberSurveys"
       body = parse_body(response)
 
       if response.success?
-        return body['count']
+        return body['globalNumberSurveys']
       else
-        logger.error "API Call to fetch oodt user count failed. OODT returned the following response:\n#{response.body}"
+        logger.error "API Call to fetch network user count failed. OODT returned the following response:\n#{response.body}"
         return body['errorMessage'] || body
       end
     end
@@ -47,6 +47,15 @@ module OODT
     # def delete_all_oodt_users
     #   User.all.each { |u| u.delete_oodt_user }
     # end
+
+    def num_network_surveys_completed
+      get_network_user_count # + Survey.num_frequent_surveys_completed #FIXME
+    end
+
+    def num_health_data_streams
+      get_network_user_count + User.count # + Validic.num_devices_connected + #FIXME
+    end
+
   end
 
 
