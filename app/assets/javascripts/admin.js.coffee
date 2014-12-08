@@ -53,6 +53,7 @@ $(document).on "click", "#admin-dashboard .remove-role", (event) ->
 
 $(document).on 'change', "input:radio[name='search_role']", (event) ->
   $("#user-search").submit()
+  event.preventDefault()
 
 $(document).on "submit", "#admin-dashboard #user-search", (event) ->
   $.post($(this).attr("action")+'.js', $(this).serialize())

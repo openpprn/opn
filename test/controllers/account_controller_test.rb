@@ -24,7 +24,7 @@ class AccountControllerTest < ActionController::TestCase
   test "User should be able to sign consent" do
     login(users(:user_1))
 
-    refute users(:user_1).accepted_consent_at
+    refute users(:user_1).ready_for_research?
 
     get :consent
 
@@ -33,17 +33,17 @@ class AccountControllerTest < ActionController::TestCase
 
 
     post :consent, consent_read: true
-    refute users(:user_1).reload.accepted_consent_at
+    refute users(:user_1).reload.ready_for_research?
 
     get :privacy_policy
 
     assert_response :success
     assert_template "privacy_policy"
 
-    post :privacy_policy, agreed_to_participate: true
-    assert users(:user_1).reload.accepted_consent_at
+    post :privacy_policy, privacy_policy_read: true
+    assert users(:user_1).reload.ready_for_research?
 
-    assert_redirected_to social_profile_path
+    assert_redirected_to home_path
 
 
   end
@@ -53,11 +53,12 @@ class AccountControllerTest < ActionController::TestCase
 
     assert users(:social).accepted_consent_at
 
-    post :consent, consent_revoked: true
+    post :consent, declined_to_participate: true
 
     refute users(:user_1).reload.accepted_consent_at
+    refute users(:user_1).reload.ready_for_research?
 
-    assert_redirected_to social_profile_path
+    assert_redirected_to home_path
 
 
   end

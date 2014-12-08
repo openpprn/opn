@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable
 
   # Model Validation
   #validates_presence_of :first_name, :last_name, :zip_code, :year_of_birth
@@ -58,23 +58,36 @@ class User < ActiveRecord::Base
   end
 
   def photo_url
-    if social_profile and social_profile.photo.present?
-      social_profile.photo.url
+    if social_profile
+      social_profile.photo_url
     else
       "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}?d=identicon"
     end
   end
 
-  def forem_name
-    if social_profile and social_profile.name.present?
-      social_profile.name
+  def my_photo_url
+    if social_profile and social_profile.photo
+      social_profile.photo.url
     else
-      "Anonymous User"
+      photo_url
+    end
+  end
+
+  def forem_name
+    if social_profile
+      social_profile.public_nickname
+    else
+      "Anonymous User #{Digest::MD5.hexdigest(email.to_s)[0,5]}"
     end
   end
 
   def to_s
     email
+  end
+
+  def revoke_consent
+    update_attribute :accepted_consent_at, nil
+    update_attribute :accepted_privacy_policy_at, nil
   end
 
   def created_social_profile?
@@ -90,6 +103,19 @@ class User < ActiveRecord::Base
     else
       self.accepted_consent_at.present?
     end
+  end
+
+  def accepted_privacy_policy?
+    self.accepted_privacy_policy_at.present?
+
+  end
+
+  def accepted_terms_conditions?
+    self.accepted_terms_conditions_at.present?
+  end
+
+  def ready_for_research?
+    accepted_privacy_policy? and signed_consent?
   end
 
   def forem_admin?
@@ -157,6 +183,9 @@ class User < ActiveRecord::Base
     ResearchTopic.created_by(self)
   end
 
+  def has_no_started_surveys?
+    incomplete_surveys.blank? and complete_surveys.blank?
+  end
 
   def share_research_topics?
     true

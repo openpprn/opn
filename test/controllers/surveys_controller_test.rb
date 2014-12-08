@@ -62,4 +62,23 @@ class SurveysControllerTest < ActionController::TestCase
 
     assert_response :success
   end
+
+  test "Surveys cannot be restarted once they are completed without explicit warning" do
+    login(users(:has_completed_survey))
+
+    get :start_survey, question_flow_id: question_flows(:survey_1).id
+
+    assert_redirected_to surveys_path
+
+  end
+
+  test "Surveys can be restarted when verified by user" do
+    login(users(:has_completed_survey))
+
+    get :start_survey, question_flow_id: question_flows(:survey_1).id, reset_survey: true
+
+    assert_response :success
+    assert_equal users(:has_completed_survey).complete_surveys.length, 0
+
+  end
 end

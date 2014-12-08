@@ -7,7 +7,7 @@ gem 'thin'
 gem 'airbrake'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7' #'4.2.0.beta4'
+gem 'rails', '4.2.0.rc2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use HAML for views
@@ -27,7 +27,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 3.1.2' #'~> 4.0.0.beta2'
+gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,10 +38,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
 
-# Bootstrap
-gem 'sass-rails', '~> 4.0.4' #'~> 5.0.0.beta1'
+# Bootstrap and Styles
+gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'font-awesome-rails'
 
 # Authentication
 gem 'devise'
@@ -59,13 +60,15 @@ gem 'acts-as-dag'
 gem 'rolify'
 gem 'authority'
 
+# Facebook
+gem 'koala'
+
 # Forum
 gem 'forem', :github => "openpprn/forem", :branch => "rails-4.2"
 gem 'kaminari', '~> 0.16.1'
 
 # Blogs and Notifications
 gem 'acts-as-taggable-on'
-gem "koala", "~> 1.10.0rc"
 
 # User Profile
 gem 'geocoder'

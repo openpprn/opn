@@ -135,7 +135,7 @@ namespace :surveys do
     puts "WARNING: Any major changes to the ids or structure of the survey data will likely invalidate previously done answer sessions."
     puts "Are you sure you want to continue? (y/n)"
 
-    STDIN.gets.strip == 'y'
+    STDIN.gets.strip.downcase == 'y'
 
   end
 end

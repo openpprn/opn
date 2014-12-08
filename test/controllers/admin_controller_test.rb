@@ -152,6 +152,7 @@ class AdminControllerTest < ActionController::TestCase
 
   # Blog
   test "should get blog admin for moderator" do
+    skip "Re-engineering of blog"
     login(users(:moderator_2))
 
     get :blog

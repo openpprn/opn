@@ -14,6 +14,34 @@ class SocialProfile < ActiveRecord::Base
   end
 
 
+  def show_publicly?
+    make_public?
+  end
+
+  def photo_url
+    if show_publicly? and photo.present?
+      photo.url
+    else
+      "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.to_s)}?d=identicon"
+    end
+  end
+
+  def public_location
+    if show_publicly?
+      location
+    else
+      "Anonymous Location"
+    end
+  end
+
+  def public_nickname
+    if show_publicly? and name.present?
+      name
+    else
+      "Anonymous User #{Digest::MD5.hexdigest(user.email.to_s)[0,5]}"
+    end
+  end
+
   def location_for_map
     if latitude and longitude
       { latitude: latitude, longitude: longitude, title: name }

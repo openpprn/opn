@@ -1,3 +1,6 @@
+// body {
+//   background-color: #EEE
+// }
 
 .nav-tabs {
   background-color: #f5f5f5;
@@ -49,10 +52,7 @@ i.badger { font-size: 36px; }
 }
 
 .mosaic-bg {
-
-  background: url("myapnea/headers/header_mosaic.png") no-repeat;
-  background-position: 15px 0px;
-
+  background: image-url("avatars/sample_mosaics/3gm.png") no-repeat;
 }
 
 .display-inline-block {
@@ -62,4 +62,12 @@ i.badger { font-size: 36px; }
 .h0 {
   font-size: 48px;
   font-weight: 500;
+}
+
+.community-scoreboard {
+  min-height: 180px;
+}
+
+.muted {
+  color: #AAA;
 }

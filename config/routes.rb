@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,8 +10,8 @@ Rails.application.routes.draw do
 
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages
-  get 'content/:page' => 'static#content'
-  get 'content/' => 'static#content'
+  match 'content/:page', to: 'static#content', as: :content, via: :get
+  #get 'content/' => 'static#content'
 
 
   get 'privacy_policy_document' => 'static#content', :page => "privacy_policy"
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
   resources :research_topics
 
   # Research Section
-  get 'research' => 'research#index'
+  get 'research_topics' => 'research#research_topics'
   get 'research_karma' => 'research#research_karma'
   get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
@@ -94,6 +93,7 @@ Rails.application.routes.draw do
   # Voting on Questions
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
+  match 'vote', to: 'research_topics#index', via: :get, as: :vote_fake
 
   # Blog and Notification Posts
   resources :posts, except: [:show, :index]

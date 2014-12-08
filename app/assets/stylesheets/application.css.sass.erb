@@ -4,5 +4,5 @@
 <% if PPRN_THEME_NAME.blank? %>
 @import "manifest"
 <% else %>
-@import <%= "#{PPRN_THEME_NAME}/manifest" %>
+@import <%= "#{ENV["pprn_theme_name]}/manifest" %>
 <% end %>
