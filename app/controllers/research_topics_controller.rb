@@ -3,9 +3,9 @@ class ResearchTopicsController < ApplicationController
 
   before_action :no_layout, :only => [:research_topics, :vote_counter]
   before_action :set_research_topic, only: [:show, :update, :edit, :destroy]
+  before_action :set_active_sub_nav
 
-
-  layout "community"
+  layout "research"
 
   authorize_actions_for ResearchTopic, only: [:index] #, :create, :new]
 
@@ -13,6 +13,9 @@ class ResearchTopicsController < ApplicationController
     raise StandardError
   end
 
+  def set_active_sub_nav
+    @active_sub_nav = :research_prioritization
+  end
 
   def index
     @research_topics = ResearchTopic.proposed

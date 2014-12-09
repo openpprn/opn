@@ -1,59 +1,29 @@
--#-##############
--#-### COMMUNITY CONTRIBUTIONS
--#-##############
--#- scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.under_study.count}
--#- content_for :community_contributions do
--#  = render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
+- @active_sub_nav = :research_prioritization
+
+.row
+  .col-md-12
+
+    .panel.panel-default.research_topics
+      .panel-heading
+        %ul.nav.nav-pills{role: "tablist"}
+          %li{class: ("active" if params[:active_tab].nil? || params[:active_tab] == "popular")}
+            %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
+          %li{class: ("active" if params[:active_tab] == "most_discussed")}
+            %a{"data-toggle" => "tab", href: "#most_active", role: "tab", "data-target-path" => research_topics_ajax_path} Most Discussed
+          %li{class: ("active" if params[:active_tab] == "newest")}
+            %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
+
+      .tab-content
+        #popular.tab-pane{class: ("active" if params[:active_tab].nil? || params[:active_tab] == "popular")}= render partial: "research_topics/research_topics", locals: {research_topics: @research_topics_popular, kind: :popular}
+        #most_active.tab-pane{class: ("active" if params[:active_tab] == "most_discussed")}= render partial: "research_topics/research_topics", locals: {research_topics: @research_topics_most_discussed, kind: :most_discussed}
+        #newest.tab-pane{class: ("active" if params[:active_tab] == "newest")}= render partial: "research_topics/research_topics", locals: {research_topics: @research_topics_newest, kind: :newest}
 
 
+.row
+  .col-md-6
+    -# My Votes
+    = render partial: "research_topics/research_topics_voted_on"
+  .col-md-6
+    -# My Questions
+    = render partial: "research_topics/my_research_topics"
 
--#%ul.nav.nav-tabs{role: "tablist"}
--#  %li.active
--#    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Research Prioritization
--#  %li
--#    %a{"data-toggle" => "tab", href: "#active-studies", role: "tab"} Active Studies
--#  %li
--#    %a{"data-toggle" => "tab", href: "#completed-research", role: "tab"} Completed Research
--#  %li
--#    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} My Contributions
--#  %li.pull-right
--#    %a{"data-toggle" => "tab", :href => "#tutorial"}
--#      %i.fa.fa-info-circle
--#%br/
-
-
-
--#-##############
--#-### YOUR CONTRIBUTIONS
--#-##############
--#- content_for :your_contributions do
--#  = render partial: "shared/badge_list" if current_user
-
-
-
-
--#-##############
--#-### MAIN CONTENT SECTION
--#-##############
--#.row
--#  .col-md-12
--#    .tab-content
--#      #research-democracy.tab-pane.active
--#        = render partial: "research_democracy"
--#      #active-studies.tab-pane
-
--#      #completed-research.tab-pane
--#        = render partial: "research_topics/results"
--#      #surveys.tab-pane
--#        = render partial: "survey_scorecard"
--#        = render partial: "activity_log"
--#        "# health checkins"
--#      #activity-log.tab-pane
-
--#      #tutorial.tab-pane
--#        = render partial: "tutorial"
-
-
-- @active_sub_nav = :research_priorization
-
-= render partial: "research_democracy"

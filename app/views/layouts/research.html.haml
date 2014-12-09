@@ -16,7 +16,7 @@
 
 - content_for :research_content do
   %ul.nav.nav-tabs{role: "tablist"}
-    %li{class: "#{'active' if @active_sub_nav == :research_priorization}"}
+    %li{class: "#{'active' if @active_sub_nav == :research_prioritization}"}
       %a{href: research_prioritization_path} Research Prioritization
     %li{class: "#{'active' if @active_sub_nav == :active_studies}"}
       %a{href: research_active_studies_path} Active Studies
@@ -30,27 +30,6 @@
   %br/
 
   = yield
-
-
-
--#-##############
--#-### MAIN CONTENT SECTION
--#-##############
--#.row
--#  .col-md-12
--#    .tab-content
--#      #research-democracy.tab-pane.active
--#        = render partial: "research_democracy"
--#      #active-studies.tab-pane
-
--#      #completed-research.tab-pane
--#        = render partial: "research_topics/results"
-
--#      #surveys.tab-pane
--#        = render partial: "survey_scorecard"
--#        = render partial: "activity_log"
--#        "# health checkins"
--#      #activity-log.tab-pane
 
 -#      #tutorial.tab-pane
 -#        = render partial: "tutorial"
