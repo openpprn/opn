@@ -13,6 +13,7 @@ class ResearchController < ApplicationController
   def index
     @research_access_events = current_user ? current_user.get_research_access_events : []
     @survey_scorecard = current_user ? current_user.get_survey_scorecard : []
+    @research_topics = ResearchTopic.order(:text).page params[:page]
   end
 
 end

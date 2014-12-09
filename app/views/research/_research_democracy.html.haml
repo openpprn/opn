@@ -1,42 +1,48 @@
 
 
 .row
-  .col-md-8
-
-    %ul.nav.nav-pills{role: "tablist"}
-      %li.active
-        %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
-      %li
-        %a{"data-toggle" => "tab", href: "#most_active", role: "tab", "data-target-path" => research_topics_ajax_path} Most Discussed
-      %li
-        %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
-    %br/
+  .col-md-12
 
 
+    .panel.panel-default.research_topics
+      .panel-heading
+        %ul.nav.nav-pills{role: "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", href: "#popular", role: "tab", "data-target-path" => research_topics_ajax_path} Popular
+          %li
+            %a{"data-toggle" => "tab", href: "#most_active", role: "tab", "data-target-path" => research_topics_ajax_path} Most Discussed
+          %li
+            %a{"data-toggle" => "tab", href: "#newest", role: "tab", "data-target-path" => research_topics_ajax_path} Newest
 
-    .tab-content
-      #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, order: :rank}
-      #most_active.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.most_active, order: :last_activity_at}
+      .tab-content
+        #popular.tab-pane.active= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.popular, order: :rank}
+        #most_active.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.most_active, order: :last_activity_at}
 
-      #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, order: :created_at}
+        #newest.tab-pane= render partial: "research_topics/research_topics", locals: {research_topics: ResearchTopic.newest, order: :created_at}
 
 
+
+
+
+.row
+  .col-md-6
     .panel.panel-default
       .panel-heading Your Votes
       .panel-body
         #voted_on.tab-pane= render partial: "research_topics/research_topics_voted_on", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
-
-  .col-md-4
+  .col-md-6
     -# My Questions
     = render partial: "research_topics/research_topics_preview", locals: {research_topics: current_user.submitted_research_topics, heading: "My Questions"}
 
 
-    %h4 Discover
+  -#.col-md-4
 
-    -# Newest Questions
-    = render partial: "research_topics/research_topics_preview", locals: {research_topics: ResearchTopic.newest.limit(5), heading: "Newest Questions"}
+  -#  %h4 Discover
+
+  -#  -# Newest Questions
+  -#  = render partial: "research_topics/research_topics_preview", locals: {research_topics: ResearchTopic.newest.limit(5), heading: "Newest Questions"}
 
 
-    -# Random Questions
-    = render partial: "research_topics/research_topics_preview", locals: {research_topics: ResearchTopic.random(3), heading: "Random Questions"}
+  -#  -# Random Questions
+  -#  = render partial: "research_topics/research_topics_preview", locals: {research_topics: ResearchTopic.random(3), heading: "Random Questions"}
 
