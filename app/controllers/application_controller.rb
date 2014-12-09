@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
 
+  # Add theme folder to view path
+  self.view_paths.unshift(*Rails.root.join('app', 'views', PPRN_THEME_NAME))
+
   def initialize
     include_plugins
     super
   end
+
 
   def forem_user
     current_user
