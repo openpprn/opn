@@ -1,8 +1,6 @@
 
-
 .row
   .col-md-12
-
 
     .panel.panel-default.research_topics
       .panel-heading
@@ -22,10 +20,10 @@
 
 .row
   .col-md-6
-    .panel.panel-default
-      .panel-heading Your Votes
-      .panel-body
-        #voted_on.tab-pane= render partial: "research_topics/research_topics_voted_on", locals: {research_topics: current_user.research_topics_with_vote, disabled: false}
+    -# My Votes
+    = render partial: "research_topics/research_topics_voted_on"
   .col-md-6
     -# My Questions
-    = render partial: "research_topics/research_topics_preview", locals: {research_topics: current_user.submitted_research_topics, heading: "My Questions"}
+    = render partial: "research_topics/my_research_topics", locals: {research_topics: current_user.submitted_research_topics, heading: "My Questions"}
+
+

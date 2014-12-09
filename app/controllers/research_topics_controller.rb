@@ -27,7 +27,7 @@ class ResearchTopicsController < ApplicationController
     @research_topic = current_user.research_topics.new(research_topic_params)
 
     if @research_topic.save
-      redirect_to research_topics_path, notice: "Your research topic has been successfully submitted!"
+      redirect_to research_path(active_tab: "newest"), notice: "Your research topic has been successfully submitted!"
     else
       render :new
     end

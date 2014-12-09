@@ -1,9 +1,17 @@
 
 %table.table
   %tr
-    %th.col-sm-2.small= kind.to_s.titleize
+    %th.col-sm-2.small
+      - if kind == :popular
+        Rank
+      - elsif kind == :newest
+        Posted On
+      - elsif kind == :most_discussed
+        Last Activity On
+
     %th.col-sm-8.small Question
     %th.col-sm-2.small Vote
+
 
   - i = 0
   - research_topics.each do |research_topic|
@@ -11,13 +19,11 @@
     %tr
       %td
         - if kind == :popular
-          = "#{i}."
+          = i
         - elsif kind == :newest
-          %str
-            = my_strftime(research_topic.created_at)
+          = my_strftime(research_topic.created_at)
         - elsif kind == :most_discussed
-          %str
-            = my_strftime(research_topic.updated_at)
+          = my_strftime(research_topic.updated_at)
       %td
         = link_to research_topic.text, research_topic_path(research_topic)
 
