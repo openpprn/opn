@@ -1,53 +1,59 @@
--##############
--### COMMUNITY CONTRIBUTIONS
--##############
-- scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.under_study.count}
-- content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
-
-
--##############
--### YOUR CONTRIBUTIONS
--##############
-- content_for :your_contributions do
-  = render partial: "shared/badge_list" if current_user
+-#-##############
+-#-### COMMUNITY CONTRIBUTIONS
+-#-##############
+-#- scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.under_study.count}
+-#- content_for :community_contributions do
+-#  = render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 
 
-
--##############
--### MAIN CONTENT SECTION
--##############
-%ul.nav.nav-tabs{role: "tablist"}
-  %li.active
-    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Research Prioritization
-  %li
-    %a{"data-toggle" => "tab", href: "#active-studies", role: "tab"} Active Studies
-  %li
-    %a{"data-toggle" => "tab", href: "#completed-research", role: "tab"} Completed Research
-  %li
-    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} My Contributions
-  %li.pull-right
-    %a{"data-toggle" => "tab", :href => "#tutorial"}
-      %i.fa.fa-info-circle
-%br/
-
-.row
-  .col-md-12
-    .tab-content
-      #research-democracy.tab-pane.active
-        = render partial: "research_democracy"
-      #active-studies.tab-pane
-
-      #completed-research.tab-pane
-        = render partial: "research_topics/results"
-      #surveys.tab-pane
-        = render partial: "survey_scorecard"
-        = render partial: "activity_log"
-        "# health checkins"
-      #activity-log.tab-pane
-
-      #tutorial.tab-pane
-        = render partial: "tutorial"
+-#%ul.nav.nav-tabs{role: "tablist"}
+-#  %li.active
+-#    %a{"data-toggle" => "tab", href: "#research-democracy", role: "tab"} Research Prioritization
+-#  %li
+-#    %a{"data-toggle" => "tab", href: "#active-studies", role: "tab"} Active Studies
+-#  %li
+-#    %a{"data-toggle" => "tab", href: "#completed-research", role: "tab"} Completed Research
+-#  %li
+-#    %a{"data-toggle" => "tab", href: "#surveys", role: "tab"} My Contributions
+-#  %li.pull-right
+-#    %a{"data-toggle" => "tab", :href => "#tutorial"}
+-#      %i.fa.fa-info-circle
+-#%br/
 
 
 
+-#-##############
+-#-### YOUR CONTRIBUTIONS
+-#-##############
+-#- content_for :your_contributions do
+-#  = render partial: "shared/badge_list" if current_user
+
+
+
+
+-#-##############
+-#-### MAIN CONTENT SECTION
+-#-##############
+-#.row
+-#  .col-md-12
+-#    .tab-content
+-#      #research-democracy.tab-pane.active
+-#        = render partial: "research_democracy"
+-#      #active-studies.tab-pane
+
+-#      #completed-research.tab-pane
+-#        = render partial: "research_topics/results"
+-#      #surveys.tab-pane
+-#        = render partial: "survey_scorecard"
+-#        = render partial: "activity_log"
+-#        "# health checkins"
+-#      #activity-log.tab-pane
+
+-#      #tutorial.tab-pane
+-#        = render partial: "tutorial"
+
+
+- @active_sub_nav = :research_priorization
+
+= render partial: "research_democracy"

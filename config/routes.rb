@@ -30,10 +30,18 @@ Rails.application.routes.draw do
   resources :research_topics
 
   # Research Section
-  get 'research' => 'research#index'
-  get 'research_karma' => 'research#research_karma'
-  get 'research_today' => 'research#research_today'
+  #get 'research_karma' => 'research#research_karma'
+  #get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
+
+
+  get 'research' => 'research#index'
+  get 'research_prioritization' => 'research#index'
+  get 'research_active_studies' => 'research#active_studies'
+  get 'research_completed_research' => 'research#completed_research'
+  get 'research_my_contributions' => 'research#my_contributions'
+
+
   get 'data_connections' => 'research#data_connections'
 
   # Surveys
@@ -49,6 +57,7 @@ Rails.application.routes.draw do
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'
+
 
 
 

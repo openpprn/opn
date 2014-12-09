@@ -1,21 +1,20 @@
 -### pairing wizard
 
-%h2 Pairing Wizard
-%p Let's start by seeing if you've registered for the old CCFA Partners website, so we can bring your data over.
 
-.panel.panel-default
-  .panel-heading
-    Legacy CCFA Partners
-  .panel-body
-    - if current_user.paired_with_lcp
-      %i.fa.fa-check-square-o
-      Wonderful, you've paired your account with CCFA Partners! You're ready to continue into the site!
-    - else
-      %i.fa.fa-square-o
-      = "Do you know if you've registered with CCFAPartners.com in the past under a different email address than #{current_user.email}? If so, you can try to link this account to it. Provide an alternative email you may have used to register for that site here. If you are pretty sure you have no existing CCFA Partners account, you can just set up a new account below."
+%h2 Pairing Wizard
+
+
+-# Pair with Legacy CCFA Partners
+- if !current_user.paired_with_lcp
+
+  .panel.panel-default
+    .panel-heading
+      Legacy CCFA Partners
+    .panel-body
+      = "If you have previously registered for CCFAPartners.com, we'd love to connect your new account to the data from the existing. Do you know if you've registered with CCFAPartners.com in the past under a different email address other than #{current_user.email}? If so, provide that (or any potential) email address below, and we'll try to make the connection."
       %br/
 
-      =form_tag(pairing_wizard_path, class: "form-inline")
+      = form_tag(pairing_wizard_path, class: "form-inline")
       .form-group
         .input-group
           %label.sr-only{:for => "email"} Email address
@@ -24,13 +23,19 @@
         .input-group
           =submit_tag "Try Matching Account", class: "btn btn-success"
 
+
+
+-# Pair with Crohnology
 -#- if !current_user.paired_with_crohnology?
 -#  [ ] Pair this account with my Crohnology Account #{if acct found}
 -#  [ ] Create a Crohnology acct #{if no acct found}
 
 
+
+-# User allowed to pass?
+
 - if current_user.paired_with_lcp
   %a.btn.btn-primary{href: home_path} Continue
 - else
+  If you are pretty sure you have no existing CCFA Partners account, you can just set up a new account.
   %a.btn.btn-primary{href: redirect_to_lcp_reg_path} Set up New Account
-
