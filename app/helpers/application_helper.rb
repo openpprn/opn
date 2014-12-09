@@ -16,6 +16,14 @@ module ApplicationHelper
     number_to_human(n, :format => '%n%u', :units => { :thousand => 'K', :million => "M", :billion => "B", :trillion => "T", :quadrillion => "Q" })
   end
 
+  def my_strftime(time)
+    if time.year == Time.now.year
+      time.strftime("%b %e")
+    else
+      time.strftime("%b %e, %Y")
+    end
+  end
+
 
 
   # DISABLING FOR NOW BUT THIS CODE COULD BE USED BELOW TO STOP THE ROUNDING THAT HAPPENS IN PPRN_NUMBER_TO_HUMAN

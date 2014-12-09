@@ -31,10 +31,12 @@ class ResearchTopicAuthorizer < ApplicationAuthorizer
   end
 
   def readable_by?(user)
-    user.has_role?(:moderator) || resource.user == user || resource.accepted?
+    true
+    # even if a topic was marked as removed, we want links to still function and for the removable notice to be viewable
+    # past implementation was: user.has_role?(:moderator) || resource.user == user || !resource.removed?
   end
 
   def votable_by?(user)
-    resource.accepted? || resource.user == user
+    resource.proposed? || resource.user == user
   end
 end

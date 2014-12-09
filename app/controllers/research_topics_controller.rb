@@ -15,7 +15,7 @@ class ResearchTopicsController < ApplicationController
 
 
   def index
-    @research_topics = ResearchTopic.accepted
+    @research_topics = ResearchTopic.proposed
   end
 
   def show

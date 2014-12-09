@@ -161,4 +161,8 @@ class User < ActiveRecord::Base
 
     (todays_votes.length < vote_quota) or (rating < 1)
   end
+
+  def votes_remaining_count
+     vote_quota - todays_votes.length
+  end
 end

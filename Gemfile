@@ -71,7 +71,7 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'mini_magick'
 
-
+# Merit, Karma Points and Badges
 gem 'merit'
 
 # For Third-Party API Connections
