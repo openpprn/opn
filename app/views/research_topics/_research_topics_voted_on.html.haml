@@ -1,5 +1,14 @@
-- votes_used_count = current_user.research_topics_with_vote.count
-- vote_quota = current_user.vote_quota
+
+- if current_user
+  - research_topics_with_vote = current_user.research_topics_with_vote
+  - vote_quota = current_user.vote_quota #fixme, should reference global vote quota var
+- else
+  - research_topics_with_vote = []
+  - vote_quota = 5 #fixme, should reference global vote quota var, and pulled above this logic to be dry
+
+
+- votes_used_count = research_topics_with_vote.count
+- votes_remaining_count = vote_quota - votes_used_count
 - percentage_votes_used = ((votes_used_count.to_f / vote_quota) * 100).round(0)
 
 .panel.panel-default
@@ -24,7 +33,7 @@
 
 
     .list-group
-      - current_user.research_topics_with_vote.each do |research_topic|
+      - research_topics_with_vote.each do |research_topic|
         .list-group-item.research_question
           = link_to research_topic.text, research_topic_path(research_topic)
           %br/
@@ -32,8 +41,7 @@
           .clearfix
 
 
-
-      - (current_user.vote_quota - current_user.research_topics_with_vote.count).times do
-        .list-group-item.research_question.small
-          I am an Available Vote. Use Me!
+      -#- votes_remaining_count.times do
+      -#  .list-group-item.research_question.small
+      -#    I am an Available Vote. Use Me!
 

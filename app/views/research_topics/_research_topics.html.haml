@@ -28,10 +28,11 @@
         = link_to research_topic.text, research_topic_path(research_topic)
 
       %td
-        - unless research_topic.has_vote?(current_user, 1)
-          %a.btn.btn-primary.btn-sm.voting{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic)}} Cast Vote
-        - else
-          %a.btn.btn-default.btn-sm{href: "#"} Retract Vote
+        - if current_user
+          - unless research_topic.has_vote?(current_user, 1)
+            %a.btn.btn-primary.btn-sm.voting{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic)}} Cast Vote
+          - else
+            %a.btn.btn-default.btn-sm{href: "#"} Retract Vote
 
 
 .panel-footer.text-center
