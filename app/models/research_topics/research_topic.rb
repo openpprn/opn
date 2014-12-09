@@ -1,6 +1,6 @@
 class ResearchTopic < ActiveRecord::Base
   include Votable
-  has_many :votes
+  has_many :votes, counter_cache: true
 
   paginates_per 5
 
@@ -18,19 +18,13 @@ class ResearchTopic < ActiveRecord::Base
 
   scope :sorted, -> { order(:votes_count)}
 
+  scope :popular, -> { order(votes_count: :desc) }
+  scope :most_discussed, -> { order(updated_at: :desc) } #make sure commenting touches the model
+  scope :newest, -> { order(created_at: :desc) }
+
   # intentionally returns all now, to allow for future filtering (no filters needed at the moment):
   scope :viewable_by, lambda { |user_id| self.all}
 
-
-  def self.popular(user_id = nil) #FIXME inefficient at high record numbers
-    viewable_by(user_id).includes(:votes).sort do |rt1, rt2|
-      sort_topics(rt1, rt2)
-    end
-  end
-
-  def self.most_active(user_id = nil) #FIXME inefficient at high record numbers
-    order(updated_at: :desc)
-  end
 
 
   def self.voted_by(user)
@@ -43,19 +37,11 @@ class ResearchTopic < ActiveRecord::Base
     where(user_id: user.id)
   end
 
-  def self.newest(user_id = nil)
-    viewable_by(user_id).order("created_at DESC")
-  end
-
-  # def self.random(user_id = nil)
-  #   viewable_by(user_id).sample(3)
-  # end
 
   def self.random(count)
     count = self.count if count > self.count #we can't ask for more records than we have
     self.offset(rand(self.count - count)).first(count)
   end
-
 
 
 
@@ -77,10 +63,6 @@ class ResearchTopic < ActiveRecord::Base
   end
 
 
-
-  def last_activity_at
-    updated_at #FIXME
-  end
 
   private
 
