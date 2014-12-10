@@ -66,7 +66,7 @@ module Merit
         social_profile.present? && social_profile.show_location
       end
       grant_on 'members#update_profile', badge: 'greeter', model_name: 'social_profile', to: :user, temporary: true do |social_profile|
-        social_profile.present? && social_profile.visible_to_world
+        social_profile.present? && social_profile.show_publicly?
       end
 
 

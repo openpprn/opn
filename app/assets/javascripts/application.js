@@ -30,6 +30,5 @@
 //= require admin
 //= require votes
 //= require surveys
-//= require fb
 //= require forem/topics
 
