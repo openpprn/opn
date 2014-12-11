@@ -79,6 +79,8 @@ class AccountControllerTest < ActionController::TestCase
 
     patch :update, user: {first_name: new_first, last_name: new_last, email: new_email, zip_code: new_zip_code, year_of_birth: new_yob}
 
+    assert_response :success
+
     users(:social).reload
 
     assert_equal new_last, users(:social).last_name
