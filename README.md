@@ -68,7 +68,7 @@ oodt_password:
 
 Open PPRN.rb to 
 - Configure the basic information about your PPRN
-- Enable or Disable Validic and OODT
+- Enable or Disable Validic and OODT (If you are using OODT or Validic, you must specify valid username and password here)
 
 Run Rails Server (or use Apache or nginx)
 

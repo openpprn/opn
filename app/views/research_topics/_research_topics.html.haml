@@ -1,21 +1,39 @@
-.panel.panel-default.research_topics
-  .list-group
-    - research_topics.each do |research_topic|
-      .list-group-item.research_question
-        .row
-          .col-md-1.col-sm-2
-            %h2
-              = link_to vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic) }, class: "voting #{'disabled' if disabled}" do
-                %i.fa.research-star{class: checkbox_class(research_topic)}
-          .col-md-1.col-sm-2
-            %h2.text-center.rating= research_topic.rating
-          .col-md-10.col-sm-8
-            %h4
-              = link_to research_topic.text, research_topic_path(research_topic)
-              - if current_user and current_user.can_update?(research_topic)
-                .pull-right
-                  = render partial: "research_topics/state", locals: {research_topic: research_topic}
 
-                  = link_to research_topic_path(research_topic), method: :delete, class: "btn btn-danger btn-xs" do
-                    %span.fa.fa-times
-                    Delete
+%table.table
+  %tr
+    %th.col-sm-2.small
+      - if kind == :popular
+        Rank
+      - elsif kind == :newest
+        Posted On
+      - elsif kind == :most_discussed
+        Last Activity On
+
+    %th.col-sm-8.small Question
+    %th.col-sm-2.small Vote
+
+
+  - i = 0
+  - research_topics.each do |research_topic|
+    - i += 1
+    %tr
+      %td
+        - if kind == :popular
+          = i
+        - elsif kind == :newest
+          = my_strftime(research_topic.created_at)
+        - elsif kind == :most_discussed
+          = my_strftime(research_topic.updated_at)
+      %td
+        = link_to research_topic.text, research_topic_path(research_topic)
+
+      %td
+        - if current_user
+          - unless research_topic.has_vote?(current_user, 1)
+            %a.btn.btn-primary.btn-sm.voting{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic)}} Cast Vote
+          - else
+            %a.btn.btn-default.btn-sm{href: "#"} Retract Vote
+
+
+.panel-footer.text-center
+  = paginate research_topics, param_name: "#{kind}_page", params: {active_tab: kind}

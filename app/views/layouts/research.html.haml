@@ -1,0 +1,42 @@
+-##############
+-### COMMUNITY CONTRIBUTIONS
+-##############
+- scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.under_study.count}
+- content_for :community_contributions do
+  = render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
+
+
+-##############
+-### YOUR CONTRIBUTIONS
+-##############
+- content_for :your_contributions do
+  = render partial: "shared/badge_list" if current_user
+
+
+
+- content_for :research_content do
+  %ul.nav.nav-tabs{role: "tablist"}
+    %li{class: "#{'active' if @active_sub_nav == :research_prioritization}"}
+      %a{href: research_prioritization_path} Research Prioritization
+    %li{class: "#{'active' if @active_sub_nav == :active_studies}"}
+      %a{href: research_active_studies_path} Active Studies
+    %li{class: "#{'active' if @active_sub_nav == :completed_research}"}
+      %a{href: research_completed_research_path} Completed Research
+    %li{class: "#{'active' if @active_sub_nav == :my_contributions}"}
+      %a{href: research_my_contributions_path} My Contributions
+    %li.pull-right
+      %a{"data-toggle" => "tab", :href => "#tutorial"}
+        %i.fa.fa-info-circle
+  %br/
+
+  = yield
+
+-#      #tutorial.tab-pane
+-#        = render partial: "tutorial"
+
+
+
+
+
+
+= render template: "layouts/community"

@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   include Authority::Abilities
 
   # Enable User Connection to External API Accounts
-  include ExternalUsers
-
+  include ExternalAccounts
 
   self.authorizer_name = "UserAuthorizer"
 
@@ -40,7 +39,7 @@ class User < ActiveRecord::Base
     self.count #FIXME #TODO #STUB
   end
   def self.health_data_streams_count
-    34112340123142 #FIXME #TODO #STUB
+    340142 #FIXME #TODO #STUB
   end
 
   def name
@@ -99,7 +98,7 @@ class User < ActiveRecord::Base
     # self.accepted_consent_at.present?
     # OODT Consent Storage
     if OODT_ENABLED
-      self.oodt_status
+      self.oodt_baseline_survey_complete
     else
       self.accepted_consent_at.present?
     end
@@ -208,6 +207,10 @@ class User < ActiveRecord::Base
   def has_votes_remaining?(rating = 1)
 
     (total_votes.length < vote_quota) or (rating < 1)
+  end
+
+  def votes_remaining_count
+     vote_quota - todays_votes.length
   end
 
   def topics_in_top_percentile(minimum_percentage)

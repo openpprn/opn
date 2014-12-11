@@ -1,0 +1,47 @@
+
+- if current_user
+  - research_topics_with_vote = current_user.research_topics_with_vote
+  - vote_quota = current_user.vote_quota #fixme, should reference global vote quota var
+- else
+  - research_topics_with_vote = []
+  - vote_quota = 5 #fixme, should reference global vote quota var, and pulled above this logic to be dry
+
+
+- votes_used_count = research_topics_with_vote.count
+- votes_remaining_count = vote_quota - votes_used_count
+- percentage_votes_used = ((votes_used_count.to_f / vote_quota) * 100).round(0)
+
+.panel.panel-default
+  .panel-heading
+    Your Votes
+
+  .panel-body
+    .progress
+      .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => percentage_votes_used, :role => "progressbar", :style => "width: #{percentage_votes_used}%;"}
+        %span.sr-only
+    %h5= "You've used #{votes_used_count} of your available #{vote_quota} votes."
+    - if votes_used_count = 0
+      %small Vote on research topics above to have them be reviewed by researchers for study. Don't forget you can propose your own, too.
+    - elsif votes_used_count < vote_quota
+      %small Vote on more research topics above to have them be reviewed by researchers for study. Don't forget you can propose your own, too.
+    - elsif votes_used_count >= vote_quota
+      %small Wonderful! You've allocated all your votes. Thanks! If you want to change your votes (eg. because a new research topic you like is submitted), remove a vote from one of your topics below, and use the vote you gain back on a new research topic.
+
+
+    %br/
+    %br/
+
+
+    .list-group
+      - research_topics_with_vote.each do |research_topic|
+        .list-group-item.research_question
+          = link_to research_topic.text, research_topic_path(research_topic)
+          %br/
+          %a.btn.btn-default.btn-xs.pull-right{href: "#"} Retract Vote
+          .clearfix
+
+
+      -#- votes_remaining_count.times do
+      -#  .list-group-item.research_question.small
+      -#    I am an Available Vote. Use Me!
+

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,8 +11,8 @@ Rails.application.routes.draw do
 
   get 'external_link_warning' => 'static#external_link_warning'
   #Content Pages
-  match 'content/:page', to: 'static#content', as: :content, via: :get
-  #get 'content/' => 'static#content'
+  get 'content/:page' => 'static#content'
+  get 'content/' => 'static#content'
 
 
   get 'privacy_policy_document' => 'static#content', :page => "privacy_policy"
@@ -28,10 +29,18 @@ Rails.application.routes.draw do
   resources :research_topics
 
   # Research Section
-  get 'research_topics' => 'research#research_topics'
-  get 'research_karma' => 'research#research_karma'
-  get 'research_today' => 'research#research_today'
+  #get 'research_karma' => 'research#research_karma'
+  #get 'research_today' => 'research#research_today'
   get 'research_surveys' => 'research#research_surveys', as: :surveys
+
+
+  get 'research' => 'research#index'
+  get 'research_prioritization' => 'research#index'
+  get 'research_active_studies' => 'research#active_studies'
+  get 'research_completed_research' => 'research#completed_research'
+  get 'research_my_contributions' => 'research#my_contributions'
+
+
   get 'data_connections' => 'research#data_connections'
 
   # Surveys
@@ -98,7 +107,15 @@ Rails.application.routes.draw do
   # Blog and Notification Posts
   resources :posts, except: [:show, :index]
 
-  devise_for :user, controllers: { registrations: 'registrations'}
+  # Custome Devise Controller Overrides
+  devise_for :user, controllers: { registrations: 'registrations', sessions: 'sessions'}
+
+  # Pairing Wizard
+  devise_scope :user do
+    get 'pairing_wizard' => 'registrations#pairing_wizard'
+    post 'pairing_wizard' => 'registrations#pairing_wizard' #enables trying specified email
+    get 'redirect_to_lcp_reg' => 'registrations#redirect_to_lcp_reg'
+  end
 
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.

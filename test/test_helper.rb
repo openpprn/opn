@@ -48,3 +48,4 @@ class ActionDispatch::IntegrationTest
     user
   end
 end
+

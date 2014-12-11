@@ -1,8 +1,19 @@
-module ValidicUser
+module ValidicAdapter
+  extend ActiveSupport::Concern
 
-  def self.included(base)
-    base.extend(ClassMethods)
+
+
+  module ClassMethods
+    #FIXME need to factor out most of these methods into class methods, but time constraints
+    def delete_all_validic_users
+      get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
+    end
   end
+
+  included do
+    after_create :provision_validic_user
+  end
+
 
   ####################
   # API CONNECTION SETUP
@@ -87,14 +98,9 @@ module ValidicUser
   end
 
 
-  def delete_all_validic_users
-    get_all_validic_users.each { |id| delete_validic_user(id) } if get_all_validic_users.present?
-  end
 
 
-  module ClassMethods
-    #FIXME need to factor out most of these methods into class methods, but time constraints
-  end
+
 
 
 end

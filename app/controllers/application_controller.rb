@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   # Add theme folder to view path
   self.view_paths.unshift(*Rails.root.join('app', 'views', ENV['pprn_theme_name']))
 
+  def initialize
+    include_plugins
+    super
+  end
+
+
   def forem_user
     current_user
   end
@@ -45,5 +51,14 @@ class ApplicationController < ActionController::Base
   def no_layout
     render layout: false
   end
+
+
+  private
+
+
+  def include_plugins
+    self.class.send(:include, OODTApplicationController) if Figaro.env.oodt_enabled?
+  end
+
 
 end

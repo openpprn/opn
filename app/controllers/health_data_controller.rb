@@ -16,6 +16,7 @@ class HealthDataController < ApplicationController
 
   def index
     @check_in_questions = Group.find_by_name("Health Data Check In").questions
+    @med_list = current_user ? current_user.get_med_list : {}
   end
 
 end

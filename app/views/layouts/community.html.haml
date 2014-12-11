@@ -1,5 +1,6 @@
 - @title = "Community"
 - @intro = true
+- @active_top_nav_link = "Research"
 
 - content_for :sublayout do
 
@@ -23,7 +24,7 @@
 
       -#################
       -# PAGE CONTENT! #
-      = yield
+      = content_for?(:research_content) ? yield(:research_content) : yield
 
 
     -# YOUR CONTRIBUTIONS SIDEBAR

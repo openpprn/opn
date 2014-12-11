@@ -1,28 +1,42 @@
 class ResearchTopic < ActiveRecord::Base
   include Votable
-  has_many :votes
+  has_many :votes, counter_cache: true
 
   acts_as_commentable
+
+  paginates_per 5
 
   include Authority::Abilities
 
   belongs_to :user
 
-  STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
+  STATES = [:proposed, :under_study, :study_completed, :removed]
+  #Old Implementation: STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
 
-  scope :accepted, -> { where(state: 'accepted') }
-  scope :viewable_by, lambda { |user_id| where("state = ? or user_id = ?", "accepted", user_id)}
+  scope :proposed, -> { where(state: 'proposed') }
+  scope :under_study, -> { where(state: 'under_study') }
+  scope :study_completed, -> { where(state: 'study_completed') }
+  scope :removed, -> { where(state: 'removed') }
+
   scope :sorted, -> { order(:votes_count)}
 
-  def self.popular(user_id = nil)
+  scope :popular, -> { order(votes_count: :desc) }
+  scope :most_discussed, -> { order(updated_at: :desc) } #make sure commenting touches the model
+  scope :newest, -> { order(created_at: :desc) }
 
-    viewable_by(user_id).includes(:votes).sort do |rt1, rt2|
+  # intentionally returns all now, to allow for future filtering (no filters needed at the moment):
+  scope :viewable_by, lambda { |user_id| self.all}
+
+
+  def self.popular_old(user_id = nil)
+
+    self.includes(:votes).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
 
   def self.voted_by(user)
-    accepted.joins(:votes).where(votes: {user_id: user.id, rating: 1} ).sort do |rt1, rt2|
+    self.joins(:votes).where(votes: {user_id: user.id, rating: 1} ).sort do |rt1, rt2|
       sort_topics(rt1, rt2)
     end
   end
@@ -31,8 +45,29 @@ class ResearchTopic < ActiveRecord::Base
     where(user_id: user.id)
   end
 
-  def self.newest(user_id = nil)
-    viewable_by(user_id).order("created_at DESC")
+  def self.random(count)
+    count = self.count if count > self.count #we can't ask for more records than we have
+    self.offset(rand(self.count - count)).first(count)
+  end
+
+
+
+
+  # STATE GETTERS
+  def proposed?
+    state == 'proposed'
+  end
+
+  def active?
+    state == 'under_study'
+  end
+
+  def completed?
+    state == 'study_completed'
+  end
+
+  def removed?
+    state == 'removed'
   end
 
 
@@ -83,6 +118,10 @@ class ResearchTopic < ActiveRecord::Base
   def rank
     self.class.ranks.index { |rank_hash| rank_hash['research_topic_id'].to_i == self.id } + 1
   end
+
+
+
+
 
   private
 

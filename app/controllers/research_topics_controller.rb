@@ -3,9 +3,9 @@ class ResearchTopicsController < ApplicationController
 
   before_action :no_layout, :only => [:research_topics, :vote_counter]
   before_action :set_research_topic, only: [:show, :update, :edit, :destroy]
+  before_action :set_active_sub_nav
 
-
-  layout "community"
+  layout "research"
 
   authorize_actions_for ResearchTopic, only: [:index] #, :create, :new]
 
@@ -13,9 +13,12 @@ class ResearchTopicsController < ApplicationController
     raise StandardError
   end
 
+  def set_active_sub_nav
+    @active_sub_nav = :research_prioritization
+  end
 
   def index
-    @research_topics = ResearchTopic.accepted
+    @research_topics = ResearchTopic.proposed
   end
 
   def show
@@ -27,7 +30,7 @@ class ResearchTopicsController < ApplicationController
     @research_topic = current_user.research_topics.new(research_topic_params)
 
     if @research_topic.save
-      redirect_to research_topics_path, notice: "Your research topic has been successfully submitted!"
+      redirect_to research_path(active_tab: "newest"), notice: "Your research topic has been successfully submitted!"
     else
       render :new
     end

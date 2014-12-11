@@ -18,18 +18,22 @@
       %br/
 
 
-    - if @research_topic.user.share_research_topics? && @research_topic.user.social_profile.present?
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Proposed By...
-        .panel-body
-          .media
-            %a.pull-left
-              = image_tag @research_topic.user.photo_url, :class => "img-responsive img-thumbnail"
-            .media-body.small
-              %strong
-                = @research_topic.user.social_profile.name
-              %p
-                = @research_topic.user.social_profile.location
-            .clearfix
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Proposed By...
+      .panel-body
+      - if !@research_topic.user
+        %em
+          The user who created this research topic is no longer with us.
+      - elsif @research_topic.user.share_research_topics? && @research_topic.user.social_profile.present?
+        .media
+          %a.pull-left
+            = image_tag @research_topic.user.photo_url, :class => "img-responsive img-thumbnail"
+          .media-body.small
+            %strong
+              = @research_topic.user.social_profile.name
+            %p
+              = @research_topic.user.social_profile.location
+          .clearfix
 

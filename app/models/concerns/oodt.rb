@@ -1,29 +1,93 @@
-module OODTUser
-
-  def self.included(base)
-    base.extend(ClassMethods)
-  end
+module OODT
+  extend ActiveSupport::Concern
 
   # To automatically provision OODT account on user hook, add it to User.rb like so:
   # after_create :provision_oodt_user
 
 
-  ####################
-  # API CONNECTION SETUP
-  ####################
-  def oodt
-    conn = Faraday.new(url: "https://whiterivercomputing.com/pcori-1")
-    conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
-    conn
+  included do
+
   end
+
+  module ClassMethods
+
+    ####################
+    # API CONNECTION SETUP
+    ####################
+    def oodt
+      prefix = "api/pcori/sandbox/v1/"
+      conn = Faraday.new(url: "https://whiterivercomputing.com/#{prefix}")
+      conn.basic_auth(Figaro.env.oodt_username, Figaro.env.oodt_password)
+      conn
+    end
+
+    def parse_body(response)
+      JSON.parse(response.body)
+    end
+
+
+
+    ## USER COUNT ####
+    def get_network_user_count #19
+      response = oodt.post "users/@@numberEnrolled"
+      body = parse_body(response)
+
+      if response.success?
+        return body['numberEnrolled']
+      else
+        logger.error "API Call to fetch network user count failed. OODT returned the following response:\n#{response.body}"
+        return body['errorMessage'] || body
+      end
+    end
+
+    def get_network_survey_count #19
+      response = oodt.post "surveys/@@globalNumberSurveys"
+      body = parse_body(response)
+
+      if response.success?
+        return body['globalNumberSurveys']
+      else
+        logger.error "API Call to fetch network user count failed. OODT returned the following response:\n#{response.body}"
+        return body['errorMessage'] || body
+      end
+    end
+
+    def oodt_locations
+      data = [ "Dogstown, MA", "Brooksfield", "Ohio", "UK", "Ko Pha Ngan", "Tennessee, USA", "America", "The Earth"]
+    end
+
+    # def delete_all_oodt_users
+    #   User.all.each { |u| u.delete_oodt_user }
+    # end
+
+    def num_network_surveys_completed
+      get_network_survey_count # + Survey.num_frequent_surveys_completed #FIXME
+    end
+
+    def num_health_data_streams
+      get_network_user_count + User.count # + Validic.num_devices_connected + #FIXME
+    end
+
+  end
+
+
+  ## Hacks to simplify access to class methods.... Fixme:
+  def oodt
+    User.oodt
+  end
+  def parse_body(response)
+    User.parse_body(response)
+  end
+
+
+
+  ####################
+  # INSTANCE CONVENIENCE METHODS
+  ####################
 
   # Base Params for any User OODT Call
   def user_hash
     {userID: self.oodt_id}
-  end
-
-  def parse_body(response)
-    JSON.parse(response.body)
   end
 
   # Test if our local database knows the user is provisioned on OODT
@@ -31,68 +95,80 @@ module OODTUser
     return !self.oodt_id.nil?
   end
 
+  def paired_with_lcp
+    oodt_id.present?
+  end
+
+
+
 
   ###################
-  # USER PROVISIONING
+  # ACCOUNT SETUP
   ###################
-  def provision_oodt_user #2
-    return "You already are provisioned" if !self.oodt_id.nil?
-
-    response = oodt.post "users/@@create", {:opnUserID => self.id} #not needed
+  def pair_with_lcp(email_to_try) #2
+    response = oodt.post "users/@@create", {:email => email_to_try}
+    body = parse_body(response)
 
     if response.success?
-      body = parse_body(response)
-      self.oodt_id = body['participantID']
-      return "User successfully linked. His/her OODT ID is #{body['participantID']}"
+      return false if !body['userID']
+
+      store_basics(body)
+      return true
     else
       logger.error "API Call to OODT to provision user ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
-      return false
+      return false # body['errorMessage'] || body
     end
   end
 
-
-  def oodt_status #6
-    response = oodt.post "users/@@status", user_hash
+  def sync_oodt_status(options) #Allowed Option :return_url #6
+    response = oodt.post "users/@@status", user_hash.merge(:return_url => options[:return_url]) #where you want the baseline survey to drop back users
     body = parse_body(response)
 
     if response.success?
-      if body['linked']
-        if !body['baselineSurveyComplete']
-          return "Connected but no consent! Visit " + body['url'] + " to finish survey"
-        else
-          return "Connected and Consented"
-        end
-      else
-        return "Not connected to partners!"
-      end
+      store_basics_in_status_format(body)
+      return body
     else
-      logger.error "Unsuccessful call to fetch OODT Status"
+      logger.error "API Call to OODT to get user status for ##{self.id} was unsucccessful. OODT returned the following response:\n#{response.body}"
+      return body # body['errorMessage'] || body
+    end
+  end
+
+  def get_lcp_reg_url(options = {}) #Allowed Option :return_url
+    response = oodt.post "users/@@registrationURL", {:email => email, :return_url => options[:return_url]}
+    body = parse_body(response)
+
+    if response.success?
+      return body['url']
+    else
+      logger.error "Unable to retrieve LCP reg URL for ##{self.id}. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
     end
-
   end
 
 
-  def pair_with_legacy_ccfa_partners_account(email) #3
-    response = oodt.post "users/@@link", user_hash.merge!({email: email})
-    body = parse_body(response)
 
-    if response.success?
-      if body.status
-        return "You match an existing Partners users and you've done your survey"
-      else
-        return "You match an existing Partners users, but you need to visit #{body.url} to complete first survey."
-      end
-    else
-      if body['errorType'] == "NotFound"
-        return "Provided email does not match partners acct"
-      else
-        logger.error "API Call to pair user ##{self.id} with legacy ccfa partners account was unsucccessful. OODT returned the following response:\n#{response.body}"
-        return body['errorMessage'] || body
-      end
-    end
+
+
+  def store_basics(body)
+    self.external_account = ExternalAccount.new if !external_account
+
+    self.oodt_id = body['userID']
+    self.oodt_baseline_survey_complete = true if body['status'] == "baselineSurveyComplete"
+    self.oodt_baseline_survey_complete = false if body['status'] == "baselineSurveyIncomplete"
+    self.oodt_baseline_survey_url = body['url']
+
+    self.external_account.save
+    return external_account
   end
 
+  # Implementation for API Call #6
+  def store_basics_in_status_format(body)
+    oodt_baseline_survey_complete = body['baselineSurveyComplete']
+    oodt_baseline_survey_url = body['url']
+
+    self.external_account.save
+    return external_account
+  end
 
 
 
@@ -114,14 +190,6 @@ module OODTUser
 
   end
 
-  module ClassMethods
-    def delete_all_oodt_users
-      User.all.each { |u| u.delete_oodt_user }
-    end
-  end
-
-
-
 
 
 
@@ -135,17 +203,18 @@ module OODTUser
   ###############
   # SURVEYS
   ###############
-  def get_surveys #11
+  def get_survey_scorecard #11
     response = oodt.post "users/@@surveys", user_hash
     body = parse_body(response)
 
     if response.success?
-      surveyOpenDate = body['surveyDate']
-      surveyURL = body['url']
-      num_completed = body['completed'].count
-      num_incompleted = body['incomplete'].count
-      num_surveys = num_completed + num_incompleted
-      return "The next survey opens on #{surveyOpenDate} at #{surveyURL}. The user has completed #{num_completed}/#{num_surveys} surveys"
+      # surveyOpenDate = body['surveyDate']
+      # surveyURL = body['url']
+      # num_completed = body['completed'].count
+      # num_incompleted = body['incomplete'].count
+      # num_surveys = num_completed + num_incompleted
+      #return "The next survey opens on #{surveyOpenDate} at #{surveyURL}. The user has completed #{num_completed}/#{num_surveys} surveys"
+      return body
     else
       logger.error "API Call to get surveys for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
@@ -178,9 +247,10 @@ module OODTUser
     body = parse_body(response)
 
     if response.success?
-      current_as_of = body['date']
-      meds = body['meds']
-      return "Med List (as of #{current_as_of}): #{meds}"
+      # current_as_of = body['date']
+      # meds = body['meds']
+      # return "Med List (as of #{current_as_of}): #{meds}"
+      return body
     else
       logger.error "API Call to fetch med list for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
       return body['errorMessage'] || body
@@ -204,19 +274,6 @@ module OODTUser
   end
 
 
-
-  ## MEDICATIONS ####
-  def get_oodt_user_count #19
-    response = oodt.post "users/@@count"
-    body = parse_body(response)
-
-    if response.success?
-      return body['count']
-    else
-      logger.error "API Call to fetch oodt user count failed. OODT returned the following response:\n#{response.body}"
-      return body['errorMessage'] || body
-    end
-  end
 
 
 
@@ -265,9 +322,6 @@ module OODTUser
 
 
 
-  def self.oodt_locations
-    data = [ "Dogstown, MA", "Brooksfield", "Ohio", "UK", "Ko Pha Ngan", "Tennessee, USA", "America", "The Earth"]
-  end
 
 
   #### OODT CALLS REGARDING VALIDIC DATA ####

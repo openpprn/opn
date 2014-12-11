@@ -1,20 +1,21 @@
 
-
 .panel.panel-default
   .panel-heading
-    %h3.panel-title Research Projects that have gained from your Contributions
-  %table.table
-    %thead
-      %th Date
-      %th Project
-    %tbody
-      %tr
-        %td Nov 2014
-        %td University of Chapel Hill. Study on the Specific Carbohydrate Diet.
-      %tr
-        %td Sep 2014
-        %td Dr. Bob Sandler. Study on Biologics and Fitness.
-      %tr
-        %td Jul 2014
-        %td Dr. Michael Kappelman. Study on Patient Powered Research.
+    %h3.panel-title Data Access Logs
 
+
+  - if @research_access_events.empty?
+    .panel-body
+      .alert.alert-info Your data has not been accessed yet.
+  - else
+    %table.table
+      %thead
+        %th Date
+        %th Description
+      %tbody
+        - @research_access_events.each do |event|
+          %tr
+            %td= event['timestamp']
+            %td
+              = event['description']
+              = link_to " Learn More.", event['url'] if event['url']

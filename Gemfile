@@ -76,11 +76,11 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'mini_magick'
 
-
+# Merit, Karma Points and Badges
 gem 'merit'
 
 # For Third-Party API Connections
-gem 'validic'
+# gem 'validic' -- handrolling for now, since their gem has no documnetation
 gem 'faraday'
 
 # Development

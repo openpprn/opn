@@ -30,7 +30,7 @@
         - if current_user
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              My Settings
+              = current_user.email
               %b.caret
             %ul.dropdown-menu
               %li
