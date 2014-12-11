@@ -96,3 +96,11 @@ has_unstarted_survey:
   accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
   year_of_birth: 1980
   encrypted_password: <%= pw %>
+
+demo_user:
+  first_name: Demo
+  last_name: User
+  email: demo@openpprn.org
+  zip_code: 12345
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>

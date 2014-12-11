@@ -59,7 +59,7 @@ $(document).on "click", ".research_topics a.voting", (event) ->
           vote_counter.html(data)
         )
     else
-      bootbox.alert("Sorry! You have already used all of your votes for today.")
+      bootbox.alert("Sorry! You have already used all of your votes.")
 
 
   )
