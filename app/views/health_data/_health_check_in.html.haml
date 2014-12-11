@@ -1,5 +1,4 @@
-= render partial: "health_check_in_helper", :locals => { question: "How are you feeling today?", last_updated_at: "5 days ago",
-                                               answer_type: :slider, answer_options: ["Horrible", "Amazing"]}
+= render partial: "health_check_in_helper", :locals => { question: @check_in_questions.first}
 
 
 
@@ -13,17 +12,8 @@
     #collapseOne.panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel"}
       .panel-body
 
-
-        = render partial: "health_check_in_helper", :locals => { question: "How would you describe your general well-being over the last week?", last_updated_at: "7 days ago",
-                                                       answer_type: :options, answer_options: ["Generally Well", "Slightly Below Par", "Poor", "Very Poor", "Terrible"]}
-
-
-        = render partial: "health_check_in_helper", :locals => { question: "On average, over the past week, would you rate your abdominal pain as:", last_updated_at: "7 days ago",
-                                                       answer_type: :options, answer_options: ["None", "Mild", "Moderate","Severe"]}
-
-        = render partial: "health_check_in_helper", :locals => { question: "On average, over the past week, how many liquid or very soft stools have you had per day", last_updated_at: "10 days ago",
-                                                       answer_type: :text }
-
+        - @check_in_questions[1..@check_in_questions.size-1].each do |question|
+          = render partial: "health_check_in_helper", :locals => { question: question}
 
         .panel.panel-default
           .panel-body.text-center

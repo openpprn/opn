@@ -65,9 +65,11 @@ namespace :surveys do
 
         yaml_data = YAML.load_file(file_path)
 
-        yaml_data.each do |object_attrs|
-          puts object_attrs
-          model_class.create(object_attrs)
+        if yaml_data
+          yaml_data.each do |object_attrs|
+            puts object_attrs
+            model_class.create(object_attrs)
+          end
         end
       end
     end
@@ -86,15 +88,17 @@ namespace :surveys do
 
       yaml_data = YAML.load_file(qe_path)
 
-      yaml_data.each_with_index do |attrs, i|
+      if yaml_data
+        yaml_data.each_with_index do |attrs, i|
 
-        q1 = Question.find(attrs['parent_question_id'])
-        q2 = Question.find(attrs['child_question_id'])
+          q1 = Question.find(attrs['parent_question_id'])
+          q2 = Question.find(attrs['child_question_id'])
 
-        qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
+          qe = QuestionEdge.build_edge(q1, q2, attrs['condition'], attrs['question_flow_id'])
 
-        puts("Creating edge #{i+1} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
-        raise StandardError, qe.errors.full_messages unless qe.save
+          puts("Creating edge #{i+1} of #{yaml_data.length} between #{q1.id} and #{q2.id}")
+          raise StandardError, qe.errors.full_messages unless qe.save
+        end
       end
 
       QuestionFlow.all.each {|qf| qf.reset_paths }

@@ -1,29 +1,29 @@
-- id: 36
-  message_en: |
-    Now we are going to ask some questions about your sleep patterns.
-- id: 37
-  message_en: |
-    How likely are you to doze off or fall asleep (not just "feel tired") in the following situations?
-    Please choose one of the answers for each situation.
-    If you are never or rarely in the situation, please give your best guess for that situation.
-- id: 38
-  message_en: |
-    Thinking about your sleep in the past 7 days please answer the following questions.
-    In the past 7 days...
-- id: 39
-  message_en: |
-    Has a doctor or health care professional ever told you that you had any of the following?
-    Check all that apply.
-- id: 40
-  message_en: |
-    The following questions ask about your health and health problems you have been diagnosed with.
-- id: 41
-  message_en: |
-    The following questions are about you and can help you compare yourself to others with sleep apnea.
-- id: 1001
-  message_en: |
-    Did any of the following symptoms trigger you to be evaluated for sleep apnea?
-
-- id: 1002
-  message_en: |
-    Please indicate how you think your sleep apnea treatment has influenced the following symptoms.
+#- id: 36
+#  message_en: |
+#    Now we are going to ask some questions about your sleep patterns.
+#- id: 37
+#  message_en: |
+#    How likely are you to doze off or fall asleep (not just "feel tired") in the following situations?
+#    Please choose one of the answers for each situation.
+#    If you are never or rarely in the situation, please give your best guess for that situation.
+#- id: 38
+#  message_en: |
+#    Thinking about your sleep in the past 7 days please answer the following questions.
+#    In the past 7 days...
+#- id: 39
+#  message_en: |
+#    Has a doctor or health care professional ever told you that you had any of the following?
+#    Check all that apply.
+#- id: 40
+#  message_en: |
+#    The following questions ask about your health and health problems you have been diagnosed with.
+#- id: 41
+#  message_en: |
+#    The following questions are about you and can help you compare yourself to others with sleep apnea.
+#- id: 1001
+#  message_en: |
+#    Did any of the following symptoms trigger you to be evaluated for sleep apnea?
+#
+#- id: 1002
+#  message_en: |
+#    Please indicate how you think your sleep apnea treatment has influenced the following symptoms.

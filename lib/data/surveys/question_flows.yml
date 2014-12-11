@@ -1,7 +1,7 @@
-- id: 13
-  name_en: About Me and My Sleep
-  description_en: |
-    This survey covers some basic information about you and your sleep so that we can better understand who has sleep apnea and how sleep apnea is diagnosed.
-    Thank you for helping  to strengthen the sleep apnea community!
-  first_question_id: 489
-  status: show
+#- id: 13
+#  name_en: About Me and My Sleep
+#  description_en: |
+#    This survey covers some basic information about you and your sleep so that we can better understand who has sleep apnea and how sleep apnea is diagnosed.
+#    Thank you for helping  to strengthen the sleep apnea community!
+#  first_question_id: 489
+#  status: show

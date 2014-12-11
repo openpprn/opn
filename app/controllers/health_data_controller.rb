@@ -14,5 +14,8 @@ class HealthDataController < ApplicationController
     raise "Validic must be enabled for this feature." if !Figaro.env.validic_enabled
   end
 
+  def index
+    @check_in_questions = Group.find_by_name("Health Data Check In").questions
+  end
 
 end
