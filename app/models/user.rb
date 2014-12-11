@@ -143,14 +143,6 @@ class User < ActiveRecord::Base
     self.has_role? :forum_moderator or self.has_role? :admin
   end
 
-  def todays_votes
-    votes.select{|vote| vote.updated_at.today? and vote.rating != 0 and vote.research_topic_id.present?}
-  end
-
-  def available_votes_percent
-    (todays_votes.length.to_f / vote_quota) * 100.0
-  end
-
   def is_owner?
     self.has_role? :owner
   end
@@ -191,9 +183,31 @@ class User < ActiveRecord::Base
     true
   end
 
+  # Voting
+  def vote_quota
+    ENV["votes_per_user"].to_i + vote_modifier
+  end
+
+  def todays_votes
+    votes.select{ |vote| vote.updated_at.today? and vote.rating != 0 and vote.research_topic_id.present? }
+  end
+
+  def total_votes
+    votes.select{ |vote| vote.rating != 0 and vote.research_topic_id.present? }
+  end
+
+  # alias as per Sean's specs
+  def votes_cast_count
+    total_votes
+  end
+
+  def available_votes_percent
+    (total_votes.length.to_f / vote_quota) * 100.0
+  end
+
   def has_votes_remaining?(rating = 1)
 
-    (todays_votes.length < vote_quota) or (rating < 1)
+    (total_votes.length < vote_quota) or (rating < 1)
   end
 
   def topics_in_top_percentile(minimum_percentage)

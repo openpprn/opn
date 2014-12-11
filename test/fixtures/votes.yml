@@ -42,3 +42,15 @@ v11:
   user: user_2
   question: q1
   rating: 1
+v12:
+  user: user_1
+  research_topic: rt2
+  rating: 1
+v13:
+  user: user_1
+  research_topic: rt4
+  rating: 1
+v14:
+  user: user_1
+  research_topic: rt5
+  rating: 1

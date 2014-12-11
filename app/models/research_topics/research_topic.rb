@@ -36,30 +36,57 @@ class ResearchTopic < ActiveRecord::Base
 
   def self.top_research_topics(minimum_percentage)
     ActiveRecord::Base.connection.execute(
-        "
-    select
-    rt.id research_topic_id,
-          count(v.id) topic_votes,
-    max(vc.total) total_votes,
-    count(v.id)/(1.00 * max(vc.total)) vote_percentage
+      "
+        select
+        rt.id research_topic_id,
+              count(v.id) topic_votes,
+        max(vc.total) total_votes,
+        count(v.id)/(1.00 * max(vc.total)) vote_percentage
 
-    from research_topics rt, (select count(*) total from votes where research_topic_id is not null) vc, votes v
-    where v.research_topic_id = rt.id
-    group by rt.id
-    having count(v.id)/(1.00 * max(vc.total)) > #{minimum_percentage};
-    "
+        from research_topics rt, (select count(*) total from votes where research_topic_id is not null) vc, votes v
+        where v.research_topic_id = rt.id
+        group by rt.id
+        having count(v.id)/(1.00 * max(vc.total)) > #{minimum_percentage};
+      "
     ).to_a
   end
 
+  def self.ranks
+    ActiveRecord::Base.connection.execute(
+      "
+        select
+          rt.id research_topic_id,
+          rt.created_at research_topic_created_at,
+          count(v.id) topic_votes
+        from research_topics rt
+        left join votes v on v.research_topic_id = rt.id
+        where rt.state = 'accepted'
+        group by rt.id
+        order by topic_votes desc, research_topic_created_at desc;
+      "
+    ).to_a
+
+  end
+
+  # alias as per Sean's specs
+  def votes_count
+    rating
+  end
 
   def accepted?
     state == 'accepted'
   end
+
+  # As per Sean's specs
+  def rank
+    self.class.ranks.index { |rank_hash| rank_hash['research_topic_id'].to_i == self.id } + 1
+  end
+
   private
 
   def self.sort_topics(rt1, rt2)
     comp = rt2.rating <=> rt1.rating
-    comp.zero? ? (rt1.created_at <=> rt2.created_at) : comp
+    comp.zero? ? (rt2.created_at <=> rt1.created_at) : comp
   end
 
 end

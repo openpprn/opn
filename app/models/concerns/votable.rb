@@ -9,7 +9,6 @@ module Votable
     votes.where(user_id: user.id, rating: rating).count > 0
   end
 
-
   module ClassMethods
   end
 end

@@ -41,6 +41,20 @@ class VotesControllerTest < ActionController::TestCase
 
   end
 
+  test "User should not be able to exceed vote limit" do
+    login(users(:user_1))
+
+    ENV["votes_per_user"] = '5'
+
+    assert research_topics(:rt6).accepted?
+    assert users(:user_1).can_vote_for?(research_topics(:rt6))
+    assert_equal 5, ENV["votes_per_user"].to_i
+    refute users(:user_1).has_votes_remaining?
+
+    refute_difference "research_topics(:rt6).rating" do
+      post :vote, vote: {research_topic_id: research_topics(:rt6), rating: 1}
+    end
+  end
 
 
 end
