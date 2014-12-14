@@ -1,4 +1,4 @@
-= render partial: "health_check_in_helper", :locals => { question: "How are you feeling today?", last_updated_at: "5 days ago",
+= render partial: "health_check_in_helper", :locals => { question: "How are you feeling today?", last_updated_at: "7 days ago", first_question: true,
                                                answer_type: :slider, answer_options: ["Horrible", "Amazing"]}
 
 
@@ -29,5 +29,12 @@
           .panel-body.text-center
             .alert.alert-success
               %p Thank you. You are all Checked in!
-              %small= link_to "Update my Health Again"
+              %small= link_to "Back to Last Question"
+              |
+              %small= link_to "Do Health Check-in Again"
 
+        .panel.panel-default
+          .panel-body.text-right
+            %small
+              You've updated your health in the last 12 hours. Something change?
+              = link_to "Do health check-in again."
