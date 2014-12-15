@@ -54,6 +54,17 @@ Rails.application.routes.draw do
 
   # Health Data Section
   get 'health_data' => 'health_data#index'
+  get 'health_data/my_trends' => 'health_data#index', as: :my_trends
+  get 'health_data/my_health_measures' => 'health_data#my_health_measures', as: :my_health_measures
+  get 'health_data/my_dashboard' =>  'health_data#my_dashboard', as: :my_dashboard
+  get 'health_data/my_connections' =>  'health_data#my_connections', as: :my_connections
+
+
+
+
+
+
+
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'

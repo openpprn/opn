@@ -4,7 +4,7 @@ class HealthDataController < ApplicationController
   before_action :validate_oodt_module, :only => [:explore, :reports]
   before_action :validate_validic_module, :only => []
 
-  layout "community"
+  layout "health_data"
 
   def validate_oodt_module
     raise "OODT must be enabled for this feature." if !Figaro.env.oodt_enabled
@@ -14,8 +14,12 @@ class HealthDataController < ApplicationController
     raise "Validic must be enabled for this feature." if !Figaro.env.validic_enabled
   end
 
-  def index
+  def my_dashboard
     @med_list = current_user ? current_user.get_med_list : {}
+  end
+
+  def my_health_measures
+    @chart_urls = current_user ? current_user.get_chart_urls : {}
   end
 
 end

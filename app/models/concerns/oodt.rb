@@ -296,7 +296,7 @@ module OODT
 
 
 
-  #### ATTRIBUTES ####
+  #### HEALTH ####
   def health_attributes
     data = [ "My Disease Activity", "My Quality of Life", "My Anxiety Symptoms"]
   end
@@ -314,6 +314,30 @@ module OODT
              {element: 3, title: "My Anxiety Symptoms", value: 100, zones: [{startValue: 1, endValue: 100, title: "Low"}, {startValue: 700, endValue: 999, title: "High"}], markers: [{value: 1, title: "Perfect"}, {value: 2, title: "See a Doctor"}] }
            ]
   end
+
+
+
+  def get_chart_urls #19
+    # HTTP 200, Content-type: application/json, response body is a mapping of image type to URL to currently retrieve that image (with rotating token code). Current keys include:
+    # • cdaActivityChart
+    # • myAnxietySymptoms
+    # • myDepressionSymptoms
+    # • myFatigueSymptoms
+    # • myPainSymptoms
+    # • myQoL
+    # • mySleepDisturbance
+    # • mySocialRelations
+    response = oodt.post "users/@@images", user_hash #.merge({visit: "99"}) #optional visit number
+    body = parse_body(response) # ,success proc
+
+    if response.success?
+      return body
+    else
+      logger.error "API Call to fetch researcher access log for user ##{self.id} failed. OODT returned the following response:\n#{response.body}"
+      return body['errorMessage'] || body
+    end
+  end
+
 
 
 

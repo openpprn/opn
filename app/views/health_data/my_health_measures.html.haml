@@ -1,0 +1,50 @@
+- @title = "My Health Measures"
+- @active_sub_nav = :my_health_measures
+
+
+- if current_user && Figaro.env.oodt_enabled?
+  %h3 My Health Measures
+  %hr/
+
+  .row
+  - @chart_urls.each do |chart_name, chart_url|
+    .col-md-12.text-center
+      //.col-md-6 #.col-md-12.col-sm-6
+      //%h4= chart_name.titleize
+      = image_tag( chart_url, alt: "#{chart_name} Chart", title: "#{chart_name} Chart")
+      %hr/
+
+
+
+    -## • cdaActivityChart
+    -## • myAnxietySymptoms
+    -## • myDepressionSymptoms
+    -## • myFatigueSymptoms
+    -## • myPainSymptoms
+    -## • myQoL
+    -## • mySleepDisturbance
+    -## • mySocialRelations
+
+
+-# Old Progress Bars
+
+-#- if current_user && Figaro.env.oodt_enabled?
+-#  %h3 My Reports
+-#  %hr/
+
+-#  - current_user.health_attribute_data.each do |attribute|
+-#    %h4= attribute[:title]
+-#    / = render :partial => "shared/progress", locals: {attribute: attribute}
+
+-#    .progress
+-#      - attribute[:zones].each do |zone|
+-#        .progress-bar.progress-bar-success{style: "width: #{zone[:endValue] / 10}%"}
+-#          %span= zone[:title]
+
+
+
+-#      /{element: 1, title: "Blood Type", value: 500, zones: [{startValue: 1, endValue: 888, title: "Low"}, {startValue: 300, endValue: 999, title: "High"}], markers: [{value: 1, title: "User Max"}, {value: 2, title: "User Average"}] },
+
+
+-#    %hr/
+
