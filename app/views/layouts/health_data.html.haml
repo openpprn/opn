@@ -3,8 +3,7 @@
 -##############
 - scores = { "Proposed Questions" => ResearchTopic.count, "Votes Cast" => Vote.count, "Being Researched" => ResearchTopic.under_study.count}
 - content_for :community_contributions do
-  = render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
-
+  = render partial: "health_check_in"
 
 -##############
 -### YOUR CONTRIBUTIONS

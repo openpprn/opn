@@ -2,7 +2,7 @@
 - @active_sub_nav = :my_health_measures
 
 
-- if current_user && Figaro.env.oodt_enabled?
+- if current_user && OODT_ENABLED
   %h3 My Health Measures
   %hr/
 
@@ -28,7 +28,7 @@
 
 -# Old Progress Bars
 
--#- if current_user && Figaro.env.oodt_enabled?
+-#- if current_user && OODT_ENABLED
 -#  %h3 My Reports
 -#  %hr/
 

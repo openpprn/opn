@@ -33,6 +33,10 @@ class MembersController < ApplicationController
   #   end
   # end
 
+  def index
+    @network_users_count = OODT_ENABLED ? User.get_network_user_count : User.count
+  end
+
 
   def locations
     if params[:show_user]

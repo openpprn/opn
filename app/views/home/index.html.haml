@@ -1,8 +1,8 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- if ENV["oodt_enabled"]
-  - scores = { "Members" => (User.get_network_user_count if ENV["oodt_enabled"]), "Research Ideas" => ResearchTopic.count, "Surveys Completed" => User.num_network_surveys_completed, "Health Data Streams" => User.num_health_data_streams }
+- if OODT_ENABLED
+  - scores = { "Members" => (User.get_network_user_count if OODT_ENABLED), "Research Ideas" => ResearchTopic.count, "Surveys Completed" => User.num_network_surveys_completed, "Health Data Streams" => User.num_health_data_streams }
   - content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 
@@ -33,7 +33,7 @@
 
 -####################
 -#HOME/INDEX.HAML (AKA DASHBOARD)
-- if Figaro.env.oodt_enabled && current_user
+- if OODT_ENABLED && current_user
   .alert.alert-info
     -if !current_user.oodt_baseline_survey_complete
       %strong You need to complete your baseline survey!

@@ -1,7 +1,7 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- scores = { "Members" => User.get_network_user_count, "Social Profiles" => User.social.count, "Unique Cities" => User.unique_cities_count }
+- scores = { "Members" => @network_users_count, "Social Profiles" => User.social.count, "Unique Cities" => User.unique_cities_count }
 - content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 

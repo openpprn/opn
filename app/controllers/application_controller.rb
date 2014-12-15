@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
 
 
   def include_plugins
-    self.class.send(:include, OODTApplicationController) if Figaro.env.oodt_enabled?
+    self.class.send(:include, OODTApplicationController) if OODT_ENABLED
   end
 
 
