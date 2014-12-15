@@ -33,18 +33,8 @@ Install default configuration files for database connection, email server connec
 ```
 ruby lib/initial_setup.rb
 
-bundle exec rake db:migrate RAILS_ENV=production
 
-bundle exec rake assets:precompile RAILS_ENV=production
-```
-
-To set up your secret keys, run
-
-```
-figaro install
-```
-
-Add the following lines to the /config/application.yml file it generates and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
+It will generate /config/application.yml, pprn.rb, and secrets.yml. You can open and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
 
 ```
 pprn: "ccfa"
@@ -69,6 +59,22 @@ oodt_password:
 Open PPRN.rb to 
 - Configure the basic information about your PPRN
 - Enable or Disable Validic and OODT (If you are using OODT or Validic, you must specify valid username and password here)
+
+```
+To set up your secret keys, run
+
+```
+figaro install
+```
+
+
+bundle exec rake db:migrate RAILS_ENV=production
+
+bundle exec rake assets:precompile RAILS_ENV=production
+
+bundle exec rake surveys:create #to get the surveys up and running
+```
+
 
 Run Rails Server (or use Apache or nginx)
 

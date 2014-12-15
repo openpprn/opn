@@ -3,7 +3,7 @@ class HealthDataController < ApplicationController
   before_action :set_active_top_nav_link_to_health_data
   before_action :validate_oodt_module, :only => [:explore, :reports]
   before_action :validate_validic_module, :only => []
-  before_action check_in_setup
+  before_action :check_in_setup
 
   layout "health_data"
 
