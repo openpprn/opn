@@ -68,7 +68,7 @@ $(document).on "click", ".research_topics a.disabled", (event) ->
   event.preventDefault()
 
 
-$(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
+$(document).on "show.bs.tab", '#research_topics a[data-toggle="tab"]', (event) ->
 
   target_path = $(event.target).data("target-path")
   target_pane = $($(event.target).attr("href"))
