@@ -6,21 +6,22 @@
           %h4.text-primary
             = question.text
 
-          %form.form
             - if question.answer_template.display_type.name == "range"
               %input{type: question.answer_template.display_type.input_type, name: "#{question.id}[#{question.answer_template.id}]", id: "question_#{question.id}_#{question.answer_template.id}", min: question.answer_template.min_value, max: question.answer_template.max_value}
               .pull-left.text-primary.small= question.answer_template.bottom_label
               .pull-right.text-primary.small= question.answer_template.top_label
 
             - elsif question.answer_template.display_type.name == "multiple_choice_buttons"
-              - question.answer_template.answer_options.each do |option|
-                .btn.btn-primary= option.value
-
+              %div{data: {toggle: "buttons"}}
+                - question.answer_template.answer_options.each do |option|
+                  %label.btn.btn-primary
+                    %input{type: question.answer_template.display_type.input_type, autocomplete: "off", value: option.value, name: "#{question.id}[#{question.answer_template.id}]", id: "question_#{question.id}_#{question.answer_template.id}"}
+                    = option.value
             - elsif question.answer_templates
               .input-group.col-md-6
                 %input.form-control{:type => "text"}
                 %span.input-group-btn
-                  .btn.btn-primary Submit
+                  %button.btn.btn-primary.submit Submit
 
 
         .col-md-3.text-right
