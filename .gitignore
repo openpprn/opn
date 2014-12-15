@@ -47,10 +47,8 @@ config/initializers/secret_token.rb
 
 # Security Ignores
 /config/initializers/secret_token.rb
-/config/initializers/action_mailer.rb
 /config/initializers/00_site_name.rb
 /config/initializers/db.rb
-/config/environments/production.rb
 /config/secrets.yml
 /config/initializers/validic.rb
 
@@ -58,8 +56,11 @@ config/initializers/secret_token.rb
 .DS_Store
 
 # Ignore Generated Files
-.gitignore
+
+/Gemfile.lock
 /db/schema.rb
 
 # Ignore application configuration
 /config/application.yml
+
+config/initializers/pprn.rb

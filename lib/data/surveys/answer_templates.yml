@@ -25,43 +25,6 @@
   display_type_id: 7
   data_type: time_value
 
-# Specific types (sub-types)
-- id: 6
-  name: number_of_years
-  unit_id: 10
-  display_type_id: 6
-  data_type: numeric_value
-- id: 7
-  name: number_of_months
-  unit_id: 11
-  display_type_id: 6
-  data_type: numeric_value
-- id: 8
-  name: number_of_feet
-  unit_id: 14
-  display_type_id: 6
-  data_type: numeric_value
-- id: 9
-  name: number_of_inches
-  unit_id: 1
-  display_type_id: 6
-  data_type: numeric_value
-- id: 16
-  name: number_of_hours
-  unit_id: 7
-  display_type_id: 6
-  data_type: numeric_value
-- id: 17
-  name: number_of_minutes
-  unit_id: 12
-  display_type_id: 6
-  data_type: numeric_value
-- id: 24
-  name: number_of_pounds
-  unit_id: 2
-  display_type_id: 6
-  data_type: numeric_value
-
 # Templates for answer options containing questions
 - id: 10
   name: generic_multiple_choice
@@ -83,158 +46,30 @@
   answer_option_ids:
 
 # Specific answer option templates
-
-- id: 13
-  name: yes_no_choice
-  display_type_id: 3
+- name: daily_feeling_range
+  id: 13
+  display_type_id: 10
+  data_type: numeric_value
+  top_label: Amazing
+  bottom_label: Horrible
+  max_value: 10
+  min_value: 0
+- name: well_being
+  id: 14
+  display_type_id: 11
   data_type: answer_option_id
   answer_option_ids:
-  - 36
-  - 20
-- id: 14
-  name: satisfaction_scale
-  display_type_id: 3
+  - 100001
+  - 100002
+  - 100003
+  - 100004
+  - 100005
+- name: abdominal_pain
+  id: 15
+  display_type_id: 11
   data_type: answer_option_id
   answer_option_ids:
-  - 222
-  - 74
-  - 75
-  - 76
-  - 77
-  - 214
-  - 215
-  - 223
-- id: 15
-  name: improvement_grade
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 210
-  - 75
-  - 211
-  - 77
-  - 212
-- id: 18
-  name: chance_of_dozing
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 1
-  - 2
-  - 3
-  - 4
-- id: 19
-  name: quality_grade
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 101
-  - 102
-  - 103
-  - 104
-  - 270
-- id: 20
-  name: truth_scale
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 267
-  - 114
-  - 268
-  - 116
-  - 117
-- id: 21
-  name: excellence_scale
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 100
-  - 101
-  - 102
-  - 103
-  - 104
-- id: 22
-  name: improvement_scale
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 105
-  - 106
-  - 107
-  - 108
-  - 109
-- id: 23
-  name: yes_no_dont_know_choice
-  display_type_id: 3
-  data_type: answer_option_id
-  answer_option_ids:
-  - 36
-  - 20
-  - 19
-
-- id: 25
-  name: sleep_care_institutions
-  display_type_id: 9
-  data_type: text_value
-  answer_option_ids:
-  - 10002
-  - 10003
-  - 10004
-  - 10005
-  - 10006
-  - 10007
-  - 10008
-  - 10009
-  - 10010
-  - 10011
-  - 10012
-  - 10013
-  - 10014
-  - 10015
-  - 10016
-  - 10017
-  - 10018
-  - 10019
-  - 10020
-  - 10021
-  - 10022
-  - 10023
-  - 10024
-  - 10025
-  - 10026
-  - 10027
-  - 10028
-  - 10029
-  - 10030
-  - 10031
-  - 10032
-  - 10033
-  - 10034
-  - 10035
-  - 10036
-  - 10037
-  - 10038
-  - 10039
-  - 10040
-  - 10041
-  - 10042
-  - 10043
-  - 10044
-  - 10045
-  - 10046
-  - 10047
-  - 10048
-  - 10049
-  - 10050
-  - 10051
-  - 10052
-  - 10053
-  - 10054
-  - 10055
-  - 10056
-  - 10057
-  - 10058
-  - 10059
-  - 10060
-  - 10061
-  - 10062
+  - 300001
+  - 300002
+  - 300003
+  - 300004

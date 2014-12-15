@@ -1,0 +1,42 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+website_url:          "<%= print "Enter Website URL: "; gets.chomp.gsub(/(\/)*$/, '') %>"
+website_name:         "<%= print "Enter Website Name/Title: "; gets.chomp %>"
+
+smtp_address:         "<%= print "Enter SMTP Address [localhost]: "; s = gets.chomp; s == '' ? 'localhost' : s %>"
+smtp_port:            "<%= print "Enter SMTP Port [25]: "; s = gets.chomp; s == '' ? '25' : s %>"
+smtp_authentication:  "<%= print "Enter SMTP Authentication [plain]: "; s = gets.chomp; s == '' ? 'plain' : s %>"
+smtp_email:           "<%= print "Enter SMTP Email Address: "; gets.chomp %>"
+smtp_user_name:       "<%= print "Enter SMTP User Name [username]: "; s = gets.chomp.gsub('"', '\"').gsub("\\", "\\\\"); s == '' ? 'username' : s %>"
+smtp_password:        "<%= print "Enter SMTP Password [password]: "; s = gets.chomp.gsub('"', '\"').gsub("\\", "\\\\"); s == '' ? 'password' : s %>"
+
+uservoice_id:         "<%= print "Enter uservoice ID: "; gets.chomp %>"
+google_analytics_id:  "<%= print "Google Analytics ID: "; gets.chomp %>"
+database_url:         "<%= print "Enter Database URL: "; gets.chomp %>"
+
+# Facebook Integration
+fb_app_id:            "<%= print "Enter the facebook app ID: "; gets.chomp %>"
+fb_app_secret:        "<%= print "Enter the facebook app secret: "; gets.chomp %>"
+
+# Themes
+pprn_theme_name:      "<%= print "Enter theme name for PPRN: "; ga = gets.chomp; ga %>"
+
+# Voting on Research Topics
+votes_per_user:       "<%= print "Enter the number of votes each user has to spend on Research Topics "; ga = gets.chomp; ga %>"
+
+# External Accounts
+oodt_enabled:         "<%= print "Enable OODT? Y/N: "; ga = gets.chomp; ga == "Y" %>"
+validic_enabled:      "<%= print "Enable Validic? Y/N: "; ga = gets.chomp; ga == "Y" %>"
+
+# Daily Trends
+frequency:            "<%= print "Enable frequency for your daily trends check in (hours):"; ga = gets.chomp; ga %>"

@@ -16,6 +16,24 @@ rt3:
   state: accepted
   user: user_3
   created_at: <%= Time.zone.now - 2.hour %>
+rt4:
+  text: What's with this pillow?
+  description: Very very uncomfortable.
+  state: accepted
+  user: user_3
+  created_at: <%= Time.zone.now - 1.hour %>
+rt5:
+  text: Do other animals get sleep apnea?
+  description: I think by pet gerbil might need a CPAP...
+  state: accepted
+  user: user_3
+  created_at: <%= Time.zone.now - 5.hour %>
+rt6:
+  text: How does light affect my sleeping patterns?
+  description: I just want to go to sleep earlier...
+  state: accepted
+  user: user_2
+  created_at: <%= Time.zone.now - 9.hour %>
 rejected:
   text: Why am I so tired?
   description: 2nd cup of coffee and I'm still exhausted

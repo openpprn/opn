@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'resources' => 'static#resources'
 
   get 'external_link_warning' => 'static#external_link_warning'
-
   #Content Pages
   get 'content/:page' => 'static#content'
   get 'content/' => 'static#content'
@@ -68,8 +67,7 @@ Rails.application.routes.draw do
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'
-
-
+  match 'check_in', to: "health_data#check_in", via: :post, as: :check_in
 
 
   # members Section
@@ -115,6 +113,7 @@ Rails.application.routes.draw do
   # Voting on Questions
   resources :questions
   match 'vote', to: 'votes#vote', via: :post, as: :vote
+  match 'vote', to: 'research_topics#index', via: :get, as: :vote_fake
 
   # Blog and Notification Posts
   resources :posts, except: [:show, :index]

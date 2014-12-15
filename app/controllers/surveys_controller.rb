@@ -6,8 +6,19 @@ class SurveysController < ApplicationController
 
   def start_survey
     @question_flow = QuestionFlow.find(params[:question_flow_id])
-    @answer_session = AnswerSession.find_or_create_by(user_id: current_user.id, question_flow_id: @question_flow.id)
-    @answer_session.reset_answers
+    @answer_session =  AnswerSession.find_by(user_id: current_user.id, question_flow_id: @question_flow.id)
+
+    if @answer_session
+      if params[:reset_survey]
+        @answer_session.reset_answers
+      else
+        redirect_to surveys_path
+      end
+    else
+      @answer_session = AnswerSession.create(user_id: current_user.id, question_flow_id: @question_flow.id)
+    end
+
+
   end
 
   def ask_question

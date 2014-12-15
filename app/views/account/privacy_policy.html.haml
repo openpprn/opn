@@ -5,18 +5,21 @@
         .panel-body
           #print-area
             %h2 Privacy Policy
-            %p Here is the privacy policy.
+            = markdown "### Body of Privacy Policy"
           %br/
           = link_to "#", id: "print-link", class: 'print-link pull-right btn btn-xs btn-info' do
             %i.fa.fa-print
             Print Privacy Policy
         - if current_user
           .text-center.panel-footer
-            - if current_user.accepted_consent_at.present?
-              = link_to "Back To My Dashboard", user_dashboard_path, class: 'btn btn-lg btn-success'
+            - if current_user.can? :participate_in_research
+              = link_to :back, class: 'btn btn-lg btn-success' do
+                .fa.fa-arrow-left
+                &nbsp;
+                Go Back
               = link_to "View Consent", consent_path, class: 'btn btn-lg btn-info'
               = link_to "Leave Research Study", account_path, class: 'btn btn-warning btn-lg'
             - else
               = form_tag privacy_path do
-                %input.btn.btn-success.btn-lg{:name => "agreed_to_participate", :type => "submit", :value => 'I agree to participate.'}
-                %input.btn.btn-warning.btn-lg{:name => "declined_to_participate", :type => "submit", :value => 'I decline.'}
+                %input.btn.btn-primary.btn-lg{:name => "privacy_policy_read", :type => "submit", :value => "I have read the privacy policy#{current_user.signed_consent? ? ' and I agree to participate' : ''}"}
+                %input.btn.btn-danger.btn-lg{:name => "declined_to_participate", :type => "submit", :value => 'I decline'}

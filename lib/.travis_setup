@@ -1,18 +1,22 @@
-postgresql://localhost
-http://localhost
+localhost
+Website Name
 localhost
 25
-
+plain
 travis-ci@example.com
-uname
-1111
-OpenPPRN
-openpprn.org
-Some Health Problem
-support@myapnea.org
+smtp-username
+smtp-password
+USERVOICE
+GOOGLE_ANALYTICS
+DB URL
+FBAPPID
+FBAPPSECRET
+
+5
 N
 N
-
-
-
+PPRN NAME
+PPRN TITLE
+PPRN CONDITIONS
+travis-ci@example.com
 

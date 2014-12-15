@@ -42,7 +42,9 @@ showuservoice = ->
     UserVoice.push ['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]
 
 $ ->
-    $.getScript "//widget.uservoice.com/<%= USERVOICE_ID %>.js", showuservoice
+    <% if ENV["uservoice_id"].present? %>
+      $.getScript "//widget.uservoice.com/<%= ENV["uservoice_id"] %>.js", showuservoice
+    <% end %>
 
 $(document).on 'page:change', showuservoice
 

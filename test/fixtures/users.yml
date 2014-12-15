@@ -18,6 +18,7 @@ social:
   last_name: Boy
   email: tommyboy@gmail.com
   accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
   zip_code: 12345
   year_of_birth: 1980
   encrypted_password: <%= pw %>
@@ -63,6 +64,7 @@ has_completed_survey:
   zip_code: 12345
   year_of_birth: 1980
   accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
   encrypted_password: <%= pw %>
 
 has_incomplete_survey:
@@ -71,6 +73,7 @@ has_incomplete_survey:
   email: is@mail.com
   zip_code: 12345
   accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
   year_of_birth: 1980
   encrypted_password: <%= pw %>
 
@@ -80,5 +83,24 @@ has_unstarted_survey:
   email: us@mail.com
   zip_code: 12345
   accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
+
+has_unstarted_survey:
+  first_name: Unstarted
+  last_name: Survey
+  email: us@mail.com
+  zip_code: 12345
+  accepted_consent_at: <%= 5.day.ago.to_s(:db) %>
+  accepted_privacy_policy_at: <%= 6.day.ago.to_s(:db) %>
+  year_of_birth: 1980
+  encrypted_password: <%= pw %>
+
+demo_user:
+  first_name: Demo
+  last_name: User
+  email: demo@openpprn.org
+  zip_code: 12345
   year_of_birth: 1980
   encrypted_password: <%= pw %>

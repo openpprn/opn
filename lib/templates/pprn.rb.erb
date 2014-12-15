@@ -6,26 +6,8 @@ PPRN_TITLE = "<%= print "Enter PPRN title: "; ga = gets.chomp; ga %>"
 PPRN_CONDITION = "<%= print "PPRN Conditions: "; ga = gets.chomp; ga %>"
 PPRN_CONDITIONS = <%= ga.split(" ") %>
 PPRN_SUPPORT_EMAIL = "<%= print "Enter support email address: "; ga = gets.chomp; ga %>"
-PPRN_THEME_NAME = ""
-
-#####################
-# External Accounts
-#####################
-OODT_ENABLED = <%= print "Enable OODT? Y/N: "; ga = gets.chomp; ga == "Y" %>
-VALIDIC_ENABLED = <%= print "Enable Validic? Y/N: "; ga = gets.chomp; ga == "Y" %>
-
 
 # Load dummy health data for demonstration
 DUMMY_HEALTH_DATA = YAML.load_file("config/health_data.yml")
 DUMMY_DATA_SOURCES = DUMMY_HEALTH_DATA["data_sources"]
 DUMMY_DATA_SOURCE_TYPES = DUMMY_HEALTH_DATA["data_source_types"]
-
-# Uservoice
-USERVOICE_ID = "<%= print "Enter uservoice ID:"; ga = gets.chomp; ga %>"
-
-# Google Analytics ID
-GOOGLE_ANALYTICS_ID = "<%= print "Google Analytics ID:"; ga = gets.chomp; ga %>"
-
-# Facebook
-FB_APP_ID = ""
-FB_APP_SECRET = ""

@@ -34,3 +34,12 @@
   name: select
   tag: select
   input_type: option
+- id: 10
+  name: range
+  tag: input
+  input_type: range
+- id: 11
+  name: multiple_choice_buttons
+  tag: input
+  input_type: radio
+  class_string: 'as-button'

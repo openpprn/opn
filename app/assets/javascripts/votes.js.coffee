@@ -59,23 +59,24 @@ $(document).on "click", ".research_topics a.voting", (event) ->
           vote_counter.html(data)
         )
     else
-      bootbox.alert("Sorry! You have already used all of your votes for today.")
+      bootbox.alert("Sorry! You have already used all of your votes.")
 
 
   )
 
-# <<<<<<< HEAD
-# $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
+$(document).on "click", ".research_topics a.disabled", (event) ->
+  event.preventDefault()
+
+
 $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
 
+  target_path = $(event.target).data("target-path")
+  target_pane = $($(event.target).attr("href"))
+  target_pane.hide()
 
-#   target_path = $(event.target).data("target-path")
-#   target_pane = $($(event.target).attr("href"))
-#   target_pane.hide()
+  id = target_pane.attr("id")
 
-#   id = target_pane.attr("id")
-
-#   $.get(target_path, { id: id}, (data) ->
-#     target_pane.html(data)
-#     target_pane.show()
-#   )
+  $.get(target_path, { id: id}, (data) ->
+    target_pane.html(data)
+    target_pane.show()
+  )

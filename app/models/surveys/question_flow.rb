@@ -30,7 +30,8 @@ class QuestionFlow < ActiveRecord::Base
   end
 
   def self.unstarted(user)
-    res = includes(:answer_sessions).where(status: "show").select{ |qf| qf.answer_sessions.where(user_id: user.id).empty? }
+    user_id = (user.present? ? user.id : nil)
+    res = includes(:answer_sessions).where(status: "show").select{ |qf| user_id.blank? or qf.answer_sessions.where(user_id: user.id).empty? }
 
     res
   end

@@ -48,6 +48,9 @@ class Question < ActiveRecord::Base
     answers.where(answer_session_id: answer_session.id).first
   end
 
+  def answer_template
+    answer_templates.first unless answer_templates.empty?
+  end
 
   def part_of_group?
     group.present?
