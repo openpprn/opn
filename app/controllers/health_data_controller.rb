@@ -16,7 +16,7 @@ class HealthDataController < ApplicationController
 
   def index
     @med_list = (current_user and ENV["oodt_enabled"]) ? current_user.get_med_list : {}
-    check_in
+    check_in_setup
   end
 
   def submit_check_in
@@ -24,21 +24,29 @@ class HealthDataController < ApplicationController
     params[:value]
   end
 
-
-  private
-
   def check_in
-    @question_flow = QuestionFlow.find_by_name_en("Daily Trends")
-    @answer_session = AnswerSession.most_recent(@question_flow.id, current_user.id)
+    check_in_setup
+    question = Question.find(params[:question_id])
 
+    @answer = @answer_session.process_answer(question, params)
 
-    if @answer_session.nil? or (@answer_session.completed? and (Time.zone.now - @answer_session.updated_at).hours >= Figaro.env.daily_trend_frequency.to_i) or params[:new_daily_trends]
-      AnswerSession.create(user_id: current_user.id, question_flow_id: @question_flow.id)
-    end
-
-
-    #@check_in_questions = Group.find_by_name("Health Data Check In").questions
+    render json: {answer: @answer, next_question_id: (@answer.next_question.id if @answer and @answer.next_question)}
 
 
   end
+
+
+  private
+
+  def check_in_setup
+    @question_flow = QuestionFlow.find_by_name_en("Daily Trends")
+    @answer_session = AnswerSession.most_recent(@question_flow.id, current_user.id)
+    
+    if @answer_session.nil? or (@answer_session.completed? and (Time.zone.now - @answer_session.updated_at).hours >= Figaro.env.daily_trend_frequency.to_i) or params[:new_daily_trends]
+      @answer_session = AnswerSession.create(user_id: current_user.id, question_flow_id: @question_flow.id)
+    end
+
+  end
+
+
 end

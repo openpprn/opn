@@ -654,23 +654,23 @@
 # Daily Health Data
 - id: 1001
   text_en: How are you feeling today?
-  group_id: 1
+  time_estimate: 0.1
   answer_template_ids:
   - 13
 - id: 1002
   text_en: How would you describe your general well-being over the last week?
-  group_id: 1
+  time_estimate: 0.1
   answer_template_ids:
   - 14
 - id: 1003
   text_en: |
     On average, over the past week, would you rate your abdominal pain as:
-  group_id: 1
+  time_estimate: 0.1
   answer_template_ids:
   - 15
 - id: 1004
   text_en: |
    On average, over the past week, how many liquid or very soft stools have you had per day?
-  group_id: 1
+  time_estimate: 0.1
   answer_template_ids:
   - 4

@@ -160,7 +160,7 @@ class AnswerSession < ActiveRecord::Base
       answer.destroy_descendant_edges
       self[:last_answer_id] = answer.id
     end
-
+    
     self.save
     answer
   end
@@ -232,9 +232,6 @@ class AnswerSession < ActiveRecord::Base
   ## Reports
 
 
-
-  private
-
   def completed_path
     time = completed_answers.map(&:question).map(&:time_estimate).reduce(:+) || 0.0
     distance = completed_answers.length
@@ -262,6 +259,10 @@ class AnswerSession < ActiveRecord::Base
       end
     end
   end
+
+  private
+
+
 
 
 end

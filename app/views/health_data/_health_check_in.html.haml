@@ -1,9 +1,6 @@
 %form#check-in{action: check_in_path}
   - @question_flow.all_questions.each do |question|
-    - if question == @answer_session.next_question
-      .current_question= render partial: "health_check_in_helper", :locals => { question: question, current: true}
-    - else
-      .hidden=render partial: "health_check_in_helper", :locals => { question: question, current: false}
+    = render partial: "health_check_in_helper", :locals => { question: question, current: (question == @answer_session.next_question) }
   #completion_message{class: ("hidden" unless @answer_session.completed?) }
     .panel.panel-default
       .panel-body.text-center

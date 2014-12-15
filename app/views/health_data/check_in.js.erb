@@ -1,1 +1,8 @@
-alert("HIII");
+<% if @answer_session.completed? %>
+  $("form#check-in .question").hide();
+  $("#completion_message").show();
+<% else %>
+  $("#completion_message").hide();
+  $("form#check-in .question").hide();
+  $("form#check-in .question[data-question-id=<%= @answer.next_question.id %>]").hide();
+<% end %>

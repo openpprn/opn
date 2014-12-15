@@ -1,5 +1,5 @@
 - if question
-  .panel.panel-default{data: {question_id: question.id, current: current}}
+  .panel.panel-default.question{data: {question_id: question.id}, class: ("hidden" unless current )}
     .panel-body
       .row
         .col-md-9
