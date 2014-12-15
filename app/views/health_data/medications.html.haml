@@ -1,0 +1,15 @@
+
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title My Medications
+
+  %table.table.table-striped.table-responsive
+
+    %tbody
+      - ["Cipro","6MP","Prednisone"].each do |med|
+        %tr
+          %td= med
+
+  .panel-footer
+    .text-center
+      .btn.btn-default Update

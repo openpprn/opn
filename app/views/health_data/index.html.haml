@@ -1,0 +1,63 @@
+- @title = "My Trends"
+- @active_sub_nav = :my_trends
+
+
+-# Load dummy health data for demonstration
+- dummy_health_data = YAML.load_file("config/health_data.yml")
+- dummy_data_sources = dummy_health_data["data_sources"]
+- dummy_data_source_types = dummy_health_data["data_source_types"]
+
+
+
+
+
+
+.pull-left
+  Graph this
+  %select.form-control{:style => "width: inherit"}
+    %option FitBit
+    %option Argus
+    %option Moves
+    %option MapMyFitness
+.pull-left{:style => "margin-left: 20px;"}
+  Against this
+  %select.form-control{:style => "width: inherit"}
+    %option --
+    %option FitBit
+    %option Argus
+    %option Moves
+    %option MapMyFitness
+/ .pull-left{:style => "margin-left: 20px;"}
+/   %a.btn.btn-success.btn-sm{:href => current_user.validic_app_marketplace_url} Add or Remove Device Connections
+= image_tag "time-series-min.png", :width => "100%"
+
+%br/
+%br/
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel-title Stream
+
+  %table.table.table-striped.table-responsive
+    %thead.small
+      %td Date
+      %td Health Info
+      %td Source
+    %tbody
+      - dummy_data_sources.each do |data_source_name,supported_data_source_types|
+        %tr
+          %td= rand(Time.now - 3.months..Time.now)
+          %td= rand(0..10000)
+          %td= data_source_name
+
+  .panel-footer{:style=> "padding: 0px; padding-top: 5px;"}
+    .text-center
+      %ul.pagination.pagination-sm{:style=> "margin: 0px;"}
+        %li
+          %span &laquo;
+        %li.disabled
+          %span ...
+        %li
+          %span &raquo;
+
+

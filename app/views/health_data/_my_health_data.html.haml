@@ -1,0 +1,51 @@
+- if current_user
+  .panel.panel-default
+    .list-group
+      - current_user.incomplete_surveys.each do |survey|
+        = link_to start_or_resume_survey(survey, survey.most_recent_answer_session(current_user)), class: 'list-group-item' do
+          %h3
+            = survey.name
+            .btn.btn-success.btn-lg.pull-right
+              Resume
+              &nbsp;
+              .fa.fa-arrow-right
+            = render partial: 'surveys/partials/session_progress', locals: {stats: survey.completion_stats(current_user), question_flow: survey, answer: nil}
+      - current_user.unstarted_surveys.each do |survey|
+        = link_to start_or_resume_survey(survey), class: 'list-group-item' do
+          %h3
+            = survey.name
+            .btn.btn-success.btn-lg.pull-right
+              Start
+              &nbsp;
+              .fa.fa-arrow-right
+          %p Survey not yet started.
+          %p
+            %strong
+              Estimated time commitment:
+              = survey.total_time.ceil
+              minutes for
+              = survey.all_questions.length
+  -#
+  -# link_to "Complete Survey", start_or_resume_survey(survey), class: "btn btn-success btn-sm"
+
+  -#%td.no-wrap{:style => "background-color: #f5f5f5 !important;"}
+  -#  Today
+  -#%td{:style => "background-color: #f5f5f5 !important;"}
+  -#  %div.col-md-4.col-xs-12.text-center
+  -#    How are you feeling?
+  -#    / %br/
+  -#    / %i.fa.fa-circle
+  -#    / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  -#    / %i.fa.fa-circle
+  -#    / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  -#    / %i.fa.fa-circle
+  -#    / &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  -#    / %i.fa.fa-circle
+  -#    / %br/
+  -#    %input{:type => "range"}
+  -#    %br/
+  -#  .col-md-6.col-xs-12
+  -#    %textarea.form-control{:placeholder => "Type a journal entry here.."}
+  -#    %br/
+  -#  %div.col-md-2.col-xs-12
+  -#    %a.btn.btn-primary.btn-block{:href=>"javascript:location.reload();"} Post
