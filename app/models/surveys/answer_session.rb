@@ -218,6 +218,16 @@ class AnswerSession < ActiveRecord::Base
     coll
   end
 
+  def next_question
+    if last_answer.present?
+      last_answer.next_question
+    elsif completed?
+      nil
+    else
+      question_flow.first_question
+    end
+  end
+
 
   ## Reports
 

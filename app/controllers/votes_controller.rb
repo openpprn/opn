@@ -6,6 +6,7 @@ class VotesController < ApplicationController
       #raise StandardError, "STOP"
       @vote = Vote.find_or_initialize_by(user_id: current_user.id, research_topic_id: params[:vote][:research_topic_id])
       @vote .rating = params[:vote]["rating"]
+
       saved = @vote.save
     elsif params[:vote][:question_id]
       #raise StandardError, "Czemu"

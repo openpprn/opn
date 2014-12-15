@@ -30,5 +30,6 @@
 //= require admin
 //= require votes
 //= require surveys
+//= require health_data
 //= require forem/topics
 

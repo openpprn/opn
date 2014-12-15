@@ -82,6 +82,7 @@ class ResearchTopic < ActiveRecord::Base
 
         from research_topics rt, (select count(*) total from votes where research_topic_id is not null) vc, votes v
         where v.research_topic_id = rt.id
+        and v.rating > 0
         group by rt.id
         having count(v.id)/(1.00 * max(vc.total)) > #{minimum_percentage};
       "
@@ -98,6 +99,7 @@ class ResearchTopic < ActiveRecord::Base
         from research_topics rt
         left join votes v on v.research_topic_id = rt.id
         where rt.state = 'accepted'
+        and v.rating > 0
         group by rt.id
         order by topic_votes desc, research_topic_created_at desc;
       "

@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   get 'data_reports' => 'health_data#reports'
   get 'data_medications' => 'health_data#medications'
   get 'data_intro' => 'health_data#intro'
-
+  match 'check_in', to: "health_data#check_in", via: :post, as: :check_in
 
 
   # members Section

@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
     # Local Consent Storage
     # self.accepted_consent_at.present?
     # OODT Consent Storage
-    if OODT_ENABLED
+    if ENV["oodt_enabled"]
       self.oodt_baseline_survey_complete
     else
       self.accepted_consent_at.present?

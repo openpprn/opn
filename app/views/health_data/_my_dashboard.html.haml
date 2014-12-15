@@ -19,5 +19,5 @@ Dashboard goes here.
   .panel-footer
     %em.pull-left= "Current as of #{@med_list['date']}" if @med_list['date']
     - if current_user
-      %a.btn.btn-success.pull-right{href: current_user.get_med_update_url} Update my Meds
+      %a.btn.btn-success.pull-right{href: (current_user.get_med_update_url if ENV["oodt_enabled"])} Update my Meds
     .clearfix

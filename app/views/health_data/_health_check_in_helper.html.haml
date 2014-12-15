@@ -1,29 +1,30 @@
-.panel.panel-default
-  .panel-body
-    .row
-      .col-md-9
-        %h4.text-primary
-          = question.text
+- if question
+  .panel.panel-default{data: {question_id: question.id, current: current}}
+    .panel-body
+      .row
+        .col-md-9
+          %h4.text-primary
+            = question.text
 
-        %form.form
-          - if question.answer_template.display_type.name == "range"
-            %input{type: question.answer_template.display_type.input_type, name: "#{question.id}[#{question.answer_template.id}]", id: "question_#{question.id}_#{question.answer_template.id}", min: question.answer_template.min_value, max: question.answer_template.max_value}
-            .pull-left.text-primary.small= question.answer_template.bottom_label
-            .pull-right.text-primary.small= question.answer_template.top_label
+          %form.form
+            - if question.answer_template.display_type.name == "range"
+              %input{type: question.answer_template.display_type.input_type, name: "#{question.id}[#{question.answer_template.id}]", id: "question_#{question.id}_#{question.answer_template.id}", min: question.answer_template.min_value, max: question.answer_template.max_value}
+              .pull-left.text-primary.small= question.answer_template.bottom_label
+              .pull-right.text-primary.small= question.answer_template.top_label
 
-          - elsif question.answer_template.display_type.name == "multiple_choice_buttons"
-            - question.answer_template.answer_options.each do |option|
-              .btn.btn-primary= option.value
+            - elsif question.answer_template.display_type.name == "multiple_choice_buttons"
+              - question.answer_template.answer_options.each do |option|
+                .btn.btn-primary= option.value
 
-          - elsif question.answer_templates
-            .input-group.col-md-6
-              %input.form-control{:type => "text"}
-              %span.input-group-btn
-                .btn.btn-primary Submit
+            - elsif question.answer_templates
+              .input-group.col-md-6
+                %input.form-control{:type => "text"}
+                %span.input-group-btn
+                  .btn.btn-primary Submit
 
 
-      .col-md-3.text-right
-        %small.muted
-          Last Updated
-          = "2 months ago"
-          = link_to "Back to Last Question", "#"
+        .col-md-3.text-right
+          %small.muted
+            Last Updated
+            = "2 months ago"
+            = link_to "Back to Last Question", "#"

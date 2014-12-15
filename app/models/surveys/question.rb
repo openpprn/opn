@@ -52,6 +52,10 @@ class Question < ActiveRecord::Base
     answer_templates.first unless answer_templates.empty?
   end
 
+  def time_estimate
+    self[:time_estimate] ? self[:time_estimate] : 0
+  end
+
   def part_of_group?
     group.present?
   end

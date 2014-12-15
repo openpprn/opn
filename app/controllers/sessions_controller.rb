@@ -9,7 +9,7 @@ class SessionsController < Devise::SessionsController;
   private
 
   def sync_oodt_status
-    current_user.sync_oodt_status(return_url: root_url) if current_user
+    current_user.sync_oodt_status(return_url: root_url) if current_user and Figaro.env.oodt_enabled?
   end
 
 

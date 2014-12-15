@@ -1,23 +1,28 @@
-= render partial: "health_check_in_helper", :locals => { question: @check_in_questions.first}
+%form#check-in{action: check_in_path}
+  - @question_flow.all_questions.each do |question|
+    - if question == @answer_session.next_question
+      .current_question= render partial: "health_check_in_helper", :locals => { question: question, current: true}
+    - else
+      .hidden=render partial: "health_check_in_helper", :locals => { question: question, current: false}
+  #completion_message{class: ("hidden" unless @answer_session.completed?) }
+    .panel.panel-default
+      .panel-body.text-center
+        .alert.alert-success
+          %p Thank you. You are all Checked in!
+          %small= link_to "Update my Health Again"
 
 
 
-#accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
-  .panel.panel-default
-    #headingOne.panel-heading{:role => "tab"}
-      %h4.panel-title
-        %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
-          See all other states of this "health check in" survey
-
-    #collapseOne.panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel"}
-      .panel-body
-
-        - @check_in_questions[1..@check_in_questions.size-1].each do |question|
-          = render partial: "health_check_in_helper", :locals => { question: question}
-
-        .panel.panel-default
-          .panel-body.text-center
-            .alert.alert-success
-              %p Thank you. You are all Checked in!
-              %small= link_to "Update my Health Again"
-
+        -##accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+-#  .panel.panel-default
+-#    #headingOne.panel-heading{:role => "tab"}
+-#      %h4.panel-title
+-#        %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+-#          See all other states of this "health check in" survey
+-#
+-#    #collapseOne.panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+-#      .panel-body
+-#
+-#        - @check_in_questions[1..@check_in_questions.size-1].each do |question|
+-#          = render partial: "health_check_in_helper", :locals => { question: question}
+-#

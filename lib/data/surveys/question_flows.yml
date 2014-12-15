@@ -5,3 +5,7 @@
 #    Thank you for helping  to strengthen the sleep apnea community!
 #  first_question_id: 489
 #  status: show
+- id: 1001
+  name_en: Daily Trends
+  status: hide
+  first_question_id: 1001
