@@ -49,6 +49,31 @@
       .panel-heading
         %h3.panel-title Comments
       .panel-body
-        %i Display Comments Here, and have submit form for new comment
+        - 3.times do
+          .media
+            .pull-left
+              %img{:alt => "...", :src => "comment.user.image"}
+            .media-body
+              %h4.media-heading Comment.user.social_profile.name
+              comment.body
+              %br/
+              %small comment.created_at
+
+
+
+
+        %hr/
+
+        = text_area :body, placeholder: "Add a comment...", class: 'form-control input-lg'
+        = submit_tag(nil, class: "btn btn-success pull-right")
+
+
+        -#= form_for Comment.new do |f|
+        -#  .form-group
+        -#    = f.label :body, class: 'sr-only'
+        -#    = f.text_area :body, class: 'form-control input-lg', placeholder: "Enter your research question here...", autocomplete: :off
+        -#  = f.submit("Submit", class: "btn btn-success pull-right")
+        -#  .clearfix
 
     = render partial: "research_topics/state", locals: {research_topic: @research_topic }
+
