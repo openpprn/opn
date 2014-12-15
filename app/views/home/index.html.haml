@@ -1,9 +1,11 @@
 -##############
 -### COMMUNITY CONTRIBUTIONS
 -##############
-- if OODT_ENABLED
-  - scores = { "Members" => (User.get_network_user_count if OODT_ENABLED), "Research Ideas" => ResearchTopic.count, "Surveys Completed" => User.num_network_surveys_completed, "Health Data Streams" => User.num_health_data_streams }
-  - content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
+
+- scores = {"Members" => @network_user_count, "Research Ideas" => ResearchTopic.count, "Surveys Completed" => @surveys_completed_count}.tap do |my_hash|
+  - my_hash["Health Data Streams"] = @health_data_streams_count if @health_data_streams_count
+
+- content_for :community_contributions, render(:partial => "/shared/community_scoreboard", locals: { scores: scores })
 
 
 -##############
@@ -11,22 +13,6 @@
 -##############
 - content_for :your_contributions do
   = render partial: "shared/badge_list"
-
-
-
-
-
--# REFACTOR ME
-- @patient_team = User.with_role(:patient_team).shuffle.first(6)
-- @patient_posts = Post.blog_posts.where("user_id IN (?)", @patient_team.collect(&:id))
-- @research_team = User.with_role(:research_team).shuffle.first(6)
-- @research_posts = Post.blog_posts.where("user_id IN (?)", @research_team.collect(&:id))
-- @tech_team = User.with_role(:tech_team).shuffle.first(6)
-- @tech_posts = Post.blog_posts.where("user_id IN (?)", @tech_team.collect(&:id))
-- @all_team = (@patient_team+@research_team+@tech_team).shuffle.first(6)
-- @all_posts = Post.blog_posts.where("user_id IN (?)", @all_team.collect(&:id))
-- @help_center_team = User.with_role(:help_center).shuffle.first(6)
-- @help_center_posts = Post.blog_posts.where("user_id IN (?)", @help_center_team.collect(&:id))
 
 
 
