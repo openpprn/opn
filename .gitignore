@@ -57,7 +57,7 @@ config/initializers/secret_token.rb
 
 # Ignore Generated Files
 
-/Gemfile.lock
+#/Gemfile.lock #temporarily unignoring this so I dont have to bundle install all day er day when switching branches - Sean
 /db/schema.rb
 
 # Ignore application configuration
