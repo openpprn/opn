@@ -28,27 +28,39 @@ $(document).on "click", "#answer_session .voting button", () ->
       )
   )
 
-$(document).on "click", ".research_topics a.voting", (event) ->
+$(document).on "click", ".research_topics a.vote, #vote-counter a.vote", (event) ->
   event.preventDefault()
 
   link = $(this)
-  icon = link.children().first()
+  link_text = ""
   badge = $(this).closest(".research_question").find(".rating")
   submit_path = $(this).data("submit-path")
   research_topic_path = $(this).data("research-topic-path")
   vote_counter = $(".vote_counter")
 
-  if icon.hasClass('fa-square-o')
-    rating = 1
-  else
-    rating = 0
+
   research_topic_id = $(this).data("research-topic-id")
+  vote_hash = {research_topic_id: research_topic_id}
 
+  if $(this).data("type") == "cast"
+    vote_hash["cast"] = "1"
+    link_text = "Retract Vote"
+    new_data = "retract"
+  else
+    vote_hash["retract"] = "1"
+    link_text = "Cast Vote"
+    new_data = "cast"
 
-  $.post(submit_path, {vote: {research_topic_id: research_topic_id, rating: rating}}, (data) ->
+  post_hash = {vote: vote_hash }
+
+  $.post(submit_path, post_hash, (data) ->
     if data.saved
-      icon.toggleClass('fa-square-o').toggleClass("fa-check-square-o")
-
+      if $(this).data("type") == 'retract-counter'
+        $(this).closest(".list-group-item").remove()
+      else
+        link.text(link_text)
+        link.toggleClass('btn-primary').toggleClass("btn-default")
+        link.data("type", new_data)
       if badge.length
         $.getJSON(research_topic_path+".json", (data) ->
           badge.html(data.rating)
@@ -59,6 +71,7 @@ $(document).on "click", ".research_topics a.voting", (event) ->
           vote_counter.html(data)
         )
     else
+      console.log data
       bootbox.alert("Sorry! You have already used all of your votes.")
 
 
@@ -68,14 +81,14 @@ $(document).on "click", ".research_topics a.disabled", (event) ->
   event.preventDefault()
 
 
-# $(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
-
+#$(document).on "show.bs.tab", 'a[data-toggle="tab"]', (event) ->
+#
 #   target_path = $(event.target).data("target-path")
 #   target_pane = $($(event.target).attr("href"))
 #   target_pane.hide()
-
+#
 #   id = target_pane.attr("id")
-
+#
 #   $.get(target_path, { id: id}, (data) ->
 #     target_pane.html(data)
 #     target_pane.show()

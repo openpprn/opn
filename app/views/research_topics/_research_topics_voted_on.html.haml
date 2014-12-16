@@ -12,7 +12,7 @@
 - percentage_votes_used = ((votes_used_count.to_f / vote_quota) * 100).round(0)
 
 
-.panel.panel-default
+#vote-counter.panel.panel-default
   .panel-heading
     Your Votes
 
@@ -38,7 +38,8 @@
         .list-group-item.research_question
           = link_to research_topic.text, research_topic_path(research_topic)
           %br/
-          %a.btn.btn-default.btn-xs.pull-right{href: "#"} Retract Vote
+          %a.btn.btn-default.btn-xs.pull-right.vote{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic), type: "retract-counter"}} Retract Vote
+
           .clearfix
 
 

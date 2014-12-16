@@ -30,9 +30,9 @@
       %td
         - if current_user
           - unless research_topic.has_vote?(current_user, 1)
-            %a.btn.btn-primary.btn-sm.voting{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic)}} Cast Vote
+            %a.btn.btn-primary.btn-sm.vote{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic), type: "cast"}} Cast Vote
           - else
-            %a.btn.btn-default.btn-sm{href: "#"} Retract Vote
+            %a.btn.btn-default.btn-sm.vote{href: vote_path, data: {research_topic_id: research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(research_topic), type: "retract"}} Retract Vote
 
 
 .panel-footer.text-center

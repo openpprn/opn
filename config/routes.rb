@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   #match 'research_questions/new', to: 'research_topics#new', via: :get, as: :new_research_topic
   match 'research_topics_tab', to: "research_topics#research_topics", via: :get, as: :research_topics_ajax
   get 'vote_counter' => 'research_topics#vote_counter'
+  match 'comment_on_research_topic', to: "research_topics#comment", via: [:post], as: :comment_on_research_topic
   resources :research_topics
 
   # Research Section

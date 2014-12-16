@@ -82,6 +82,19 @@ class ResearchTopicsController < ApplicationController
 
   end
 
+  def comment
+    @research_topic = ResearchTopic.find(params[:research_topic_id])
+
+    @comment = Comment.build_from( @research_topic, current_user.id, params[:body])
+
+    if @comment.save
+      redirect_to research_topic_path(@research_topic), notice: "Thank you for commenting!"
+    else
+      redirect_to research_topic_path(@research_topic), alert: "Your comment could not be submitted!"
+    end
+
+  end
+
   private
 
   def research_topic_params

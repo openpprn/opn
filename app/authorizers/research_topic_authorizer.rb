@@ -37,6 +37,6 @@ class ResearchTopicAuthorizer < ApplicationAuthorizer
   end
 
   def votable_by?(user)
-    resource.proposed? || resource.user == user
+    true
   end
 end

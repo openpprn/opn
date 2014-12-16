@@ -49,23 +49,28 @@
       .panel-heading
         %h3.panel-title Comments
       .panel-body
-        - 3.times do
+        - @research_topic.comment_threads.each do |comment|
           .media
             .pull-left
-              %img{:alt => "...", :src => "comment.user.image"}
+              = image_tag comment.user.photo_url
             .media-body
-              %h4.media-heading Comment.user.social_profile.name
-              comment.body
+              %h4.media-heading= comment.user.forem_name
+              = comment.body
               %br/
-              %small comment.created_at
+              %small= comment.created_at
 
 
 
 
         %hr/
 
-        = text_area :body, placeholder: "Add a comment...", class: 'form-control input-lg'
-        = submit_tag(nil, class: "btn btn-success pull-right")
+
+        %form{action: comment_on_research_topic_path, role: "form", method: "post"}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          = hidden_field_tag :research_topic_id, @research_topic.id
+          .form-group
+            = text_area_tag :body, "", placeholder: "Add a comment...", rows: 3, class: 'form-control input-lg'
+          = submit_tag(nil, class: "btn btn-success btn-block")
 
 
         -#= form_for Comment.new do |f|
