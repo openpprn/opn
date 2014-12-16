@@ -73,3 +73,15 @@ smtp_password:        "<%= print "Enter SMTP Password [password]: "; s = gets.ch
 # Database URL
 #####################
 database_url:         "<%= print "Enter Database URL: "; gets.chomp %>"
+
+
+
+
+#####################
+# Secret Key
+#####################
+# For this to work, the following line needs to be in your secrets.yml file:
+# production:
+#  secret_key_base: <%%= ENV["SECRET_KEY_BASE"] %>
+secret_key_base:      "<%= print "Enter your secret key base (run 'rake secret' in another window. Put the result here)"; gets.chomp %>"
+secret_key:           "<%= print "Enter your secret key (run 'rake secret' in another window. Put the result here)"; gets.chomp %>"
