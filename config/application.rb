@@ -24,7 +24,10 @@ module OpenPprn
     config.active_record.raise_in_transactional_callbacks = true
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**/}')]
-    config.autoload_paths += Dir[Rails.root.join('app', 'views', ENV['website_code_name'], '{**/}')]
+
+    if CUSTOM_THEMED
+      config.autoload_paths += Dir[Rails.root.join('app', 'views', Figaro.env.website_code_name, '{**/}')]
+    end
 
   end
 

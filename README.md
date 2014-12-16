@@ -26,6 +26,9 @@ git clone https://github.com/openpprn/opn.git
 cd opn
 
 bundle install
+
+figaro install
+
 ```
 
 Install default configuration files for database connection, email server connection, server url, and application name.
@@ -34,38 +37,17 @@ Install default configuration files for database connection, email server connec
 ruby lib/initial_setup.rb
 
 
-It will generate /config/application.yml, pprn.rb, and secrets.yml. You can open and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out:
+It will generate /config/application.yml and pprn.rb. You can open and modify them accordingly. Add the appropriate keys you've gotten from the third party developers. For any service you aren't using, you can leave the lines out. 
 
 ```
-pprn: "ccfa"
-website_title: "CCFA Partners"
-website_condition: "Crohn's & Ulcerative Colitis"
-website_conditions: "Crohn's, Ulcerative Colitis"
-website_support_email: "support@ccfapartners.org"
+Secret Keys
+Application.yml will contain your production secret key and key base, make sure the following line is in secrets.yml
 
-oodt_enabled: "true"
-validic_enabled: "true"
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 
-uservoice_api_key: 
-google_analytics_web_property_id:
+AND PUT NO SECRET KEYS IN SECRETS.YML! IT IS CHECKED INTO SOURCE CONTROL.
 
-validic_access_token: 
-validic_organization_id: 
-
-oodt_username: 
-oodt_password: 
-```
-
-Open PPRN.rb to 
-- Configure the basic information about your PPRN
-- Enable or Disable Validic and OODT (If you are using OODT or Validic, you must specify valid username and password here)
-
-```
-To set up your secret keys, run
-
-```
-figaro install
-```
 
 
 bundle exec rake db:migrate RAILS_ENV=production
