@@ -4,7 +4,7 @@ unless Rails.env.test?
   ActionMailer::Base.smtp_settings = {
       address: ENV['smtp_address'],
       port: ENV['smtp_port'].to_i,
-      authentication: ENV['smtp_authentication'].to_sym, # :plain, :login, or, :cram_md5
+      authentication: (ENV['smtp_authentication'] ? ENV['smtp_authentication'].to_sym : nil), # :plain, :login, or, :cram_md5
       email: ENV['smtp_email'],
       user_name: ENV['smtp_user_name'],
       password: ENV['smtp_password']
