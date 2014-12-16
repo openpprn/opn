@@ -1,6 +1,6 @@
-CUSTOM_THEMED=  true;
+CUSTOM_THEMED =  true
 
 # External Accounts
-OODT_ENABLED=  true;
-VALIDIC_ENABLED=  false;
+OODT_ENABLED =  false
+VALIDIC_ENABLED =  false
 
