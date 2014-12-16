@@ -25,7 +25,9 @@ module OpenPprn
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**/}')]
 
-    config.autoload_paths += Dir[Rails.root.join('app', 'views', Figaro.env.website_code_name, '{**/}')]
+    if ENV['website_code_name']
+      config.autoload_paths += Dir[Rails.root.join('app', 'views', ENV['website_code_name'], '{**/}')]
+    end
 
   end
 
