@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # Add theme folder to view path
-  self.view_paths.unshift(*Rails.root.join('app', 'views', ENV['website_code_name']))
+  self.view_paths.unshift(*Rails.root.join('app', 'views', ENV['website_code_name'])) if ENV['website_code_name']
 
   def initialize
     include_plugins
