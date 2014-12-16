@@ -47,7 +47,7 @@ class HealthDataController < ApplicationController
     @question_flow = QuestionFlow.find_by_name_en("Daily Trends")
     @answer_session = AnswerSession.most_recent(@question_flow.id, current_user.id)
 
-    if @answer_session.nil? or (@answer_session.completed? and (Time.zone.now - @answer_session.updated_at) >= Figaro.env.daily_trend_frequency.to_i * 3600) or params[:new_check_in]
+    if @answer_session.nil? or (@answer_session.completed? and (Time.zone.now - @answer_session.updated_at) >= Figaro.env.check_in_frequency.to_i * 3600) or params[:new_check_in]
       #raise StandardError
       @answer_session = AnswerSession.create(user_id: current_user.id, question_flow_id: @question_flow.id)
     end

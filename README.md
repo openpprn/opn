@@ -38,10 +38,10 @@ It will generate /config/application.yml, pprn.rb, and secrets.yml. You can open
 
 ```
 pprn: "ccfa"
-pprn_title: "CCFA Partners"
-pprn_condition: "Crohn's & Ulcerative Colitis"
-pprn_conditions: "Crohn's, Ulcerative Colitis"
-pprn_support_email: "support@ccfapartners.org"
+website_title: "CCFA Partners"
+website_condition: "Crohn's & Ulcerative Colitis"
+website_conditions: "Crohn's, Ulcerative Colitis"
+website_support_email: "support@ccfapartners.org"
 
 oodt_enabled: "true"
 validic_enabled: "true"

@@ -2,7 +2,7 @@
 = form_for @social_profile, html: {role: "form", class: 'form-horizontal'}, url: social_profile_path do |f|
   .panel.panel-default
     .panel-heading
-      %h4 Do you want other patients in the #{Figaro.env.pprn_title} to see you?
+      %h4 Do you want other patients in the #{Figaro.env.website_title} to see you?
       .radio
         %label
           = f.radio_button :show_location, true, id: 'optionsRadios2'

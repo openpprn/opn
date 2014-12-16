@@ -1,6 +1,6 @@
 
 -# THE NAVBAR
-- if Figaro.env.pprn == :my_apnea
+- if Figaro.env.website_code_name == :my_apnea
   .list-group
     %a.list-group-item{href: main_app.social_path, class: "#{"active" if action_name == "overview"}"} Patient Overview
     %a.list-group-item{href: forem.root_path, class: "#{"active" if controller_path =~ /forem/}"}
@@ -39,5 +39,5 @@
 
 -# Description of this section
 .small
-  %p Patients are on #{Figaro.env.pprn_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
+  %p Patients are on #{Figaro.env.website_title} from all around the world. Fusce erat velit, luctus at tempor non, hendrerit sit amet ligula. Praesent quis eleifend magna. Proin nec nibh ut mi elementum tristique sit amet non est.
 = render partial: "shared/promotion_to_join" if !current_user

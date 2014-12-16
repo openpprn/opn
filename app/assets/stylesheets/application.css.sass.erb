@@ -1,8 +1,8 @@
 /* This file controls whether base styles or theme styles are used, based on config*/
 
 /* The manifest files in the base directory or the theme directory control what gets included */
-<% if ENV["pprn_theme_name"].blank? %>
+<% if CUSTOM_THEMED %>
 @import "manifest"
 <% else %>
-@import <%= "#{ENV["pprn_theme_name"]}/manifest" %>
+@import <%= "#{Figaro.env.website_code_name}/manifest" %>
 <% end %>
