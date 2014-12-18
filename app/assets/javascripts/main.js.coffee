@@ -1,3 +1,5 @@
+Turbolinks.enableProgressBar();
+
 $.rails.allowAction = (element) ->
   # The message is something like "Are you sure?"
   title = element.data('confirm')
