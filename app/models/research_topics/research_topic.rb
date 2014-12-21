@@ -1,6 +1,6 @@
 class ResearchTopic < ActiveRecord::Base
   include Votable
-  has_many :votes, counter_cache: true
+  has_many :votes
 
   acts_as_commentable
 
@@ -18,7 +18,7 @@ class ResearchTopic < ActiveRecord::Base
   scope :study_completed, -> { where(state: 'study_completed') }
   scope :removed, -> { where(state: 'removed') }
 
-  scope :sorted, -> { order(:votes_count)}
+  #scope :sorted, -> { order(:votes_count)}
 
   scope :popular, -> { order(votes_count: :desc) }
   scope :most_discussed, -> { order(updated_at: :desc) } #make sure commenting touches the model
@@ -108,9 +108,9 @@ class ResearchTopic < ActiveRecord::Base
   end
 
   # alias as per Sean's specs
-  def votes_count
-    rating
-  end
+  # def votes_count
+  #   rating
+  # end
 
   def accepted?
     state == 'accepted'
@@ -118,7 +118,7 @@ class ResearchTopic < ActiveRecord::Base
 
   # As per Sean's specs
   def rank
-    self.class.ranks.index { |rank_hash| rank_hash['research_topic_id'].to_i == self.id } + 1
+    1 + (self.class.ranks.index { |rank_hash| rank_hash['research_topic_id'].to_i == self.id } || 0)
   end
 
 

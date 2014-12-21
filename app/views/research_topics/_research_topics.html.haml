@@ -3,7 +3,7 @@
   %tr
     %th.col-sm-2.small
       - if kind == :popular
-        Rank
+        Votes
       - elsif kind == :newest
         Posted On
       - elsif kind == :most_discussed
@@ -19,7 +19,7 @@
     %tr
       %td
         - if kind == :popular
-          = i
+          = research_topic.votes_count #rank
         - elsif kind == :newest
           = my_strftime(research_topic.created_at)
         - elsif kind == :most_discussed

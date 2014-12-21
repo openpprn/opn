@@ -6,7 +6,7 @@ class Vote < ActiveRecord::Base
   belongs_to :question
   belongs_to :comment
   belongs_to :post
-  belongs_to :research_topic
+  belongs_to :research_topic, counter_cache: true, touch: true
 
 
   def self.popular_research_questions

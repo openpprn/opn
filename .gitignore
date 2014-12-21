@@ -49,7 +49,7 @@ config/initializers/secret_token.rb
 /config/initializers/secret_token.rb
 /config/initializers/00_site_name.rb
 /config/initializers/db.rb
-/config/secrets.yml
+/config/secrets.yml                   # hmmm...this actually needs to be checked into version control for deploys to heroku, might need to fix
 /config/initializers/validic.rb
 
 # Ignore OS generated files
@@ -62,5 +62,4 @@ config/initializers/secret_token.rb
 
 # Ignore application configuration
 /config/application.yml
-
-# config/initializers/pprn.rb # this needs to exist in some fashion
+/config/initializers/pprn.rb
