@@ -2,7 +2,7 @@
 
 /* The manifest files in the base directory or the theme directory control what gets included */
 <% if CUSTOM_THEMED %>
-@import "manifest"
-<% else %>
 @import <%= "#{Figaro.env.website_code_name}/manifest" %>
+<% else %>
+@import "manifest"
 <% end %>

@@ -28,12 +28,13 @@ $(document).on "click", "#answer_session .voting button", () ->
       )
   )
 
-$(document).on "click", ".research_topics a.vote, #vote-counter a.vote", (event) ->
+$(document).on "click", ".research_topics a.vote, #vote-counter a.vote, .research-topic a.vote", (event) ->
   event.preventDefault()
 
   link = $(this)
   link_text = ""
-  badge = $(this).closest(".research_question").find(".rating")
+  badge = $(this).closest(".research-topic").find(".rating")
+  console.log badge.html()
   submit_path = $(this).data("submit-path")
   research_topic_path = $(this).data("research-topic-path")
   vote_counter = $(".vote_counter")

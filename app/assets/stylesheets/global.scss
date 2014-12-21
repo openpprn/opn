@@ -1,3 +1,9 @@
+// Turbolinks
+html.turbolinks-progress-bar::before {
+  background-color: #428bca !important;
+  height: 3px !important;
+}
+
 // body {
 //   background-color: #EEE
 // }

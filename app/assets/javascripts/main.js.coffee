@@ -1,3 +1,5 @@
+Turbolinks.enableProgressBar();
+
 $.rails.allowAction = (element) ->
   # The message is something like "Are you sure?"
   title = element.data('confirm')
@@ -65,6 +67,11 @@ $.rails.allowAction = (element) ->
     $(".row-offcanvas").toggleClass "active"
     $(".offcanvas-toggle a").toggleClass "active"
     return
+
+  # PJAX
+  #$(document).pjax(selector, [container], options)
+  $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container')
+
 
 
 @loaders = () ->

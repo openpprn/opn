@@ -11,7 +11,6 @@ puts template_folder
 puts root_folder
 
 files = [['config', 'application.yml'],
-  ['config/initializers', 'secret_token.rb'],
   ['config/initializers', 'pprn.rb']
 ]
 

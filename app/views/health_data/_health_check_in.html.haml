@@ -44,7 +44,7 @@
 
 %form#check-in{action: check_in_path}
   - @question_flow.all_questions.each do |question|
-    = render partial: "health_check_in_helper", :locals => { question: question, current: (question == @answer_session.next_question) }
+    = render partial: "health_check_in_helper", :locals => { question: question, answer_session: @answer_session, question_flow: @question_flow, current: (question == @answer_session.next_question) }
   #completion_message{class: ("hidden" unless @answer_session.completed?) }
     .panel.panel-default
       .panel-body.text-center
