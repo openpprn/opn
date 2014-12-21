@@ -30,14 +30,11 @@ class HealthDataController < ApplicationController
   end
 
   def check_in
-
     question = Question.find(params[:question_id])
 
     @answer = @answer_session.process_answer(question, params)
 
     render json: {answer: @answer, next_question_id: (@answer.next_question.id if @answer and @answer.next_question)}
-
-
   end
 
 

@@ -1,6 +1,6 @@
 class ResearchTopic < ActiveRecord::Base
   include Votable
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   acts_as_commentable
 
@@ -50,6 +50,12 @@ class ResearchTopic < ActiveRecord::Base
     self.offset(rand(self.count - count)).first(count)
   end
 
+
+  # FIX ME, name is misleading. To the user it counts up the votes, but technically since votes can have a rating of 0 or nil, these votes are ignored
+  def update_rating
+    self.votes_count = rating
+    save
+  end
 
 
 

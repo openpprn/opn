@@ -73,7 +73,7 @@ $(document).on "click", ".research_topics a.vote, #vote-counter a.vote, .researc
         )
     else
       console.log data
-      bootbox.alert("Sorry! You have already used all of your votes.")
+      bootbox.alert("Sorry! You have used all your votes. If you want to vote for this topic, first retract a vote from another.")
 
 
   )

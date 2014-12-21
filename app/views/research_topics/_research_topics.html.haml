@@ -19,7 +19,7 @@
     %tr
       %td
         - if kind == :popular
-          = research_topic.votes_count #rank
+          = research_topic.rating #rank
         - elsif kind == :newest
           = my_strftime(research_topic.created_at)
         - elsif kind == :most_discussed

@@ -6,7 +6,9 @@ class Vote < ActiveRecord::Base
   belongs_to :question
   belongs_to :comment
   belongs_to :post
-  belongs_to :research_topic, counter_cache: true, touch: true
+  belongs_to :research_topic
+
+  after_save :update_research_topic_rating
 
 
   def self.popular_research_questions
@@ -38,6 +40,12 @@ class Vote < ActiveRecord::Base
     end
   end
 
+
+  def update_research_topic_rating
+    if research_topic
+      research_topic.update_rating
+    end
+  end
 
   private
 
