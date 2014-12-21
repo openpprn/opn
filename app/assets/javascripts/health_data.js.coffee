@@ -9,7 +9,6 @@ submit_check_in = (submit_path, question_id, val) ->
     else
       $("#completion_message").addClass("hidden")
       $("form#check-in .question").addClass("hidden")
-      console.log "form#check-in .question[data-question-id='" + data.next_question_id + "']"
       $("form#check-in .question[data-question-id='" + data.next_question_id + "'").removeClass('hidden')
   )
 
@@ -30,3 +29,14 @@ $(document).on "click", "form#check-in .input-group .submit", (event) ->
   val = $(this).closest(".input-group").find("input").val()
 
   submit_check_in(submit_path, question_id, val)
+$(document).on "click", "form#check-in .prev-question", (event) ->
+  event.preventDefault()
+
+  prev_question_id = $(this).data("prev-question-id")
+
+  console.log prev_question_id
+
+  $("#completion_message").addClass("hidden")
+  $("form#check-in .question").addClass("hidden")
+  $("form#check-in .question[data-question-id='" + prev_question_id + "'").removeClass('hidden')
+

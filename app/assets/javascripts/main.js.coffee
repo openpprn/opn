@@ -68,6 +68,11 @@ $.rails.allowAction = (element) ->
     $(".offcanvas-toggle a").toggleClass "active"
     return
 
+  # PJAX
+  #$(document).pjax(selector, [container], options)
+  $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container')
+
+
 
 @loaders = () ->
   mainLoader()

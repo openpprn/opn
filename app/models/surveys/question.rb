@@ -20,12 +20,12 @@ class Question < ActiveRecord::Base
 
   def next_question(question_flow)
     candidate_edges = QuestionEdge.where(parent_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.first
+    candidate_edges.first.descendant
   end
 
   def previous_question(question_flow)
     candidate_edges = QuestionEdge.where(child_question_id: self[:id], question_flow_id: question_flow.id, direct: true)
-    candidate_edges.first
+    candidate_edges.first.ancestor
   end
 
   def default_next_question(question_flow)

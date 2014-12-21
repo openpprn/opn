@@ -25,5 +25,8 @@
         .col-md-3.text-right
           %small.muted
             Last Updated
-            = "2 months ago"
-            = link_to "Back to Last Question", "#"
+            = answer_session.updated_at.localtime.to_formatted_s(:short)
+          %br/
+          - unless question == answer_session.question_flow.first_question
+            %small
+              = link_to "Back to Last Question", "#", class: "prev-question", data: { prev_question_id: question.previous_question(question_flow).id }

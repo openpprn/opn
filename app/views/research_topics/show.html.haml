@@ -1,15 +1,19 @@
 - title("Research Questions")
-.row
+.row.research-topic
   .col-md-12
     .row
-      .col-md-2
+      .col-md-1
         %h2
           %i.fa.fa-check-square-o
-          3 Votes
-        .btn.btn-primary Cast Vote
-        %em or
-        .btn.btn-default Uncast Vote
-      .col-md-10
+          .rating= @research_topic.rating
+      .col-md-2
+        - unless @research_topic.has_vote?(current_user, 1)
+          %a.vote.btn.btn-primary{data: {research_topic_id: @research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(@research_topic), type: "cast"}} Cast Vote
+        - else
+          %a.vote.btn.btn-default{data: {research_topic_id: @research_topic.id, submit_path: vote_path, research_topic_path: research_topic_path(@research_topic), type: "retract"}} Retract Vote
+
+
+      .col-md-9
         = link_to research_prioritization_path, class: "btn btn-primary btn-xs pull-right" do
           .fa.fa-arrow-left
           Back to Research Questions
