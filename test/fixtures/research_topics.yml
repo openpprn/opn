@@ -3,44 +3,53 @@ rt1:
   description: I've always wonder this, but I can't be bothered to look for an answer.
   state: proposed
   user: user_1
+  votes_count: 3
   created_at: <%= Time.zone.now - 1.day %>
 rt2:
   text: Do we breathe while sleeping?
   description: I sleep all the time, but can't remember noticing myself breathing.
   state: proposed
   user: user_2
+  votes_count: 30
   created_at: <%= Time.zone.now - 3.hour %>
 rt3:
   text: Why do we snore?
   description: It's so annoying!
   state: proposed
   user: user_3
+  votes_count: 1
   created_at: <%= Time.zone.now - 2.hour %>
 rt4:
   text: What's with this pillow?
   description: Very very uncomfortable.
   state: proposed
   user: user_3
+  votes_count: 10
   created_at: <%= Time.zone.now - 1.hour %>
 rt5:
   text: Do other animals get sleep apnea?
   description: I think by pet gerbil might need a CPAP...
   state: proposed
   user: user_3
+  votes_count: 4
   created_at: <%= Time.zone.now - 5.hour %>
 rt6:
   text: How does light affect my sleeping patterns?
   description: I just want to go to sleep earlier...
   state: proposed
   user: user_2
+  votes_count: 2
   created_at: <%= Time.zone.now - 9.hour %>
+
+
 rejected:
   text: Why am I so tired?
   description: 2nd cup of coffee and I'm still exhausted
-  state: removed
+  state: rejected
   user: social
   created_at: <%= Time.zone.now - 1.hour %>
-under_review:
+
+proposed:
   text: Where am I?
   user: social
   description: -looks around-

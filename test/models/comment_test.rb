@@ -7,7 +7,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   def test_valid
-    assert comment.valid?
+    assert_not comment.valid? #comment needs a user and a body
   end
 
 end

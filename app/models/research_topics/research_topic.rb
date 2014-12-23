@@ -10,19 +10,22 @@ class ResearchTopic < ActiveRecord::Base
 
   belongs_to :user
 
-  STATES = [:proposed, :under_study, :study_completed, :removed]
+  STATES = [:proposed, :under_study, :study_completed, :rejected]
   #Old Implementation: STATES = [:under_review, :proposed, :accepted, :rejected, :complete, :hidden]
+
+  #default_scope { where("state != 'rejected'") }
 
   scope :proposed, -> { where(state: 'proposed') }
   scope :under_study, -> { where(state: 'under_study') }
   scope :study_completed, -> { where(state: 'study_completed') }
-  scope :removed, -> { where(state: 'removed') }
+  scope :rejected, ->  { where(state: 'rejected') }
+  scope :accepted, -> { where("state != 'rejected'") }
 
   #scope :sorted, -> { order(:votes_count)}
 
-  scope :popular, -> { order(votes_count: :desc) }
-  scope :most_discussed, -> { order(updated_at: :desc) } #make sure commenting touches the model
-  scope :newest, -> { order(created_at: :desc) }
+  scope :popular, -> { accepted.order(votes_count: :desc) }
+  scope :most_discussed, -> { accepted.order(updated_at: :desc) } #make sure commenting touches the model
+  scope :newest, -> { accepted.order(created_at: :desc) }
 
   # intentionally returns all now, to allow for future filtering (no filters needed at the moment):
   scope :viewable_by, lambda { |user_id| self.all}
@@ -72,8 +75,8 @@ class ResearchTopic < ActiveRecord::Base
     state == 'study_completed'
   end
 
-  def removed?
-    state == 'removed'
+  def rejected?
+    state == 'rejected'
   end
 
 
@@ -88,6 +91,7 @@ class ResearchTopic < ActiveRecord::Base
 
         from research_topics rt, (select count(*) total from votes where research_topic_id is not null) vc, votes v
         where v.research_topic_id = rt.id
+        where rt.state != 'rejected'
         and v.rating > 0
         group by rt.id
         having count(v.id)/(1.00 * max(vc.total)) > #{minimum_percentage};
@@ -104,7 +108,7 @@ class ResearchTopic < ActiveRecord::Base
           count(v.id) topic_votes
         from research_topics rt
         left join votes v on v.research_topic_id = rt.id
-        where rt.state = 'accepted'
+        where rt.state != 'rejected'
         and v.rating > 0
         group by rt.id
         order by topic_votes desc, research_topic_created_at desc;
@@ -118,9 +122,6 @@ class ResearchTopic < ActiveRecord::Base
   #   rating
   # end
 
-  def accepted?
-    state == 'accepted'
-  end
 
   # As per Sean's specs
   def rank

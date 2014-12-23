@@ -21,7 +21,7 @@
       .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => percentage_votes_used, :role => "progressbar", :style => "width: #{percentage_votes_used}%;"}
         %span.sr-only
     %h5= "You've used #{votes_used_count} of your available #{vote_quota} votes."
-    - if votes_used_count = 0
+    - if votes_used_count == 0
       %small Vote on research topics above to have them be reviewed by researchers for study. Don't forget you can propose your own, too.
     - elsif votes_used_count < vote_quota
       %small Vote on more research topics above to have them be reviewed by researchers for study. Don't forget you can propose your own, too.
