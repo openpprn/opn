@@ -4,7 +4,17 @@
 [![Dependency Status](https://gemnasium.com/openpprn/opn.svg)](https://gemnasium.com/openpprn/opn)
 [![Code Climate](https://codeclimate.com/github/openpprn/opn/badges/gpa.svg)](https://codeclimate.com/github/openpprn/opn)
 
-A collaboration to build an open-source solution for creating patient-powered research networks.
+OpenPPRN is a collaboration between multiple Patient-Powered Research Networks to build an open, shared patient-facing web & mobile technology infrastructure.
+
+With this "Open" PPRN, in the push of a button, you'll be able to deploy a Patient-Powered Research Network that is complete with:
+
+- Patient Registry
+- Research Survey Platform
+- Health Data Aggregation & Visualization
+- Mobile Health Tracking
+- Patient Social Network
+
+[For full project details visit our home page](http://openpprn.org)
 
 ## Before Starting Installation
 
