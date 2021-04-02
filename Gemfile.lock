@@ -126,7 +126,7 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gemoji (2.1.0)
-    geocoder (1.2.6)
+    geocoder (1.6.6)
     haml (4.0.6)
       tilt
     hashie (2.0.5)
