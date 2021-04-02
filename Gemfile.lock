@@ -211,7 +211,7 @@ GEM
     rake (10.4.2)
     rdoc (4.1.2)
       json (~> 1.4)
-    redcarpet (3.2.1)
+    redcarpet (3.5.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rolify (3.4.1)
@@ -315,7 +315,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.7)
   rails_12factor
-  redcarpet (~> 3.2.0)
+  redcarpet (~> 3.5.1)
   rolify
   sass-rails (~> 4.0.4)
   sdoc (~> 0.4.0)

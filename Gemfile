@@ -50,7 +50,7 @@ gem 'devise'
 gem 'bootstrap-generators', '~> 3.2.0'
 
 # Markdown Support
-gem 'redcarpet', '~> 3.2.0'
+gem 'redcarpet', '~> 3.5.1'
 
 # Directed Acyclic Graph
 gem 'acts-as-dag'
