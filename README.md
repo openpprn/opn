@@ -14,13 +14,34 @@ With this "Open" PPRN, in the push of a button, you'll be able to deploy a Patie
 - Mobile Health Tracking
 - Patient Social Network
 
-[For full project details visit our home page](http://openpprn.org)
+## Philosophy
 
-## Before Starting Installation
+### Truly Patient-Centered
 
-Make sure you have reviewed and installed any [prerequisites](https://github.com/openpprn/opn/blob/master/PREREQUISITES.md).
+Patient-centered and patient-facing. As the interface for your patients to interact with your research network, the web & mobile UI is designed with reward systems from behavior research to engage patients to help advance research for their condition. Patient engagement is the first and primary concern.
+
+### Open
+
+Open Source. Open Data. The data is owned by the patients, stewarded by the patient advocacy group. Freedom: host your network anywhere, move your network and the data at any time. Add to the network to address new needs in the future. That's what makes this an "open PPRN".
+
+### Mobile-First
+
+The whole user experience is designed mobile-first. Patient registration, research surveys, and health tracking are designed to be done from the patient's mobile phone.
+
+### Data-Friendly
+
+Plug-ins to third-party data APIs enable patient health data to be aggregated from hundreds of mobile health apps, so patients can use the tools they find most valuable to track their health data. Plug-ins to patient medical record APIs enable the integration of EHR data. Patients see these visualized on the web & mobile interface.
+
+## Want to Know More?
+
+For full project details visit [OpenPPRN.org](http://openpprn.org)
+
 
 ## Installation
+
+First, make sure you have reviewed and installed any [prerequisites](https://github.com/openpprn/opn/blob/master/PREREQUISITES.md).
+
+Next, install gems:
 
 ```
 gem install bundler
