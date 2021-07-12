@@ -48,7 +48,8 @@ GEM
       activerecord (~> 4.0, >= 4.0.0)
     acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
-    addressable (2.3.6)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     airbrake (4.1.0)
       builder
       multi_json
@@ -183,6 +184,7 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    public_suffix (4.0.6)
     rack (1.5.2)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
